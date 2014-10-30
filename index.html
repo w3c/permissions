@@ -58,7 +58,9 @@
   </head>
   <body>
     <section id='abstract'>
-      TODO: write an abstract.
+      The <cite>Permissions API</cite> allows a web application to be aware of
+      the status of a given permission, to know whether it is granted, denied
+      or if the user will be asked whether the permission should be granted.
     </section>
     <section id='conformance'>
       <p>
@@ -77,15 +79,115 @@
         Dependencies
       </h2>
       <p>
-        TODO: dependencies.
+        <a href=
+        'https://html.spec.whatwg.org/multipage/browsers.html#effective-script-origin'>
+        <dfn>effective script origin</dfn></a> is defined in [[!HTML]].
       </p>
+      <p>
+        <a href=
+        'http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects'>
+        <dfn>Promise</dfn> objects</a> are defined in [[!ECMASCRIPT]].
+      </p>
+    </section>
+    <section>
+      <h2>
+        Concepts
+      </h2>
+      <section>
+        <h2>
+          Permission definition
+        </h2>
+        <dl class='idl' title='dictionary Permission'>
+          <dt>
+            required DOMString <a>name</a>
+          </dt>
+        </dl>
+        <p>
+          A <code>Permission</code> dictionary MUST contain a <code><dfn
+          id='widl-Permission-name'>name</dfn></code> field which represents the
+          permission's identifier.
+        </p>
+        <p>
+          If another specification wants to define a new permission, it MUST
+          specify a new name and make sure it does not collide with another. It
+          is recommended to use a permission name that is related to the W3C
+          specification short name given that it is unique and related to the
+          specification.
+        </p>
+        <p>
+          If a permission has to be defined by more than its name, it is
+          RECOMMENDED to inherit from <code>Permission</code> dictionary and
+          add new fields.
+        </p>
+        <div class='issue'>
+          Create an extensibility section?
+        </div>
+      </section>
+      <!--
+        geolocation
+        notifications
+        push
+        quota api (filesystem)
+        registerProtocolHandler
+        getusermedia
+      -->
+      <section>
+        <h2>
+          Status of a permission
+        </h2>
+        <p>
+          The status of a permission depends
+        </p>
+        <dl class='idl' title='enum PermissionState'>
+          <dt>granted</dt>
+          <dt>denied</dt>
+          <dt>prompt</dt>
+        </dl>
+        <p>
+          A permission state is <code><dfn id='widl-PermissionState-granted'>
+          granted</dfn></code> if
+        </p>
+
+        <dl class='idl' title='interface PermissionStatus'>
+          <dt>
+            readonly attribute DOMString name
+          </dt>
+          <dt>
+            readonly attribute PermissionState status
+          </dt>
+        </dl>
+        <p>
+          A <code>PermissionStatus</code> dictionary MUST contain a <code><dfn
+          id='widl-PermissionStatus-status'>status</dfn></code> field which MUST
+          be a <code>PermissionState</code> type.
+        </p>
+        <p>
+          If another specification wants to define a new permission, for which
+          the status is going to be defined by more than a <code>PermissionState</code>,
+          it is RECOMMENDED to inherit from <code>PermissionStatus</code>
+          dictionary and add new fields.
+        </p>
+      </section>
+      <section>
+        <h2>
+          Permissions interface
+        </h2>
+
+        <dl class='idl' title='[Exposed=(Window,Worker)] interface Permissions : EventTarget'>
+          <dt>
+            static Promise&lt;PermissionStatus&gt; has(Permission permission)
+          </dt>
+        </dl>
+      </section>
     </section>
     <section class='appendix'>
       <h2>
         Acknowledgments
       </h2>
       <p>
-        TODO: acknowledgments.
+        <div class='issue'>
+          Add acknowledgments.
+        </div>
       </p>
     </section>
   </body>
