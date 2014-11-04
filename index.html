@@ -122,6 +122,9 @@
         <div class='issue'>
           Create an extensibility section?
         </div>
+        <div class='issue'>
+          Have a registry of permissions in this document?
+        </div>
       </section>
       <!--
         geolocation
@@ -144,16 +147,27 @@
           <dt>prompt</dt>
         </dl>
         <p>
-          A permission state is <code><dfn id='widl-PermissionState-granted'>
-          granted</dfn></code> if
+          A permission is <code><dfn id='widl-PermissionState-granted'>
+          granted</dfn></code> if when trying to use the feature related to the
+          permission, the call MUST succeed.
+        </p>
+        <p>
+          A permission is <code><dfn id='widl-PermissionState-denied'>denied</dfn></code>
+          if when trying to use the feature related to the permission, the call
+          SHOULD fail and the user SHOULD not be prompted in order to grant the
+          permission. However, the <a>user agent</a> MAY show a prompt to the
+          user
         </p>
 
-        <dl class='idl' title='interface PermissionStatus'>
+        <dl class='idl' title='interface PermissionStatus : EventTarget'>
           <dt>
             readonly attribute DOMString name
           </dt>
           <dt>
             readonly attribute PermissionState status
+          </dt>
+          <dt>
+            attribute EventHandler onchange
           </dt>
         </dl>
         <p>
@@ -173,9 +187,9 @@
           Permissions interface
         </h2>
 
-        <dl class='idl' title='[Exposed=(Window,Worker)] interface Permissions : EventTarget'>
+        <dl class='idl' title='[Exposed=(Window,Worker)] interface Permissions'>
           <dt>
-            static Promise&lt;PermissionStatus&gt; has(Permission permission)
+            static Promise&lt;PermissionStatus&gt; get(Permission permission)
           </dt>
         </dl>
       </section>
