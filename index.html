@@ -79,10 +79,43 @@
         Dependencies
       </h2>
       <p>
-        <a href=
-        'https://html.spec.whatwg.org/multipage/browsers.html#effective-script-origin'>
-        <dfn>effective script origin</dfn></a> is defined in [[!HTML]].
+        The following concepts and interfaces are defined in [[!HTML]]:
       </p>
+      <ul>
+        <li>
+          <a href='https://html.spec.whatwg.org/multipage/browsers.html#origin-2'><dfn>
+          origin</dfn></a> of a <a href='https://html.spec.whatwg.org/multipage/dom.html#document'>
+          <dfn>Document</dfn></a> and a <a href='https://html.spec.whatwg.org/multipage/workers.html#workers'>
+          <dfn>worker</dfn></a>.
+        </li>
+        <li>
+          <dfn><a href=
+          "http://www.w3.org/TR/html5/webappapis.html#queue-a-task">queue a
+          task</a></dfn>
+        </li>
+        <li>
+          <dfn><a href=
+          "http://www.w3.org/TR/html5/webappapis.html#fire-a-simple-event">fire
+          a simple event</a></dfn>
+        </li>
+        <li>
+          <dfn><a href=
+          "http://www.w3.org/TR/html5/webappapis.html#event-handlers">event
+          handler</a></dfn>
+        </li>
+        <li>
+          <dfn><a href=
+          "http://www.w3.org/TR/html5/webappapis.html#event-handler-event-type">event
+          handler event type</a></dfn>
+        </li>
+        <li>
+          <code><dfn><a href=
+          'http://www.w3.org/TR/html5/browsers.html#window'>Window</a></dfn></code>
+        </li>
+      </ul>
+      <div class='issue'>
+        Update links to point to WHATWG or W3C spec but not bit of both.
+      </div>
       <p>
         <a href=
         'http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects'>
@@ -91,117 +124,281 @@
     </section>
     <section>
       <h2>
-        Concepts
+        Permission Registry
       </h2>
-      <section>
-        <h2>
-          Permission definition
-        </h2>
-        <dl class='idl' title='dictionary Permission'>
-          <dt>
-            required DOMString <a>name</a>
-          </dt>
-        </dl>
-        <p>
-          A <code>Permission</code> dictionary MUST contain a <code><dfn
-          id='widl-Permission-name'>name</dfn></code> field which represents the
-          permission's identifier.
-        </p>
-        <p>
-          If another specification wants to define a new permission, it MUST
-          specify a new name and make sure it does not collide with another. It
-          is recommended to use a permission name that is related to the W3C
-          specification short name given that it is unique and related to the
-          specification.
-        </p>
-        <p>
-          If a permission has to be defined by more than its name, it is
-          RECOMMENDED to inherit from <code>Permission</code> dictionary and
-          add new fields.
-        </p>
-        <div class='issue'>
-          Create an extensibility section?
-        </div>
-        <div class='issue'>
-          Have a registry of permissions in this document?
-        </div>
-      </section>
-      <!--
-        geolocation
-        notifications
-        push
-        quota api (filesystem)
-        registerProtocolHandler
-        getusermedia
-      -->
-      <section>
-        <h2>
-          Status of a permission
-        </h2>
-        <p>
-          The status of a permission depends
-        </p>
-        <dl class='idl' title='enum PermissionState'>
-          <dt>granted</dt>
-          <dt>denied</dt>
-          <dt>prompt</dt>
-        </dl>
-        <p>
-          A permission is <code><dfn id='widl-PermissionState-granted'>
-          granted</dfn></code> if when trying to use the feature related to the
-          permission, the call MUST succeed.
-        </p>
-        <p>
-          A permission is <code><dfn id='widl-PermissionState-denied'>denied</dfn></code>
-          if when trying to use the feature related to the permission, the call
-          SHOULD fail and the user SHOULD not be prompted in order to grant the
-          permission. However, the <a>user agent</a> MAY show a prompt to the
-          user
-        </p>
+      <dl class='idl' title='enum PermissionName'>
+        <dt>
+          geolocation
+        </dt>
+        <dt>
+          notifications
+        </dt>
+        <dt>
+          push
+        </dt>
+        <!--
+          Other candidates:
+           - Quota API
+           - storage related (unlimited, ...)
+           - registerProtocolHandler
+           - getUserMedia (audio vs video)
+        -->
+      </dl>
+      <p>
+        The <code>PermissionName</code> enum defines the list of known
+        permissions. Specifications are welcome to request a new name to be
+        added to this registry instead of trying to monkey patch it.
+      </p>
+      <p>
+        The <code><dfn id='idl-def-PermissionName.geolocation'>geolocation</dfn>
+        </code> permission is the permission associated with the usage of the
+        [[geolocation-API]].
+      </p>
+      <p>
+        The <code><dfn id='idl-def-PermissionName.notifications'>notifications
+        </dfn> </code> permission is the permission associated with the usage of
+        the [[notifications]] API.
+      </p>
+      <p>
+        The <code><dfn id='idl-def-PermissionName.push'>push</dfn> </code>
+        permission is the permission associated with the usage of the
+        [[push-api]].
+      </p>
+    </section>
+    <section>
+      <h2>
+        Permission definition
+      </h2>
+      <dl class='idl' title='dictionary Permission'>
+        <dt>
+          required PermissionName <a>name</a>
+        </dt>
+      </dl>
+      <p>
+        A <code>Permission</code> dictionary MUST contain a <code><dfn
+        id='widl-Permission-name'>name</dfn></code> field which represents the
+        permission's identifier.
+      </p>
+      <p>
+        If a permission has to be defined by more than its name, it is
+        RECOMMENDED to inherit from <code>Permission</code> dictionary and
+        add new fields.
+      </p>
+      <div class='issue'>
+        Create an extensibility section? Maybe examples?
+      </div>
+    </section>
+    <section>
+      <h2>
+        Status of a permission
+      </h2>
+      <dl class='idl' title='enum PermissionState'>
+        <dt>granted</dt>
+        <dt>denied</dt>
+        <dt>prompt</dt>
+      </dl>
+      <p>
+        The steps to <dfn>retrieve the permission state</dfn> of an <a>origin</a>
+        for a given <code>permission-name</code> are as follows:
+      </p>
+      <ol>
+        <li>
+          If the <a>user agent</a> will allow the <a>origin</a> to try to
+          access the feature associated with the <code>permission-name</code>
+          but would prompt the user to know whether the call should succeed or
+          fail, the <a>user agent</a> MUST return <code><dfn id='widl-PermissionState-prompt'>
+          prompt</dfn></code>.
+        </li>
+        <li>
+          Otherwise, if the <a>user agent</a> will allow the <a>origin</a>
+          to access the feature associated with the <code>permission-name
+          </code> without prompting the user, the <a>user agent</a> MUST
+          return <code><dfn id='widl-PermissionState-granted'>granted</dfn>
+          </code>.
+        </li>
+        <li>
+          Otherwise, the <a>user agent</a> will not allow the <a>origin</a>
+          to access the feature associated with <code>permission-name</code>
+          and MUST return <code><dfn id='widl-PermissionState-denied'>denied
+          </dfn></code>.
+        </li>
+      </ol>
 
-        <dl class='idl' title='interface PermissionStatus : EventTarget'>
-          <dt>
-            readonly attribute DOMString name
-          </dt>
-          <dt>
-            readonly attribute PermissionState status
-          </dt>
-          <dt>
-            attribute EventHandler onchange
-          </dt>
-        </dl>
-        <p>
-          A <code>PermissionStatus</code> dictionary MUST contain a <code><dfn
-          id='widl-PermissionStatus-status'>status</dfn></code> field which MUST
-          be a <code>PermissionState</code> type.
-        </p>
-        <p>
-          If another specification wants to define a new permission, for which
-          the status is going to be defined by more than a <code>PermissionState</code>,
-          it is RECOMMENDED to inherit from <code>PermissionStatus</code>
-          dictionary and add new fields.
-        </p>
-      </section>
-      <section>
-        <h2>
-          Permissions interface
-        </h2>
+      <div class='issue'>
+        What about pickers? So far, the supported features are not implemented
+        as pickers but should we add a picker entry or should we expect those
+        features to not use this API?<br>
+        Using <code>granted</code> or <code>prompt</code> both have advantages
+        and inconveniences in the sense that the picker model is exactly in
+        between: the user is nagged and can still reject the call (like <code>
+        prompt</code>) but authors can't do anything about it (like <code>granted</code>)
+        assuming the picker would always show up.
+      </div>
 
-        <dl class='idl' title='[Exposed=(Window,Worker)] interface Permissions'>
-          <dt>
-            static Promise&lt;PermissionStatus&gt; get(Permission permission)
-          </dt>
-        </dl>
-      </section>
+      <div class='issue'>
+        What about permissions that are related to the current context like
+        whether the call happens because of a user interaction? For example,
+        fullscreen.
+      </div>
+
+      <dl class='idl' title='interface PermissionStatus : EventTarget'>
+        <dt>
+          readonly attribute PermissionName name
+        </dt>
+        <dt>
+          readonly attribute PermissionState status
+        </dt>
+        <dt>
+          attribute EventHandler onchange
+        </dt>
+      </dl>
+
+      <p>
+        A <code>PermissionStatus</code> instance has an <dfn>associated origin</dfn>
+        that is defined when it is created.
+      </p>
+
+      <p>
+        The steps to <dfn>update the status</dfn> of a <code>PermissionStatus</code>
+        instance are as follow:
+      </p>
+      <ol>
+        <li>
+          Let <var>status</var> be the <code>PermissionStatus</code> instance
+          being updated.
+        </li>
+        <li>
+          Run the steps to <a>retrieve the permission state</a> using the <var>status</var>
+          <a>associated origin</a> and <code>name</code> attribute then set the
+          result of those steps to the <code>status</code> attribute.
+        </li>
+      </ol>
+
+      <p>
+        The steps to <dfn>create a PermissionStatus</dfn> for a given <a>origin</a>
+        and <code>permission-name</code> are as follow:
+      </p>
+      <ol>
+        <li>
+          Let <var>status</var> be a <code>PermissionStatus</code> instance.
+        </li>
+        <li>
+          Set <a>origin</a> as <var>status</var>'s <a>associated origin</a>.
+        </li>
+        <li>
+          Set the <code>name</code> attribute to <code>permission-name</code>.
+        </li>
+        <li>
+          Run the steps to <a>update the status</a> on <var>status</var>.
+        </li>
+        <li>
+          Return <var>status</var>.
+        </li>
+      </ol>
+
+      <p>
+        The <code><dfn id='widl-PermissionStatus-name'>name</dfn></code>
+        attribute MUST return the value it was initially set to at the object
+        creation.
+      </p>
+      <p>
+        The <code><dfn id='widl-PermissionStatus-status'>status</dfn></code>
+        attribute MUST return the latest value that was set while running the
+        <a>update the status</a> steps on the current instance.
+      </p>
+      <p>
+        The <code><dfn id=
+        'widl-PermissionStatus-onchange'>onchange</dfn></code> attribute is an
+        <a>event handler</a> whose corresponding <a>event handler event type</a>
+        is <code>change</code>.
+      </p>
+
+      <p>
+        Whenever the <a>user agent</a> is aware that the <code>status</code> of
+        a <code>PermissionStatus</code> instance has changed, it MUST
+        asynchronously run the following steps:
+      </p>
+      <ol>
+        <li>
+          Let <var>permission-status</var> be the <code>PermissionStatus</code>
+          for which the <code>status</code> has changed.
+        </li>
+        <li>
+          Run the steps to <a>update the status</a> of <var>permission-status</var>.
+        </li>
+        <li>
+          <a>Queue a task</a> on the <dfn>permission task source</dfn> to <a>fire
+          a simple event</a> named <code>change</code> at <var>permission-status</var>.
+        </li>
+      </ol>
+
+      <div class='issue'>
+        What if a <code>Permission</code> has extended attributes? Should the
+        <code>PermissionStatus</code> add them? How to specify that?
+      </div>
+    </section>
+    <section>
+      <h2>
+        Permissions interface
+      </h2>
+
+      <dl class='idl' title='[Exposed=(Window,Worker)] interface Permissions'>
+        <dt>
+          static Promise&lt;PermissionStatus&gt; get((Permission or PermissionName) permission)
+        </dt>
+      </dl>
+
+      <p>
+        When the <code><dfn id='widl-Permissions-get-Promise-PermissionStatus--Permission-permission'>
+        get()</dfn></code> method is invoked, the <a>user agent</a> MUST run the
+        following steps:
+        <ol>
+          <li>
+            Let <var>origin</var> be the <code><a>Document</a></code>'s <a>origin</a>
+            if those steps are run in a <code><a>Window</a></code> context or
+            the <code><a>Worker</a></code>'s origin otherwise.
+          </li>
+          <li>
+            Let <va>name</va> be <code>permission</code> if <var>permission</var>
+            is of type <code>PermissionName</code>, <code>permission.name</code>
+            otherwise.
+          </li>
+          <li>
+            Let <var>promise</var> be a newly-created <a>Promise</a>.
+          </li>
+          <li>
+            Return <var>promise</var> and continue those steps asynchronously.
+          </li>
+          <li>
+            Run the steps to <a>create a PermissionStatus</a> using <var>origin</var>
+            and <code>name</code> and resolve <var>promise</var> with the result
+            of those steps.
+          </li>
+        </ol>
+      </p>
+
+      <div class='issue'>
+        The spec isn't really using <code>Permission</code>.
+      </div>
+    </section>
+    <section class='informative'>
+      <h2>
+        Examples
+      </h2>
+
+      <div class='issue'>
+        Add Examples:<br>
+        - example with an explanation why geolocation is needed;<br>
+        - example with a 'video' button.
+      </div>
     </section>
     <section class='appendix'>
       <h2>
         Acknowledgments
       </h2>
       <p>
-        <div class='issue'>
-          Add acknowledgments.
-        </div>
+        Thanks to Adrienne Porter Felt, Jake Archibald and Marcos Cáceres for
+        their early support and help.
       </p>
     </section>
   </body>
