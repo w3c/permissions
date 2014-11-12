@@ -386,10 +386,47 @@
         Examples
       </h2>
 
+      <p>
+        This example uses the Permissions API to decide whether local news
+        should be shown using the Geolocation API or a button offering that
+        feature should be added.
+      </p>
+      <pre class='example highlight'>
+&lt;script&gt;
+  Permissions.get('geolocation').then(function(result) {
+    if (result.status == 'granted') {
+      showLocalNewsWithGeolocation();
+    } else if (result.status == 'prompt') {
+      showButtonToEnableLocalNews();
+    }
+    // Don't do anything if the permission was denied.
+  });
+&lt;/script&gt;
+      </pre>
+
+      <p>
+        This example is using a fake <code>capture-video</code> permission for
+        a chat application to show a video chat button depending on the
+        permission status.
+      </p>
+      <pre class='example highlight'>
+&lt;script&gt;
+  function updateVideoButton(permission) {
+    document.getElementById('video-chat').disabled = (permission.status == 'denied');
+  }
+
+  Permissions.get('capture-video').then(function(result) {
+    updateVideoButton(result);
+
+    result.addEventListener('change', function() {
+      updateVideoButton(this);
+    });
+  });
+&lt;/script&gt;
+      </pre>
+
       <div class='issue'>
-        Add Examples:<br>
-        - example with an explanation why geolocation is needed;<br>
-        - example with a 'video' button.
+        Use a real permission on the example above.
       </div>
     </section>
     <section class='appendix'>
