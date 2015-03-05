@@ -151,19 +151,29 @@
           notifications
         </dt>
         <dt>
-          push
-        </dt><!--
-          Other candidates:
-           - Quota API
-           - storage related (unlimited, ...)
-           - registerProtocolHandler
-           - getUserMedia (audio vs video)
-        -->
+          push-notifications
+        </dt>
+        <dt>
+          midi-sysex
+        </dt>
       </dl>
       <p>
         The <code>PermissionName</code> enum defines the list of known
-        permissions. Specifications are welcome to request a new name to be
-        added to this registry instead of trying to monkey patch it.
+        permissions. These permissions are meant to be associated with a use
+        case instead of one API. Thus, some permissions have a 1:1 relationship
+        with an API while some others might include more than one API or even a
+        subset of an API.
+      </p>
+      <p class='note'>
+        For example, <a>push-notifications</a> is exposing the ability for a
+        web page to use push messages in order to show notifications.
+        Implementations might associate it with full usage of the Push API and
+        the Notifications API while others will force the callers to use the
+        Push API only in order to use the Notifications API.
+      </p>
+      <p>
+        Specifications are welcome to request a new name to be added to this
+        registry instead of trying to monkey patch it.
       </p>
       <p>
         The <code><dfn id=
@@ -178,9 +188,17 @@
         [[notifications]] API.
       </p>
       <p>
-        The <code><dfn id='idl-def-PermissionName.push'>push</dfn></code>
+        The <code><dfn id=
+        'idl-def-PermissionName.push-notifications'>push-notifications</dfn></code>
         permission is the permission associated with the usage of the
-        [[push-api]].
+        [[push-api]] in order to show notifications using the [[notifications]]
+        API.
+      </p>
+      <p>
+        The <code><dfn id=
+        'idl-def-PermissionName.midi-sysex'>midi-sysex</dfn></code> permission
+        is the permission associated with the usage of sysex messages in the
+        [[webmidi]] API.
       </p>
     </section>
     <section>
