@@ -220,8 +220,13 @@
         RECOMMENDED to inherit from <code>Permission</code> dictionary and add
         new fields.
       </p>
-      <div class='issue'>
-        Create an extensibility section? Maybe examples?
+      <div class='note'>
+        There are currently no permission defined in this specification using
+        this dictionary. It is only specified here in order to expose the
+        ability for the API to be extended to more complex permissions.<br>
+        For example, if the [[quota-api]] were to have an associated
+        permission, it could define a QuotaPermission dictionary extending
+        Permission with <code>type</code> and <code>value</code> fields.
       </div>
     </section>
     <section>
