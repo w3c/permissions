@@ -144,6 +144,45 @@
         <dfn>Promise</dfn> objects</a> are defined in [[!ECMASCRIPT]].
       </p>
     </section>
+    <section class='informative'>
+      <h2>
+        Scope of this document
+      </h2>
+      <p>
+        This document goal is to specify an API that will help developers to
+        handle permissions on the Web platform. Web APIs have different ways to
+        deal with permissions. The [[notifications]] API allows developers to
+        request a permission and check the permission status explicitly. Others
+        might only expose the status to web pages. Some, like [[geolocation]]
+        will keep the page unaware of the permission associated with the
+        feature.
+      </p>
+      <p>
+        Being able to know whether an API call is going to prompt is mandatory
+        in order to provide a good user experience. Unfortunately, more often
+        than not, those prompts can't be controlled by the developers.
+      </p>
+      <p>
+        The API specified in this document is meant to provide the tools so
+        that web applications can improve their user experience when
+        permissions are involved.
+      </p>
+      <p>
+        The solution described in this document is meant to be extensible but
+        isn't meant to be applicable to all the current and future permissions
+        available in the web platform. If you are working on a specification
+        that has a permission model that wouldn't fit in the model described in
+        this document, please contact the editors or file an issue. We would
+        love to hear about it.
+      </p>
+      <p>
+        The initial intent of this document was to allow web applications to
+        request and revoke permissions explicitly in addition of query the
+        permission status. This is an aspect of the specification that was
+        controversial thus removed from the current document in a spirit of
+        incremental changes: settling on a small API that can be improved.
+      </p>
+    </section>
     <section>
       <h2>
         Permission Registry
@@ -279,10 +318,11 @@
         different values unless something happened (user action, expiration).
       </p>
       <p>
-        It is RECOMMENDED for implementations to use the <a title='origin'>origins</a> of the
-        <a>Document</a> or <a>Worker</a> when making security decisions. Other
-        factors MAY also apply like whether the permission is associated with a
-        [powerful-features] or whether the <a>Document</a> is embedded.
+        It is RECOMMENDED for implementations to use the <a title=
+        'origin'>origins</a> of the <a>Document</a> or <a>Worker</a> when
+        making security decisions. Other factors MAY also apply like whether
+        the permission is associated with a [powerful-features] or whether the
+        <a>Document</a> is embedded.
       </p>
       <div class='issue'>
         The <a>retrieve the permission state</a> algorithm does not take into
@@ -401,6 +441,13 @@
         <var>promise</var> with the result of those steps.
         </li>
       </ol>
+      <div class='note'>
+        If a developer wants to check multiple permissions at once, the editors
+        recommend them to use Promises.all(). It should yield to the same
+        result and allow this API to stay simple. If it happens to be a very
+        common use case, it should be easy to extend Permissions.query() to
+        accept a sequence&lt;&gt; too.
+      </div>
     </section>
     <section class='informative'>
       <h2>
