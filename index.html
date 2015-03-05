@@ -11,7 +11,7 @@
     <script class='remove'>
 // (this is to make tidy happy)
     var respecConfig = {
-        specStatus:           "unofficial",
+        specStatus:           "ED",
         shortName:            "permissions",
 
         //publishDate:          "2014-04-03",
@@ -62,9 +62,9 @@
                 href: "https://bugzilla.mozilla.org/show_bug.cgi?id=1105827"
             }]
         }],
-        wg:           "Web Applications Working Group",
-        wgURI:        "http://www.w3.org/2008/webapps/",
-        wgPublicList: "public-webapps",
+        wg:           "Web Application Security Working Group",
+        wgURI:        "https://www.w3.org/2011/webappsec/",
+        wgPublicList: "public-webappsec",
         wgPatentURI:  "http://www.w3.org/2004/01/pp-impl/42538/status",
       };
     </script>
@@ -74,6 +74,11 @@
       The <cite>Permissions API</cite> allows a web application to be aware of
       the status of a given permission, to know whether it is granted, denied
       or if the user will be asked whether the permission should be granted.
+    </section>
+    <section id='sotd'>
+      This document is defining a low footprint API that was agreed upon in
+      public-webapps mailing-list discussions and TPAC meetings. It has not yet
+      reached a FPWD.
     </section>
     <section id='conformance'>
       <p>
@@ -396,7 +401,7 @@
     // Don't do anything if the permission was denied.
   });
 &lt;/script&gt;
-      
+
 </pre>
       <p>
         This example is using the <code>capture-video</code> permission (does
@@ -417,7 +422,7 @@
     });
   });
 &lt;/script&gt;
-      
+
 </pre>
       <div class='issue'>
         Use a real permission on the example above.
