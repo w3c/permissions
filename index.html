@@ -425,38 +425,35 @@
 
 </pre>
       <p>
-        This example is using the <code>capture-video</code> permission (does
-        not actually exist) for a chat application to show a video chat button
-        depending on the permission status.
+        This example is using the <code>notifications</code> permission for a
+        chat application to show a notification button depending on the
+        permission status.
       </p>
       <pre class='example highlight'>
 &lt;script&gt;
-  function updateVideoButton(permission) {
-    document.getElementById('video-chat').disabled = (permission.status == 'denied');
+  function updateNotificationButton(permission) {
+    document.getElementById('chat-notification-button').disabled = (permission.status == 'denied');
   }
 
-  Permissions.query('capture-video').then(function(result) {
-    updateVideoButton(result);
+  Permissions.query('notifications').then(function(result) {
+    updateNotificationButton(result);
 
     result.addEventListener('change', function() {
-      updateVideoButton(this);
+      updateNotificationButton(this);
     });
   });
 &lt;/script&gt;
 
 </pre>
-      <div class='issue'>
-        Use a real permission on the example above.
-      </div>
-    </section>
-    <section class='appendix'>
-      <h2>
-        Acknowledgments
-      </h2>
-      <p>
-        Thanks to Adrienne Porter Felt, Jake Archibald and Marcos Cáceres for
-        their early support and help.
-      </p>
+      <section class='appendix'>
+        <h2>
+          Acknowledgments
+        </h2>
+        <p>
+          Thanks to Adrienne Porter Felt, Jake Archibald and Marcos Cáceres for
+          their early support and help.
+        </p>
+      </section>
     </section>
   </body>
 </html>
