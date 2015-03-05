@@ -292,9 +292,10 @@
         well: <a href='https://github.com/w3c/permissions/issues/8'>issue 8</a>
         and <a href='https://github.com/w3c/permissions/issues/9'>issue 9</a>.
       </div>
-      <dl class='idl' title='interface PermissionStatus : EventTarget'>
+      <dl class='idl' title=
+      '[Exposed=(Window,Worker)] interface PermissionStatus : EventTarget'>
         <dt>
-          readonly attribute PermissionName name
+          readonly attribute Permission permission
         </dt>
         <dt>
           readonly attribute PermissionState status
@@ -304,10 +305,6 @@
         </dt>
       </dl>
       <p>
-        A <code>PermissionStatus</code> instance has an <dfn>associated
-        origin</dfn> that is defined when it is created.
-      </p>
-      <p>
         The steps to <dfn>update the status</dfn> of a
         <code>PermissionStatus</code> instance are as follow:
       </p>
@@ -316,22 +313,20 @@
         being updated.
         </li>
         <li>Run the steps to <a>retrieve the permission state</a> using the
-        <var>status</var> <a>associated origin</a> and <code>name</code>
+        <var>status</var>' <a>global object</a> and <code>permission</code>
         attribute then set the result of those steps to the <code>status</code>
         attribute.
         </li>
       </ol>
       <p>
         The steps to <dfn>create a PermissionStatus</dfn> for a given
-        <a>origin</a> and <code>permission-name</code> are as follow:
+        <code>permission</code> are as follow:
       </p>
       <ol>
         <li>Let <var>status</var> be a <code>PermissionStatus</code> instance.
         </li>
-        <li>Set <a>origin</a> as <var>status</var>'s <a>associated origin</a>.
-        </li>
-        <li>Set the <code>name</code> attribute to
-        <code>permission-name</code>.
+        <li>Set the <code>permission</code> attribute to
+        <code>permission</code>.
         </li>
         <li>Run the steps to <a>update the status</a> on <var>status</var>.
         </li>
@@ -339,9 +334,10 @@
         </li>
       </ol>
       <p>
-        The <code><dfn id='widl-PermissionStatus-name'>name</dfn></code>
-        attribute MUST return the value it was initially set to at the object
-        creation.
+        The <code><dfn id=
+        'widl-PermissionStatus-permission'>permission</dfn></code> attribute
+        MUST return the <code><a>Permission</a></code> it was initially set to
+        at the object creation.
       </p>
       <p>
         The <code><dfn id='widl-PermissionStatus-status'>status</dfn></code>
@@ -373,10 +369,6 @@
           <var>permission-status</var>.
         </li>
       </ol>
-      <div class='issue'>
-        What if a <code>Permission</code> has extended attributes? Should the
-        <code>PermissionStatus</code> add them? How to specify that?
-      </div>
     </section>
     <section>
       <h2>
