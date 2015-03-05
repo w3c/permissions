@@ -376,14 +376,15 @@
       </h2>
       <dl class='idl' title='[Exposed=(Window,Worker)] interface Permissions'>
         <dt>
-          static Promise&lt;PermissionStatus&gt; get((Permission or
+          static Promise&lt;PermissionStatus&gt; query((Permission or
           PermissionName) permission)
         </dt>
       </dl>
       <p>
         When the <code><dfn id=
-        'widl-Permissions-get-Promise-PermissionStatus--Permission-permission'>get()</dfn></code>
-        method is invoked, the <a>user agent</a> MUST run the following steps:
+        'widl-Permissions-query-Promise-PermissionStatus--Permission-permission'>
+        query()</dfn></code> method is invoked, the <a>user agent</a> MUST run
+        the following steps:
       </p>
       <ol>
         <li>Let <var>origin</var> be the <code><a>Document</a></code>'s
@@ -418,7 +419,7 @@
       </p>
       <pre class='example highlight'>
 &lt;script&gt;
-  Permissions.get('geolocation').then(function(result) {
+  Permissions.query('geolocation').then(function(result) {
     if (result.status == 'granted') {
       showLocalNewsWithGeolocation();
     } else if (result.status == 'prompt') {
@@ -440,7 +441,7 @@
     document.getElementById('video-chat').disabled = (permission.status == 'denied');
   }
 
-  Permissions.get('capture-video').then(function(result) {
+  Permissions.query('capture-video').then(function(result) {
     updateVideoButton(result);
 
     result.addEventListener('change', function() {
