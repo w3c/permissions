@@ -132,6 +132,11 @@
           <code><dfn><a href=
           'https://html.spec.whatwg.org/multipage/browsers.html#window'>Window</a></dfn></code>
         </li>
+        <li>
+          <code><dfn><a href=
+          'https://html.spec.whatwg.org/multipage/webappapis.html#global-object'>
+          global object</a></dfn></code>
+        </li>
       </ul>
       <p>
         <a href=
@@ -245,41 +250,47 @@
         </dt>
       </dl>
       <p>
-        The steps to <dfn>retrieve the permission state</dfn> of an
-        <a>origin</a> for a given <code>permission-name</code> are as follows:
+        The steps to <dfn>retrieve the permission state</dfn> of a <a>global
+        object</a> for a given <code>permission</code> are as follows:
       </p>
       <ol>
-        <li>If the <a>user agent</a> will allow the <a>origin</a> to try to
-        access the feature associated with the <code>permission-name</code> but
-        would prompt the user to know whether the call should succeed or fail,
+        <li>If the <a>user agent</a> will allow the <a>global object</a> to try
+        to access the features associated with the <code>permission</code> but
+        will prompt the user to know whether the call should succeed or fail,
         the <a>user agent</a> MUST return <code><dfn id=
         'widl-PermissionState-prompt'>prompt</dfn></code>.
         </li>
-        <li>Otherwise, if the <a>user agent</a> will allow the <a>origin</a> to
-        access the feature associated with the <code>permission-name</code>
-        without prompting the user, the <a>user agent</a> MUST return
-        <code><dfn id='widl-PermissionState-granted'>granted</dfn></code> .
+        <li>Otherwise, if the <a>user agent</a> will allow the <a>global
+        object</a> to access the features associated with the
+        <code>permission</code> without prompting the user, the <a>user
+        agent</a> MUST return <code><dfn id=
+        'widl-PermissionState-granted'>granted</dfn></code> .
         </li>
-        <li>Otherwise, the <a>user agent</a> will not allow the <a>origin</a>
-        to access the feature associated with <code>permission-name</code> and
-        MUST return <code><dfn id=
+        <li>Otherwise, the <a>user agent</a> will not allow the <a>global
+        object</a> to access the feature associated with
+        <code>permission</code> and MUST return <code><dfn id=
         'widl-PermissionState-denied'>denied</dfn></code> .
         </li>
       </ol>
+      <p>
+        How the <a>user agent</a> decides whether a <a>global object</a> is
+        allowed or not to access some features is left as an implementation
+        details. However, the implementation MUST be consistent and not return
+        different values unless something happened (user action, expiration).
+      </p>
+      <p>
+        It is RECOMMENDED for implementations to use the origins of the
+        <a>Document</a> or <a>Worker</a> when making security decisions. Other
+        factors MAY also apply like whether the permission is associated with a
+        [powerful-features] or whether the <a>Document</a> is embedded.
+      </p>
       <div class='issue'>
-        What about pickers? So far, the supported features are not implemented
-        as pickers but should we add a picker entry or should we expect those
-        features to not use this API?<br>
-        Using <code>granted</code> or <code>prompt</code> both have advantages
-        and inconveniences in the sense that the picker model is exactly in
-        between: the user is nagged and can still reject the call (like
-        <code>prompt</code>) but authors can't do anything about it (like
-        <code>granted</code>) assuming the picker would always show up.
-      </div>
-      <div class='issue'>
-        What about permissions that are related to the current context like
-        whether the call happens because of a user interaction? For example,
-        fullscreen.
+        The <a>retrieve a permission state</a> algorithm does not take into
+        account all the theoretically possible use cases. It tries to stay
+        inside the scope of the permissions described in this document.<br>
+        There are open questions about use cases where it might not work as
+        well: <a href='https://github.com/w3c/permissions/issues/8'>issue 8</a>
+        and <a href='https://github.com/w3c/permissions/issues/9'>issue 9</a>.
       </div>
       <dl class='idl' title='interface PermissionStatus : EventTarget'>
         <dt>
