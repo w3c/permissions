@@ -387,26 +387,20 @@
         the following steps:
       </p>
       <ol>
-        <li>Let <var>origin</var> be the <code><a>Document</a></code>'s
-        <a>origin</a> if those steps are run in a <code><a>Window</a></code>
-        context or the <code><a>Worker</a></code>'s origin otherwise.
-        </li>
-        <li>Let <var>name</var> be <code>permission</code> if
-        <var>permission</var> is of type <code>PermissionName</code>,
-        <code>permission.name</code> otherwise.
+        <li>Let <var>permission</var> be <code>permission</code> argument if
+        <code>permission</code> is of type <code>Permission</code>, otherwise,
+        create a <code>Permission</code> instead for which <code>name</code> is
+        set to the <code>permission</code> argument value.
         </li>
         <li>Let <var>promise</var> be a newly-created <a>Promise</a>.
         </li>
         <li>Return <var>promise</var> and continue those steps asynchronously.
         </li>
-        <li>Run the steps to <a>create a PermissionStatus</a> using
-        <var>origin</var> and <code>name</code> and resolve <var>promise</var>
-        with the result of those steps.
+        <li>Run the steps to <a>create a PermissionStatus</a> using the
+        <var><a>global object</a></var> and <var>permission</var> and resolve
+        <var>promise</var> with the result of those steps.
         </li>
       </ol>
-      <div class='issue'>
-        The spec isn't really using <code>Permission</code>.
-      </div>
     </section>
     <section class='informative'>
       <h2>
