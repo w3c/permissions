@@ -36,15 +36,54 @@ they do not require options: ```geolocation```, ```notifications```, ```push-not
 
 ## Quota API
 
-TBD
+Quota API will need options because it is more granular than accepted/denied:
+```js
+dictionary QuotaPermissionOptions : PermissionOptions {
+  required unsigned long long quota;
+           StorageType type;
+};
+```
 
-## Fullscreen
-
-TBD
+Checking ```quota``` permission would look like:
+```js
+Permissions.query('quota', { quota: '1024', type: 'persistent' }).then(function(status) {
+  if (status.status == 'denied') {
+    Permissions.query('quota', { quota: '512', type: 'persistent' }).then(ellipsis);
+  }
+});
+```
 
 ## GetUserMedia
 
-TBD
+Capture has basically two permissions: audio and video. There are a couple of ways to design this.
+
+### Have one permission with two booleans
+
+```js
+dictionary CapturePermissionOptions : PermissionOptions {
+  required boolean audio;
+  required boolean video;
+};
+```
+But it might be odd if ```audio``` and ```video``` are both set to ```false```. Though, technically, the permission
+should definitely be granted.
+
+### Have an enum for the tri-state
+
+```js
+enum CapturePermissionType {
+  "audio",
+  "video",
+  "audio-video"
+}
+dictionary CapturePermissionOptions : PermissionOptions {
+  required CapturePermissionType type;
+};
+```
+
+### Have two permissions
+
+Simply ```capture-video``` and ```capture-audio```.
 
 ## Geolocation extended
 
