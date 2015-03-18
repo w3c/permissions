@@ -87,4 +87,11 @@ Simply ```capture-video``` and ```capture-audio```.
 
 ## Geolocation extended
 
-TBD
+The Geolocation specification defines a boolean called ```enableHighAccuracy```. Some user agents could have a
+permissions behaviour depending on that value. We could imagine that the ```geolocation``` permission could be
+extended to include this boolean in the future:
+```js
+dictionary GeolocationPermissionOptions : PermissionOptions {
+  boolean enableHighAccurary = true;
+};
+```
