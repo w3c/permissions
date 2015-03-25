@@ -153,9 +153,9 @@
         handle permissions on the Web platform. Web APIs have different ways to
         deal with permissions. The [[notifications]] API allows developers to
         request a permission and check the permission status explicitly. Others
-        might only expose the status to web pages. Some, like [[geolocation-API]]
-        will keep the page unaware of the permission associated with the
-        feature.
+        might only expose the status to web pages. Some, like
+        [[geolocation-API]] will keep the page unaware of the permission
+        associated with the feature.
       </p>
       <p>
         Being able to know whether an API call is going to prompt is mandatory
@@ -412,12 +412,31 @@
     </section>
     <section>
       <h2>
+        Navigator and WorkerNavigator extension
+      </h2>
+      <p>
+        A <a>Permissions</a> instance is exposed on the <code>navigator</code>
+        object for <code>Window</code> and <code>Worker</code> contexts.
+      </p>
+      <dl class='idl' title='[Exposed=(Window)] partial interface Navigator'>
+        <dt>
+          readonly attribute Permissions permissions;
+        </dt>
+      </dl>
+      <dl class='idl' title=
+      '[Exposed=(Worker)] partial interface WorkerNavigator'>
+        <dt>
+          readonly attribute Permissions permissions;
+        </dt>
+      </dl>
+    </section>
+    <section>
+      <h2>
         Permissions interface
       </h2>
       <dl class='idl' title='[Exposed=(Window,Worker)] interface Permissions'>
         <dt>
-          static Promise&lt;PermissionStatus&gt; query((Permission or
-          PermissionName) permission)
+          Promise&lt;PermissionStatus&gt; query(PermissionName name)
         </dt>
       </dl>
       <p>
@@ -427,17 +446,12 @@
         the following steps:
       </p>
       <ol>
-        <li>Let <var>permission</var> be <code>permission</code> argument if
-        <code>permission</code> is of type <code>Permission</code>, otherwise,
-        create a <code>Permission</code> instead for which <code>name</code> is
-        set to the <code>permission</code> argument value.
-        </li>
         <li>Let <var>promise</var> be a newly-created <a>Promise</a>.
         </li>
         <li>Return <var>promise</var> and continue those steps asynchronously.
         </li>
         <li>Run the steps to <a>create a PermissionStatus</a> using the
-        <var><a>global object</a></var> and <var>permission</var> and resolve
+        <var><a>global object</a></var> and <var>name</var> and resolve
         <var>promise</var> with the result of those steps.
         </li>
       </ol>
@@ -445,8 +459,8 @@
         If a developer wants to check multiple permissions at once, the editors
         recommend them to use Promises.all(). It should yield to the same
         result and allow this API to stay simple. If it happens to be a very
-        common use case, it should be easy to extend Permissions.query() to
-        accept a sequence&lt;&gt; too.
+        common use case, it should be easy to extend
+        <code>permissions.query()</code> to accept a sequence&lt;&gt; too.
       </div>
     </section>
     <section class='informative'>
@@ -460,7 +474,7 @@
       </p>
       <pre class='example highlight'>
 &lt;script&gt;
-  Permissions.query('geolocation').then(function(result) {
+  navigator.permissions.query('geolocation').then(function(result) {
     if (result.status == 'granted') {
       showLocalNewsWithGeolocation();
     } else if (result.status == 'prompt') {
@@ -482,7 +496,7 @@
     document.getElementById('chat-notification-button').disabled = (permission.status == 'denied');
   }
 
-  Permissions.query('notifications').then(function(result) {
+  navigator.permissions.query('notifications').then(function(result) {
     updateNotificationButton(result);
 
     result.addEventListener('change', function() {
@@ -493,7 +507,6 @@
 
 </pre>
     </section>
-
     <section class='appendix'>
       <h2>
         Acknowledgments
