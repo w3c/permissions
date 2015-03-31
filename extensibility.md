@@ -6,39 +6,21 @@ specified and how it should be used by other specifications.
 ## Permission description
 
 ```js
-enum PermissionName {
-  "foo",
-  "bar"
+dictionary PermissionDescriptor {
+  required PermissionName name;
 };
 ```
-```PermissionName``` has an entry for each permission know to the API. It is recommended for APIs to use their
-specification shorthand as a permission name. For the moment, the Permissions API is used as a registry to prevent
-conflict.
-
-```js
-dictionary PermissionOptions {
-};
-```
-```PermissionOptions``` is the property bag that will be used by permissions that need more than a name.
-
-```js
-interface Permission {
-  PermissionName name;
-  PermissionOptions options;
-};
-```
-This is how a permission is represented.
+```PermissionDescriptor``` is a dictionary that describes a permission. Its minimal content is a permission name but complex permissions can be described by more than a name. Such permissions should inherit from it and extend it.
 
 ## Simple permissions
 
-The following permissions are currently described in the Permissions API and are considered simple permissions because 
-they do not require options: ```geolocation```, ```notifications```, ```push-notifications``` and ```midi-sysex```.
+```geolocation``` and ```notifications``` do not require more options for now. So their usage only require passing a ```PermissionDescriptor``` with a ```name```.
 
 ## Quota API
 
 Quota API will need options because it is more granular than accepted/denied:
 ```js
-dictionary QuotaPermissionOptions : PermissionOptions {
+dictionary QuotaPermissionDescriptor : PermissionDescriptor {
   required unsigned long long quota;
            StorageType type;
 };
@@ -46,9 +28,9 @@ dictionary QuotaPermissionOptions : PermissionOptions {
 
 Checking ```quota``` permission would look like:
 ```js
-Permissions.query('quota', { quota: '1024', type: 'persistent' }).then(function(status) {
+navigator.permissions.query({name: 'quota', quota: '1024', type: 'persistent' }).then(function(status) {
   if (status.status == 'denied') {
-    Permissions.query('quota', { quota: '512', type: 'persistent' }).then(ellipsis);
+    navigator.permissions.query({name:'quotar', quota: '512', type: 'persistent' }).then(ellipsis);
   }
 });
 ```
@@ -60,7 +42,7 @@ Capture has basically two permissions: audio and video. There are a couple of wa
 ### Have one permission with two booleans
 
 ```js
-dictionary CapturePermissionOptions : PermissionOptions {
+dictionary CapturePermissionDescriptor : PermissionDescriptor {
   required boolean audio;
   required boolean video;
 };
@@ -76,7 +58,7 @@ enum CapturePermissionType {
   "video",
   "audio-video"
 }
-dictionary CapturePermissionOptions : PermissionOptions {
+dictionary CapturePermissionDescriptor : PermissionDescriptor {
   required CapturePermissionType type;
 };
 ```
@@ -91,7 +73,7 @@ The Geolocation specification defines a boolean called ```enableHighAccuracy```.
 permissions behaviour depending on that value. We could imagine that the ```geolocation``` permission could be
 extended to include this boolean in the future:
 ```js
-dictionary GeolocationPermissionOptions : PermissionOptions {
+dictionary GeolocationPermissionDescriptor : PermissionDescriptor {
   boolean enableHighAccurary = true;
 };
 ```
