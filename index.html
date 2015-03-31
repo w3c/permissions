@@ -185,7 +185,7 @@
     </section>
     <section>
       <h2>
-        Permission description
+        Permission descriptor
       </h2>
       <dl class='idl' title='dictionary PermissionDescriptor'>
         <dt>
@@ -193,8 +193,8 @@
         </dt>
       </dl>
       <p>
-        A permission is defined by a name and other properties that depends on
-        the name. The simplest permissions require only a name but some others
+        A permission is defined by a name and other properties that depend on
+        the name. The simplest permissions require only a name, but some others
         will require more information. In which case, they should have an
         <dfn>associated PermissionDescriptor</dfn> dictionary that inherits
         from <a>PermissionDescriptor</a>.
@@ -354,7 +354,7 @@
       </dl>
       <p>
         A <code>PermissionStatus</code> instance has an associated
-        <var>permission</var>.
+        <var>permission</var> that is a <a>PermissionDescriptor</a>.
       </p>
       <p>
         The steps to <dfn>update the status</dfn> of a
@@ -377,8 +377,8 @@
       <ol>
         <li>Let <var>status</var> be a <code>PermissionStatus</code> instance.
         </li>
-        <li>Set the <code>permission</code> as the <var>status</var> associated
-        <var>permission</var>.
+        <li>Set the <code>permission</code> given in parameter as the
+        <var>status</var>' associated <var>permission</var>.
         </li>
         <li>Run the steps to <a>update the status</a> on <var>status</var>.
         </li>
@@ -459,7 +459,7 @@
         'http://heycam.github.io/webidl/#es-dictionary'>described</a> in
         [[!WEBIDL]], then:
           <ul>
-            <li>If that operation failed, return a rejected <a>Promise</a> with
+            <li>If that operation failed, return a <a>Promise</a> rejected with
             a <code>TypeError</code> and abort these steps.
             </li>
             <li>Otherwise, set <var>permission</var> to the result of the
@@ -513,15 +513,15 @@
       </p>
       <pre class='example highlight'>
 &lt;script&gt;
-  function updateNotificationButton(permission) {
-    document.getElementById('chat-notification-button').disabled = (permission.status == 'denied');
+  function updateNotificationButton(status) {
+    document.getElementById('chat-notification-button').disabled = (status == 'denied');
   }
 
   navigator.permissions.query({name:'notifications'}).then(function(result) {
-    updateNotificationButton(result);
+    updateNotificationButton(result.status);
 
     result.addEventListener('change', function() {
-      updateNotificationButton(this);
+      updateNotificationButton(this.status);
     });
   });
 &lt;/script&gt;
