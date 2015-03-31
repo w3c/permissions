@@ -185,6 +185,23 @@
     </section>
     <section>
       <h2>
+        Permission descriptor
+      </h2>
+      <dl class='idl' title='dictionary PermissionDescriptor'>
+        <dt>
+          required PermissionName <a>name</a>
+        </dt>
+      </dl>
+      <p>
+        A permission is defined by a name and other properties that depend on
+        the name. The simplest permissions require only a name, but some others
+        will require more information. In which case, they should have an
+        <dfn>associated PermissionDescriptor</dfn> dictionary that inherits
+        from <a>PermissionDescriptor</a>.
+      </p>
+    </section>
+    <section>
+      <h2>
         Permission Registry
       </h2>
       <dl class='idl' title='enum PermissionName'>
@@ -195,83 +212,77 @@
           notifications
         </dt>
         <dt>
-          push-notifications
+          push
         </dt>
         <dt>
-          midi-sysex
+          midi
         </dt>
       </dl>
       <p>
         The <code>PermissionName</code> enum defines the list of known
-        permissions. These permissions are meant to be associated with a use
-        case instead of one API. Thus, some permissions have a 1:1 relationship
-        with an API while some others might include more than one API or even a
-        subset of an API.
-      </p>
-      <p class='note'>
-        For example, <a>push-notifications</a> is exposing the ability for a
-        web page to use push messages in order to show notifications.
-        Implementations might associate it with full usage of the Push API and
-        the Notifications API while others will force the callers to use the
-        Push API only in order to use the Notifications API.
-      </p>
-      <p>
-        Specifications are welcome to request a new name to be added to this
-        registry instead of trying to monkey patch it.
-      </p>
-      <p>
-        The <code><dfn id=
-        'idl-def-PermissionName.geolocation'>geolocation</dfn></code>
-        permission is the permission associated with the usage of the
-        [[geolocation-API]].
-      </p>
-      <p>
-        The <code><dfn id=
-        'idl-def-PermissionName.notifications'>notifications</dfn></code>
-        permission is the permission associated with the usage of the
-        [[notifications]] API.
-      </p>
-      <p>
-        The <code><dfn id=
-        'idl-def-PermissionName.push-notifications'>push-notifications</dfn></code>
-        permission is the permission associated with the usage of the
-        [[push-api]] in order to show notifications using the [[notifications]]
-        API.
-      </p>
-      <p>
-        The <code><dfn id=
-        'idl-def-PermissionName.midi-sysex'>midi-sysex</dfn></code> permission
-        is the permission associated with the usage of sysex messages in the
-        [[webmidi]] API.
+        permission names.
       </p>
     </section>
     <section>
       <h2>
-        Permission definition
+        Permissions defined in this specification
       </h2>
-      <dl class='idl' title='dictionary Permission'>
-        <dt>
-          required PermissionName <a>name</a>
-        </dt>
-      </dl>
-      <p>
-        A <code>Permission</code> dictionary MUST contain a <code><dfn id=
-        'widl-Permission-name'>name</dfn></code> field which represents the
-        permission's identifier.
-      </p>
-      <p>
-        If a permission has to be defined by more than its name, it is
-        RECOMMENDED to inherit from <code>Permission</code> dictionary and add
-        new fields.
-      </p>
-      <div class='note'>
-        There are currently no permission defined in this specification using
-        this dictionary. It is only specified here in order to expose the
-        ability for the API to be extended to more complex permissions.<br>
-        For example, if the [[quota-api]] were to have an associated
-        permission, it could define a QuotaPermission dictionary extending
-        Permission with <code>type</code> and <code>value</code> fields.
-      </div>
+      <section>
+        <h2>
+          Geolocation
+        </h2>
+        <p>
+          The <code><dfn id=
+          'idl-def-PermissionName.geolocation'>geolocation</dfn></code>
+          permission is the permission associated with the usage of the
+          [[geolocation-API]].
+        </p>
+      </section>
+      <section>
+        <h2>
+          Notifications
+        </h2>
+        <p>
+          The <code><dfn id=
+          'idl-def-PermissionName.notifications'>notifications</dfn></code>
+          permission is the permission associated with the usage of the
+          [[notifications]] API.
+        </p>
+      </section>
+      <section>
+        <h2>
+          Push
+        </h2>
+        <p>
+          The <code><dfn id='idl-def-PermissionName.push'>push</dfn></code>
+          permission is the permission associated with the usage of the
+          [[push-api]]. It has an <a>associated PermissionDescriptor</a>,
+          <a>PushPermissionDescriptor</a>:
+        </p>
+        <dl class='idl' title=
+        'dictionary PushPermissionDescriptor : PermissionDescriptor'>
+          <dt>
+            boolean userVisible = false
+          </dt>
+        </dl>
+      </section>
+      <section>
+        <h2>
+          Midi
+        </h2>
+        <p>
+          The <code><dfn id='idl-def-PermissionName.midi'>midi</dfn></code>
+          permission is the permission associated with the usage of the
+          [[webmidi]]. It has an <a>associated PermissionDescriptor</a>,
+          <a>MidiPermissionDescriptor</a>:
+        </p>
+        <dl class='idl' title=
+        'dictionary MidiPermissionDescriptor : PermissionDescriptor'>
+          <dt>
+            boolean sysex = false
+          </dt>
+        </dl>
+      </section>
     </section>
     <section>
       <h2>
@@ -335,15 +346,16 @@
       <dl class='idl' title=
       '[Exposed=(Window,Worker)] interface PermissionStatus : EventTarget'>
         <dt>
-          readonly attribute Permission permission
-        </dt>
-        <dt>
           readonly attribute PermissionState status
         </dt>
         <dt>
           attribute EventHandler onchange
         </dt>
       </dl>
+      <p>
+        A <code>PermissionStatus</code> instance has an associated
+        <var>permission</var> that is a <a>PermissionDescriptor</a>.
+      </p>
       <p>
         The steps to <dfn>update the status</dfn> of a
         <code>PermissionStatus</code> instance are as follow:
@@ -353,9 +365,9 @@
         being updated.
         </li>
         <li>Run the steps to <a>retrieve the permission state</a> using the
-        <var>status</var>' <a>global object</a> and <code>permission</code>
-        attribute then set the result of those steps to the <code>status</code>
-        attribute.
+        <var>status</var>' <a>global object</a> and <var>status</var>'
+        associated <var>permission</var> then set the result of those steps to
+        the <code>status</code> attribute.
         </li>
       </ol>
       <p>
@@ -365,20 +377,14 @@
       <ol>
         <li>Let <var>status</var> be a <code>PermissionStatus</code> instance.
         </li>
-        <li>Set the <code>permission</code> attribute to
-        <code>permission</code>.
+        <li>Set the <code>permission</code> given in parameter as the
+        <var>status</var>' associated <var>permission</var>.
         </li>
         <li>Run the steps to <a>update the status</a> on <var>status</var>.
         </li>
         <li>Return <var>status</var>.
         </li>
       </ol>
-      <p>
-        The <code><dfn id=
-        'widl-PermissionStatus-permission'>permission</dfn></code> attribute
-        MUST return the <code><a>Permission</a></code> it was initially set to
-        at the object creation.
-      </p>
       <p>
         The <code><dfn id='widl-PermissionStatus-status'>status</dfn></code>
         attribute MUST return the latest value that was set while running the
@@ -436,7 +442,8 @@
       </h2>
       <dl class='idl' title='[Exposed=(Window,Worker)] interface Permissions'>
         <dt>
-          Promise&lt;PermissionStatus&gt; query(PermissionName name)
+          Promise&lt;PermissionStatus&gt; query(PermissionDescriptor
+          permission)
         </dt>
       </dl>
       <p>
@@ -446,12 +453,26 @@
         the following steps:
       </p>
       <ol>
+        <li>If <var>permission.name</var> has an <a>associated
+        PermissionDescriptor</a>, convert the underlying ECMAScript object to
+        the <a>associated PermissionDescriptor</a> dictionary as <a href=
+        'http://heycam.github.io/webidl/#es-dictionary'>described</a> in
+        [[!WEBIDL]], then:
+          <ul>
+            <li>If that operation failed, return a <a>Promise</a> rejected with
+            a <code>TypeError</code> and abort these steps.
+            </li>
+            <li>Otherwise, set <var>permission</var> to the result of the
+            operation.
+            </li>
+          </ul>
+        </li>
         <li>Let <var>promise</var> be a newly-created <a>Promise</a>.
         </li>
         <li>Return <var>promise</var> and continue those steps asynchronously.
         </li>
         <li>Run the steps to <a>create a PermissionStatus</a> using the
-        <var><a>global object</a></var> and <var>name</var> and resolve
+        <var><a>global object</a></var> and <var>permission</var> and resolve
         <var>promise</var> with the result of those steps.
         </li>
       </ol>
@@ -474,7 +495,7 @@
       </p>
       <pre class='example highlight'>
 &lt;script&gt;
-  navigator.permissions.query('geolocation').then(function(result) {
+  navigator.permissions.query({name:'geolocation'}).then(function(result) {
     if (result.status == 'granted') {
       showLocalNewsWithGeolocation();
     } else if (result.status == 'prompt') {
@@ -492,15 +513,15 @@
       </p>
       <pre class='example highlight'>
 &lt;script&gt;
-  function updateNotificationButton(permission) {
-    document.getElementById('chat-notification-button').disabled = (permission.status == 'denied');
+  function updateNotificationButton(status) {
+    document.getElementById('chat-notification-button').disabled = (status == 'denied');
   }
 
-  navigator.permissions.query('notifications').then(function(result) {
-    updateNotificationButton(result);
+  navigator.permissions.query({name:'notifications'}).then(function(result) {
+    updateNotificationButton(result.status);
 
     result.addEventListener('change', function() {
-      updateNotificationButton(this);
+      updateNotificationButton(this.status);
     });
   });
 &lt;/script&gt;
