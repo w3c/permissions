@@ -152,9 +152,9 @@
         handle permissions on the Web platform. Web APIs have different ways to
         deal with permissions. The [[notifications]] API allows developers to
         request a permission and check the permission status explicitly. Others
-        might only expose the status to web pages. Some, like
-        [[geolocation-API]] will keep the page unaware of the permission
-        associated with the feature.
+        might only expose the status to web pages when they try to use the API,
+        like the [[geolocation-API]] which fails if the permission was not
+        granted without allowing the developer to check beforehand.
       </p>
       <p>
         Being able to know whether an API call is going to prompt is useful
