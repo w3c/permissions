@@ -78,9 +78,6 @@
       or if the user will be asked whether the permission should be granted.
     </section>
     <section id='sotd'>
-      This document is defining a low footprint API that was agreed upon in
-      public-webapps mailing-list discussions and TPAC meetings. It has not yet
-      reached a FPWD.
     </section>
     <section id='conformance'>
       <p>
@@ -160,9 +157,9 @@
         associated with the feature.
       </p>
       <p>
-        Being able to know whether an API call is going to prompt is mandatory
+        Being able to know whether an API call is going to prompt is useful
         in order to provide a good user experience. Unfortunately, more often
-        than not, those prompts can't be controlled by the developers.
+        than not, those prompts can't be controlled by developers.
       </p>
       <p>
         The API specified in this document is meant to provide the tools so
@@ -197,7 +194,7 @@
       <p>
         A permission is defined by a name and other properties that depend on
         the name. The simplest permissions require only a name, but some others
-        will require more information. In which case, they should have an
+        will require more information, in which case, they should have an
         <dfn>associated PermissionDescriptor</dfn> dictionary that inherits
         from <a>PermissionDescriptor</a>.
       </p>
@@ -326,13 +323,13 @@
       </ol>
       <p>
         How the <a>user agent</a> decides whether a <a>global object</a> is
-        allowed or not to access some features is left as an implementation
+        allowed or not to access some features is left to implementation
         details. However, the implementation MUST be consistent and not return
         different values unless something happened (user action, expiration).
       </p>
       <p>
-        It is RECOMMENDED for implementations to use the <a title=
-        'origin'>origins</a> of the <a>Document</a> or <a>Worker</a> when
+        It is RECOMMENDED that implementations use the <a title=
+        'origin'>origin</a> of the <a>Document</a> or <a>Worker</a> when
         making security decisions. Other factors MAY also apply like whether
         the permission is associated with a [[powerful-features]] or whether
         the <a>Document</a> is embedded.
@@ -360,7 +357,7 @@
       </p>
       <p>
         The steps to <dfn>update the status</dfn> of a
-        <code>PermissionStatus</code> instance are as follow:
+        <code>PermissionStatus</code> instance are as follows:
       </p>
       <ol>
         <li>Let <var>status</var> be the <code>PermissionStatus</code> instance
@@ -480,7 +477,7 @@
       </ol>
       <div class='note'>
         If a developer wants to check multiple permissions at once, the editors
-        recommend them to use <code>Promise.all()</code>. It should yield to the same
+        recommend the use of <code>Promise.all()</code>. It should yield to the same
         result and allow this API to stay simple. If it happens to be a very
         common use case, it should be easy to extend
         <code>permissions.query()</code> to accept a sequence&lt;&gt; too.
@@ -492,8 +489,8 @@
       </h2>
       <p>
         This example uses the Permissions API to decide whether local news
-        should be shown using the Geolocation API or a button offering that
-        feature should be added.
+        should be shown using the Geolocation API or with a button offering to 
+        add the feature.
       </p>
       <pre class='example highlight'>
 &lt;script&gt;
