@@ -359,7 +359,7 @@
       <dl class='idl' title=
       '[Exposed=(Window,Worker)] interface PermissionStatus : EventTarget'>
         <dt>
-          readonly attribute PermissionState status
+          readonly attribute PermissionState state
         </dt>
         <dt>
           attribute EventHandler onchange
@@ -370,7 +370,7 @@
         <var>permission</var> that is a <a>PermissionDescriptor</a>.
       </p>
       <p>
-        The steps to <dfn>update the status</dfn> of a
+        The steps to <dfn>update the state</dfn> of a
         <code>PermissionStatus</code> instance are as follows:
       </p>
       <ol>
@@ -380,7 +380,7 @@
         <li>Run the steps to <a>retrieve the permission state</a> using the
         <var>status</var>' <a>global object</a> and <var>status</var>'
         associated <var>permission</var> then set the result of those steps to
-        the <code>status</code> attribute.
+        the <code>state</code> attribute.
         </li>
       </ol>
       <p>
@@ -393,15 +393,15 @@
         <li>Set the <code>permission</code> given in parameter as the
         <var>status</var>' associated <var>permission</var>.
         </li>
-        <li>Run the steps to <a>update the status</a> on <var>status</var>.
+        <li>Run the steps to <a>update the state</a> on <var>status</var>.
         </li>
         <li>Return <var>status</var>.
         </li>
       </ol>
       <p>
-        The <code><dfn id='widl-PermissionStatus-status'>status</dfn></code>
+        The <code><dfn id='widl-PermissionStatus-state'>state</dfn></code>
         attribute MUST return the latest value that was set while running the
-        <a>update the status</a> steps on the current instance.
+        <a>update the state</a> steps on the current instance.
       </p>
       <p>
         The <code><dfn id=
@@ -410,22 +410,20 @@
         type</a> is <code>change</code>.
       </p>
       <p>
-        Whenever the <a>user agent</a> is aware that the <code>status</code> of
+        Whenever the <a>user agent</a> is aware that the <code>state</code> of
         a <code>PermissionStatus</code> instance has changed, it MUST
         asynchronously run the following steps:
       </p>
       <ol>
-        <li>Let <var>permission-status</var> be the
-        <code>PermissionStatus</code> for which the <code>status</code> has
-        changed.
+        <li>Let <var>status</var> be the <code>PermissionStatus</code> for
+        which the <code>state</code> has changed.
         </li>
-        <li>Run the steps to <a>update the status</a> of
-        <var>permission-status</var>.
+        <li>Run the steps to <a>update the state</a> of <var>status</var>.
         </li>
         <li>
           <a>Queue a task</a> on the <dfn>permission task source</dfn> to
           <a>fire a simple event</a> named <code>change</code> at
-          <var>permission-status</var>.
+          <var>status</var>.
         </li>
       </ol>
     </section>
@@ -507,9 +505,9 @@
       <pre class='example highlight'>
 &lt;script&gt;
   navigator.permissions.query({name:'geolocation'}).then(function(result) {
-    if (result.status == 'granted') {
+    if (result.state == 'granted') {
       showLocalNewsWithGeolocation();
-    } else if (result.status == 'prompt') {
+    } else if (result.state == 'prompt') {
       showButtonToEnableLocalNews();
     }
     // Don't do anything if the permission was denied.
@@ -519,19 +517,19 @@
       <p>
         This example is using the <code>notifications</code> permission for a
         chat application to show a notification button depending on the
-        permission status.
+        permission state.
       </p>
       <pre class='example highlight'>
 &lt;script&gt;
-  function updateNotificationButton(status) {
-    document.getElementById('chat-notification-button').disabled = (status == 'denied');
+  function updateNotificationButton(state) {
+    document.getElementById('chat-notification-button').disabled = (state == 'denied');
   }
 
   navigator.permissions.query({name:'notifications'}).then(function(result) {
-    updateNotificationButton(result.status);
+    updateNotificationButton(result.state);
 
     result.addEventListener('change', function() {
-      updateNotificationButton(this.status);
+      updateNotificationButton(this.state);
     });
   });
 &lt;/script&gt;
@@ -546,8 +544,8 @@
   Promise.all([navigator.permissions.query({name:'geolocation'}),
                navigator.permissions.query({name:'notifications'})])
   .then(function(result) {
-    console.log('Geolocation permission status is ' + result[0].status);
-    console.log('Notifications permission status is ' + result[1].status);
+    console.log('Geolocation permission state is ' + result[0].state);
+    console.log('Notifications permission state is ' + result[1].state);
   });
 &lt;/script&gt;
 </pre>
