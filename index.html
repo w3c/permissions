@@ -456,10 +456,14 @@
           Promise&lt;PermissionStatus&gt; query(PermissionDescriptor
           permission)
         </dt>
+        <dt>
+          Promise&lt;PermissionStatus&gt; revoke(PermissionDescriptor
+          permission)
+        </dt>
       </dl>
       <p>
         When the <code><dfn id=
-        'widl-Permissions-query-Promise-PermissionStatus--Permission-permission'>
+        'widl-Permissions-query-Promise-PermissionStatus--PermissionDescriptor-permission'>
         query()</dfn></code> method is invoked, the <a>user agent</a> MUST run
         the following steps:
       </p>
@@ -492,6 +496,43 @@
         recommend the use of <code>Promise.all()</code>. An example can be
         found in the <a href='#examples'>Examples section</a>.
       </div>
+      <p>
+        When the <code><dfn id=
+        'widl-Permissions-revoke-Promise-PermissionStatus--PermissionDescriptor-permission'>
+        revoke()</dfn></code> method is invoked, the <a>user agent</a> MUST run
+        the following steps:
+      </p>
+      <ol>
+        <li>If <var>permission.name</var> has an <a>associated
+        PermissionDescriptor</a>, convert the underlying ECMAScript object to
+        the <a>associated PermissionDescriptor</a> dictionary as <a href=
+        'http://heycam.github.io/webidl/#es-dictionary'>described</a> in
+        [[!WEBIDL]], then:
+          <ul>
+            <li>If that operation failed, return a <a>Promise</a> rejected with
+            a <code>TypeError</code> and abort these steps.
+            </li>
+            <li>Otherwise, set <var>permission</var> to the result of the
+            operation.
+            </li>
+          </ul>
+        </li>
+        <li>Let <var>promise</var> be a newly-created <a>Promise</a>.
+        </li>
+        <li>Return <var>promise</var> and continue those steps asynchronously.
+        </li>
+        <li>Reset the permission storage associated with the
+        <var>permission</var> for the given <a>origin</a>.
+        </li>
+        <li>Run the steps to <a>create a PermissionStatus</a> using
+        <var>permission</var> and resolve <var>promise</var> with the result of
+        those steps.
+          <div class='issue'>
+            Rewrite to use the permission storage notion when it is defined in
+            the specification.
+          </div>
+        </li>
+      </ol>
     </section>
     <section class='informative'>
       <h2>
