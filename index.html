@@ -492,10 +492,8 @@
       </ol>
       <div class='note'>
         If a developer wants to check multiple permissions at once, the editors
-        recommend the use of <code>Promise.all()</code>. It should yield to the
-        same result and allow this API to stay simple. If it happens to be a
-        very common use case, it should be easy to extend
-        <code>permissions.query()</code> to accept a sequence&lt;&gt; too.
+        recommend the use of <code>Promise.all()</code>. An example can be
+        found in the <a href='#examples'>Examples section</a>.
       </div>
     </section>
     <section class='informative'>
@@ -518,7 +516,6 @@
     // Don't do anything if the permission was denied.
   });
 &lt;/script&gt;
-
 </pre>
       <p>
         This example is using the <code>notifications</code> permission for a
@@ -539,7 +536,21 @@
     });
   });
 &lt;/script&gt;
-
+</pre>
+      <p>
+        This example is checking whether the page has the
+        <code>geolocation</code> and the <code>notifications</code> permissions
+        using <code>Promise.all</code>.
+      </p>
+      <pre class='example highlight'>
+&lt;script&gt;
+  Promise.all([navigator.permissions.query({name:'geolocation'}),
+               navigator.permissions.query({name:'notifications'})])
+  .then(function(result) {
+    console.log('Geolocation permission status is ' + result[0].status);
+    console.log('Notifications permission status is ' + result[1].status);
+  });
+&lt;/script&gt;
 </pre>
     </section>
     <section class='appendix'>
