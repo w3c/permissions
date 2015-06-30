@@ -294,6 +294,51 @@
     </section>
     <section>
       <h2>
+        Permission Store
+      </h2>
+      <p>
+        <a title='user agent'>User agents</a> MAY use a form of storage to keep
+        track of web sites permissions. When they do, they MUST have a <dfn>
+        permission storage identifier</dfn> which is linked to a <dfn>permission
+        storage entry</dfn>. The <a>permission storage identifier</a> MUST
+        contain the website's origin and MAY contain other information like the
+        embedding status or the embedder's origin. The <a>permission storage
+        entry</a> MUST be a <a>PermissionState</a> or <code>undefined</code>.
+      </p>
+      <p>
+        The steps to <dfn>retrieve a permission storage entry</dfn> of a
+        <a>permission storage identifier</a> are as follows:
+      </p>
+      <ol>
+        <li>If the <a>user agent</a> has a <a>permission storage entry</a>
+        associated with the <a>permission storage identifier</a> in its
+        permission store, it MUST return the <a>permission storage entry</a>.</li>
+        <li>Otherwise, it MUST return <code>undefined</code>.</li>
+      </ol>
+      <p>
+        The steps to <dfn>create a permission storage entry</dfn> for a
+        <a>permission storage identifier</a> are as follows:
+      </p>
+      <ol>
+        <li>If the <a>user agent</a> has a <a>permission storage entry</a>
+        associated with the <a>permission storage identifier</a> in its
+        permission store, it MUST overwrite it to the given <a>permission
+        storage entry</a>.</li>
+        <li>Otherwise, it MUST write the new <a>permission storage entry</a>
+        to its premission store.</li>
+      </ol>
+      <p>
+        The steps to <dfn>delete a permission storage entry</dfn> of a
+        <a>permission storage identifier</a> are as follows:
+      </p>
+      <ol>
+        <li>If the <a>user agent</a> has a <a>permission storage entry</a>
+        associated with the <a>permission storage identifier</a> in its
+        permission store, it MUST remove it.</li>
+      </ol>
+    </section>
+    <section>
+      <h2>
         Status of a permission
       </h2>
       <dl class='idl' title='enum PermissionState'>
