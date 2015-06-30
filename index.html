@@ -368,28 +368,21 @@
       </p>
 
       <p>
-        The steps to <dfn>retrieve the permission state</dfn> of a <a>global
-        object</a> for a given <code>permission</code> are as follows:
+        The steps to <dfn>retrieve the permission state</dfn> of an <a>origin</a>
+        and <a>global object</a> for a given <code>permission</code> are as
+        follows:
       </p>
       <ol>
-        <li>TODO
-        </li>
+        <li>Let <var>identifier</var> be the <a>permission storage identifier</a>
+        associated with the <a>origin</a>, <a>global object</a> and <code>permission</code>.</li>
+        <li>Run the steps to <a>retrieve a permission storage entry</a>.</li>
+        <li>If the result of those steps are not <code>undefined</code>, return
+        it and abort these steps.</li>
+        <li>Otherwise, the <a>user agent</a> MUST return a default value based
+        on <a>user agent</a>'s defined heuristics. For example, <code>prompt</code>
+        can be a default value but it can also be based on visits frequency.</li>
       </ol>
-      <p>
-        It is RECOMMENDED that implementations use the <a title=
-        'origin'>origin</a> of the <a>Document</a> or <a>Worker</a> when making
-        security decisions. Other factors MAY also apply like whether the
-        permission is associated with a [[powerful-features]] or whether the
-        <a>Document</a> is embedded.
-      </p>
-      <div class='issue'>
-        The <a>retrieve the permission state</a> algorithm does not take into
-        account all the theoretically possible use cases. It tries to stay
-        inside the scope of the permissions described in this document.<br>
-        There are open questions about use cases where it might not work as
-        well: <a href='https://github.com/w3c/permissions/issues/8'>issue 8</a>
-        and <a href='https://github.com/w3c/permissions/issues/9'>issue 9</a>.
-      </div>
+
       <dl class='idl' title=
       '[Exposed=(Window,Worker)] interface PermissionStatus : EventTarget'>
         <dt>
@@ -412,9 +405,10 @@
         being updated.
         </li>
         <li>Run the steps to <a>retrieve the permission state</a> using the
-        <var>status</var>' <a>global object</a> and <var>status</var>'
-        associated <var>permission</var> then set the result of those steps to
-        the <code>state</code> attribute.
+        <a>Document</a>/<a>Worker</a>'s <a>origin</a>, <var>status</var>'
+        <a>global object</a> and <var>status</var>' associated
+        <var>permission</var> then set the result of those steps to the
+        <code>state</code> attribute.
         </li>
       </ol>
       <p>
