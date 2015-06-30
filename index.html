@@ -353,34 +353,28 @@
         </dt>
       </dl>
       <p>
+        The <code>granted</code> state represents that the caller will be able
+        to successfuly access the feature without having the <a>user agent</a>
+        asking the user's permission.
+      </p>
+      <p>
+        The <code>denied</code> state represents that the caller will not be
+        able to access the feature.
+      </p>
+      <p>
+        The <code>prompt</code> state represents that the <a>user agent</a> will
+        be asking the user's permission if the caller tries to access the
+        feature. The user might grant, deny or dismiss the request.
+      </p>
+
+      <p>
         The steps to <dfn>retrieve the permission state</dfn> of a <a>global
         object</a> for a given <code>permission</code> are as follows:
       </p>
       <ol>
-        <li>If the <a>user agent</a> will allow the <a>global object</a> to try
-        to access the features associated with the <code>permission</code> but
-        will prompt the user to know whether the call should succeed or fail,
-        the <a>user agent</a> MUST return <code><dfn id=
-        'widl-PermissionState-prompt'>prompt</dfn></code>.
-        </li>
-        <li>Otherwise, if the <a>user agent</a> will allow the <a>global
-        object</a> to access the features associated with the
-        <code>permission</code> without prompting the user, the <a>user
-        agent</a> MUST return <code><dfn id=
-        'widl-PermissionState-granted'>granted</dfn></code> .
-        </li>
-        <li>Otherwise, the <a>user agent</a> will not allow the <a>global
-        object</a> to access the feature associated with
-        <code>permission</code> and MUST return <code><dfn id=
-        'widl-PermissionState-denied'>denied</dfn></code> .
+        <li>TODO
         </li>
       </ol>
-      <p>
-        How the <a>user agent</a> decides whether a <a>global object</a> is
-        allowed or not to access some features is left to implementation
-        details. However, the implementation MUST be consistent and not return
-        different values unless something happened (user action, expiration).
-      </p>
       <p>
         It is RECOMMENDED that implementations use the <a title=
         'origin'>origin</a> of the <a>Document</a> or <a>Worker</a> when making
