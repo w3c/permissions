@@ -451,21 +451,19 @@
       <h2>
         Permissions interface
       </h2>
-      <dl class='idl' title='[Exposed=(Window,Worker)] interface Permissions'>
-        <dt>
-          Promise&lt;PermissionStatus&gt; query(PermissionDescriptor
-          permission)
-        </dt>
-        <dt>
-          Promise&lt;PermissionStatus&gt; revoke(PermissionDescriptor
-          permission)
-        </dt>
-      </dl>
+      <pre class='idl'>
+        [Exposed=(Window,Worker)]
+        interface Permissions {
+          Promise&lt;PermissionStatus&gt; query(PermissionDescriptor permission);
+
+          Promise&lt;PermissionStatus&gt; request((PermissionDescriptor or sequence&lt;PermissionDescriptor&gt;) permissions);
+
+          Promise&lt;PermissionStatus&gt; revoke(PermissionDescriptor permission);
+        };
+      </pre>
       <p>
-        When the <code><dfn id=
-        'widl-Permissions-query-Promise-PermissionStatus--PermissionDescriptor-permission'>
-        query()</dfn></code> method is invoked, the <a>user agent</a> MUST run
-        the following steps:
+        When the <dfn for='Permissions' title='query'><code>query()</code></dfn>
+        method is invoked, the <a>user agent</a> MUST run the following steps:
       </p>
       <ol>
         <li>If <var>permission.name</var> has an <a>associated
@@ -497,10 +495,16 @@
         found in the <a href='#examples'>Examples section</a>.
       </div>
       <p>
-        When the <code><dfn id=
-        'widl-Permissions-revoke-Promise-PermissionStatus--PermissionDescriptor-permission'>
-        revoke()</dfn></code> method is invoked, the <a>user agent</a> MUST run
-        the following steps:
+        When the <dfn for='Permissions' title='request'><code>request()</code></dfn>
+        method is invoked, the <a>user agent</a> MUST run the following steps:
+      </p>
+      <ol>
+        <il>TODO</il>
+      </ol>
+
+      <p>
+        When the <dfn for='Permissions' title='revoke'><code>revoke()</code></dfn>
+        method is invoked, the <a>user agent</a> MUST run the following steps:
       </p>
       <ol>
         <li>If <var>permission.name</var> has an <a>associated
