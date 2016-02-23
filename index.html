@@ -230,6 +230,18 @@
         <dt>
           midi
         </dt>
+        <dt>
+          camera
+        </dt>
+        <dt>
+          microphone
+        </dt>
+        <dt>
+          speaker
+        </dt>
+        <dt>
+          device-info
+        </dt>
       </dl>
       <p>
         The <code>PermissionName</code> enum defines the list of known
@@ -291,6 +303,63 @@
           </dt>
         </dl>
       </section>
+      <section>
+        <h2>
+          Media Devices
+        </h2>
+        <p>
+          The <code><dfn id=
+          'idl-def-PermissionName.camera'>camera</dfn></code>, <code><dfn id=
+          'idl-def-PermissionName.microphone'>microphone</dfn></code> , and
+          <code><dfn id='idl-def-PermissionName.speaker'>speaker</dfn></code>
+          permissions are associated with permission to use media devices as
+          specified in [[GETUSERMEDIA]] and [[audio-output]].
+        </p>
+        <p>
+          These three permissions have an associated PermissionDescriptor:
+        </p>
+        <dl class='idl' title=
+        'dictionary DevicePermissionDescriptor : PermissionDescriptor'>
+          <dt>
+            DOMString deviceId
+          </dt>
+        </dl>
+        <p>
+          A permission covers access to the device given in the associated
+          descriptor.
+        </p>
+        <p>
+          If the descriptor does not have a deviceId, its semantic is that it
+          queries for access to any device of that class.
+        </p>
+        <p>
+          If the deviceId is the special string "*", it queries for access to
+          all devices of that class, whether they exist at the moment or are
+          attached at a later time. When such a permission has been granted,
+          queries for permission to any specific device MUST return "granted"
+          as long as the deviceId is the ID of a connected device of the given
+          class.
+        </p>
+        <p>
+          The <code><dfn id=
+          'idl-def-PermissionName.device-info'>device-info</dfn></code>
+          permission controls access to names and capabilities of input and
+          output devices.
+        </p>
+        <p>
+          The permission storage identifier for permissions in this section
+          MUST include the top level context's origin and the embedding status.
+        </p>
+        <p>
+          A successful call to the <code>getUserMedia</code> function of
+          [[GETUSERMEDIA]] MUST cause permission to be granted for the returned
+          devices, and MAY cause other permissions to be granted.
+        </p>
+        <p>
+          Stopping a MediaStreamTrack MAY cause permission to be revoked for
+          the associated device.
+        </p>
+      </section>
     </section>
     <section>
       <h2>
@@ -312,7 +381,8 @@
       <ol>
         <li>If the <a>user agent</a> has a <a>permission storage entry</a>
         associated with the <a>permission storage identifier</a> in its
-        permission store, it MUST return the <a>permission storage entry</a>.</li>
+        permission store, it MUST return the <a>permission storage entry</a>.
+        </li>
         <li>Otherwise, it MUST return <code>undefined</code>.</li>
       </ol>
       <p>
@@ -366,7 +436,6 @@
         be asking the user's permission if the caller tries to access the
         feature. The user might grant, deny or dismiss the request.
       </p>
-
       <p>
         The steps to <dfn>retrieve the permission state</dfn> of an <a>origin</a>
         and <a>global object</a> for a given <code>permission</code> are as
@@ -527,9 +596,8 @@
         method is invoked, the <a>user agent</a> MUST run the following steps:
       </p>
       <ol>
-        <il>TODO</il>
+        <li>TODO</li>
       </ol>
-
       <p>
         When the <dfn for='Permissions' title='revoke'><code>revoke()</code></dfn>
         method is invoked, the <a>user agent</a> MUST run the following steps:
@@ -618,6 +686,23 @@
     console.log('Geolocation permission state is ' + result[0].state);
     console.log('Notifications permission state is ' + result[1].state);
   });
+&lt;/script&gt;
+</pre>
+      <p>
+        This example is checking whether the page has the <code>camera</code>
+        permission for the first device in the list. Error checking omitted.
+      </p>
+      <pre class='example highlight'>
+&lt;script&gt;
+  navigator.mediaDevices.enumerateDevices()
+  .then(function(devices) {
+     return navigator.permissions.query({name:'camera',
+                                         deviceId: devices[0].deviceId})
+  })
+  .then(function(result) {
+     console.log('Camera permission to first camera is ' + result.state);
+  }
+  .catch(err =&gt; console.log('Bad things happened: ' + err.name));
 &lt;/script&gt;
 </pre>
     </section>
