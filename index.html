@@ -188,10 +188,10 @@
       <p>
         Permission states can be used as an element of fingerprinting by
         websites. Usually websites could already have access to the information
-        but often trough actually using the API which could lead to a
+        but often through actually using the API which could lead to a
         permission request UI if the permission was not already granted. Thus,
         even though this API doesn't expose new fingerprinting data to
-        websites, it makes it easier for them to have a discreet access to it.
+        websites, it makes it easier for them to have discreet access to it.
         Therefore, implementations are encouraged to have an option for users
         to block (globally or selectively) the querying of permission states.
       </p>
@@ -280,7 +280,7 @@
         </h2>
         <p>
           The <code><dfn id='idl-def-PermissionName.midi'>midi</dfn></code>
-          permission is the permission associated with the usage of the
+          permission is the permission associated with the usage of
           [[webmidi]]. It has an <a>associated PermissionDescriptor</a>,
           <a>MidiPermissionDescriptor</a>:
         </p>
@@ -298,7 +298,7 @@
       </h2>
       <p>
         <a title='user agent'>User agents</a> MAY use a form of storage to keep
-        track of web sites permissions. When they do, they MUST have a <dfn>
+        track of web site permissions. When they do, they MUST have a <dfn>
         permission storage identifier</dfn> which is linked to a <dfn>permission
         storage entry</dfn>. The <a>permission storage identifier</a> MUST
         contain the website's origin and MAY contain other information like the
@@ -325,7 +325,7 @@
         permission store, it MUST overwrite it to the given <a>permission
         storage entry</a>.</li>
         <li>Otherwise, it MUST write the new <a>permission storage entry</a>
-        to its premission store.</li>
+        to its permission store.</li>
       </ol>
       <p>
         The steps to <dfn>delete a permission storage entry</dfn> of a
@@ -380,7 +380,7 @@
         it and abort these steps.</li>
         <li>Otherwise, the <a>user agent</a> MUST return a default value based
         on <a>user agent</a>'s defined heuristics. For example, <code>prompt</code>
-        can be a default value but it can also be based on visits frequency.</li>
+        can be a default value but it can also be based on frequency of visits.</li>
       </ol>
 
       <dl class='idl' title=
@@ -418,7 +418,7 @@
       <ol>
         <li>Let <var>status</var> be a <code>PermissionStatus</code> instance.
         </li>
-        <li>Set the <code>permission</code> given in parameter as the
+        <li>Set the given <code>permission</code> parameter as the
         <var>status</var>' associated <var>permission</var>.
         </li>
         <li>Run the steps to <a>update the state</a> on <var>status</var>.
@@ -510,7 +510,7 @@
         </li>
         <li>Let <var>promise</var> be a newly-created <a>Promise</a>.
         </li>
-        <li>Return <var>promise</var> and continue those steps asynchronously.
+        <li>Return <var>promise</var> and continue the following steps asynchronously.
         </li>
         <li>Run the steps to <a>create a PermissionStatus</a> using
         <var>permission</var> and resolve <var>promise</var> with the result of
@@ -551,7 +551,7 @@
         </li>
         <li>Let <var>promise</var> be a newly-created <a>Promise</a>.
         </li>
-        <li>Return <var>promise</var> and continue those steps asynchronously.
+        <li>Return <var>promise</var> and continue the following steps asynchronously.
         </li>
         <li>Let <var>identifier</var> be the <a>permission storage identifier</a>
         associated with the <a>origin</a>, <a>global object</a> and <var>permission</var>.
