@@ -399,8 +399,7 @@
         <a data-lt='user agent'>User agents</a> MAY use a form of storage to
         keep track of web site permissions. When they do, they MUST have a
         <dfn>permission storage identifier</dfn> which is linked to a
-        <dfn>permission storage entry</dfn>. The <a>permission storage
-        entry</a> MUST be a <a>PermissionState</a> or <code>undefined</code>.
+        <a>PermissionStorage</a> instance or one of its subtypes.
       </p>
       <p>
         To <dfn>get a permission storage identifier</dfn> for a
@@ -420,14 +419,22 @@
           settings</var>' <a>top-level browsing context</a>'s <a>origin</a>
         </li>
       </ol>
+      <dl class='idl' title='dictionary PermissionStorage'>
+        <dt>
+          required PermissionState state
+        </dt>
+      </dl>
+      <p class="note">
+        <a>PermissionStorage</a> instances are never exposed to Javascript.
+      </p>
       <p>
         The steps to <dfn>retrieve a permission storage entry</dfn> of a
         <a>permission storage identifier</a> are as follows:
       </p>
       <ol>
-        <li>If the <a>user agent</a> has a <a>permission storage entry</a>
-        associated with the <a>permission storage identifier</a> in its
-        permission store, it MUST return the <a>permission storage entry</a>.
+        <li>If the <a>user agent</a> has a <a>PermissionStorage</a> associated
+        with the <a>permission storage identifier</a> in its permission store,
+        it MUST return the <a>PermissionStorage</a>.
         </li>
         <li>Otherwise, it MUST return <code>undefined</code>.
         </li>
@@ -437,13 +444,12 @@
         <a>permission storage identifier</a> are as follows:
       </p>
       <ol>
-        <li>If the <a>user agent</a> has a <a>permission storage entry</a>
-        associated with the <a>permission storage identifier</a> in its
-        permission store, it MUST overwrite it to the given <a>permission
-        storage entry</a>.
+        <li>If the <a>user agent</a> has a <a>PermissionStorage</a> associated
+        with the <a>permission storage identifier</a> in its permission store,
+        it MUST overwrite it to the given <a>PermissionStorage</a>.
         </li>
-        <li>Otherwise, it MUST write the new <a>permission storage entry</a> to
-        its permission store.
+        <li>Otherwise, it MUST write the new <a>PermissionStorage</a> to its
+        permission store.
         </li>
       </ol>
       <p>
@@ -451,9 +457,9 @@
         <a>permission storage identifier</a> are as follows:
       </p>
       <ol>
-        <li>If the <a>user agent</a> has a <a>permission storage entry</a>
-        associated with the <a>permission storage identifier</a> in its
-        permission store, it MUST remove it.
+        <li>If the <a>user agent</a> has a <a>PermissionStorage</a> associated
+        with the <a>permission storage identifier</a> in its permission store,
+        it MUST remove it.
         </li>
       </ol>
     </section>
@@ -487,16 +493,14 @@
         feature. The user might grant, deny or dismiss the request.
       </p>
       <p>
-        The steps to <dfn>retrieve the permission state</dfn> of an
-        <a>origin</a> and <a>global object</a> for a given
-        <code>permission</code> are as follows:
+        The steps to <dfn>retrieve the permission storage</dfn> for a given
+        <a>PermissionName</a> <var>name</var> are as follows:
       </p>
       <ol>
         <li>
-          <a>Get a permission storage identifier</a> for
-          <var>permission</var>'s <a>PermissionName</a> and the current
-          <a>environment settings object</a>, and let <var>identifier</var> be
-          the result.
+          <a>Get a permission storage identifier</a> for <var>name</var> and
+          the current <a>environment settings object</a>, and let
+          <var>identifier</var> be the result.
         </li>
         <li>Run the steps to <a>retrieve a permission storage entry</a> of
         <var>identifier</var>.
@@ -505,8 +509,8 @@
         it and abort these steps.
         </li>
         <li>Otherwise, the <a>user agent</a> MUST return a default value based
-        on <a>user agent</a>'s defined heuristics. For example,
-        <code>prompt</code> can be a default value but it can also be based on
+        on <a>user agent</a>'s defined heuristics. For example, <code>{state:
+        'prompt'}</code> can be a default value, but it can also be based on
         frequency of visits.
         </li>
       </ol>
@@ -520,43 +524,66 @@
         </dt>
       </dl>
       <p>
-        A <code>PermissionStatus</code> instance has an associated
-        <var>permission</var> that is a <a>PermissionDescriptor</a>.
+        <code>PermissionStatus</code> instances are created with the following
+        internal slot:
       </p>
+      <dl>
+        <dt>
+          <dfn for="PermissionStatus" dfn-type="attribute">[[\query]]</dfn>
+        </dt>
+        <dd>
+          A <a>PermissionDescriptor</a>.
+        </dd>
+      </dl>
       <p>
         The steps to <dfn>update the state</dfn> of a
-        <code>PermissionStatus</code> instance are as follows:
+        <code>PermissionStatus</code> instance <var>status</var> are as
+        follows:
       </p>
       <ol>
-        <li>Let <var>status</var> be the <code>PermissionStatus</code> instance
-        being updated.
+        <li>Run the steps to <a>retrieve the permission storage</a> for <code>
+          <var>status</var>@[[\query]].name</code>, and let <var>storage</var>
+          be the result.
         </li>
-        <li>Run the steps to <a>retrieve the permission state</a> using the <a>
-          Document</a>/<a>Worker</a>'s <a>origin</a>, <var>status</var>'
-          <a>global object</a> and <var>status</var>' associated
-          <var>permission</var> then set the result of those steps to the
-          <code>state</code> attribute.
+        <li>Set <code><var>status</var>.state</code> to
+        <code><var>storage</var>.state</code>
         </li>
       </ol>
       <p>
         The steps to <dfn>create a PermissionStatus</dfn> for a given
-        <code>permission</code> are as follow:
+        <a>PermissionDescriptor</a> <var>permissionDesc</var> are as follow:
       </p>
       <ol>
-        <li>Let <var>status</var> be a <code>PermissionStatus</code> instance.
-        </li>
-        <li>Set the given <code>permission</code> parameter as the
-        <var>status</var>' associated <var>permission</var>.
-        </li>
-        <li>Run the steps to <a>update the state</a> on <var>status</var>.
+        <li>Let <var>status</var> be a new instance of <a>PermissionStatus</a>,
+        with the internal slot filled as:
+          <table class="data">
+            <thead>
+              <tr>
+                <th>
+                  Slot
+                </th>
+                <th>
+                  Value
+                </th>
+              </tr>
+            </thead>
+            <tr>
+              <td>
+                <a>[[\query]]</a>
+              </td>
+              <td>
+                <var>permissionDesc</var>
+              </td>
+            </tr>
+          </table>
         </li>
         <li>Return <var>status</var>.
         </li>
       </ol>
       <p>
         The <code><dfn id='widl-PermissionStatus-state'>state</dfn></code>
-        attribute MUST return the latest value that was set while running the
-        <a>update the state</a> steps on the current instance.
+        attribute MUST return the latest value that was set on the current
+        instance.
       </p>
       <p>
         The <code><dfn id=
@@ -564,15 +591,12 @@
         <a>event handler</a> whose corresponding <a>event handler event
         type</a> is <code>change</code>.
       </p>
-      <p>
-        Whenever the <a>user agent</a> is aware that the <code>state</code> of
-        a <code>PermissionStatus</code> instance has changed, it MUST
-        asynchronously run the following steps:
+      <p id="PermissionStatus-update">
+        Whenever the <a>user agent</a> is aware that the state of a
+        <code>PermissionStatus</code> instance <var>status</var> has changed,
+        it MUST asynchronously run the following steps:
       </p>
       <ol>
-        <li>Let <var>status</var> be the <code>PermissionStatus</code> for
-        which the <code>state</code> has changed.
-        </li>
         <li>Run the steps to <a>update the state</a> of <var>status</var>.
         </li>
         <li>
@@ -644,8 +668,11 @@
         asynchronously.
         </li>
         <li>Run the steps to <a>create a PermissionStatus</a> using
-        <var>permission</var> and resolve <var>promise</var> with the result of
-        those steps.
+        <var>permission</var>, and let <var>status</var> be the result.
+        </li>
+        <li>Run the steps to <a>update the state</a> on <var>status</var>.
+        </li>
+        <li>Resolve <var>promise</var> with <var>status</var>.
         </li>
       </ol>
       <div class='note'>
@@ -701,8 +728,11 @@
         <var>identifier</var>.
         </li>
         <li>Run the steps to <a>create a PermissionStatus</a> using
-        <var>permission</var> and resolve <var>promise</var> with the result of
-        those steps.
+        <var>permission</var>, and let <var>status</var> be the result.
+        </li>
+        <li>Run the steps to <a>update the state</a> on <var>status</var>.
+        </li>
+        <li>Resolve <var>promise</var> with <var>status</var>.
         </li>
       </ol>
     </section>
