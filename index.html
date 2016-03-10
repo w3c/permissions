@@ -161,6 +161,23 @@
         'http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects'>
         <dfn>Promise</dfn> objects</a> are defined in [[!ECMASCRIPT]].
       </p>
+      <p>
+        The following concepts and interfaces are defined in
+        [[!promises-guide]]:
+      </p>
+      <ul>
+        <li>
+          <a href=
+          "https://www.w3.org/2001/tag/doc/promises-guide#promise-calling"><dfn>
+          Promise-calling</dfn></a>
+        </li>
+        <li>
+          <a href=
+          "https://www.w3.org/2001/tag/doc/promises-guide#transforming-by"><dfn>
+          Transforming</dfn> a promise with a fulfillment and/or rejection
+          handler</a>
+        </li>
+      </ul>
     </section>
     <section class='informative'>
       <h2>
@@ -229,8 +246,8 @@
         A permission is defined by a name and other properties that depend on
         the name. The simplest permissions require only a name, but some others
         will require more information, in which case, they should have an
-        <dfn>associated PermissionDescriptor</dfn> dictionary that inherits
-        from <a>PermissionDescriptor</a>.
+        <a>associated PermissionDescriptor</a> dictionary that inherits from
+        <a>PermissionDescriptor</a>.
       </p>
     </section>
     <section>
@@ -267,9 +284,67 @@
         </dt>
       </dl>
       <p>
-        The <code>PermissionName</code> enum defines the list of known
-        permission names.
+        Each enumeration value in the <a>PermissionName</a> enum identifies a
+        <dfn data-export="">permission</dfn>, which consists of the following
+        algorithms and types:
       </p>
+      <dl>
+        <dt>
+          An <dfn data-export="">associated PermissionDescriptor</dfn>
+        </dt>
+        <dd>
+          <a>PermissionDescriptor</a> or one of its subtypes.
+        </dd>
+        <dt>
+          A <dfn data-export="">permission storage type</dfn>
+        </dt>
+        <dd>
+          <a>PermissionStorage</a> or one of its subtypes.
+        </dd>
+        <dt>
+          A <dfn data-export="">permission result type</dfn>
+        </dt>
+        <dd>
+          <a>PermissionStatus</a> or one of its subtypes.
+        </dd>
+        <dt>
+          A <dfn data-export="">permission query algorithm</dfn>
+        </dt>
+        <dd>
+          Takes an instance of the <a>associated PermissionDescriptor</a> type,
+          an instance of the <a>permission storage type</a> that's currently
+          stored for this <a>permission</a>, and a new or existing instance of
+          the <a>permission result type</a>, and updates the <a>permission
+          result type</a> instance with the query result. Used by
+          <a>Permissions</a>' <a for="Permissions" lt="query">query()</a>
+          method and the <a href="#PermissionStatus-update">PermissionStatus
+          update steps</a>.
+        </dd>
+        <dt>
+          A <dfn data-export="">permission request algorithm</dfn>
+        </dt>
+        <dd>
+          Takes the previously-stored instance of the <a>permission storage
+          type</a>, an instance of the <a>associated PermissionDescriptor</a>,
+          and a newly-created instance of the <a>permission result type</a>.
+          Shows the user any necessary prompt to try to increase permissions,
+          and updates the instances of the <a>permission storage type</a> and
+          <a>permission result type</a> to match. May return a <a>Promise</a>
+          if the request can fail exceptionally. (Merely being denied
+          permission is not exceptional.) Used by <a>Permissions</a>' <a for=
+          "Permissions" lt="request">request()</a> method, which handles
+          reading and writing the <a>permission store</a>.
+        </dd>
+        <dt>
+          A <dfn data-export="">permission revocation algorithm</dfn>
+        </dt>
+        <dd>
+          Takes no arguments. Updates any other parts of the implementation
+          that need to be kept in sync after an entry is removed from the
+          permission store. Triggered by <a>Permissions</a>' <a for=
+          "Permissions" lt="revoke">revoke()</a> method.
+        </dd>
+      </dl>
       <section>
         <h2>
           Geolocation
@@ -280,6 +355,44 @@
           permission is the permission associated with the usage of the
           [[geolocation-API]].
         </p>
+        <dl>
+          <dt>
+            <a>associated PermissionDescriptor</a>
+          </dt>
+          <dd>
+            <a>PermissionDescriptor</a>
+          </dd>
+          <dt>
+            <a>permission storage type</a>
+          </dt>
+          <dd>
+            <a>PermissionStorage</a>
+          </dd>
+          <dt>
+            <a>permission result type</a>
+          </dt>
+          <dd>
+            <a>PermissionStatus</a>
+          </dd>
+          <dt>
+            <a>permission query algorithm</a>
+          </dt>
+          <dd>
+            Runs the <a>binary permission query algorithm</a>.
+          </dd>
+          <dt>
+            <a>permission request algorithm</a>
+          </dt>
+          <dd>
+            Runs the <a>binary permission request algorithm</a>.
+          </dd>
+          <dt>
+            <a>permission revocation algorithm</a>
+          </dt>
+          <dd>
+            Does nothing.
+          </dd>
+        </dl>
       </section>
       <section>
         <h2>
@@ -291,6 +404,44 @@
           permission is the permission associated with the usage of the
           [[notifications]] API.
         </p>
+        <dl>
+          <dt>
+            <a>associated PermissionDescriptor</a>
+          </dt>
+          <dd>
+            <a>PermissionDescriptor</a>
+          </dd>
+          <dt>
+            <a>permission storage type</a>
+          </dt>
+          <dd>
+            <a>PermissionStorage</a>
+          </dd>
+          <dt>
+            <a>permission result type</a>
+          </dt>
+          <dd>
+            <a>PermissionStatus</a>
+          </dd>
+          <dt>
+            <a>permission query algorithm</a>
+          </dt>
+          <dd>
+            Runs the <a>binary permission query algorithm</a>.
+          </dd>
+          <dt>
+            <a>permission request algorithm</a>
+          </dt>
+          <dd>
+            Runs the <a>binary permission request algorithm</a>.
+          </dd>
+          <dt>
+            <a>permission revocation algorithm</a>
+          </dt>
+          <dd>
+            Does nothing.
+          </dd>
+        </dl>
       </section>
       <section>
         <h2>
@@ -299,14 +450,50 @@
         <p>
           The <code><dfn id='idl-def-PermissionName.push'>push</dfn></code>
           permission is the permission associated with the usage of the
-          [[push-api]]. It has an <a>associated PermissionDescriptor</a>,
-          <a>PushPermissionDescriptor</a>:
+          [[push-api]].
         </p>
-        <dl class='idl' title=
-        'dictionary PushPermissionDescriptor : PermissionDescriptor'>
+        <dl>
           <dt>
-            boolean userVisibleOnly = false
+            <a>associated PermissionDescriptor</a>
           </dt>
+          <dd>
+            <dl class='idl' title=
+            'dictionary PushPermissionDescriptor : PermissionDescriptor'>
+              <dt>
+                boolean userVisibleOnly = false
+              </dt>
+            </dl>
+          </dd>
+          <dt>
+            <a>permission storage type</a>
+          </dt>
+          <dd>
+            <a>PermissionStorage</a>
+          </dd>
+          <dt>
+            <a>permission result type</a>
+          </dt>
+          <dd>
+            <a>PermissionStatus</a>
+          </dd>
+          <dt>
+            <a>permission query algorithm</a>
+          </dt>
+          <dd>
+            Runs the <a>binary permission query algorithm</a>.
+          </dd>
+          <dt>
+            <a>permission request algorithm</a>
+          </dt>
+          <dd>
+            Runs the <a>binary permission request algorithm</a>.
+          </dd>
+          <dt>
+            <a>permission revocation algorithm</a>
+          </dt>
+          <dd>
+            Does nothing.
+          </dd>
         </dl>
       </section>
       <section>
@@ -316,14 +503,50 @@
         <p>
           The <code><dfn id='idl-def-PermissionName.midi'>midi</dfn></code>
           permission is the permission associated with the usage of
-          [[webmidi]]. It has an <a>associated PermissionDescriptor</a>,
-          <a>MidiPermissionDescriptor</a>:
+          [[webmidi]].
         </p>
-        <dl class='idl' title=
-        'dictionary MidiPermissionDescriptor : PermissionDescriptor'>
+        <dl>
           <dt>
-            boolean sysex = false
+            <a>associated PermissionDescriptor</a>
           </dt>
+          <dd>
+            <dl class='idl' title=
+            'dictionary MidiPermissionDescriptor : PermissionDescriptor'>
+              <dt>
+                boolean sysex = false
+              </dt>
+            </dl>
+          </dd>
+          <dt>
+            <a>permission storage type</a>
+          </dt>
+          <dd>
+            <a>PermissionStorage</a>
+          </dd>
+          <dt>
+            <a>permission result type</a>
+          </dt>
+          <dd>
+            <a>PermissionStatus</a>
+          </dd>
+          <dt>
+            <a>permission query algorithm</a>
+          </dt>
+          <dd>
+            Runs the <a>binary permission query algorithm</a>.
+          </dd>
+          <dt>
+            <a>permission request algorithm</a>
+          </dt>
+          <dd>
+            Runs the <a>binary permission request algorithm</a>.
+          </dd>
+          <dt>
+            <a>permission revocation algorithm</a>
+          </dt>
+          <dd>
+            Does nothing.
+          </dd>
         </dl>
       </section>
       <section>
@@ -338,31 +561,65 @@
           permissions are associated with permission to use media devices as
           specified in [[GETUSERMEDIA]] and [[audio-output]].
         </p>
-        <p>
-          These three permissions have an associated PermissionDescriptor:
-        </p>
-        <dl class='idl' title=
-        'dictionary DevicePermissionDescriptor : PermissionDescriptor'>
+        <dl>
           <dt>
-            DOMString deviceId
+            <a>associated PermissionDescriptor</a>
           </dt>
+          <dd>
+            <dl class='idl' title=
+            'dictionary DevicePermissionDescriptor : PermissionDescriptor'>
+              <dt>
+                DOMString deviceId
+              </dt>
+            </dl>
+            <p>
+              A permission covers access to the device given in the associated
+              descriptor.
+            </p>
+            <p>
+              If the descriptor does not have a deviceId, its semantic is that
+              it queries for access to all devices of that class. Thus, if a
+              query for the "camera" permission with no deviceId returns
+              "granted", the client knows that there will never be a permission
+              prompt for a camera, and if "denied" is returned, it knows that
+              no getUserMedia request for a camera will succeed.
+            </p>
+            <p>
+              If a permission state is present for access to some, but not all,
+              cameras, a query without the deviceId will return "prompt".
+            </p>
+          </dd>
+          <dt>
+            <a>permission storage type</a>
+          </dt>
+          <dd>
+            TODO
+          </dd>
+          <dt>
+            <a>permission result type</a>
+          </dt>
+          <dd>
+            TODO
+          </dd>
+          <dt>
+            <a>permission query algorithm</a>
+          </dt>
+          <dd>
+            TODO
+          </dd>
+          <dt>
+            <a>permission request algorithm</a>
+          </dt>
+          <dd>
+            TODO
+          </dd>
+          <dt>
+            <a>permission revocation algorithm</a>
+          </dt>
+          <dd>
+            TODO: Stop playing/recording data?
+          </dd>
         </dl>
-        <p>
-          A permission covers access to the device given in the associated
-          descriptor.
-        </p>
-        <p>
-          If the descriptor does not have a deviceId, its semantic is that it
-          queries for access to all devices of that class. Thus, if a query for
-          the "camera" permission with no deviceId returns "granted", the
-          client knows that there will never be a permission prompt for a
-          camera, and if "denied" is returned, it knows that no getUserMedia
-          request for a camera will succeed.
-        </p>
-        <p>
-          If a permission state is present for access to some, but not all,
-          cameras, a query without the deviceId will return "prompt".
-        </p>
         <p>
           The <code><dfn id=
           'idl-def-PermissionName.device-info'>device-info</dfn></code>
@@ -393,7 +650,7 @@
     </section>
     <section>
       <h2>
-        Permission Store
+        <dfn>Permission Store</dfn>
       </h2>
       <p>
         <a data-lt='user agent'>User agents</a> MAY use a form of storage to
@@ -525,9 +782,17 @@
       </dl>
       <p>
         <code>PermissionStatus</code> instances are created with the following
-        internal slot:
+        internal slots:
       </p>
       <dl>
+        <dt>
+          <dfn for="PermissionStatus" dfn-type=
+          "attribute">[[\permission]]</dfn>
+        </dt>
+        <dd>
+          A <a>permission</a>. <a>[[\permission]]</a> is always the
+          <a>permission</a> named <code><a>[[\query]]</a>.name</code>.
+        </dd>
         <dt>
           <dfn for="PermissionStatus" dfn-type="attribute">[[\query]]</dfn>
         </dt>
@@ -545,8 +810,9 @@
           <var>status</var>@[[\query]].name</code>, and let <var>storage</var>
           be the result.
         </li>
-        <li>Set <code><var>status</var>.state</code> to
-        <code><var>storage</var>.state</code>
+        <li>Run <code><var>status</var>@[[\permission]]</code>'s <a>permission
+        query algorithm</a>, passing <code><var>status</var>@[[\query]]</code>,
+        <var>storage</var>, and <var>status</var>.
         </li>
       </ol>
       <p>
@@ -554,8 +820,11 @@
         <a>PermissionDescriptor</a> <var>permissionDesc</var> are as follow:
       </p>
       <ol>
-        <li>Let <var>status</var> be a new instance of <a>PermissionStatus</a>,
-        with the internal slot filled as:
+        <li>Let <var>permission</var> be the <a>permission</a> named by <code>
+          <var>permissionDesc</var>.name</code>.
+        </li>
+        <li>Let <var>status</var> be a new instance of <var>permission</var>'s
+        <a>permission result type</a>, with the internal slots filled as:
           <table class="data">
             <thead>
               <tr>
@@ -567,6 +836,14 @@
                 </th>
               </tr>
             </thead>
+            <tr>
+              <td>
+                <a>[[\permission]]</a>
+              </td>
+              <td>
+                <var>permission</var>
+              </td>
+            </tr>
             <tr>
               <td>
                 <a>[[\query]]</a>
@@ -633,11 +910,11 @@
       <pre class='idl'>
         [Exposed=(Window,Worker)]
         interface Permissions {
-          Promise&lt;PermissionStatus&gt; query(PermissionDescriptor permission);
+          Promise&lt;PermissionStatus&gt; query(PermissionDescriptor permissionDesc);
 
-          Promise&lt;PermissionStatus&gt; request(PermissionDescriptor permission);
+          Promise&lt;PermissionStatus&gt; request(PermissionDescriptor permissionDesc);
 
-          Promise&lt;PermissionStatus&gt; revoke(PermissionDescriptor permission);
+          Promise&lt;PermissionStatus&gt; revoke(PermissionDescriptor permissionDesc);
         };
       </pre>
       <p>
@@ -645,10 +922,10 @@
         'query'><code>query()</code></dfn> method is invoked, the <a>user
         agent</a> MUST run the following <dfn data-export="">query a
         permission</dfn> algorithm, passing the parameter
-        <var>permission</var>:
+        <var>permissionDesc</var>:
       </p>
       <ol>
-        <li>If <var>permission.name</var> has an <a>associated
+        <li>If <var>permissionDesc.name</var> has an <a>associated
         PermissionDescriptor</a>, convert the underlying ECMAScript object to
         the <a>associated PermissionDescriptor</a> dictionary as <a href=
         'http://heycam.github.io/webidl/#es-dictionary'>described</a> in
@@ -657,7 +934,7 @@
             <li>If that operation failed, return a <a>Promise</a> rejected with
             a <code>TypeError</code> and abort these steps.
             </li>
-            <li>Otherwise, set <var>permission</var> to the result of the
+            <li>Otherwise, set <var>permissionDesc</var> to the result of the
             operation.
             </li>
           </ul>
@@ -667,8 +944,8 @@
         <li>Return <var>promise</var> and continue the following steps
         asynchronously.
         </li>
-        <li>Run the steps to <a>create a PermissionStatus</a> using
-        <var>permission</var>, and let <var>status</var> be the result.
+        <li>Run the steps to <a>create a PermissionStatus</a> for
+        <var>permissionDesc</var>, and let <var>status</var> be the result.
         </li>
         <li>Run the steps to <a>update the state</a> on <var>status</var>.
         </li>
@@ -685,21 +962,10 @@
         'request'><code>request()</code></dfn> method is invoked, the <a>user
         agent</a> MUST run the following <dfn data-export="">request a
         permission</dfn> algorithm, passing the parameter
-        <var>permission</var>:
+        <var>permissionDesc</var>:
       </p>
-      <ol>
-        <li>TODO
-        </li>
-      </ol>
-      <p>
-        When the <dfn for='Permissions' data-lt=
-        'revoke'><code>revoke()</code></dfn> method is invoked, the <a>user
-        agent</a> MUST run the following <dfn data-export="">revoke a
-        permission</dfn> algorithm, passing the parameter
-        <var>permission</var>:
-      </p>
-      <ol>
-        <li>If <var>permission.name</var> has an <a>associated
+      <ol class="algorithm">
+        <li>If <var>permissionDesc.name</var> has an <a>associated
         PermissionDescriptor</a>, convert the underlying ECMAScript object to
         the <a>associated PermissionDescriptor</a> dictionary as <a href=
         'http://heycam.github.io/webidl/#es-dictionary'>described</a> in
@@ -708,7 +974,60 @@
             <li>If that operation failed, return a <a>Promise</a> rejected with
             a <code>TypeError</code> and abort these steps.
             </li>
-            <li>Otherwise, set <var>permission</var> to the result of the
+            <li>Otherwise, set <var>permissionDesc</var> to the result of the
+            operation.
+            </li>
+          </ul>
+        </li>
+        <li>Let <var>promise</var> be a newly-created <a>Promise</a>.
+        </li>
+        <li>Return <var>promise</var> and continue the following steps
+        asynchronously.
+        </li>
+        <li>Let <var>permission</var> be the <a>permission</a> named by <code>
+          <var>permissionDesc</var>.name</code>.
+        </li>
+        <li>Run the steps to <a>create a PermissionStatus</a> for
+        <var>permissionDesc</var>, and let <var>status</var> be the result.
+        </li>
+        <li>Run the steps to <a>retrieve the permission storage</a> for
+        <var>permission</var>, and let <var>storage</var> be the result.
+        </li>
+        <li>Let <var>result</var> be the result of <a>promise-calling</a> <var>
+          permission</var>'s <a>permission request algorithm</a> with
+          <var>storage</var>, <var>permissionDesc</var>, and <var>status</var>
+          as arguments.
+        </li>
+        <li>Resolve <var>promise</var> with the result of <a>transforming</a>
+        <var>result</var> with a fulfillment handler that runs the following
+        steps.
+        </li>
+        <li>
+          <a>Get a permission storage identifier</a> for
+          <code><var>permissionDesc</var>.name</code> and the current
+          <a>environment settings object</a>, and <a>create a permission
+          storage entry</a> mapping this identifier to <var>storage</var>.
+        </li>
+        <li>Return <var>status</var>.
+        </li>
+      </ol>
+      <p>
+        When the <dfn for='Permissions' lt='revoke'><code>revoke()</code></dfn>
+        method is invoked, the <a>user agent</a> MUST run the following
+        <dfn data-export="">revoke a permission</dfn> algorithm, passing the
+        parameter <var>permissionDesc</var>:
+      </p>
+      <ol>
+        <li>If <var>permissionDesc.name</var> has an <a>associated
+        PermissionDescriptor</a>, convert the underlying ECMAScript object to
+        the <a>associated PermissionDescriptor</a> dictionary as <a href=
+        'http://heycam.github.io/webidl/#es-dictionary'>described</a> in
+        [[!WEBIDL]], then:
+          <ul>
+            <li>If that operation failed, return a <a>Promise</a> rejected with
+            a <code>TypeError</code> and abort these steps.
+            </li>
+            <li>Otherwise, set <var>permissionDesc</var> to the result of the
             operation.
             </li>
           </ul>
@@ -727,12 +1046,40 @@
         <li>Run the steps to <a>delete a permission storage entry</a> using
         <var>identifier</var>.
         </li>
-        <li>Run the steps to <a>create a PermissionStatus</a> using
-        <var>permission</var>, and let <var>status</var> be the result.
+        <li>Run <var>permissionDesc.name</var>'s <a>permission revocation
+        algorithm</a>.
+        </li>
+        <li>Run the steps to <a>create a PermissionStatus</a> for
+        <var>permissionDesc</var>, and let <var>status</var> be the result.
         </li>
         <li>Run the steps to <a>update the state</a> on <var>status</var>.
         </li>
         <li>Resolve <var>promise</var> with <var>status</var>.
+        </li>
+      </ol>
+    </section>
+    <section>
+      <h2>
+        Common permission algorithms
+      </h2>
+      <p>
+        The <dfn>binary permission query algorithm</dfn>, given a
+        <a>PermissionDescriptor</a> <var>permissionDesc</var>, a
+        <a>PermissionStorage</a> <var>storage</var>, and a
+        <a>PermissionStatus</a> <var>status</var>, runs the following steps:
+      </p>
+      <ol class="algorithm">
+        <li>Set <code><var>status</var>.state</code> to
+        <code><var>storage</var>.state</code>
+        </li>
+      </ol>
+      <p>
+        The <dfn>binary permission request algorithm</dfn>, given a
+        <a>PermissionDescriptor</a> <var>permission</var> and a
+        <a>PermissionStatus</a> <var>status</var>, runs the following steps:
+      </p>
+      <ol class="algorithm">
+        <li>TODO
         </li>
       </ol>
     </section>
