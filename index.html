@@ -99,12 +99,22 @@
       </p>
       <ul>
         <li>
+          <dfn><a href=
+          "https://html.spec.whatwg.org/multipage/browsers.html#browsing-context">
+          browsing context</a></dfn>
+        </li>
+        <li>
           <a href=
           'https://html.spec.whatwg.org/multipage/browsers.html#origin-2'><dfn>origin</dfn></a>
           of a <a href=
           'https://html.spec.whatwg.org/multipage/dom.html#document'><dfn>Document</dfn></a>
           and a <a href=
           'https://html.spec.whatwg.org/multipage/workers.html#workers'><dfn>worker</dfn></a>.
+        </li>
+        <li>
+          <dfn><a href=
+          "https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">
+          environment settings object</a></dfn>
         </li>
         <li>
           <dfn><a href=
@@ -134,6 +144,16 @@
           <dfn><a href=
           'https://html.spec.whatwg.org/multipage/webappapis.html#global-object'>
           global object</a></dfn>
+        </li>
+        <li>
+          <dfn><a href=
+          "https://html.spec.whatwg.org/multipage/browsers.html#parent-browsing-context">
+          parent browsing context</a></dfn>
+        </li>
+        <li>
+          <dfn><a href=
+          "https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context">
+          top-level browsing context</a></dfn>
         </li>
       </ul>
       <p>
@@ -376,14 +396,30 @@
         Permission Store
       </h2>
       <p>
-        <a title='user agent'>User agents</a> MAY use a form of storage to keep
-        track of web site permissions. When they do, they MUST have a <dfn>
-        permission storage identifier</dfn> which is linked to a <dfn>permission
-        storage entry</dfn>. The <a>permission storage identifier</a> MUST
-        contain the website's origin and MAY contain other information like the
-        embedding status or the embedder's origin. The <a>permission storage
+        <a lt='user agent'>User agents</a> MAY use a form of storage to keep
+        track of web site permissions. When they do, they MUST have a
+        <dfn>permission storage identifier</dfn> which is linked to a
+        <dfn>permission storage entry</dfn>. The <a>permission storage
         entry</a> MUST be a <a>PermissionState</a> or <code>undefined</code>.
       </p>
+      <p>
+        To <dfn>get a permission storage identifier</dfn> for a
+        <a>PermissionName</a> <var>name</var> and an <a>environment settings
+        object</a> <var>settings</var>, the UA MUST return a tuple consisting
+        of:
+      </p>
+      <ol>
+        <li>
+          <var>name</var>
+        </li>
+        <li>
+          <var>settings</var>' <a>origin</a>
+        </li>
+        <li>optional UA-specific data like whether <var>settings</var>'
+        <a>browsing context</a> has a <a>parent browsing context</a>, or <var>
+          settings</var>' <a>top-level browsing context</a>'s <a>origin</a>
+        </li>
+      </ol>
       <p>
         The steps to <dfn>retrieve a permission storage entry</dfn> of a
         <a>permission storage identifier</a> are as follows:
@@ -452,9 +488,15 @@
         follows:
       </p>
       <ol>
-        <li>Let <var>identifier</var> be the <a>permission storage identifier</a>
-        associated with the <a>origin</a>, <a>global object</a> and <code>permission</code>.</li>
-        <li>Run the steps to <a>retrieve a permission storage entry</a>.</li>
+        <li>
+          <a>Get a permission storage identifier</a> for
+          <var>permission</var>'s <a>PermissionName</a> and the current
+          <a>environment settings object</a>, and let <var>identifier</var> be
+          the result.
+        </li>
+        <li>Run the steps to <a>retrieve a permission storage entry</a> of
+        <var>identifier</var>.
+        </li>
         <li>If the result of those steps are not <code>undefined</code>, return
         it and abort these steps.</li>
         <li>Otherwise, the <a>user agent</a> MUST return a default value based
@@ -638,8 +680,11 @@
         </li>
         <li>Return <var>promise</var> and continue the following steps asynchronously.
         </li>
-        <li>Let <var>identifier</var> be the <a>permission storage identifier</a>
-        associated with the <a>origin</a>, <a>global object</a> and <var>permission</var>.
+        <li>
+          <a>Get a permission storage identifier</a> for
+          <code><var>permission</var>.name</code> and the current
+          <a>environment settings object</a>, and let <var>identifier</var> be
+          the result.
         </li>
         <li>Run the steps to <a>delete a permission storage entry</a> using
         <var>identifier</var>.</li>
