@@ -605,7 +605,7 @@
         interface Permissions {
           Promise&lt;PermissionStatus&gt; query(PermissionDescriptor permission);
 
-          Promise&lt;PermissionStatus&gt; request((PermissionDescriptor or sequence&lt;PermissionDescriptor&gt;) permissions);
+          Promise&lt;PermissionStatus&gt; request(PermissionDescriptor permission);
 
           Promise&lt;PermissionStatus&gt; revoke(PermissionDescriptor permission);
         };
