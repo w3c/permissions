@@ -569,8 +569,10 @@
         };
       </pre>
       <p>
-        When the <dfn for='Permissions' title='query'><code>query()</code></dfn>
-        method is invoked, the <a>user agent</a> MUST run the following steps:
+        When the <dfn for='Permissions' lt='query'><code>query()</code></dfn>
+        method is invoked, the <a>user agent</a> MUST run the following
+        <dfn data-export="">query a permission</dfn> algorithm, passing the
+        parameter <var>permission</var>:
       </p>
       <ol>
         <li>If <var>permission.name</var> has an <a>associated
@@ -602,15 +604,20 @@
         found in the <a href='#examples'>Examples section</a>.
       </div>
       <p>
-        When the <dfn for='Permissions' title='request'><code>request()</code></dfn>
-        method is invoked, the <a>user agent</a> MUST run the following steps:
+        When the <dfn for='Permissions' lt=
+        'request'><code>request()</code></dfn> method is invoked, the <a>user
+        agent</a> MUST run the following <dfn data-export="">request a
+        permission</dfn> algorithm, passing the parameter
+        <var>permission</var>:
       </p>
       <ol>
         <li>TODO</li>
       </ol>
       <p>
-        When the <dfn for='Permissions' title='revoke'><code>revoke()</code></dfn>
-        method is invoked, the <a>user agent</a> MUST run the following steps:
+        When the <dfn for='Permissions' lt='revoke'><code>revoke()</code></dfn>
+        method is invoked, the <a>user agent</a> MUST run the following
+        <dfn data-export="">revoke a permission</dfn> algorithm, passing the
+        parameter <var>permission</var>:
       </p>
       <ol>
         <li>If <var>permission.name</var> has an <a>associated
