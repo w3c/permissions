@@ -329,26 +329,23 @@
           descriptor.
         </p>
         <p>
-          If the descriptor does not have a deviceId, its semantic is that it
-          queries for access to any device of that class.
+          If the descriptor does not have a deviceId, its semantic is that
+          it queries for access to all devices of that class. Thus, if a query
+          for the "camera" permission with no deviceId returns "granted", the
+          client knows that there will never be a permission prompt for a
+          camera, and if "denied" is returned, it knows that no getUserMedia
+          request for a camera will succeed.
         </p>
         <p>
-          If the deviceId is the special string "*", it queries for access to
-          all devices of that class, whether they exist at the moment or are
-          attached at a later time. When such a permission has been granted,
-          queries for permission to any specific device MUST return "granted"
-          as long as the deviceId is the ID of a connected device of the given
-          class.
+          If a permission state is present for
+          access to some, but not all, cameras, a query without the deviceId
+          will return "prompt".
         </p>
         <p>
           The <code><dfn id=
           'idl-def-PermissionName.device-info'>device-info</dfn></code>
           permission controls access to names and capabilities of input and
           output devices.
-        </p>
-        <p>
-          The permission storage identifier for permissions in this section
-          MUST include the top level context's origin and the embedding status.
         </p>
         <p>
           A successful call to the <code>getUserMedia</code> function of
