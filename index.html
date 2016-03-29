@@ -419,14 +419,14 @@
           settings</var>' <a>top-level browsing context</a>'s <a>origin</a>
         </li>
       </ol>
-      <dl class='idl' title='dictionary PermissionStorage'>
-        <dt>
-          required PermissionState state
-        </dt>
-      </dl>
-      <p class="note">
-        <a>PermissionStorage</a> instances are never exposed to Javascript.
-      </p>
+      <pre class='idl'>
+        dictionary PermissionStorage {
+          // PermissionStorage is just an explanatory device.
+          // Instances are never received from or passed to Javascript code.
+
+          required PermissionState state;
+        };
+      </pre>
       <p>
         The steps to <dfn>retrieve a permission storage entry</dfn> of a
         <a>permission storage identifier</a> are as follows:
