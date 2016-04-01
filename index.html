@@ -294,18 +294,21 @@
         </dt>
         <dd>
           <a>PermissionDescriptor</a> or one of its subtypes.
+          If unspecified, this defaults to <a>PermissionDescriptor</a>.
         </dd>
         <dt>
           A <dfn data-export="">permission storage type</dfn>
         </dt>
         <dd>
           <a>PermissionStorage</a> or one of its subtypes.
+          If unspecified, this defaults to <a>PermissionStorage</a>.
         </dd>
         <dt>
           A <dfn data-export="">permission result type</dfn>
         </dt>
         <dd>
           <a>PermissionStatus</a> or one of its subtypes.
+          If unspecified, this defaults to <a>PermissionStatus</a>.
         </dd>
         <dt>
           A <dfn data-export="">permission query algorithm</dfn>
@@ -318,7 +321,8 @@
           result type</a> instance with the query result. Used by
           <a>Permissions</a>' <a for="Permissions" lt="query">query()</a>
           method and the <a href="#PermissionStatus-update">PermissionStatus
-          update steps</a>.
+          update steps</a>. If unspecified, this defaults to the <a>boolean
+          permission query algorithm</a>.
         </dd>
         <dt>
           A <dfn data-export="">permission request algorithm</dfn>
@@ -333,7 +337,8 @@
           if the request can fail exceptionally. (Merely being denied
           permission is not exceptional.) Used by <a>Permissions</a>' <a for=
           "Permissions" lt="request">request()</a> method, which handles
-          reading and writing the <a>permission store</a>.
+          reading and writing the <a>permission store</a>. If unspecified, this
+          defaults to the <a>boolean permission request algorithm</a>.
         </dd>
         <dt>
           A <dfn data-export="">permission revocation algorithm</dfn>
@@ -342,9 +347,14 @@
           Takes no arguments. Updates any other parts of the implementation
           that need to be kept in sync after an entry is removed from the
           permission store. Triggered by <a>Permissions</a>' <a for=
-          "Permissions" lt="revoke">revoke()</a> method.
+          "Permissions" lt="revoke">revoke()</a> method. If unspecified, this
+          defaults to doing nothing.
         </dd>
       </dl>
+      <p>
+        A <dfn>boolean permission</dfn> is a <a>permission</a> with all types
+        and algorithms defaulted.
+      </p>
       <section>
         <h2>
           Geolocation
@@ -353,46 +363,8 @@
           The <code><dfn id=
           'idl-def-PermissionName.geolocation'>geolocation</dfn></code>
           permission is the permission associated with the usage of the
-          [[geolocation-API]].
+          [[geolocation-API]]. It is a <a>boolean permission</a>.
         </p>
-        <dl>
-          <dt>
-            <a>associated PermissionDescriptor</a>
-          </dt>
-          <dd>
-            <a>PermissionDescriptor</a>
-          </dd>
-          <dt>
-            <a>permission storage type</a>
-          </dt>
-          <dd>
-            <a>PermissionStorage</a>
-          </dd>
-          <dt>
-            <a>permission result type</a>
-          </dt>
-          <dd>
-            <a>PermissionStatus</a>
-          </dd>
-          <dt>
-            <a>permission query algorithm</a>
-          </dt>
-          <dd>
-            Runs the <a>binary permission query algorithm</a>.
-          </dd>
-          <dt>
-            <a>permission request algorithm</a>
-          </dt>
-          <dd>
-            Runs the <a>binary permission request algorithm</a>.
-          </dd>
-          <dt>
-            <a>permission revocation algorithm</a>
-          </dt>
-          <dd>
-            Does nothing.
-          </dd>
-        </dl>
       </section>
       <section>
         <h2>
@@ -402,46 +374,8 @@
           The <code><dfn id=
           'idl-def-PermissionName.notifications'>notifications</dfn></code>
           permission is the permission associated with the usage of the
-          [[notifications]] API.
+          [[notifications]] API. It is a <a>boolean permission</a>.
         </p>
-        <dl>
-          <dt>
-            <a>associated PermissionDescriptor</a>
-          </dt>
-          <dd>
-            <a>PermissionDescriptor</a>
-          </dd>
-          <dt>
-            <a>permission storage type</a>
-          </dt>
-          <dd>
-            <a>PermissionStorage</a>
-          </dd>
-          <dt>
-            <a>permission result type</a>
-          </dt>
-          <dd>
-            <a>PermissionStatus</a>
-          </dd>
-          <dt>
-            <a>permission query algorithm</a>
-          </dt>
-          <dd>
-            Runs the <a>binary permission query algorithm</a>.
-          </dd>
-          <dt>
-            <a>permission request algorithm</a>
-          </dt>
-          <dd>
-            Runs the <a>binary permission request algorithm</a>.
-          </dd>
-          <dt>
-            <a>permission revocation algorithm</a>
-          </dt>
-          <dd>
-            Does nothing.
-          </dd>
-        </dl>
       </section>
       <section>
         <h2>
@@ -463,36 +397,6 @@
                 boolean userVisibleOnly = false
               </dt>
             </dl>
-          </dd>
-          <dt>
-            <a>permission storage type</a>
-          </dt>
-          <dd>
-            <a>PermissionStorage</a>
-          </dd>
-          <dt>
-            <a>permission result type</a>
-          </dt>
-          <dd>
-            <a>PermissionStatus</a>
-          </dd>
-          <dt>
-            <a>permission query algorithm</a>
-          </dt>
-          <dd>
-            Runs the <a>binary permission query algorithm</a>.
-          </dd>
-          <dt>
-            <a>permission request algorithm</a>
-          </dt>
-          <dd>
-            Runs the <a>binary permission request algorithm</a>.
-          </dd>
-          <dt>
-            <a>permission revocation algorithm</a>
-          </dt>
-          <dd>
-            Does nothing.
           </dd>
         </dl>
       </section>
@@ -516,36 +420,6 @@
                 boolean sysex = false
               </dt>
             </dl>
-          </dd>
-          <dt>
-            <a>permission storage type</a>
-          </dt>
-          <dd>
-            <a>PermissionStorage</a>
-          </dd>
-          <dt>
-            <a>permission result type</a>
-          </dt>
-          <dd>
-            <a>PermissionStatus</a>
-          </dd>
-          <dt>
-            <a>permission query algorithm</a>
-          </dt>
-          <dd>
-            Runs the <a>binary permission query algorithm</a>.
-          </dd>
-          <dt>
-            <a>permission request algorithm</a>
-          </dt>
-          <dd>
-            Runs the <a>binary permission request algorithm</a>.
-          </dd>
-          <dt>
-            <a>permission revocation algorithm</a>
-          </dt>
-          <dd>
-            Does nothing.
           </dd>
         </dl>
       </section>
@@ -1063,7 +937,7 @@
         Common permission algorithms
       </h2>
       <p>
-        The <dfn>binary permission query algorithm</dfn>, given a
+        The <dfn>boolean permission query algorithm</dfn>, given a
         <a>PermissionDescriptor</a> <var>permissionDesc</var>, a
         <a>PermissionStorage</a> <var>storage</var>, and a
         <a>PermissionStatus</a> <var>status</var>, runs the following steps:
@@ -1074,7 +948,7 @@
         </li>
       </ol>
       <p>
-        The <dfn>binary permission request algorithm</dfn>, given a
+        The <dfn>boolean permission request algorithm</dfn>, given a
         <a>PermissionDescriptor</a> <var>permission</var> and a
         <a>PermissionStatus</a> <var>status</var>, runs the following steps:
       </p>
