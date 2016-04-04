@@ -396,8 +396,8 @@
         Permission Store
       </h2>
       <p>
-        <a lt='user agent'>User agents</a> MAY use a form of storage to keep
-        track of web site permissions. When they do, they MUST have a
+        <a data-lt='user agent'>User agents</a> MAY use a form of storage to
+        keep track of web site permissions. When they do, they MUST have a
         <dfn>permission storage identifier</dfn> which is linked to a
         <dfn>permission storage entry</dfn>. The <a>permission storage
         entry</a> MUST be a <a>PermissionState</a> or <code>undefined</code>.
@@ -617,10 +617,11 @@
         };
       </pre>
       <p>
-        When the <dfn for='Permissions' lt='query'><code>query()</code></dfn>
-        method is invoked, the <a>user agent</a> MUST run the following
-        <dfn data-export="">query a permission</dfn> algorithm, passing the
-        parameter <var>permission</var>:
+        When the <dfn for='Permissions' data-lt=
+        'query'><code>query()</code></dfn> method is invoked, the <a>user
+        agent</a> MUST run the following <dfn data-export="">query a
+        permission</dfn> algorithm, passing the parameter
+        <var>permission</var>:
       </p>
       <ol>
         <li>If <var>permission.name</var> has an <a>associated
@@ -653,7 +654,7 @@
         found in the <a href='#examples'>Examples section</a>.
       </div>
       <p>
-        When the <dfn for='Permissions' lt=
+        When the <dfn for='Permissions' data-lt=
         'request'><code>request()</code></dfn> method is invoked, the <a>user
         agent</a> MUST run the following <dfn data-export="">request a
         permission</dfn> algorithm, passing the parameter
@@ -664,10 +665,11 @@
         </li>
       </ol>
       <p>
-        When the <dfn for='Permissions' lt='revoke'><code>revoke()</code></dfn>
-        method is invoked, the <a>user agent</a> MUST run the following
-        <dfn data-export="">revoke a permission</dfn> algorithm, passing the
-        parameter <var>permission</var>:
+        When the <dfn for='Permissions' data-lt=
+        'revoke'><code>revoke()</code></dfn> method is invoked, the <a>user
+        agent</a> MUST run the following <dfn data-export="">revoke a
+        permission</dfn> algorithm, passing the parameter
+        <var>permission</var>:
       </p>
       <ol>
         <li>If <var>permission.name</var> has an <a>associated
