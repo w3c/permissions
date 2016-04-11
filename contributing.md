@@ -35,24 +35,18 @@ feature, you can remove yourself with the above syntax.
 
 # Style guide to contributors 
 
-- the spec uses [ReSpec](https://www.w3.org/respec/) 
-- the spec is tidied using [HTML5 Tidy](https://github.com/w3c/tidy-html5). For
-instructions on running HTML5 tidy, see below.  
+- the spec uses [Bikeshed](https://github.com/tabatkins/bikeshed).
+  Please update `index.html` before sending a pull request.
+- Wrap lines at 80 columns.
 - put comments in front of sections, for better readability with
   syntax coloring   editors
 
+# Running Bikeshed
 
-# Running HTML5 Tidy
+If you're going to be making a lot of changes to the spec, you should
+[install Bikeshed](https://github.com/tabatkins/bikeshed/blob/master/docs/install.md)
+and run `bikeshed watch` while you're editing, so that you can save
+and reload easily.
 
-Please make sure you have HTML5 tidy installed, instead of
-the the one that  ships with *nix systems. You can comfirm this by running:
-
-```bash 
-tidy --version  #HTML Tidy for HTML5 (experimental) for ...
-```
-Once you have confirmed (make sure you have committed your changes before
-running tidy, as the changes are destructive ... in a good way:)):
-
-```bash 
-tidy -config tidyconfig.txt -o index.html index.html
-```
+If you're just making one change, you can update `index.html` by
+running `index.bs` through https://api.csswg.org/bikeshed/.
