@@ -85,13 +85,6 @@ spec: webidl
     this document, please contact the editors or file an issue. We would
     love to hear about it.
   </p>
-  <p>
-    The initial intent of this document was to allow web applications to
-    request and revoke permissions explicitly in addition to querying the
-    permission status. This is an aspect of the specification that was
-    controversial thus removed from the current document in a spirit of
-    incremental changes: settling on a small API that can be improved.
-  </p>
 </section>
 <section class='non-normative'>
   <h2 id="privacy-considerations">
