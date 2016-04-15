@@ -205,7 +205,7 @@ spec: webidl
     </dd>
   </dl>
   <p>
-    A <dfn>boolean permission</dfn> is a <a>permission</a> with all types
+    A <dfn export>boolean permission</dfn> is a <a>permission</a> with all types
     and algorithms defaulted.
   </p>
   <section>
@@ -367,13 +367,13 @@ spec: webidl
   </section>
 </section>
 <section>
-  <h2 dfn-type="dfn">
+  <h2 dfn-type="dfn" export>
     Permission Store
   </h2>
   <p>
     <a data-lt='user agent'>User agents</a> MAY use a form of storage to
     keep track of web site permissions. When they do, they MUST have a
-    <dfn>permission storage identifier</dfn> which is linked to a
+    <dfn export>permission storage identifier</dfn> which is linked to a
     {{PermissionStorage}} instance or one of its subtypes.
   </p>
   <p>
@@ -467,7 +467,7 @@ spec: webidl
     feature. The user might grant, deny or dismiss the request.
   </p>
   <p>
-    The steps to <dfn>retrieve the permission storage</dfn> for a given
+    The steps to <dfn export>retrieve the permission storage</dfn> for a given
     {{PermissionName}} <var>name</var> are as follows:
   </p>
   <ol>
@@ -775,7 +775,7 @@ spec: webidl
     Common permission algorithms
   </h2>
   <p>
-    The <dfn>boolean permission query algorithm</dfn>, given a
+    The <dfn export>boolean permission query algorithm</dfn>, given a
     {{PermissionDescriptor}} <var>permissionDesc</var>, a
     {{PermissionStorage}} <var>storage</var>, and a
     {{PermissionStatus}} <var>status</var>, runs the following steps:
@@ -786,7 +786,7 @@ spec: webidl
     </li>
   </ol>
   <p>
-    The <dfn>boolean permission request algorithm</dfn>, given a
+    The <dfn export>boolean permission request algorithm</dfn>, given a
     {{PermissionDescriptor}} <var>permission</var> and a
     {{PermissionStatus}} <var>status</var>, runs the following steps:
   </p>
