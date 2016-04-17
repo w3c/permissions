@@ -1496,17 +1496,19 @@ Possible extra rowspan handling
     Status of a permission
   </a> <a href="#ref-for-dictdef-permissiondescriptor-8">(2)</a></span><span><a href="#ref-for-dictdef-permissiondescriptor-9">8. 
     Permissions interface
-  </a> <a href="#ref-for-dictdef-permissiondescriptor-10">(2)</a> <a href="#ref-for-dictdef-permissiondescriptor-11">(3)</a></span><span><a href="#ref-for-dictdef-permissiondescriptor-12">9. 
+  </a> <a href="#ref-for-dictdef-permissiondescriptor-10">(2)</a> <a href="#ref-for-dictdef-permissiondescriptor-11">(3)</a> <a href="#ref-for-dictdef-permissiondescriptor-12">(4)</a> <a href="#ref-for-dictdef-permissiondescriptor-13">(5)</a> <a href="#ref-for-dictdef-permissiondescriptor-14">(6)</a></span><span><a href="#ref-for-dictdef-permissiondescriptor-15">9. 
     Common permission algorithms
-  </a> <a href="#ref-for-dictdef-permissiondescriptor-13">(2)</a></span></span></dfn> {
+  </a> <a href="#ref-for-dictdef-permissiondescriptor-16">(2)</a></span></span></dfn> {
   required <a data-link-type="idl-name" href="#enumdef-permissionname" id="ref-for-enumdef-permissionname-1">PermissionName</a> <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionDescriptor" data-dfn-type="dict-member" data-export="" data-lt="name" data-type="PermissionName " id="dom-permissiondescriptor-name">name<span class="dfn-panel" data-deco=""><b><a href="#dom-permissiondescriptor-name">#dom-permissiondescriptor-name</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissiondescriptor-name-1">6. 
     Status of a permission
   </a> <a href="#ref-for-dom-permissiondescriptor-name-2">(2)</a></span></span></dfn>;
 };
 </pre>
-    <p> A permission is defined by a name and other properties that depend on
-    the name. The simplest permissions require only a name, but some others
-    will require more information, in which case, they should have an <a data-link-type="dfn" href="#associated-permissiondescriptor" id="ref-for-associated-permissiondescriptor-1">associated PermissionDescriptor</a> dictionary that inherits from <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-1">PermissionDescriptor</a></code>. </p>
+    <p> A permission is described by a name and other properties that depend on the
+    name. The simplest permissions require only a name, but some others have
+    more detailed structure that requires more information to describe it. In
+    that case, they should define a customized <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type-1">permission descriptor
+    type</a> dictionary that inherits from <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-1">PermissionDescriptor</a></code>. </p>
    </section>
    <section>
     <h2 class="heading settled" data-level="4" id="permission-registry"><span class="secno">4. </span><span class="content"> Permission Registry </span><a class="self-link" href="#permission-registry"></a></h2>
@@ -1536,13 +1538,13 @@ Possible extra rowspan handling
     Permissions interface </a></span></span></dfn>, which consists of the following
     algorithms and types: </p>
     <dl>
-     <dt> An <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="associated PermissionDescriptor" id="associated-permissiondescriptor">associated PermissionDescriptor<span class="dfn-panel" data-deco=""><b><a href="#associated-permissiondescriptor">#associated-permissiondescriptor</a></b><b>Referenced in:</b><span><a href="#ref-for-associated-permissiondescriptor-1">3. 
-    Permission descriptor </a></span><span><a href="#ref-for-associated-permissiondescriptor-2">4. 
-    Permission Registry </a> <a href="#ref-for-associated-permissiondescriptor-3">(2)</a></span><span><a href="#ref-for-associated-permissiondescriptor-4">4.3. 
-      Push </a></span><span><a href="#ref-for-associated-permissiondescriptor-5">4.4. 
-      Midi </a></span><span><a href="#ref-for-associated-permissiondescriptor-6">4.5. 
-      Media Devices </a></span><span><a href="#ref-for-associated-permissiondescriptor-7">8. 
-    Permissions interface </a> <a href="#ref-for-associated-permissiondescriptor-8">(2)</a> <a href="#ref-for-associated-permissiondescriptor-9">(3)</a> <a href="#ref-for-associated-permissiondescriptor-10">(4)</a> <a href="#ref-for-associated-permissiondescriptor-11">(5)</a> <a href="#ref-for-associated-permissiondescriptor-12">(6)</a></span></span></dfn> 
+     <dt> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="permission descriptor type" id="permission-descriptor-type">permission descriptor type<span class="dfn-panel" data-deco=""><b><a href="#permission-descriptor-type">#permission-descriptor-type</a></b><b>Referenced in:</b><span><a href="#ref-for-permission-descriptor-type-1">3. 
+    Permission descriptor </a></span><span><a href="#ref-for-permission-descriptor-type-2">4. 
+    Permission Registry </a> <a href="#ref-for-permission-descriptor-type-3">(2)</a></span><span><a href="#ref-for-permission-descriptor-type-4">4.3. 
+      Push </a></span><span><a href="#ref-for-permission-descriptor-type-5">4.4. 
+      Midi </a></span><span><a href="#ref-for-permission-descriptor-type-6">4.5. 
+      Media Devices </a></span><span><a href="#ref-for-permission-descriptor-type-7">8. 
+    Permissions interface </a> <a href="#ref-for-permission-descriptor-type-8">(2)</a> <a href="#ref-for-permission-descriptor-type-9">(3)</a> <a href="#ref-for-permission-descriptor-type-10">(4)</a> <a href="#ref-for-permission-descriptor-type-11">(5)</a> <a href="#ref-for-permission-descriptor-type-12">(6)</a></span></span></dfn> 
      <dd> <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-2">PermissionDescriptor</a></code> or one of its subtypes.
       If unspecified, this defaults to <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-3">PermissionDescriptor</a></code>. 
      <dt> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="permission storage type" id="permission-storage-type">permission storage type<span class="dfn-panel" data-deco=""><b><a href="#permission-storage-type">#permission-storage-type</a></b><b>Referenced in:</b><span><a href="#ref-for-permission-storage-type-1">4. 
@@ -1559,7 +1561,7 @@ Possible extra rowspan handling
      <dt> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="permission query algorithm" id="permission-query-algorithm">permission query algorithm<span class="dfn-panel" data-deco=""><b><a href="#permission-query-algorithm">#permission-query-algorithm</a></b><b>Referenced in:</b><span><a href="#ref-for-permission-query-algorithm-1">4.5. 
       Media Devices </a></span><span><a href="#ref-for-permission-query-algorithm-2">6. 
     Status of a permission </a></span></span></dfn> 
-     <dd> Takes an instance of the <a data-link-type="dfn" href="#associated-permissiondescriptor" id="ref-for-associated-permissiondescriptor-2">associated PermissionDescriptor</a> type,
+     <dd> Takes an instance of the <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type-2">permission descriptor type</a>,
       an instance of the <a data-link-type="dfn" href="#permission-storage-type" id="ref-for-permission-storage-type-1">permission storage type</a> that’s currently
       stored for this <a data-link-type="dfn" href="#permission" id="ref-for-permission-1">permission</a>, and a new or existing instance of
       the <a data-link-type="dfn" href="#permission-result-type" id="ref-for-permission-result-type-1">permission result type</a>, and updates the <a data-link-type="dfn" href="#permission-result-type" id="ref-for-permission-result-type-2">permission
@@ -1570,7 +1572,7 @@ Possible extra rowspan handling
       Media Devices </a></span><span><a href="#ref-for-permission-request-algorithm-2">8. 
     Permissions interface </a></span></span></dfn> 
      <dd> Takes the previously-stored instance of the <a data-link-type="dfn" href="#permission-storage-type" id="ref-for-permission-storage-type-2">permission storage
-      type</a>, an instance of the <a data-link-type="dfn" href="#associated-permissiondescriptor" id="ref-for-associated-permissiondescriptor-3">associated PermissionDescriptor</a>,
+      type</a>, an instance of the <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type-3">permission descriptor type</a>,
       and a newly-created instance of the <a data-link-type="dfn" href="#permission-result-type" id="ref-for-permission-result-type-3">permission result type</a>.
       Shows the user any necessary prompt to try to increase permissions,
       and updates the instances of the <a data-link-type="dfn" href="#permission-storage-type" id="ref-for-permission-storage-type-3">permission storage type</a> and <a data-link-type="dfn" href="#permission-result-type" id="ref-for-permission-result-type-4">permission result type</a> to match. May return a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#dom-promise">Promise</a></code> if the request can fail exceptionally. (Merely being denied
@@ -1606,7 +1608,7 @@ Possible extra rowspan handling
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export="" data-lt="&quot;push&quot;" id="dom-permissionname-push">"push"<span class="dfn-panel" data-deco=""><b><a href="#dom-permissionname-push">#dom-permissionname-push</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissionname-push-1">4. 
     Permission Registry </a></span></span></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-push-api">[push-api]</a>. </p>
      <dl>
-      <dt> <a data-link-type="dfn" href="#associated-permissiondescriptor" id="ref-for-associated-permissiondescriptor-4">associated PermissionDescriptor</a> 
+      <dt> <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type-4">permission descriptor type</a> 
       <dd>
 <pre class="idl def">dictionary <dfn class="idl-code" data-dfn-type="dictionary" data-export="" id="dictdef-pushpermissiondescriptor">PushPermissionDescriptor<a class="self-link" href="#dictdef-pushpermissiondescriptor"></a></dfn> : <a data-link-type="idl-name" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-4">PermissionDescriptor</a> {
   boolean <dfn class="idl-code" data-default="false" data-dfn-for="PushPermissionDescriptor" data-dfn-type="dict-member" data-export="" data-type="boolean " id="dom-pushpermissiondescriptor-uservisibleonly">userVisibleOnly<a class="self-link" href="#dom-pushpermissiondescriptor-uservisibleonly"></a></dfn> = false;
@@ -1619,7 +1621,7 @@ Possible extra rowspan handling
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export="" data-lt="&quot;midi&quot;" id="dom-permissionname-midi">"midi"<span class="dfn-panel" data-deco=""><b><a href="#dom-permissionname-midi">#dom-permissionname-midi</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissionname-midi-1">4. 
     Permission Registry </a></span></span></dfn> permission is the permission associated with the usage of <a data-link-type="biblio" href="#biblio-webmidi">[webmidi]</a>. </p>
      <dl>
-      <dt> <a data-link-type="dfn" href="#associated-permissiondescriptor" id="ref-for-associated-permissiondescriptor-5">associated PermissionDescriptor</a> 
+      <dt> <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type-5">permission descriptor type</a> 
       <dd>
 <pre class="idl def">dictionary <dfn class="idl-code" data-dfn-type="dictionary" data-export="" id="dictdef-midipermissiondescriptor">MidiPermissionDescriptor<a class="self-link" href="#dictdef-midipermissiondescriptor"></a></dfn> : <a data-link-type="idl-name" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-5">PermissionDescriptor</a> {
   boolean <dfn class="idl-code" data-default="false" data-dfn-for="MidiPermissionDescriptor" data-dfn-type="dict-member" data-export="" data-type="boolean " id="dom-midipermissiondescriptor-sysex">sysex<a class="self-link" href="#dom-midipermissiondescriptor-sysex"></a></dfn> = false;
@@ -1637,7 +1639,7 @@ Possible extra rowspan handling
     Permission Registry </a></span></span></dfn> permissions are associated with permission to use media devices as
       specified in <a data-link-type="biblio" href="#biblio-getusermedia">[GETUSERMEDIA]</a> and <a data-link-type="biblio" href="#biblio-audio-output">[audio-output]</a>. </p>
      <dl>
-      <dt> <a data-link-type="dfn" href="#associated-permissiondescriptor" id="ref-for-associated-permissiondescriptor-6">associated PermissionDescriptor</a> 
+      <dt> <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type-6">permission descriptor type</a> 
       <dd>
 <pre class="idl def">dictionary <dfn class="idl-code" data-dfn-type="dictionary" data-export="" id="dictdef-devicepermissiondescriptor">DevicePermissionDescriptor<a class="self-link" href="#dictdef-devicepermissiondescriptor"></a></dfn> : <a data-link-type="idl-name" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-6">PermissionDescriptor</a> {
   DOMString <dfn class="dfn-paneled idl-code" data-dfn-for="DevicePermissionDescriptor" data-dfn-type="dict-member" data-export="" data-lt="deviceId" data-type="DOMString " id="dom-devicepermissiondescriptor-deviceid">deviceId<span class="dfn-panel" data-deco=""><b><a href="#dom-devicepermissiondescriptor-deviceid">#dom-devicepermissiondescriptor-deviceid</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-devicepermissiondescriptor-deviceid-1">4.5. 
@@ -1877,9 +1879,9 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
     permission<a class="self-link" href="#query-a-permission"></a></dfn> algorithm, passing the parameter <var>permissionDesc</var>: </p>
     <ol>
      <li>
-      If <var>permissionDesc.name</var> has an <a data-link-type="dfn" href="#associated-permissiondescriptor" id="ref-for-associated-permissiondescriptor-7">associated
-    PermissionDescriptor</a>, convert the underlying ECMAScript object to
-    the <a data-link-type="dfn" href="#associated-permissiondescriptor" id="ref-for-associated-permissiondescriptor-8">associated PermissionDescriptor</a> dictionary as <a href="http://heycam.github.io/webidl/#es-dictionary">described</a> in <a data-link-type="biblio" href="#biblio-webidl">[WEBIDL]</a>, then: 
+      If <code><var>permissionDesc</var>.name</code> has a <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type-7">permission
+    descriptor type</a> other than <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-12">PermissionDescriptor</a></code>, convert the
+    underlying ECMAScript object to the <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type-8">permission descriptor type</a> dictionary as <a href="http://heycam.github.io/webidl/#es-dictionary">described</a> in <a data-link-type="biblio" href="#biblio-webidl">[WEBIDL]</a>, then: 
       <ul>
        <li>If that operation failed, return a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#dom-promise">Promise</a></code> rejected with
         a <code class="idl"><a data-link-type="idl" href="https://tc39.github.io/ecma262/#sec-native-error-types-used-in-this-standard-typeerror">TypeError</a></code> and abort these steps. 
@@ -1903,9 +1905,9 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
     permission<a class="self-link" href="#request-a-permission"></a></dfn> algorithm, passing the parameter <var>permissionDesc</var>: </p>
     <ol class="algorithm">
      <li>
-      If <var>permissionDesc.name</var> has an <a data-link-type="dfn" href="#associated-permissiondescriptor" id="ref-for-associated-permissiondescriptor-9">associated
-    PermissionDescriptor</a>, convert the underlying ECMAScript object to
-    the <a data-link-type="dfn" href="#associated-permissiondescriptor" id="ref-for-associated-permissiondescriptor-10">associated PermissionDescriptor</a> dictionary as <a href="http://heycam.github.io/webidl/#es-dictionary">described</a> in <a data-link-type="biblio" href="#biblio-webidl">[WEBIDL]</a>, then: 
+      If <code><var>permissionDesc</var>.name</code> has a <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type-9">permission
+    descriptor type</a> other than <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-13">PermissionDescriptor</a></code>, convert the
+    underlying ECMAScript object to the <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type-10">permission descriptor type</a> dictionary as <a href="http://heycam.github.io/webidl/#es-dictionary">described</a> in <a data-link-type="biblio" href="#biblio-webidl">[WEBIDL]</a>, then: 
       <ul>
        <li>If that operation failed, return a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#dom-promise">Promise</a></code> rejected with
         a <code class="idl"><a data-link-type="idl" href="https://tc39.github.io/ecma262/#sec-native-error-types-used-in-this-standard-typeerror">TypeError</a></code> and abort these steps. 
@@ -1931,9 +1933,9 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
     parameter <var>permissionDesc</var>: </p>
     <ol>
      <li>
-      If <var>permissionDesc.name</var> has an <a data-link-type="dfn" href="#associated-permissiondescriptor" id="ref-for-associated-permissiondescriptor-11">associated
-    PermissionDescriptor</a>, convert the underlying ECMAScript object to
-    the <a data-link-type="dfn" href="#associated-permissiondescriptor" id="ref-for-associated-permissiondescriptor-12">associated PermissionDescriptor</a> dictionary as <a href="http://heycam.github.io/webidl/#es-dictionary">described</a> in <a data-link-type="biblio" href="#biblio-webidl">[WEBIDL]</a>, then: 
+      If <code><var>permissionDesc</var>.name</code> has a <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type-11">permission
+    descriptor type</a> other than <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-14">PermissionDescriptor</a></code>, convert the
+    underlying ECMAScript object to the <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type-12">permission descriptor type</a> dictionary as <a href="http://heycam.github.io/webidl/#es-dictionary">described</a> in <a data-link-type="biblio" href="#biblio-webidl">[WEBIDL]</a>, then: 
       <ul>
        <li>If that operation failed, return a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#dom-promise">Promise</a></code> rejected with
         a <code class="idl"><a data-link-type="idl" href="https://tc39.github.io/ecma262/#sec-native-error-types-used-in-this-standard-typeerror">TypeError</a></code> and abort these steps. 
@@ -1946,7 +1948,7 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
      <li> <a data-link-type="dfn" href="#get-a-permission-storage-identifier" id="ref-for-get-a-permission-storage-identifier-3">Get a permission storage identifier</a> for <code><var>permission</var>.name</code> and the current <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a>, and let <var>identifier</var> be
       the result. 
      <li>Run the steps to <a data-link-type="dfn" href="#delete-a-permission-storage-entry" id="ref-for-delete-a-permission-storage-entry-1">delete a permission storage entry</a> using <var>identifier</var>. 
-     <li>Run <var>permissionDesc.name</var>’s <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm-2">permission revocation
+     <li>Run <code><var>permissionDesc</var>.name</code>’s <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm-2">permission revocation
     algorithm</a>. 
      <li>Run the steps to <a data-link-type="dfn" href="#create-a-permissionstatus" id="ref-for-create-a-permissionstatus-3">create a PermissionStatus</a> for <var>permissionDesc</var>, and let <var>status</var> be the result. 
      <li>Run the steps to <a data-link-type="dfn" href="#update-the-state" id="ref-for-update-the-state-3">update the state</a> on <var>status</var>. 
@@ -1956,12 +1958,12 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
    <section>
     <h2 class="heading settled" data-level="9" id="common-permission-algorithms"><span class="secno">9. </span><span class="content"> Common permission algorithms </span><a class="self-link" href="#common-permission-algorithms"></a></h2>
     <p> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="boolean permission query algorithm" id="boolean-permission-query-algorithm">boolean permission query algorithm<span class="dfn-panel" data-deco=""><b><a href="#boolean-permission-query-algorithm">#boolean-permission-query-algorithm</a></b><b>Referenced in:</b><span><a href="#ref-for-boolean-permission-query-algorithm-1">4. 
-    Permission Registry </a></span></span></dfn>, given a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-12">PermissionDescriptor</a></code> <var>permissionDesc</var>, a <code class="idl"><a data-link-type="idl" href="#dictdef-permissionstorage" id="ref-for-dictdef-permissionstorage-10">PermissionStorage</a></code> <var>storage</var>, and a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus-9">PermissionStatus</a></code> <var>status</var>, runs the following steps: </p>
+    Permission Registry </a></span></span></dfn>, given a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-15">PermissionDescriptor</a></code> <var>permissionDesc</var>, a <code class="idl"><a data-link-type="idl" href="#dictdef-permissionstorage" id="ref-for-dictdef-permissionstorage-10">PermissionStorage</a></code> <var>storage</var>, and a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus-9">PermissionStatus</a></code> <var>status</var>, runs the following steps: </p>
     <ol class="algorithm">
      <li>Set <code><var>status</var>.state</code> to <code><var>storage</var>.state</code> 
     </ol>
     <p> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="boolean permission request algorithm" id="boolean-permission-request-algorithm">boolean permission request algorithm<span class="dfn-panel" data-deco=""><b><a href="#boolean-permission-request-algorithm">#boolean-permission-request-algorithm</a></b><b>Referenced in:</b><span><a href="#ref-for-boolean-permission-request-algorithm-1">4. 
-    Permission Registry </a></span></span></dfn>, given a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-13">PermissionDescriptor</a></code> <var>permission</var> and a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus-10">PermissionStatus</a></code> <var>status</var>, runs the following steps: </p>
+    Permission Registry </a></span></span></dfn>, given a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-16">PermissionDescriptor</a></code> <var>permission</var> and a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus-10">PermissionStatus</a></code> <var>status</var>, runs the following steps: </p>
     <ol class="algorithm">
      <li>TODO 
     </ol>
@@ -2078,7 +2080,6 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
   <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
   <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
-   <li><a href="#associated-permissiondescriptor">associated PermissionDescriptor</a><span>, in §4</span>
    <li><a href="#dom-permissionname-background-sync">"background-sync"</a><span>, in §4.6</span>
    <li><a href="#boolean-permission">boolean permission</a><span>, in §4</span>
    <li><a href="#boolean-permission-query-algorithm">boolean permission query algorithm</a><span>, in §9</span>
@@ -2103,6 +2104,7 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
    <li><a href="#dom-permissionstatus-permission-slot">[[permission]]</a><span>, in §6</span>
    <li><a href="#permission">permission</a><span>, in §4</span>
    <li><a href="#dictdef-permissiondescriptor">PermissionDescriptor</a><span>, in §3</span>
+   <li><a href="#permission-descriptor-type">permission descriptor type</a><span>, in §4</span>
    <li><a href="#enumdef-permissionname">PermissionName</a><span>, in §4</span>
    <li><a href="#permission-query-algorithm">permission query algorithm</a><span>, in §4</span>
    <li><a href="#permission-request-algorithm">permission request algorithm</a><span>, in §4</span>
