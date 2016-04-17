@@ -138,33 +138,33 @@ spec: webidl
   </pre>
   <p>
     Each enumeration value in the {{PermissionName}} enum identifies a
-    <dfn data-export="">permission</dfn>, which consists of the following
+    <dfn export>permission</dfn>, which consists of the following
     algorithms and types:
   </p>
   <dl>
     <dt>
-      An <dfn data-export="">associated PermissionDescriptor</dfn>
+      An <dfn export>associated PermissionDescriptor</dfn>
     </dt>
     <dd>
       {{PermissionDescriptor}} or one of its subtypes.
       If unspecified, this defaults to {{PermissionDescriptor}}.
     </dd>
     <dt>
-      A <dfn data-export="">permission storage type</dfn>
+      A <dfn export>permission storage type</dfn>
     </dt>
     <dd>
       {{PermissionStorage}} or one of its subtypes.
       If unspecified, this defaults to {{PermissionStorage}}.
     </dd>
     <dt>
-      A <dfn data-export="">permission result type</dfn>
+      A <dfn export>permission result type</dfn>
     </dt>
     <dd>
       {{PermissionStatus}} or one of its subtypes.
       If unspecified, this defaults to {{PermissionStatus}}.
     </dd>
     <dt>
-      A <dfn data-export="">permission query algorithm</dfn>
+      A <dfn export>permission query algorithm</dfn>
     </dt>
     <dd>
       Takes an instance of the <a>associated PermissionDescriptor</a> type,
@@ -178,7 +178,7 @@ spec: webidl
       permission query algorithm</a>.
     </dd>
     <dt>
-      A <dfn data-export="">permission request algorithm</dfn>
+      A <dfn export>permission request algorithm</dfn>
     </dt>
     <dd>
       Takes the previously-stored instance of the <a>permission storage
@@ -194,7 +194,7 @@ spec: webidl
       defaults to the <a>boolean permission request algorithm</a>.
     </dd>
     <dt>
-      A <dfn data-export="">permission revocation algorithm</dfn>
+      A <dfn export>permission revocation algorithm</dfn>
     </dt>
     <dd>
       Takes no arguments. Updates any other parts of the implementation
@@ -371,7 +371,7 @@ spec: webidl
     Permission Store
   </h2>
   <p>
-    <a data-lt='user agent'>User agents</a> MAY use a form of storage to
+    <a lt='user agent'>User agents</a> MAY use a form of storage to
     keep track of web site permissions. When they do, they MUST have a
     <dfn export>permission storage identifier</dfn> which is linked to a
     {{PermissionStorage}} instance or one of its subtypes.
@@ -633,7 +633,7 @@ spec: webidl
   </pre>
   <p>
     When the <dfn for='Permissions' method>query()</dfn> method is invoked,
-    the <a>user agent</a> MUST run the following <dfn data-export="">query a
+    the <a>user agent</a> MUST run the following <dfn export>query a
     permission</dfn> algorithm, passing the parameter
     <var>permissionDesc</var>:
   </p>
@@ -672,7 +672,7 @@ spec: webidl
   </div>
   <p>
     When the <dfn for='Permissions' method>request()</dfn> method is invoked,
-    the <a>user agent</a> MUST run the following <dfn data-export="">request a
+    the <a>user agent</a> MUST run the following <dfn export>request a
     permission</dfn> algorithm, passing the parameter
     <var>permissionDesc</var>:
   </p>
@@ -726,7 +726,7 @@ spec: webidl
   <p>
     When the <dfn for='Permissions' method>revoke()</dfn>
     method is invoked, the <a>user agent</a> MUST run the following
-    <dfn data-export="">revoke a permission</dfn> algorithm, passing the
+    <dfn export>revoke a permission</dfn> algorithm, passing the
     parameter <var>permissionDesc</var>:
   </p>
   <ol>
