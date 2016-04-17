@@ -1554,8 +1554,8 @@ Possible extra rowspan handling
     Permission Registry </a> <a href="#ref-for-permission-result-type-2">(2)</a> <a href="#ref-for-permission-result-type-3">(3)</a> <a href="#ref-for-permission-result-type-4">(4)</a></span><span><a href="#ref-for-permission-result-type-5">4.5. 
       Media Devices </a></span><span><a href="#ref-for-permission-result-type-6">6. 
     Status of a permission </a></span></span></dfn> 
-     <dd> <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus-1">PermissionStatus</a></code> or one of its subtypes.
-      If unspecified, this defaults to <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus-2">PermissionStatus</a></code>. 
+     <dd> <code class="idl"><a data-link-type="idl" href="#permissionresult" id="ref-for-permissionresult-1">PermissionResult</a></code> or one of its subtypes.
+      If unspecified, this defaults to <code class="idl"><a data-link-type="idl" href="#permissionresult" id="ref-for-permissionresult-2">PermissionResult</a></code>. 
      <dt> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="permission query algorithm" id="permission-query-algorithm">permission query algorithm<span class="dfn-panel" data-deco=""><b><a href="#permission-query-algorithm">#permission-query-algorithm</a></b><b>Referenced in:</b><span><a href="#ref-for-permission-query-algorithm-1">4.5. 
       Media Devices </a></span><span><a href="#ref-for-permission-query-algorithm-2">6. 
     Status of a permission </a></span></span></dfn> 
@@ -1563,7 +1563,7 @@ Possible extra rowspan handling
       an instance of the <a data-link-type="dfn" href="#permission-storage-type" id="ref-for-permission-storage-type-1">permission storage type</a> that’s currently
       stored for this <a data-link-type="dfn" href="#permission" id="ref-for-permission-1">permission</a>, and a new or existing instance of
       the <a data-link-type="dfn" href="#permission-result-type" id="ref-for-permission-result-type-1">permission result type</a>, and updates the <a data-link-type="dfn" href="#permission-result-type" id="ref-for-permission-result-type-2">permission
-      result type</a> instance with the query result. Used by <code class="idl"><a data-link-type="idl" href="#permissions" id="ref-for-permissions-1">Permissions</a></code>' <code class="idl"><a data-link-type="idl" href="#dom-permissions-query" id="ref-for-dom-permissions-query-1">query()</a></code> method and the <a href="#PermissionStatus-update">PermissionStatus
+      result type</a> instance with the query result. Used by <code class="idl"><a data-link-type="idl" href="#permissions" id="ref-for-permissions-1">Permissions</a></code>' <code class="idl"><a data-link-type="idl" href="#dom-permissions-query" id="ref-for-dom-permissions-query-1">query()</a></code> method and the <a href="#PermissionResult-update">PermissionResult
       update steps</a>. If unspecified, this defaults to the <a data-link-type="dfn" href="#boolean-permission-query-algorithm" id="ref-for-boolean-permission-query-algorithm-1">boolean
       permission query algorithm</a>. 
      <dt> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="permission request algorithm" id="permission-request-algorithm">permission request algorithm<span class="dfn-panel" data-deco=""><b><a href="#permission-request-algorithm">#permission-request-algorithm</a></b><b>Referenced in:</b><span><a href="#ref-for-permission-request-algorithm-1">4.5. 
@@ -1774,45 +1774,45 @@ Possible extra rowspan handling
     frequency of visits. 
     </ol>
 <pre class="idl def">[Exposed=(Window,Worker)]
-interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export="" data-lt="PermissionStatus" id="permissionstatus">PermissionStatus<span class="dfn-panel" data-deco=""><b><a href="#permissionstatus">#permissionstatus</a></b><b>Referenced in:</b><span><a href="#ref-for-permissionstatus-1">4. 
+interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export="" data-lt="PermissionResult" id="permissionresult">PermissionResult<span class="dfn-panel" data-deco=""><b><a href="#permissionresult">#permissionresult</a></b><b>Referenced in:</b><span><a href="#ref-for-permissionresult-1">4. 
     Permission Registry
-  </a> <a href="#ref-for-permissionstatus-2">(2)</a></span><span><a href="#ref-for-permissionstatus-3">6. 
+  </a> <a href="#ref-for-permissionresult-2">(2)</a></span><span><a href="#ref-for-permissionresult-3">6. 
     Status of a permission
-  </a> <a href="#ref-for-permissionstatus-4">(2)</a> <a href="#ref-for-permissionstatus-5">(3)</a></span><span><a href="#ref-for-permissionstatus-6">8. 
+  </a> <a href="#ref-for-permissionresult-4">(2)</a> <a href="#ref-for-permissionresult-5">(3)</a></span><span><a href="#ref-for-permissionresult-6">8. 
     Permissions interface
-  </a> <a href="#ref-for-permissionstatus-7">(2)</a> <a href="#ref-for-permissionstatus-8">(3)</a></span><span><a href="#ref-for-permissionstatus-9">9. 
+  </a> <a href="#ref-for-permissionresult-7">(2)</a> <a href="#ref-for-permissionresult-8">(3)</a></span><span><a href="#ref-for-permissionresult-9">9. 
     Common permission algorithms
-  </a> <a href="#ref-for-permissionstatus-10">(2)</a></span></span></dfn> : <a data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget">EventTarget</a> {
-  readonly attribute <a data-link-type="idl-name" href="#enumdef-permissionstate" id="ref-for-enumdef-permissionstate-2">PermissionState</a> <a class="idl-code" data-link-type="attribute" data-readonly="" data-type="PermissionState " href="#dom-permissionstatus-state" id="ref-for-dom-permissionstatus-state-1">state</a>;
-  attribute <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">EventHandler</a> <a class="idl-code" data-link-type="attribute" data-type="EventHandler " href="#dom-permissionstatus-onchange" id="ref-for-dom-permissionstatus-onchange-1">onchange</a>;
+  </a> <a href="#ref-for-permissionresult-10">(2)</a></span></span></dfn> : <a data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget">EventTarget</a> {
+  readonly attribute <a data-link-type="idl-name" href="#enumdef-permissionstate" id="ref-for-enumdef-permissionstate-2">PermissionState</a> <a class="idl-code" data-link-type="attribute" data-readonly="" data-type="PermissionState " href="#dom-permissionresult-state" id="ref-for-dom-permissionresult-state-1">state</a>;
+  attribute <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">EventHandler</a> <a class="idl-code" data-link-type="attribute" data-type="EventHandler " href="#dom-permissionresult-onchange" id="ref-for-dom-permissionresult-onchange-1">onchange</a>;
 };
 </pre>
-    <p> <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus-3">PermissionStatus</a></code> instances are created with the following
+    <p> <code class="idl"><a data-link-type="idl" href="#permissionresult" id="ref-for-permissionresult-3">PermissionResult</a></code> instances are created with the following
     internal slots: </p>
     <dl>
-     <dt> <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionStatus" data-dfn-type="attribute" data-export="" data-lt="[[permission]]" id="dom-permissionstatus-permission-slot">[[permission]]<span class="dfn-panel" data-deco=""><b><a href="#dom-permissionstatus-permission-slot">#dom-permissionstatus-permission-slot</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissionstatus-permission-slot-1">6. 
-    Status of a permission </a> <a href="#ref-for-dom-permissionstatus-permission-slot-2">(2)</a> <a href="#ref-for-dom-permissionstatus-permission-slot-3">(3)</a></span></span></dfn> 
-     <dd> A <a data-link-type="dfn" href="#permission" id="ref-for-permission-3">permission</a>. <code class="idl"><a data-link-type="idl" href="#dom-permissionstatus-permission-slot" id="ref-for-dom-permissionstatus-permission-slot-1">[[permission]]</a></code> is always the <a data-link-type="dfn" href="#permission" id="ref-for-permission-4">permission</a> named <code><code class="idl"><a data-link-type="idl" href="#dom-permissionstatus-query-slot" id="ref-for-dom-permissionstatus-query-slot-1">[[query]]</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name-1">name</a></code></code>. 
-     <dt> <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionStatus" data-dfn-type="attribute" data-export="" data-lt="[[query]]" id="dom-permissionstatus-query-slot">[[query]]<span class="dfn-panel" data-deco=""><b><a href="#dom-permissionstatus-query-slot">#dom-permissionstatus-query-slot</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissionstatus-query-slot-1">6. 
-    Status of a permission </a> <a href="#ref-for-dom-permissionstatus-query-slot-2">(2)</a> <a href="#ref-for-dom-permissionstatus-query-slot-3">(3)</a> <a href="#ref-for-dom-permissionstatus-query-slot-4">(4)</a></span></span></dfn> 
+     <dt> <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionResult" data-dfn-type="attribute" data-export="" data-lt="[[permission]]" id="dom-permissionresult-permission-slot">[[permission]]<span class="dfn-panel" data-deco=""><b><a href="#dom-permissionresult-permission-slot">#dom-permissionresult-permission-slot</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissionresult-permission-slot-1">6. 
+    Status of a permission </a> <a href="#ref-for-dom-permissionresult-permission-slot-2">(2)</a> <a href="#ref-for-dom-permissionresult-permission-slot-3">(3)</a></span></span></dfn> 
+     <dd> A <a data-link-type="dfn" href="#permission" id="ref-for-permission-3">permission</a>. <code class="idl"><a data-link-type="idl" href="#dom-permissionresult-permission-slot" id="ref-for-dom-permissionresult-permission-slot-1">[[permission]]</a></code> is always the <a data-link-type="dfn" href="#permission" id="ref-for-permission-4">permission</a> named <code><code class="idl"><a data-link-type="idl" href="#dom-permissionresult-query-slot" id="ref-for-dom-permissionresult-query-slot-1">[[query]]</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name-1">name</a></code></code>. 
+     <dt> <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionResult" data-dfn-type="attribute" data-export="" data-lt="[[query]]" id="dom-permissionresult-query-slot">[[query]]<span class="dfn-panel" data-deco=""><b><a href="#dom-permissionresult-query-slot">#dom-permissionresult-query-slot</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissionresult-query-slot-1">6. 
+    Status of a permission </a> <a href="#ref-for-dom-permissionresult-query-slot-2">(2)</a> <a href="#ref-for-dom-permissionresult-query-slot-3">(3)</a> <a href="#ref-for-dom-permissionresult-query-slot-4">(4)</a></span></span></dfn> 
      <dd> A <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-7">PermissionDescriptor</a></code>. 
     </dl>
     <p> The steps to <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="update the state" data-noexport="" id="update-the-state">update the state<span class="dfn-panel" data-deco=""><b><a href="#update-the-state">#update-the-state</a></b><b>Referenced in:</b><span><a href="#ref-for-update-the-state-1">6. 
     Status of a permission </a></span><span><a href="#ref-for-update-the-state-2">8. 
-    Permissions interface </a> <a href="#ref-for-update-the-state-3">(2)</a></span></span></dfn> of a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus-4">PermissionStatus</a></code> instance <var>status</var> are as
+    Permissions interface </a> <a href="#ref-for-update-the-state-3">(2)</a></span></span></dfn> of a <code class="idl"><a data-link-type="idl" href="#permissionresult" id="ref-for-permissionresult-4">PermissionResult</a></code> instance <var>result</var> are as
     follows: </p>
     <ol>
-     <li>Run the steps to <a data-link-type="dfn" href="#retrieve-the-permission-storage" id="ref-for-retrieve-the-permission-storage-1">retrieve the permission storage</a> for <code><var>status</var>@<code class="idl"><a data-link-type="idl" href="#dom-permissionstatus-query-slot" id="ref-for-dom-permissionstatus-query-slot-2">[[query]]</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name-2">name</a></code></code>,
+     <li>Run the steps to <a data-link-type="dfn" href="#retrieve-the-permission-storage" id="ref-for-retrieve-the-permission-storage-1">retrieve the permission storage</a> for <code><var>result</var>@<code class="idl"><a data-link-type="idl" href="#dom-permissionresult-query-slot" id="ref-for-dom-permissionresult-query-slot-2">[[query]]</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name-2">name</a></code></code>,
       and let <var>storage</var> be the result. 
-     <li>Run <code><var>status</var>@<code class="idl"><a data-link-type="idl" href="#dom-permissionstatus-permission-slot" id="ref-for-dom-permissionstatus-permission-slot-2">[[permission]]</a></code></code>’s <a data-link-type="dfn" href="#permission-query-algorithm" id="ref-for-permission-query-algorithm-2">permission
-    query algorithm</a>, passing <code><var>status</var>@<code class="idl"><a data-link-type="idl" href="#dom-permissionstatus-query-slot" id="ref-for-dom-permissionstatus-query-slot-3">[[query]]</a></code></code>, <var>storage</var>, and <var>status</var>. 
+     <li>Run <code><var>result</var>@<code class="idl"><a data-link-type="idl" href="#dom-permissionresult-permission-slot" id="ref-for-dom-permissionresult-permission-slot-2">[[permission]]</a></code></code>’s <a data-link-type="dfn" href="#permission-query-algorithm" id="ref-for-permission-query-algorithm-2">permission
+    query algorithm</a>, passing <code><var>result</var>@<code class="idl"><a data-link-type="idl" href="#dom-permissionresult-query-slot" id="ref-for-dom-permissionresult-query-slot-3">[[query]]</a></code></code>, <var>storage</var>, and <var>result</var>. 
     </ol>
-    <p> The steps to <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="create a PermissionStatus" data-noexport="" id="create-a-permissionstatus">create a PermissionStatus<span class="dfn-panel" data-deco=""><b><a href="#create-a-permissionstatus">#create-a-permissionstatus</a></b><b>Referenced in:</b><span><a href="#ref-for-create-a-permissionstatus-1">8. 
-    Permissions interface </a> <a href="#ref-for-create-a-permissionstatus-2">(2)</a> <a href="#ref-for-create-a-permissionstatus-3">(3)</a></span></span></dfn> for a given <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-8">PermissionDescriptor</a></code> <var>permissionDesc</var> are as follow: </p>
+    <p> The steps to <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="create a PermissionResult" data-noexport="" id="create-a-permissionresult">create a PermissionResult<span class="dfn-panel" data-deco=""><b><a href="#create-a-permissionresult">#create-a-permissionresult</a></b><b>Referenced in:</b><span><a href="#ref-for-create-a-permissionresult-1">8. 
+    Permissions interface </a> <a href="#ref-for-create-a-permissionresult-2">(2)</a> <a href="#ref-for-create-a-permissionresult-3">(3)</a></span></span></dfn> for a given <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-8">PermissionDescriptor</a></code> <var>permissionDesc</var> are as follow: </p>
     <ol>
      <li>Let <var>permission</var> be the <a data-link-type="dfn" href="#permission" id="ref-for-permission-5">permission</a> named by <code> <var>permissionDesc</var>.name</code>. 
      <li>
-      Let <var>status</var> be a new instance of <var>permission</var>’s <a data-link-type="dfn" href="#permission-result-type" id="ref-for-permission-result-type-6">permission result type</a>, with the internal slots filled as: 
+      Let <var>result</var> be a new instance of <var>permission</var>’s <a data-link-type="dfn" href="#permission-result-type" id="ref-for-permission-result-type-6">permission result type</a>, with the internal slots filled as: 
       <table class="data">
        <thead>
         <tr>
@@ -1820,25 +1820,25 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
          <th> Value 
        <tbody>
         <tr>
-         <td> <code class="idl"><a data-link-type="idl" href="#dom-permissionstatus-permission-slot" id="ref-for-dom-permissionstatus-permission-slot-3">[[permission]]</a></code> 
+         <td> <code class="idl"><a data-link-type="idl" href="#dom-permissionresult-permission-slot" id="ref-for-dom-permissionresult-permission-slot-3">[[permission]]</a></code> 
          <td> <var>permission</var> 
         <tr>
-         <td> <code class="idl"><a data-link-type="idl" href="#dom-permissionstatus-query-slot" id="ref-for-dom-permissionstatus-query-slot-4">[[query]]</a></code> 
+         <td> <code class="idl"><a data-link-type="idl" href="#dom-permissionresult-query-slot" id="ref-for-dom-permissionresult-query-slot-4">[[query]]</a></code> 
          <td> <var>permissionDesc</var> 
       </table>
-     <li>Return <var>status</var>. 
+     <li>Return <var>result</var>. 
     </ol>
-    <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionStatus" data-dfn-type="attribute" data-export="" data-lt="state" id="dom-permissionstatus-state">state<span class="dfn-panel" data-deco=""><b><a href="#dom-permissionstatus-state">#dom-permissionstatus-state</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissionstatus-state-1">6. 
+    <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionResult" data-dfn-type="attribute" data-export="" data-lt="state" id="dom-permissionresult-state">state<span class="dfn-panel" data-deco=""><b><a href="#dom-permissionresult-state">#dom-permissionresult-state</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissionresult-state-1">6. 
     Status of a permission </a></span></span></dfn> attribute MUST return the latest value that was set on the current
     instance. </p>
-    <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionStatus" data-dfn-type="attribute" data-export="" data-lt="onchange" id="dom-permissionstatus-onchange">onchange<span class="dfn-panel" data-deco=""><b><a href="#dom-permissionstatus-onchange">#dom-permissionstatus-onchange</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissionstatus-onchange-1">6. 
+    <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionResult" data-dfn-type="attribute" data-export="" data-lt="onchange" id="dom-permissionresult-onchange">onchange<span class="dfn-panel" data-deco=""><b><a href="#dom-permissionresult-onchange">#dom-permissionresult-onchange</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissionresult-onchange-1">6. 
     Status of a permission </a></span></span></dfn> attribute is an <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handlers">event handler</a> whose corresponding <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handler-event-type">event handler event
     type</a> is <code>change</code>. </p>
-    <p id="PermissionStatus-update"> Whenever the <a data-link-type="dfn" href="https://www.w3.org/TR/uievents/#dfn-user-agent">user agent</a> is aware that the state of a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus-5">PermissionStatus</a></code> instance <var>status</var> has changed,
+    <p id="PermissionResult-update"> Whenever the <a data-link-type="dfn" href="https://www.w3.org/TR/uievents/#dfn-user-agent">user agent</a> is aware that the state of a <code class="idl"><a data-link-type="idl" href="#permissionresult" id="ref-for-permissionresult-5">PermissionResult</a></code> instance <var>result</var> has changed,
     it MUST asynchronously run the following steps: </p>
     <ol>
-     <li>Run the steps to <a data-link-type="dfn" href="#update-the-state" id="ref-for-update-the-state-1">update the state</a> of <var>status</var>. 
-     <li> <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">Queue a task</a> on the <dfn data-dfn-type="dfn" data-noexport="" id="permission-task-source">permission task source<a class="self-link" href="#permission-task-source"></a></dfn> to <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-fire">fire an event</a> named <code>change</code> at <var>status</var>. 
+     <li>Run the steps to <a data-link-type="dfn" href="#update-the-state" id="ref-for-update-the-state-1">update the state</a> of <var>result</var>. 
+     <li> <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">Queue a task</a> on the <dfn data-dfn-type="dfn" data-noexport="" id="permission-task-source">permission task source<a class="self-link" href="#permission-task-source"></a></dfn> to <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-fire">fire an event</a> named <code>change</code> at <var>result</var>. 
     </ol>
    </section>
    <section>
@@ -1863,11 +1863,11 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
   </a> <a href="#ref-for-permissions-2">(2)</a> <a href="#ref-for-permissions-3">(3)</a></span><span><a href="#ref-for-permissions-4">7. 
     Navigator and WorkerNavigator extension
   </a> <a href="#ref-for-permissions-5">(2)</a> <a href="#ref-for-permissions-6">(3)</a></span></span></dfn> {
-  Promise&lt;<a data-link-type="idl-name" href="#permissionstatus" id="ref-for-permissionstatus-6">PermissionStatus</a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-query" id="ref-for-dom-permissions-query-2">query</a>(<a data-link-type="idl-name" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-9">PermissionDescriptor</a> <dfn class="idl-code" data-dfn-for="Permissions/query(permissionDesc)" data-dfn-type="argument" data-export="" id="dom-permissions-query-permissiondesc-permissiondesc">permissionDesc<a class="self-link" href="#dom-permissions-query-permissiondesc-permissiondesc"></a></dfn>);
+  Promise&lt;<a data-link-type="idl-name" href="#permissionresult" id="ref-for-permissionresult-6">PermissionResult</a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-query" id="ref-for-dom-permissions-query-2">query</a>(<a data-link-type="idl-name" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-9">PermissionDescriptor</a> <dfn class="idl-code" data-dfn-for="Permissions/query(permissionDesc)" data-dfn-type="argument" data-export="" id="dom-permissions-query-permissiondesc-permissiondesc">permissionDesc<a class="self-link" href="#dom-permissions-query-permissiondesc-permissiondesc"></a></dfn>);
 
-  Promise&lt;<a data-link-type="idl-name" href="#permissionstatus" id="ref-for-permissionstatus-7">PermissionStatus</a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-request" id="ref-for-dom-permissions-request-2">request</a>(<a data-link-type="idl-name" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-10">PermissionDescriptor</a> <dfn class="idl-code" data-dfn-for="Permissions/request(permissionDesc)" data-dfn-type="argument" data-export="" id="dom-permissions-request-permissiondesc-permissiondesc">permissionDesc<a class="self-link" href="#dom-permissions-request-permissiondesc-permissiondesc"></a></dfn>);
+  Promise&lt;<a data-link-type="idl-name" href="#permissionresult" id="ref-for-permissionresult-7">PermissionResult</a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-request" id="ref-for-dom-permissions-request-2">request</a>(<a data-link-type="idl-name" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-10">PermissionDescriptor</a> <dfn class="idl-code" data-dfn-for="Permissions/request(permissionDesc)" data-dfn-type="argument" data-export="" id="dom-permissions-request-permissiondesc-permissiondesc">permissionDesc<a class="self-link" href="#dom-permissions-request-permissiondesc-permissiondesc"></a></dfn>);
 
-  Promise&lt;<a data-link-type="idl-name" href="#permissionstatus" id="ref-for-permissionstatus-8">PermissionStatus</a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-revoke" id="ref-for-dom-permissions-revoke-2">revoke</a>(<a data-link-type="idl-name" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-11">PermissionDescriptor</a> <dfn class="idl-code" data-dfn-for="Permissions/revoke(permissionDesc)" data-dfn-type="argument" data-export="" id="dom-permissions-revoke-permissiondesc-permissiondesc">permissionDesc<a class="self-link" href="#dom-permissions-revoke-permissiondesc-permissiondesc"></a></dfn>);
+  Promise&lt;<a data-link-type="idl-name" href="#permissionresult" id="ref-for-permissionresult-8">PermissionResult</a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-revoke" id="ref-for-dom-permissions-revoke-2">revoke</a>(<a data-link-type="idl-name" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-11">PermissionDescriptor</a> <dfn class="idl-code" data-dfn-for="Permissions/revoke(permissionDesc)" data-dfn-type="argument" data-export="" id="dom-permissions-revoke-permissiondesc-permissiondesc">permissionDesc<a class="self-link" href="#dom-permissions-revoke-permissiondesc-permissiondesc"></a></dfn>);
 };
 </pre>
     <p> When the <dfn class="dfn-paneled idl-code" data-dfn-for="Permissions" data-dfn-type="method" data-export="" data-lt="query(permissionDesc)" id="dom-permissions-query">query()<span class="dfn-panel" data-deco=""><b><a href="#dom-permissions-query">#dom-permissions-query</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissions-query-1">4. 
@@ -1889,9 +1889,9 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
      <li>Let <var>promise</var> be a newly-created <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#dom-promise">Promise</a></code>. 
      <li>Return <var>promise</var> and continue the following steps
     asynchronously. 
-     <li>Run the steps to <a data-link-type="dfn" href="#create-a-permissionstatus" id="ref-for-create-a-permissionstatus-1">create a PermissionStatus</a> for <var>permissionDesc</var>, and let <var>status</var> be the result. 
-     <li>Run the steps to <a data-link-type="dfn" href="#update-the-state" id="ref-for-update-the-state-2">update the state</a> on <var>status</var>. 
-     <li>Resolve <var>promise</var> with <var>status</var>. 
+     <li>Run the steps to <a data-link-type="dfn" href="#create-a-permissionresult" id="ref-for-create-a-permissionresult-1">create a PermissionResult</a> for <var>permissionDesc</var>, and let <var>result</var> be the result. 
+     <li>Run the steps to <a data-link-type="dfn" href="#update-the-state" id="ref-for-update-the-state-2">update the state</a> on <var>result</var>. 
+     <li>Resolve <var>promise</var> with <var>result</var>. 
     </ol>
     <div class="note" role="note"> If a developer wants to check multiple permissions at once, the editors
     recommend the use of <code><code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#dom-promise">Promise</a></code>.all()</code>. An example can be
@@ -1916,14 +1916,14 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
      <li>Return <var>promise</var> and continue the following steps
     asynchronously. 
      <li>Let <var>permission</var> be the <a data-link-type="dfn" href="#permission" id="ref-for-permission-6">permission</a> named by <code> <var>permissionDesc</var>.name</code>. 
-     <li>Run the steps to <a data-link-type="dfn" href="#create-a-permissionstatus" id="ref-for-create-a-permissionstatus-2">create a PermissionStatus</a> for <var>permissionDesc</var>, and let <var>status</var> be the result. 
+     <li>Run the steps to <a data-link-type="dfn" href="#create-a-permissionresult" id="ref-for-create-a-permissionresult-2">create a PermissionResult</a> for <var>permissionDesc</var>, and let <var>result</var> be the result. 
      <li>Run the steps to <a data-link-type="dfn" href="#retrieve-the-permission-storage" id="ref-for-retrieve-the-permission-storage-2">retrieve the permission storage</a> for <var>permission</var>, and let <var>storage</var> be the result. 
-     <li>Let <var>result</var> be the result of <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-guide#promise-calling">promise-calling</a> <var>permission</var>’s <a data-link-type="dfn" href="#permission-request-algorithm" id="ref-for-permission-request-algorithm-2">permission request algorithm</a> with <var>storage</var>, <var>permissionDesc</var>, and <var>status</var> as arguments. 
-     <li>Resolve <var>promise</var> with the result of <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-guide#transforming-by">transforming</a> <var>result</var> with a fulfillment handler that runs the following
+     <li>Let <var>requestPromise</var> be the result of <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-guide#promise-calling">promise-calling</a> <var>permission</var>’s <a data-link-type="dfn" href="#permission-request-algorithm" id="ref-for-permission-request-algorithm-2">permission request algorithm</a> with <var>storage</var>, <var>permissionDesc</var>, and <var>result</var> as arguments. 
+     <li>Resolve <var>promise</var> with the result of <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-guide#transforming-by">transforming</a> <var>requestPromise</var> with a fulfillment handler that runs the following
     steps. 
      <li> <a data-link-type="dfn" href="#get-a-permission-storage-identifier" id="ref-for-get-a-permission-storage-identifier-2">Get a permission storage identifier</a> for <code><var>permissionDesc</var>.name</code> and the current <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a>, and <a data-link-type="dfn" href="#create-a-permission-storage-entry" id="ref-for-create-a-permission-storage-entry-1">create a permission
       storage entry</a> mapping this identifier to <var>storage</var>. 
-     <li>Return <var>status</var>. 
+     <li>Return <var>result</var>. 
     </ol>
     <p> When the <dfn class="dfn-paneled idl-code" data-dfn-for="Permissions" data-dfn-type="method" data-export="" data-lt="revoke(permissionDesc)" id="dom-permissions-revoke">revoke()<span class="dfn-panel" data-deco=""><b><a href="#dom-permissions-revoke">#dom-permissions-revoke</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissions-revoke-1">4. 
     Permission Registry </a></span><span><a href="#ref-for-dom-permissions-revoke-2">8. 
@@ -1948,20 +1948,20 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
      <li>Run the steps to <a data-link-type="dfn" href="#delete-a-permission-storage-entry" id="ref-for-delete-a-permission-storage-entry-1">delete a permission storage entry</a> using <var>identifier</var>. 
      <li>Run <var>permissionDesc.name</var>’s <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm-2">permission revocation
     algorithm</a>. 
-     <li>Run the steps to <a data-link-type="dfn" href="#create-a-permissionstatus" id="ref-for-create-a-permissionstatus-3">create a PermissionStatus</a> for <var>permissionDesc</var>, and let <var>status</var> be the result. 
-     <li>Run the steps to <a data-link-type="dfn" href="#update-the-state" id="ref-for-update-the-state-3">update the state</a> on <var>status</var>. 
-     <li>Resolve <var>promise</var> with <var>status</var>. 
+     <li>Run the steps to <a data-link-type="dfn" href="#create-a-permissionresult" id="ref-for-create-a-permissionresult-3">create a PermissionResult</a> for <var>permissionDesc</var>, and let <var>result</var> be the result. 
+     <li>Run the steps to <a data-link-type="dfn" href="#update-the-state" id="ref-for-update-the-state-3">update the state</a> on <var>result</var>. 
+     <li>Resolve <var>promise</var> with <var>result</var>. 
     </ol>
    </section>
    <section>
     <h2 class="heading settled" data-level="9" id="common-permission-algorithms"><span class="secno">9. </span><span class="content"> Common permission algorithms </span><a class="self-link" href="#common-permission-algorithms"></a></h2>
     <p> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="boolean permission query algorithm" id="boolean-permission-query-algorithm">boolean permission query algorithm<span class="dfn-panel" data-deco=""><b><a href="#boolean-permission-query-algorithm">#boolean-permission-query-algorithm</a></b><b>Referenced in:</b><span><a href="#ref-for-boolean-permission-query-algorithm-1">4. 
-    Permission Registry </a></span></span></dfn>, given a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-12">PermissionDescriptor</a></code> <var>permissionDesc</var>, a <code class="idl"><a data-link-type="idl" href="#dictdef-permissionstorage" id="ref-for-dictdef-permissionstorage-10">PermissionStorage</a></code> <var>storage</var>, and a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus-9">PermissionStatus</a></code> <var>status</var>, runs the following steps: </p>
+    Permission Registry </a></span></span></dfn>, given a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-12">PermissionDescriptor</a></code> <var>permissionDesc</var>, a <code class="idl"><a data-link-type="idl" href="#dictdef-permissionstorage" id="ref-for-dictdef-permissionstorage-10">PermissionStorage</a></code> <var>storage</var>, and a <code class="idl"><a data-link-type="idl" href="#permissionresult" id="ref-for-permissionresult-9">PermissionResult</a></code> <var>result</var>, runs the following steps: </p>
     <ol class="algorithm">
-     <li>Set <code><var>status</var>.state</code> to <code><var>storage</var>.state</code> 
+     <li>Set <code><var>result</var>.state</code> to <code><var>storage</var>.state</code> 
     </ol>
     <p> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="boolean permission request algorithm" id="boolean-permission-request-algorithm">boolean permission request algorithm<span class="dfn-panel" data-deco=""><b><a href="#boolean-permission-request-algorithm">#boolean-permission-request-algorithm</a></b><b>Referenced in:</b><span><a href="#ref-for-boolean-permission-request-algorithm-1">4. 
-    Permission Registry </a></span></span></dfn>, given a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-13">PermissionDescriptor</a></code> <var>permission</var> and a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus-10">PermissionStatus</a></code> <var>status</var>, runs the following steps: </p>
+    Permission Registry </a></span></span></dfn>, given a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor-13">PermissionDescriptor</a></code> <var>permission</var> and a <code class="idl"><a data-link-type="idl" href="#permissionresult" id="ref-for-permissionresult-10">PermissionResult</a></code> <var>result</var>, runs the following steps: </p>
     <ol class="algorithm">
      <li>TODO 
     </ol>
@@ -2084,7 +2084,7 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
    <li><a href="#boolean-permission-query-algorithm">boolean permission query algorithm</a><span>, in §9</span>
    <li><a href="#boolean-permission-request-algorithm">boolean permission request algorithm</a><span>, in §9</span>
    <li><a href="#dom-permissionname-camera">"camera"</a><span>, in §4.5</span>
-   <li><a href="#create-a-permissionstatus">create a PermissionStatus</a><span>, in §6</span>
+   <li><a href="#create-a-permissionresult">create a PermissionResult</a><span>, in §6</span>
    <li><a href="#create-a-permission-storage-entry">create a permission storage entry</a><span>, in §5</span>
    <li><a href="#delete-a-permission-storage-entry">delete a permission storage entry</a><span>, in §5</span>
    <li><a href="#dom-permissionstate-denied">"denied"</a><span>, in §6</span>
@@ -2099,13 +2099,14 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
    <li><a href="#dictdef-midipermissiondescriptor">MidiPermissionDescriptor</a><span>, in §4.4</span>
    <li><a href="#dom-permissiondescriptor-name">name</a><span>, in §3</span>
    <li><a href="#dom-permissionname-notifications">"notifications"</a><span>, in §4.2</span>
-   <li><a href="#dom-permissionstatus-onchange">onchange</a><span>, in §6</span>
-   <li><a href="#dom-permissionstatus-permission-slot">[[permission]]</a><span>, in §6</span>
+   <li><a href="#dom-permissionresult-onchange">onchange</a><span>, in §6</span>
+   <li><a href="#dom-permissionresult-permission-slot">[[permission]]</a><span>, in §6</span>
    <li><a href="#permission">permission</a><span>, in §4</span>
    <li><a href="#dictdef-permissiondescriptor">PermissionDescriptor</a><span>, in §3</span>
    <li><a href="#enumdef-permissionname">PermissionName</a><span>, in §4</span>
    <li><a href="#permission-query-algorithm">permission query algorithm</a><span>, in §4</span>
    <li><a href="#permission-request-algorithm">permission request algorithm</a><span>, in §4</span>
+   <li><a href="#permissionresult">PermissionResult</a><span>, in §6</span>
    <li><a href="#permission-result-type">permission result type</a><span>, in §4</span>
    <li><a href="#permission-revocation-algorithm">permission revocation algorithm</a><span>, in §4</span>
    <li>
@@ -2116,7 +2117,6 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
     </ul>
    <li><a href="#permissions">Permissions</a><span>, in §8</span>
    <li><a href="#enumdef-permissionstate">PermissionState</a><span>, in §6</span>
-   <li><a href="#permissionstatus">PermissionStatus</a><span>, in §6</span>
    <li><a href="#dictdef-permissionstorage">PermissionStorage</a><span>, in §5</span>
    <li><a href="#permission-storage-identifier">permission storage identifier</a><span>, in §5</span>
    <li><a href="#permission-storage-type">permission storage type</a><span>, in §4</span>
@@ -2125,7 +2125,7 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
    <li><a href="#dom-permissionstate-prompt">"prompt"</a><span>, in §6</span>
    <li><a href="#dom-permissionname-push">"push"</a><span>, in §4.3</span>
    <li><a href="#dictdef-pushpermissiondescriptor">PushPermissionDescriptor</a><span>, in §4.3</span>
-   <li><a href="#dom-permissionstatus-query-slot">[[query]]</a><span>, in §6</span>
+   <li><a href="#dom-permissionresult-query-slot">[[query]]</a><span>, in §6</span>
    <li><a href="#query-a-permission">query a
     permission</a><span>, in §8</span>
    <li><a href="#dom-permissions-query">query(permissionDesc)</a><span>, in §8</span>
@@ -2141,7 +2141,7 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
     state
     <ul>
      <li><a href="#dom-permissionstorage-state">dict-member for PermissionStorage</a><span>, in §5</span>
-     <li><a href="#dom-permissionstatus-state">attribute for PermissionStatus</a><span>, in §6</span>
+     <li><a href="#dom-permissionresult-state">attribute for PermissionResult</a><span>, in §6</span>
     </ul>
    <li><a href="#dom-midipermissiondescriptor-sysex">sysex</a><span>, in §4.4</span>
    <li><a href="#update-the-state">update the state</a><span>, in §6</span>
@@ -2272,9 +2272,9 @@ enum <a href="#enumdef-permissionstate">PermissionState</a> {
 };
 
 [Exposed=(Window,Worker)]
-interface <a href="#permissionstatus">PermissionStatus</a> : <a data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget">EventTarget</a> {
-  readonly attribute <a data-link-type="idl-name" href="#enumdef-permissionstate">PermissionState</a> <a class="idl-code" data-link-type="attribute" data-readonly="" data-type="PermissionState " href="#dom-permissionstatus-state">state</a>;
-  attribute <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">EventHandler</a> <a class="idl-code" data-link-type="attribute" data-type="EventHandler " href="#dom-permissionstatus-onchange">onchange</a>;
+interface <a href="#permissionresult">PermissionResult</a> : <a data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget">EventTarget</a> {
+  readonly attribute <a data-link-type="idl-name" href="#enumdef-permissionstate">PermissionState</a> <a class="idl-code" data-link-type="attribute" data-readonly="" data-type="PermissionState " href="#dom-permissionresult-state">state</a>;
+  attribute <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">EventHandler</a> <a class="idl-code" data-link-type="attribute" data-type="EventHandler " href="#dom-permissionresult-onchange">onchange</a>;
 };
 
 [Exposed=(Window)]
@@ -2289,11 +2289,11 @@ partial interface <a class="idl-code" data-link-type="interface" href="https://h
 
 [Exposed=(Window,Worker)]
 interface <a href="#permissions">Permissions</a> {
-  Promise&lt;<a data-link-type="idl-name" href="#permissionstatus">PermissionStatus</a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-query">query</a>(<a data-link-type="idl-name" href="#dictdef-permissiondescriptor">PermissionDescriptor</a> <a href="#dom-permissions-query-permissiondesc-permissiondesc">permissionDesc</a>);
+  Promise&lt;<a data-link-type="idl-name" href="#permissionresult">PermissionResult</a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-query">query</a>(<a data-link-type="idl-name" href="#dictdef-permissiondescriptor">PermissionDescriptor</a> <a href="#dom-permissions-query-permissiondesc-permissiondesc">permissionDesc</a>);
 
-  Promise&lt;<a data-link-type="idl-name" href="#permissionstatus">PermissionStatus</a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-request">request</a>(<a data-link-type="idl-name" href="#dictdef-permissiondescriptor">PermissionDescriptor</a> <a href="#dom-permissions-request-permissiondesc-permissiondesc">permissionDesc</a>);
+  Promise&lt;<a data-link-type="idl-name" href="#permissionresult">PermissionResult</a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-request">request</a>(<a data-link-type="idl-name" href="#dictdef-permissiondescriptor">PermissionDescriptor</a> <a href="#dom-permissions-request-permissiondesc-permissiondesc">permissionDesc</a>);
 
-  Promise&lt;<a data-link-type="idl-name" href="#permissionstatus">PermissionStatus</a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-revoke">revoke</a>(<a data-link-type="idl-name" href="#dictdef-permissiondescriptor">PermissionDescriptor</a> <a href="#dom-permissions-revoke-permissiondesc-permissiondesc">permissionDesc</a>);
+  Promise&lt;<a data-link-type="idl-name" href="#permissionresult">PermissionResult</a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-revoke">revoke</a>(<a data-link-type="idl-name" href="#dictdef-permissiondescriptor">PermissionDescriptor</a> <a href="#dom-permissions-revoke-permissiondesc-permissiondesc">permissionDesc</a>);
 };
 
 </pre>

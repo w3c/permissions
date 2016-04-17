@@ -160,8 +160,8 @@ spec: webidl
       A <dfn export>permission result type</dfn>
     </dt>
     <dd>
-      {{PermissionStatus}} or one of its subtypes.
-      If unspecified, this defaults to {{PermissionStatus}}.
+      {{PermissionResult}} or one of its subtypes.
+      If unspecified, this defaults to {{PermissionResult}}.
     </dd>
     <dt>
       A <dfn export>permission query algorithm</dfn>
@@ -173,7 +173,7 @@ spec: webidl
       the <a>permission result type</a>, and updates the <a>permission
       result type</a> instance with the query result. Used by
       {{Permissions}}' {{Permissions/query()}}
-      method and the <a href="#PermissionStatus-update">PermissionStatus
+      method and the <a href="#PermissionResult-update">PermissionResult
       update steps</a>. If unspecified, this defaults to the <a>boolean
       permission query algorithm</a>.
     </dd>
@@ -490,25 +490,25 @@ spec: webidl
   </ol>
   <pre class='idl'>
     [Exposed=(Window,Worker)]
-    interface PermissionStatus : EventTarget {
+    interface PermissionResult : EventTarget {
       readonly attribute PermissionState state;
       attribute EventHandler onchange;
     };
   </pre>
   <p>
-    {{PermissionStatus}} instances are created with the following
+    {{PermissionResult}} instances are created with the following
     internal slots:
   </p>
   <dl>
     <dt>
-      <dfn for="PermissionStatus" attribute>\[[permission]]</dfn>
+      <dfn for="PermissionResult" attribute>\[[permission]]</dfn>
     </dt>
     <dd>
       A <a>permission</a>. {{[[permission]]}} is always the
       <a>permission</a> named <code>{{[[query]]}}.{{PermissionDescriptor/name}}</code>.
     </dd>
     <dt>
-      <dfn for="PermissionStatus" attribute>\[[query]]</dfn>
+      <dfn for="PermissionResult" attribute>\[[query]]</dfn>
     </dt>
     <dd>
       A {{PermissionDescriptor}}.
@@ -516,28 +516,28 @@ spec: webidl
   </dl>
   <p>
     The steps to <dfn>update the state</dfn> of a
-    {{PermissionStatus}} instance <var>status</var> are as
+    {{PermissionResult}} instance <var>result</var> are as
     follows:
   </p>
   <ol>
     <li>Run the steps to <a>retrieve the permission storage</a> for
-      <code><var>status</var>@{{[[query]]}}.{{PermissionDescriptor/name}}</code>,
+      <code><var>result</var>@{{[[query]]}}.{{PermissionDescriptor/name}}</code>,
       and let <var>storage</var> be the result.
     </li>
-    <li>Run <code><var>status</var>@{{[[permission]]}}</code>'s <a>permission
-    query algorithm</a>, passing <code><var>status</var>@{{[[query]]}}</code>,
-    <var>storage</var>, and <var>status</var>.
+    <li>Run <code><var>result</var>@{{[[permission]]}}</code>'s <a>permission
+    query algorithm</a>, passing <code><var>result</var>@{{[[query]]}}</code>,
+    <var>storage</var>, and <var>result</var>.
     </li>
   </ol>
   <p>
-    The steps to <dfn>create a PermissionStatus</dfn> for a given
+    The steps to <dfn>create a PermissionResult</dfn> for a given
     {{PermissionDescriptor}} <var>permissionDesc</var> are as follow:
   </p>
   <ol>
     <li>Let <var>permission</var> be the <a>permission</a> named by <code>
       <var>permissionDesc</var>.name</code>.
     </li>
-    <li>Let <var>status</var> be a new instance of <var>permission</var>'s
+    <li>Let <var>result</var> be a new instance of <var>permission</var>'s
     <a>permission result type</a>, with the internal slots filled as:
       <table class="data">
         <thead>
@@ -552,7 +552,7 @@ spec: webidl
         </thead>
         <tr>
           <td>
-            {{PermissionStatus/[[permission]]}}
+            {{PermissionResult/[[permission]]}}
           </td>
           <td>
             <var>permission</var>
@@ -560,7 +560,7 @@ spec: webidl
         </tr>
         <tr>
           <td>
-            {{PermissionStatus/[[query]]}}
+            {{PermissionResult/[[query]]}}
           </td>
           <td>
             <var>permissionDesc</var>
@@ -568,31 +568,31 @@ spec: webidl
         </tr>
       </table>
     </li>
-    <li>Return <var>status</var>.
+    <li>Return <var>result</var>.
     </li>
   </ol>
   <p>
-    The <dfn for="PermissionStatus" attribute>state</dfn>
+    The <dfn for="PermissionResult" attribute>state</dfn>
     attribute MUST return the latest value that was set on the current
     instance.
   </p>
   <p>
-    The <dfn for="PermissionStatus" attribute>onchange</dfn> attribute is an
+    The <dfn for="PermissionResult" attribute>onchange</dfn> attribute is an
     <a>event handler</a> whose corresponding <a>event handler event
     type</a> is <code>change</code>.
   </p>
-  <p id="PermissionStatus-update">
+  <p id="PermissionResult-update">
     Whenever the <a>user agent</a> is aware that the state of a
-    {{PermissionStatus}} instance <var>status</var> has changed,
+    {{PermissionResult}} instance <var>result</var> has changed,
     it MUST asynchronously run the following steps:
   </p>
   <ol>
-    <li>Run the steps to <a>update the state</a> of <var>status</var>.
+    <li>Run the steps to <a>update the state</a> of <var>result</var>.
     </li>
     <li>
       <a>Queue a task</a> on the <dfn>permission task source</dfn> to
       <a>fire an event</a> named <code>change</code> at
-      <var>status</var>.
+      <var>result</var>.
     </li>
   </ol>
 </section>
@@ -624,11 +624,11 @@ spec: webidl
   <pre class='idl'>
     [Exposed=(Window,Worker)]
     interface Permissions {
-      Promise&lt;PermissionStatus&gt; query(PermissionDescriptor permissionDesc);
+      Promise&lt;PermissionResult&gt; query(PermissionDescriptor permissionDesc);
 
-      Promise&lt;PermissionStatus&gt; request(PermissionDescriptor permissionDesc);
+      Promise&lt;PermissionResult&gt; request(PermissionDescriptor permissionDesc);
 
-      Promise&lt;PermissionStatus&gt; revoke(PermissionDescriptor permissionDesc);
+      Promise&lt;PermissionResult&gt; revoke(PermissionDescriptor permissionDesc);
     };
   </pre>
   <p>
@@ -657,12 +657,12 @@ spec: webidl
     <li>Return <var>promise</var> and continue the following steps
     asynchronously.
     </li>
-    <li>Run the steps to <a>create a PermissionStatus</a> for
-    <var>permissionDesc</var>, and let <var>status</var> be the result.
+    <li>Run the steps to <a>create a PermissionResult</a> for
+    <var>permissionDesc</var>, and let <var>result</var> be the result.
     </li>
-    <li>Run the steps to <a>update the state</a> on <var>status</var>.
+    <li>Run the steps to <a>update the state</a> on <var>result</var>.
     </li>
-    <li>Resolve <var>promise</var> with <var>status</var>.
+    <li>Resolve <var>promise</var> with <var>result</var>.
     </li>
   </ol>
   <div class='note'>
@@ -699,19 +699,19 @@ spec: webidl
     <li>Let <var>permission</var> be the <a>permission</a> named by <code>
       <var>permissionDesc</var>.name</code>.
     </li>
-    <li>Run the steps to <a>create a PermissionStatus</a> for
-    <var>permissionDesc</var>, and let <var>status</var> be the result.
+    <li>Run the steps to <a>create a PermissionResult</a> for
+    <var>permissionDesc</var>, and let <var>result</var> be the result.
     </li>
     <li>Run the steps to <a>retrieve the permission storage</a> for
     <var>permission</var>, and let <var>storage</var> be the result.
     </li>
-    <li>Let <var>result</var> be the result of <a>promise-calling</a>
+    <li>Let <var>requestPromise</var> be the result of <a>promise-calling</a>
       <var>permission</var>'s <a>permission request algorithm</a> with
-      <var>storage</var>, <var>permissionDesc</var>, and <var>status</var>
+      <var>storage</var>, <var>permissionDesc</var>, and <var>result</var>
       as arguments.
     </li>
     <li>Resolve <var>promise</var> with the result of <a>transforming</a>
-    <var>result</var> with a fulfillment handler that runs the following
+    <var>requestPromise</var> with a fulfillment handler that runs the following
     steps.
     </li>
     <li>
@@ -720,7 +720,7 @@ spec: webidl
       <a>environment settings object</a>, and <a>create a permission
       storage entry</a> mapping this identifier to <var>storage</var>.
     </li>
-    <li>Return <var>status</var>.
+    <li>Return <var>result</var>.
     </li>
   </ol>
   <p>
@@ -761,12 +761,12 @@ spec: webidl
     <li>Run <var>permissionDesc.name</var>'s <a>permission revocation
     algorithm</a>.
     </li>
-    <li>Run the steps to <a>create a PermissionStatus</a> for
-    <var>permissionDesc</var>, and let <var>status</var> be the result.
+    <li>Run the steps to <a>create a PermissionResult</a> for
+    <var>permissionDesc</var>, and let <var>result</var> be the result.
     </li>
-    <li>Run the steps to <a>update the state</a> on <var>status</var>.
+    <li>Run the steps to <a>update the state</a> on <var>result</var>.
     </li>
-    <li>Resolve <var>promise</var> with <var>status</var>.
+    <li>Resolve <var>promise</var> with <var>result</var>.
     </li>
   </ol>
 </section>
@@ -778,17 +778,17 @@ spec: webidl
     The <dfn export>boolean permission query algorithm</dfn>, given a
     {{PermissionDescriptor}} <var>permissionDesc</var>, a
     {{PermissionStorage}} <var>storage</var>, and a
-    {{PermissionStatus}} <var>status</var>, runs the following steps:
+    {{PermissionResult}} <var>result</var>, runs the following steps:
   </p>
   <ol class="algorithm">
-    <li>Set <code><var>status</var>.state</code> to
+    <li>Set <code><var>result</var>.state</code> to
     <code><var>storage</var>.state</code>
     </li>
   </ol>
   <p>
     The <dfn export>boolean permission request algorithm</dfn>, given a
     {{PermissionDescriptor}} <var>permission</var> and a
-    {{PermissionStatus}} <var>status</var>, runs the following steps:
+    {{PermissionResult}} <var>result</var>, runs the following steps:
   </p>
   <ol class="algorithm">
     <li>TODO
