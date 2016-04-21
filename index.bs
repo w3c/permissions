@@ -112,11 +112,11 @@ spec: webidl
     };
   </pre>
   <p>
-    A permission is defined by a name and other properties that depend on
-    the name. The simplest permissions require only a name, but some others
-    will require more information, in which case, they should have an
-    <a>associated PermissionDescriptor</a> dictionary that inherits from
-    {{PermissionDescriptor}}.
+    A permission is described by a name and other properties that depend on the
+    name. The simplest permissions require only a name, but some others have
+    more detailed structure that requires more information to describe it. In
+    that case, they should define a customized <a>permission descriptor
+    type</a> dictionary that inherits from {{PermissionDescriptor}}.
   </p>
 </section>
 <section>
@@ -143,7 +143,7 @@ spec: webidl
   </p>
   <dl>
     <dt>
-      An <dfn export>associated PermissionDescriptor</dfn>
+      A <dfn export>permission descriptor type</dfn>
     </dt>
     <dd>
       {{PermissionDescriptor}} or one of its subtypes.
@@ -167,7 +167,7 @@ spec: webidl
       A <dfn export>permission query algorithm</dfn>
     </dt>
     <dd>
-      Takes an instance of the <a>associated PermissionDescriptor</a> type,
+      Takes an instance of the <a>permission descriptor type</a>,
       an instance of the <a>permission storage type</a> that's currently
       stored for this <a>permission</a>, and a new or existing instance of
       the <a>permission result type</a>, and updates the <a>permission
@@ -182,7 +182,7 @@ spec: webidl
     </dt>
     <dd>
       Takes the previously-stored instance of the <a>permission storage
-      type</a>, an instance of the <a>associated PermissionDescriptor</a>,
+      type</a>, an instance of the <a>permission descriptor type</a>,
       and a newly-created instance of the <a>permission result type</a>.
       Shows the user any necessary prompt to try to increase permissions,
       and updates the instances of the <a>permission storage type</a> and
@@ -239,7 +239,7 @@ spec: webidl
     </p>
     <dl>
       <dt>
-        <a>associated PermissionDescriptor</a>
+        <a>permission descriptor type</a>
       </dt>
       <dd>
         <pre class='idl'>
@@ -261,7 +261,7 @@ spec: webidl
     </p>
     <dl>
       <dt>
-        <a>associated PermissionDescriptor</a>
+        <a>permission descriptor type</a>
       </dt>
       <dd>
         <pre class='idl'>
@@ -284,7 +284,7 @@ spec: webidl
     </p>
     <dl>
       <dt>
-        <a>associated PermissionDescriptor</a>
+        <a>permission descriptor type</a>
       </dt>
       <dd>
         <pre class='idl'>
@@ -638,10 +638,11 @@ spec: webidl
     <var>permissionDesc</var>:
   </p>
   <ol>
-    <li>If <var>permissionDesc.name</var> has an <a>associated
-    PermissionDescriptor</a>, convert the underlying ECMAScript object to
-    the <a>associated PermissionDescriptor</a> dictionary as <a href=
-    'http://heycam.github.io/webidl/#es-dictionary'>described</a> in
+    <li>If <code><var>permissionDesc</var>.name</code> has a <a>permission
+    descriptor type</a> other than {{PermissionDescriptor}}, convert the
+    underlying ECMAScript object to the <a>permission descriptor type</a>
+    dictionary as
+    <a href='http://heycam.github.io/webidl/#es-dictionary'>described</a> in
     [[!WEBIDL]], then:
       <ul>
         <li>If that operation failed, return a {{Promise}} rejected with
@@ -677,10 +678,11 @@ spec: webidl
     <var>permissionDesc</var>:
   </p>
   <ol class="algorithm">
-    <li>If <var>permissionDesc.name</var> has an <a>associated
-    PermissionDescriptor</a>, convert the underlying ECMAScript object to
-    the <a>associated PermissionDescriptor</a> dictionary as <a href=
-    'http://heycam.github.io/webidl/#es-dictionary'>described</a> in
+    <li>If <code><var>permissionDesc</var>.name</code> has a <a>permission
+    descriptor type</a> other than {{PermissionDescriptor}}, convert the
+    underlying ECMAScript object to the <a>permission descriptor type</a>
+    dictionary as
+    <a href='http://heycam.github.io/webidl/#es-dictionary'>described</a> in
     [[!WEBIDL]], then:
       <ul>
         <li>If that operation failed, return a {{Promise}} rejected with
@@ -730,10 +732,11 @@ spec: webidl
     parameter <var>permissionDesc</var>:
   </p>
   <ol>
-    <li>If <var>permissionDesc.name</var> has an <a>associated
-    PermissionDescriptor</a>, convert the underlying ECMAScript object to
-    the <a>associated PermissionDescriptor</a> dictionary as <a href=
-    'http://heycam.github.io/webidl/#es-dictionary'>described</a> in
+    <li>If <code><var>permissionDesc</var>.name</code> has a <a>permission
+    descriptor type</a> other than {{PermissionDescriptor}}, convert the
+    underlying ECMAScript object to the <a>permission descriptor type</a>
+    dictionary as
+    <a href='http://heycam.github.io/webidl/#es-dictionary'>described</a> in
     [[!WEBIDL]], then:
       <ul>
         <li>If that operation failed, return a {{Promise}} rejected with
@@ -758,7 +761,7 @@ spec: webidl
     <li>Run the steps to <a>delete a permission storage entry</a> using
     <var>identifier</var>.
     </li>
-    <li>Run <var>permissionDesc.name</var>'s <a>permission revocation
+    <li>Run <code><var>permissionDesc</var>.name</code>'s <a>permission revocation
     algorithm</a>.
     </li>
     <li>Run the steps to <a>create a PermissionStatus</a> for
