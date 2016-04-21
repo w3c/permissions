@@ -1,5 +1,5 @@
 <pre class='metadata'>
-Title: The Permissions API
+Title: Permissions
 Repository: w3c/permissions
 Status: ED
 ED: https://w3c.github.io/permissions/
@@ -10,7 +10,7 @@ Editor: Mounir Lamouri, Google Inc. https://google.com/
 Editor: Marcos Cáceres, Mozilla https://mozilla.com/
 Editor: Jeffrey Yasskin, Google Inc. https://google.com/
 
-Abstract: The <cite>Permissions API</cite> allows a web application to be aware of the status of a given permission, to know whether it is granted, denied or if the user will be asked whether the permission should be granted.
+Abstract: The <cite>Permissions Standard</cite> defines common infrastructure for other specifications that need to interact with browser permissions. It also defines an API to allow web applications to query and request changes to the status of a given permission.
 Mailing List: public-webappsec@w3.org
 Mailing List Archives: http://lists.w3.org/Archives/Public/public-webappsec/
 
