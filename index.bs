@@ -134,6 +134,7 @@ spec: webidl
       "speaker",
       "device-info",
       "background-sync",
+      "bluetooth",
     };
   </pre>
   <p>

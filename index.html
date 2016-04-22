@@ -1345,7 +1345,7 @@ Possible extra rowspan handling
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="http://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2016-04-21">21 April 2016</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2016-04-22">22 April 2016</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1530,6 +1530,7 @@ Possible extra rowspan handling
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-speaker" id="ref-for-dom-permissionname-speaker-1">"speaker"</a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-device-info" id="ref-for-dom-permissionname-device-info-1">"device-info"</a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-sync" id="ref-for-dom-permissionname-background-sync-1">"background-sync"</a>,
+  <a class="idl-code" data-link-type="enum-value" href="https://webbluetoothcg.github.io/web-bluetooth/#dom-permissionname-bluetooth">"bluetooth"</a>,
 };
 </pre>
     <p> Each enumeration value in the <code class="idl"><a data-link-type="idl" href="#enumdef-permissionname" id="ref-for-enumdef-permissionname-2">PermissionName</a></code> enum identifies a <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="permission" id="permission">permission<span class="dfn-panel" data-deco=""><b><a href="#permission">#permission</a></b><b>Referenced in:</b><span><a href="#ref-for-permission-1">4. 
@@ -2191,6 +2192,11 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
      <li><a href="https://www.w3.org/TR/uievents/#dfn-user-agent">user agent</a>
     </ul>
    <li>
+    <a data-link-type="biblio">[web-bluetooth]</a> defines the following terms:
+    <ul>
+     <li><a href="https://webbluetoothcg.github.io/web-bluetooth/#dom-permissionname-bluetooth">"bluetooth"</a>
+    </ul>
+   <li>
     <a data-link-type="biblio">[WEBIDL]</a> defines the following terms:
     <ul>
      <li><a href="https://heycam.github.io/webidl/#dom-promise">Promise</a>
@@ -2209,6 +2215,8 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
    <dt id="biblio-uievents">[UIEVENTS]
    <dd>Gary Kacmarcik; Travis Leithead. <a href="https://w3c.github.io/uievents/">UI Events Specification</a>. 15 December 2015. WD. URL: <a href="https://w3c.github.io/uievents/">https://w3c.github.io/uievents/</a>
+   <dt id="biblio-web-bluetooth">[WEB-BLUETOOTH]
+   <dd>Jeffrey Yasskin. <a href="https://webbluetoothcg.github.io/web-bluetooth/">Web Bluetooth</a>. Draft Community Group Report. URL: <a href="https://webbluetoothcg.github.io/web-bluetooth/">https://webbluetoothcg.github.io/web-bluetooth/</a>
    <dt id="biblio-webidl">[WEBIDL]
    <dd>Cameron McCormack; Boris Zbarsky. <a href="https://heycam.github.io/webidl/">WebIDL Level 1</a>. 8 March 2016. CR. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
    <dt id="biblio-whatwg-dom">[WHATWG-DOM]
@@ -2246,6 +2254,7 @@ enum <a href="#enumdef-permissionname">PermissionName</a> {
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-speaker">"speaker"</a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-device-info">"device-info"</a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-sync">"background-sync"</a>,
+  <a class="idl-code" data-link-type="enum-value" href="https://webbluetoothcg.github.io/web-bluetooth/#dom-permissionname-bluetooth">"bluetooth"</a>,
 };
 
 dictionary <a href="#dictdef-pushpermissiondescriptor">PushPermissionDescriptor</a> : <a data-link-type="idl-name" href="#dictdef-permissiondescriptor">PermissionDescriptor</a> {
