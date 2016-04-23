@@ -3,6 +3,7 @@ Title: Permissions
 Repository: w3c/permissions
 Status: ED
 ED: https://w3c.github.io/permissions/
+TR: https://www.w3.org/TR/permissions/
 Shortname: permissions
 Level: 1
 Group: webappsec
