@@ -455,10 +455,25 @@ spec: webidl
         permission using:
       </p>
       <blockquote>
-        If the {{"notifications"}} <a>permission's storage</a>'s
-        {{PermissionStorage/state}} is not {{"granted"}}, reject
-        <var>promise</var> with a {{TypeError}} exception and terminate these
-        substeps.
+        If the {{"notifications"}} <a>permission's state</a> is not
+        {{"granted"}}, reject <var>promise</var> with a {{TypeError}} exception
+        and terminate these substeps.
+      </blockquote>
+
+      <p>
+        The [[web-bluetooth]] API can check for the user having granted
+        permission to use a particular <var>device</var> using:
+      </p>
+      <blockquote>
+        <ol class="algorithm">
+          <li>Let <var>storage</var> be the {{"bluetooth"}} <a>permission's storage</a>.
+          </li>
+          <li>
+            If <var>device</var> is the {{AllowedBluetoothDevice/[[device]]}}
+            for one of the {{AllowedBluetoothDevice}}s in
+            <code><var>storage</var>.allowedDevices</code>, &hellip;
+          </li>
+        </ol>
       </blockquote>
 
       <p>
@@ -467,10 +482,29 @@ spec: webidl
       <blockquote>
         &hellip; ask the user whether showing notifications for the <a>current
         settings object</a>’s origin is acceptable. <a>Update the permission
-        storage</a> <var>storage</var> for {{"notifications"}} by setting
-        <code><var>storage</var>.{{PermissionStorage/state}}</code> to
-        {{"granted"}} if it is acceptable, or {{"denied"}} otherwise.
+        state</a> for {{"notifications"}} to {{"granted"}} if it is acceptable,
+        or {{"denied"}} otherwise.
       </blockquote>
+
+      <p>
+        The [[web-bluetooth]] API can remove permission to access a particular
+        <var>device</var> using:
+      </p>
+      <blockquote>
+        <a>Update the permission storage</a> <var>storage</var> for
+        {{"bluetooth"}} by running the following sub-steps:
+        <ol class="algorithm">
+          <li>
+            If there is an <var>allowedDevice</var> in
+            <code><var>storage</var>.{{BluetoothPermissionStorage/allowedDevices}}</code>
+            with
+            <code><var>allowedDevice</var>.{{AllowedBluetoothDevice/[[device]]}}</code>
+            equal to <var>device</var>, remove it.
+          </li>
+        </ol>
+      </blockquote>
+
+
       <p>
         Note that the steps inside <a>Update the permission storage</a> may run
         multiple times on permission storages that aren't equal to what `"name"`
@@ -536,6 +570,26 @@ spec: webidl
         the value from the user's variable <var>storage</var>.
       </li>
     </ol>
+
+    <p>
+      We define shorthands for permissions that only need to access their
+      {{PermissionStorage/state}}:
+    </p>
+    <ul>
+      <li>
+        The {{PermissionName}} <var>name</var> <dfn export>permission's
+        state</dfn> is the <var>name</var> <a>permission's storage</a>'s
+        {{PermissionStorage/state}}.
+      </li>
+      <li>
+        To <dfn export>update the permission state</dfn> for a
+        {{PermissionName}} <var>name</var> to a {{PermissionState}}
+        <var>state</var> means to <a>update the permission storage</a>
+        <var>storage</var> for <var>name</var> by setting
+        <code><var>storage</var>.{{PermissionStorage/state}}</code> to
+        <var>state</var>.
+      </li>
+    </ul>
   </section>
 </section>
 <section>

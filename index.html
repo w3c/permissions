@@ -1526,7 +1526,7 @@ Possible extra rowspan handling
     Permission Registry
   </a></span><span><a href="#ref-for-enumdef-permissionname-3">5. 
     Permission Store
-  </a></span><span><a href="#ref-for-enumdef-permissionname-4">5.1. Storage Manipulation Algorithms</a> <a href="#ref-for-enumdef-permissionname-5">(2)</a></span></span></dfn> {
+  </a></span><span><a href="#ref-for-enumdef-permissionname-4">5.1. Storage Manipulation Algorithms</a> <a href="#ref-for-enumdef-permissionname-5">(2)</a> <a href="#ref-for-enumdef-permissionname-6">(3)</a> <a href="#ref-for-enumdef-permissionname-7">(4)</a></span></span></dfn> {
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-geolocation" id="ref-for-dom-permissionname-geolocation-1">"geolocation"</a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-notifications" id="ref-for-dom-permissionname-notifications-1">"notifications"</a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-push" id="ref-for-dom-permissionname-push-1">"push"</a>,
@@ -1713,7 +1713,7 @@ Possible extra rowspan handling
   // PermissionStorage is just an explanatory device.
   // Instances are never received from or passed to Javascript code.
 
-  required <a data-link-type="idl-name" href="#enumdef-permissionstate" id="ref-for-enumdef-permissionstate-1">PermissionState</a> <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionStorage" data-dfn-type="dict-member" data-export="" data-lt="state" data-type="PermissionState " id="dom-permissionstorage-state">state<span class="dfn-panel" data-deco=""><b><a href="#dom-permissionstorage-state">#dom-permissionstorage-state</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissionstorage-state-1">5.1. Storage Manipulation Algorithms</a> <a href="#ref-for-dom-permissionstorage-state-2">(2)</a></span></span></dfn>;
+  required <a data-link-type="idl-name" href="#enumdef-permissionstate" id="ref-for-enumdef-permissionstate-1">PermissionState</a> <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionStorage" data-dfn-type="dict-member" data-export="" data-lt="state" data-type="PermissionState " id="dom-permissionstorage-state">state<span class="dfn-panel" data-deco=""><b><a href="#dom-permissionstorage-state">#dom-permissionstorage-state</a></b><b>Referenced in:</b><span><a href="#ref-for-dom-permissionstorage-state-1">5.1. Storage Manipulation Algorithms</a> <a href="#ref-for-dom-permissionstorage-state-2">(2)</a> <a href="#ref-for-dom-permissionstorage-state-3">(3)</a></span></span></dfn>;
 };
 </pre>
     <p> The steps to <dfn class="dfn-paneled" data-dfn-type="dfn" data-lt="retrieve a permission storage entry" data-noexport="" id="retrieve-a-permission-storage-entry">retrieve a permission storage entry<span class="dfn-panel" data-deco=""><b><a href="#retrieve-a-permission-storage-entry">#retrieve-a-permission-storage-entry</a></b><b>Referenced in:</b><span><a href="#ref-for-retrieve-a-permission-storage-entry-1">5.1. Storage Manipulation Algorithms</a></span></span></dfn> of a <a data-link-type="dfn" href="#permission-storage-identifier" id="ref-for-permission-storage-identifier-1">permission storage identifier</a> are as follows: </p>
@@ -1746,12 +1746,28 @@ Possible extra rowspan handling
       <a class="self-link" href="#example-storage-manipulation"></a> 
       <p> The <a data-link-type="biblio" href="#biblio-notifications">[notifications]</a> API can check for the user having granted
         permission using: </p>
-      <blockquote> If the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-notifications" id="ref-for-dom-permissionname-notifications-2">"notifications"</a></code> <a data-link-type="dfn" href="#permissions-storage" id="ref-for-permissions-storage-1">permission’s storage</a>’s <code class="idl"><a data-link-type="idl" href="#dom-permissionstorage-state" id="ref-for-dom-permissionstorage-state-1">state</a></code> is not <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted-2">"granted"</a></code>, reject <var>promise</var> with a <code class="idl"><a data-link-type="idl" href="https://tc39.github.io/ecma262/#sec-native-error-types-used-in-this-standard-typeerror">TypeError</a></code> exception and terminate these
-        substeps. </blockquote>
+      <blockquote> If the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-notifications" id="ref-for-dom-permissionname-notifications-2">"notifications"</a></code> <a data-link-type="dfn" href="#permissions-state" id="ref-for-permissions-state-1">permission’s state</a> is not <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted-2">"granted"</a></code>, reject <var>promise</var> with a <code class="idl"><a data-link-type="idl" href="https://tc39.github.io/ecma262/#sec-native-error-types-used-in-this-standard-typeerror">TypeError</a></code> exception
+        and terminate these substeps. </blockquote>
+      <p> The <a data-link-type="biblio" href="#biblio-web-bluetooth">[web-bluetooth]</a> API can check for the user having granted
+        permission to use a particular <var>device</var> using: </p>
+      <blockquote>
+       <ol class="algorithm">
+        <li>Let <var>storage</var> be the <code class="idl"><a data-link-type="idl" href="https://webbluetoothcg.github.io/web-bluetooth/#dom-permissionname-bluetooth">"bluetooth"</a></code> <a data-link-type="dfn" href="#permissions-storage" id="ref-for-permissions-storage-1">permission’s storage</a>. 
+        <li> If <var>device</var> is the <code class="idl"><a data-link-type="idl" href="https://webbluetoothcg.github.io/web-bluetooth/#dom-allowedbluetoothdevice-device-slot">[[device]]</a></code> for one of the <code class="idl"><a data-link-type="idl" href="https://webbluetoothcg.github.io/web-bluetooth/#dictdef-allowedbluetoothdevice">AllowedBluetoothDevice</a></code>s in <code><var>storage</var>.allowedDevices</code>, … 
+       </ol>
+      </blockquote>
       <p> The <a data-link-type="biblio" href="#biblio-notifications">[notifications]</a> API can update the stored permission using: </p>
       <blockquote> … ask the user whether showing notifications for the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current
-        settings object</a>’s origin is acceptable. <a data-link-type="dfn" href="#update-the-permission-storage" id="ref-for-update-the-permission-storage-1">Update the permission
-        storage</a> <var>storage</var> for <code class="idl"><a data-link-type="idl" href="#dom-permissionname-notifications" id="ref-for-dom-permissionname-notifications-3">"notifications"</a></code> by setting <code><var>storage</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionstorage-state" id="ref-for-dom-permissionstorage-state-2">state</a></code></code> to <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted-3">"granted"</a></code> if it is acceptable, or <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied-2">"denied"</a></code> otherwise. </blockquote>
+        settings object</a>’s origin is acceptable. <a data-link-type="dfn" href="#update-the-permission-state" id="ref-for-update-the-permission-state-1">Update the permission
+        state</a> for <code class="idl"><a data-link-type="idl" href="#dom-permissionname-notifications" id="ref-for-dom-permissionname-notifications-3">"notifications"</a></code> to <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted-3">"granted"</a></code> if it is acceptable,
+        or <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied-2">"denied"</a></code> otherwise. </blockquote>
+      <p> The <a data-link-type="biblio" href="#biblio-web-bluetooth">[web-bluetooth]</a> API can remove permission to access a particular <var>device</var> using: </p>
+      <blockquote>
+        <a data-link-type="dfn" href="#update-the-permission-storage" id="ref-for-update-the-permission-storage-1">Update the permission storage</a> <var>storage</var> for <code class="idl"><a data-link-type="idl" href="https://webbluetoothcg.github.io/web-bluetooth/#dom-permissionname-bluetooth">"bluetooth"</a></code> by running the following sub-steps: 
+       <ol class="algorithm">
+        <li> If there is an <var>allowedDevice</var> in <code><var>storage</var>.<code class="idl"><a data-link-type="idl" href="https://webbluetoothcg.github.io/web-bluetooth/#dom-bluetoothpermissionstorage-alloweddevices">allowedDevices</a></code></code> with <code><var>allowedDevice</var>.<code class="idl"><a data-link-type="idl" href="https://webbluetoothcg.github.io/web-bluetooth/#dom-allowedbluetoothdevice-device-slot">[[device]]</a></code></code> equal to <var>device</var>, remove it. 
+       </ol>
+      </blockquote>
       <p> Note that the steps inside <a data-link-type="dfn" href="#update-the-permission-storage" id="ref-for-update-the-permission-storage-2">Update the permission storage</a> may run
         multiple times on permission storages that aren’t equal to what <code>"name"</code> <a data-link-type="dfn" href="#permissions-storage" id="ref-for-permissions-storage-2">permission’s storage</a> returns, particularly to handle the
         difference between temporary and permanent permissions. Do not rely on
@@ -1760,8 +1776,8 @@ Possible extra rowspan handling
      </div>
      <p> The <code class="idl"><a data-link-type="idl" href="#enumdef-permissionname" id="ref-for-enumdef-permissionname-4">PermissionName</a></code> <var>name</var> <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="permission’s
       storage" id="permissions-storage">permission’s
-      storage<span class="dfn-panel" data-deco=""><b><a href="#permissions-storage">#permissions-storage</a></b><b>Referenced in:</b><span><a href="#ref-for-permissions-storage-1">5.1. Storage Manipulation Algorithms</a> <a href="#ref-for-permissions-storage-2">(2)</a> <a href="#ref-for-permissions-storage-3">(3)</a></span><span><a href="#ref-for-permissions-storage-4">6. 
-    Status of a permission </a></span><span><a href="#ref-for-permissions-storage-5">8. 
+      storage<span class="dfn-panel" data-deco=""><b><a href="#permissions-storage">#permissions-storage</a></b><b>Referenced in:</b><span><a href="#ref-for-permissions-storage-1">5.1. Storage Manipulation Algorithms</a> <a href="#ref-for-permissions-storage-2">(2)</a> <a href="#ref-for-permissions-storage-3">(3)</a> <a href="#ref-for-permissions-storage-4">(4)</a></span><span><a href="#ref-for-permissions-storage-5">6. 
+    Status of a permission </a></span><span><a href="#ref-for-permissions-storage-6">8. 
     Permissions interface </a></span></span></dfn> is the result of the following algorithm (formerly named the <dfn data-dfn-type="dfn" data-export="" id="retrieve-the-permission-storage">retrieve the permission storage<a class="self-link" href="#retrieve-the-permission-storage"></a></dfn> algorithm): </p>
      <ol class="algorithm">
       <li> <a data-link-type="dfn" href="#get-a-permission-storage-identifier" id="ref-for-get-a-permission-storage-identifier-1">Get a permission storage identifier</a> for <var>name</var> and
@@ -1776,7 +1792,7 @@ Possible extra rowspan handling
         on <a data-link-type="dfn" href="https://www.w3.org/TR/uievents/#dfn-user-agent">user agent</a>’s defined heuristics. For example, <code>{state: <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-prompt" id="ref-for-dom-permissionstate-prompt-2">"prompt"</a></code>}</code> can be a default value, but it can also be based on
         frequency of visits. 
      </ol>
-     <p> When an algorithm says to <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="update the permission storage" id="update-the-permission-storage">update the permission storage<span class="dfn-panel" data-deco=""><b><a href="#update-the-permission-storage">#update-the-permission-storage</a></b><b>Referenced in:</b><span><a href="#ref-for-update-the-permission-storage-1">5.1. Storage Manipulation Algorithms</a> <a href="#ref-for-update-the-permission-storage-2">(2)</a></span><span><a href="#ref-for-update-the-permission-storage-3">8. 
+     <p> When an algorithm says to <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="update the permission storage" id="update-the-permission-storage">update the permission storage<span class="dfn-panel" data-deco=""><b><a href="#update-the-permission-storage">#update-the-permission-storage</a></b><b>Referenced in:</b><span><a href="#ref-for-update-the-permission-storage-1">5.1. Storage Manipulation Algorithms</a> <a href="#ref-for-update-the-permission-storage-2">(2)</a> <a href="#ref-for-update-the-permission-storage-3">(3)</a></span><span><a href="#ref-for-update-the-permission-storage-4">8. 
     Permissions interface </a></span></span></dfn> <var>storage</var> for a <code class="idl"><a data-link-type="idl" href="#enumdef-permissionname" id="ref-for-enumdef-permissionname-5">PermissionName</a></code> <var>name</var> using some
       instructions, where "<var>storage</var>" is a placeholder for an
       arbitrarily-named variable,the UA MUST: </p>
@@ -1792,13 +1808,20 @@ Possible extra rowspan handling
       <li> <a data-link-type="dfn" href="#create-a-permission-storage-entry" id="ref-for-create-a-permission-storage-entry-1">Create a permission storage entry</a> for <var>identifier</var> with
         the value from the user’s variable <var>storage</var>. 
      </ol>
+     <p> We define shorthands for permissions that only need to access their <code class="idl"><a data-link-type="idl" href="#dom-permissionstorage-state" id="ref-for-dom-permissionstorage-state-1">state</a></code>: </p>
+     <ul>
+      <li> The <code class="idl"><a data-link-type="idl" href="#enumdef-permissionname" id="ref-for-enumdef-permissionname-6">PermissionName</a></code> <var>name</var> <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="permission’s
+        state" id="permissions-state">permission’s
+        state<span class="dfn-panel" data-deco=""><b><a href="#permissions-state">#permissions-state</a></b><b>Referenced in:</b><span><a href="#ref-for-permissions-state-1">5.1. Storage Manipulation Algorithms</a></span></span></dfn> is the <var>name</var> <a data-link-type="dfn" href="#permissions-storage" id="ref-for-permissions-storage-4">permission’s storage</a>’s <code class="idl"><a data-link-type="idl" href="#dom-permissionstorage-state" id="ref-for-dom-permissionstorage-state-2">state</a></code>. 
+      <li> To <dfn class="dfn-paneled" data-dfn-type="dfn" data-export="" data-lt="update the permission state" id="update-the-permission-state">update the permission state<span class="dfn-panel" data-deco=""><b><a href="#update-the-permission-state">#update-the-permission-state</a></b><b>Referenced in:</b><span><a href="#ref-for-update-the-permission-state-1">5.1. Storage Manipulation Algorithms</a></span></span></dfn> for a <code class="idl"><a data-link-type="idl" href="#enumdef-permissionname" id="ref-for-enumdef-permissionname-7">PermissionName</a></code> <var>name</var> to a <code class="idl"><a data-link-type="idl" href="#enumdef-permissionstate" id="ref-for-enumdef-permissionstate-2">PermissionState</a></code> <var>state</var> means to <a data-link-type="dfn" href="#update-the-permission-storage" id="ref-for-update-the-permission-storage-3">update the permission storage</a> <var>storage</var> for <var>name</var> by setting <code><var>storage</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionstorage-state" id="ref-for-dom-permissionstorage-state-3">state</a></code></code> to <var>state</var>. 
+     </ul>
     </section>
    </section>
    <section>
     <h2 class="heading settled" data-level="6" id="status-of-a-permission"><span class="secno">6. </span><span class="content"> Status of a permission </span><a class="self-link" href="#status-of-a-permission"></a></h2>
 <pre class="idl def">enum <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export="" data-lt="PermissionState" id="enumdef-permissionstate">PermissionState<span class="dfn-panel" data-deco=""><b><a href="#enumdef-permissionstate">#enumdef-permissionstate</a></b><b>Referenced in:</b><span><a href="#ref-for-enumdef-permissionstate-1">5. 
     Permission Store
-  </a></span><span><a href="#ref-for-enumdef-permissionstate-2">6. 
+  </a></span><span><a href="#ref-for-enumdef-permissionstate-2">5.1. Storage Manipulation Algorithms</a></span><span><a href="#ref-for-enumdef-permissionstate-3">6. 
     Status of a permission
   </a></span></span></dfn> {
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted-4">"granted"</a>,
@@ -1831,7 +1854,7 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
   </a> <a href="#ref-for-permissionstatus-7">(2)</a> <a href="#ref-for-permissionstatus-8">(3)</a></span><span><a href="#ref-for-permissionstatus-9">9. 
     Common permission algorithms
   </a> <a href="#ref-for-permissionstatus-10">(2)</a></span></span></dfn> : <a data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget">EventTarget</a> {
-  readonly attribute <a data-link-type="idl-name" href="#enumdef-permissionstate" id="ref-for-enumdef-permissionstate-2">PermissionState</a> <a class="idl-code" data-link-type="attribute" data-readonly="" data-type="PermissionState " href="#dom-permissionstatus-state" id="ref-for-dom-permissionstatus-state-1">state</a>;
+  readonly attribute <a data-link-type="idl-name" href="#enumdef-permissionstate" id="ref-for-enumdef-permissionstate-3">PermissionState</a> <a class="idl-code" data-link-type="attribute" data-readonly="" data-type="PermissionState " href="#dom-permissionstatus-state" id="ref-for-dom-permissionstatus-state-1">state</a>;
   attribute <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">EventHandler</a> <a class="idl-code" data-link-type="attribute" data-type="EventHandler " href="#dom-permissionstatus-onchange" id="ref-for-dom-permissionstatus-onchange-1">onchange</a>;
 };
 </pre>
@@ -1850,7 +1873,7 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
     Permissions interface </a> <a href="#ref-for-update-the-state-3">(2)</a></span></span></dfn> of a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus-4">PermissionStatus</a></code> instance <var>status</var> are as
     follows: </p>
     <ol>
-     <li>Let <var>storage</var> be the <code><var>status</var>@<code class="idl"><a data-link-type="idl" href="#dom-permissionstatus-query-slot" id="ref-for-dom-permissionstatus-query-slot-2">[[query]]</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name-2">name</a></code></code> <a data-link-type="dfn" href="#permissions-storage" id="ref-for-permissions-storage-4">permission’s storage</a>. 
+     <li>Let <var>storage</var> be the <code><var>status</var>@<code class="idl"><a data-link-type="idl" href="#dom-permissionstatus-query-slot" id="ref-for-dom-permissionstatus-query-slot-2">[[query]]</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name-2">name</a></code></code> <a data-link-type="dfn" href="#permissions-storage" id="ref-for-permissions-storage-5">permission’s storage</a>. 
      <li>Run <code><var>status</var>@<code class="idl"><a data-link-type="idl" href="#dom-permissionstatus-permission-slot" id="ref-for-dom-permissionstatus-permission-slot-2">[[permission]]</a></code></code>’s <a data-link-type="dfn" href="#permission-query-algorithm" id="ref-for-permission-query-algorithm-2">permission
     query algorithm</a>, passing <code><var>status</var>@<code class="idl"><a data-link-type="idl" href="#dom-permissionstatus-query-slot" id="ref-for-dom-permissionstatus-query-slot-3">[[query]]</a></code></code>, <var>storage</var>, and <var>status</var>. 
     </ol>
@@ -1964,11 +1987,11 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
     asynchronously. 
      <li>Let <var>permission</var> be the <a data-link-type="dfn" href="#permission" id="ref-for-permission-6">permission</a> named by <code> <var>permissionDesc</var>.name</code>. 
      <li>Run the steps to <a data-link-type="dfn" href="#create-a-permissionstatus" id="ref-for-create-a-permissionstatus-2">create a PermissionStatus</a> for <var>permissionDesc</var>, and let <var>status</var> be the result. 
-     <li>Let <var>storage</var> be the <var>permission</var> <a data-link-type="dfn" href="#permissions-storage" id="ref-for-permissions-storage-5">permission’s
+     <li>Let <var>storage</var> be the <var>permission</var> <a data-link-type="dfn" href="#permissions-storage" id="ref-for-permissions-storage-6">permission’s
     storage</a>. 
      <li>
       Let <var>result</var> be the result of <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-guide#promise-calling">promise-calling</a> <var>permission</var>’s <a data-link-type="dfn" href="#permission-request-algorithm" id="ref-for-permission-request-algorithm-2">permission request algorithm</a> with <var>storage</var>, <var>permissionDesc</var>, and <var>status</var> as arguments. 
-      <p class="note" role="note">Note: The <a data-link-type="dfn" href="#permission-request-algorithm" id="ref-for-permission-request-algorithm-3">permission request algorithm</a> is responsible to <a data-link-type="dfn" href="#update-the-permission-storage" id="ref-for-update-the-permission-storage-3">update
+      <p class="note" role="note">Note: The <a data-link-type="dfn" href="#permission-request-algorithm" id="ref-for-permission-request-algorithm-3">permission request algorithm</a> is responsible to <a data-link-type="dfn" href="#update-the-permission-storage" id="ref-for-update-the-permission-storage-4">update
       the permission storage</a> if necessary.</p>
      <li>Resolve <var>promise</var> with the result of <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-guide#transforming-by">transforming</a> <var>result</var> with a fulfillment handler that returns <var>status</var>. 
     </ol>
@@ -2162,6 +2185,8 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
      <li><a href="#dom-workernavigator-permissions">attribute for WorkerNavigator</a><span>, in §7</span>
     </ul>
    <li><a href="#permissions">Permissions</a><span>, in §8</span>
+   <li><a href="#permissions-state">permission’s
+        state</a><span>, in §5.1</span>
    <li><a href="#permissions-storage">permission’s
       storage</a><span>, in §5.1</span>
    <li><a href="#enumdef-permissionstate">PermissionState</a><span>, in §6</span>
@@ -2193,6 +2218,7 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
      <li><a href="#dom-permissionstatus-state">attribute for PermissionStatus</a><span>, in §6</span>
     </ul>
    <li><a href="#dom-midipermissiondescriptor-sysex">sysex</a><span>, in §4.4</span>
+   <li><a href="#update-the-permission-state">update the permission state</a><span>, in §5.1</span>
    <li><a href="#update-the-permission-storage">update the permission storage</a><span>, in §5.1</span>
    <li><a href="#update-the-state">update the state</a><span>, in §6</span>
    <li><a href="#dom-pushpermissiondescriptor-uservisibleonly">userVisibleOnly</a><span>, in §4.3</span>
@@ -2243,6 +2269,9 @@ interface <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-expor
     <a data-link-type="biblio">[web-bluetooth]</a> defines the following terms:
     <ul>
      <li><a href="https://webbluetoothcg.github.io/web-bluetooth/#dom-permissionname-bluetooth">"bluetooth"</a>
+     <li><a href="https://webbluetoothcg.github.io/web-bluetooth/#dictdef-allowedbluetoothdevice">AllowedBluetoothDevice</a>
+     <li><a href="https://webbluetoothcg.github.io/web-bluetooth/#dom-allowedbluetoothdevice-device-slot">[[device]]</a>
+     <li><a href="https://webbluetoothcg.github.io/web-bluetooth/#dom-bluetoothpermissionstorage-alloweddevices">allowedDevices</a>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBIDL]</a> defines the following terms:
