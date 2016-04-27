@@ -39,8 +39,7 @@ git config user.name "Travis CI"
 git config user.email "$COMMIT_AUTHOR_EMAIL"
 
 # If there are no changes to the compiled out (e.g. this is a README update) then just bail.
-GIT_DIFF_EXIT_CODE=`git diff --exit-code`
-if [ "$GIT_DIFF_EXIT_CODE" == 0 ]; then
+if [[ -z $(git status -s) ]]; then
     echo "No changes to the output on this push; exiting."
     exit 0
 fi
