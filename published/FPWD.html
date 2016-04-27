@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" typeof="bibo:Document " prefix="bibo: http://purl.org/ontology/bibo/ w3p: http://www.w3.org/2001/02pd/rec54#">
+<head><meta lang="" property="dc:language" content="en">
+    <title>
+      The Permissions API
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    
+  <style>/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+/* --- INLINES --- */
+em.rfc2119 { 
+    text-transform:     lowercase;
+    font-variant:       small-caps;
+    font-style:         normal;
+    color:              #900;
+}
+
+h1 acronym, h2 acronym, h3 acronym, h4 acronym, h5 acronym, h6 acronym, a acronym,
+h1 abbr, h2 abbr, h3 abbr, h4 abbr, h5 abbr, h6 abbr, a abbr {
+    border: none;
+}
+
+dfn {
+    font-weight:    bold;
+}
+
+a.internalDFN {
+    color:  inherit;
+    border-bottom:  1px solid #99c;
+    text-decoration:    none;
+}
+
+a.externalDFN {
+    color:  inherit;
+    border-bottom:  1px dotted #ccc;
+    text-decoration:    none;
+}
+
+a.bibref {
+    text-decoration:    none;
+}
+
+cite .bibref {
+    font-style: normal;
+}
+
+code {
+    color:  #C83500;
+}
+
+/* --- TOC --- */
+.toc a, .tof a {
+    text-decoration:    none;
+}
+
+a .secno, a .figno {
+    color:  #000;
+}
+
+ul.tof, ol.tof {
+    list-style: none outside none;
+}
+
+.caption {
+    margin-top: 0.5em;
+    font-style:   italic;
+}
+
+/* --- TABLE --- */
+table.simple {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    border-bottom:  3px solid #005a9c;
+}
+
+.simple th {
+    background: #005a9c;
+    color:  #fff;
+    padding:    3px 5px;
+    text-align: left;
+}
+
+.simple th[scope="row"] {
+    background: inherit;
+    color:  inherit;
+    border-top: 1px solid #ddd;
+}
+
+.simple td {
+    padding:    3px 10px;
+    border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+    background: #f0f6ff;
+}
+
+/* --- DL --- */
+.section dd > p:first-child {
+    margin-top: 0;
+}
+
+.section dd > p:last-child {
+    margin-bottom: 0;
+}
+
+.section dd {
+    margin-bottom:  1em;
+}
+
+.section dl.attrs dd, .section dl.eldef dd {
+    margin-bottom:  0;
+}
+
+@media print {
+    .removeOnSave {
+        display: none;
+    }
+}
+</style><style>/* --- EXAMPLES --- */
+div.example-title {
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.example-title span {
+    text-transform: uppercase;   
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;    
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example div.example-title {
+    color: #999;
+}
+</style><style>/* --- ISSUES/NOTES --- */
+div.issue-title, div.note-title , div.warning-title {
+    padding-right:  1em;
+    min-width: 7.5em;
+    color: #b9ab2d;
+}
+div.issue-title { color: #e05252; }
+div.note-title { color: #2b2; }
+div.warning-title { color: #f22; }
+div.issue-title span, div.note-title span, div.warning-title span {
+    text-transform: uppercase;
+}
+div.note, div.issue, div.warning {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.note > p:first-child, .issue > p:first-child, .warning > p:first-child { margin-top: 0 }
+.issue, .note, .warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+div.issue, div.note , div.warning {
+    padding: 1em 1.2em 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+span.note, span.issue, span.warning { padding: .1em .5em .15em; }
+
+.issue {
+    border-color: #e05252;
+    background: #fbe9e9;
+}
+.note {
+    border-color: #52e052;
+    background: #e9fbe9;
+}
+
+.warning {
+    border-color: #f11;
+    border-right-width: .2em;
+    border-top-width: .2em;
+    border-bottom-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+</style><style>/* HIGHLIGHTS */
+code.prettyprint {
+    color:  inherit;
+}
+
+/* this from google-code-prettify */
+.pln{color:#000}@media screen{.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun,.opn,.clo{color:#660}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec,.var{color:#606}.fun{color:red}}@media print,projection{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun,.opn,.clo{color:#440}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}ol.linenums{margin-top:0;margin-bottom:0}li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style-type:none}li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}
+</style><style>/* --- WEB IDL --- */
+pre.idl {
+    border-top: 1px solid #90b8de;
+    border-bottom: 1px solid #90b8de;
+    padding:    1em;
+    line-height:    120%;
+}
+
+pre.idl::before {
+    content:    "WebIDL";
+    display:    block;
+    width:      150px;
+    background: #90b8de;
+    color:  #fff;
+    font-family:    initial;
+    padding:    3px;
+    font-weight:    bold;
+    margin: -1em 0 1em -1em;
+}
+
+.idlType {
+    color:  #ff4500;
+    font-weight:    bold;
+    text-decoration:    none;
+}
+
+/*.idlModule*/
+/*.idlModuleID*/
+/*.idlInterface*/
+.idlInterfaceID, .idlDictionaryID, .idlCallbackID, .idlEnumID {
+    font-weight:    bold;
+    color:  #005a9c;
+}
+a.idlEnumItem {
+    color:  #000;
+    border-bottom:  1px dotted #ccc;
+    text-decoration: none;
+}
+
+.idlSuperclass {
+    font-style: italic;
+    color:  #005a9c;
+}
+
+/*.idlAttribute*/
+.idlAttrType, .idlFieldType, .idlMemberType {
+    color:  #005a9c;
+}
+.idlAttrName, .idlFieldName, .idlMemberName {
+    color:  #ff4500;
+}
+.idlAttrName a, .idlFieldName a, .idlMemberName a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+}
+
+/*.idlMethod*/
+.idlMethType, .idlCallbackType {
+    color:  #005a9c;
+}
+.idlMethName {
+    color:  #ff4500;
+}
+.idlMethName a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+}
+
+/*.idlCtor*/
+.idlCtorName {
+    color:  #ff4500;
+}
+.idlCtorName a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+}
+
+/*.idlParam*/
+.idlParamType {
+    color:  #005a9c;
+}
+.idlParamName, .idlDefaultValue {
+    font-style: italic;
+}
+
+.extAttr {
+    color:  #666;
+}
+
+/*.idlSectionComment*/
+.idlSectionComment {
+    color: gray;
+}
+
+/*.idlMaplike*/
+.idlMaplikeKeyType, .idlMaplikeValueType {
+    color:  #005a9c;
+}
+
+/*.idlConst*/
+.idlConstType {
+    color:  #005a9c;
+}
+.idlConstName {
+    color:  #ff4500;
+}
+.idlConstName a {
+    color:  #ff4500;
+    border-bottom:  1px dotted #ff4500;
+    text-decoration: none;
+}
+
+/*.idlException*/
+.idlExceptionID {
+    font-weight:    bold;
+    color:  #c00;
+}
+
+.idlTypedefID, .idlTypedefType {
+    color:  #005a9c;
+}
+
+.idlRaises, .idlRaises a.idlType, .idlRaises a.idlType code, .excName a, .excName a code {
+    color:  #c00;
+    font-weight:    normal;
+}
+
+.excName a {
+    font-family:    monospace;
+}
+
+.idlRaises a.idlType, .excName a.idlType {
+    border-bottom:  1px dotted #c00;
+}
+
+.excGetSetTrue, .excGetSetFalse, .prmNullTrue, .prmNullFalse, .prmOptTrue, .prmOptFalse {
+    width:  45px;
+    text-align: center;
+}
+.excGetSetTrue, .prmNullTrue, .prmOptTrue { color:  #0c0; }
+.excGetSetFalse, .prmNullFalse, .prmOptFalse { color:  #c00; }
+
+.idlImplements a {
+    font-weight:    bold;
+}
+
+dl.attributes, dl.methods, dl.constants, dl.constructors, dl.fields, dl.dictionary-members {
+    margin-left:    2em;
+}
+
+.attributes dt, .methods dt, .constants dt, .constructors dt, .fields dt, .dictionary-members dt {
+    font-weight:    normal;
+}
+
+.attributes dt code, .methods dt code, .constants dt code, .constructors dt code, .fields dt code, .dictionary-members dt code {
+    font-weight:    bold;
+    color:  #000;
+    font-family:    monospace;
+}
+
+.attributes dt code, .fields dt code, .dictionary-members dt code {
+    background:  #ffffd2;
+}
+
+.attributes dt .idlAttrType code, .fields dt .idlFieldType code, .dictionary-members dt .idlMemberType code {
+    color:  #005a9c;
+    background:  transparent;
+    font-family:    inherit;
+    font-weight:    normal;
+    font-style: italic;
+}
+
+.methods dt code {
+    background:  #d9e6f8;
+}
+
+.constants dt code {
+    background:  #ddffd2;
+}
+
+.constructors dt code {
+    background:  #cfc;
+}
+
+.attributes dd, .methods dd, .constants dd, .constructors dd, .fields dd, .dictionary-members dd {
+    margin-bottom:  1em;
+}
+
+table.parameters, table.exceptions {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    margin: 0.5em 0;
+    width:  100%;
+}
+table.parameters { border-bottom:  1px solid #90b8de; }
+table.exceptions { border-bottom:  1px solid #deb890; }
+
+.parameters th, .exceptions th {
+    color:  #fff;
+    padding:    3px 5px;
+    text-align: left;
+    font-family:    initial;
+    font-weight:    normal;
+    text-shadow:    #666 1px 1px 0;
+}
+.parameters th { background: #90b8de; }
+.exceptions th { background: #deb890; }
+
+.parameters td, .exceptions td {
+    padding:    3px 10px;
+    border-top: 1px solid #ddd;
+    vertical-align: top;
+}
+
+.parameters tr:first-child td, .exceptions tr:first-child td {
+    border-top: none;
+}
+
+.parameters td.prmName, .exceptions td.excName, .exceptions td.excCodeName {
+    width:  100px;
+}
+
+.parameters td.prmType {
+    width:  120px;
+}
+
+table.exceptions table {
+    border-spacing: 0;
+    border-collapse:    collapse;
+    width:  100%;
+}
+</style><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/W3C-WD"><!--[if lt IE 9]><script src='https://www.w3.org/2008/site/js/html5shiv.js'></script><![endif]--></head>
+  <body class="h-entry" role="document" id="respecDocument"><div class="head" role="contentinfo" id="respecHeader">
+  <p>
+      
+        
+            <a href="http://www.w3.org/"><img width="72" height="48" src="https://www.w3.org/Icons/w3c_home" alt="W3C"></a>
+        
+      
+  </p>
+  <h1 class="title p-name" id="title" property="dcterms:title">The Permissions API</h1>
+  
+  <h2 id="w3c-first-public-working-draft-18-march-2015"><abbr title="World Wide Web Consortium">W3C</abbr> First Public Working Draft <time property="dcterms:issued" class="dt-published" datetime="2015-03-18">7 April 2015</time></h2>
+  <dl>
+    
+      <dt>This version:</dt>
+      <dd><a class="u-url" href="http://www.w3.org/TR/2015/WD-permissions-20150407/">http://www.w3.org/TR/2015/WD-permissions-20150407/</a></dd>
+      <dt>Latest published version:</dt>
+      <dd><a href="http://www.w3.org/TR/permissions/">http://www.w3.org/TR/permissions/</a></dd>
+    
+    
+      <dt>Latest editor's draft:</dt>
+      <dd><a href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a></dd>
+    
+    
+    
+    
+    
+    
+    
+    <dt>Editors:</dt>
+    <dd class="p-author h-card vcard" property="bibo:editor" resource="_:editor0"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Mounir Lamouri</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://google.com/">Google Inc.</a></span>
+<span property="rdf:rest" resource="_:editor1"></span>
+</dd>
+<dd class="p-author h-card vcard" resource="_:editor1"><span property="rdf:first" typeof="foaf:Person"><span property="foaf:name" class="p-name fn">Marcos Cáceres</span>, <a property="foaf:workplaceHomepage" class="p-org org h-org h-card" href="http://mozilla.com/">Mozilla</a></span>
+<span property="rdf:rest" resource="rdf:nil"></span>
+</dd>
+
+    
+    
+      
+        
+          <dt>Participate:</dt>
+          
+             
+                
+                  <dd>
+                    <a href="https://github.com/w3c/permissions">
+                      We are on Github.
+                    </a>
+                  </dd>
+                
+             
+                
+                  <dd>
+                    <a href="https://github.com/w3c/permissions/issues">
+                      File a bug.
+                    </a>
+                  </dd>
+                
+             
+                
+                  <dd>
+                    <a href="https://github.com/w3c/permissions/commits/gh-pages">
+                      Commit history.
+                    </a>
+                  </dd>
+                
+             
+                
+                  <dd>
+                    <a href="http://lists.w3.org/Archives/Public/public-webapps/">
+                      Mailing list.
+                    </a>
+                  </dd>
+                
+             
+          
+        
+      
+        
+          <dt>Implementation status:</dt>
+          
+             
+                
+                  <dd>
+                    <a href="https://code.google.com/p/chromium/issues/detail?id=437770">
+                      Blink/Chromium
+                    </a>
+                  </dd>
+                
+             
+                
+                  <dd>
+                    <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1105827">
+                      Gecko
+                    </a>
+                  </dd>
+                
+             
+          
+        
+      
+    
+  </dl>
+  
+  
+  
+  
+    
+      <p class="copyright">
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> ©
+        2015
+        
+        <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup>
+        (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+        <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>,
+        <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). 
+        
+        <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+        <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
+        
+          <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a>
+        
+        rules apply.
+      </p>
+    
+  
+  <hr>
+</div>
+    <section id="abstract" class="introductory" property="dc:abstract"><h2 id="h-abstract" resource="#h-abstract"><span property="xhv:role" resource="xhv:heading">Abstract</span></h2><p>
+      The <cite>Permissions API</cite> allows a web application to be aware of
+      the status of a given permission, to know whether it is granted, denied
+      or if the user will be asked whether the permission should be granted.
+    </p></section><section id="sotd" class="introductory"><h2 id="h-sotd" resource="#h-sotd"><span property="xhv:role" resource="xhv:heading">Status of This Document</span></h2>
+  
+    
+      
+        <p>
+          <em>This section describes the status of this document at the time of its publication.
+          Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the
+          latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
+          http://www.w3.org/TR/.</em>
+        </p>
+        
+        <p>
+          This document was published by the <a href="http://www.w3.org/2011/webappsec/">Web Application Security Working Group</a> as a First Public Working Draft.
+          
+            This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
+          
+          
+            If you wish to make comments regarding this document, please send them to 
+            <a href="mailto:public-webappsec@w3.org">public-webappsec@w3.org</a> 
+            (<a href="mailto:public-webappsec-request@w3.org?subject=subscribe">subscribe</a>,
+            <a href="http://lists.w3.org/Archives/Public/public-webappsec/">archives</a>).
+          
+          
+          
+          
+          
+            
+            All comments are welcome.
+            
+          
+        </p>
+        
+        
+        
+          <p>
+            Publication as a First Public Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr>
+            Membership. This is a draft document and may be updated, replaced or obsoleted by other
+            documents at any time. It is inappropriate to cite this document as other than work in
+            progress.
+          </p>
+        
+        
+        
+        <p>
+          
+            This document was produced by a group operating under the 
+            <a id="sotd_patent" property="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
+            Policy</a>.
+          
+          
+          
+            
+              <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="http://www.w3.org/2004/01/pp-impl/49309/status" rel="disclosure">public list of any patent
+              disclosures</a> 
+            
+            made in connection with the deliverables of the group; that page also includes
+            instructions for disclosing a patent. An individual who has actual knowledge of a patent
+            which the individual believes contains
+            <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential
+            Claim(s)</a> must disclose the information in accordance with
+            <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section
+            6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+          
+          
+        </p>
+        
+          <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2014/Process-20140801/">1 August 2014 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+          </p>
+        
+        
+      
+    
+  
+</section><section id="toc"><h2 class="introductory" id="h-toc" resource="#h-toc"><span property="xhv:role" resource="xhv:heading">Table of Contents</span></h2><ul class="toc" role="directory" id="respecContents"><li class="tocline"><a href="#conformance" class="tocxref"><span class="secno">1. </span>Conformance</a></li><li class="tocline"><a href="#dependencies" class="tocxref"><span class="secno">2. </span>
+        Dependencies
+      </a></li><li class="tocline"><a href="#scope-of-this-document" class="tocxref"><span class="secno">3. </span>
+        Scope of this document
+      </a></li><li class="tocline"><a href="#permission-registry" class="tocxref"><span class="secno">4. </span>
+        Permission Registry
+      </a></li><li class="tocline"><a href="#permission-definition" class="tocxref"><span class="secno">5. </span>
+        Permission definition
+      </a></li><li class="tocline"><a href="#status-of-a-permission" class="tocxref"><span class="secno">6. </span>
+        Status of a permission
+      </a></li><li class="tocline"><a href="#permissions-interface" class="tocxref"><span class="secno">7. </span>
+        Permissions interface
+      </a></li><li class="tocline"><a href="#examples" class="tocxref"><span class="secno">8. </span>
+        Examples
+      </a></li><li class="tocline"><a href="#acknowledgments" class="tocxref"><span class="secno">A. </span>
+        Acknowledgments
+      </a></li><li class="tocline"><a href="#references" class="tocxref"><span class="secno">B. </span>References</a><ul class="toc"><li class="tocline"><a href="#normative-references" class="tocxref"><span class="secno">B.1 </span>Normative references</a></li><li class="tocline"><a href="#informative-references" class="tocxref"><span class="secno">B.2 </span>Informative references</a></li></ul></li></ul></section>
+    
+    <section id="conformance" typeof="bibo:Chapter" resource="#conformance" property="bibo:hasPart"><!--OddPage--><h2 id="h-conformance" resource="#h-conformance"><span property="xhv:role" resource="xhv:heading"><span class="secno">1. </span>Conformance</span></h2>
+<p>
+  As well as sections marked as non-normative, all authoring guidelines, diagrams, examples,
+  and notes in this specification are non-normative. Everything else in this specification is
+  normative.
+</p>
+<p id="respecRFC2119">The key words <em class="rfc2119" title="MAY">MAY</em>, <em class="rfc2119" title="MUST">MUST</em>, and <em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em> are 
+  to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].
+</p>
+
+      <p>
+        This specification defines conformance criteria that apply to a single
+        product: the <dfn id="dfn-user-agent">user agent</dfn> that implements the interfaces that
+        it contains.
+      </p>
+      <p>
+        Implementations that use ECMAScript to expose the APIs defined in this
+        specification <em class="rfc2119" title="MUST">MUST</em> implement them in a manner consistent with the
+        ECMAScript Bindings defined in the Web IDL specification [<cite><a class="bibref" href="#bib-WEBIDL">WEBIDL</a></cite>].
+      </p>
+    </section>
+    <section id="dependencies" typeof="bibo:Chapter" resource="#dependencies" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-dependencies" resource="#h-dependencies"><span property="xhv:role" resource="xhv:heading"><span class="secno">2. </span>
+        Dependencies
+      </span></h2>
+      <p>
+        The following concepts and interfaces are defined in [<cite><a class="bibref" href="#bib-HTML">HTML</a></cite>]:
+      </p>
+      <ul>
+        <li>
+          <a href="https://html.spec.whatwg.org/multipage/browsers.html#origin-2"><dfn id="dfn-origin">origin</dfn></a>
+          of a <a href="https://html.spec.whatwg.org/multipage/dom.html#document"><dfn id="dfn-document">Document</dfn></a>
+          and a <a href="https://html.spec.whatwg.org/multipage/workers.html#workers"><dfn id="dfn-worker">worker</dfn></a>.
+        </li>
+        <li>
+          <dfn id="dfn-queue-a-task"><a href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">
+          queue a task</a></dfn>
+        </li>
+        <li>
+          <dfn id="dfn-fire-a-simple-event"><a href="https://html.spec.whatwg.org/multipage/webappapis.html#fire-a-simple-event">
+          fire a simple event</a></dfn>
+        </li>
+        <li>
+          <dfn id="dfn-event-handler"><a href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handlers">
+          event handler</a></dfn>
+        </li>
+        <li>
+          <dfn id="dfn-event-handler-event-type"><a href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handler-event-type">
+          event handler event type</a></dfn>
+        </li>
+        <li>
+          <dfn id="dfn-window"><a href="https://html.spec.whatwg.org/multipage/browsers.html#window">Window</a></dfn>
+        </li>
+        <li>
+          <dfn id="dfn-global-object"><a href="https://html.spec.whatwg.org/multipage/webappapis.html#global-object">
+          global object</a></dfn>
+        </li>
+      </ul>
+      <p>
+        <a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects">
+        <dfn id="dfn-promise">Promise</dfn> objects</a> are defined in [<cite><a class="bibref" href="#bib-ECMASCRIPT">ECMASCRIPT</a></cite>].
+      </p>
+    </section>
+    <section class="informative" id="scope-of-this-document" typeof="bibo:Chapter" resource="#scope-of-this-document" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-scope-of-this-document" resource="#h-scope-of-this-document"><span property="xhv:role" resource="xhv:heading"><span class="secno">3. </span>
+        Scope of this document
+      </span></h2><p><em>This section is non-normative.</em></p>
+      <p>
+        This document goal is to specify an API that will help developers to
+        handle permissions on the Web platform. Web APIs have different ways to
+        deal with permissions. The [<cite><a class="bibref" href="#bib-notifications">notifications</a></cite>] API allows developers to
+        request a permission and check the permission status explicitly. Others
+        might only expose the status to web pages. Some, like [<cite><a class="bibref" href="#bib-geolocation-API">geolocation-API</a></cite>]
+        will keep the page unaware of the permission associated with the
+        feature.
+      </p>
+      <p>
+        Being able to know whether an API call is going to prompt is mandatory
+        in order to provide a good user experience. Unfortunately, more often
+        than not, those prompts can't be controlled by the developers.
+      </p>
+      <p>
+        The API specified in this document is meant to provide the tools so
+        that web applications can improve their user experience when
+        permissions are involved.
+      </p>
+      <p>
+        The solution described in this document is meant to be extensible but
+        isn't meant to be applicable to all the current and future permissions
+        available in the web platform. If you are working on a specification
+        that has a permission model that wouldn't fit in the model described in
+        this document, please contact the editors or file an issue. We would
+        love to hear about it.
+      </p>
+      <p>
+        The initial intent of this document was to allow web applications to
+        request and revoke permissions explicitly in addition of query the
+        permission status. This is an aspect of the specification that was
+        controversial thus removed from the current document in a spirit of
+        incremental changes: settling on a small API that can be improved.
+      </p>
+    </section>
+    <section id="permission-registry" typeof="bibo:Chapter" resource="#permission-registry" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-permission-registry" resource="#h-permission-registry"><span property="xhv:role" resource="xhv:heading"><span class="secno">4. </span>
+        Permission Registry
+      </span></h2>
+      <pre class="idl"><span class="idlEnum" id="idl-def-PermissionName">enum <span class="idlEnumID">PermissionName</span> {
+    "<a href="#idl-def-PermissionName.geolocation" class="idlEnumItem">geolocation</a>",
+    "<a href="#idl-def-PermissionName.notifications" class="idlEnumItem">notifications</a>",
+    "<a href="#idl-def-PermissionName.push-notifications" class="idlEnumItem">push-notifications</a>",
+    "<a href="#idl-def-PermissionName.midi-sysex" class="idlEnumItem">midi-sysex</a>"
+};</span></pre>
+      <p>
+        The <code>PermissionName</code> enum defines the list of known
+        permissions. These permissions are meant to be associated with a use
+        case instead of one API. Thus, some permissions have a 1:1 relationship
+        with an API while some others might include more than one API or even a
+        subset of an API.
+      </p>
+      <div class="note"><div class="note-title" aria-level="3" role="heading" id="h-note1"><span>Note</span></div><p class="">
+        For example, <a href="#idl-def-PermissionName.push-notifications" class="internalDFN">push-notifications</a> is exposing the ability for a
+        web page to use push messages in order to show notifications.
+        Implementations might associate it with full usage of the Push API and
+        the Notifications API while others will force the callers to use the
+        Push API only in order to use the Notifications API.
+      </p></div>
+      <p>
+        Specifications are welcome to request a new name to be added to this
+        registry instead of trying to monkey patch it.
+      </p>
+      <p>
+        The <code><dfn id="idl-def-PermissionName.geolocation">geolocation</dfn></code>
+        permission is the permission associated with the usage of the
+        [<cite><a class="bibref" href="#bib-geolocation-API">geolocation-API</a></cite>].
+      </p>
+      <p>
+        The <code><dfn id="idl-def-PermissionName.notifications">notifications</dfn></code>
+        permission is the permission associated with the usage of the
+        [<cite><a class="bibref" href="#bib-notifications">notifications</a></cite>] API.
+      </p>
+      <p>
+        The <code><dfn id="idl-def-PermissionName.push-notifications">push-notifications</dfn></code>
+        permission is the permission associated with the usage of the
+        [<cite><a class="bibref" href="#bib-push-api">push-api</a></cite>] in order to show notifications using the [<cite><a class="bibref" href="#bib-notifications">notifications</a></cite>]
+        API.
+      </p>
+      <p>
+        The <code><dfn id="idl-def-PermissionName.midi-sysex">midi-sysex</dfn></code> permission
+        is the permission associated with the usage of sysex messages in the
+        [<cite><a class="bibref" href="#bib-webmidi">webmidi</a></cite>] API.
+      </p>
+    </section>
+    <section id="permission-definition" typeof="bibo:Chapter" resource="#permission-definition" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-permission-definition" resource="#h-permission-definition"><span property="xhv:role" resource="xhv:heading"><span class="secno">5. </span>
+        Permission definition
+      </span></h2>
+      <pre class="idl"><span class="idlDictionary" id="idl-def-Permission">dictionary <span class="idlDictionaryID">Permission</span> {
+<span class="idlMember">    <span class="idlMemberType">required PermissionName</span> <span class="idlMemberName"><a href="#widl-Permission-name">name</a></span>;</span>
+};</span></pre>
+      <p>
+        A <code>Permission</code> dictionary <em class="rfc2119" title="MUST">MUST</em> contain a <code><dfn id="widl-Permission-name">name</dfn></code> field which represents the
+        permission's identifier.
+      </p>
+      <p>
+        If a permission has to be defined by more than its name, it is
+        <em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em> to inherit from <code>Permission</code> dictionary and add
+        new fields.
+      </p>
+      <div class="note"><div class="note-title" aria-level="3" role="heading" id="h-note2"><span>Note</span></div><div class="">
+        There are currently no permission defined in this specification using
+        this dictionary. It is only specified here in order to expose the
+        ability for the API to be extended to more complex permissions.<br>
+        For example, if the [<cite><a class="bibref" href="#bib-quota-api">quota-api</a></cite>] were to have an associated
+        permission, it could define a QuotaPermission dictionary extending
+        Permission with <code>type</code> and <code>value</code> fields.
+      </div></div>
+    </section>
+    <section id="status-of-a-permission" typeof="bibo:Chapter" resource="#status-of-a-permission" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-status-of-a-permission" resource="#h-status-of-a-permission"><span property="xhv:role" resource="xhv:heading"><span class="secno">6. </span>
+        Status of a permission
+      </span></h2>
+      <pre class="idl"><span class="idlEnum" id="idl-def-PermissionState">enum <span class="idlEnumID">PermissionState</span> {
+    "<a href="#idl-def-PermissionState.granted" class="idlEnumItem">granted</a>",
+    "<a href="#idl-def-PermissionState.denied" class="idlEnumItem">denied</a>",
+    "<a href="#idl-def-PermissionState.prompt" class="idlEnumItem">prompt</a>"
+};</span></pre>
+      <p>
+        The steps to <dfn id="dfn-retrieve-the-permission-state">retrieve the permission state</dfn> of a <a href="#dfn-global-object" class="internalDFN">global
+        object</a> for a given <code>permission</code> are as follows:
+      </p>
+      <ol>
+        <li>If the <a href="#dfn-user-agent" class="internalDFN">user agent</a> will allow the <a href="#dfn-global-object" class="internalDFN">global object</a> to try
+        to access the features associated with the <code>permission</code> but
+        will prompt the user to know whether the call should succeed or fail,
+        the <a href="#dfn-user-agent" class="internalDFN">user agent</a> <em class="rfc2119" title="MUST">MUST</em> return <code><dfn id="widl-PermissionState-prompt">prompt</dfn></code>.
+        </li>
+        <li>Otherwise, if the <a href="#dfn-user-agent" class="internalDFN">user agent</a> will allow the <a href="#dfn-global-object" class="internalDFN">global
+        object</a> to access the features associated with the
+        <code>permission</code> without prompting the user, the <a href="#dfn-user-agent" class="internalDFN">user
+        agent</a> <em class="rfc2119" title="MUST">MUST</em> return <code><dfn id="widl-PermissionState-granted">granted</dfn></code> .
+        </li>
+        <li>Otherwise, the <a href="#dfn-user-agent" class="internalDFN">user agent</a> will not allow the <a href="#dfn-global-object" class="internalDFN">global
+        object</a> to access the feature associated with
+        <code>permission</code> and <em class="rfc2119" title="MUST">MUST</em> return <code><dfn id="widl-PermissionState-denied">denied</dfn></code> .
+        </li>
+      </ol>
+      <p>
+        How the <a href="#dfn-user-agent" class="internalDFN">user agent</a> decides whether a <a href="#dfn-global-object" class="internalDFN">global object</a> is
+        allowed or not to access some features is left as an implementation
+        details. However, the implementation <em class="rfc2119" title="MUST">MUST</em> be consistent and not return
+        different values unless something happened (user action, expiration).
+      </p>
+      <p>
+        It is <em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em> for implementations to use the <a title="origin" href="#dfn-origin" class="internalDFN">origins</a> of the <a href="#dfn-document" class="internalDFN">Document</a> or <a href="#dfn-worker" class="internalDFN">Worker</a> when
+        making security decisions. Other factors <em class="rfc2119" title="MAY">MAY</em> also apply like whether
+        the permission is associated with a [<cite><a class="bibref" href="#bib-powerful-features">powerful-features</a></cite>] or whether
+        the <a href="#dfn-document" class="internalDFN">Document</a> is embedded.
+      </p>
+      <div class="issue"><div class="issue-title" aria-level="3" role="heading" id="h-issue1"><span>Issue 1</span></div><div class="">
+        The <a href="#dfn-retrieve-the-permission-state" class="internalDFN">retrieve the permission state</a> algorithm does not take into
+        account all the theoretically possible use cases. It tries to stay
+        inside the scope of the permissions described in this document.<br>
+        There are open questions about use cases where it might not work as
+        well: <a href="https://github.com/w3c/permissions/issues/8">issue 8</a>
+        and <a href="https://github.com/w3c/permissions/issues/9">issue 9</a>.
+      </div></div>
+      <pre class="idl"><span class="idlInterface" id="idl-def-PermissionStatus">[<span class="extAttr">Exposed=(Window,Worker)</span>]
+interface <span class="idlInterfaceID">PermissionStatus</span> : <span class="idlSuperclass">EventTarget</span> {
+<span class="idlAttribute">    readonly    attribute <span class="idlAttrType"><a href="#idl-def-Permission" class="idlType"><code>Permission</code></a></span>      <span class="idlAttrName"><a href="#widl-PermissionStatus-permission">permission</a></span>;</span>
+<span class="idlAttribute">    readonly    attribute <span class="idlAttrType"><a href="#idl-def-PermissionState" class="idlType"><code>PermissionState</code></a></span> <span class="idlAttrName"><a href="#widl-PermissionStatus-status">status</a></span>;</span>
+<span class="idlAttribute">                attribute <span class="idlAttrType">EventHandler</span>    <span class="idlAttrName"><a href="#widl-PermissionStatus-onchange">onchange</a></span>;</span>
+};</span></pre>
+      <p>
+        The steps to <dfn id="dfn-update-the-status">update the status</dfn> of a
+        <code>PermissionStatus</code> instance are as follow:
+      </p>
+      <ol>
+        <li>Let <var>status</var> be the <code>PermissionStatus</code> instance
+        being updated.
+        </li>
+        <li>Run the steps to <a href="#dfn-retrieve-the-permission-state" class="internalDFN">retrieve the permission state</a> using the
+        <var>status</var>' <a href="#dfn-global-object" class="internalDFN">global object</a> and <code>permission</code>
+        attribute then set the result of those steps to the <code>status</code>
+        attribute.
+        </li>
+      </ol>
+      <p>
+        The steps to <dfn id="dfn-create-a-permissionstatus">create a PermissionStatus</dfn> for a given
+        <code>permission</code> are as follow:
+      </p>
+      <ol>
+        <li>Let <var>status</var> be a <code>PermissionStatus</code> instance.
+        </li>
+        <li>Set the <code>permission</code> attribute to
+        <code>permission</code>.
+        </li>
+        <li>Run the steps to <a href="#dfn-update-the-status" class="internalDFN">update the status</a> on <var>status</var>.
+        </li>
+        <li>Return <var>status</var>.
+        </li>
+      </ol>
+      <p>
+        The <code><dfn id="widl-PermissionStatus-permission">permission</dfn></code> attribute
+        <em class="rfc2119" title="MUST">MUST</em> return the <code><a href="#idl-def-Permission" class="idlType"><code>Permission</code></a></code> it was initially set to
+        at the object creation.
+      </p>
+      <p>
+        The <code><dfn id="widl-PermissionStatus-status">status</dfn></code>
+        attribute <em class="rfc2119" title="MUST">MUST</em> return the latest value that was set while running the
+        <a href="#dfn-update-the-status" class="internalDFN">update the status</a> steps on the current instance.
+      </p>
+      <p>
+        The <code><dfn id="widl-PermissionStatus-onchange">onchange</dfn></code> attribute is an
+        <a href="#dfn-event-handler" class="internalDFN">event handler</a> whose corresponding <a href="#dfn-event-handler-event-type" class="internalDFN">event handler event
+        type</a> is <code>change</code>.
+      </p>
+      <p>
+        Whenever the <a href="#dfn-user-agent" class="internalDFN">user agent</a> is aware that the <code>status</code> of
+        a <code>PermissionStatus</code> instance has changed, it <em class="rfc2119" title="MUST">MUST</em>
+        asynchronously run the following steps:
+      </p>
+      <ol>
+        <li>Let <var>permission-status</var> be the
+        <code>PermissionStatus</code> for which the <code>status</code> has
+        changed.
+        </li>
+        <li>Run the steps to <a href="#dfn-update-the-status" class="internalDFN">update the status</a> of
+        <var>permission-status</var>.
+        </li>
+        <li>
+          <a href="#dfn-queue-a-task" class="internalDFN">Queue a task</a> on the <dfn id="dfn-permission-task-source">permission task source</dfn> to
+          <a href="#dfn-fire-a-simple-event" class="internalDFN">fire a simple event</a> named <code>change</code> at
+          <var>permission-status</var>.
+        </li>
+      </ol>
+    </section>
+    <section id="permissions-interface" typeof="bibo:Chapter" resource="#permissions-interface" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-permissions-interface" resource="#h-permissions-interface"><span property="xhv:role" resource="xhv:heading"><span class="secno">7. </span>
+        Permissions interface
+      </span></h2>
+      <pre class="idl"><span class="idlInterface" id="idl-def-Permissions">[<span class="extAttr">Exposed=(Window,Worker)</span>]
+interface <span class="idlInterfaceID">Permissions</span> {
+<span class="idlMethod">    static <span class="idlMethType">Promise&lt;<a href="#idl-def-PermissionStatus" class="idlType"><code>PermissionStatus</code></a>&gt;</span> <span class="idlMethName"><a href="#widl-Permissions-query-Promise-PermissionStatus--Permission-PermissionName-permission">query</a></span> (<span class="idlParam"><span class="idlParamType">(<a href="#idl-def-Permission" class="idlType"><code>Permission</code></a> or <a href="#idl-def-PermissionName" class="idlType"><code>PermissionName</code></a>)</span> <span class="idlParamName">permission</span></span>);</span>
+};</span></pre>
+      <p>
+        When the <code><dfn id="widl-Permissions-query-Promise-PermissionStatus--Permission-permission">
+        query()</dfn></code> method is invoked, the <a href="#dfn-user-agent" class="internalDFN">user agent</a> <em class="rfc2119" title="MUST">MUST</em> run
+        the following steps:
+      </p>
+      <ol>
+        <li>Let <var>permission</var> be <code>permission</code> argument if
+        <code>permission</code> is of type <code>Permission</code>, otherwise,
+        create a <code>Permission</code> instead for which <code>name</code> is
+        set to the <code>permission</code> argument value.
+        </li>
+        <li>Let <var>promise</var> be a newly-created <a href="#dfn-promise" class="internalDFN">Promise</a>.
+        </li>
+        <li>Return <var>promise</var> and continue those steps asynchronously.
+        </li>
+        <li>Run the steps to <a href="#dfn-create-a-permissionstatus" class="internalDFN">create a PermissionStatus</a> using the
+        <var><a href="#dfn-global-object" class="internalDFN">global object</a></var> and <var>permission</var> and resolve
+        <var>promise</var> with the result of those steps.
+        </li>
+      </ol>
+      <div class="note"><div class="note-title" aria-level="3" role="heading" id="h-note3"><span>Note</span></div><div class="">
+        If a developer wants to check multiple permissions at once, the editors
+        recommend them to use Promises.all(). It should yield to the same
+        result and allow this API to stay simple. If it happens to be a very
+        common use case, it should be easy to extend Permissions.query() to
+        accept a sequence&lt;&gt; too.
+      </div></div>
+    </section>
+    <section class="informative" id="examples" typeof="bibo:Chapter" resource="#examples" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-examples" resource="#h-examples"><span property="xhv:role" resource="xhv:heading"><span class="secno">8. </span>
+        Examples
+      </span></h2><p><em>This section is non-normative.</em></p>
+      <p>
+        This example uses the Permissions API to decide whether local news
+        should be shown using the Geolocation API or a button offering that
+        feature should be added.
+      </p>
+      <div class="example"><div class="example-title"><span>Example 1</span></div><pre class="example highlight prettyprint prettyprinted"><span class="tag">&lt;script&gt;</span><span class="pln">
+  </span><span class="typ">Permissions</span><span class="pun">.</span><span class="pln">query</span><span class="pun">(</span><span class="str">'geolocation'</span><span class="pun">).</span><span class="pln">then</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">result</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">status </span><span class="pun">==</span><span class="pln"> </span><span class="str">'granted'</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      showLocalNewsWithGeolocation</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">result</span><span class="pun">.</span><span class="pln">status </span><span class="pun">==</span><span class="pln"> </span><span class="str">'prompt'</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      showButtonToEnableLocalNews</span><span class="pun">();</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="com">// Don't do anything if the permission was denied.</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+</span><span class="tag">&lt;/script&gt;</span></pre></div>
+      <p>
+        This example is using the <code>notifications</code> permission for a
+        chat application to show a notification button depending on the
+        permission status.
+      </p>
+      <div class="example"><div class="example-title"><span>Example 2</span></div><pre class="example highlight prettyprint prettyprinted"><span class="tag">&lt;script&gt;</span><span class="pln">
+  </span><span class="kwd">function</span><span class="pln"> updateNotificationButton</span><span class="pun">(</span><span class="pln">permission</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">'chat-notification-button'</span><span class="pun">).</span><span class="pln">disabled </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">permission</span><span class="pun">.</span><span class="pln">status </span><span class="pun">==</span><span class="pln"> </span><span class="str">'denied'</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  </span><span class="typ">Permissions</span><span class="pun">.</span><span class="pln">query</span><span class="pun">(</span><span class="str">'notifications'</span><span class="pun">).</span><span class="pln">then</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">result</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    updateNotificationButton</span><span class="pun">(</span><span class="pln">result</span><span class="pun">);</span><span class="pln">
+
+    result</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="str">'change'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      updateNotificationButton</span><span class="pun">(</span><span class="kwd">this</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">});</span><span class="pln">
+  </span><span class="pun">});</span><span class="pln">
+</span><span class="tag">&lt;/script&gt;</span></pre></div>
+    </section>
+
+    <section class="appendix" id="acknowledgments" typeof="bibo:Chapter" resource="#acknowledgments" property="bibo:hasPart">
+      <!--OddPage--><h2 id="h-acknowledgments" resource="#h-acknowledgments"><span property="xhv:role" resource="xhv:heading"><span class="secno">A. </span>
+        Acknowledgments
+      </span></h2>
+      <p>
+        Thanks to Adrienne Porter Felt and Jake Archibald for their early
+        support and help.
+      </p>
+    </section>
+  
+
+<section id="references" class="appendix" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart"><!--OddPage--><h2 id="h-references" resource="#h-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B. </span>References</span></h2><section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart"><h3 id="h-normative-references" resource="#h-normative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.1 </span>Normative references</span></h3><dl class="bibliography" resource=""><dt id="bib-ECMASCRIPT">[ECMASCRIPT]</dt><dd>Allen Wirfs-Brock. <a href="http://people.mozilla.org/~jorendorff/es6-draft.html" property="dc:requires"><cite>ECMA-262 ECMAScript Language Specification, Edition 6</cite></a>. Draft. URL: <a href="http://people.mozilla.org/~jorendorff/es6-draft.html" property="dc:requires">http://people.mozilla.org/~jorendorff/es6-draft.html</a>
+</dd><dt id="bib-HTML">[HTML]</dt><dd>Ian Hickson. <a href="https://html.spec.whatwg.org/" property="dc:requires"><cite>HTML</cite></a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/" property="dc:requires">https://html.spec.whatwg.org/</a>
+</dd><dt id="bib-RFC2119">[RFC2119]</dt><dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
+</dd><dt id="bib-WEBIDL">[WEBIDL]</dt><dd>Cameron McCormack. <a href="http://www.w3.org/TR/WebIDL/" property="dc:requires"><cite>Web IDL</cite></a>. 19 April 2012. W3C Candidate Recommendation. URL: <a href="http://www.w3.org/TR/WebIDL/" property="dc:requires">http://www.w3.org/TR/WebIDL/</a>
+</dd></dl></section><section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart"><h3 id="h-informative-references" resource="#h-informative-references"><span property="xhv:role" resource="xhv:heading"><span class="secno">B.2 </span>Informative references</span></h3><dl class="bibliography" resource=""><dt id="bib-geolocation-API">[geolocation-API]</dt><dd>Andrei Popescu. <a href="http://www.w3.org/TR/geolocation-API/" property="dc:references"><cite>Geolocation API Specification</cite></a>. 24 October 2013. W3C Recommendation. URL: <a href="http://www.w3.org/TR/geolocation-API/" property="dc:references">http://www.w3.org/TR/geolocation-API/</a>
+</dd><dt id="bib-notifications">[notifications]</dt><dd>John Gregg; Anne van Kesteren. <a href="http://www.w3.org/TR/notifications/" property="dc:references"><cite>Web Notifications</cite></a>. 12 September 2013. W3C Last Call Working Draft. URL: <a href="http://www.w3.org/TR/notifications/" property="dc:references">http://www.w3.org/TR/notifications/</a>
+</dd><dt id="bib-powerful-features">[powerful-features]</dt><dd>Mike West. <a href="http://www.w3.org/TR/powerful-features/" property="dc:references"><cite>Requirements for Powerful Features</cite></a>. 4 December 2014. W3C Working Draft. URL: <a href="http://www.w3.org/TR/powerful-features/" property="dc:references">http://www.w3.org/TR/powerful-features/</a>
+</dd><dt id="bib-push-api">[push-api]</dt><dd>Bryan Sullivan; Eduardo Fullea; Michael van Ouwerkerk. <a href="http://www.w3.org/TR/push-api/" property="dc:references"><cite>Push API</cite></a>. 7 October 2014. W3C Working Draft. URL: <a href="http://www.w3.org/TR/push-api/" property="dc:references">http://www.w3.org/TR/push-api/</a>
+</dd><dt id="bib-quota-api">[quota-api]</dt><dd>Kinuko Yasuda. <a href="http://www.w3.org/TR/quota-api/" property="dc:references"><cite>Quota Management API</cite></a>. 5 November 2013. W3C Working Draft. URL: <a href="http://www.w3.org/TR/quota-api/" property="dc:references">http://www.w3.org/TR/quota-api/</a>
+</dd><dt id="bib-webmidi">[webmidi]</dt><dd>Chris Wilson; Jussi Kalliokoski. <a href="http://www.w3.org/TR/webmidi/" property="dc:references"><cite>Web MIDI API</cite></a>. 17 March 2015. W3C Working Draft. URL: <a href="http://www.w3.org/TR/webmidi/" property="dc:references">http://www.w3.org/TR/webmidi/</a>
+</dd></dl></section></section></body></html>
