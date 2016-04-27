@@ -24,7 +24,7 @@ git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 cd ..
 
 # Clean out existing contents
-rm -rf out/**/* || exit 0
+rm -rf out/* || exit 0
 
 # Adding back published/ dir.
 cp -r published/ out/ || exit 0
