@@ -49,6 +49,7 @@ spec: html
         text: parent browsing context
         text: queue a task
         text: same origin
+        text: the environment settings object's realm
         text: top-level browsing context
 spec: ui-events
     type: dfn
@@ -377,18 +378,22 @@ spec: webidl
     Permission Stores
   </h2>
   <p>
-    A <dfn export>permission store</dfn> maps {{PermissionName}}s to instances
-    of {{PermissionStorage}} or one of its subtypes. A <a>permission store</a>
-    has one or more associated <a>origin</a>s, and SHOULD have only one.
+    A <dfn export lt="permission store|permission stores">permission
+    store</dfn> maps {{PermissionName}}s to instances of
+    {{PermissionStorage}} or one of its subtypes. A <a>permission
+    store</a> has one or more associated <a>origin</a>s, and SHOULD
+    have only one.
   </p>
   <p>
-    The <a>user agent</a> MAY maintain any number of <a>permission store</a>s to
+    The <a>user agent</a> MAY maintain any number of <a>permission stores</a> to
     record what capabilities users have granted web sites permission to access.
-    The <a>user agent</a> may create new <a>permission store</a>s, for example
-    to serve a particular <a>origin</a>, <a>origin</a> within a <a>top-level
-    browsing context</a>, or <a>realm</a>, and when it does so, it may
-    initialize it using the mappings of any other <a>permission store</a>
-    associated with the <a>same origin</a>.
+    If the UA maintains any <a>permission stores</a>, the UA MUST create a new
+    <a>permission store</a> for each <a>realm</a> and may create new
+    <a>permission stores</a> for other reasons, for example to serve a
+    particular <a>origin</a> or <a>origin</a> within a <a>top-level browsing
+    context</a>. The UA may initialize new <a>permission stores</a> as empty or
+    as a copy of the mappings of any other <a>permission store</a> associated
+    with the <a>same origin</a>.
   </p>
 
   <pre class='idl'>
@@ -406,9 +411,9 @@ spec: webidl
   <ol>
     <li>Let <var>settings</var> be the <a>current settings object</a>.</li>
     <li>
-      Let <var>store</var> be some <a>permission store</a> associated with the
-      <a>same origin</a> as <var>settings</var>. This store SHOULD be chosen
-      consistently for a given <a>environment settings object</a>.
+      Let <var>store</var> be the <a>permission store</a> associated with
+      <var>settings</var>' <a lt="the environment settings object's
+      Realm">realm</a>.
     </li>
     <li>
       If <var>store</var> exists and maps <var>name</var> to a value, return
@@ -430,9 +435,9 @@ spec: webidl
     <li>
       Let <var>stores</var> be a collection of zero or more <a>permission
       store</a>s associated with the <a>same origin</a> as <var>settings</var>.
-      If <var>stores</var> is non-empty, it SHOULD include the permission store
-      used in the <a>retrieve the permission storage</a> algorithm for
-      <var>settings</var>.
+      If <var>stores</var> is non-empty, it MUST include the permission store
+      associated with <var>settings</var>' <a lt="the environment settings
+      object's Realm">realm</a>.
     </li>
     <li>
       Write a mapping from <var>name</var> to <var>storage</var> into each
