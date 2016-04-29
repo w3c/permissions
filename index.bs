@@ -382,7 +382,10 @@ spec: webidl
     store</dfn> maps {{PermissionName}}s to instances of
     {{PermissionStorage}} or one of its subtypes. A <a>permission
     store</a> has one or more associated <a>origin</a>s, and SHOULD
-    have only one.
+    have only one. <span class="note">For example, when a user grants permission
+    for https://foo.com/ to use a capability, some browsers will also give
+    access to any origin with a domain ending in ".foo.com". This is discouraged
+    but allowed.</span>
   </p>
   <p>
     The <a>user agent</a> MAY maintain any number of <a>permission stores</a> to
@@ -395,6 +398,51 @@ spec: webidl
     as a copy of the mappings of any other <a>permission store</a> associated
     with the <a>same origin</a>.
   </p>
+
+  <div class="example" id="example-permission-stores">
+    <p>
+      Different browsers provide different levels of persistence for
+      permissions. These can be modeled by different arrangements of permission
+      stores.
+    </p>
+    <ul>
+      <li>
+        A browser that saves permissions persistently would create a
+        <a>permission store</a> for each <a>origin</a> and for each
+        <a>realm</a>. Each realm's store would be created as a copy of its
+        origin's store. <a>create a permission storage entry</a> would write to
+        the origin's store and all realms' stores with the same origin.
+      </li>
+      <li>
+        A browser that gives the user the option to save permissions
+        persistently or not, would also create a <a>permission store</a> for
+        each <a>origin</a> and for each <a>realm</a>. If the user chooses to
+        save the permission, this browser would behave as the one above. If the
+        user chooses not to save the permission, this browser would select no
+        stores at all in <a>create a permission storage entry</a>.
+      </li>
+      <li>
+        A browser that gives the user the option to save permissions
+        either persistently or just within the current realm, would also create
+        a <a>permission store</a> for each <a>origin</a> and for each
+        <a>realm</a>. If the user chooses to save the permission, this browser
+        would behave as the ones above. If the user chooses not to save the
+        permission, this browser would select just the current realm's store in
+        <a>create a permission storage entry</a>.
+      </li>
+      <li>
+        A browser that treats permissions granted to iframes as only granted to
+        the iframe's origin when it's embedded in the same top-level origin,
+        would create permission stores for each pair of (top-level origin,
+        embedded origin), and for each realm. Each realm's store would be
+        created as a copy of the (top-level origin, realm's origin) permission
+        store. <a>create a permission storage entry</a> would write to the
+        (top-level origin, realm's origin) store and all realms' stores that had
+        matching origins and top-level origins, but not to permission stores
+        that merely had the same realm origin.
+      </li>
+    </ul>
+  </div>
 
   <pre class='idl'>
     dictionary PermissionStorage {
