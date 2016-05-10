@@ -25,6 +25,8 @@ Markup Shorthands: css no, markdown yes
 </pre>
 <pre class="anchors">
 spec: ECMAScript; urlPrefix: https://tc39.github.io/ecma262/#
+    type: dfn
+        text: Realm; url: sec-code-realms
     type: interface
         text: TypeError; url: sec-native-error-types-used-in-this-standard-typeerror
 spec: html; urlPrefix: https://html.spec.whatwg.org/multipage/
@@ -365,11 +367,103 @@ spec: webidl
   </section>
 </section>
 <section>
-  <h2 dfn-type="dfn" export>
-    Permission Store
-  </h2>
+  <h2 id="permission-stores">Permission stores</h2>
   <p>
-    <a lt='user agent'>User agents</a> MAY use a form of storage to
+    Each <a>realm</a> has a <dfn export>permission store</dfn> consisting of,
+    for each {{PermissionName}}, either a <dfn><i>denied flag</i></dfn> or a set
+    of instances of that {{PermissionName}}'s <a>permission grant type</a>. The
+    UA may initialize and update a <a>realm</a>'s <a>permission store</a> almost
+    arbitrarily, subject to the constraints in <a
+    href="#permission-store-constraints"></a>.
+
+    Each web API that relies on user permission defines a <a>permission storage
+    type</a> which is {{PermissionStorageEntry}} or one of its subtypes. The UA
+    provides <a>read</a>, <a>write</a>, and <a>revoke</a> abstract operations
+    that let web APIs interact with the user's choices about how permission
+    decisions are remembered. The UA is <em>not</em> required to persist
+    permission decisions in any way.
+  </p>
+
+  <pre class='idl'>
+    dictionary PermissionStorageEntry {
+      // PermissionStorage is just an explanatory device.
+      // Instances are never received from or passed to Javascript code.
+
+      required PermissionName name;
+    };
+  </pre>
+
+  <div algorithm="read-the-granted-permissions">
+    <p>
+      When an algorithm says to <dfn export local-lt="read">read the granted
+      permissions</dfn> that match a particular description, the UA must return
+      a set of instances of {{PermissionStorageEntry}} and its subtypes such
+      that:
+    </p>
+    <ul>
+      <li>each instance matches the description;</li>
+      <li>
+        each instance has the type of its {{PermissionStorageEntry/name}}
+        field's <a>permission storage type</a>; and
+      </li>
+      <li>
+        no two instances are equivalent, using {{PermissionStorageEntry/name}}'s
+        <a>permission entry equivalence</a> algorithm.
+      </li>
+      <li>
+        the set satisfies the constraints on call sequences described in <a
+        href="#permission-store-constraints"></a>.
+      </li>
+    </ul>
+  </div>
+
+  <p algorithm="permission-is-denied">
+    The |name| <dfn export>permission is denied</dfn> if the user has requested
+    not to be prompted for the |name| permission.
+  </p>
+
+  <p algorithm="write-the-permission-entry">
+    When an algorithm says to <dfn export local-lt="write">write the permission
+    entry</dfn> |entry|, that gives the UA the option to return |entry| from
+    future <a>reads</a> that would otherwise have returned another <a
+    lt="permission entry equivalence">equivalent</a> entry.
+  </p>
+
+  <p algorithm="revoke-the-permission-entries">
+    When an algorithm says to <dfn export local-lt="revoke">revoke the
+    permission entries</dfn> matching some description, the UA should avoid
+    returning matching entries from future <a lt="read the granted
+    permissions">reads</a>.
+  </p>
+
+  <section>
+    <h3 id="permission-store-constraints">Permission store constraints</h3>
+
+    <p>
+      The UA may return nearly anything from <a>read the granted
+      permissions</a>, but there are a few constraints:
+    </p>
+
+    <p>
+      Within a single <a>microtask checkpoint</a> in a <a>realm</a>, the
+      permission store must behave as a set of entries:
+    </p>
+    <ul>
+      <li>
+        If the |name| <a>permission is denied</a>, <a lt="read the granted
+        permissions">reading the granted permissions</a> with that |name| must
+        return an empty set.
+      </li>
+      <li>
+        <a lt="write the permission entry">Writing</a> |entry| must either have no effect or cause subsequent 
+      </li>
+    </ul>
+  </section>
+
+  <p>
+    must  maintain a <dfn export>permission store</dfn> with three operations.
+    The permission store is a set of permission storage entries, which are instances of {{PermissionStorageEntry}} or one of its subtypes.
+    described <a lt='user agent'>User agents</a> MAY use a form of storage to
     keep track of web site permissions. When they do, they MUST have a
     <dfn export>permission storage identifier</dfn> which is linked to a
     {{PermissionStorage}} instance or one of its subtypes.
@@ -392,14 +486,6 @@ spec: webidl
     <var>settings</var>' <a>top-level browsing context</a>'s <a>origin</a>
     </li>
   </ol>
-  <pre class='idl'>
-    dictionary PermissionStorage {
-      // PermissionStorage is just an explanatory device.
-      // Instances are never received from or passed to Javascript code.
-
-      required PermissionState state;
-    };
-  </pre>
   <p>
     The steps to <dfn>retrieve a permission storage entry</dfn> of a
     <a>permission storage identifier</a> are as follows:
