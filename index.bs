@@ -374,11 +374,12 @@ spec: webidl
   <p>
     Each <a>realm</a> has a <dfn export>permission store</dfn> consisting of,
     for each {{PermissionName}}, either a <dfn><i>denied flag</i></dfn> or a set
-    of <dfn>permission entries</dfn>, instances of that {{PermissionName}}'s
-    <a>permission entry type</a>, which will be {{PermissionStorageEntry}} or
-    one of its subtypes. The <a>permission entry type</a> specifies the
-    <a>equivalent permission entry</a> relation used to de-duplicate the
-    <a>permission entries</a>.
+    of <a>permission entries</a>. <dfn>Permission entries</dfn> for a
+    {{PermissionName}} are instances of that {{PermissionName}}'s <a>permission
+    entry type</a>, which will be {{PermissionStorageEntry}} or one of its
+    subtypes. The <a>permission entry type</a> specifies the <a>equivalent
+    permission entry</a> relation used to de-duplicate the <a>permission
+    entries</a>.
   </p>
 
   <p>
@@ -410,8 +411,8 @@ spec: webidl
     <p algorithm="read-the-granted-permissions">
       When an algorithm says to <dfn export local-lt="read">read the granted
       permissions</dfn> that match a particular description, the UA must return
-      the set of instances of {{PermissionStorageEntry}} and its subtypes in the
-      <a>current realm's</a> <a>permission store</a> that match the description.
+      the <a>permission entries</a> that match the description in the <a>current
+      realm's</a> <a>permission store</a> that match the description.
       <i><a>Denied flags</a></i> don't contribute any instances.
     </p>
 
