@@ -30,10 +30,6 @@ spec: ECMAScript; urlPrefix: https://tc39.github.io/ecma262/#
 spec: html; urlPrefix: https://html.spec.whatwg.org/multipage/
     type: dfn
         text: origin; url: browsers.html#origin-2
-spec: promises-guide; urlPrefix: https://www.w3.org/2001/tag/doc/promises-guide#
-    type: dfn
-        text: Transforming; url: transforming-by
-        text: Promise-calling; url: promise-calling
 </pre>
 <pre class="link-defaults">
 spec: html
