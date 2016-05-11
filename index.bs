@@ -27,6 +27,7 @@ Markup Shorthands: css no, markdown yes
 spec: ECMAScript; urlPrefix: https://tc39.github.io/ecma262/#
     type: dfn
         text: Realm; url: sec-code-realms
+        text: current realm; url: current-realm
     type: interface
         text: TypeError; url: sec-native-error-types-used-in-this-standard-typeerror
 spec: html; urlPrefix: https://html.spec.whatwg.org/multipage/
@@ -37,12 +38,14 @@ spec: html; urlPrefix: https://html.spec.whatwg.org/multipage/
 spec: html
     type: dfn
         text: browsing context
+        text: current settings object
         text: environment settings object
         text: event handler
         text: event handler event type
         text: origin
         text: parent browsing context
         text: queue a task
+        text: the realm's settings object
         text: top-level browsing context
 spec: ui-events
     type: dfn
@@ -371,17 +374,25 @@ spec: webidl
   <p>
     Each <a>realm</a> has a <dfn export>permission store</dfn> consisting of,
     for each {{PermissionName}}, either a <dfn><i>denied flag</i></dfn> or a set
-    of instances of that {{PermissionName}}'s <a>permission grant type</a>. The
-    UA may initialize and update a <a>realm</a>'s <a>permission store</a> almost
-    arbitrarily, subject to the constraints in <a
-    href="#permission-store-constraints"></a>.
+    of <dfn>permission entries</dfn>, instances of that {{PermissionName}}'s
+    <a>permission entry type</a>, which will be {{PermissionStorageEntry}} or
+    one of its subtypes. The <a>permission entry type</a> specifies the
+    <a>equivalent permission entry</a> relation used to de-duplicate the
+    <a>permission entries</a>.
+  </p>
 
-    Each web API that relies on user permission defines a <a>permission storage
-    type</a> which is {{PermissionStorageEntry}} or one of its subtypes. The UA
-    provides <a>read</a>, <a>write</a>, and <a>revoke</a> abstract operations
-    that let web APIs interact with the user's choices about how permission
-    decisions are remembered. The UA is <em>not</em> required to persist
-    permission decisions in any way.
+  <p>
+    The UA may initialize <a>realm</a>'s <a>permission store</a> almost
+    arbitrarily, subject to the constraints in <a
+    href="#permission-store-constraints"></a>. The UA may also <a>queue a
+    task</a> to update a <a>realm's</a> <a>permission store</a> almost
+    arbitrarily, also subject to the constraints in <a
+    href="#permission-store-constraints"></a>.
+  </p>
+
+  <p>
+    The UA may store <a>permission entries</a> more persistently than a
+    <a>realm</a>, but this specification doesn't constrain how.
   </p>
 
   <pre class='idl'>
@@ -393,134 +404,75 @@ spec: webidl
     };
   </pre>
 
-  <div algorithm="read-the-granted-permissions">
-    <p>
+  <section>
+    <h3 id="permission-store-algorithms">Permission store algorithms</h3>
+
+    <p algorithm="read-the-granted-permissions">
       When an algorithm says to <dfn export local-lt="read">read the granted
       permissions</dfn> that match a particular description, the UA must return
-      a set of instances of {{PermissionStorageEntry}} and its subtypes such
-      that:
+      the set of instances of {{PermissionStorageEntry}} and its subtypes in the
+      <a>current realm's</a> <a>permission store</a> that match the description.
+      <i><a>Denied flags</a></i> don't contribute any instances.
     </p>
-    <ul>
-      <li>each instance matches the description;</li>
-      <li>
-        each instance has the type of its {{PermissionStorageEntry/name}}
-        field's <a>permission storage type</a>; and
-      </li>
-      <li>
-        no two instances are equivalent, using {{PermissionStorageEntry/name}}'s
-        <a>permission entry equivalence</a> algorithm.
-      </li>
-      <li>
-        the set satisfies the constraints on call sequences described in <a
-        href="#permission-store-constraints"></a>.
-      </li>
-    </ul>
-  </div>
 
-  <p algorithm="permission-is-denied">
-    The |name| <dfn export>permission is denied</dfn> if the user has requested
-    not to be prompted for the |name| permission.
-  </p>
+    <p algorithm="permission-is-denied">
+      The |name| <dfn export>permission is denied</dfn> if the <a>current
+      realm's</a> <a>permission store</a> holds a <i><a>denied flag</a></i> for
+      |name|.
+    </p>
 
-  <p algorithm="write-the-permission-entry">
-    When an algorithm says to <dfn export local-lt="write">write the permission
-    entry</dfn> |entry|, that gives the UA the option to return |entry| from
-    future <a>reads</a> that would otherwise have returned another <a
-    lt="permission entry equivalence">equivalent</a> entry.
-  </p>
+    <p algorithm="write-the-permission-entry">
+      When an algorithm says to <dfn export local-lt="write">write the permission
+      entry</dfn> |entry|, the UA may add |entry| to the <a>current realm's</a>
+      <a>permission store</a>, overwriting any existing <a lt="equivalent
+      permission entry">equivalent</a> entries.
+    </p>
 
-  <p algorithm="revoke-the-permission-entries">
-    When an algorithm says to <dfn export local-lt="revoke">revoke the
-    permission entries</dfn> matching some description, the UA should avoid
-    returning matching entries from future <a lt="read the granted
-    permissions">reads</a>.
-  </p>
+    <p algorithm="revoke-the-permission-entries">
+      When an algorithm says to <dfn export local-lt="revoke">revoke the
+      permission entries</dfn> matching some description, the UA may remove those
+      <a>permission entries</a> from the <a>current realm's</a> <a>permission
+      store</a>.
+    </p>
+  </section>
 
   <section>
     <h3 id="permission-store-constraints">Permission store constraints</h3>
 
-    <p>
-      The UA may return nearly anything from <a>read the granted
-      permissions</a>, but there are a few constraints:
+    <p algorithm="relevant-permission-change">
+      A <dfn>relevant permission change</dfn> for one or more <a>realms</a> |realms|
+      consists of either the UA receiving new information about the user's
+      intent or a use of <a>write the permission entry</a> or <a>revoke the
+      permission entries</a> from a <a>realm</a> whose <a
+      lt="the Realm's settings object">settings object</a> has the <a>same
+      origin</a> as one of the |realms|.
+    </p>
+
+    <p class="issue" id="issue-same-domain-permissions">
+      It's not clear if some current browsers share permissions more widely than
+      a single origin. For example, when a user grants permission for
+      https://foo.com/ to use a capability, some browsers may also give access
+      to any origin with a domain ending in ".foo.com". This specification may
+      need to allow this.
     </p>
 
     <p>
-      Within a single <a>microtask checkpoint</a> in a <a>realm</a>, the
-      permission store must behave as a set of entries:
+      If two <a>realm</a> <a>permission stores</a> are created, and the time
+      between their creation doesn't include any <a>relevant permission
+      changes</a> for the realms, the two <a>permission stores</a> must have the
+      same contents.
     </p>
-    <ul>
-      <li>
-        If the |name| <a>permission is denied</a>, <a lt="read the granted
-        permissions">reading the granted permissions</a> with that |name| must
-        return an empty set.
-      </li>
-      <li>
-        <a lt="write the permission entry">Writing</a> |entry| must either have no effect or cause subsequent 
-      </li>
-    </ul>
+
+    <p>
+      The UA may only <a>queue a task</a> to update a <a>realm's</a>
+      <a>permission store</a> when a <a>relevant permission change</a> happens.
+    </p>
+
+    <p>
+      The specifications for individual {{PermissionName}}s can add additional
+      constraints.
+    </p>
   </section>
-
-  <p>
-    must  maintain a <dfn export>permission store</dfn> with three operations.
-    The permission store is a set of permission storage entries, which are instances of {{PermissionStorageEntry}} or one of its subtypes.
-    described <a lt='user agent'>User agents</a> MAY use a form of storage to
-    keep track of web site permissions. When they do, they MUST have a
-    <dfn export>permission storage identifier</dfn> which is linked to a
-    {{PermissionStorage}} instance or one of its subtypes.
-  </p>
-  <p>
-    To <dfn>get a permission storage identifier</dfn> for a
-    {{PermissionName}} <var>name</var> and an <a>environment settings
-    object</a> <var>settings</var>, the UA MUST return a tuple consisting
-    of:
-  </p>
-  <ol>
-    <li>
-      <var>name</var>
-    </li>
-    <li>
-      <var>settings</var>' <a>origin</a>
-    </li>
-    <li>optional UA-specific data like whether <var>settings</var>'
-    <a>browsing context</a> has a <a>parent browsing context</a>, or
-    <var>settings</var>' <a>top-level browsing context</a>'s <a>origin</a>
-    </li>
-  </ol>
-  <p>
-    The steps to <dfn>retrieve a permission storage entry</dfn> of a
-    <a>permission storage identifier</a> are as follows:
-  </p>
-  <ol>
-    <li>If the <a>user agent</a> has a {{PermissionStorage}} associated
-    with the <a>permission storage identifier</a> in its permission store,
-    it MUST return the {{PermissionStorage}}.
-    </li>
-    <li>Otherwise, it MUST return <code>undefined</code>.
-    </li>
-  </ol>
-  <p>
-    The steps to <dfn>create a permission storage entry</dfn> for a
-    <a>permission storage identifier</a> are as follows:
-  </p>
-  <ol>
-    <li>If the <a>user agent</a> has a {{PermissionStorage}} associated
-    with the <a>permission storage identifier</a> in its permission store,
-    it MUST overwrite it to the given {{PermissionStorage}}.
-    </li>
-    <li>Otherwise, it MUST write the new {{PermissionStorage}} to its
-    permission store.
-    </li>
-  </ol>
-  <p>
-    The steps to <dfn>delete a permission storage entry</dfn> of a
-    <a>permission storage identifier</a> are as follows:
-  </p>
-  <ol>
-    <li>If the <a>user agent</a> has a {{PermissionStorage}} associated
-    with the <a>permission storage identifier</a> in its permission store,
-    it MUST remove it.
-    </li>
-  </ol>
 </section>
 <section>
   <h2 id="status-of-a-permission">
