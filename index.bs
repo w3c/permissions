@@ -32,10 +32,13 @@ spec: ECMAScript; urlPrefix: https://tc39.github.io/ecma262/#
         text: TypeError; url: sec-native-error-types-used-in-this-standard-typeerror
 spec: html; urlPrefix: https://html.spec.whatwg.org/multipage/
     type: dfn
+        text: ancestor browsing context
         text: origin; url: browsers.html#origin-2
 spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
     type: attribute
         for: MediaDeviceInfo; text: deviceId
+    type: element-attr
+        for: iframe; text: allowusermedia; url: iframe-allowusermedia
     type: method
         for: MediaDevices; text: getUserMedia(); url: dom-mediadevices-getusermedia
 </pre>
@@ -43,6 +46,7 @@ spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
 spec: html
     type: dfn
         text: browsing context
+        text: browsing context container
         text: current settings object
         text: environment settings object
         text: event handler
@@ -51,6 +55,7 @@ spec: html
         text: origin
         text: parent browsing context
         text: queue a task
+        text: responsible browsing context
         text: responsible event loop
         text: the realm's settings object
         text: top-level browsing context
@@ -313,6 +318,7 @@ spec: webidl
       "device-info",
       "background-sync",
       "bluetooth",
+      "persistent-storage",
     };
   </pre>
   <p>
@@ -477,6 +483,14 @@ spec: webidl
       permissions are associated with permission to use media devices as
       specified in [[GETUSERMEDIA]] and [[audio-output]].
     </p>
+    <p>
+      If the <a>current settings object</a>'s <a>responsible browsing
+      context</a> or any of its <a>ancestor browsing contexts</a> has a
+      <a>browsing context container</a> that isn't an <{iframe}> element with
+      the <{iframe/allowusermedia}> attribute specified, then the <a>permission
+      state</a> of any descriptor with a {{PermissionDescriptor/name}} of
+      {{"camera"}} or {{"microphone"}} must be {{"denied"}}.
+    </p>
     <dl>
       <dt>
         <a>permission descriptor type</a>
@@ -569,6 +583,25 @@ spec: webidl
       The <dfn for="PermissionName" enum-value>"background-sync"</dfn>
       permission is the permission associated with the usage of
       [[web-background-sync]].
+    </p>
+  </section>
+  <section>
+    <h3 id="persistent-storage">
+      Persistent Storage
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"persistent-storage"</dfn>
+      permission allows an origin to make its <a>site storage unit</a> contain a
+      <a>persistent box</a>. {{"persistent-storage"}} is a <a>boolean
+      feature</a>.
+    </p>
+    <p>
+      If a realm with <a>origin</a> |O| <a lt="request permission to
+      use">requests permission to use</a> `{name: "persistent-storage"}` and
+      that algorithm returns {{"granted"}}, then `{name:
+      "persistent-storage"}`'s <a>permission state</a> must be {{"granted"}} in
+      all realms with origin |O| until the UA receives new information about the
+      user's intent.
     </p>
   </section>
 </section>
