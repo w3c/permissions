@@ -117,6 +117,26 @@ spec: webidl
   </p>
 </section>
 <section>
+  <h2 id="definitions">Definitions</h2>
+
+  <dl>
+    <dt><dfn>New information about the user's intent</dfn></dt>
+    <dd>
+      The UA may collect information about a user's intentions in any way its
+      authors believe is appropriate. This information can come from explicit
+      user action, aggregate behavior of both the relevant user and other users,
+      or other sources this specification hasn't anticipated.
+    </dd>
+
+    <dt><dfn export>Powerful feature</dfn></dt>
+    <dd>
+      A feature of a UA that some code might not be allowed to access, for
+      example because its <a>environment settings object</a> doesn't satisfy
+      some criteria, or because the user hasn't given permission.
+    </dd>
+  </dl>
+</section>
+<section>
   <h2 id="permission-descriptor">
     Descriptions of permission requests
   </h2>
@@ -126,10 +146,10 @@ spec: webidl
     };
   </pre>
   <p>
-    Each powerful feature has one or more aspects that websites may request
-    permission to access. To describe these aspects, each feature defines a
-    subtype of {{PermissionDescriptor}} to be its <a>permission descriptor
-    type</a>.
+    Each <a>powerful feature</a> has one or more aspects that websites can
+    request permission to access. To describe these requests, each feature
+    defines a subtype of {{PermissionDescriptor}} to be its <a>permission
+    descriptor type</a>.
   </p>
 
   <div class="example" id="example-descriptors">
@@ -138,35 +158,40 @@ spec: webidl
       access to system exclusive messages. Thus, its permission descriptor type
       is:
     </p>
-    <pre highlight="idl">
+    <pre>
       dictionary MidiPermissionDescriptor : PermissionDescriptor {
         boolean sysex = false;
       };
     </pre>
     <p>
-      The {{"camera"}} feature lets sites access whatever cameras are connected
-      to the user's device. Thus, its descriptor type is:
+      The {{"bluetooth"}} feature lets sites request to access whatever
+      Bluetooth devices are close to to the user's device. Thus, its descriptor
+      type is:
     </p>
-    <pre highlight="idl">
-      dictionary DevicePermissionDescriptor : PermissionDescriptor {
+    <pre>
+      dictionary BluetoothPermissionDescriptor : PermissionDescriptor {
         DOMString deviceId;
+        sequence&lt;<a idl>BluetoothRequestDeviceFilter</a>> filters;
+        sequence&lt;<a idl>BluetoothServiceUUID</a>> optionalServices = [];
       };
     </pre>
     <p>
-      General access to cameras is represented by `{name: 'camera'}`, while
-      access to a particular camera is represented by `{name: 'camera',
-      deviceId: cameraId}`.
+      General access to Bluetooth devices is represented by `{name:
+      'bluetooth'}`; access to a particular device is represented by `{name:
+      'bluetooth', deviceId: "id"}`; and access to a device with a particular
+      service is represented by `{name: 'bluetooth', filters: [{services:
+      ['service']}]}`
     </p>
   </div>
 </section>
 <section>
   <h2 id="permission-operations">Permission states</h2>
   <p>
-    The user agent is responsible for tracking what powerful features each
-    <a>realm</a> has the user's permission to use. Other specifications can use
-    the operations defined in this section to retrieve the UA's notion of what
-    permissions are granted or denied, and to ask the user to grant or deny more
-    permissions.
+    The user agent is responsible for tracking what <a>powerful features</a>
+    each <a>realm</a> has the user's permission to use. Other specifications can
+    use the operations defined in this section to retrieve the UA's notion of
+    what permissions are granted or denied, and to ask the user to grant or deny
+    more permissions.
   </p>
 
   <p>
@@ -176,22 +201,21 @@ spec: webidl
 
   <p>
     Within this section, |descriptor| is an instance of the <a>permission
-    descriptor type</a> of the powerful feature named by
+    descriptor type</a> of the <a>powerful feature</a> named by
     <code>|descriptor|.{{PermissionDescriptor/name}}</code>.
   </p>
 
   <section>
     <h3 id="reading-current-states">Reading the current permission state</h3>
     <p>
-      |descriptor|'s <dfn export>permission state</dfn> is one
-      of {{"granted"}}, {{"prompt"}}, or {{"denied"}}, indicating respectively
-      if the calling algorithm should succeed without prompting the user, show
-      the user a prompt to decide whether to succeed, or fail without prompting
-      the user. The UA must return whichever of these values most accurately
-      reflects the user's intent. Successive uses of |descriptor|'s <a>permission
-      state</a> with the same <a>current settings object</a> should return the
-      same value, unless the UA receives new information about the user's
-      intent.
+      |descriptor|'s <dfn export>permission state</dfn> is one of {{"granted"}},
+      {{"prompt"}}, or {{"denied"}}, indicating respectively if the calling
+      algorithm should succeed without prompting the user, show the user a
+      prompt to decide whether to succeed, or fail without prompting the user.
+      The UA must return whichever of these values most accurately reflects the
+      user's intent. Subsequent uses of |descriptor|'s <a>permission state</a>
+      with the same <a>current settings object</a> must return the same value,
+      unless the UA receives <a>new information about the user's intent</a>.
     </p>
 
     <p class="issue" id="issue-current-entry-incumbent-or-relevant">
@@ -203,27 +227,31 @@ spec: webidl
     </p>
 
     <p>
-      Some powerful features have more information associated with them than
-      just a {{PermissionState}}. For example, {{MediaDevices/getUserMedia()}}
-      needs to determine <em>which</em> cameras the user has granted the
-      <a>current realm</a> permission to access. Each of these features defines
-      an <a>extra permission data type</a>, and then a {{PermissionName}} |name|'s
-      <dfn export>extra permission data</dfn> is the instance of that type
-      matching the UA's impression of the user's intent. Successive uses of
-      |name|'s <a>extra permission data</a> should return the same value, unless
-      the UA receives new information about the user's intent.
+      Some <a>powerful features</a> have more information associated with them
+      than just a {{PermissionState}}. For example,
+      {{MediaDevices/getUserMedia()}} needs to determine <em>which</em> cameras
+      the user has granted the <a>current realm</a> permission to access. Each
+      of these features defines an <a>extra permission data type</a>, and then a
+      {{PermissionName}} |name|'s <dfn export>extra permission data</dfn> is the
+      instance of that type matching the UA's impression of the user's intent.
+      Subsequent uses of |name|'s <a>extra permission data</a> must return the
+      same value, unless the UA receives <a>new information about the user's
+      intent</a>.
     </p>
   </section>
   <section>
     <h3 id="requesting-more-permission">Requesting more permission</h3>
 
+    <p class="note">
+      The algorithms in this section may wait for user input, so they should not
+      be used from other algorithms running on the main thread.
+    </p>
+
     <div algorithm="request-permission-to-use">
       <p>
         To <dfn export>request permission to use</dfn> a |descriptor|, the UA
-        must perform the following steps. Note that these steps may wait for
-        user input, so they should not be used from other algorithms running on
-        the main thread. This algorithm returns either {{"granted"}} or
-        {{"denied"}}.
+        must perform the following steps. This algorithm returns either
+        {{"granted"}} or {{"denied"}}.
       </p>
       <ol>
         <li>
@@ -231,14 +259,14 @@ spec: webidl
           that value and abort these steps.
         </li>
         <li>
-          Show the user a prompt asking their permission for the calling
-          algorithm to use powerful feature described by |descriptor|.
+          Ask the user's permission for the calling algorithm to use the
+          <a>powerful feature</a> described by |descriptor|.
         </li>
         <li>
           If the user grants permission, return {{"granted"}}; otherwise return
           {{"denied"}}. Depending on the details of the user's interaction, the
-          UA may also treat this as new information about the user's intent for
-          other realms with the same origin.
+          UA may also treat this as <a>new information about the user's
+          intent</a> for other <a>realms</a> with the <a>same origin</a>.
 
           <p class="note">
             This is intentionally vague about the details of the permission UI
@@ -251,11 +279,9 @@ spec: webidl
 
     <div algorithm="prompt-user-to-choose">
       <p>
-        To <dfn export>prompt the user to choose</dfn> one of several options
+        To <dfn export>prompt the user to choose</dfn> one of several |options|
         associated with a |descriptor|, the UA must perform the following steps.
-        Note that these steps may wait for user input, so they should not be
-        used from other algorithms running on the main thread. This algorithm
-        returns either {{"denied"}} or one of the options.
+        This algorithm returns either {{"denied"}} or one of the options.
       </p>
       <ol>
         <li>
@@ -264,22 +290,22 @@ spec: webidl
         </li>
         <li>
           If |descriptor|'s <a>permission state</a> is {{"granted"}}, the UA may
-          return one of the options and abort these steps. If the UA returns
-          without prompting, then successive <a lt="prompt the user to
+          return one of |options| and abort these steps. If the UA returns
+          without prompting, then subsequent <a lt="prompt the user to
           choose">prompts for the user to choose</a> from the same set of
-          options with the same |descriptor| should return the same option,
-          unless the UA receives new information about the user's intent.
+          options with the same |descriptor| must return the same option, unless
+          the UA receives <a>new information about the user's intent</a>.
         </li>
         <li>
-          Show the user a prompt asking them to choose one of the options or
-          deny permission, and wait for them to choose. If the calling algorithm
-          specified extra information to show in the prompt, show it.
+          Ask the user to choose one of the options or deny permission, and wait
+          for them to choose. If the calling algorithm specified extra
+          information to include in the prompt, include it.
         </li>
         <li>
           If the user chose an option, return it; otherwise return {{"denied"}}.
           Depending on the details of the user's interaction, the UA may also
-          treat this as new information about the user's intent for other realms
-          with the same origin.
+          treat this as <a>new information about the user's intent</a> for other
+          <a>realms</a> with the <a>same origin</a>.
 
           <p class="note">
             This is intentionally vague about the details of the permission UI
@@ -295,9 +321,9 @@ spec: webidl
 
     <p>
       When the UA learns that the user no longer intends to grant permission for
-      a realm to use a feature, it must <a>queue a task</a> on <a>the Realm's
-      settings object</a>'s <a>responsible event loop</a> to run that feature's
-      <a>permission revocation algorithm</a>.
+      a <a>realm</a> to use a feature, it must <a>queue a task</a> on <a>the
+      Realm's settings object</a>'s <a>responsible event loop</a> to run that
+      feature's <a>permission revocation algorithm</a>.
     </p>
   </section>
 </section>
@@ -323,8 +349,8 @@ spec: webidl
   </pre>
   <p>
     Each enumeration value in the {{PermissionName}} enum identifies a
-    powerful feature. Each powerful feature has the following permission-related
-    algorithms and types:
+    <a>powerful feature</a>. Each <a>powerful feature</a> has the following
+    permission-related algorithms and types:
   </p>
   <dl>
     <dt>
@@ -336,12 +362,22 @@ spec: webidl
         If unspecified, this defaults to {{PermissionDescriptor}}.
       </p>
       <p>
-        The feature can define a partial order on instances. If |descriptorA| is
-        <dfn for="PermissionDescriptor">stronger</dfn> than |descriptorB|, then
-        if |descriptorA|'s <a>permission state</a> is {{"granted"}},
+        The feature can define a <a
+        href="https://en.wikipedia.org/wiki/Partially_ordered_set">partial
+        order</a> on descriptor instances. If |descriptorA| is <dfn
+        for="PermissionDescriptor">stronger than</dfn> |descriptorB|, then if
+        |descriptorA|'s <a>permission state</a> is {{"granted"}},
         |descriptorB|'s <a>permission state</a> must also be {{"granted"}}, and
         if |descriptorB|'s <a>permission state</a> is {{"denied"}},
         |descriptorA|'s <a>permission state</a> must also be {{"denied"}}.
+      </p>
+      <p class="example" id="example-stronger-than">
+        <code>{name: {{"midi"}}, sysex: true}</code> ("midi-with-sysex") is
+        <a>stronger than</a> <code>{name: {{"midi"}}, sysex: false}</code>
+        ("midi-without-sysex"), so if the user denies access to
+        midi-without-sysex, the UA must also deny access to midi-with-sysex, and
+        similarly if the user grants access to midi-with-sysex, the UA must also
+        grant access to midi-without-sysex.
       </p>
     </dd>
     <dt>
@@ -379,10 +415,10 @@ spec: webidl
       newly-created instance of the <a>permission result type</a>. Uses the
       algorithms in <a href="#requesting-more-permission"></a> to show the user
       any necessary prompt to try to increase permissions, and updates the
-      instance <a>permission result type</a> to match. May return a {{Promise}}
-      if the request can fail exceptionally. (Merely being denied permission is
-      not exceptional.) Used by {{Permissions}}' {{Permissions/request()}}
-      method. If unspecified, this defaults to the <a>boolean permission request
+      instance <a>permission result type</a> to match. May throw an exception if
+      the request can fail exceptionally. (Merely being denied permission is not
+      exceptional.) Used by {{Permissions}}' {{Permissions/request()}} method.
+      If unspecified, this defaults to the <a>boolean permission request
       algorithm</a>.
     </dd>
     <dt>
@@ -392,14 +428,14 @@ spec: webidl
       Takes no arguments. Updates any other parts of the implementation that
       need to be kept in sync with changes in the results of <a>permission
       states</a> or <a>extra permission data</a>. Run by {{Permissions}}'
-      {{Permissions/revoke()}} method and run when the UA receives new
-      information about the user's intent. If unspecified, this defaults to
+      {{Permissions/revoke()}} method and run when the UA receives <a>new
+      information about the user's intent</a>. If unspecified, this defaults to
       doing nothing.
     </dd>
   </dl>
   <p>
-    A <dfn export>boolean feature</dfn> is a powerful feature with all types
-    and algorithms defaulted.
+    A <dfn export>boolean feature</dfn> is a <a>powerful feature</a> with all
+    of the above types and algorithms defaulted.
   </p>
   <section>
     <h3 id="geolocation">
@@ -441,7 +477,7 @@ spec: webidl
           };
         </pre>
         <p>
-          `{name: "push", userVisibleOnly: false}` is <a>stronger</a> than
+          `{name: "push", userVisibleOnly: false}` is <a>stronger than</a>
           `{name: "push", userVisibleOnly: true}`.
         </p>
       </dd>
@@ -467,7 +503,7 @@ spec: webidl
           };
         </pre>
         <p>
-          `{name: "midi", sysex: true}` is <a>stronger</a> than `{name: "midi",
+          `{name: "midi", sysex: true}` is <a>stronger than</a> `{name: "midi",
           sysex: false}`.
         </p>
       </dd>
@@ -522,10 +558,11 @@ spec: webidl
         </p>
         <p class="issue" id="issue-media-granted">
           It may not make sense for `{name: "camera"}`'s <a>permission state</a>
-          to ever be {{"granted"}}: if the site calls
-          {{MediaDevices/getUserMedia()}} with constraints that none of the
-          user's devices satisfy, the UA cannot return a device without
-          prompting, but saying {{"granted"}} promised to do so.
+          to ever be {{"granted"}}: if the UA returns {{"granted"}} from
+          <a>permission state</a>, the above paragraphs say it's promising to
+          return from {{MediaDevices/getUserMedia()}} without prompting no
+          matter what the constraints are, but if that call has constraints that
+          none of the user's devices satisfy, the UA cannot return a device.
         </p>
       </dd>
       <dt>
@@ -596,12 +633,12 @@ spec: webidl
       feature</a>.
     </p>
     <p>
-      If a realm with <a>origin</a> |O| <a lt="request permission to
+      If a <a>realm</a> with <a>origin</a> |O| <a lt="request permission to
       use">requests permission to use</a> `{name: "persistent-storage"}` and
       that algorithm returns {{"granted"}}, then `{name:
       "persistent-storage"}`'s <a>permission state</a> must be {{"granted"}} in
-      all realms with origin |O| until the UA receives new information about the
-      user's intent.
+      all <a>realms</a> with <a>origin</a> |O| until the UA receives <a>new
+      information about the user's intent</a>.
     </p>
   </section>
 </section>
@@ -641,8 +678,9 @@ spec: webidl
     };
   </pre>
   <p>
-    {{PermissionStatus}} instances are created with a 
-    <dfn for="PermissionStatus" attribute>\[[query]]</dfn> internal slot, which is an instance of a feature's <a>permission descriptor type</a>.
+    {{PermissionStatus}} instances are created with a <dfn
+    for="PermissionStatus" attribute>\[[query]]</dfn> internal slot, which is an
+    instance of a feature's <a>permission descriptor type</a>.
   </p>
 
   <p>
@@ -787,21 +825,24 @@ spec: webidl
     <li>Run the steps to <a>create a PermissionStatus</a> for
     <var>permissionDesc</var>, and let <var>status</var> be the result.
     </li>
-    <li>Let <var>result</var> be the result of <a>promise-calling</a>
-      the <a>permission request algorithm</a> of the feature named <code>
+    <li>
+      Run the <a>permission request algorithm</a> of the feature named <code>
       |permissionDesc|.name</code> with <var>permissionDesc</var> and
       <var>status</var> as arguments.
     </li>
-    <li>Resolve <var>promise</var> with the result of <a>transforming</a>
-    <var>result</var> with a fulfillment handler that returns <var>status</var>.
+    <li>
+      If the previous step threw an exception, <a>reject</a> |promise| with that
+      exception.
+    </li>
+    <li>Otherwise resolve <var>promise</var> with <var>status</var>.
     </li>
   </ol>
 
   <p>
     When the <dfn for='Permissions' method>revoke(|permissionDesc|)</dfn> method
-    is invoked, this constitutes new information about the user's intent. The UA
-    must return <a>a new promise</a> |promise| and run the following steps <a>in
-    parallel</a>:
+    is invoked, this constitutes <a>new information about the user's intent</a>.
+    The UA must return <a>a new promise</a> |promise| and run the following
+    steps <a>in parallel</a>:
   </p>
   <ol>
     <li>
