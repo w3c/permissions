@@ -249,8 +249,9 @@ spec: webidl
     <h3 id="requesting-more-permission">Requesting more permission</h3>
 
     <p class="note">
-      The algorithms in this section may wait for user input, so they should not
-      be used from other algorithms running on the main thread.
+      Spec authors, please note that algorithms in this section can wait for
+      user input; so they shouldn't be used from other algorithms running on
+      the main thread.
     </p>
 
     <div algorithm="request-permission-to-use">
