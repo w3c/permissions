@@ -262,8 +262,12 @@ spec: webidl
       </p>
       <ol>
         <li>
-          If |descriptor|'s <a>permission state</a> is not {{"prompt"}}, return
-          that value and abort these steps.
+          Let <var>current state</var> be the |descriptor|'s <a>permission
+          state</a>.
+        </li>
+        <li>
+          If <var>current state</var> is not {{"prompt"}}, return
+          <var>current state</var> and abort these steps.
         </li>
         <li>
           Ask the user's permission for the calling algorithm to use the
