@@ -204,11 +204,19 @@ spec: webidl
     <p>
       |descriptor|'s <dfn export local-lt="state">permission state</dfn> is one
       of {{"granted"}}, {{"prompt"}}, or {{"denied"}}, indicating respectively
-      if the calling algorithm should succeed without prompting
-      the user, show the user a prompt to decide whether to succeed, or fail
-      without prompting the user. The UA must return whichever of these values
-      most accurately reflects the user's intent, except that if the <a>current
-      settings object</a> is a <a>non-secure context</a> and
+      if the calling algorithm should:
+    </p>
+
+    <ul>
+      <li>succeed without prompting the user ({{"granted"}}),</li>
+      <li>show the user a prompt to decide whether to succeed ({{"prompt"}}), or</li>
+      <li>fail without prompting the user ({{"denied"}}).</li>
+    </ul>
+
+    <p>
+      The UA returns whichever of these values most accurately reflects the user's
+      intent, except that if the <a>current settings object</a> is a
+      <a>non-secure context</a> and
       <code>|descriptor|.{{PermissionDescriptor/name}}</code> isn't <a>allowed
       in non-secure contexts</a>, then the UA must return {{"denied"}}.
       Subsequent uses of |descriptor|'s <a>permission state</a> with the same
