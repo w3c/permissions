@@ -73,31 +73,25 @@ spec: webidl
   </h2>
   <p><em>This section is non-normative.</em></p>
   <p>
-    This document's goal is to specify an API that will help developers to
-    handle permissions on the Web platform. Web APIs have different ways to
+    This document specifies a model and an API to query and request permissions
+    to powerful features on the Web platform. Web APIs have different ways to
     deal with permissions. The [[notifications]] API allows developers to
-    request a permission and check the permission status explicitly. Others
-    might only expose the status to web pages when they try to use the API,
+    request a permission and check the permission status explicitly.
+    Others expose the status to web pages when they try to use the API,
     like the [[geolocation-API]] which fails if the permission was not
     granted without allowing the developer to check beforehand.
   </p>
   <p>
-    Being able to know whether an API call is going to prompt is useful in
-    order to provide a good user experience. Unfortunately, more often than
-    not, those prompts can't be controlled by developers.
+    The Permissions API provides tools for developers to control when permission
+    prompts are shown and to relinquish permissions that are no longer needed.
   </p>
   <p>
-    The API specified in this document is meant to provide the tools so
-    that web applications can improve their user experience when
-    permissions are involved.
-  </p>
-  <p>
-    The solution described in this document is meant to be extensible but
-    isn't meant to be applicable to all the current and future permissions
-    available in the web platform. If you are working on a specification
-    that has a permission model that wouldn't fit in the model described in
-    this document, please contact the editors or file an issue. We would
-    love to hear about it.
+    The solution described in this document is meant to be extensible, but isn't
+    meant to be applicable to all the current and future permissions
+    available in the web platform. Working Groups that are creating specifications
+    whose permission model doesn't fit in the model described in this document
+    should contact the editors by
+    <a href="https://github.com/w3c/permissions/issues">filing an issue</a>.
   </p>
 </section>
 <section class='non-normative'>
