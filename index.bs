@@ -331,10 +331,10 @@ spec: webidl
     <h3 id="reacting-to-revocation">Reacting to users revoking permission</h3>
 
     <p>
-      When the UA learns that the user no longer intends to grant permission for
-      a <a>realm</a> to use a feature, it must <a>queue a task</a> on <a>the
-      Realm's settings object</a>'s <a>responsible event loop</a> to run that
-      feature's <a>permission revocation algorithm</a>.
+      When the UA learns that the user no longer intends to grant permission
+      for a <a>realm</a> to use a <a>feature</a>, it must <a>queue a task</a>
+      on <a>the Realm's settings object</a>'s <a>responsible event loop</a> to
+      run that feature's <a>permission revocation algorithm</a>.
     </p>
   </section>
 </section>
