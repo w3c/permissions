@@ -104,11 +104,11 @@ spec: webidl
     "fingerprint" corresponding to an end-user. Although an adversary can
     already determine the state of a permission by actually using the API, that
     often leads to a permission request UI being presented to the end-user (if
-    the permission was not already granted). Thus, even though this API doesn't
-    expose new fingerprinting information to websites, it makes it easier for an
-    adversary to have discreet access to this information. Thus, implementations
-    are encouraged to have an option for users to block (globally or
-    selectively) the querying of <a>permission states</a>.
+    the permission was not already {{"granted"}}). Thus, even though this API
+    doesn't expose new fingerprinting information to websites, it makes it
+    easier for an adversary to have discreet access to this information. Thus,
+    implementations are encouraged to have an option for users to block
+    (globally or selectively) the querying of <a>permission states</a>.
   </p>
 </section>
 <section>
@@ -123,7 +123,7 @@ spec: webidl
       or other sources this specification hasn't anticipated.
     </dd>
 
-    <dt><dfn export>Powerful feature</dfn></dt>
+    <dt><dfn export local-lt="feature">Powerful feature</dfn></dt>
     <dd>
       A feature of a UA that some code might not be allowed to access, for
       example because its <a>environment settings object</a> doesn't satisfy
@@ -141,16 +141,15 @@ spec: webidl
     };
   </pre>
   <p>
-    Each <a>powerful feature</a> has one or more aspects that websites can
-    request permission to access. To describe these requests, each feature
-    defines a subtype of {{PermissionDescriptor}} to be its <a>permission
-    descriptor type</a>.
+    Each <a>powerful feature</a> has one or more <dfn>aspects</dfn> that
+    websites can request permission to access. To describe these aspects,
+    each feature defines a subtype of {{PermissionDescriptor}} to be its
+    <a>permission descriptor type</a>.
   </p>
-
   <div class="example" id="example-descriptors">
     <p>
-      The {{"midi"}} feature has two aspects: access to normal messages, and
-      access to system exclusive messages. Thus, its permission descriptor type
+      The {{"midi"}} <a>feature</a> has two <a>aspects</a>: access to normal messages, and
+      access to system exclusive messages. Thus, its <a>permission descriptor type</a>
       is:
     </p>
     <pre>
@@ -160,8 +159,8 @@ spec: webidl
     </pre>
     <p>
       The {{"bluetooth"}} feature lets sites request to access whatever
-      Bluetooth devices are close to to the user's device. Thus, its descriptor
-      type is:
+      Bluetooth devices are close to to the user's device. Thus, its
+      <a>permission descriptor type</a> is:
     </p>
     <pre>
       dictionary BluetoothPermissionDescriptor : PermissionDescriptor {
@@ -203,13 +202,13 @@ spec: webidl
   <section>
     <h3 id="reading-current-states">Reading the current permission state</h3>
     <p>
-      |descriptor|'s <dfn export>permission state</dfn> is one of {{"granted"}},
-      {{"prompt"}}, or {{"denied"}}, indicating respectively if the calling
-      algorithm should succeed without prompting the user, show the user a
-      prompt to decide whether to succeed, or fail without prompting the user.
-      The UA must return whichever of these values most accurately reflects the
-      user's intent, except that if the <a>current settings object</a> is a
-      <a>non-secure context</a> and
+      |descriptor|'s <dfn export local-lt="state">permission state</dfn> is one
+      of {{"granted"}}, {{"prompt"}}, or {{"denied"}}, indicating respectively
+      if the calling algorithm should succeed without prompting
+      the user, show the user a prompt to decide whether to succeed, or fail
+      without prompting the user. The UA must return whichever of these values
+      most accurately reflects the user's intent, except that if the <a>current
+      settings object</a> is a <a>non-secure context</a> and
       <code>|descriptor|.{{PermissionDescriptor/name}}</code> isn't <a>allowed
       in non-secure contexts</a>, then the UA must return {{"denied"}}.
       Subsequent uses of |descriptor|'s <a>permission state</a> with the same
