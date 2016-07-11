@@ -912,16 +912,19 @@ spec: webidl
     add the feature.
   </p>
   <pre class='highlight'>
-    &lt;script&gt;
-      navigator.permissions.query({name:'geolocation'}).then(function(result) {
-        if (result.state == 'granted') {
+    navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
+      switch (state) {
+        case "granted":
           showLocalNewsWithGeolocation();
-        } else if (result.state == 'prompt') {
+          break;
+        case "prompt":
           showButtonToEnableLocalNews();
-        }
-        // Don't do anything if the permission was denied.
-      });
-    &lt;/script&gt;
+          break;
+        default:
+          // Don't do anything if the permission was denied.
+          break;
+      }
+    });
   </pre>
   </div>
   <div class="example" id="example-notifications">
@@ -931,19 +934,17 @@ spec: webidl
     permission state.
   </p>
   <pre class='highlight'>
-    &lt;script&gt;
-      function updateNotificationButton(state) {
-        document.getElementById('chat-notification-button').disabled = (state == 'denied');
-      }
+    function updateNotificationButton(state) {
+      document.getElementById('chat-notification-button')
+        .disabled = (state === 'denied');
+    }
 
-      navigator.permissions.query({name:'notifications'}).then(function(result) {
+    navigator.permissions.query({ name: 'notifications' }).then((result) => {
+      updateNotificationButton(result.state);
+      result.addEventListener('change', () => {
         updateNotificationButton(result.state);
-
-        result.addEventListener('change', function() {
-          updateNotificationButton(this.state);
-        });
       });
-    &lt;/script&gt;
+    });
   </pre>
   </div>
   <div class="example" id="example-two-permissions">
@@ -953,33 +954,40 @@ spec: webidl
     using <code>{{Promise}}.all</code>.
   </p>
   <pre class='highlight'>
-    &lt;script&gt;
-      Promise.all([navigator.permissions.query({name:'geolocation'}),
-                   navigator.permissions.query({name:'notifications'})])
-      .then(function(result) {
-        console.log('Geolocation permission state is ' + result[0].state);
-        console.log('Notifications permission state is ' + result[1].state);
-      });
-    &lt;/script&gt;
+    Promise.all([
+      navigator.permissions.query({ name: "geolocation" }),
+      navigator.permissions.query({ name: "notifications" })
+    ])
+    .then(([{ state: geoState }, { state: notifState }]) => {
+      console.log("Geolocation permission state is:", geoState);
+      console.log("Notifications permission state is:", notifState);
+    });
   </pre>
   </div>
   <div class="example" id="example-deviceId">
   <p>
-    This example is checking whether the page has the {{"camera"}}
-    permission for the first device in the list. Error checking omitted.
+    This example is checking the permission state of the available cameras.
   </p>
   <pre class='highlight'>
-    &lt;script&gt;
-      navigator.mediaDevices.enumerateDevices()
-      .then(function(devices) {
-         return navigator.permissions.query({name:'camera',
-                                             deviceId: devices[0].deviceId})
+    navigator.mediaDevices
+      .enumerateDevices()
+      .then(devices => {
+        return Promise.all(devices
+          // filter on video inputs
+          .filter(({ kind }) => kind === "videoinput")
+          // map to query object
+          .map(({ deviceId }) => ({ name: "camera", deviceId }))
+          // map to query promise
+          .map(queryObj => navigator.permissions.query(queryObj))
+        );
       })
-      .then(function(result) {
-         console.log('Camera permission to first camera is ' + result.state);
-      }
-      .catch(err =&gt; console.log('Bad things happened: ' + err.name));
-    &lt;/script&gt;
+      // log the state or each camera
+      .then(results => results.forEach(
+        ({ state }, i) => console.log(`Camera ${i}: "${state}"`)
+      ))
+      .catch(
+        err => console.error(err.stack)
+      );
   </pre>
   </div>
 </section>
