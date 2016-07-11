@@ -100,14 +100,15 @@ spec: webidl
   </h2>
   <p><em>This section is non-normative.</em></p>
   <p>
-    Permission states can be used as an element of fingerprinting by
-    websites. Usually websites could already have access to the information
-    but often through actually using the API which could lead to a
-    permission request UI if the permission was not already granted. Thus,
-    even though this API doesn't expose new fingerprinting data to
-    websites, it makes it easier for them to have discreet access to it.
-    Therefore, implementations are encouraged to have an option for users
-    to block (globally or selectively) the querying of permission states.
+    An adversary could use a <a>permission state</a> as an element in creating a
+    "fingerprint" corresponding to an end-user. Although an adversary can
+    already determine the state of a permission by actually using the API, that
+    often leads to a permission request UI being presented to the end-user (if
+    the permission was not already granted). Thus, even though this API doesn't
+    expose new fingerprinting information to websites, it makes it easier for an
+    adversary to have discreet access to this information. Thus, implementations
+    are encouraged to have an option for users to block (globally or
+    selectively) the querying of <a>permission states</a>.
   </p>
 </section>
 <section>
