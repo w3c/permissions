@@ -722,10 +722,6 @@ spec: webidl
   <h2 id="navigator-and-workernavigator-extension">
     Navigator and WorkerNavigator extension
   </h2>
-  <p>
-    A {{Permissions}} instance is exposed on the <code>navigator</code>
-    object for {{Window}} and {{Worker}} contexts.
-  </p>
   <pre class='idl'>
     [Exposed=(Window)]
     partial interface Navigator {
