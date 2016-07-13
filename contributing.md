@@ -35,11 +35,13 @@ feature, you can remove yourself with the above syntax.
 
 # Style guide to contributors 
 
-- the spec uses [Bikeshed](https://github.com/tabatkins/bikeshed).
-  Please update `index.html` before sending a pull request.
+- Edit `index.bs` to make your change, which is in the
+  [Bikeshed](https://github.com/tabatkins/bikeshed) format.
 - Wrap lines at 80 columns.
-- put comments in front of sections, for better readability with
-  syntax coloring   editors
+- Put comments in front of sections, for better readability with
+  syntax coloring editors
+- Roughly follow http://karma-runner.github.io/1.0/dev/git-commit-msg.html in
+  writing your commit messages.
 
 # Running Bikeshed
 
@@ -48,5 +50,5 @@ If you're going to be making a lot of changes to the spec, you should
 and run `bikeshed watch` while you're editing, so that you can save
 and reload easily.
 
-If you're just making one change, you can update `index.html` by
-running `index.bs` through https://api.csswg.org/bikeshed/.
+If you're just making one change, you can validate `index.bs` using
+https://api.csswg.org/bikeshed/.
