@@ -48,6 +48,7 @@ spec: html
         text: in parallel
         text: origin; for: /
         text: queue a task
+        text: triggered by user activation
 spec: ui-events
     type: dfn
         text: user agent
@@ -290,6 +291,10 @@ spec: webidl
           <var>current state</var> and abort these steps.
         </li>
         <li>
+          If this algorithm is not <a>triggered by user activation</a>,
+          the UA may return {{"denied"}} and abort these steps.
+        </li>
+        <li>
           Ask the user's permission for the calling algorithm to use the
           <a>powerful feature</a> described by |descriptor|.
         </li>
@@ -335,6 +340,10 @@ spec: webidl
           choose">prompts for the user to choose</a> from the same set of
           options with the same |descriptor| must return the same option, unless
           the UA receives <a>new information about the user's intent</a>.
+        </li>
+        <li>
+          If this algorithm is not <a>triggered by user activation</a>,
+          the UA may return {{"denied"}} and abort these steps.
         </li>
         <li>
           Ask the user to choose one of the options or deny permission, and wait
