@@ -213,9 +213,13 @@ spec: webidl
       algorithm should succeed without prompting the user, show the user a
       prompt to decide whether to succeed, or fail without prompting the user.
       The UA must return whichever of these values most accurately reflects the
-      user's intent. Subsequent uses of |descriptor|'s <a>permission state</a>
-      with the same <a>current settings object</a> must return the same value,
-      unless the UA receives <a>new information about the user's intent</a>.
+      user's intent, except that if the <a>current settings object</a> is a
+      <a>non-secure context</a> and
+      <code>|descriptor|.{{PermissionDescriptor/name}}</code> isn't <a>allowed
+      in non-secure contexts</a>, then the UA must return {{"denied"}}.
+      Subsequent uses of |descriptor|'s <a>permission state</a> with the same
+      <a>current settings object</a> must return the same value, unless the UA
+      receives <a>new information about the user's intent</a>.
     </p>
 
     <p class="issue" id="issue-current-entry-incumbent-or-relevant">
@@ -350,9 +354,16 @@ spec: webidl
   <p>
     Each enumeration value in the {{PermissionName}} enum identifies a
     <a>powerful feature</a>. Each <a>powerful feature</a> has the following
-    permission-related algorithms and types:
+    permission-related flags, algorithms, and types:
   </p>
   <dl>
+    <dt>An <dfn export>allowed in non-secure contexts</dfn> flag</dt>
+    <dd>
+      By default, only <a>secure contexts</a> can use <a>powerful features</a>.
+      If this flag is set for a feature, the UA may grant access to it in
+      <a>non-secure contexts</a> too.
+    </dd>
+
     <dt>
       A <dfn export>permission descriptor type</dfn>
     </dt>
@@ -444,7 +455,8 @@ spec: webidl
     <p>
       The <dfn for="PermissionName" enum-value>"geolocation"</dfn>
       permission is the permission associated with the usage of the
-      [[geolocation-API]]. It is a <a>boolean feature</a>.
+      [[geolocation-API]]. It is a <a>boolean feature</a> and is <a>allowed in
+      non-secure contexts</a>.
     </p>
   </section>
   <section>
@@ -454,7 +466,8 @@ spec: webidl
     <p>
       The <dfn for="PermissionName" enum-value>"notifications"</dfn>
       permission is the permission associated with the usage of the
-      [[notifications]] API. It is a <a>boolean feature</a>.
+      [[notifications]] API. It is a <a>boolean feature</a> and is <a>allowed in
+      non-secure contexts</a>.
     </p>
   </section>
   <section>
@@ -490,7 +503,7 @@ spec: webidl
     <p>
       The <dfn for="PermissionName" enum-value>"midi"</dfn>
       permission is the permission associated with the usage of
-      [[webmidi]].
+      [[webmidi]]. {{"midi"}} is <a>allowed in non-secure contexts</a>.
     </p>
     <dl>
       <dt>
@@ -517,7 +530,8 @@ spec: webidl
       The <dfn>"camera"</dfn>, <dfn>"microphone"</dfn> , and
       <dfn>"speaker"</dfn>
       permissions are associated with permission to use media devices as
-      specified in [[GETUSERMEDIA]] and [[audio-output]].
+      specified in [[GETUSERMEDIA]] and [[audio-output]]. {{"speaker"}} is
+      <a>allowed in non-secure contexts</a>.
     </p>
     <p>
       If the <a>current settings object</a>'s <a>responsible browsing
