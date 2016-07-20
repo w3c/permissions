@@ -275,9 +275,10 @@ spec: webidl
         </li>
         <li>
           If the user grants permission, return {{"granted"}}; otherwise return
-          {{"denied"}}. Depending on the details of the user's interaction, the
-          UA may also treat this as <a>new information about the user's
-          intent</a> for other <a>realms</a> with the <a>same origin</a>.
+          {{"denied"}}. If the user's interaction indicates they intend this
+          choice to apply to other realms, then treat this as <a>new information
+          about the user's intent</a> for other <a>realms</a> with the <a>same
+          origin</a>.
 
           <p class="note">
             This is intentionally vague about the details of the permission UI
@@ -314,9 +315,10 @@ spec: webidl
         </li>
         <li>
           If the user chose an option, return it; otherwise return {{"denied"}}.
-          Depending on the details of the user's interaction, the UA may also
-          treat this as <a>new information about the user's intent</a> for other
-          <a>realms</a> with the <a>same origin</a>.
+          If the user's interaction indicates they intend this choice to apply
+          to other realms, then treat this this as <a>new information about
+          the user's intent</a> for other <a>realms</a> with the <a>same
+          origin</a>.
 
           <p class="note">
             This is intentionally vague about the details of the permission UI
