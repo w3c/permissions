@@ -201,49 +201,73 @@ spec: webidl
 
   <section>
     <h3 id="reading-current-states">Reading the current permission state</h3>
-    <p>
-      |descriptor|'s <dfn export local-lt="state">permission state</dfn> is one
-      of {{"granted"}}, {{"prompt"}}, or {{"denied"}}, indicating respectively
-      if the calling algorithm should:
-    </p>
+    <div algorithm>
+      <p>
+        A |descriptor|'s <dfn export local-lt="state">permission state</dfn> is
+        the result of the following algorithm, which returns one of
+        {{"granted"}}, {{"prompt"}}, or {{"denied"}}:
+      </p>
+      <ol class="algorithm">
+        <li>
+          If the <a>current settings object</a> is a <a>non-secure context</a>
+          and <code>|descriptor|.{{PermissionDescriptor/name}}</code> isn't
+          <a>allowed in non-secure contexts</a>, then return {{"denied"}}.
+        </li>
+        <li>
+          If there was a previous invocation of this algorithm with the same
+          |descriptor| and <a>current settings object</a>, returning
+          |previousResult|, and the UA has not received <a>new information about
+          the user's intent</a> since that invocation, return |previousResult|.
+        </li>
+        <li>
+          Return whichever of the following options most accurately reflects the user's
+          intent for the calling algorithm:
+          <dl class="switch">
+            <dt>succeed without prompting the user</dt>
+            <dd>{{"granted"}}</dd>
 
-    <ul>
-      <li>succeed without prompting the user ({{"granted"}}),</li>
-      <li>show the user a prompt to decide whether to succeed ({{"prompt"}}), or</li>
-      <li>fail without prompting the user ({{"denied"}}).</li>
-    </ul>
+            <dt>show the user a prompt to decide whether to succeed</dt>
+            <dd>{{"prompt"}}</dd>
 
-    <p>
-      The UA returns whichever of these values most accurately reflects the user's
-      intent, except that if the <a>current settings object</a> is a
-      <a>non-secure context</a> and
-      <code>|descriptor|.{{PermissionDescriptor/name}}</code> isn't <a>allowed
-      in non-secure contexts</a>, then the UA must return {{"denied"}}.
-      Subsequent uses of |descriptor|'s <a>permission state</a> with the same
-      <a>current settings object</a> must return the same value, unless the UA
-      receives <a>new information about the user's intent</a>.
-    </p>
+            <dt>fail without prompting the user</dt>
+            <dd>{{"denied"}}</dd>
+          </dl>
+        </li>
+      </ol>
 
-    <p class="issue" id="issue-current-entry-incumbent-or-relevant">
-      Safari is the only known UA that returns different results from this
-      algorithm for different settings objects with the same origin. We should
-      test which of the <a
-      href="https://html.spec.whatwg.org/multipage/webappapis.html#realms-settings-objects-global-objects">several
-      possible settings objects</a> it uses.
-    </p>
+      <p class="issue" id="issue-current-entry-incumbent-or-relevant">
+        Safari is the only known UA that returns different results from this
+        algorithm for different settings objects with the same origin. We should
+        test which of the <a
+        href="https://html.spec.whatwg.org/multipage/webappapis.html#realms-settings-objects-global-objects">several
+        possible settings objects</a> it uses.
+      </p>
+    </div>
 
-    <p>
-      Some <a>powerful features</a> have more information associated with them
-      than just a {{PermissionState}}. For example,
-      {{MediaDevices/getUserMedia()}} needs to determine <em>which</em> cameras
-      the user has granted the <a>current realm</a> permission to access. Each
-      of these features defines an <a>extra permission data type</a>, and then a
-      {{PermissionName}} |name|'s <dfn export>extra permission data</dfn> is the
-      instance of that type matching the UA's impression of the user's intent.
-      Subsequent uses of |name|'s <a>extra permission data</a> must return the
-      same value, unless the UA receives <a>new information about the user's
-      intent</a>.
-    </p>
+    <div algorithm>
+      <p>
+        Some <a>powerful features</a> have more information associated with them
+        than just a {{PermissionState}}. For example,
+        {{MediaDevices/getUserMedia()}} needs to determine <em>which</em> cameras
+        the user has granted the <a>current realm</a> permission to access. Each
+        of these features defines an <a>extra permission data type</a>. If a
+        {{PermissionName}} |name| names one of these features, then |name|'s
+        <dfn export>extra permission data</dfn> is the result of the following
+        algorithm:
+      </p>
+      <ol class="algorithm">
+        <li>
+          If there was a previous invocation of this algorithm with the same
+          |name| and <a>current settings object</a>, returning
+          |previousResult|, and the UA has not received <a>new information about
+          the user's intent</a> since that invocation, return |previousResult|.
+        </li>
+        <li>
+          Return the instance of |name|'s <a>extra permission data type</a> that
+          matches the UA's impression of the user's intent.
+        </li>
+      </ol>
+    </div>
   </section>
   <section>
     <h3 id="requesting-more-permission">Requesting more permission</h3>
