@@ -120,7 +120,7 @@ spec: webidl
   <h2 id="definitions">Definitions</h2>
 
   <dl>
-    <dt><dfn>New information about the user's intent</dfn></dt>
+    <dt><dfn export>New information about the user's intent</dfn></dt>
     <dd>
       The UA may collect information about a user's intentions in any way its
       authors believe is appropriate. This information can come from explicit
