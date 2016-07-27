@@ -280,7 +280,8 @@ spec: webidl
 
     <div algorithm="request-permission-to-use">
       <p>
-        To <dfn export>request permission to use</dfn> a |descriptor|, the UA
+        To <dfn lt="request permission to use|requesting permission to use"
+                export>request permission to use</dfn> a |descriptor|, the UA
         must perform the following steps. This algorithm returns either
         {{"granted"}} or {{"denied"}}.
       </p>
@@ -315,7 +316,8 @@ spec: webidl
 
     <div algorithm="prompt-user-to-choose">
       <p>
-        To <dfn export>prompt the user to choose</dfn> one of several |options|
+        To <dfn lt="prompt the user to choose|prompting the user to choose"
+                export>prompt the user to choose</dfn> one of several |options|
         associated with a |descriptor|, the UA must perform the following steps.
         This algorithm returns either {{"denied"}} or one of the options.
       </p>
