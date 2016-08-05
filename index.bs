@@ -242,6 +242,12 @@ spec: webidl
         href="https://html.spec.whatwg.org/multipage/webappapis.html#realms-settings-objects-global-objects">several
         possible settings objects</a> it uses.
       </p>
+
+      <p>
+        As a shorthand, a {{PermissionName}} |name|'s <a>permission state</a> is
+        the <a>permission state</a> of a {{PermissionDescriptor}} with its
+        {{PermissionDescriptor/name}} member set to |name|.
+      </p>
     </div>
 
     <div algorithm>
@@ -312,6 +318,13 @@ spec: webidl
           </p>
         </li>
       </ol>
+
+      <p>
+        As a shorthand, <a>requesting permission to use</a> a {{PermissionName}}
+        |name|, is the same as <a>requesting permission to use</a> a
+        {{PermissionDescriptor}} with its {{PermissionDescriptor/name}} member
+        set to |name|.
+      </p>
     </div>
 
     <div algorithm="prompt-user-to-choose">
@@ -353,6 +366,14 @@ spec: webidl
           </p>
         </li>
       </ol>
+
+      <p>
+        As a shorthand, <a>prompting the user to choose</a> from options
+        associated with a {{PermissionName}} |name|, is the same as <a>prompting
+        the user to choose</a> from those options associated with a
+        {{PermissionDescriptor}} with its {{PermissionDescriptor/name}} member
+        set to |name|.
+      </p>
     </div>
   </section>
   <section>
