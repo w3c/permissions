@@ -389,6 +389,261 @@ spec: webidl
 </section>
 
 <section>
+  <h2 id="status-of-a-permission">
+    Status of a permission
+  </h2>
+  <pre class='idl'>
+    enum PermissionState {
+      "granted",
+      "denied",
+      "prompt",
+    };
+  </pre>
+  <p>
+    The <dfn for="PermissionState" enum-value>"granted"</dfn> state represents
+    that the caller will be able
+    to successfuly access the feature without having the <a>user agent</a>
+    asking the user's permission.
+  </p>
+  <p>
+    The <dfn for="PermissionState" enum-value>"denied"</dfn> state represents
+    that the caller will not be
+    able to access the feature.
+  </p>
+  <p>
+    The <dfn for="PermissionState" enum-value>"prompt"</dfn> state represents
+    that the <a>user agent</a>
+    will be asking the user's permission if the caller tries to access the
+    feature. The user might grant, deny or dismiss the request.
+  </p>
+  <pre class='idl'>
+    [Exposed=(Window,Worker)]
+    interface PermissionStatus : EventTarget {
+      readonly attribute PermissionState state;
+      attribute EventHandler onchange;
+    };
+  </pre>
+  <p>
+    {{PermissionStatus}} instances are created with a <dfn
+    for="PermissionStatus" attribute>\[[query]]</dfn> internal slot, which is an
+    instance of a feature's <a>permission descriptor type</a>.
+  </p>
+
+  <p>
+    To <dfn>create a PermissionStatus</dfn> for a given {{PermissionDescriptor}}
+    |permissionDesc|, return a new instance of the <a>permission result
+    type</a> for the feature named by <code>|permissionDesc|.{{name}}</code>,
+    with the {{PermissionStatus/[[query]]}} internal slot initialized to
+    |permissionDesc|.
+  </p>
+  <p>
+    The <dfn for="PermissionStatus" attribute>state</dfn>
+    attribute MUST return the latest value that was set on the current
+    instance.
+  </p>
+  <p>
+    The <dfn for="PermissionStatus" attribute>onchange</dfn> attribute is an
+    <a>event handler</a> whose corresponding <a>event handler event
+    type</a> is <code>change</code>.
+  </p>
+  <p id="PermissionStatus-update">
+    Whenever the <a>user agent</a> is aware that the state of a
+    {{PermissionStatus}} instance <var>status</var> has changed,
+    it MUST asynchronously run the following steps:
+  </p>
+  <ol>
+    <li>
+      Run <code><var>status</var>@{{[[query]]}}.{{name}}</code>'s <a>permission
+      query algorithm</a>, passing <code><var>status</var>@{{[[query]]}}</code>
+      and <var>status</var>.
+    </li>
+    <li>
+      <a>Queue a task</a> on the <dfn>permission task source</dfn> to
+      <a>fire an event</a> named <code>change</code> at
+      <var>status</var>.
+    </li>
+  </ol>
+</section>
+<section>
+  <h2 id="navigator-and-workernavigator-extension">
+    Navigator and WorkerNavigator extension
+  </h2>
+  <pre class='idl'>
+    [Exposed=(Window)]
+    partial interface Navigator {
+      readonly attribute Permissions permissions;
+    };
+  </pre>
+  <pre class='idl'>
+    [Exposed=(Worker)]
+    partial interface WorkerNavigator {
+      readonly attribute Permissions permissions;
+    };
+  </pre>
+</section>
+<section>
+  <h2 id="permissions-interface">
+    Permissions interface
+  </h2>
+  <pre class='idl'>
+    [Exposed=(Window,Worker)]
+    interface Permissions {
+      Promise&lt;PermissionStatus&gt; query(PermissionDescriptor permissionDesc);
+
+      Promise&lt;PermissionStatus&gt; request(PermissionDescriptor permissionDesc);
+
+      Promise&lt;PermissionStatus&gt; revoke(PermissionDescriptor permissionDesc);
+    };
+  </pre>
+  <p>
+    When the <dfn for='Permissions' method>query()</dfn> method is invoked,
+    the <a>user agent</a> MUST run the following <dfn export>query a
+    permission</dfn> algorithm, passing the parameter
+    <var>permissionDesc</var>:
+  </p>
+  <ol>
+    <li>If <code><var>permissionDesc</var>.name</code> has a <a>permission
+    descriptor type</a> other than {{PermissionDescriptor}}, convert the
+    underlying ECMAScript object to the <a>permission descriptor type</a>
+    dictionary as
+    <a href='http://heycam.github.io/webidl/#es-dictionary'>described</a> in
+    [[!WEBIDL]], then:
+      <ul>
+        <li>If that operation failed, return a {{Promise}} rejected with
+        a {{TypeError}} and abort these steps.
+        </li>
+        <li>Otherwise, set <var>permissionDesc</var> to the result of the
+        operation.
+        </li>
+      </ul>
+    </li>
+    <li>Let <var>promise</var> be a newly-created {{Promise}}.
+    </li>
+    <li>Return <var>promise</var> and continue the following steps
+    asynchronously.
+    </li>
+    <li>Run the steps to <a>create a PermissionStatus</a> for
+    <var>permissionDesc</var>, and let <var>status</var> be the result.
+    </li>
+    <li>
+      Run <code>|status|@{{[[query]]}}.{{name}}</code>'s <a>permission query
+      algorithm</a>, passing <code>|status|@{{[[query]]}}</code> and |status|.
+    </li>
+    <li>Resolve <var>promise</var> with <var>status</var>.
+    </li>
+  </ol>
+  <div class='note'>
+    If a developer wants to check multiple permissions at once, the editors
+    recommend the use of <code>{{Promise}}.all()</code>. An example can be
+    found in the <a href='#examples'>Examples section</a>.
+  </div>
+
+  <p>
+    When the <dfn for='Permissions' method>request()</dfn> method is invoked,
+    the <a>user agent</a> MUST run the following algorithm, passing the
+    parameter <var>permissionDesc</var>:
+  </p>
+  <ol class="algorithm">
+    <li>If <code><var>permissionDesc</var>.name</code> has a <a>permission
+    descriptor type</a> other than {{PermissionDescriptor}}, convert the
+    underlying ECMAScript object to the <a>permission descriptor type</a>
+    dictionary as
+    <a href='http://heycam.github.io/webidl/#es-dictionary'>described</a> in
+    [[!WEBIDL]], then:
+      <ul>
+        <li>If that operation failed, return a {{Promise}} rejected with
+        a {{TypeError}} and abort these steps.
+        </li>
+        <li>Otherwise, set <var>permissionDesc</var> to the result of the
+        operation.
+        </li>
+      </ul>
+    </li>
+    <li>Let <var>promise</var> be a newly-created {{Promise}}.
+    </li>
+    <li>Return <var>promise</var> and continue the following steps
+    asynchronously.
+    </li>
+    <li>Run the steps to <a>create a PermissionStatus</a> for
+    <var>permissionDesc</var>, and let <var>status</var> be the result.
+    </li>
+    <li>
+      Run the <a>permission request algorithm</a> of the feature named <code>
+      |permissionDesc|.name</code> with <var>permissionDesc</var> and
+      <var>status</var> as arguments.
+    </li>
+    <li>
+      If the previous step threw an exception, <a>reject</a> |promise| with that
+      exception.
+    </li>
+    <li>Otherwise resolve <var>promise</var> with <var>status</var>.
+    </li>
+  </ol>
+
+  <p>
+    When the <dfn for='Permissions' method>revoke(|permissionDesc|)</dfn> method
+    is invoked, this constitutes <a>new information about the user's intent</a>.
+    The UA must return <a>a new promise</a> |promise| and run the following
+    steps <a>in parallel</a>:
+  </p>
+  <ol>
+    <li>
+      If any tasks run due to <a href="#reacting-to-revocation"></a>, wait for
+      them to finish.
+    </li>
+    <li>
+      <a>Resolve</a> |promise| with the result of <code><a idl for="Permissions"
+      lt="query()">query(|permissionDesc|)</a></code>.
+    </li>
+  </ol>
+</section>
+<section>
+  <h2 id="common-permission-algorithms">
+    Common permission algorithms
+  </h2>
+  <p>
+    The <dfn export>boolean permission query algorithm</dfn>, given a
+    {{PermissionDescriptor}} <var>permissionDesc</var> and a
+    {{PermissionStatus}} <var>status</var>, runs the following steps:
+  </p>
+  <ol class="algorithm">
+    <li>
+      Set <code><var>status</var>.state</code> to |permissionDesc|'s
+      <a>permission state</a>.
+    </li>
+  </ol>
+  <p>
+    The <dfn export>boolean permission request algorithm</dfn>, given a
+    {{PermissionDescriptor}} <var>permissionDesc</var> and a
+    {{PermissionStatus}} <var>status</var>, runs the following steps:
+  </p>
+  <ol class="algorithm">
+    <li>
+      Run the <a>boolean permission query algorithm</a> on |permissionDesc| and
+      |status|.
+    </li>
+    <li>
+      If <code>|status|.state</code> is not {{"prompt"}}, abort these steps.
+    </li>
+    <li>
+      <a>Request permission to use</a> |permissionDesc|.
+    </li>
+    <li>
+      Run the <a>boolean permission query algorithm</a> again on
+      |permissionDesc| and |status|.
+
+      <p class="issue" id="issue-non-persistent-grants">
+        On browsers that don't store permissions persistently within an
+        <a>environment settings object</a>, this will always return
+        {{"prompt"}}, but still show the user an unnecessary prompt. That may
+        mean that no permissions should use the <a>boolean permission request
+        algorithm</a>, since it can never return an appropriate
+        object-capability.
+      </p>
+    </li>
+  </ol>
+</section>
+<section>
   <h2 id="permission-registry">
     Permission Registry
   </h2>
@@ -711,261 +966,6 @@ spec: webidl
       information about the user's intent</a>.
     </p>
   </section>
-</section>
-<section>
-  <h2 id="status-of-a-permission">
-    Status of a permission
-  </h2>
-  <pre class='idl'>
-    enum PermissionState {
-      "granted",
-      "denied",
-      "prompt",
-    };
-  </pre>
-  <p>
-    The <dfn for="PermissionState" enum-value>"granted"</dfn> state represents
-    that the caller will be able
-    to successfuly access the feature without having the <a>user agent</a>
-    asking the user's permission.
-  </p>
-  <p>
-    The <dfn for="PermissionState" enum-value>"denied"</dfn> state represents
-    that the caller will not be
-    able to access the feature.
-  </p>
-  <p>
-    The <dfn for="PermissionState" enum-value>"prompt"</dfn> state represents
-    that the <a>user agent</a>
-    will be asking the user's permission if the caller tries to access the
-    feature. The user might grant, deny or dismiss the request.
-  </p>
-  <pre class='idl'>
-    [Exposed=(Window,Worker)]
-    interface PermissionStatus : EventTarget {
-      readonly attribute PermissionState state;
-      attribute EventHandler onchange;
-    };
-  </pre>
-  <p>
-    {{PermissionStatus}} instances are created with a <dfn
-    for="PermissionStatus" attribute>\[[query]]</dfn> internal slot, which is an
-    instance of a feature's <a>permission descriptor type</a>.
-  </p>
-
-  <p>
-    To <dfn>create a PermissionStatus</dfn> for a given {{PermissionDescriptor}}
-    |permissionDesc|, return a new instance of the <a>permission result
-    type</a> for the feature named by <code>|permissionDesc|.{{name}}</code>,
-    with the {{PermissionStatus/[[query]]}} internal slot initialized to
-    |permissionDesc|.
-  </p>
-  <p>
-    The <dfn for="PermissionStatus" attribute>state</dfn>
-    attribute MUST return the latest value that was set on the current
-    instance.
-  </p>
-  <p>
-    The <dfn for="PermissionStatus" attribute>onchange</dfn> attribute is an
-    <a>event handler</a> whose corresponding <a>event handler event
-    type</a> is <code>change</code>.
-  </p>
-  <p id="PermissionStatus-update">
-    Whenever the <a>user agent</a> is aware that the state of a
-    {{PermissionStatus}} instance <var>status</var> has changed,
-    it MUST asynchronously run the following steps:
-  </p>
-  <ol>
-    <li>
-      Run <code><var>status</var>@{{[[query]]}}.{{name}}</code>'s <a>permission
-      query algorithm</a>, passing <code><var>status</var>@{{[[query]]}}</code>
-      and <var>status</var>.
-    </li>
-    <li>
-      <a>Queue a task</a> on the <dfn>permission task source</dfn> to
-      <a>fire an event</a> named <code>change</code> at
-      <var>status</var>.
-    </li>
-  </ol>
-</section>
-<section>
-  <h2 id="navigator-and-workernavigator-extension">
-    Navigator and WorkerNavigator extension
-  </h2>
-  <pre class='idl'>
-    [Exposed=(Window)]
-    partial interface Navigator {
-      readonly attribute Permissions permissions;
-    };
-  </pre>
-  <pre class='idl'>
-    [Exposed=(Worker)]
-    partial interface WorkerNavigator {
-      readonly attribute Permissions permissions;
-    };
-  </pre>
-</section>
-<section>
-  <h2 id="permissions-interface">
-    Permissions interface
-  </h2>
-  <pre class='idl'>
-    [Exposed=(Window,Worker)]
-    interface Permissions {
-      Promise&lt;PermissionStatus&gt; query(PermissionDescriptor permissionDesc);
-
-      Promise&lt;PermissionStatus&gt; request(PermissionDescriptor permissionDesc);
-
-      Promise&lt;PermissionStatus&gt; revoke(PermissionDescriptor permissionDesc);
-    };
-  </pre>
-  <p>
-    When the <dfn for='Permissions' method>query()</dfn> method is invoked,
-    the <a>user agent</a> MUST run the following <dfn export>query a
-    permission</dfn> algorithm, passing the parameter
-    <var>permissionDesc</var>:
-  </p>
-  <ol>
-    <li>If <code><var>permissionDesc</var>.name</code> has a <a>permission
-    descriptor type</a> other than {{PermissionDescriptor}}, convert the
-    underlying ECMAScript object to the <a>permission descriptor type</a>
-    dictionary as
-    <a href='http://heycam.github.io/webidl/#es-dictionary'>described</a> in
-    [[!WEBIDL]], then:
-      <ul>
-        <li>If that operation failed, return a {{Promise}} rejected with
-        a {{TypeError}} and abort these steps.
-        </li>
-        <li>Otherwise, set <var>permissionDesc</var> to the result of the
-        operation.
-        </li>
-      </ul>
-    </li>
-    <li>Let <var>promise</var> be a newly-created {{Promise}}.
-    </li>
-    <li>Return <var>promise</var> and continue the following steps
-    asynchronously.
-    </li>
-    <li>Run the steps to <a>create a PermissionStatus</a> for
-    <var>permissionDesc</var>, and let <var>status</var> be the result.
-    </li>
-    <li>
-      Run <code>|status|@{{[[query]]}}.{{name}}</code>'s <a>permission query
-      algorithm</a>, passing <code>|status|@{{[[query]]}}</code> and |status|.
-    </li>
-    <li>Resolve <var>promise</var> with <var>status</var>.
-    </li>
-  </ol>
-  <div class='note'>
-    If a developer wants to check multiple permissions at once, the editors
-    recommend the use of <code>{{Promise}}.all()</code>. An example can be
-    found in the <a href='#examples'>Examples section</a>.
-  </div>
-
-  <p>
-    When the <dfn for='Permissions' method>request()</dfn> method is invoked,
-    the <a>user agent</a> MUST run the following algorithm, passing the
-    parameter <var>permissionDesc</var>:
-  </p>
-  <ol class="algorithm">
-    <li>If <code><var>permissionDesc</var>.name</code> has a <a>permission
-    descriptor type</a> other than {{PermissionDescriptor}}, convert the
-    underlying ECMAScript object to the <a>permission descriptor type</a>
-    dictionary as
-    <a href='http://heycam.github.io/webidl/#es-dictionary'>described</a> in
-    [[!WEBIDL]], then:
-      <ul>
-        <li>If that operation failed, return a {{Promise}} rejected with
-        a {{TypeError}} and abort these steps.
-        </li>
-        <li>Otherwise, set <var>permissionDesc</var> to the result of the
-        operation.
-        </li>
-      </ul>
-    </li>
-    <li>Let <var>promise</var> be a newly-created {{Promise}}.
-    </li>
-    <li>Return <var>promise</var> and continue the following steps
-    asynchronously.
-    </li>
-    <li>Run the steps to <a>create a PermissionStatus</a> for
-    <var>permissionDesc</var>, and let <var>status</var> be the result.
-    </li>
-    <li>
-      Run the <a>permission request algorithm</a> of the feature named <code>
-      |permissionDesc|.name</code> with <var>permissionDesc</var> and
-      <var>status</var> as arguments.
-    </li>
-    <li>
-      If the previous step threw an exception, <a>reject</a> |promise| with that
-      exception.
-    </li>
-    <li>Otherwise resolve <var>promise</var> with <var>status</var>.
-    </li>
-  </ol>
-
-  <p>
-    When the <dfn for='Permissions' method>revoke(|permissionDesc|)</dfn> method
-    is invoked, this constitutes <a>new information about the user's intent</a>.
-    The UA must return <a>a new promise</a> |promise| and run the following
-    steps <a>in parallel</a>:
-  </p>
-  <ol>
-    <li>
-      If any tasks run due to <a href="#reacting-to-revocation"></a>, wait for
-      them to finish.
-    </li>
-    <li>
-      <a>Resolve</a> |promise| with the result of <code><a idl for="Permissions"
-      lt="query()">query(|permissionDesc|)</a></code>.
-    </li>
-  </ol>
-</section>
-<section>
-  <h2 id="common-permission-algorithms">
-    Common permission algorithms
-  </h2>
-  <p>
-    The <dfn export>boolean permission query algorithm</dfn>, given a
-    {{PermissionDescriptor}} <var>permissionDesc</var> and a
-    {{PermissionStatus}} <var>status</var>, runs the following steps:
-  </p>
-  <ol class="algorithm">
-    <li>
-      Set <code><var>status</var>.state</code> to |permissionDesc|'s
-      <a>permission state</a>.
-    </li>
-  </ol>
-  <p>
-    The <dfn export>boolean permission request algorithm</dfn>, given a
-    {{PermissionDescriptor}} <var>permissionDesc</var> and a
-    {{PermissionStatus}} <var>status</var>, runs the following steps:
-  </p>
-  <ol class="algorithm">
-    <li>
-      Run the <a>boolean permission query algorithm</a> on |permissionDesc| and
-      |status|.
-    </li>
-    <li>
-      If <code>|status|.state</code> is not {{"prompt"}}, abort these steps.
-    </li>
-    <li>
-      <a>Request permission to use</a> |permissionDesc|.
-    </li>
-    <li>
-      Run the <a>boolean permission query algorithm</a> again on
-      |permissionDesc| and |status|.
-
-      <p class="issue" id="issue-non-persistent-grants">
-        On browsers that don't store permissions persistently within an
-        <a>environment settings object</a>, this will always return
-        {{"prompt"}}, but still show the user an unnecessary prompt. That may
-        mean that no permissions should use the <a>boolean permission request
-        algorithm</a>, since it can never return an appropriate
-        object-capability.
-      </p>
-    </li>
-  </ol>
 </section>
 <section class='non-normative'>
   <h2 id="examples">
