@@ -895,46 +895,48 @@ spec: webidl
       </dt>
       <dd>
         A list of {{MediaDeviceInfo/deviceId}} values for the devices the user
-        has granted access to.
-      </dd>
-      <dt>
-        <a>permission result type</a>
-      </dt>
-      <dd>
-        TODO
+        has made a non-default decision on access to.
       </dd>
       <dt>
         <a>permission query algorithm</a>
       </dt>
       <dd>
-        TODO
+        The permission query algorithm runs the following steps:
+        <ol class="algorithm">
+        <li>
+        If |permissionDesc|.deviceId exists in the <a>extra permission data</a>,
+        set <code><var>status</var>.state</code>
+        to |permissionDesc|'s <a>permission state</a> and terminate these
+        steps.
+        </li>
+        <li>Set <var>global</var> to the {{PermissionDesc}} for the descriptor
+        that results from removing the "deviceId" value.
+        </li>
+        <li>
+        Set <code><var>status</var>.state</code> to <var>global</var>'s
+        <a>permission state</a>.
+        </li>
       </dd>
       <dt>
         <a>permission request algorithm</a>
       </dt>
       <dd>
-        TODO
+        Run the <a>boolean permission request algorithm</a>
       </dd>
       <dt>
         <a>permission revocation algorithm</a>
       </dt>
       <dd>
-        TODO: Stop playing/recording data?
+        When permission for a device is revoked, the UA MUST run the
+        algorithm to stop the track for any other reason than the stop()
+        method being invoked for each MediaStreamTrack sourced from that
+        device. <!--TODO make a link target in the spec -->
       </dd>
     </dl>
     <p>
       The <dfn for="PermissionName" enum-value>"device-info"</dfn>
       permission controls access to names and capabilities of input and
       output devices.
-    </p>
-    <p>
-      A successful call to the <code>getUserMedia</code> function of
-      [[GETUSERMEDIA]] MUST cause permission to be granted for the returned
-      devices, and MAY cause other permissions to be granted.
-    </p>
-    <p>
-      Stopping a MediaStreamTrack MAY cause permission to be revoked for
-      the associated device.
     </p>
   </section>
   <section>
