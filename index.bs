@@ -881,13 +881,12 @@ spec: webidl
           cameras, a query without the {{DevicePermissionDescriptor/deviceId}}
           will return {{"prompt"}}.
         </p>
-        <p class="issue" id="issue-media-granted">
-          It may not make sense for `{name: "camera"}`'s <a>permission state</a>
-          to ever be {{"granted"}}: if the UA returns {{"granted"}} from
-          <a>permission state</a>, the above paragraphs say it's promising to
-          return from {{MediaDevices/getUserMedia()}} without prompting no
-          matter what the constraints are, but if that call has constraints that
-          none of the user's devices satisfy, the UA cannot return a device.
+        <p>
+          Note that a "granted" permission is no guarantee that getUserMedia
+          will succeed. It only guarantees that the user will not be
+          prompted for permission. There are many other things (such as
+          constraints or the camera being in use) that can cause getUserMedia
+          to fail.
         </p>
       </dd>
       <dt>
