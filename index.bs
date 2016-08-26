@@ -33,32 +33,21 @@ spec: ECMAScript; urlPrefix: https://tc39.github.io/ecma262/#
 spec: html; urlPrefix: https://html.spec.whatwg.org/multipage/
     type: dfn
         text: ancestor browsing context
-        text: origin; url: browsers.html#origin-2
 spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
     type: attribute
         for: MediaDeviceInfo; text: deviceId
-    type: element-attr
-        for: iframe; text: allowusermedia; url: iframe-allowusermedia
     type: method
         for: MediaDevices; text: getUserMedia(); url: dom-mediadevices-getusermedia
 </pre>
 <pre class="link-defaults">
 spec: html
     type: dfn
-        text: browsing context
         text: browsing context container
-        text: current settings object
-        text: environment settings object
         text: event handler
         text: event handler event type
         text: in parallel
-        text: origin
-        text: parent browsing context
+        text: origin; for: /
         text: queue a task
-        text: responsible browsing context
-        text: responsible event loop
-        text: the realm's settings object
-        text: top-level browsing context
 spec: ui-events
     type: dfn
         text: user agent
