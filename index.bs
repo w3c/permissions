@@ -897,8 +897,8 @@ spec: webidl
         to |permissionDesc|'s <a>permission state</a> and terminate these
         steps.
         </li>
-        <li>Set <var>global</var> to the {{PermissionDesc}} for the descriptor
-        that results from removing the "deviceId" value.
+        <li>Let <var>global</var> be a copy of |permissionDesc| with the
+        {{DevicePermissionDescriptor/deviceId}} member removed.
         </li>
         <li>
         Set <code><var>status</var>.state</code> to <var>global</var>'s
