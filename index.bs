@@ -210,7 +210,9 @@ spec: webidl
         </li>
         <li>
           Return whichever of the following options most accurately reflects the user's
-          intent for the calling algorithm:
+          intent for the calling algorithm, taking into account any
+          <a>permission state constraints</a> for
+          <code>|descriptor|.{{PermissionDescriptor/name}}</code>:
           <dl class="switch">
             <dt>succeed without prompting the user</dt>
             <dd>{{"granted"}}</dd>
@@ -259,7 +261,8 @@ spec: webidl
         </li>
         <li>
           Return the instance of |name|'s <a>extra permission data type</a> that
-          matches the UA's impression of the user's intent.
+          matches the UA's impression of the user's intent, taking into account
+          any <a>extra permission data constraints</a> for |name|.
         </li>
       </ol>
     </div>
@@ -691,14 +694,29 @@ spec: webidl
         grant access to midi-without-sysex.
       </p>
     </dd>
+
+    <dt>Optional <dfn export>permission state constraints</dfn></dt>
+    <dd>
+      Constraints on the values that the UA can return as a descriptor's
+      <a>permission state</a>. Defaults to no constraints beyond the user's
+      intent.
+    </dd>
+
     <dt>
       An optional <dfn export>extra permission data type</dfn>
     </dt>
     <dd>
       If specified, the <a>extra permission data</a> algorithm is usable for
-      this feature. The feature will specify any constraints on the values this
-      algorithm can return.
+      this feature.
     </dd>
+
+    <dt>Optional <dfn export>extra permission data constraints</dfn></dt>
+    <dd>
+      Constraints on the values that the UA can return as a {{PermissionName}}'s
+      <a>extra permission data</a>. Defaults to no constraints beyond the user's
+      intent.
+    </dd>
+
     <dt>
       A <dfn export>permission result type</dfn>
     </dt>
