@@ -192,19 +192,23 @@ spec: webidl
     <h3 id="reading-current-states">Reading the current permission state</h3>
     <div algorithm>
       <p>
-        A |descriptor|'s <dfn export local-lt="state">permission state</dfn> is
+        A |descriptor|'s <dfn export local-lt="state">permission state</dfn> for
+        an optional <a>environment settings object</a> |settings| is
         the result of the following algorithm, which returns one of
         {{"granted"}}, {{"prompt"}}, or {{"denied"}}:
       </p>
       <ol class="algorithm">
         <li>
-          If the <a>current settings object</a> is a <a>non-secure context</a>
+          If |settings| wasn't passed, set it to the <a>current settings object</a>.
+        </li>
+        <li>
+          If |settings| is a <a>non-secure context</a>
           and <code>|descriptor|.{{PermissionDescriptor/name}}</code> isn't
           <a>allowed in non-secure contexts</a>, then return {{"denied"}}.
         </li>
         <li>
           If there was a previous invocation of this algorithm with the same
-          |descriptor| and <a>current settings object</a>, returning
+          |descriptor| and |settings|, returning
           |previousResult|, and the UA has not received <a>new information about
           the user's intent</a> since that invocation, return |previousResult|.
         </li>
@@ -249,13 +253,16 @@ spec: webidl
         the user has granted the <a>current realm</a> permission to access. Each
         of these features defines an <a>extra permission data type</a>. If a
         {{PermissionName}} |name| names one of these features, then |name|'s
-        <dfn export>extra permission data</dfn> is the result of the following
-        algorithm:
+        <dfn export>extra permission data</dfn> for an optional <a>environment
+        settings object</a> |settings| is the result of the following algorithm:
       </p>
       <ol class="algorithm">
         <li>
+          If |settings| wasn't passed, set it to the <a>current settings object</a>.
+        </li>
+        <li>
           If there was a previous invocation of this algorithm with the same
-          |name| and <a>current settings object</a>, returning
+          |name| and |settings|, returning
           |previousResult|, and the UA has not received <a>new information about
           the user's intent</a> since that invocation, return |previousResult|.
         </li>
