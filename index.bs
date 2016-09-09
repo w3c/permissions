@@ -305,10 +305,9 @@ spec: webidl
         </li>
         <li>
           If the user grants permission, return {{"granted"}}; otherwise return
-          {{"denied"}}. If the user's interaction indicates they intend this
-          choice to apply to other realms, then treat this as <a>new information
-          about the user's intent</a> for other <a>realms</a> with the <a>same
-          origin</a>.
+          {{"denied"}}. The user's interaction may provide <a>new information
+          about the user's intent</a> for this <a>realm</a> and other
+          <a>realms</a> with the <a>same origin</a>.
 
           <p class="note">
             This is intentionally vague about the details of the permission UI
