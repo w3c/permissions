@@ -653,19 +653,21 @@ spec: webidl
   <h2 id="permission-registry">
     Permission Registry
   </h2>
-  <pre class='idl' title=''>
-    enum PermissionName {
-      "geolocation",
-      "notifications",
-      "push",
-      "midi",
-      "camera",
-      "microphone",
-      "speaker",
-      "device-info",
-      "background-sync",
-      "bluetooth",
-      "persistent-storage",
+  <!-- IDL blocks can't link outside the current spec, but these enum-values are
+       supposed to be defined in other specs. -->
+  <pre class='lang-webidl' link-for="PermissionName">
+    enum <dfn enum>PermissionName</dfn> {
+      <a enum-value>"geolocation"</a>,
+      <a enum-value>"notifications"</a>,
+      <a enum-value>"push"</a>,
+      <a enum-value>"midi"</a>,
+      <a enum-value>"camera"</a>,
+      <a enum-value>"microphone"</a>,
+      <a enum-value>"speaker"</a>,
+      <a enum-value>"device-info"</a>,
+      <a enum-value>"background-sync"</a>,
+      <a enum-value>"bluetooth"</a>,
+      <a enum-value>"persistent-storage"</a>,
     };
   </pre>
   <p>
