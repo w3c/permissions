@@ -30,9 +30,6 @@ spec: ECMAScript; urlPrefix: https://tc39.github.io/ecma262/#
         text: current realm; url: current-realm
     type: interface
         text: TypeError; url: sec-native-error-types-used-in-this-standard-typeerror
-spec: html; urlPrefix: https://html.spec.whatwg.org/multipage/
-    type: dfn
-        text: ancestor browsing context
 spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
     type: attribute
         for: MediaDeviceInfo; text: deviceId
@@ -40,9 +37,11 @@ spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
         for: MediaDevices; text: getUserMedia(); url: dom-mediadevices-getusermedia
 </pre>
 <pre class="link-defaults">
+spec: dom
+    type: interface
+        text: Document
 spec: html
     type: dfn
-        text: browsing context container
         text: event handler
         text: event handler event type
         text: in parallel
@@ -858,10 +857,9 @@ spec: webidl
       <a>allowed in non-secure contexts</a>.
     </p>
     <p>
-      If the <a>current settings object</a>'s <a>responsible browsing
-      context</a> or any of its <a>ancestor browsing contexts</a> has a
-      <a>browsing context container</a> that isn't an <{iframe}> element with
-      the <{iframe/allowusermedia}> attribute specified, then the <a>permission
+      If the <a>current global object</a> has an <a>associated `Document`</a>,
+      and that {{Document}} is not <a>allowed to use</a> the feature indicated
+      by attribute name <{iframe/allowusermedia}>, then the <a>permission
       state</a> of any descriptor with a {{PermissionDescriptor/name}} of
       {{"camera"}} or {{"microphone"}} must be {{"denied"}}.
     </p>
