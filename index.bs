@@ -380,8 +380,8 @@ spec: webidl
     <p>
       When the UA learns that the user no longer intends to grant permission
       for a <a>realm</a> to use a <a>feature</a>, it must <a>queue a task</a>
-      on <a>the Realm's settings object</a>'s <a>responsible event loop</a> to
-      run that feature's <a>permission revocation algorithm</a>.
+      on the Realm's <a for="Realm">settings object</a>'s <a>responsible event
+      loop</a> to run that feature's <a>permission revocation algorithm</a>.
     </p>
   </section>
 </section>
