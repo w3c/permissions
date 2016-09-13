@@ -10,11 +10,11 @@ env:
   global:
   - ENCRYPTION_LABEL: 104fbe69e8fa
   - COMMIT_AUTHOR_EMAIL: travis-ci@w3.org
-  - URL="https://w3c.github.io/permissions/"
+  - WD_URL="https://api.csswg.org/bikeshed/?url=https://raw.githubusercontent.com/w3c/permissions/master/index.bs&md-status=WD"
   - DECISION="https://lists.w3.org/Archives/Public/public-webappsec/2015Mar/0170.html"
   # Exports $TOKEN - the W3C Token needed by Echidna to auto-publish this spec
   # See: https://github.com/w3c/echidna/wiki/How-to-use-Echidna-with-ReSpec-and-GitHub#the-token
   - secure: SneznWMBm52ct+mFI6NAVrB8k/BjO/H/hjR1eB3tjPwF0vzpL5fnbD1mmlNmVJMTWMsSUfI917JotA+7lfwoWJuHwlq2WfzQ0ybfvtuqjo7LS22T5X8IFYmCyVNR5asbJha/LNhqUyGDsZlPBgbKK0hqTd8eWjjQTztnlSrorGM=
 
 after_success:
-  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && curl "https://labs.w3.org/echidna/api/request" --data "url=$URL" --data "decision=$DECISION" --data "token=$TOKEN"'
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && curl "https://labs.w3.org/echidna/api/request" --data "url=$WD_URL" --data "decision=$DECISION" --data "token=$TOKEN"'
