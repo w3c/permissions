@@ -855,7 +855,8 @@ spec: webidl
       <dfn>"speaker"</dfn>
       permissions are associated with permission to use media devices as
       specified in [[GETUSERMEDIA]] and [[audio-output]]. {{"speaker"}} is
-      <a>allowed in non-secure contexts</a>.
+      <a>allowed in non-secure contexts</a>. {{"camera"}} and {{"microphone"}}
+      MAY be <a>allowed in non-secure contexts</a>.
     </p>
     <p>
       If the <a>current global object</a> has an <a>associated `Document`</a>,
