@@ -486,11 +486,11 @@ spec: webidl
   <pre class='idl'>
     [Exposed=(Window,Worker)]
     interface Permissions {
-      Promise&lt;PermissionStatus&gt; query(PermissionDescriptor permissionDesc);
+      Promise&lt;PermissionStatus&gt; query(object permissionDesc);
 
-      Promise&lt;PermissionStatus&gt; request(PermissionDescriptor permissionDesc);
+      Promise&lt;PermissionStatus&gt; request(object permissionDesc);
 
-      Promise&lt;PermissionStatus&gt; revoke(PermissionDescriptor permissionDesc);
+      Promise&lt;PermissionStatus&gt; revoke(object permissionDesc);
     };
   </pre>
   <p>
@@ -500,28 +500,24 @@ spec: webidl
     <var>permissionDesc</var>:
   </p>
   <ol>
-    <li>If <code><var>permissionDesc</var>.name</code> has a <a>permission
-    descriptor type</a> other than {{PermissionDescriptor}}, convert the
-    underlying ECMAScript object to the <a>permission descriptor type</a>
-    dictionary as
-    <a href='http://heycam.github.io/webidl/#es-dictionary'>described</a> in
-    [[!WEBIDL]], then:
-      <ul>
-        <li>If that operation failed, return a {{Promise}} rejected with
-        a {{TypeError}} and abort these steps.
-        </li>
-        <li>Otherwise, set <var>permissionDesc</var> to the result of the
-        operation.
-        </li>
-      </ul>
+    <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to
+    an IDL value</a> of type {{PermissionDescriptor}}. If this throws an
+    exception, return <a>a promise rejected with</a> that exception and abort
+    these steps.
+    </li>
+    <li>Let |typedDescriptor| be the object |permissionDesc| refers to,
+    <a>converted to an IDL value</a> of
+    <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s <a>permission
+    descriptor type</a>. If this throws an exception, return <a>a promise
+    rejected with</a> that exception and abort these steps.
     </li>
     <li>Let <var>promise</var> be a newly-created {{Promise}}.
     </li>
     <li>Return <var>promise</var> and continue the following steps
     asynchronously.
     </li>
-    <li>Run the steps to <a>create a PermissionStatus</a> for
-    <var>permissionDesc</var>, and let <var>status</var> be the result.
+    <li>Run the steps to <a>create a PermissionStatus</a> for |typedDescriptor|,
+    and let <var>status</var> be the result.
     </li>
     <li>
       Run <code>|status|@{{[[query]]}}.{{name}}</code>'s <a>permission query
@@ -542,20 +538,16 @@ spec: webidl
     parameter <var>permissionDesc</var>:
   </p>
   <ol class="algorithm">
-    <li>If <code><var>permissionDesc</var>.name</code> has a <a>permission
-    descriptor type</a> other than {{PermissionDescriptor}}, convert the
-    underlying ECMAScript object to the <a>permission descriptor type</a>
-    dictionary as
-    <a href='http://heycam.github.io/webidl/#es-dictionary'>described</a> in
-    [[!WEBIDL]], then:
-      <ul>
-        <li>If that operation failed, return a {{Promise}} rejected with
-        a {{TypeError}} and abort these steps.
-        </li>
-        <li>Otherwise, set <var>permissionDesc</var> to the result of the
-        operation.
-        </li>
-      </ul>
+    <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to
+    an IDL value</a> of type {{PermissionDescriptor}}. If this throws an
+    exception, return <a>a promise rejected with</a> that exception and abort
+    these steps.
+    </li>
+    <li>Let |typedDescriptor| be the object |permissionDesc| refers to,
+    <a>converted to an IDL value</a> of
+    <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s <a>permission
+    descriptor type</a>. If this throws an exception, return <a>a promise
+    rejected with</a> that exception and abort these steps.
     </li>
     <li>Let <var>promise</var> be a newly-created {{Promise}}.
     </li>
@@ -563,11 +555,11 @@ spec: webidl
     asynchronously.
     </li>
     <li>Run the steps to <a>create a PermissionStatus</a> for
-    <var>permissionDesc</var>, and let <var>status</var> be the result.
+    <var>typedDescriptor</var>, and let <var>status</var> be the result.
     </li>
     <li>
       Run the <a>permission request algorithm</a> of the feature named <code>
-      |permissionDesc|.name</code> with <var>permissionDesc</var> and
+      |typedDescriptor|.name</code> with <var>typedDescriptor</var> and
       <var>status</var> as arguments.
     </li>
     <li>
@@ -580,11 +572,26 @@ spec: webidl
 
   <p>
     When the <dfn for='Permissions' method>revoke(|permissionDesc|)</dfn> method
-    is invoked, this constitutes <a>new information about the user's intent</a>.
-    The UA must return <a>a new promise</a> |promise| and run the following
+    is invoked,
+    the UA must return <a>a new promise</a> |promise| and run the following
     steps <a>in parallel</a>:
   </p>
   <ol>
+    <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to
+    an IDL value</a> of type {{PermissionDescriptor}}. If this throws an
+    exception, return <a>a promise rejected with</a> that exception and abort
+    these steps.
+    </li>
+    <li>Let |typedDescriptor| be the object |permissionDesc| refers to,
+    <a>converted to an IDL value</a> of
+    <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s <a>permission
+    descriptor type</a>. If this throws an exception, return <a>a promise
+    rejected with</a> that exception and abort these steps.
+    </li>
+    <li>The UA now has <a lt="new information about the user's intent">new
+    information that the user intends</a> to revoke permission to use the
+    feature described by |typedDescriptor|.
+    </li>
     <li>
       If any tasks run due to <a href="#reacting-to-revocation"></a>, wait for
       them to finish.
