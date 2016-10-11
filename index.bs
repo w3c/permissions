@@ -36,6 +36,8 @@ spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
         for: MediaDeviceInfo; text: deviceId
     type: method
         for: MediaDevices; text: getUserMedia(); url: dom-mediadevices-getusermedia
+    type: event
+        for: MediaDevices; text: devicechange
 </pre>
 <pre class="link-defaults">
 spec: dom
@@ -940,7 +942,22 @@ spec: webidl
         <a>permission request algorithm</a>
       </dt>
       <dd>
-        Run the <a>boolean permission request algorithm</a>
+        The permission request algorithm runs the following steps:
+        <ol class="algorithm">
+        <li>
+        Let <var>result</var> be the result of running the <a>boolean permission
+        request algorithm</a>.
+        </li>
+        <li>If <var>result</var> is {{"granted"}}, the UA MUST set the
+        {{"device-info"}} permission to {{"granted"}} for this <a>realm</a>.
+        </li>
+        <li>The UA MAY treat <var>result</var> as <a>new information about the
+        user's intent</a> with respect to the {{"device-info"}} permission for
+        this <a>realm</a> and other <a>realms</a> with the <a>same origin</a>,
+        provided it doesn't violate the previous step.
+        </li>
+        <li>Return <var>result</var>.
+        </li>
       </dd>
       <dt>
         <a>permission revocation algorithm</a>
@@ -954,8 +971,11 @@ spec: webidl
     </dl>
     <p>
       The <dfn for="PermissionName" enum-value>"device-info"</dfn>
-      permission controls access to names and capabilities of input and
-      output devices.
+      permission controls access to the name and capabilities associated with a
+      {{MediaDeviceInfo/deviceId}}, as well as whether
+      {{MediaDevices/devicechange}} events fire when the current browsing
+      context is not in focus. The {{"device-info"}} permission MUST be revoked
+      when {{MediaDeviceInfo/deviceId}}s for an origin are reset.
     </p>
   </section>
   <section>
