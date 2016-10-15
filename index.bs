@@ -154,8 +154,9 @@ spec: webidl
     <pre>
       dictionary BluetoothPermissionDescriptor : PermissionDescriptor {
         DOMString deviceId;
-        sequence&lt;<a idl>BluetoothRequestDeviceFilter</a>> filters;
+        sequence&lt;<a idl>BluetoothLEScanFilterInit</a>> filters;
         sequence&lt;<a idl>BluetoothServiceUUID</a>> optionalServices = [];
+        boolean acceptAllDevices = false;
       };
     </pre>
     <p>
