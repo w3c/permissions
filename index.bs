@@ -971,25 +971,6 @@ spec: webidl
       [[web-background-sync]].
     </p>
   </section>
-  <section>
-    <h3 id="persistent-storage">
-      Persistent Storage
-    </h3>
-    <p>
-      The <dfn for="PermissionName" enum-value>"persistent-storage"</dfn>
-      permission allows an origin to make its <a>site storage unit</a> contain a
-      <a>persistent box</a>. {{"persistent-storage"}} is a <a>boolean
-      feature</a>.
-    </p>
-    <p>
-      If a <a>realm</a> with <a>origin</a> |O| <a lt="request permission to
-      use">requests permission to use</a> `{name: "persistent-storage"}` and
-      that algorithm returns {{"granted"}}, then `{name:
-      "persistent-storage"}`'s <a>permission state</a> must be {{"granted"}} in
-      all <a>realms</a> with <a>origin</a> |O| until the UA receives <a>new
-      information about the user's intent</a>.
-    </p>
-  </section>
 </section>
 <section class='non-normative'>
   <h2 id="examples">
