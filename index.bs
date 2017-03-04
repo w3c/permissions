@@ -979,10 +979,11 @@ spec: webidl
     <p>
       The <dfn for="PermissionName" enum-value>"ambient-light-sensor"</dfn>
       permission is the permission associated with the usage of the
-      [[ambient-light]] API. It is a <a>boolean feature</a>.
+      [[ambient-light]] API.
 
-      Its <a>permission request algorithm</a> is the same as it is for all sensors
-      and is defined in [[generic-sensor]].
+      Its <a>permission revocation algorithm</a> is the result of calling
+      <a>generic sensor permission revocation algorithm</a>
+      passing it <a enum-value>"ambient-light-sensor"</a> as argument.
     </p>
   </section>
 </section>
