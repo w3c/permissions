@@ -668,6 +668,7 @@ spec: webidl
       <a enum-value>"background-sync"</a>,
       <a enum-value>"bluetooth"</a>,
       <a enum-value>"persistent-storage"</a>,
+      <a enum-value>"clipboard"</a>,
     };
   </pre>
   <p>
@@ -969,6 +970,16 @@ spec: webidl
       The <dfn for="PermissionName" enum-value>"background-sync"</dfn>
       permission is the permission associated with the usage of
       [[web-background-sync]].
+    </p>
+  </section>
+  <section>
+    <h3 id="clipboard">
+      Clipboard
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"clipboard"</dfn>
+      permission is the permission associated with the usage of the
+      asynchronous methods in the [[clipboard-apis]].
     </p>
   </section>
 </section>
