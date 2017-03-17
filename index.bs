@@ -668,7 +668,7 @@ spec: webidl
       <a enum-value>"background-sync"</a>,
       <a enum-value>"bluetooth"</a>,
       <a enum-value>"persistent-storage"</a>,
-      <a enum-value>"ambient-light-sensor"</a>
+      <a enum-value>"ambient-light-sensor"</a>,
       <a enum-value>"clipboard"</a>,
     };
   </pre>
