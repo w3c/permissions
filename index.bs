@@ -668,6 +668,7 @@ spec: webidl
       <a enum-value>"background-sync"</a>,
       <a enum-value>"bluetooth"</a>,
       <a enum-value>"persistent-storage"</a>,
+      <a enum-value>"ambient-light-sensor"</a>
       <a enum-value>"clipboard"</a>,
     };
   </pre>
@@ -970,6 +971,20 @@ spec: webidl
       The <dfn for="PermissionName" enum-value>"background-sync"</dfn>
       permission is the permission associated with the usage of
       [[web-background-sync]].
+    </p>
+  </section>
+  <section>
+    <h3 id="ambient-light-sensor">
+      Ambient Light Sensor
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"ambient-light-sensor"</dfn>
+      permission is the permission associated with the usage of the
+      [[ambient-light]] API.
+
+      Its <a>permission revocation algorithm</a> is the result of calling
+      <a>generic sensor permission revocation algorithm</a>
+      passing it <a enum-value>"ambient-light-sensor"</a> as argument.
     </p>
   </section>
   <section>
