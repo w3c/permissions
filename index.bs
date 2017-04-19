@@ -669,9 +669,19 @@ spec: webidl
       <a enum-value>"bluetooth"</a>,
       <a enum-value>"persistent-storage"</a>,
       <a enum-value>"ambient-light-sensor"</a>,
+      <a enum-value>"accelerometer"</a>,
+      <a enum-value>"gyroscope"</a>,
+      <a enum-value>"magnetometer"</a>,
       <a enum-value>"clipboard"</a>,
     };
   </pre>
+  <p class="note">
+  The enumeration values {{accelerometer}}, {{gyroscope}} and {{magnetometer}}
+  are considered provisional and are subject to change
+  based on feedback from early implementations. See
+  <a href="https://github.com/w3c/sensors/issues/22">w3c/sensors#22</a> issue
+  for more information.
+  </p>
   <p>
     Each enumeration value in the {{PermissionName}} enum identifies a
     <a>powerful feature</a>. Each <a>powerful feature</a> has the following
@@ -985,6 +995,48 @@ spec: webidl
       Its <a>permission revocation algorithm</a> is the result of calling
       <a>generic sensor permission revocation algorithm</a>
       passing it <a enum-value>"ambient-light-sensor"</a> as argument.
+    </p>
+  </section>
+  <section>
+    <h3 id="accelerometer">
+      Accelerometer
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"accelerometer"</dfn>
+      permission is the permission associated with the usage of the
+      [[accelerometer]] API.
+
+      Its <a>permission revocation algorithm</a> is the result of calling
+      <a>generic sensor permission revocation algorithm</a>
+      passing it <a enum-value>"accelerometer"</a> as argument.
+    </p>
+  </section>
+  <section>
+    <h3 id="gyroscope">
+      Gyroscope
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"gyroscope"</dfn>
+      permission is the permission associated with the usage of the
+      [[gyroscope]] API.
+
+      Its <a>permission revocation algorithm</a> is the result of calling
+      <a>generic sensor permission revocation algorithm</a>
+      passing it <a enum-value>"gyroscope"</a> as argument.
+    </p>
+  </section>
+  <section>
+    <h3 id="magnetometer">
+      Magnetometer
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"magnetometer"</dfn>
+      permission is the permission associated with the usage of the
+      [[magnetometer]] API.
+
+      Its <a>permission revocation algorithm</a> is the result of calling
+      <a>generic sensor permission revocation algorithm</a>
+      passing it <a enum-value>"magnetometer"</a> as argument.
     </p>
   </section>
   <section>
