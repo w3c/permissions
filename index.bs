@@ -38,6 +38,10 @@ spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
         for: MediaDevices; text: getUserMedia(); url: dom-mediadevices-getusermedia
     type: event
         for: MediaDevices; text: devicechange
+spec: sensors; urlPrefix: https://w3c.github.io/sensors/#
+    type: dfn
+        text: generic sensor permission revocation algorithm; url: generic-sensor-permission-revocation-algorithm
+
 </pre>
 <pre class="link-defaults">
 spec: dom
@@ -678,8 +682,8 @@ spec: webidl
     };
   </pre>
   <p class="note">
-  The enumeration values {{accelerometer}}, {{gyroscope}} and {{magnetometer}}
-  are considered provisional and are subject to change
+  The enumeration values {{"accelerometer"}}, {{"gyroscope"}} and
+  {{"magnetometer"}} are considered provisional and are subject to change
   based on feedback from early implementations. See
   <a href="https://github.com/w3c/sensors/issues/22">w3c/sensors#22</a> issue
   for more information.
