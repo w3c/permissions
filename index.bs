@@ -1152,7 +1152,7 @@ spec: webidl
       })
       // log the state or each camera
       .then(results => results.forEach(
-        ({ state }, i) => console.log(`Camera ${i}: "${state}"`)
+        ({ state }, i) => console.log(\`Camera ${i}: "${state}"\`)
       ))
       .catch(
         err => console.error(err.stack)
