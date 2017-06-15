@@ -7,7 +7,7 @@ TARGET_BRANCH="gh-pages"
 # Pull requests and commits to other branches shouldn't try to deploy, just build to verify
 if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
     echo "Skipping deploy; just doing a build."
-    curl https://api.csswg.org/bikeshed/ -f -F file=@index.bs > index.html;
+    make
     exit 0
 fi
 
@@ -30,7 +30,7 @@ rm -rf out/* || exit 0
 cp -r published/ out/ || exit 0
 
 # Re-generating.
-curl https://api.csswg.org/bikeshed/ -f -F file=@index.bs > out/index.html;
+make && mv index.html out/index.html
 
 # Now let's go have some fun with the cloned repo
 cd out

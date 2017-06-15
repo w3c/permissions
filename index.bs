@@ -661,8 +661,8 @@ spec: webidl
   </h2>
   <!-- IDL blocks can't link outside the current spec, but these enum-values are
        supposed to be defined in other specs. -->
-  <pre class='lang-webidl' link-for="PermissionName">
-    enum <dfn enum>PermissionName</dfn> {
+  <pre class='idl'>
+    enum PermissionName {
       <a enum-value>"geolocation"</a>,
       <a enum-value>"notifications"</a>,
       <a enum-value>"push"</a>,
