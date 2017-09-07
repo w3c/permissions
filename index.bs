@@ -41,6 +41,9 @@ spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
 spec: sensors; urlPrefix: https://w3c.github.io/sensors/#
     type: dfn
         text: generic sensor permission revocation algorithm; url: generic-sensor-permission-revocation-algorithm
+spec: manifest; urlPrefix: https://w3c.github.io/manifest/#
+    type: dfn
+        text: install; url: dfn-install
 
 </pre>
 <pre class="link-defaults">
@@ -115,7 +118,16 @@ spec: webidl
       The UA may collect information about a user's intentions in any way its
       authors believe is appropriate. This information can come from explicit
       user action, aggregate behavior of both the relevant user and other users,
-      or other sources this specification hasn't anticipated.
+      or <a>implicit signals</a> this specification hasn't anticipated.
+      <div class="note">
+        The <dfn>implicit signals</dfn> could be, for example, the
+        <a>install</a> status of a web application, frequency and recency of
+        visits. A user that has installed a web application and used it
+        frequently and recently is more likely to have established a trust
+        relationship with the application provider. Implementations are
+        advised to exercise caution when implementing strategies that rely on
+        implicit signals.
+      </div>
     </dd>
 
     <dt><dfn export local-lt="feature">Powerful feature</dfn></dt>
