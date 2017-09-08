@@ -121,12 +121,10 @@ spec: webidl
       or <a>implicit signals</a> this specification hasn't anticipated.
       <div class="note">
         The <dfn>implicit signals</dfn> could be, for example, the
-        <a>install</a> status of a web application, frequency and recency of
+        <a>install</a> status of a web application or frequency and recency of
         visits. A user that has installed a web application and used it
-        frequently and recently is more likely to have established a trust
-        relationship with the application provider. Implementations are
-        advised to exercise caution when implementing strategies that rely on
-        implicit signals.
+        frequently and recently is more likely to trust it. Implementations are
+        advised to exercise caution when relying on implicit signals.
       </div>
     </dd>
 
