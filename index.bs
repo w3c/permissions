@@ -1082,6 +1082,28 @@ spec: webidl
       permission is the permission associated with the usage of the
       asynchronous methods in the [[clipboard-apis]].
     </p>
+    <dl>
+      <dt>
+        <a>permission descriptor type</a>
+      </dt>
+      <dd>
+        <pre class='idl'>
+          dictionary ClipboardPermissionDescriptor : PermissionDescriptor {
+            boolean fullAccess = false;
+          };
+        </pre>
+        <p>
+          `{name: "clipboard", fullAccess: true}` is <a>stronger than</a>
+          `{name: "clipboard", fullAccess: false}`.
+        </p>
+        <p>
+          The permission for basic (write only) clipboard access is
+          `{name: "clipboard"}`.
+          The permission for full (read/write) clipboard access is
+          `{name: "clipboard", fullAccess: true}`.
+        </p>
+      </dd>
+    </dl>
   </section>
 </section>
 <section class='non-normative'>
