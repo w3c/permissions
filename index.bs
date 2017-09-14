@@ -1089,18 +1089,18 @@ spec: webidl
       <dd>
         <pre class='idl'>
           dictionary ClipboardPermissionDescriptor : PermissionDescriptor {
-            boolean fullAccess = false;
+            DOMString access = "write";
           };
         </pre>
         <p>
-          `{name: "clipboard", fullAccess: true}` is <a>stronger than</a>
-          `{name: "clipboard", fullAccess: false}`.
+          `{name: "clipboard", access: "full"}` is <a>stronger than</a>
+          `{name: "clipboard", access: "write"}`.
         </p>
         <p>
           The permission for basic (write only) clipboard access is
-          `{name: "clipboard"}`.
+          `{name: "clipboard", access: "write"}`.
           The permission for full (read/write) clipboard access is
-          `{name: "clipboard", fullAccess: true}`.
+          `{name: "clipboard", access: "full"}`.
         </p>
       </dd>
     </dl>
