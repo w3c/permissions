@@ -1088,8 +1088,13 @@ spec: webidl
       </dt>
       <dd>
         <pre class='idl'>
+          enum ClipboardPermissionAccess {
+            "full",
+            "write",
+          };
+          
           dictionary ClipboardPermissionDescriptor : PermissionDescriptor {
-            DOMString access = "write";
+            ClipboardPermissionAccess access;
           };
         </pre>
         <p>
