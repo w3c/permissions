@@ -1107,6 +1107,12 @@ spec: webidl
           The permission for full (read/write) clipboard access is
           `{name: "clipboard", access: "full"}`.
         </p>
+        <p>
+          See the
+          <a href="https://w3c.github.io/clipboard-apis/#clipboard-permissions">Clipboard Permissions</a>
+          section of [[clipboard-apis]] for additional information on how this permission
+          is used.
+        </p>
       </dd>
     </dl>
   </section>
