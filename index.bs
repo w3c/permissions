@@ -1090,11 +1090,12 @@ spec: webidl
         <pre class='idl'>
           enum ClipboardPermissionAccess {
             "full",
+            "read",
             "write",
           };
           
           dictionary ClipboardPermissionDescriptor : PermissionDescriptor {
-            ClipboardPermissionAccess access = "write";
+            ClipboardPermissionAccess access;
           };
         </pre>
         <p>
@@ -1102,10 +1103,12 @@ spec: webidl
           `{name: "clipboard", access: "write"}`.
         </p>
         <p>
-          The permission for basic (write only) clipboard access is
-          `{name: "clipboard", access: "write"}`.
-          The permission for full (read/write) clipboard access is
-          `{name: "clipboard", access: "full"}`.
+          `{name: "clipboard", access: "full"}` is <a>stronger than</a>
+          `{name: "clipboard", access: "read"}`.
+        </p>
+        <p>
+          The `{name: "clipboard", access: "full"}` permission requests both `read`
+          and `write` access to the clipboard.
         </p>
         <p>
           See the
