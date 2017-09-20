@@ -77,24 +77,28 @@ spec: webidl
   </h2>
   <p><em>This section is non-normative.</em></p>
   <p>
-    This document specifies a model and an API to query and request permissions
-    to powerful features on the Web platform. Web APIs have different ways to
-    deal with permissions. The [[notifications]] API allows developers to
-    request a permission and check the permission status explicitly.
-    Others expose the status to web pages when they try to use the API,
-    like the [[geolocation-API]] which fails if the permission was not
-    granted without allowing the developer to check beforehand.
+    This document specifies a model for permissions to use powerful features on
+    the Web platform and an API to query the current permission state of those
+    features.
   </p>
   <p>
-    The Permissions API provides tools for developers to control when permission
-    prompts are shown and to relinquish permissions that are no longer needed.
+    Current Web APIs have different ways to deal with permissions. For example,
+    the [[notifications]] API allows developers to request a permission and
+    check the permission status explicitly. Others expose the status to web
+    pages when they try to use the API, like the [[geolocation-API]] which fails
+    if the permission was not granted without allowing the developer to check
+    beforehand.
+  </p>
+  <p>
+    The {{Permissions/query()}} function provides a tool for developers to
+    control when permission prompts are shown.
   </p>
   <p>
     The solution described in this document is meant to be extensible, but isn't
-    meant to be applicable to all the current and future permissions
-    available in the web platform. Working Groups that are creating specifications
-    whose permission model doesn't fit in the model described in this document
-    should contact the editors by
+    expected to be applicable to all the current and future permissions
+    available in the web platform. Working Groups that are creating
+    specifications whose permission model doesn't fit in the model described in
+    this document should contact the editors by
     <a href="https://github.com/w3c/permissions/issues">filing an issue</a>.
   </p>
 </section>
@@ -510,10 +514,6 @@ spec: webidl
     [Exposed=(Window,Worker)]
     interface Permissions {
       Promise&lt;PermissionStatus&gt; query(object permissionDesc);
-
-      Promise&lt;PermissionStatus&gt; request(object permissionDesc);
-
-      Promise&lt;PermissionStatus&gt; revoke(object permissionDesc);
     };
   </pre>
   <p>
@@ -554,76 +554,6 @@ spec: webidl
     recommend the use of <code>{{Promise}}.all()</code>. An example can be
     found in the <a href='#examples'>Examples section</a>.
   </div>
-
-  <p>
-    When the <dfn for='Permissions' method>request(permissionDesc)</dfn> method
-    is invoked, the <a>user agent</a> MUST run the following algorithm, passing the
-    parameter <var>permissionDesc</var>:
-  </p>
-  <ol class="algorithm">
-    <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to
-    an IDL value</a> of type {{PermissionDescriptor}}. If this throws an
-    exception, return <a>a promise rejected with</a> that exception and abort
-    these steps.
-    </li>
-    <li>Let |typedDescriptor| be the object |permissionDesc| refers to,
-    <a>converted to an IDL value</a> of
-    <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s <a>permission
-    descriptor type</a>. If this throws an exception, return <a>a promise
-    rejected with</a> that exception and abort these steps.
-    </li>
-    <li>Let <var>promise</var> be a newly-created {{Promise}}.
-    </li>
-    <li>Return <var>promise</var> and continue the following steps
-    asynchronously.
-    </li>
-    <li>Run the steps to <a>create a PermissionStatus</a> for
-    <var>typedDescriptor</var>, and let <var>status</var> be the result.
-    </li>
-    <li>
-      Run the <a>permission request algorithm</a> of the feature named <code>
-      |typedDescriptor|.name</code> with <var>typedDescriptor</var> and
-      <var>status</var> as arguments.
-    </li>
-    <li>
-      If the previous step threw an exception, <a>reject</a> |promise| with that
-      exception.
-    </li>
-    <li>Otherwise resolve <var>promise</var> with <var>status</var>.
-    </li>
-  </ol>
-
-  <p>
-    When the <dfn for='Permissions' method>revoke(|permissionDesc|)</dfn> method
-    is invoked,
-    the UA must return <a>a new promise</a> |promise| and run the following
-    steps <a>in parallel</a>:
-  </p>
-  <ol>
-    <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to
-    an IDL value</a> of type {{PermissionDescriptor}}. If this throws an
-    exception, return <a>a promise rejected with</a> that exception and abort
-    these steps.
-    </li>
-    <li>Let |typedDescriptor| be the object |permissionDesc| refers to,
-    <a>converted to an IDL value</a> of
-    <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s <a>permission
-    descriptor type</a>. If this throws an exception, return <a>a promise
-    rejected with</a> that exception and abort these steps.
-    </li>
-    <li>The UA now has <a lt="new information about the user's intent">new
-    information that the user intends</a> to revoke permission to use the
-    feature described by |typedDescriptor|.
-    </li>
-    <li>
-      If any tasks run due to <a href="#reacting-to-revocation"></a>, wait for
-      them to finish.
-    </li>
-    <li>
-      <a>Resolve</a> |promise| with the result of <code><a idl for="Permissions"
-      lt="query()">query(|permissionDesc|)</a></code>.
-    </li>
-  </ol>
 </section>
 <section>
   <h2 id="common-permission-algorithms">
@@ -638,36 +568,6 @@ spec: webidl
     <li>
       Set <code><var>status</var>.state</code> to |permissionDesc|'s
       <a>permission state</a>.
-    </li>
-  </ol>
-  <p>
-    The <dfn export>boolean permission request algorithm</dfn>, given a
-    {{PermissionDescriptor}} <var>permissionDesc</var> and a
-    {{PermissionStatus}} <var>status</var>, runs the following steps:
-  </p>
-  <ol class="algorithm">
-    <li>
-      Run the <a>boolean permission query algorithm</a> on |permissionDesc| and
-      |status|.
-    </li>
-    <li>
-      If <code>|status|.state</code> is not {{"prompt"}}, abort these steps.
-    </li>
-    <li>
-      <a>Request permission to use</a> |permissionDesc|.
-    </li>
-    <li>
-      Run the <a>boolean permission query algorithm</a> again on
-      |permissionDesc| and |status|.
-
-      <p class="issue" id="issue-non-persistent-grants">
-        On browsers that don't store permissions persistently within an
-        <a>environment settings object</a>, this will always return
-        {{"prompt"}}, but still show the user an unnecessary prompt. That may
-        mean that no permissions should use the <a>boolean permission request
-        algorithm</a>, since it can never return an appropriate
-        object-capability.
-      </p>
     </li>
   </ol>
 </section>
@@ -781,23 +681,9 @@ spec: webidl
       Takes an instance of the <a>permission descriptor type</a> and a new or
       existing instance of the <a>permission result type</a>, and updates the
       <a>permission result type</a> instance with the query result. Used by
-      {{Permissions}}' {{Permissions/query()}} method and the <a
+      {{Permissions}}' {{Permissions/query(permissionDesc)}} method and the <a
       href="#PermissionStatus-update">PermissionStatus update steps</a>. If
       unspecified, this defaults to the <a>boolean permission query
-      algorithm</a>.
-    </dd>
-    <dt>
-      A <dfn export>permission request algorithm</dfn>
-    </dt>
-    <dd>
-      Takes an instance of the <a>permission descriptor type</a> and a
-      newly-created instance of the <a>permission result type</a>. Uses the
-      algorithms in <a href="#requesting-more-permission"></a> to show the user
-      any necessary prompt to try to increase permissions, and updates the
-      instance <a>permission result type</a> to match. May throw an exception if
-      the request can fail exceptionally. (Merely being denied permission is not
-      exceptional.) Used by {{Permissions}}' {{Permissions/request()}} method.
-      If unspecified, this defaults to the <a>boolean permission request
       algorithm</a>.
     </dd>
     <dt>
@@ -806,10 +692,8 @@ spec: webidl
     <dd>
       Takes no arguments. Updates any other parts of the implementation that
       need to be kept in sync with changes in the results of <a>permission
-      states</a> or <a>extra permission data</a>. Run by {{Permissions}}'
-      {{Permissions/revoke()}} method and run when the UA receives <a>new
-      information about the user's intent</a>. If unspecified, this defaults to
-      doing nothing.
+      states</a> or <a>extra permission data</a>. Run by [[#reacting-to-revocation]].
+      If unspecified, this defaults to doing nothing.
     </dd>
   </dl>
   <p>
