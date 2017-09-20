@@ -57,9 +57,15 @@ spec: html
         text: in parallel
         text: origin; for: /
         text: queue a task
+spec: storage
+    type: enum-value
+        for: PermissionName; text: "persistent-storage"
 spec: ui-events
     type: dfn
         text: user agent
+spec: web-bluetooth
+    type: enum-value
+        for: PermissionName; text: "bluetooth"
 spec: webidl
     type: interface
         text: Promise
@@ -671,8 +677,8 @@ spec: webidl
   </h2>
   <!-- IDL blocks can't link outside the current spec, but these enum-values are
        supposed to be defined in other specs. -->
-  <pre class='idl'>
-    enum PermissionName {
+  <pre highlight='idl' link-for="PermissionName">
+    enum <dfn enum>PermissionName</dfn> {
       <a enum-value>"geolocation"</a>,
       <a enum-value>"notifications"</a>,
       <a enum-value>"push"</a>,
