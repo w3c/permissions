@@ -511,8 +511,8 @@ spec: webidl
     };
   </pre>
   <p>
-    When the <dfn for='Permissions' method>query()</dfn> method is invoked,
-    the <a>user agent</a> MUST run the following <dfn export>query a
+    When the <dfn for='Permissions' method>query(permissionDesc)</dfn> method is
+    invoked, the <a>user agent</a> MUST run the following <dfn export>query a
     permission</dfn> algorithm, passing the parameter
     <var>permissionDesc</var>:
   </p>
@@ -550,8 +550,8 @@ spec: webidl
   </div>
 
   <p>
-    When the <dfn for='Permissions' method>request()</dfn> method is invoked,
-    the <a>user agent</a> MUST run the following algorithm, passing the
+    When the <dfn for='Permissions' method>request(permissionDesc)</dfn> method
+    is invoked, the <a>user agent</a> MUST run the following algorithm, passing the
     parameter <var>permissionDesc</var>:
   </p>
   <ol class="algorithm">
