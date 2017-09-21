@@ -596,14 +596,14 @@ spec: webidl
   <ol>
     <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to
     an IDL value</a> of type {{PermissionDescriptor}}. If this throws an
-    exception, return <a>a promise rejected with</a> that exception and abort
-    these steps.
+    exception, <a>reject</a> |promise| with that exception and abort these
+    steps.
     </li>
     <li>Let |typedDescriptor| be the object |permissionDesc| refers to,
     <a>converted to an IDL value</a> of
     <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s <a>permission
-    descriptor type</a>. If this throws an exception, return <a>a promise
-    rejected with</a> that exception and abort these steps.
+    descriptor type</a>. If this throws an exception, <a>reject</a> |promise|
+    with that exception and abort these steps.
     </li>
     <li>The UA now has <a lt="new information about the user's intent">new
     information that the user intends</a> to revoke permission to use the
