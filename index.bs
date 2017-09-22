@@ -5,7 +5,7 @@ Status: ED
 ED: https://w3c.github.io/permissions/
 TR: https://www.w3.org/TR/permissions/
 Shortname: permissions
-Level: 1
+Level: none
 Group: webappsec
 Editor: Mounir Lamouri, w3cid 45389, Google Inc. https://google.com/
 Editor: Marcos Cáceres, w3cid 39125, Mozilla https://mozilla.com/
