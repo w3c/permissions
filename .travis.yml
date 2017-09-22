@@ -10,7 +10,7 @@ env:
   global:
   - ENCRYPTION_LABEL: 104fbe69e8fa
   - COMMIT_AUTHOR_EMAIL: travis-ci@w3.org
-  - WD_URL="https://api.csswg.org/bikeshed/?url=https://raw.githubusercontent.com/w3c/permissions/master/index.bs&md-status=WD"
+  - WD_URL="https://api.csswg.org/bikeshed/?url=https://raw.githubusercontent.com/w3c/permissions/master/index.bs&md-status=WD&md-prepare-for-tr=true"
   - DECISION="https://lists.w3.org/Archives/Public/public-webappsec/2015Mar/0170.html"
   # Exports $TOKEN - the W3C Token needed by Echidna to auto-publish this spec
   # See: https://github.com/w3c/echidna/wiki/How-to-use-Echidna-with-ReSpec-and-GitHub#the-token
