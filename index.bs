@@ -44,6 +44,11 @@ spec: sensors; urlPrefix: https://w3c.github.io/sensors/#
 spec: manifest; urlPrefix: https://w3c.github.io/manifest/#
     type: dfn
         text: install; url: dfn-install
+spec: feature-policy; urlPrefix: https://wicg.github.io/feature-policy/#
+    type: dfn
+        text: policy-controlled feature
+    type: dfn
+        text: feature name
 
 </pre>
 <pre class="link-defaults">
@@ -232,6 +237,21 @@ spec: webidl
           If |settings| is a <a>non-secure context</a>
           and <code>|descriptor|.{{PermissionDescriptor/name}}</code> isn't
           <a>allowed in non-secure contexts</a>, then return {{"denied"}}.
+        </li>
+        <li>
+          If there exists a <a>policy-controlled feature</a> with a
+          <a>feature name</a> that is equal to
+          <code>|descriptor|.{{PermissionDescriptor/name}}</code> and
+          |settings| has an <a>associated `Document`</a> named <var>document</var>,
+          run the following step:
+          <ol class="algorithm">
+            <li>
+              If <var>document</var> is not <a>allowed to use</a> the feature
+              with the <a>feature name</a>
+              <code>|descriptor|.{{PermissionDescriptor/name}}</code>
+              return {{"denied"}}.
+            </li>
+          </ol>
         </li>
         <li>
           If there was a previous invocation of this algorithm with the same
@@ -785,13 +805,6 @@ spec: webidl
       specified in [[GETUSERMEDIA]] and [[audio-output]]. {{"speaker"}} is
       <a>allowed in non-secure contexts</a>. {{"camera"}} and {{"microphone"}}
       MAY be <a>allowed in non-secure contexts</a>.
-    </p>
-    <p>
-      If the <a>current global object</a> has an <a>associated `Document`</a>,
-      and that {{Document}} is not <a>allowed to use</a> the feature indicated
-      by attribute name <{iframe/allowusermedia}>, then the <a>permission
-      state</a> of any descriptor with a {{PermissionDescriptor/name}} of
-      {{"camera"}} or {{"microphone"}} must be {{"denied"}}.
     </p>
     <dl>
       <dt>
