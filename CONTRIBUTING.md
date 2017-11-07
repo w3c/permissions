@@ -10,7 +10,7 @@ For more substantial contributions that, please first start a thread in the
 the W3C.
 
 Contributions to this repository are intended to become part of Recommendation-track documents governed by the
-[W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy-20040205/) and
+[W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy/) and
 [Software and Document License](https://www.w3.org/Consortium/Legal/copyright-software). To make substantive contributions to specifications, you must either participate
 in the relevant W3C Working Group or make a non-member patent licensing commitment.
 
@@ -43,6 +43,10 @@ feature, you can remove yourself with the above syntax.
 - Roughly follow http://karma-runner.github.io/1.0/dev/git-commit-msg.html in
   writing your commit messages.
 
+# Tests
+
+See [CONTRIBUTING.md](https://github.com/w3c/webappsec/blob/master/CONTRIBUTING.md).
+
 # Running Bikeshed
 
 If you're going to be making a lot of changes to the spec, you should
@@ -52,3 +56,4 @@ and reload easily.
 
 If you're just making one change, you can validate `index.bs` using
 https://api.csswg.org/bikeshed/.
+
