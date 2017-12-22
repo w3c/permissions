@@ -124,6 +124,19 @@ spec: webidl
   </h2>
   <p><em>This section is non-normative.</em></p>
   <p>
+    Web pages often run more- and less-trusted components as the same origin.
+    For example, a newspaper may run advertising code without sandboxing it into
+    a cross-origin iframe. If the newspaper has a legitimate reason to use a
+    person's location, that also happens to grant access to the less trusted
+    advertiser. Without the {{Permissions/query()}} function in this
+    specification, to read the person's location, an advertisement needs to risk
+    showing a prompt, which exposes it to detection. With this function, the
+    advertisement can silently track just the people who've already granted
+    their location to the newspaper. To defend against this, the UA could
+    indicate when more-sensitive permissions are in use, rather than treating a
+    permission grant as a blank check.
+  </p>
+  <p>
     An adversary could use a <a>permission state</a> as an element in creating a
     "fingerprint" corresponding to an end-user. Although an adversary can
     already determine the state of a permission by actually using the API, that
