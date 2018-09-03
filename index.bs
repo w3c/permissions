@@ -44,11 +44,6 @@ spec: sensors; urlPrefix: https://w3c.github.io/sensors/#
 spec: manifest; urlPrefix: https://w3c.github.io/manifest/#
     type: dfn
         text: install; url: dfn-install
-spec: feature-policy; urlPrefix: https://wicg.github.io/feature-policy/#
-    type: dfn
-        text: policy-controlled feature
-    type: dfn
-        text: feature name
 
 </pre>
 <pre class="link-defaults">
@@ -239,16 +234,13 @@ spec: webidl
           <a>allowed in non-secure contexts</a>, then return {{"denied"}}.
         </li>
         <li>
-          If there exists a <a>policy-controlled feature</a> with a
-          <a>feature name</a> that is equal to
-          <code>|descriptor|.{{PermissionDescriptor/name}}</code> and
-          |settings| has an <a>associated `Document`</a> named <var>document</var>,
-          run the following step:
+          If there exists a [=policy-controlled feature=] identified by
+          <code>|descriptor|.{{PermissionDescriptor/name}}</code> and |settings| has an
+          <a>associated `Document`</a> named <var>document</var>, run the following step:
           <ol class="algorithm">
             <li>
               If <var>document</var> is not <a>allowed to use</a> the feature
-              with the <a>feature name</a>
-              <code>|descriptor|.{{PermissionDescriptor/name}}</code>
+              identified by <code>|descriptor|.{{PermissionDescriptor/name}}</code>
               return {{"denied"}}.
             </li>
           </ol>
