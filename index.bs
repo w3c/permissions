@@ -614,6 +614,7 @@ spec: webidl
       <a enum-value>"microphone"</a>,
       <a enum-value>"speaker"</a>,
       <a enum-value>"device-info"</a>,
+      <a enum-value>"background-fetch"</a>,
       <a enum-value>"background-sync"</a>,
       <a enum-value>"bluetooth"</a>,
       <a enum-value>"persistent-storage"</a>,
@@ -915,6 +916,16 @@ spec: webidl
       {{MediaDevices/devicechange}} events fire when the current browsing
       context is not in focus. The {{"device-info"}} permission MUST be revoked
       when {{MediaDeviceInfo/deviceId}}s for an origin are reset.
+    </p>
+  </section>
+  <section>
+    <h3 id="background-fetch">
+      Background Fetch
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"background-fetch"</dfn>
+      permission is the permission associated with the usage of
+      [[background-fetch]].
     </p>
   </section>
   <section>
