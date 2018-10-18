@@ -1,5 +1,10 @@
- {
-    "group":      ["49309"]
-,   "contacts":   ["plehegar"]
-,   "shortName":  "permissions"
+{
+  "group": [
+    "49309"
+  ],
+  "contacts": [
+    "plehegar"
+  ],
+  "shortName": "permissions",
+  "repo-type": "rec-track"
 }
