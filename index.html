@@ -1212,7 +1212,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 018be3f805d3272ce699a232398d6e3902d1ea8d" name="generator">
+  <meta content="Bikeshed version 04b354547d55896d854a81cffb3965bd6f8758ec" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
 <style>/* style-md-lists */
 
@@ -1471,7 +1471,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-10-11">11 October 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-10-31">31 October 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1564,6 +1564,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#gyroscope"><span class="secno">10.10</span> <span class="content"> Gyroscope </span></a>
       <li><a href="#magnetometer"><span class="secno">10.11</span> <span class="content"> Magnetometer </span></a>
       <li><a href="#clipboard"><span class="secno">10.12</span> <span class="content"> Clipboard </span></a>
+      <li><a href="#screen-capture"><span class="secno">10.13</span> <span class="content"> Screen Capture </span></a>
      </ol>
     <li>
      <a href="#automation"><span class="secno">11</span> <span class="content"> Automation </span></a>
@@ -1910,6 +1911,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope"><c- s>"gyroscope"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-magnetometer" id="ref-for-dom-permissionname-magnetometer"><c- s>"magnetometer"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-clipboard" id="ref-for-dom-permissionname-clipboard"><c- s>"clipboard"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-display" id="ref-for-dom-permissionname-display"><c- s>"display"</c-></a>,
 };
 </pre>
     <p class="note" role="note"> The enumeration values <code class="idl"><a data-link-type="idl" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer①">"accelerometer"</a></code>, <code class="idl"><a data-link-type="idl" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope①">"gyroscope"</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-permissionname-magnetometer" id="ref-for-dom-permissionname-magnetometer①">"magnetometer"</a></code> are considered provisional and are subject to change
@@ -2092,6 +2094,15 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-clipboard"><code>"clipboard"</code></dfn> permission is the permission associated with the usage of the
       asynchronous methods in the <a data-link-type="biblio" href="#biblio-clipboard-apis">[clipboard-apis]</a>. </p>
     </section>
+    <section>
+     <h3 class="heading settled" data-level="10.13" id="screen-capture"><span class="secno">10.13. </span><span class="content"> Screen Capture </span><a class="self-link" href="#screen-capture"></a></h3>
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-display"><code>"display"</code></dfn> permission is the permission associated with the usage of <a data-link-type="biblio" href="#biblio-screen-capture">[screen-capture]</a>. </p>
+     <dl>
+      <dt> <a data-link-type="dfn" href="#permission-state-constraints" id="ref-for-permission-state-constraints①">permission state constraints</a> 
+      <dd> Valid values for this descriptor’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑥">permission state</a> are <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-prompt" id="ref-for-dom-permissionstate-prompt⑤">"prompt"</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①④">"denied"</a></code>. The user agent MUST NOT ever set this
+        descriptor’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑦">permission state</a> to <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted①②">"granted"</a></code>. 
+     </dl>
+    </section>
    </section>
    <section>
     <h2 class="heading settled" data-level="11" id="automation"><span class="secno">11. </span><span class="content"> Automation </span><a class="self-link" href="#automation"></a></h2>
@@ -2115,7 +2126,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         <td>/session/{session id}/permissions
      </table>
      <p>The <dfn data-dfn-type="dfn" data-noexport id="set-permission">Set Permission<a class="self-link" href="#set-permission"></a></dfn> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-extension-commands" id="ref-for-dfn-extension-commands①">extension command</a> simulates user
-    modification of a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor①③">PermissionDescriptor</a></code>'s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑥">permission state</a>.</p>
+    modification of a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor①③">PermissionDescriptor</a></code>'s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑧">permission state</a>.</p>
      <p>The <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-remote-end-steps" id="ref-for-dfn-remote-end-steps">remote end steps</a> are:</p>
      <ol>
       <li>Let <var>parameters</var> be the <var>parameters</var> argument, <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-convert-ecmascript-to-idl-value" id="ref-for-dfn-convert-ecmascript-to-idl-value②">converted to an IDL
@@ -2128,10 +2139,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error-code" id="ref-for-dfn-error-code①">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-invalid-argument" id="ref-for-dfn-invalid-argument①">invalid
         argument</a>.
       <li>
-       If <var>parameters</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionsetparameters-state" id="ref-for-dom-permissionsetparameters-state">state</a></code> is an inappropriate <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑦">permission state</a> for any implementation-defined reason, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error" id="ref-for-dfn-error②">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error-code" id="ref-for-dfn-error-code②">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-invalid-argument" id="ref-for-dfn-invalid-argument②">invalid
+       If <var>parameters</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionsetparameters-state" id="ref-for-dom-permissionsetparameters-state">state</a></code> is an inappropriate <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑨">permission state</a> for any implementation-defined reason, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error" id="ref-for-dfn-error②">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error-code" id="ref-for-dfn-error-code②">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-invalid-argument" id="ref-for-dfn-invalid-argument②">invalid
         argument</a>. 
        <p class="note" role="note"> For example, <a data-link-type="dfn" href="https://www.w3.org/TR/uievents/#user-agent" id="ref-for-user-agent④">user agents</a> that define the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi⑤">"midi"</a></code> <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①①">feature</a> as "always on" may choose to reject command
-          to set the <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑧">permission state</a> to <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①④">"denied"</a></code> at this step. </p>
+          to set the <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state②⓪">permission state</a> to <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①⑤">"denied"</a></code> at this step. </p>
       <li>Let <var>settings</var> be the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object③">environment settings object</a> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-current-browsing-context" id="ref-for-dfn-current-browsing-context">current browsing context</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#active-document" id="ref-for-active-document">active document</a>.
       <li>If <var>settings</var> is a <a data-link-type="dfn" href="https://w3c.github.io/webappsec-secure-contexts/#non-secure-contexts" id="ref-for-non-secure-contexts②">non-secure context</a> and <code><var>rootDesc</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①③">name</a></code></code> isn’t <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts⑥">allowed
         in non-secure contexts</a>, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error" id="ref-for-dfn-error③">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error-code" id="ref-for-dfn-error-code③">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-invalid-argument" id="ref-for-dfn-invalid-argument③">invalid argument</a>.
@@ -2145,7 +2156,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
             context</a> to perform the following step:
         <ol>
          <li>Interpret <var>parameters</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionsetparameters-state" id="ref-for-dom-permissionsetparameters-state①">state</a></code> as if
-              it were the result of an invocation of <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑨">permission state</a> for <var>typedDescriptor</var> with the argument <var>target</var> made at this
+              it were the result of an invocation of <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state②①">permission state</a> for <var>typedDescriptor</var> with the argument <var>target</var> made at this
               moment.
         </ol>
         <li><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-append" id="ref-for-list-append">Append</a> <var>task</var> to <var>tasks</var>.
@@ -2304,6 +2315,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <li><a href="#dom-devicepermissiondescriptor-deviceid">deviceId</a><span>, in §10.5</span>
    <li><a href="#dom-permissionname-device-info">"device-info"</a><span>, in §10.5</span>
    <li><a href="#dictdef-devicepermissiondescriptor">DevicePermissionDescriptor</a><span>, in §10.5</span>
+   <li><a href="#dom-permissionname-display">"display"</a><span>, in §10.13</span>
    <li><a href="#extra-permission-data">extra permission data</a><span>, in §5.1</span>
    <li><a href="#extra-permission-data-constraints">extra permission data constraints</a><span>, in §10</span>
    <li><a href="#extra-permission-data-type">extra permission data type</a><span>, in §10</span>
@@ -2957,7 +2969,9 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <dt id="biblio-notifications">[NOTIFICATIONS]
    <dd>Anne van Kesteren. <a href="https://notifications.spec.whatwg.org/">Notifications API Standard</a>. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a>
    <dt id="biblio-push-api">[PUSH-API]
-   <dd>Peter Beverloo; et al. <a href="https://www.w3.org/TR/push-api/">Push API</a>. 15 December 2017. WD. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
+   <dd>Peter Beverloo; et al. <a href="https://www.w3.org/TR/push-api/">Push API</a>. 26 October 2018. WD. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
+   <dt id="biblio-screen-capture">[SCREEN-CAPTURE]
+   <dd>Martin Thomson; Keith Griffin. <a href="https://www.w3.org/TR/screen-capture/">Screen Capture</a>. 14 July 2016. WD. URL: <a href="https://www.w3.org/TR/screen-capture/">https://www.w3.org/TR/screen-capture/</a>
    <dt id="biblio-web-background-sync">[WEB-BACKGROUND-SYNC]
    <dd><a href="https://wicg.github.io/BackgroundSync/spec/">Web Background Synchronization</a>. Living Standard. URL: <a href="https://wicg.github.io/BackgroundSync/spec/">https://wicg.github.io/BackgroundSync/spec/</a>
    <dt id="biblio-webmidi">[WEBMIDI]
@@ -3112,8 +3126,10 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     Permission Registry </a> <a href="#ref-for-permission-state⑨">(2)</a> <a href="#ref-for-permission-state①⓪">(3)</a> <a href="#ref-for-permission-state①①">(4)</a> <a href="#ref-for-permission-state①②">(5)</a> <a href="#ref-for-permission-state①③">(6)</a>
     <li><a href="#ref-for-permission-state①④">10.5. 
       Media Devices </a> <a href="#ref-for-permission-state①⑤">(2)</a>
-    <li><a href="#ref-for-permission-state①⑥">11.1. 
-      Set Permission </a> <a href="#ref-for-permission-state①⑦">(2)</a> <a href="#ref-for-permission-state①⑧">(3)</a> <a href="#ref-for-permission-state①⑨">(4)</a>
+    <li><a href="#ref-for-permission-state①⑥">10.13. 
+      Screen Capture </a> <a href="#ref-for-permission-state①⑦">(2)</a>
+    <li><a href="#ref-for-permission-state①⑧">11.1. 
+      Set Permission </a> <a href="#ref-for-permission-state①⑨">(2)</a> <a href="#ref-for-permission-state②⓪">(3)</a> <a href="#ref-for-permission-state②①">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="extra-permission-data">
@@ -3160,6 +3176,8 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     Permission Registry </a> <a href="#ref-for-dom-permissionstate-granted⑧">(2)</a>
     <li><a href="#ref-for-dom-permissionstate-granted⑨">10.5. 
       Media Devices </a> <a href="#ref-for-dom-permissionstate-granted①⓪">(2)</a> <a href="#ref-for-dom-permissionstate-granted①①">(3)</a>
+    <li><a href="#ref-for-dom-permissionstate-granted①②">10.13. 
+      Screen Capture </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionstate-denied">
@@ -3173,7 +3191,9 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     Permission Registry </a> <a href="#ref-for-dom-permissionstate-denied①②">(2)</a>
     <li><a href="#ref-for-dom-permissionstate-denied①③">10.5. 
       Media Devices </a>
-    <li><a href="#ref-for-dom-permissionstate-denied①④">11.1. 
+    <li><a href="#ref-for-dom-permissionstate-denied①④">10.13. 
+      Screen Capture </a>
+    <li><a href="#ref-for-dom-permissionstate-denied①⑤">11.1. 
       Set Permission </a>
    </ul>
   </aside>
@@ -3186,6 +3206,8 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     Status of a permission </a>
     <li><a href="#ref-for-dom-permissionstate-prompt④">10.5. 
       Media Devices </a>
+    <li><a href="#ref-for-dom-permissionstate-prompt⑤">10.13. 
+      Screen Capture </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="permissionstatus">
@@ -3329,6 +3351,8 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <b><a href="#permission-state-constraints">#permission-state-constraints</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-permission-state-constraints">5.1. Reading the current permission state</a>
+    <li><a href="#ref-for-permission-state-constraints①">10.13. 
+      Screen Capture </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="extra-permission-data-type">
@@ -3525,6 +3549,13 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <b><a href="#dom-permissionname-clipboard">#dom-permissionname-clipboard</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-permissionname-clipboard">10. 
+    Permission Registry </a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-permissionname-display">
+   <b><a href="#dom-permissionname-display">#dom-permissionname-display</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-permissionname-display">10. 
     Permission Registry </a>
    </ul>
   </aside>
