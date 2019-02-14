@@ -523,13 +523,13 @@ spec: webidl
   <pre class='idl'>
     [Exposed=(Window)]
     partial interface Navigator {
-      readonly attribute Permissions permissions;
+      [SameObject] readonly attribute Permissions permissions;
     };
   </pre>
   <pre class='idl'>
     [Exposed=(Worker)]
     partial interface WorkerNavigator {
-      readonly attribute Permissions permissions;
+      [SameObject] readonly attribute Permissions permissions;
     };
   </pre>
 </section>
