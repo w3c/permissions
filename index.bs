@@ -1025,6 +1025,16 @@ spec: webidl
       </dd>
     </dl>
   </section>
+  <section>
+    <h3 id="direct-connection">
+      Direct Connection
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"direct-connection"</dfn>
+      permission is the permission associated with the usage of the <i>Direct
+      Connection API</i> of [[webrtc]].
+    </p>
+  </section>
 </section>
 <section>
   <h2 id="automation">
