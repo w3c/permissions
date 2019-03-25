@@ -892,6 +892,12 @@ spec: webidl
         <li>If <var>result</var> is {{"granted"}}, the UA MUST set the
         {{"device-info"}} permission to {{"granted"}} for this <a>realm</a>.
         </li>
+        <li>If <var>result</var> is {{"granted"}} and
+        <code>|descriptor|.{{PermissionDescriptor/name}}</code> is either
+        {{"camera"}} or {{"microphone"}}, the UA MAY set the
+        {{"direct-connection"}} permission to {{"granted"}} for this
+        <a>realm</a>.
+        </li>
         <li>The UA MAY treat <var>result</var> as <a>new information about the
         user's intent</a> with respect to the {{"device-info"}} permission for
         this <a>realm</a> and other <a>realms</a> with the <a>same origin</a>,
