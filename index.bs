@@ -1037,8 +1037,8 @@ spec: webidl
     </h3>
     <p>
       The <dfn for="PermissionName" enum-value>"direct-connection"</dfn>
-      permission is the permission associated with the usage of the <i>Direct
-      Connection API</i> of [[webrtc]].
+      permission upgrades to a less strict IP handling mode of
+      [[rtcweb-ip-handling]].
     </p>
   </section>
 </section>
