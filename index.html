@@ -1029,7 +1029,7 @@ Possible extra rowspan handling
 		}
 	/* } */
 
-	@supports (display:grid) {
+	@supports (display:grid) and (display:contents) {
 		/* Use #toc over .toc to override non-@supports rules. */
 		#toc {
 			display: grid;
@@ -1212,7 +1212,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version 04b354547d55896d854a81cffb3965bd6f8758ec" name="generator">
+  <meta content="Bikeshed version ab064036f6954708ab86ed349b68bf5950f5dceb" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
 <style>/* style-md-lists */
 
@@ -1471,7 +1471,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-10-31">31 October 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2019-10-08">8 October 2019</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1501,7 +1501,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </dl>
    </div>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2018 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2019 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -1527,7 +1527,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 	W3C maintains a <a href="https://www.w3.org/2004/01/pp-impl/49309/status" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group;
 	that page also includes instructions for disclosing a patent.
 	An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the W3C Patent Policy</a>. </p>
-   <p> This document is governed by the <a href="https://www.w3.org/2018/Process-20180201/" id="w3c_process_revision">1 February 2018 W3C Process Document</a>. </p>
+   <p> This document is governed by the <a href="https://www.w3.org/2019/Process-20190301/" id="w3c_process_revision">1 March 2019 W3C Process Document</a>. </p>
    <p></p>
   </div>
   <div data-fill-with="at-risk"></div>
@@ -1844,12 +1844,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <h2 class="heading settled" data-level="7" id="navigator-and-workernavigator-extension"><span class="secno">7. </span><span class="content"> Navigator and WorkerNavigator extension </span><a class="self-link" href="#navigator-and-workernavigator-extension"></a></h2>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=(<c- n>Window</c->)]
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://html.spec.whatwg.org/multipage/system-state.html#navigator" id="ref-for-navigator"><c- g>Navigator</c-></a> {
-  <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#permissions" id="ref-for-permissions"><c- n>Permissions</c-></a> <dfn class="idl-code" data-dfn-for="Navigator" data-dfn-type="attribute" data-export data-readonly data-type="Permissions" id="dom-navigator-permissions"><code><c- g>permissions</c-></code><a class="self-link" href="#dom-navigator-permissions"></a></dfn>;
+  [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#permissions" id="ref-for-permissions"><c- n>Permissions</c-></a> <dfn class="idl-code" data-dfn-for="Navigator" data-dfn-type="attribute" data-export data-readonly data-type="Permissions" id="dom-navigator-permissions"><code><c- g>permissions</c-></code><a class="self-link" href="#dom-navigator-permissions"></a></dfn>;
 };
 </pre>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed②"><c- g>Exposed</c-></a>=(<c- n>Worker</c->)]
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workernavigator" id="ref-for-workernavigator"><c- g>WorkerNavigator</c-></a> {
-  <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#permissions" id="ref-for-permissions①"><c- n>Permissions</c-></a> <dfn class="idl-code" data-dfn-for="WorkerNavigator" data-dfn-type="attribute" data-export data-readonly data-type="Permissions" id="dom-workernavigator-permissions"><code><c- g>permissions</c-></code><a class="self-link" href="#dom-workernavigator-permissions"></a></dfn>;
+  [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject①"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#permissions" id="ref-for-permissions①"><c- n>Permissions</c-></a> <dfn class="idl-code" data-dfn-for="WorkerNavigator" data-dfn-type="attribute" data-export data-readonly data-type="Permissions" id="dom-workernavigator-permissions"><code><c- g>permissions</c-></code><a class="self-link" href="#dom-workernavigator-permissions"></a></dfn>;
 };
 </pre>
    </section>
@@ -1866,10 +1866,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <ol>
      <li>Let <var>rootDesc</var> be the object <var>permissionDesc</var> refers to, <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-convert-ecmascript-to-idl-value" id="ref-for-dfn-convert-ecmascript-to-idl-value">converted to
     an IDL value</a> of type <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor⑤">PermissionDescriptor</a></code>. If this throws an
-    exception, return <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-guide/#a-promise-rejected-with" id="ref-for-a-promise-rejected-with">a promise rejected with</a> that exception and abort
+    exception, return <a data-link-type="dfn" href="https://heycam.github.io/webidl/#a-promise-rejected-with" id="ref-for-a-promise-rejected-with">a promise rejected with</a> that exception and abort
     these steps. 
      <li>Let <var>typedDescriptor</var> be the object <var>permissionDesc</var> refers to, <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-convert-ecmascript-to-idl-value" id="ref-for-dfn-convert-ecmascript-to-idl-value①">converted to an IDL value</a> of <code><var>rootDesc</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①⓪">name</a></code></code>’s <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type⑤">permission
-    descriptor type</a>. If this throws an exception, return <a data-link-type="dfn" href="https://www.w3.org/2001/tag/doc/promises-guide/#a-promise-rejected-with" id="ref-for-a-promise-rejected-with①">a promise
+    descriptor type</a>. If this throws an exception, return <a data-link-type="dfn" href="https://heycam.github.io/webidl/#a-promise-rejected-with" id="ref-for-a-promise-rejected-with①">a promise
     rejected with</a> that exception and abort these steps. 
      <li>Let <var>promise</var> be a newly-created <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-promise" id="ref-for-idl-promise">Promise</a></code>. 
      <li>Return <var>promise</var> and continue the following steps
@@ -1911,7 +1911,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope"><c- s>"gyroscope"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-magnetometer" id="ref-for-dom-permissionname-magnetometer"><c- s>"magnetometer"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-clipboard" id="ref-for-dom-permissionname-clipboard"><c- s>"clipboard"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-display" id="ref-for-dom-permissionname-display"><c- s>"display"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-display-capture" id="ref-for-dom-permissionname-display-capture"><c- s>"display-capture"</c-></a>,
 };
 </pre>
     <p class="note" role="note"> The enumeration values <code class="idl"><a data-link-type="idl" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer①">"accelerometer"</a></code>, <code class="idl"><a data-link-type="idl" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope①">"gyroscope"</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-permissionname-magnetometer" id="ref-for-dom-permissionname-magnetometer①">"magnetometer"</a></code> are considered provisional and are subject to change
@@ -1954,7 +1954,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <dt> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="permission-revocation-algorithm">permission revocation algorithm</dfn> 
      <dd> Takes no arguments. Updates any other parts of the implementation that
       need to be kept in sync with changes in the results of <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①③">permission
-      states</a> or <a data-link-type="dfn" href="#extra-permission-data" id="ref-for-extra-permission-data②">extra permission data</a>. Run by <a href="#reacting-to-revocation">§5.3 Reacting to users revoking permission</a>.
+      states</a> or <a data-link-type="dfn" href="#extra-permission-data" id="ref-for-extra-permission-data②">extra permission data</a>. Run by <a href="#reacting-to-revocation">§ 5.3 Reacting to users revoking permission</a>.
       If unspecified, this defaults to doing nothing. 
     </dl>
     <p> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="boolean-feature">boolean feature</dfn> is a <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①⓪">powerful feature</a> with all
@@ -2096,7 +2096,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </section>
     <section>
      <h3 class="heading settled" data-level="10.13" id="screen-capture"><span class="secno">10.13. </span><span class="content"> Screen Capture </span><a class="self-link" href="#screen-capture"></a></h3>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-display"><code>"display"</code></dfn> permission is the permission associated with the usage of <a data-link-type="biblio" href="#biblio-screen-capture">[screen-capture]</a>. </p>
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-display-capture"><code>"display-capture"</code></dfn> permission is the permission associated with the usage of <a data-link-type="biblio" href="#biblio-screen-capture">[screen-capture]</a>. </p>
      <dl>
       <dt> <a data-link-type="dfn" href="#permission-state-constraints" id="ref-for-permission-state-constraints①">permission state constraints</a> 
       <dd> Valid values for this descriptor’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑥">permission state</a> are <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-prompt" id="ref-for-dom-permissionstate-prompt⑤">"prompt"</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①④">"denied"</a></code>. The user agent MUST NOT ever set this
@@ -2315,7 +2315,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <li><a href="#dom-devicepermissiondescriptor-deviceid">deviceId</a><span>, in §10.5</span>
    <li><a href="#dom-permissionname-device-info">"device-info"</a><span>, in §10.5</span>
    <li><a href="#dictdef-devicepermissiondescriptor">DevicePermissionDescriptor</a><span>, in §10.5</span>
-   <li><a href="#dom-permissionname-display">"display"</a><span>, in §10.13</span>
+   <li><a href="#dom-permissionname-display-capture">"display-capture"</a><span>, in §10.13</span>
    <li><a href="#extra-permission-data">extra permission data</a><span>, in §5.1</span>
    <li><a href="#extra-permission-data-constraints">extra permission data constraints</a><span>, in §10</span>
    <li><a href="#extra-permission-data-type">extra permission data type</a><span>, in §10</span>
@@ -2588,13 +2588,6 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
       Media Devices </a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-a-promise-rejected-with">
-   <a href="https://www.w3.org/2001/tag/doc/promises-guide/#a-promise-rejected-with">https://www.w3.org/2001/tag/doc/promises-guide/#a-promise-rejected-with</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-a-promise-rejected-with">8. 
-    Permissions interface </a> <a href="#ref-for-a-promise-rejected-with①">(2)</a>
-   </ul>
-  </aside>
   <aside class="dfn-panel" data-for="term-for-non-secure-contexts">
    <a href="https://w3c.github.io/webappsec-secure-contexts/#non-secure-contexts">https://w3c.github.io/webappsec-secure-contexts/#non-secure-contexts</a><b>Referenced in:</b>
    <ul>
@@ -2765,6 +2758,20 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     Examples </a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-SameObject">
+   <a href="https://heycam.github.io/webidl/#SameObject">https://heycam.github.io/webidl/#SameObject</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-SameObject">7. 
+    Navigator and WorkerNavigator extension </a> <a href="#ref-for-SameObject①">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-a-promise-rejected-with">
+   <a href="https://heycam.github.io/webidl/#a-promise-rejected-with">https://heycam.github.io/webidl/#a-promise-rejected-with</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-a-promise-rejected-with">8. 
+    Permissions interface </a> <a href="#ref-for-a-promise-rejected-with①">(2)</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-idl-boolean">
    <a href="https://heycam.github.io/webidl/#idl-boolean">https://heycam.github.io/webidl/#idl-boolean</a><b>Referenced in:</b>
    <ul>
@@ -2807,7 +2814,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
      <li><span class="dfn-paneled" id="term-for-sec-code-realms" style="color:initial">realm</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[FEATURE-POLICY]</a> defines the following terms:
+    <a data-link-type="biblio">[feature-policy-1]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-policy-controlled-feature" style="color:initial">policy-controlled feature</span>
     </ul>
@@ -2851,15 +2858,10 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
      <li><span class="dfn-paneled" id="term-for-dom-mediadevices-getusermedia" style="color:initial">getUserMedia()</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[permissions-request-1]</a> defines the following terms:
+    <a data-link-type="biblio">[PERMISSIONS-REQUEST]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-boolean-permission-request-algorithm" style="color:initial">boolean permission request algorithm</span>
      <li><span class="dfn-paneled" id="term-for-permission-request-algorithm" style="color:initial">permission request algorithm</span>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[promises-guide]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-a-promise-rejected-with" style="color:initial">a promise rejected with</span>
     </ul>
    <li>
     <a data-link-type="biblio">[secure-contexts]</a> defines the following terms:
@@ -2909,6 +2911,8 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
      <li><span class="dfn-paneled" id="term-for-idl-DOMString" style="color:initial">DOMString</span>
      <li><span class="dfn-paneled" id="term-for-Exposed" style="color:initial">Exposed</span>
      <li><span class="dfn-paneled" id="term-for-idl-promise" style="color:initial">Promise</span>
+     <li><span class="dfn-paneled" id="term-for-SameObject" style="color:initial">SameObject</span>
+     <li><span class="dfn-paneled" id="term-for-a-promise-rejected-with" style="color:initial">a promise rejected with</span>
      <li><span class="dfn-paneled" id="term-for-idl-boolean" style="color:initial">boolean</span>
      <li><span class="dfn-paneled" id="term-for-dfn-convert-ecmascript-to-idl-value" style="color:initial">converted to an idl value</span>
      <li><span class="dfn-paneled" id="term-for-idl-object" style="color:initial">object</span>
@@ -2921,16 +2925,14 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <dd>Anne van Kesteren. <a href="https://dom.spec.whatwg.org/">DOM Standard</a>. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
    <dt id="biblio-ecmascript">[ECMASCRIPT]
    <dd><a href="https://tc39.github.io/ecma262/">ECMAScript Language Specification</a>. URL: <a href="https://tc39.github.io/ecma262/">https://tc39.github.io/ecma262/</a>
-   <dt id="biblio-feature-policy">[FEATURE-POLICY]
-   <dd><a href="https://wicg.github.io/feature-policy/">Feature Policy</a>. Living Standard. URL: <a href="https://wicg.github.io/feature-policy/">https://wicg.github.io/feature-policy/</a>
+   <dt id="biblio-feature-policy-1">[FEATURE-POLICY-1]
+   <dd>Ian Clelland. <a href="https://www.w3.org/TR/feature-policy-1/">Feature Policy</a>. 16 April 2019. WD. URL: <a href="https://www.w3.org/TR/feature-policy-1/">https://www.w3.org/TR/feature-policy-1/</a>
    <dt id="biblio-html">[HTML]
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
    <dt id="biblio-infra">[INFRA]
    <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/">Infra Standard</a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
-   <dt id="biblio-permissions-request-1">[PERMISSIONS-REQUEST-1]
-   <dd>Requesting Permissions Spec URL: <a href="https://wicg.github.io/permissions-request/">https://wicg.github.io/permissions-request/</a>
-   <dt id="biblio-promises-guide">[PROMISES-GUIDE]
-   <dd>Domenic Denicola. <a href="https://www.w3.org/2001/tag/doc/promises-guide">Writing Promise-Using Specifications</a>. 16 February 2016. Finding of the W3C TAG. URL: <a href="https://www.w3.org/2001/tag/doc/promises-guide">https://www.w3.org/2001/tag/doc/promises-guide</a>
+   <dt id="biblio-permissions-request">[PERMISSIONS-REQUEST]
+   <dd><a href="https://wicg.github.io/permissions-request/">Requesting Permissions</a>. cg-draft. URL: <a href="https://wicg.github.io/permissions-request/">https://wicg.github.io/permissions-request/</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>
    <dt id="biblio-secure-contexts">[SECURE-CONTEXTS]
@@ -2938,42 +2940,42 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <dt id="biblio-storage">[STORAGE]
    <dd>Anne van Kesteren. <a href="https://storage.spec.whatwg.org/">Storage Standard</a>. Living Standard. URL: <a href="https://storage.spec.whatwg.org/">https://storage.spec.whatwg.org/</a>
    <dt id="biblio-uievents">[UIEVENTS]
-   <dd>Gary Kacmarcik; Travis Leithead. <a href="https://www.w3.org/TR/uievents/">UI Events</a>. 4 August 2016. WD. URL: <a href="https://www.w3.org/TR/uievents/">https://www.w3.org/TR/uievents/</a>
+   <dd>Gary Kacmarcik; Travis Leithead; Doug Schepers. <a href="https://www.w3.org/TR/uievents/">UI Events</a>. 30 May 2019. WD. URL: <a href="https://www.w3.org/TR/uievents/">https://www.w3.org/TR/uievents/</a>
    <dt id="biblio-web-bluetooth">[WEB-BLUETOOTH]
    <dd>Jeffrey Yasskin. <a href="https://webbluetoothcg.github.io/web-bluetooth/">Web Bluetooth</a>. Draft Community Group Report. URL: <a href="https://webbluetoothcg.github.io/web-bluetooth/">https://webbluetoothcg.github.io/web-bluetooth/</a>
    <dt id="biblio-webdriver">[WebDriver]
    <dd>Simon Stewart; David Burns. <a href="https://www.w3.org/TR/webdriver1/">WebDriver</a>. 5 June 2018. REC. URL: <a href="https://www.w3.org/TR/webdriver1/">https://www.w3.org/TR/webdriver1/</a>
    <dt id="biblio-webidl">[WebIDL]
-   <dd>Cameron McCormack; Boris Zbarsky; Tobie Langel. <a href="https://heycam.github.io/webidl/">Web IDL</a>. 15 December 2016. ED. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
+   <dd>Boris Zbarsky. <a href="https://heycam.github.io/webidl/">Web IDL</a>. 15 December 2016. ED. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
   </dl>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
    <dt id="biblio-accelerometer">[ACCELEROMETER]
-   <dd>Anssi Kostiainen; Alexander Shalamov. <a href="https://www.w3.org/TR/accelerometer/">Accelerometer</a>. 20 March 2018. CR. URL: <a href="https://www.w3.org/TR/accelerometer/">https://www.w3.org/TR/accelerometer/</a>
+   <dd>Anssi Kostiainen. <a href="https://www.w3.org/TR/accelerometer/">Accelerometer</a>. 7 March 2019. WD. URL: <a href="https://www.w3.org/TR/accelerometer/">https://www.w3.org/TR/accelerometer/</a>
    <dt id="biblio-ambient-light">[AMBIENT-LIGHT]
-   <dd>Anssi Kostiainen. <a href="https://www.w3.org/TR/ambient-light/">Ambient Light Sensor</a>. 20 March 2018. CR. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a>
+   <dd>Anssi Kostiainen. <a href="https://www.w3.org/TR/ambient-light/">Ambient Light Sensor</a>. 7 March 2019. WD. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a>
    <dt id="biblio-audio-output">[AUDIO-OUTPUT]
    <dd>Justin Uberti; Guido Urdaneta. <a href="https://www.w3.org/TR/audio-output/">Audio Output Devices API</a>. 3 October 2017. CR. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a>
    <dt id="biblio-background-fetch">[BACKGROUND-FETCH]
-   <dd><a href="https://wicg.github.io/background-fetch/">Background Fetch</a>. Living Standard. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a>
+   <dd><a href="https://wicg.github.io/background-fetch/">Background Fetch</a>. cg-draft. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a>
    <dt id="biblio-clipboard-apis">[CLIPBOARD-APIS]
-   <dd>Gary Kacmarcik; Grisha Lyukshin; Hallvord Steen. <a href="https://www.w3.org/TR/clipboard-apis/">Clipboard API and events</a>. 29 September 2017. WD. URL: <a href="https://www.w3.org/TR/clipboard-apis/">https://www.w3.org/TR/clipboard-apis/</a>
+   <dd>Gary Kacmarcik; Grisha Lyukshin. <a href="https://www.w3.org/TR/clipboard-apis/">Clipboard API and events</a>. 5 June 2019. WD. URL: <a href="https://www.w3.org/TR/clipboard-apis/">https://www.w3.org/TR/clipboard-apis/</a>
    <dt id="biblio-geolocation-api">[geolocation-API]
    <dd>Andrei Popescu. <a href="https://www.w3.org/TR/geolocation-API/">Geolocation API Specification 2nd Edition</a>. 8 November 2016. REC. URL: <a href="https://www.w3.org/TR/geolocation-API/">https://www.w3.org/TR/geolocation-API/</a>
    <dt id="biblio-getusermedia">[GETUSERMEDIA]
-   <dd>Daniel Burnett; et al. <a href="https://www.w3.org/TR/mediacapture-streams/">Media Capture and Streams</a>. 3 October 2017. CR. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
+   <dd>Daniel Burnett; et al. <a href="https://www.w3.org/TR/mediacapture-streams/">Media Capture and Streams</a>. 2 July 2019. CR. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
    <dt id="biblio-gyroscope">[GYROSCOPE]
-   <dd>Anssi Kostiainen; Mikhail Pozdnyakov. <a href="https://www.w3.org/TR/gyroscope/">Gyroscope</a>. 20 March 2018. CR. URL: <a href="https://www.w3.org/TR/gyroscope/">https://www.w3.org/TR/gyroscope/</a>
+   <dd>Anssi Kostiainen. <a href="https://www.w3.org/TR/gyroscope/">Gyroscope</a>. 7 March 2019. WD. URL: <a href="https://www.w3.org/TR/gyroscope/">https://www.w3.org/TR/gyroscope/</a>
    <dt id="biblio-magnetometer">[MAGNETOMETER]
-   <dd>Anssi Kostiainen; Rijubrata Bhaumik. <a href="https://www.w3.org/TR/magnetometer/">Magnetometer</a>. 20 March 2018. CR. URL: <a href="https://www.w3.org/TR/magnetometer/">https://www.w3.org/TR/magnetometer/</a>
+   <dd>Anssi Kostiainen; Rijubrata Bhaumik. <a href="https://www.w3.org/TR/magnetometer/">Magnetometer</a>. 7 March 2019. WD. URL: <a href="https://www.w3.org/TR/magnetometer/">https://www.w3.org/TR/magnetometer/</a>
    <dt id="biblio-notifications">[NOTIFICATIONS]
    <dd>Anne van Kesteren. <a href="https://notifications.spec.whatwg.org/">Notifications API Standard</a>. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a>
    <dt id="biblio-push-api">[PUSH-API]
-   <dd>Peter Beverloo; et al. <a href="https://www.w3.org/TR/push-api/">Push API</a>. 26 October 2018. WD. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
+   <dd>Peter Beverloo; Martin Thomson. <a href="https://www.w3.org/TR/push-api/">Push API</a>. 3 October 2019. WD. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
    <dt id="biblio-screen-capture">[SCREEN-CAPTURE]
    <dd>Martin Thomson; Keith Griffin. <a href="https://www.w3.org/TR/screen-capture/">Screen Capture</a>. 14 July 2016. WD. URL: <a href="https://www.w3.org/TR/screen-capture/">https://www.w3.org/TR/screen-capture/</a>
    <dt id="biblio-web-background-sync">[WEB-BACKGROUND-SYNC]
-   <dd><a href="https://wicg.github.io/BackgroundSync/spec/">Web Background Synchronization</a>. Living Standard. URL: <a href="https://wicg.github.io/BackgroundSync/spec/">https://wicg.github.io/BackgroundSync/spec/</a>
+   <dd><a href="https://wicg.github.io/BackgroundSync/spec/">Web Background Synchronization</a>. cg-draft. URL: <a href="https://wicg.github.io/BackgroundSync/spec/">https://wicg.github.io/BackgroundSync/spec/</a>
    <dt id="biblio-webmidi">[WEBMIDI]
    <dd>Chris Wilson; Jussi Kalliokoski. <a href="https://www.w3.org/TR/webmidi/">Web MIDI API</a>. 17 March 2015. WD. URL: <a href="https://www.w3.org/TR/webmidi/">https://www.w3.org/TR/webmidi/</a>
   </dl>
@@ -2996,12 +2998,12 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
 
 [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①①"><c- g>Exposed</c-></a>=(<c- n>Window</c->)]
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://html.spec.whatwg.org/multipage/system-state.html#navigator" id="ref-for-navigator①"><c- g>Navigator</c-></a> {
-  <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#permissions" id="ref-for-permissions③"><c- n>Permissions</c-></a> <a data-readonly data-type="Permissions" href="#dom-navigator-permissions"><code><c- g>permissions</c-></code></a>;
+  [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject②"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#permissions" id="ref-for-permissions③"><c- n>Permissions</c-></a> <a data-readonly data-type="Permissions" href="#dom-navigator-permissions"><code><c- g>permissions</c-></code></a>;
 };
 
 [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed②①"><c- g>Exposed</c-></a>=(<c- n>Worker</c->)]
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workernavigator" id="ref-for-workernavigator①"><c- g>WorkerNavigator</c-></a> {
-  <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#permissions" id="ref-for-permissions①①"><c- n>Permissions</c-></a> <a data-readonly data-type="Permissions" href="#dom-workernavigator-permissions"><code><c- g>permissions</c-></code></a>;
+  [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject①①"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#permissions" id="ref-for-permissions①①"><c- n>Permissions</c-></a> <a data-readonly data-type="Permissions" href="#dom-workernavigator-permissions"><code><c- g>permissions</c-></code></a>;
 };
 
 [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed③①"><c- g>Exposed</c-></a>=(<c- n>Window</c->,<c- n>Worker</c->)]
@@ -3552,10 +3554,10 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     Permission Registry </a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-permissionname-display">
-   <b><a href="#dom-permissionname-display">#dom-permissionname-display</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="dom-permissionname-display-capture">
+   <b><a href="#dom-permissionname-display-capture">#dom-permissionname-display-capture</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-display">10. 
+    <li><a href="#ref-for-dom-permissionname-display-capture">10. 
     Permission Registry </a>
    </ul>
   </aside>
