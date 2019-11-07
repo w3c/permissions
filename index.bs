@@ -24,6 +24,18 @@ Mailing List Archives: http://lists.w3.org/Archives/Public/public-webappsec/
 
 Markup Shorthands: css no, markdown yes
 </pre>
+
+<pre class="biblio">
+{
+  "periodic-background-sync": {
+    "href": "https://wicg.github.io/BackgroundSync/spec/PeriodicBackgroundSync-index.html",
+    "title": "Web Periodic Background Sync",
+    "date": "25 November 2019",
+    "status": "Incubation",
+    "publisher": "WICG"
+  }
+}
+</pre>
 <pre class="anchors">
 spec: ECMAScript; urlPrefix: https://tc39.github.io/ecma262/#
     type: dfn
@@ -616,6 +628,7 @@ spec: webidl
       <a enum-value>"device-info"</a>,
       <a enum-value>"background-fetch"</a>,
       <a enum-value>"background-sync"</a>,
+      <a enum-value>"periodic-background-sync"</a>,
       <a enum-value>"bluetooth"</a>,
       <a enum-value>"persistent-storage"</a>,
       <a enum-value>"ambient-light-sensor"</a>,
@@ -938,6 +951,16 @@ spec: webidl
       The <dfn for="PermissionName" enum-value>"background-sync"</dfn>
       permission is the permission associated with the usage of
       [[web-background-sync]].
+    </p>
+  </section>
+  <section>
+    <h3 id="periodic-background-sync">
+      Periodic Background Sync
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"periodic-background-sync"</dfn>
+      permission is the permission associated with the usage of
+      [[periodic-background-sync]].
     </p>
   </section>
   <section>
