@@ -30,7 +30,6 @@ Markup Shorthands: css no, markdown yes
   "periodic-background-sync": {
     "href": "https://wicg.github.io/BackgroundSync/spec/PeriodicBackgroundSync-index.html",
     "title": "Web Periodic Background Sync",
-    "date": "25 November 2019",
     "status": "Incubation",
     "publisher": "WICG"
   }
