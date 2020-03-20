@@ -825,6 +825,10 @@ spec: webidl
           dictionary DevicePermissionDescriptor : PermissionDescriptor {
             DOMString deviceId;
           };
+
+          dictionary CameraDevicePermissionDescriptor : DevicePermissionDescriptor {
+            boolean panTiltZoom = false;
+          };
         </pre>
         <p>
           A permission covers access to the device given in the associated
@@ -844,6 +848,10 @@ spec: webidl
           If a permission state is present for access to some, but not all,
           cameras, a query without the {{DevicePermissionDescriptor/deviceId}}
           will return {{"prompt"}}.
+        </p>
+        <p>
+          `{name: "camera", panTiltZoom: true}` is <a>stronger than</a>
+          `{name: "camera", panTiltZoom: false}`.
         </p>
         <p>
           Note that a "granted" permission is no guarantee that getUserMedia
