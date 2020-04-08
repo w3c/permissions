@@ -8,7 +8,7 @@ branches:
 
 env:
   global:
-  - ENCRYPTION_LABEL=104fbe69e8fa
+  - ENCRYPTION_LABEL=189e52c2c347
   - COMMIT_AUTHOR_EMAIL=travis-ci@w3.org
   - ECHIDNA_CONFIG_URL="https://raw.githubusercontent.com/w3c/permissions/master/.echidna"
   - DECISION="https://lists.w3.org/Archives/Public/public-webappsec/2015Mar/0170.html"
