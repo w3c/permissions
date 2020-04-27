@@ -510,7 +510,7 @@ spec: webidl
       and <var>status</var>.
     </li>
     <li>
-      <a>Queue a task</a> on the <dfn>permission task source</dfn> to
+      <a>Queue a task</a> on the <dfn export>permission task source</dfn> to
       <a>fire an event</a> named <code>change</code> at
       <var>status</var>.
     </li>
@@ -1123,8 +1123,9 @@ spec: webidl
         For each <a>environment settings object</a> |target| in |targets|:
         <ol>
           <li><a>Queue a task</a> |task| on the <a>permission task source</a>
-            of |target|'s [=environment settings object/responsible browsing
-            context=] to perform the following step:</li>
+            of |target|'s [=relevant settings object=]'s [=environment settings
+            object/global object=]'s [=Window/browsing context=] to perform the
+            following step:</li>
             <ol>
             <li>Interpret |parameters|.{{PermissionSetParameters/state}} as if
               it were the result of an invocation of <a>permission state</a>
