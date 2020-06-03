@@ -1175,7 +1175,7 @@ Possible extra rowspan handling
 		   1. When table < content column, centers table in column.
 		   2. When content < table < available, left-aligns.
 		   3. When table > available, fills available + scroll bar.
-		*/ 
+		*/
 		display: grid;
 		grid-template-columns: minmax(0, 50em);
 	}
@@ -1221,7 +1221,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version e3f9ab1a, updated Fri Apr 24 17:43:54 2020 -0700" name="generator">
+  <meta content="Bikeshed version bcf9ed33, updated Fri May 29 18:11:07 2020 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
 <style>/* style-autolinks */
 
@@ -1480,7 +1480,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-04-27">27 April 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-06-02">2 June 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2127,7 +2127,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <section>
     <h2 class="heading settled" data-level="11" id="automation"><span class="secno">11. </span><span class="content"> Automation </span><a class="self-link" href="#automation"></a></h2>
     <p> For the purposes of user-agent automation and application testing, this
-    document defines the following <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-extension-commands" id="ref-for-dfn-extension-commands">extension command</a> for the <a data-link-type="biblio" href="#biblio-webdriver">[WebDriver]</a> specification. </p>
+    document defines the following <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-extension-commands" id="ref-for-dfn-extension-commands">extension command</a> for the <a data-link-type="biblio" href="#biblio-webdriver">[WebDriver]</a> specification. </p>
 <pre class="idl highlight def"><c- b>dictionary</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="dictionary" data-export id="dictdef-permissionsetparameters"><code><c- g>PermissionSetParameters</c-></code></dfn> {
   <c- b>required</c-> <a class="n" data-link-type="idl-name" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor①②"><c- n>PermissionDescriptor</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionSetParameters" data-dfn-type="dict-member" data-export data-type="PermissionDescriptor " id="dom-permissionsetparameters-descriptor"><code><c- g>descriptor</c-></code></dfn>;
   <c- b>required</c-> <a class="n" data-link-type="idl-name" href="#enumdef-permissionstate" id="ref-for-enumdef-permissionstate②"><c- n>PermissionState</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionSetParameters" data-dfn-type="dict-member" data-export data-type="PermissionState " id="dom-permissionsetparameters-state"><code><c- g>state</c-></code></dfn>;
@@ -2140,32 +2140,32 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <tbody>
        <tr>
         <th>HTTP Method
-        <th><a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-extension-command-uri-template" id="ref-for-dfn-extension-command-uri-template">URI Template</a>
+        <th><a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-extension-command-uri-template" id="ref-for-dfn-extension-command-uri-template">URI Template</a>
        <tr>
         <td>POST
         <td>/session/{session id}/permissions
      </table>
-     <p>The <dfn data-dfn-type="dfn" data-noexport id="set-permission">Set Permission<a class="self-link" href="#set-permission"></a></dfn> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-extension-commands" id="ref-for-dfn-extension-commands①">extension command</a> simulates user
+     <p>The <dfn data-dfn-type="dfn" data-noexport id="set-permission">Set Permission<a class="self-link" href="#set-permission"></a></dfn> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-extension-commands" id="ref-for-dfn-extension-commands①">extension command</a> simulates user
     modification of a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor①③">PermissionDescriptor</a></code>'s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑧">permission state</a>.</p>
-     <p>The <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-remote-end-steps" id="ref-for-dfn-remote-end-steps">remote end steps</a> are:</p>
+     <p>The <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-remote-end-steps" id="ref-for-dfn-remote-end-steps">remote end steps</a> are:</p>
      <ol>
       <li>Let <var>parameters</var> be the <var>parameters</var> argument, <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-convert-ecmascript-to-idl-value" id="ref-for-dfn-convert-ecmascript-to-idl-value②">converted to an IDL
         value</a> of type <code class="idl"><a data-link-type="idl" href="#dictdef-permissionsetparameters" id="ref-for-dictdef-permissionsetparameters">PermissionSetParameters</a></code>. If this throws an
-        exception, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error" id="ref-for-dfn-error">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error-code" id="ref-for-dfn-error-code">WebDriver error
-        code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-invalid-argument" id="ref-for-dfn-invalid-argument">invalid argument</a>. 
+        exception, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error" id="ref-for-dfn-error">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error-code" id="ref-for-dfn-error-code">WebDriver error
+        code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-invalid-argument" id="ref-for-dfn-invalid-argument">invalid argument</a>. 
       <li>Let <var>rootDesc</var> be <var>parameters</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionsetparameters-descriptor" id="ref-for-dom-permissionsetparameters-descriptor">descriptor</a></code>.
       <li>Let <var>typedDescriptor</var> be the object <var>rootDesc</var> refers to, <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-convert-ecmascript-to-idl-value" id="ref-for-dfn-convert-ecmascript-to-idl-value③">converted to an IDL value</a> of <code><var>rootDesc</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①②">name</a></code></code>’s <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type①⓪">permission
-        descriptor type</a>. If this throws an exception, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error" id="ref-for-dfn-error①">WebDriver
-        error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error-code" id="ref-for-dfn-error-code①">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-invalid-argument" id="ref-for-dfn-invalid-argument①">invalid
+        descriptor type</a>. If this throws an exception, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error" id="ref-for-dfn-error①">WebDriver
+        error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error-code" id="ref-for-dfn-error-code①">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-invalid-argument" id="ref-for-dfn-invalid-argument①">invalid
         argument</a>.
       <li>
-       If <var>parameters</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionsetparameters-state" id="ref-for-dom-permissionsetparameters-state">state</a></code> is an inappropriate <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑨">permission state</a> for any implementation-defined reason, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error" id="ref-for-dfn-error②">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error-code" id="ref-for-dfn-error-code②">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-invalid-argument" id="ref-for-dfn-invalid-argument②">invalid
+       If <var>parameters</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionsetparameters-state" id="ref-for-dom-permissionsetparameters-state">state</a></code> is an inappropriate <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑨">permission state</a> for any implementation-defined reason, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error" id="ref-for-dfn-error②">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error-code" id="ref-for-dfn-error-code②">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-invalid-argument" id="ref-for-dfn-invalid-argument②">invalid
         argument</a>. 
        <p class="note" role="note"> For example, <a data-link-type="dfn" href="https://www.w3.org/TR/uievents/#user-agent" id="ref-for-user-agent④">user agents</a> that define the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi⑤">"midi"</a></code> <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①①">feature</a> as "always on" may choose to reject command
           to set the <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state②⓪">permission state</a> to <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①⑤">"denied"</a></code> at this step. </p>
-      <li>Let <var>settings</var> be the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object③">environment settings object</a> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-current-browsing-context" id="ref-for-dfn-current-browsing-context">current browsing context</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#active-document" id="ref-for-active-document">active document</a>.
+      <li>Let <var>settings</var> be the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object③">environment settings object</a> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-current-browsing-context" id="ref-for-dfn-current-browsing-context">current browsing context</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#active-document" id="ref-for-active-document">active document</a>.
       <li>If <var>settings</var> is a <a data-link-type="dfn" href="https://w3c.github.io/webappsec-secure-contexts/#non-secure-contexts" id="ref-for-non-secure-contexts②">non-secure context</a> and <code><var>rootDesc</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①③">name</a></code></code> isn’t <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts⑥">allowed
-        in non-secure contexts</a>, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error" id="ref-for-dfn-error③">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error-code" id="ref-for-dfn-error-code③">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-invalid-argument" id="ref-for-dfn-invalid-argument③">invalid argument</a>.
+        in non-secure contexts</a>, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error" id="ref-for-dfn-error③">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error-code" id="ref-for-dfn-error-code③">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-invalid-argument" id="ref-for-dfn-invalid-argument③">invalid argument</a>.
       <li>If <var>parameters</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionsetparameters-onerealm" id="ref-for-dom-permissionsetparameters-onerealm">oneRealm</a></code> is true, let <var>targets</var> be a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list">list</a> whose sole member is <var>settings</var>.
       <li>Otherwise, let <var>targets</var> be a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list①">list</a> containing all <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object④">environment settings objects</a> whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin" id="ref-for-concept-settings-object-origin">origin</a> is the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/origin.html#same-origin" id="ref-for-same-origin③">same</a> as the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin" id="ref-for-concept-settings-object-origin①">origin</a> of <var>settings</var>.
       <li>Let <var>tasks</var> be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list②">list</a>. 
@@ -2182,11 +2182,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         <li><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-append" id="ref-for-list-append">Append</a> <var>task</var> to <var>tasks</var>.
        </ol>
       <li>Wait for all <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-task" id="ref-for-concept-task">tasks</a> in <var>tasks</var> to have executed.
-      <li>Return <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-success" id="ref-for-dfn-success">success</a> with data <code>null</code>.
+      <li>Return <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-success" id="ref-for-dfn-success">success</a> with data <code>null</code>.
      </ol>
      <div class="example" id="example-4345ddfe">
-      <a class="self-link" href="#example-4345ddfe"></a> To set permission for <code>{name: <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi⑥">"midi"</a></code>, sysex: true}</code> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-current-browsing-context" id="ref-for-dfn-current-browsing-context①">current browsing context</a> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-session" id="ref-for-dfn-session">session</a> with ID 23 to
-      "<code>granted</code>", the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-local-end" id="ref-for-dfn-local-end">local end</a> would POST to <code>/session/23/permissions</code> with the body: 
+      <a class="self-link" href="#example-4345ddfe"></a> To set permission for <code>{name: <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi⑥">"midi"</a></code>, sysex: true}</code> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-current-browsing-context" id="ref-for-dfn-current-browsing-context①">current browsing context</a> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-session" id="ref-for-dfn-session">session</a> with ID 23 to
+      "<code>granted</code>", the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-local-end" id="ref-for-dfn-local-end">local end</a> would POST to <code>/session/23/permissions</code> with the body: 
 <pre class="lang-json highlight"><c- p>{</c->
   <c- f>"descriptor"</c-><c- p>:</c-> <c- p>{</c->
     <c- f>"name"</c-><c- p>:</c-> <c- u>"midi"</c-><c- p>,</c->
@@ -2697,14 +2697,14 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-current-browsing-context">
-   <a href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-current-browsing-context">https://w3c.github.io/webdriver/webdriver-spec.html#dfn-current-browsing-context</a><b>Referenced in:</b>
+   <a href="https://w3c.github.io/webdriver/#dfn-current-browsing-context">https://w3c.github.io/webdriver/#dfn-current-browsing-context</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dfn-current-browsing-context">11.1. 
       Set Permission </a> <a href="#ref-for-dfn-current-browsing-context①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-extension-commands">
-   <a href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-extension-commands">https://w3c.github.io/webdriver/webdriver-spec.html#dfn-extension-commands</a><b>Referenced in:</b>
+   <a href="https://w3c.github.io/webdriver/#dfn-extension-commands">https://w3c.github.io/webdriver/#dfn-extension-commands</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dfn-extension-commands">11. 
     Automation </a>
@@ -2713,56 +2713,56 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-extension-command-uri-template">
-   <a href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-extension-command-uri-template">https://w3c.github.io/webdriver/webdriver-spec.html#dfn-extension-command-uri-template</a><b>Referenced in:</b>
+   <a href="https://w3c.github.io/webdriver/#dfn-extension-command-uri-template">https://w3c.github.io/webdriver/#dfn-extension-command-uri-template</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dfn-extension-command-uri-template">11.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-invalid-argument">
-   <a href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-invalid-argument">https://w3c.github.io/webdriver/webdriver-spec.html#dfn-invalid-argument</a><b>Referenced in:</b>
+   <a href="https://w3c.github.io/webdriver/#dfn-invalid-argument">https://w3c.github.io/webdriver/#dfn-invalid-argument</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dfn-invalid-argument">11.1. 
       Set Permission </a> <a href="#ref-for-dfn-invalid-argument①">(2)</a> <a href="#ref-for-dfn-invalid-argument②">(3)</a> <a href="#ref-for-dfn-invalid-argument③">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-local-end">
-   <a href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-local-end">https://w3c.github.io/webdriver/webdriver-spec.html#dfn-local-end</a><b>Referenced in:</b>
+   <a href="https://w3c.github.io/webdriver/#dfn-local-end">https://w3c.github.io/webdriver/#dfn-local-end</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dfn-local-end">11.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-remote-end-steps">
-   <a href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-remote-end-steps">https://w3c.github.io/webdriver/webdriver-spec.html#dfn-remote-end-steps</a><b>Referenced in:</b>
+   <a href="https://w3c.github.io/webdriver/#dfn-remote-end-steps">https://w3c.github.io/webdriver/#dfn-remote-end-steps</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dfn-remote-end-steps">11.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-session">
-   <a href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-session">https://w3c.github.io/webdriver/webdriver-spec.html#dfn-session</a><b>Referenced in:</b>
+   <a href="https://w3c.github.io/webdriver/#dfn-session">https://w3c.github.io/webdriver/#dfn-session</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dfn-session">11.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-success">
-   <a href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-success">https://w3c.github.io/webdriver/webdriver-spec.html#dfn-success</a><b>Referenced in:</b>
+   <a href="https://w3c.github.io/webdriver/#dfn-success">https://w3c.github.io/webdriver/#dfn-success</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dfn-success">11.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-error">
-   <a href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error">https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error</a><b>Referenced in:</b>
+   <a href="https://w3c.github.io/webdriver/#dfn-error">https://w3c.github.io/webdriver/#dfn-error</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dfn-error">11.1. 
       Set Permission </a> <a href="#ref-for-dfn-error①">(2)</a> <a href="#ref-for-dfn-error②">(3)</a> <a href="#ref-for-dfn-error③">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-error-code">
-   <a href="https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error-code">https://w3c.github.io/webdriver/webdriver-spec.html#dfn-error-code</a><b>Referenced in:</b>
+   <a href="https://w3c.github.io/webdriver/#dfn-error-code">https://w3c.github.io/webdriver/#dfn-error-code</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dfn-error-code">11.1. 
       Set Permission </a> <a href="#ref-for-dfn-error-code①">(2)</a> <a href="#ref-for-dfn-error-code②">(3)</a> <a href="#ref-for-dfn-error-code③">(4)</a>
@@ -3016,7 +3016,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <dt id="biblio-screen-capture">[SCREEN-CAPTURE]
    <dd>Martin Thomson; et al. <a href="https://www.w3.org/TR/screen-capture/">Screen Capture</a>. 19 November 2019. WD. URL: <a href="https://www.w3.org/TR/screen-capture/">https://www.w3.org/TR/screen-capture/</a>
    <dt id="biblio-web-background-sync">[WEB-BACKGROUND-SYNC]
-   <dd><a href="https://wicg.github.io/BackgroundSync/spec/">Web Background Synchronization</a>. cg-draft. URL: <a href="https://wicg.github.io/BackgroundSync/spec/">https://wicg.github.io/BackgroundSync/spec/</a>
+   <dd><a href="https://wicg.github.io/background-sync/spec/">Web Background Synchronization</a>. cg-draft. URL: <a href="https://wicg.github.io/background-sync/spec/">https://wicg.github.io/background-sync/spec/</a>
    <dt id="biblio-web-nfc">[WEB-NFC]
    <dd><a href="https://w3c.github.io/web-nfc/">Web NFC API</a>. ED. URL: <a href="https://w3c.github.io/web-nfc/">https://w3c.github.io/web-nfc/</a>
    <dt id="biblio-webmidi">[WEBMIDI]
