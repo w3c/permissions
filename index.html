@@ -1221,7 +1221,7 @@ Possible extra rowspan handling
 		}
 	}
 </style>
-  <meta content="Bikeshed version bcf9ed33, updated Fri May 29 18:11:07 2020 -0700" name="generator">
+  <meta content="Bikeshed version 40de15f9, updated Thu Jun 11 17:47:04 2020 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
 <style>/* style-autolinks */
 
@@ -1480,7 +1480,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-06-02">2 June 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-06-15">15 June 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1572,9 +1572,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#accelerometer"><span class="secno">10.9</span> <span class="content"> Accelerometer </span></a>
       <li><a href="#gyroscope"><span class="secno">10.10</span> <span class="content"> Gyroscope </span></a>
       <li><a href="#magnetometer"><span class="secno">10.11</span> <span class="content"> Magnetometer </span></a>
-      <li><a href="#clipboard"><span class="secno">10.12</span> <span class="content"> Clipboard </span></a>
-      <li><a href="#screen-capture"><span class="secno">10.13</span> <span class="content"> Screen Capture </span></a>
-      <li><a href="#nfc"><span class="secno">10.14</span> <span class="content"> NFC </span></a>
+      <li><a href="#clipboard-read"><span class="secno">10.12</span> <span class="content"> Clipboard Read </span></a>
+      <li><a href="#clipboard-write"><span class="secno">10.13</span> <span class="content"> Clipboard Write </span></a>
+      <li><a href="#screen-capture"><span class="secno">10.14</span> <span class="content"> Screen Capture </span></a>
+      <li><a href="#nfc"><span class="secno">10.15</span> <span class="content"> NFC </span></a>
      </ol>
     <li>
      <a href="#automation"><span class="secno">11</span> <span class="content"> Automation </span></a>
@@ -1920,7 +1921,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer"><c- s>"accelerometer"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope"><c- s>"gyroscope"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-magnetometer" id="ref-for-dom-permissionname-magnetometer"><c- s>"magnetometer"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-clipboard" id="ref-for-dom-permissionname-clipboard"><c- s>"clipboard"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-clipboard-read" id="ref-for-dom-permissionname-clipboard-read"><c- s>"clipboard-read"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-clipboard-write" id="ref-for-dom-permissionname-clipboard-write"><c- s>"clipboard-write"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-display-capture" id="ref-for-dom-permissionname-display-capture"><c- s>"display-capture"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-nfc" id="ref-for-dom-permissionname-nfc"><c- s>"nfc"</c-></a>,
 };
@@ -2106,12 +2108,17 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <p></p>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.12" id="clipboard"><span class="secno">10.12. </span><span class="content"> Clipboard </span><a class="self-link" href="#clipboard"></a></h3>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-clipboard"><code>"clipboard"</code></dfn> permission is the permission associated with the usage of the
-      asynchronous methods in the <a data-link-type="biblio" href="#biblio-clipboard-apis">[clipboard-apis]</a>. </p>
+     <h3 class="heading settled" data-level="10.12" id="clipboard-read"><span class="secno">10.12. </span><span class="content"> Clipboard Read </span><a class="self-link" href="#clipboard-read"></a></h3>
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-clipboard-read"><code>"clipboard-read"</code></dfn> permission is the permission associated with the usage of the
+      asynchronous read methods in the <a data-link-type="biblio" href="#biblio-clipboard-apis">[clipboard-apis]</a>. </p>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.13" id="screen-capture"><span class="secno">10.13. </span><span class="content"> Screen Capture </span><a class="self-link" href="#screen-capture"></a></h3>
+     <h3 class="heading settled" data-level="10.13" id="clipboard-write"><span class="secno">10.13. </span><span class="content"> Clipboard Write </span><a class="self-link" href="#clipboard-write"></a></h3>
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-clipboard-write"><code>"clipboard-write"</code></dfn> permission is the permission associated with the usage of the
+      asynchronous write methods in the <a data-link-type="biblio" href="#biblio-clipboard-apis">[clipboard-apis]</a>. </p>
+    </section>
+    <section>
+     <h3 class="heading settled" data-level="10.14" id="screen-capture"><span class="secno">10.14. </span><span class="content"> Screen Capture </span><a class="self-link" href="#screen-capture"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-display-capture"><code>"display-capture"</code></dfn> permission is the permission associated with the usage of <a data-link-type="biblio" href="#biblio-screen-capture">[screen-capture]</a>. </p>
      <dl>
       <dt> <a data-link-type="dfn" href="#permission-state-constraints" id="ref-for-permission-state-constraints①">permission state constraints</a> 
@@ -2120,7 +2127,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      </dl>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.14" id="nfc"><span class="secno">10.14. </span><span class="content"> NFC </span><a class="self-link" href="#nfc"></a></h3>
+     <h3 class="heading settled" data-level="10.15" id="nfc"><span class="secno">10.15. </span><span class="content"> NFC </span><a class="self-link" href="#nfc"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-nfc"><code>"nfc"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-web-nfc">[web-nfc]</a> API. </p>
     </section>
    </section>
@@ -2329,14 +2336,15 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <li><a href="#boolean-permission-query-algorithm">boolean permission query algorithm</a><span>, in §9</span>
    <li><a href="#dom-permissionname-camera">"camera"</a><span>, in §10.5</span>
    <li><a href="#dictdef-cameradevicepermissiondescriptor">CameraDevicePermissionDescriptor</a><span>, in §10.5</span>
-   <li><a href="#dom-permissionname-clipboard">"clipboard"</a><span>, in §10.12</span>
+   <li><a href="#dom-permissionname-clipboard-read">"clipboard-read"</a><span>, in §10.12</span>
+   <li><a href="#dom-permissionname-clipboard-write">"clipboard-write"</a><span>, in §10.13</span>
    <li><a href="#create-a-permissionstatus">create a PermissionStatus</a><span>, in §6</span>
    <li><a href="#dom-permissionstate-denied">"denied"</a><span>, in §6</span>
    <li><a href="#dom-permissionsetparameters-descriptor">descriptor</a><span>, in §11</span>
    <li><a href="#dom-devicepermissiondescriptor-deviceid">deviceId</a><span>, in §10.5</span>
    <li><a href="#dom-permissionname-device-info">"device-info"</a><span>, in §10.5</span>
    <li><a href="#dictdef-devicepermissiondescriptor">DevicePermissionDescriptor</a><span>, in §10.5</span>
-   <li><a href="#dom-permissionname-display-capture">"display-capture"</a><span>, in §10.13</span>
+   <li><a href="#dom-permissionname-display-capture">"display-capture"</a><span>, in §10.14</span>
    <li><a href="#extra-permission-data">extra permission data</a><span>, in §5.1</span>
    <li><a href="#extra-permission-data-constraints">extra permission data constraints</a><span>, in §10</span>
    <li><a href="#extra-permission-data-type">extra permission data type</a><span>, in §10</span>
@@ -2351,7 +2359,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <li><a href="#dictdef-midipermissiondescriptor">MidiPermissionDescriptor</a><span>, in §10.4</span>
    <li><a href="#dom-permissiondescriptor-name">name</a><span>, in §4</span>
    <li><a href="#new-information-about-the-users-intent">New information about the user’s intent</a><span>, in §3</span>
-   <li><a href="#dom-permissionname-nfc">"nfc"</a><span>, in §10.14</span>
+   <li><a href="#dom-permissionname-nfc">"nfc"</a><span>, in §10.15</span>
    <li><a href="#dom-permissionname-notifications">"notifications"</a><span>, in §10.2</span>
    <li><a href="#dom-permissionstatus-onchange">onchange</a><span>, in §6</span>
    <li><a href="#dom-permissionsetparameters-onerealm">oneRealm</a><span>, in §11</span>
@@ -3000,7 +3008,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <dt id="biblio-background-fetch">[BACKGROUND-FETCH]
    <dd><a href="https://wicg.github.io/background-fetch/">Background Fetch</a>. cg-draft. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a>
    <dt id="biblio-clipboard-apis">[CLIPBOARD-APIS]
-   <dd>Gary Kacmarcik; Grisha Lyukshin. <a href="https://www.w3.org/TR/clipboard-apis/">Clipboard API and events</a>. 5 June 2019. WD. URL: <a href="https://www.w3.org/TR/clipboard-apis/">https://www.w3.org/TR/clipboard-apis/</a>
+   <dd>Gary Kacmarcik; Grisha Lyukshin. <a href="https://www.w3.org/TR/clipboard-apis/">Clipboard API and events</a>. 3 June 2020. WD. URL: <a href="https://www.w3.org/TR/clipboard-apis/">https://www.w3.org/TR/clipboard-apis/</a>
    <dt id="biblio-geolocation-api">[geolocation-API]
    <dd>Andrei Popescu. <a href="https://www.w3.org/TR/geolocation-API/">Geolocation API Specification 2nd Edition</a>. 8 November 2016. REC. URL: <a href="https://www.w3.org/TR/geolocation-API/">https://www.w3.org/TR/geolocation-API/</a>
    <dt id="biblio-getusermedia">[GETUSERMEDIA]
@@ -3175,7 +3183,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     Permission Registry </a> <a href="#ref-for-permission-state⑨">(2)</a> <a href="#ref-for-permission-state①⓪">(3)</a> <a href="#ref-for-permission-state①①">(4)</a> <a href="#ref-for-permission-state①②">(5)</a> <a href="#ref-for-permission-state①③">(6)</a>
     <li><a href="#ref-for-permission-state①④">10.5. 
       Media Devices </a> <a href="#ref-for-permission-state①⑤">(2)</a>
-    <li><a href="#ref-for-permission-state①⑥">10.13. 
+    <li><a href="#ref-for-permission-state①⑥">10.14. 
       Screen Capture </a> <a href="#ref-for-permission-state①⑦">(2)</a>
     <li><a href="#ref-for-permission-state①⑧">11.1. 
       Set Permission </a> <a href="#ref-for-permission-state①⑨">(2)</a> <a href="#ref-for-permission-state②⓪">(3)</a> <a href="#ref-for-permission-state②①">(4)</a>
@@ -3225,7 +3233,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     Permission Registry </a> <a href="#ref-for-dom-permissionstate-granted⑧">(2)</a>
     <li><a href="#ref-for-dom-permissionstate-granted⑨">10.5. 
       Media Devices </a> <a href="#ref-for-dom-permissionstate-granted①⓪">(2)</a> <a href="#ref-for-dom-permissionstate-granted①①">(3)</a>
-    <li><a href="#ref-for-dom-permissionstate-granted①②">10.13. 
+    <li><a href="#ref-for-dom-permissionstate-granted①②">10.14. 
       Screen Capture </a>
    </ul>
   </aside>
@@ -3240,7 +3248,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     Permission Registry </a> <a href="#ref-for-dom-permissionstate-denied①②">(2)</a>
     <li><a href="#ref-for-dom-permissionstate-denied①③">10.5. 
       Media Devices </a>
-    <li><a href="#ref-for-dom-permissionstate-denied①④">10.13. 
+    <li><a href="#ref-for-dom-permissionstate-denied①④">10.14. 
       Screen Capture </a>
     <li><a href="#ref-for-dom-permissionstate-denied①⑤">11.1. 
       Set Permission </a>
@@ -3255,7 +3263,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     Status of a permission </a>
     <li><a href="#ref-for-dom-permissionstate-prompt④">10.5. 
       Media Devices </a>
-    <li><a href="#ref-for-dom-permissionstate-prompt⑤">10.13. 
+    <li><a href="#ref-for-dom-permissionstate-prompt⑤">10.14. 
       Screen Capture </a>
    </ul>
   </aside>
@@ -3402,7 +3410,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <b><a href="#permission-state-constraints">#permission-state-constraints</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-permission-state-constraints">5.1. Reading the current permission state</a>
-    <li><a href="#ref-for-permission-state-constraints①">10.13. 
+    <li><a href="#ref-for-permission-state-constraints①">10.14. 
       Screen Capture </a>
    </ul>
   </aside>
@@ -3603,10 +3611,17 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
       Magnetometer </a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-permissionname-clipboard">
-   <b><a href="#dom-permissionname-clipboard">#dom-permissionname-clipboard</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="dom-permissionname-clipboard-read">
+   <b><a href="#dom-permissionname-clipboard-read">#dom-permissionname-clipboard-read</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-clipboard">10. 
+    <li><a href="#ref-for-dom-permissionname-clipboard-read">10. 
+    Permission Registry </a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-permissionname-clipboard-write">
+   <b><a href="#dom-permissionname-clipboard-write">#dom-permissionname-clipboard-write</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-permissionname-clipboard-write">10. 
     Permission Registry </a>
    </ul>
   </aside>
