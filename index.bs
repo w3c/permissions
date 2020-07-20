@@ -59,32 +59,8 @@ spec: webdriver; urlPrefix: https://w3c.github.io/webdriver/#
         text: success; url: dfn-success
 </pre>
 <pre class="link-defaults">
-spec: dom
-    type: interface
-        text: Document
-spec: html
-    type: dfn
-        text: event handler
-        text: event handler event type
-        text: in parallel
-        text: origin; for: /
-        text: queue a task
-spec: storage
-    type: enum-value
-        for: PermissionName; text: "persistent-storage"
-spec: infra
-    type: dfn
-        text: list
-        for: list; text: append
-spec: ui-events
-    type: dfn
-        text: user agent
-spec: web-bluetooth
-    type: enum-value
-        for: PermissionName; text: "bluetooth"
-spec: webidl
-    type: interface
-        text: Promise
+spec:infra; type:dfn; text:user agent
+spec:infra; type:dfn; text:list
 </pre>
 
 <section class='non-normative'>
@@ -1143,7 +1119,7 @@ spec: webidl
               moment.</li>
             </ol>
           </li>
-          <li><a>Append</a> |task| to |tasks|.</li>
+          <li>[=list/Append=]</a> |task| to |tasks|.</li>
         </ol>
       </li>
       <li>Wait for all <a>tasks</a> in |tasks| to have executed.</li>
