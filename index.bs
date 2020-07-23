@@ -1090,7 +1090,7 @@ spec: webidl
         </tr>
       </tbody>
     </table>
-    <p>The <dfn export>Set Permission</dfn> <a>extension command</a> simulates user
+    <p>The <dfn noexport>Set Permission</dfn> <a>extension command</a> simulates user
     modification of a {{PermissionDescriptor}}'s <a>permission state</a>.</p>
     <p>The <a>remote end steps</a> are:</p>
     <ol>
