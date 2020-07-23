@@ -1536,7 +1536,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-07-22">22 July 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-07-23">23 July 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1766,7 +1766,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        <li> If <var>settings</var> wasn’t passed, set it to the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object" id="ref-for-current-settings-object">current settings object</a>. 
        <li> If <var>settings</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#non-secure-context" id="ref-for-non-secure-context">non-secure context</a> and <code><var>descriptor</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①">name</a></code></code> isn’t <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts">allowed in non-secure contexts</a>, then return <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①">"denied"</a></code>. 
        <li>
-         If there exists a <a data-link-type="dfn" href="https://w3c.github.io/webappsec-feature-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature">policy-controlled feature</a> identified by <code><var>descriptor</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name②">name</a></code></code> and <var>settings</var> has an <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/window-object.html#concept-document-window" id="ref-for-concept-document-window">associated <code>Document</code></a> named <var>document</var>, run the following step: 
+         If there exists a <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature">policy-controlled feature</a> identified by <code><var>descriptor</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name②">name</a></code></code> and <var>settings</var> has an <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/window-object.html#concept-document-window" id="ref-for-concept-document-window">associated <code>Document</code></a> named <var>document</var>, run the following step: 
         <ol class="algorithm">
          <li> If <var>document</var> is not <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use" id="ref-for-allowed-to-use">allowed to use</a> the feature
               identified by <code><var>descriptor</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name③">name</a></code></code> return <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied②">"denied"</a></code>. 
@@ -2754,7 +2754,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-policy-controlled-feature">
-   <a href="https://w3c.github.io/webappsec-feature-policy/#policy-controlled-feature">https://w3c.github.io/webappsec-feature-policy/#policy-controlled-feature</a><b>Referenced in:</b>
+   <a href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature">https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-policy-controlled-feature">5.1. Reading the current permission state</a>
    </ul>
