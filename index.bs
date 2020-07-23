@@ -613,7 +613,7 @@ spec: webidl
       <a enum-value>"midi"</a>,
       <a enum-value>"camera"</a>,
       <a enum-value>"microphone"</a>,
-      <a enum-value>"speaker"</a>,
+      <a enum-value>"speaker-selection"</a>,
       <a enum-value>"device-info"</a>,
       <a enum-value>"background-fetch"</a>,
       <a enum-value>"background-sync"</a>,
@@ -812,11 +812,9 @@ spec: webidl
     </h3>
     <p dfn-for="PermissionName" dfn-type="enum-value">
       The <dfn>"camera"</dfn>, <dfn>"microphone"</dfn> , and
-      <dfn>"speaker"</dfn>
+      <dfn>"speaker-selection"</dfn>
       permissions are associated with permission to use media devices as
-      specified in [[GETUSERMEDIA]] and [[audio-output]]. {{"speaker"}} is
-      <a>allowed in non-secure contexts</a>. {{"camera"}} and {{"microphone"}}
-      MAY be <a>allowed in non-secure contexts</a>.
+      specified in [[GETUSERMEDIA]] and [[audio-output]].
     </p>
     <dl>
       <dt>
