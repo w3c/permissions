@@ -1536,7 +1536,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-07-20">20 July 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-07-22">22 July 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2043,7 +2043,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi①"><c- s>"midi"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-camera" id="ref-for-dom-permissionname-camera"><c- s>"camera"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-microphone" id="ref-for-dom-permissionname-microphone"><c- s>"microphone"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-speaker" id="ref-for-dom-permissionname-speaker"><c- s>"speaker"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-speaker-selection" id="ref-for-dom-permissionname-speaker-selection"><c- s>"speaker-selection"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-device-info" id="ref-for-dom-permissionname-device-info"><c- s>"device-info"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-fetch" id="ref-for-dom-permissionname-background-fetch"><c- s>"background-fetch"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-sync" id="ref-for-dom-permissionname-background-sync"><c- s>"background-sync"</c-></a>,
@@ -2142,8 +2142,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </section>
     <section>
      <h3 class="heading settled" data-level="10.5" id="media-devices"><span class="secno">10.5. </span><span class="content"> Media Devices </span><a class="self-link" href="#media-devices"></a></h3>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-camera"><code>"camera"</code></dfn>, <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-microphone"><code>"microphone"</code></dfn> , and <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-speaker"><code>"speaker"</code></dfn> permissions are associated with permission to use media devices as
-      specified in <a data-link-type="biblio" href="#biblio-getusermedia">[GETUSERMEDIA]</a> and <a data-link-type="biblio" href="#biblio-audio-output">[audio-output]</a>. <code class="idl"><a data-link-type="idl" href="#dom-permissionname-speaker" id="ref-for-dom-permissionname-speaker①">"speaker"</a></code> is <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts④">allowed in non-secure contexts</a>. <code class="idl"><a data-link-type="idl" href="#dom-permissionname-camera" id="ref-for-dom-permissionname-camera①">"camera"</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-permissionname-microphone" id="ref-for-dom-permissionname-microphone①">"microphone"</a></code> MAY be <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts⑤">allowed in non-secure contexts</a>. </p>
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-camera"><code>"camera"</code></dfn>, <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-microphone"><code>"microphone"</code></dfn> , and <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-speaker-selection"><code>"speaker-selection"</code></dfn> permissions are associated with permission to use media devices as
+      specified in <a data-link-type="biblio" href="#biblio-getusermedia">[GETUSERMEDIA]</a> and <a data-link-type="biblio" href="#biblio-audio-output">[audio-output]</a>. </p>
      <dl>
       <dt> <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type⑨">permission descriptor type</a> 
       <dd>
@@ -2159,7 +2159,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
           descriptor. </p>
        <p> If the descriptor does not have a <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid">deviceId</a></code>, its semantic is that it
           queries for access to all devices of that class. Thus, if a query for
-          the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-camera" id="ref-for-dom-permissionname-camera②">"camera"</a></code> permission with no <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid①">deviceId</a></code> returns <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted⑨">"granted"</a></code>, the
+          the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-camera" id="ref-for-dom-permissionname-camera①">"camera"</a></code> permission with no <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid①">deviceId</a></code> returns <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted⑨">"granted"</a></code>, the
           client knows that there will never be a permission prompt for a
           camera, and if <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①③">"denied"</a></code> is returned, it knows that no getUserMedia
           request for a camera will succeed. </p>
@@ -2303,7 +2303,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        <p class="note" role="note"> For example, <a data-link-type="dfn" href="https://www.w3.org/TR/uievents/#user-agent" id="ref-for-user-agent④">user agents</a> that define the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi⑤">"midi"</a></code> <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①①">feature</a> as "always on" may choose to reject command
           to set the <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state②⓪">permission state</a> to <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①⑤">"denied"</a></code> at this step. </p>
       <li>Let <var>settings</var> be the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object③">environment settings object</a> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-current-browsing-context" id="ref-for-dfn-current-browsing-context">current browsing context</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#active-document" id="ref-for-active-document">active document</a>.
-      <li>If <var>settings</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#non-secure-context" id="ref-for-non-secure-context①">non-secure context</a> and <code><var>rootDesc</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①③">name</a></code></code> isn’t <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts⑥">allowed
+      <li>If <var>settings</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#non-secure-context" id="ref-for-non-secure-context①">non-secure context</a> and <code><var>rootDesc</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①③">name</a></code></code> isn’t <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts④">allowed
         in non-secure contexts</a>, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error" id="ref-for-dfn-error③">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error-code" id="ref-for-dfn-error-code③">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-invalid-argument" id="ref-for-dfn-invalid-argument③">invalid argument</a>.
       <li>If <var>parameters</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionsetparameters-onerealm" id="ref-for-dom-permissionsetparameters-onerealm">oneRealm</a></code> is true, let <var>targets</var> be a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list">list</a> whose sole member is <var>settings</var>.
       <li>Otherwise, let <var>targets</var> be a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list①">list</a> containing all <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object④">environment settings objects</a> whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin" id="ref-for-concept-settings-object-origin">origin</a> is the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/origin.html#same-origin" id="ref-for-same-origin③">same</a> as the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin" id="ref-for-concept-settings-object-origin①">origin</a> of <var>settings</var>.
@@ -2527,7 +2527,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <li><a href="#request-permission-to-use">requesting permission to use</a><span>, in §5.2</span>
    <li><a href="#request-permission-to-use">request permission to use</a><span>, in §5.2</span>
    <li><a href="#set-permission">Set Permission</a><span>, in §11.1</span>
-   <li><a href="#dom-permissionname-speaker">"speaker"</a><span>, in §10.5</span>
+   <li><a href="#dom-permissionname-speaker-selection">"speaker-selection"</a><span>, in §10.5</span>
    <li>
     state
     <ul>
@@ -2567,12 +2567,6 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     <li><a href="#ref-for-sec-code-realms④">5.3. Reacting to users revoking permission</a>
     <li><a href="#ref-for-sec-code-realms⑤">10.5. 
       Media Devices </a> <a href="#ref-for-sec-code-realms⑥">(2)</a> <a href="#ref-for-sec-code-realms⑦">(3)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-policy-controlled-feature">
-   <a href="https://w3c.github.io/webappsec-feature-policy/#policy-controlled-feature">https://w3c.github.io/webappsec-feature-policy/#policy-controlled-feature</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-policy-controlled-feature">5.1. Reading the current permission state</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-eventhandler">
@@ -2757,6 +2751,12 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <a href="https://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia">https://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-mediadevices-getusermedia">5.1. Reading the current permission state</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-policy-controlled-feature">
+   <a href="https://w3c.github.io/webappsec-feature-policy/#policy-controlled-feature">https://w3c.github.io/webappsec-feature-policy/#policy-controlled-feature</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-policy-controlled-feature">5.1. Reading the current permission state</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-boolean-permission-request-algorithm">
@@ -2998,11 +2998,6 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
      <li><span class="dfn-paneled" id="term-for-sec-code-realms" style="color:initial">realm</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[feature-policy-1]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-policy-controlled-feature" style="color:initial">policy-controlled feature</span>
-    </ul>
-   <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-eventhandler" style="color:initial">EventHandler</span>
@@ -3043,6 +3038,11 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
      <li><span class="dfn-paneled" id="term-for-deviceid" style="color:initial">deviceId</span>
      <li><span class="dfn-paneled" id="term-for-devicechange" style="color:initial">devicechange</span>
      <li><span class="dfn-paneled" id="term-for-dom-mediadevices-getusermedia" style="color:initial">getUserMedia()</span>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[permissions-policy-1]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="term-for-policy-controlled-feature" style="color:initial">policy-controlled feature</span>
     </ul>
    <li>
     <a data-link-type="biblio">[PERMISSIONS-REQUEST]</a> defines the following terms:
@@ -3112,12 +3112,12 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <dd>Anne van Kesteren. <a href="https://dom.spec.whatwg.org/">DOM Standard</a>. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
    <dt id="biblio-ecmascript">[ECMASCRIPT]
    <dd><a href="https://tc39.es/ecma262/">ECMAScript Language Specification</a>. URL: <a href="https://tc39.es/ecma262/">https://tc39.es/ecma262/</a>
-   <dt id="biblio-feature-policy-1">[FEATURE-POLICY-1]
-   <dd>Ian Clelland. <a href="https://www.w3.org/TR/feature-policy-1/">Feature Policy</a>. 16 April 2019. WD. URL: <a href="https://www.w3.org/TR/feature-policy-1/">https://www.w3.org/TR/feature-policy-1/</a>
    <dt id="biblio-html">[HTML]
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
    <dt id="biblio-infra">[INFRA]
    <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/">Infra Standard</a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
+   <dt id="biblio-permissions-policy-1">[PERMISSIONS-POLICY-1]
+   <dd>Ian Clelland. <a href="https://www.w3.org/TR/permissions-policy-1/">Permissions Policy</a>. 16 July 2020. WD. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a>
    <dt id="biblio-permissions-request">[PERMISSIONS-REQUEST]
    <dd><a href="https://wicg.github.io/permissions-request/">Requesting Permissions</a>. cg-draft. URL: <a href="https://wicg.github.io/permissions-request/">https://wicg.github.io/permissions-request/</a>
    <dt id="biblio-rfc2119">[RFC2119]
@@ -3503,9 +3503,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
       Notifications </a>
     <li><a href="#ref-for-allowed-in-non-secure-contexts③">10.4. 
       Midi </a>
-    <li><a href="#ref-for-allowed-in-non-secure-contexts④">10.5. 
-      Media Devices </a> <a href="#ref-for-allowed-in-non-secure-contexts⑤">(2)</a>
-    <li><a href="#ref-for-allowed-in-non-secure-contexts⑥">11.1. 
+    <li><a href="#ref-for-allowed-in-non-secure-contexts④">11.1. 
       Set Permission </a>
    </ul>
   </aside>
@@ -3655,7 +3653,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     <li><a href="#ref-for-dom-permissionname-camera">10. 
     Permission Registry </a>
     <li><a href="#ref-for-dom-permissionname-camera①">10.5. 
-      Media Devices </a> <a href="#ref-for-dom-permissionname-camera②">(2)</a>
+      Media Devices </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-microphone">
@@ -3663,17 +3661,13 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <ul>
     <li><a href="#ref-for-dom-permissionname-microphone">10. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-microphone①">10.5. 
-      Media Devices </a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-permissionname-speaker">
-   <b><a href="#dom-permissionname-speaker">#dom-permissionname-speaker</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="dom-permissionname-speaker-selection">
+   <b><a href="#dom-permissionname-speaker-selection">#dom-permissionname-speaker-selection</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-speaker">10. 
+    <li><a href="#ref-for-dom-permissionname-speaker-selection">10. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-speaker①">10.5. 
-      Media Devices </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dictdef-devicepermissiondescriptor">
