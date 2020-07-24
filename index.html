@@ -1536,7 +1536,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-07-23">23 July 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-07-24">24 July 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1893,12 +1893,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </pre>
     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionState" data-dfn-type="enum-value" data-export id="dom-permissionstate-granted"><code>"granted"</code></dfn> state represents
     that the caller will be able
-    to successfuly access the feature without having the <a data-link-type="dfn" href="https://www.w3.org/TR/uievents/#user-agent" id="ref-for-user-agent">user agent</a> asking the user’s permission. </p>
+    to successfuly access the feature without having the <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent" id="ref-for-user-agent">user agent</a> asking the user’s permission. </p>
     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionState" data-dfn-type="enum-value" data-export id="dom-permissionstate-denied"><code>"denied"</code></dfn> state represents
     that the caller will not be
     able to access the feature. </p>
     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionState" data-dfn-type="enum-value" data-export id="dom-permissionstate-prompt"><code>"prompt"</code></dfn> state represents
-    that the <a data-link-type="dfn" href="https://www.w3.org/TR/uievents/#user-agent" id="ref-for-user-agent①">user agent</a> will be asking the user’s permission if the caller tries to access the
+    that the <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent" id="ref-for-user-agent①">user agent</a> will be asking the user’s permission if the caller tries to access the
     feature. The user might grant, deny or dismiss the request. </p>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=(<c- n>Window</c->,<c- n>Worker</c->)]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="permissionstatus"><code><c- g>PermissionStatus</c-></code></dfn> : <a class="n" data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget"><c- n>EventTarget</c-></a> {
@@ -1945,7 +1945,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </aside>
     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionStatus" data-dfn-type="attribute" data-export id="dom-permissionstatus-onchange"><code>onchange</code></dfn> attribute is an <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handlers" id="ref-for-event-handlers">event handler</a> whose corresponding <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handler-event-type" id="ref-for-event-handler-event-type">event handler event
     type</a> is <code>change</code>. </p>
-    <p id="PermissionStatus-update"> Whenever the <a data-link-type="dfn" href="https://www.w3.org/TR/uievents/#user-agent" id="ref-for-user-agent②">user agent</a> is aware that the state of a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus①">PermissionStatus</a></code> instance <var>status</var> has changed,
+    <p id="PermissionStatus-update"> Whenever the <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent" id="ref-for-user-agent②">user agent</a> is aware that the state of a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus①">PermissionStatus</a></code> instance <var>status</var> has changed,
     it MUST asynchronously run the following steps: </p>
     <ol>
      <li> Run <code><var>status</var>@<code class="idl"><a data-link-type="idl" href="#dom-permissionstatus-query-slot" id="ref-for-dom-permissionstatus-query-slot①">[[query]]</a></code>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name⑨">name</a></code></code>’s <a data-link-type="dfn" href="#permission-query-algorithm" id="ref-for-permission-query-algorithm">permission
@@ -2004,7 +2004,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      </div>
     </aside>
     <p> When the <dfn class="dfn-paneled idl-code" data-dfn-for="Permissions" data-dfn-type="method" data-export id="dom-permissions-query"><code>query(permissionDesc)</code></dfn> method is
-    invoked, the <a data-link-type="dfn" href="https://www.w3.org/TR/uievents/#user-agent" id="ref-for-user-agent③">user agent</a> MUST run the following <dfn data-dfn-type="dfn" data-export data-lt="query a permission" id="query-a-permission">query a
+    invoked, the <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent" id="ref-for-user-agent③">user agent</a> MUST run the following <dfn data-dfn-type="dfn" data-export data-lt="query a permission" id="query-a-permission">query a
     permission<a class="self-link" href="#query-a-permission"></a></dfn> algorithm, passing the parameter <var>permissionDesc</var>: </p>
     <ol>
      <li>Let <var>rootDesc</var> be the object <var>permissionDesc</var> refers to, <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-convert-ecmascript-to-idl-value" id="ref-for-dfn-convert-ecmascript-to-idl-value">converted to
@@ -2300,7 +2300,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li>
        If <var>parameters</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionsetparameters-state" id="ref-for-dom-permissionsetparameters-state">state</a></code> is an inappropriate <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑨">permission state</a> for any implementation-defined reason, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error" id="ref-for-dfn-error②">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error-code" id="ref-for-dfn-error-code②">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-invalid-argument" id="ref-for-dfn-invalid-argument②">invalid
         argument</a>. 
-       <p class="note" role="note"> For example, <a data-link-type="dfn" href="https://www.w3.org/TR/uievents/#user-agent" id="ref-for-user-agent④">user agents</a> that define the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi⑤">"midi"</a></code> <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①①">feature</a> as "always on" may choose to reject command
+       <p class="note" role="note"> For example, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent" id="ref-for-user-agent④">user agents</a> that define the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi⑤">"midi"</a></code> <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①①">feature</a> as "always on" may choose to reject command
           to set the <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state②⓪">permission state</a> to <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①⑤">"denied"</a></code> at this step. </p>
       <li>Let <var>settings</var> be the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object③">environment settings object</a> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-current-browsing-context" id="ref-for-dfn-current-browsing-context">current browsing context</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#active-document" id="ref-for-active-document">active document</a>.
       <li>If <var>settings</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#non-secure-context" id="ref-for-non-secure-context①">non-secure context</a> and <code><var>rootDesc</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①③">name</a></code></code> isn’t <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts④">allowed
@@ -2727,6 +2727,17 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
       Set Permission </a> <a href="#ref-for-list①">(2)</a> <a href="#ref-for-list②">(3)</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-user-agent">
+   <a href="https://infra.spec.whatwg.org/#user-agent">https://infra.spec.whatwg.org/#user-agent</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-user-agent">6. 
+    Status of a permission </a> <a href="#ref-for-user-agent①">(2)</a> <a href="#ref-for-user-agent②">(3)</a>
+    <li><a href="#ref-for-user-agent③">8. 
+    Permissions interface </a>
+    <li><a href="#ref-for-user-agent④">11.1. 
+      Set Permission </a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-install">
    <a href="https://w3c.github.io/manifest/#dfn-install">https://w3c.github.io/manifest/#dfn-install</a><b>Referenced in:</b>
    <ul>
@@ -2805,17 +2816,6 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <ul>
     <li><a href="#ref-for-dom-permissionname-persistent-storage">10. 
     Permission Registry </a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-user-agent">
-   <a href="https://www.w3.org/TR/uievents/#user-agent">https://www.w3.org/TR/uievents/#user-agent</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-user-agent">6. 
-    Status of a permission </a> <a href="#ref-for-user-agent①">(2)</a> <a href="#ref-for-user-agent②">(3)</a>
-    <li><a href="#ref-for-user-agent③">8. 
-    Permissions interface </a>
-    <li><a href="#ref-for-user-agent④">11.1. 
-      Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dom-permissionname-bluetooth">
@@ -3026,6 +3026,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     <ul>
      <li><span class="dfn-paneled" id="term-for-list-append" style="color:initial">append</span>
      <li><span class="dfn-paneled" id="term-for-list" style="color:initial">list</span>
+     <li><span class="dfn-paneled" id="term-for-user-agent" style="color:initial">user agent</span>
     </ul>
    <li>
     <a data-link-type="biblio">[manifest]</a> defines the following terms:
@@ -3065,11 +3066,6 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     <a data-link-type="biblio">[STORAGE]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-dom-permissionname-persistent-storage" style="color:initial">"persistent-storage"</span>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[uievents]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-user-agent" style="color:initial">user agent</span>
     </ul>
    <li>
     <a data-link-type="biblio">[web-bluetooth]</a> defines the following terms:
@@ -3126,8 +3122,6 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <dd>Mike West. <a href="https://www.w3.org/TR/secure-contexts/">Secure Contexts</a>. 15 September 2016. CR. URL: <a href="https://www.w3.org/TR/secure-contexts/">https://www.w3.org/TR/secure-contexts/</a>
    <dt id="biblio-storage">[STORAGE]
    <dd>Anne van Kesteren. <a href="https://storage.spec.whatwg.org/">Storage Standard</a>. Living Standard. URL: <a href="https://storage.spec.whatwg.org/">https://storage.spec.whatwg.org/</a>
-   <dt id="biblio-uievents">[UIEVENTS]
-   <dd>Gary Kacmarcik; Travis Leithead; Doug Schepers. <a href="https://www.w3.org/TR/uievents/">UI Events</a>. 30 May 2019. WD. URL: <a href="https://www.w3.org/TR/uievents/">https://www.w3.org/TR/uievents/</a>
    <dt id="biblio-web-bluetooth">[WEB-BLUETOOTH]
    <dd>Jeffrey Yasskin. <a href="https://webbluetoothcg.github.io/web-bluetooth/">Web Bluetooth</a>. Draft Community Group Report. URL: <a href="https://webbluetoothcg.github.io/web-bluetooth/">https://webbluetoothcg.github.io/web-bluetooth/</a>
    <dt id="biblio-webdriver">[WebDriver]
