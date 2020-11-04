@@ -39,6 +39,8 @@ spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
         for: MediaDevices; text: getUserMedia(); url: dom-mediadevices-getusermedia
     type: event
         for: MediaDevices; text: devicechange
+    type: dfn
+        text: media device permission revocation algorithm; url: dfn-device-permission-revocation-algorithm
 spec: sensors; urlPrefix: https://w3c.github.io/sensors/#
     type: dfn
         text: generic sensor permission revocation algorithm; url: generic-sensor-permission-revocation-algorithm
@@ -889,10 +891,11 @@ spec:infra; type:dfn; text:list
         <a>permission revocation algorithm</a>
       </dt>
       <dd>
-        When permission for a device is revoked, the UA MUST run the
-        algorithm to stop the track for any other reason than the stop()
-        method being invoked for each MediaStreamTrack sourced from that
-        device. <!--TODO make a link target in the spec -->
+        This is the result of calling the
+        <a>media device permission revocation algorithm</a> passing {{name}}
+        and {{deviceId}} as arguments. If the descriptor does not have a
+        {{deviceId}}, then <code>undefined</code> is passed in place of
+        {{deviceId}}.
       </dd>
     </dl>
     <p>
