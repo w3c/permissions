@@ -928,8 +928,8 @@ spec:infra; type:dfn; text:list
     </h3>
     <p>
       The <dfn for="PermissionName" enum-value>"bluetooth"</dfn>
-      permission is the permission associated with the usage of
-      [[web-bluetooth]].
+      permission ([[web-bluetooth#permission-api-integration]]) controls usage
+      of [[web-bluetooth]].
     </p>
   </section>
   <section>
@@ -938,8 +938,9 @@ spec:infra; type:dfn; text:list
     </h3>
     <p>
       The <dfn for="PermissionName" enum-value>"persistent-storage"</dfn>
-      permission is the permission associated with the usage of
-      [[storage]].
+      permission ([[storage#persistence]]) is the permission associated with the
+      usage of the `"persistent"` storage bucket <a spec="storage" for="local
+      storage bucket">mode</a>.
     </p>
   </section>
   <section>
