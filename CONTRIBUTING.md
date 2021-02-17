@@ -1,4 +1,4 @@
-# Contributing 
+# Contributing
 
 Everyone is welcome to contribute to this specification.
 
@@ -14,7 +14,7 @@ Contributions to this repository are intended to become part of Recommendation-t
 [Software and Document License](https://www.w3.org/Consortium/Legal/copyright-software). To make substantive contributions to specifications, you must either participate
 in the relevant W3C Working Group or make a non-member patent licensing commitment.
 
-If you are not the sole contributor to a contribution (pull request), please identify all 
+If you are not the sole contributor to a contribution (pull request), please identify all
 contributors in the pull request comment.
 
 To add a contributor (other than yourself, that's automatic), mark them one per line as follows:
@@ -29,11 +29,11 @@ If you added a contributor by mistake, you can remove them in a comment with:
 -@github_username
 ```
 
-If you are making a pull request on behalf of someone else but you had no part in designing the 
+If you are making a pull request on behalf of someone else but you had no part in designing the
 feature, you can remove yourself with the above syntax.
 
 
-# Style guide to contributors 
+# Style guide to contributors
 
 - Edit `index.bs` to make your change, which is in the
   [Bikeshed](https://github.com/tabatkins/bikeshed) format.
@@ -45,12 +45,12 @@ feature, you can remove yourself with the above syntax.
 
 # Tests
 
-See [CONTRIBUTING.md](https://github.com/w3c/webappsec/blob/master/CONTRIBUTING.md).
+See [CONTRIBUTING.md](https://github.com/w3c/webappsec/blob/main/CONTRIBUTING.md).
 
 # Running Bikeshed
 
 If you're going to be making a lot of changes to the spec, you should
-[install Bikeshed](https://github.com/tabatkins/bikeshed/blob/master/docs/install.md)
+[install Bikeshed](https://tabatkins.github.io/bikeshed/#installing)
 and run `bikeshed watch` while you're editing, so that you can save
 and reload easily.
 
