@@ -597,7 +597,6 @@ spec:infra; type:dfn; text:list
       "accelerometer",
       "gyroscope",
       "magnetometer",
-      "clipboard-read",
       "clipboard-write",
       "display-capture",
       "nfc",
@@ -990,16 +989,6 @@ spec:infra; type:dfn; text:list
       Its <a>permission revocation algorithm</a> is the result of calling
       <a>generic sensor permission revocation algorithm</a>
       passing it <a enum-value>"magnetometer"</a> as argument.
-    </p>
-  </section>
-  <section>
-    <h3 id="clipboard-read">
-      Clipboard Read
-    </h3>
-    <p>
-      The <dfn for="PermissionName" enum-value>"clipboard-read"</dfn>
-      permission is the permission associated with the usage of the
-      asynchronous read methods in the [[clipboard-apis]].
     </p>
   </section>
   <section>
