@@ -1151,20 +1151,21 @@ spec:infra; type:dfn; text:list
     should be shown using the Geolocation API or with a button offering to
     add the feature.
   </p>
-  <pre class='highlight'>
-    navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
-      switch (state) {
-        case "granted":
-          showLocalNewsWithGeolocation();
-          break;
-        case "prompt":
-          showButtonToEnableLocalNews();
-          break;
-        default:
-          // Don't do anything if the permission was denied.
-          break;
-      }
+  <pre highlight="js">
+    const { state } = await navigator.permissions.query({
+      name: "geolocation"
     });
+    switch (state) {
+      case "granted":
+        showLocalNewsWithGeolocation();
+        break;
+      case "prompt":
+        showButtonToEnableLocalNews();
+        break;
+      default:
+        // Don't do anything if the permission was denied.
+        break;
+    }
   </pre>
   </div>
   <div class="example" id="example-notifications">
@@ -1173,17 +1174,19 @@ spec:infra; type:dfn; text:list
     chat application to show a notification button depending on the
     permission state.
   </p>
-  <pre class='highlight'>
+  <pre highlight="js">
     function updateNotificationButton(state) {
-      document.getElementById('chat-notification-button')
-        .disabled = (state === 'denied');
+      const button = document.getElementById("chat-notification-button");
+      button.disabled = state === "denied";
     }
 
-    navigator.permissions.query({ name: 'notifications' }).then((result) => {
-      updateNotificationButton(result.state);
-      result.addEventListener('change', () => {
-        updateNotificationButton(result.state);
-      });
+    const permission = navigator.permissions.query({
+      name: "notifications",
+    });
+
+    updateNotificationButton(permission.state);
+    permission.addEventListener("change", () => {
+      updateNotificationButton(permission.state);
     });
   </pre>
   </div>
@@ -1193,7 +1196,7 @@ spec:infra; type:dfn; text:list
     {{"geolocation"}} and the {{"notifications"}} permissions
     using <code>{{Promise}}.all</code>.
   </p>
-  <pre class='highlight'>
+  <pre highlight="js">
     Promise.all([
       navigator.permissions.query({ name: "geolocation" }),
       navigator.permissions.query({ name: "notifications" })
@@ -1208,26 +1211,25 @@ spec:infra; type:dfn; text:list
   <p>
     This example is checking the permission state of the available cameras.
   </p>
-  <pre class='highlight'>
-    navigator.mediaDevices
-      .enumerateDevices()
-      .then(devices => {
-        return Promise.all(devices
-          // filter on video inputs
-          .filter(({ kind }) => kind === "videoinput")
-          // map to query object
-          .map(({ deviceId }) => ({ name: "camera", deviceId }))
-          // map to query promise
-          .map(queryObj => navigator.permissions.query(queryObj))
-        );
-      })
+  <pre highlight="js">
+    const devices = await navigator.mediaDevices.enumerateDevices();
+
+    // filter on video inputs, and map to query object
+    const queries = devices
+      .filter(({ kind }) => kind === "videoinput")
+      .map(({ deviceId }) => ({ name: "camera", deviceId }));
+
+    const promises = queries.map((queryObj) =>
+      navigator.permissions.query(queryObj)
+    );
+
+    try {
+      const results = await Promise.all(promises);
       // log the state or each camera
-      .then(results => results.forEach(
-        ({ state }, i) => console.log(`Camera ${i}: "${state}"`)
-      ))
-      .catch(
-        err => console.error(err.stack)
-      );
+      results.forEach(({ state }, i) => console.log("Camera", i, state));
+    } catch (error) {
+      console.error(error);
+    }
   </pre>
   </div>
 </section>
