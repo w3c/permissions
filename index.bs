@@ -42,9 +42,6 @@ spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
 spec: sensors; urlPrefix: https://w3c.github.io/sensors/#
     type: dfn
         text: generic sensor permission revocation algorithm; url: generic-sensor-permission-revocation-algorithm
-spec: manifest; urlPrefix: https://w3c.github.io/manifest/#
-    type: dfn
-        text: install; url: dfn-install
 spec: webdriver; urlPrefix: https://w3c.github.io/webdriver/#
     type: dfn
         text: current browsing context; url: dfn-current-browsing-context
@@ -123,7 +120,7 @@ spec:infra; type:dfn; text:list
       or <a>implicit signals</a> this specification hasn't anticipated.
       <div class="note">
         The <dfn>implicit signals</dfn> could be, for example, the
-        <a>install</a> status of a web application or frequency and recency of
+        [=installed web application|install=] status of a web application or frequency and recency of
         visits. A user that has installed a web application and used it
         frequently and recently is more likely to trust it. Implementations are
         advised to exercise caution when relying on implicit signals.
