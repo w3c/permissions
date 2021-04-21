@@ -79,8 +79,8 @@ spec:infra; type:dfn; text:list
     beforehand.
   </p>
   <p>
-    The {{Permissions/query()}} function provides a tool for developers to
-    control when permission prompts are shown.
+    The {{Permissions/query()}} method allows querying the state of a given permission,
+    which a developer can then use to make UI decisions within a web application.
   </p>
   <p>
     The solution described in this document is meant to be extensible, but isn't
