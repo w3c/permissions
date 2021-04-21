@@ -492,7 +492,7 @@ spec:infra; type:dfn; text:list
 </section>
 <section>
   <h2 id="navigator-and-workernavigator-extension">
-    Navigator and WorkerNavigator extension
+    Extensions to the `Navigator` and `WorkerNavigator` interfaces
   </h2>
   <pre class='idl'>
     [Exposed=(Window)]
