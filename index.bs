@@ -624,7 +624,7 @@ spec: webidl
       <a enum-value>"magnetometer"</a>,
       <a enum-value>"clipboard"</a>,
       <a enum-value>"display-capture"</a>,
-      <a enum-value>"gamepad"</a>,
+      "gamepad",
     };
   </pre>
   <p class="note">
