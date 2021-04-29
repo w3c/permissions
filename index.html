@@ -633,7 +633,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-04-21">21 April 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-04-29">29 April 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -650,7 +650,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <dd><a href="#issues-index">Inline In Spec</a>
      <dt class="editor">Editors:
      <dd class="editor p-author h-card vcard" data-editor-id="45389"><span class="p-name fn">Mounir Lamouri</span> (<a class="p-org org" href="https://google.com/">Google Inc.</a>)
-     <dd class="editor p-author h-card vcard" data-editor-id="39125"><span class="p-name fn">Marcos Cáceres</span> (<a class="p-org org" href="https://mozilla.com/">Mozilla</a>)
+     <dd class="editor p-author h-card vcard" data-editor-id="39125"><span class="p-name fn">Marcos Cáceres</span> (<a class="p-org org" href="https://w3.org/">W3C</a>)
      <dd class="editor p-author h-card vcard" data-editor-id="72192"><span class="p-name fn">Jeffrey Yasskin</span> (<a class="p-org org" href="https://google.com/">Google Inc.</a>)
      <dt>Participate:
      <dd><a href="https://github.com/w3c/permissions">We are on Github.</a>
@@ -667,7 +667,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>The <cite>Permissions Standard</cite> defines common infrastructure for other specifications that need to interact with browser permissions. It also defines an API to allow web applications to query and request changes to the status of a given permission.</p>
+   <p>The <cite>Permissions</cite> specification defines common infrastructure for other specifications that need to interact with browser permissions. It also defines an API to allow web applications to query and be notified of changes to the status of a given permission.</p>
   </div>
   <h2 class="no-num no-toc no-ref heading settled" id="status"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
@@ -707,7 +707,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#reacting-to-revocation"><span class="secno">5.3</span> <span class="content">Reacting to users revoking permission</span></a>
      </ol>
     <li><a href="#status-of-a-permission"><span class="secno">6</span> <span class="content"> Status of a permission </span></a>
-    <li><a href="#navigator-and-workernavigator-extension"><span class="secno">7</span> <span class="content"> Navigator and WorkerNavigator extension </span></a>
+    <li><a href="#navigator-and-workernavigator-extension"><span class="secno">7</span> <span class="content"> Extensions to the <code>Navigator</code> and <code>WorkerNavigator</code> interfaces </span></a>
     <li><a href="#permissions-interface"><span class="secno">8</span> <span class="content"> Permissions interface </span></a>
     <li><a href="#common-permission-algorithms"><span class="secno">9</span> <span class="content"> Common permission algorithms </span></a>
     <li>
@@ -772,8 +772,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     pages when they try to use the API, like the <a data-link-type="biblio" href="#biblio-geolocation-api">[geolocation-API]</a> which fails
     if the permission was not granted without allowing the developer to check
     beforehand. </p>
-    <p> The <code class="idl"><a data-link-type="idl" href="#dom-permissions-query" id="ref-for-dom-permissions-query">query()</a></code> function provides a tool for developers to
-    control when permission prompts are shown. </p>
+    <p> The <code class="idl"><a data-link-type="idl" href="#dom-permissions-query" id="ref-for-dom-permissions-query">query()</a></code> method allows querying the state of a given permission,
+    which a developer can then use to make UI decisions within a web application. </p>
     <p> The solution described in this document is meant to be extensible, but isn’t
     expected to be applicable to all the current and future permissions
     available in the web platform. Working Groups that are creating
@@ -802,7 +802,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       authors believe is appropriate. This information can come from explicit
       user action, aggregate behavior of both the relevant user and other users,
       or <a data-link-type="dfn" href="#implicit-signals" id="ref-for-implicit-signals">implicit signals</a> this specification hasn’t anticipated. 
-      <div class="note" role="note"> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="implicit-signals">implicit signals</dfn> could be, for example, the <a data-link-type="dfn" href="https://w3c.github.io/manifest/#dfn-install" id="ref-for-dfn-install">install</a> status of a web application or frequency and recency of
+      <div class="note" role="note"> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="implicit-signals">implicit signals</dfn> could be, for example, the <a data-link-type="dfn" href="https://www.w3.org/TR/appmanifest/#dfn-installed-web-application" id="ref-for-dfn-installed-web-application">install</a> status of a web application or frequency and recency of
         visits. A user that has installed a web application and used it
         frequently and recently is more likely to trust it. Implementations are
         advised to exercise caution when relying on implicit signals. </div>
@@ -1050,7 +1050,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
    </section>
    <section>
-    <h2 class="heading settled" data-level="7" id="navigator-and-workernavigator-extension"><span class="secno">7. </span><span class="content"> Navigator and WorkerNavigator extension </span><a class="self-link" href="#navigator-and-workernavigator-extension"></a></h2>
+    <h2 class="heading settled" data-level="7" id="navigator-and-workernavigator-extension"><span class="secno">7. </span><span class="content"> Extensions to the <code>Navigator</code> and <code>WorkerNavigator</code> interfaces </span><a class="self-link" href="#navigator-and-workernavigator-extension"></a></h2>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=(<c- n>Window</c->)]
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://html.spec.whatwg.org/multipage/system-state.html#navigator" id="ref-for-navigator"><c- g>Navigator</c-></a> {
   [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#permissions" id="ref-for-permissions"><c- n>Permissions</c-></a> <dfn class="idl-code" data-dfn-for="Navigator" data-dfn-type="attribute" data-export data-readonly data-type="Permissions" id="dom-navigator-permissions"><code><c- g>permissions</c-></code><a class="self-link" href="#dom-navigator-permissions"></a></dfn>;
@@ -1133,25 +1133,25 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <section>
     <h2 class="heading settled" data-level="10" id="permission-registry"><span class="secno">10. </span><span class="content"> Permission Registry </span><a class="self-link" href="#permission-registry"></a></h2>
 <pre class="idl highlight def"><c- b>enum</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export id="enumdef-permissionname"><code><c- g>PermissionName</c-></code></dfn> {
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-geolocation" id="ref-for-dom-permissionname-geolocation"><c- s>"geolocation"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-notifications" id="ref-for-dom-permissionname-notifications"><c- s>"notifications"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-push" id="ref-for-dom-permissionname-push"><c- s>"push"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi①"><c- s>"midi"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-camera" id="ref-for-dom-permissionname-camera"><c- s>"camera"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-microphone" id="ref-for-dom-permissionname-microphone"><c- s>"microphone"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-speaker-selection" id="ref-for-dom-permissionname-speaker-selection"><c- s>"speaker-selection"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-device-info" id="ref-for-dom-permissionname-device-info"><c- s>"device-info"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer"><c- s>"accelerometer"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor"><c- s>"ambient-light-sensor"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-fetch" id="ref-for-dom-permissionname-background-fetch"><c- s>"background-fetch"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-sync" id="ref-for-dom-permissionname-background-sync"><c- s>"background-sync"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-bluetooth" id="ref-for-dom-permissionname-bluetooth①"><c- s>"bluetooth"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-persistent-storage" id="ref-for-dom-permissionname-persistent-storage"><c- s>"persistent-storage"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor"><c- s>"ambient-light-sensor"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer"><c- s>"accelerometer"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-camera" id="ref-for-dom-permissionname-camera"><c- s>"camera"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-clipboard-write" id="ref-for-dom-permissionname-clipboard-write"><c- s>"clipboard-write"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-device-info" id="ref-for-dom-permissionname-device-info"><c- s>"device-info"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-display-capture" id="ref-for-dom-permissionname-display-capture"><c- s>"display-capture"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-geolocation" id="ref-for-dom-permissionname-geolocation"><c- s>"geolocation"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope"><c- s>"gyroscope"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-magnetometer" id="ref-for-dom-permissionname-magnetometer"><c- s>"magnetometer"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-clipboard-write" id="ref-for-dom-permissionname-clipboard-write"><c- s>"clipboard-write"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-display-capture" id="ref-for-dom-permissionname-display-capture"><c- s>"display-capture"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-microphone" id="ref-for-dom-permissionname-microphone"><c- s>"microphone"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi①"><c- s>"midi"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-nfc" id="ref-for-dom-permissionname-nfc"><c- s>"nfc"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-notifications" id="ref-for-dom-permissionname-notifications"><c- s>"notifications"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-persistent-storage" id="ref-for-dom-permissionname-persistent-storage"><c- s>"persistent-storage"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-push" id="ref-for-dom-permissionname-push"><c- s>"push"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-speaker-selection" id="ref-for-dom-permissionname-speaker-selection"><c- s>"speaker-selection"</c-></a>,
 };
 </pre>
     <p> Each enumeration value in the <code class="idl"><a data-link-type="idl" href="#enumdef-permissionname" id="ref-for-enumdef-permissionname⑤">PermissionName</a></code> enum identifies a <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature⑦">powerful feature</a>. Each <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature⑧">powerful feature</a> has the following
@@ -1580,19 +1580,20 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <p> This example uses the Permissions API to decide whether local news
     should be shown using the Geolocation API or with a button offering to
     add the feature. </p>
-<pre class="highlight">navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
-  switch (state) {
-    case "granted":
-      showLocalNewsWithGeolocation();
-      break;
-    case "prompt":
-      showButtonToEnableLocalNews();
-      break;
-    default:
-      // Don’t do anything if the permission was denied.
-      break;
-  }
-});
+<pre class="highlight"><c- a>const</c-> <c- p>{</c-> state <c- p>}</c-> <c- o>=</c-> <c- k>await</c-> navigator<c- p>.</c->permissions<c- p>.</c->query<c- p>({</c->
+  name<c- o>:</c-> <c- u>"geolocation"</c->
+<c- p>});</c->
+<c- k>switch</c-> <c- p>(</c->state<c- p>)</c-> <c- p>{</c->
+  <c- k>case</c-> <c- u>"granted"</c-><c- o>:</c->
+    showLocalNewsWithGeolocation<c- p>();</c->
+    <c- k>break</c-><c- p>;</c->
+  <c- k>case</c-> <c- u>"prompt"</c-><c- o>:</c->
+    showButtonToEnableLocalNews<c- p>();</c->
+    <c- k>break</c-><c- p>;</c->
+  <c- k>default</c-><c- o>:</c->
+    <c- c1>// Don’t do anything if the permission was denied.</c->
+    <c- k>break</c-><c- p>;</c->
+<c- p>}</c->
 </pre>
     </div>
     <div class="example" id="example-notifications">
@@ -1600,55 +1601,56 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <p> This example is using the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-notifications" id="ref-for-dom-permissionname-notifications①">"notifications"</a></code> permission for a
     chat application to show a notification button depending on the
     permission state. </p>
-<pre class="highlight">function updateNotificationButton(state) {
-  document.getElementById('chat-notification-button')
-    .disabled = (state === 'denied');
-}
+<pre class="highlight"><c- a>function</c-> updateNotificationButton<c- p>(</c->state<c- p>)</c-> <c- p>{</c->
+  <c- a>const</c-> button <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- u>"chat-notification-button"</c-><c- p>);</c->
+  button<c- p>.</c->disabled <c- o>=</c-> state <c- o>===</c-> <c- u>"denied"</c-><c- p>;</c->
+<c- p>}</c->
 
-navigator.permissions.query({ name: 'notifications' }).then((result) => {
-  updateNotificationButton(result.state);
-  result.addEventListener('change', () => {
-    updateNotificationButton(result.state);
-  });
-});
+<c- a>const</c-> permission <c- o>=</c-> navigator<c- p>.</c->permissions<c- p>.</c->query<c- p>({</c->
+  name<c- o>:</c-> <c- u>"notifications"</c-><c- p>,</c->
+<c- p>});</c->
+
+updateNotificationButton<c- p>(</c->permission<c- p>.</c->state<c- p>);</c->
+permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-> <c- p>()</c-> <c- p>=></c-> <c- p>{</c->
+  updateNotificationButton<c- p>(</c->permission<c- p>.</c->state<c- p>);</c->
+<c- p>});</c->
 </pre>
     </div>
     <div class="example" id="example-two-permissions">
      <a class="self-link" href="#example-two-permissions"></a> 
      <p> This example is checking whether the page has the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-geolocation" id="ref-for-dom-permissionname-geolocation①">"geolocation"</a></code> and the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-notifications" id="ref-for-dom-permissionname-notifications②">"notifications"</a></code> permissions
     using <code><code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-promise" id="ref-for-idl-promise③">Promise</a></code>.all</code>. </p>
-<pre class="highlight">Promise.all([
-  navigator.permissions.query({ name: "geolocation" }),
-  navigator.permissions.query({ name: "notifications" })
-])
-.then(([{ state: geoState }, { state: notifState }]) => {
-  console.log("Geolocation permission state is:", geoState);
-  console.log("Notifications permission state is:", notifState);
-});
+<pre class="highlight">Promise<c- p>.</c->all<c- p>([</c->
+  navigator<c- p>.</c->permissions<c- p>.</c->query<c- p>({</c-> name<c- o>:</c-> <c- u>"geolocation"</c-> <c- p>}),</c->
+  navigator<c- p>.</c->permissions<c- p>.</c->query<c- p>({</c-> name<c- o>:</c-> <c- u>"notifications"</c-> <c- p>})</c->
+<c- p>])</c->
+<c- p>.</c->then<c- p>(([{</c-> state<c- o>:</c-> geoState <c- p>},</c-> <c- p>{</c-> state<c- o>:</c-> notifState <c- p>}])</c-> <c- p>=></c-> <c- p>{</c->
+  console<c- p>.</c->log<c- p>(</c-><c- u>"Geolocation permission state is:"</c-><c- p>,</c-> geoState<c- p>);</c->
+  console<c- p>.</c->log<c- p>(</c-><c- u>"Notifications permission state is:"</c-><c- p>,</c-> notifState<c- p>);</c->
+<c- p>});</c->
 </pre>
     </div>
     <div class="example" id="example-deviceId">
      <a class="self-link" href="#example-deviceId"></a> 
      <p> This example is checking the permission state of the available cameras. </p>
-<pre class="highlight">navigator.mediaDevices
-  .enumerateDevices()
-  .then(devices => {
-    return Promise.all(devices
-      // filter on video inputs
-      .filter(({ kind }) => kind === "videoinput")
-      // map to query object
-      .map(({ deviceId }) => ({ name: "camera", deviceId }))
-      // map to query promise
-      .map(queryObj => navigator.permissions.query(queryObj))
-    );
-  })
-  // log the state or each camera
-  .then(results => results.forEach(
-    ({ state }, i) => console.log(<code>Camera ${i}: "${state}"</code>)
-  ))
-  .catch(
-    err => console.error(err.stack)
-  );
+<pre class="highlight"><c- a>const</c-> devices <c- o>=</c-> <c- k>await</c-> navigator<c- p>.</c->mediaDevices<c- p>.</c->enumerateDevices<c- p>();</c->
+
+<c- c1>// filter on video inputs, and map to query object</c->
+<c- a>const</c-> queries <c- o>=</c-> devices
+  <c- p>.</c->filter<c- p>(({</c-> kind <c- p>})</c-> <c- p>=></c-> kind <c- o>===</c-> <c- u>"videoinput"</c-><c- p>)</c->
+  <c- p>.</c->map<c- p>(({</c-> deviceId <c- p>})</c-> <c- p>=></c-> <c- p>({</c-> name<c- o>:</c-> <c- u>"camera"</c-><c- p>,</c-> deviceId <c- p>}));</c->
+
+<c- a>const</c-> promises <c- o>=</c-> queries<c- p>.</c->map<c- p>((</c->queryObj<c- p>)</c-> <c- p>=></c->
+  navigator<c- p>.</c->permissions<c- p>.</c->query<c- p>(</c->queryObj<c- p>)</c->
+<c- p>);</c->
+
+<c- k>try</c-> <c- p>{</c->
+  <c- a>const</c-> results <c- o>=</c-> <c- k>await</c-> Promise<c- p>.</c->all<c- p>(</c->promises<c- p>);</c->
+  <c- c1>// log the state or each camera</c->
+  results<c- p>.</c->forEach<c- p>(({</c-> state <c- p>},</c-> i<c- p>)</c-> <c- p>=></c-> console<c- p>.</c->log<c- p>(</c-><c- u>"Camera"</c-><c- p>,</c-> i<c- p>,</c-> state<c- p>));</c->
+<c- p>}</c-> <c- k>catch</c-> <c- p>(</c->error<c- p>)</c-> <c- p>{</c->
+  console<c- p>.</c->error<c- p>(</c->error<c- p>);</c->
+<c- p>}</c->
 </pre>
     </div>
    </section>
@@ -1776,6 +1778,12 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <li><a href="#dom-midipermissiondescriptor-sysex">sysex</a><span>, in §10.4</span>
    <li><a href="#dom-pushpermissiondescriptor-uservisibleonly">userVisibleOnly</a><span>, in §10.3</span>
   </ul>
+  <aside class="dfn-panel" data-for="term-for-dfn-installed-web-application">
+   <a href="https://www.w3.org/TR/appmanifest/#dfn-installed-web-application">https://www.w3.org/TR/appmanifest/#dfn-installed-web-application</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dfn-installed-web-application">3. Definitions</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-eventtarget">
    <a href="https://dom.spec.whatwg.org/#eventtarget">https://dom.spec.whatwg.org/#eventtarget</a><b>Referenced in:</b>
    <ul>
@@ -1817,14 +1825,14 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <a href="https://html.spec.whatwg.org/multipage/system-state.html#navigator">https://html.spec.whatwg.org/multipage/system-state.html#navigator</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-navigator">7. 
-    Navigator and WorkerNavigator extension </a>
+    Extensions to the Navigator and WorkerNavigator interfaces </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-workernavigator">
    <a href="https://html.spec.whatwg.org/multipage/workers.html#workernavigator">https://html.spec.whatwg.org/multipage/workers.html#workernavigator</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-workernavigator">7. 
-    Navigator and WorkerNavigator extension </a>
+    Extensions to the Navigator and WorkerNavigator interfaces </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-active-document">
@@ -1982,12 +1990,6 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     Permissions interface </a>
     <li><a href="#ref-for-user-agent④">11.1. 
       Set Permission </a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dfn-install">
-   <a href="https://w3c.github.io/manifest/#dfn-install">https://w3c.github.io/manifest/#dfn-install</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dfn-install">3. Definitions</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-deviceid">
@@ -2149,7 +2151,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
     <li><a href="#ref-for-Exposed">6. 
     Status of a permission </a>
     <li><a href="#ref-for-Exposed①">7. 
-    Navigator and WorkerNavigator extension </a> <a href="#ref-for-Exposed②">(2)</a>
+    Extensions to the Navigator and WorkerNavigator interfaces </a> <a href="#ref-for-Exposed②">(2)</a>
     <li><a href="#ref-for-Exposed③">8. 
     Permissions interface </a>
    </ul>
@@ -2167,7 +2169,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <a href="https://heycam.github.io/webidl/#SameObject">https://heycam.github.io/webidl/#SameObject</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-SameObject">7. 
-    Navigator and WorkerNavigator extension </a> <a href="#ref-for-SameObject①">(2)</a>
+    Extensions to the Navigator and WorkerNavigator interfaces </a> <a href="#ref-for-SameObject①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-a-promise-rejected-with">
@@ -2208,6 +2210,11 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
   </aside>
   <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
   <ul class="index">
+   <li>
+    <a data-link-type="biblio">[appmanifest]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="term-for-dfn-installed-web-application">installed web application</span>
+    </ul>
    <li>
     <a data-link-type="biblio">[DOM]</a> defines the following terms:
     <ul>
@@ -2251,11 +2258,6 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
      <li><span class="dfn-paneled" id="term-for-list-append">append</span>
      <li><span class="dfn-paneled" id="term-for-list">list</span>
      <li><span class="dfn-paneled" id="term-for-user-agent">user agent</span>
-    </ul>
-   <li>
-    <a data-link-type="biblio">[manifest]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-dfn-install">install</span>
     </ul>
    <li>
     <a data-link-type="biblio">[mediacapture-main]</a> defines the following terms:
@@ -2348,6 +2350,8 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <dd>Anssi Kostiainen. <a href="https://www.w3.org/TR/accelerometer/">Accelerometer</a>. 12 December 2019. CR. URL: <a href="https://www.w3.org/TR/accelerometer/">https://www.w3.org/TR/accelerometer/</a>
    <dt id="biblio-ambient-light">[AMBIENT-LIGHT]
    <dd>Anssi Kostiainen. <a href="https://www.w3.org/TR/ambient-light/">Ambient Light Sensor</a>. 7 March 2019. WD. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a>
+   <dt id="biblio-appmanifest">[APPMANIFEST]
+   <dd>Marcos Caceres; et al. <a href="https://www.w3.org/TR/appmanifest/">Web Application Manifest</a>. 7 April 2021. WD. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
    <dt id="biblio-audio-output">[AUDIO-OUTPUT]
    <dd>Justin Uberti; Guido Urdaneta; youenn fablet. <a href="https://www.w3.org/TR/audio-output/">Audio Output Devices API</a>. 15 February 2021. CR. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a>
    <dt id="biblio-background-fetch">[BACKGROUND-FETCH]
@@ -2410,25 +2414,25 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
 };
 
 <c- b>enum</c-> <a href="#enumdef-permissionname"><code><c- g>PermissionName</c-></code></a> {
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-geolocation"><c- s>"geolocation"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-notifications"><c- s>"notifications"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-push"><c- s>"push"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-midi"><c- s>"midi"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-camera"><c- s>"camera"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-microphone"><c- s>"microphone"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-speaker-selection"><c- s>"speaker-selection"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-device-info"><c- s>"device-info"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-accelerometer"><c- s>"accelerometer"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-ambient-light-sensor"><c- s>"ambient-light-sensor"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-fetch"><c- s>"background-fetch"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-sync"><c- s>"background-sync"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-bluetooth"><c- s>"bluetooth"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-persistent-storage"><c- s>"persistent-storage"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-ambient-light-sensor"><c- s>"ambient-light-sensor"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-accelerometer"><c- s>"accelerometer"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-camera"><c- s>"camera"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-clipboard-write"><c- s>"clipboard-write"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-device-info"><c- s>"device-info"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-display-capture"><c- s>"display-capture"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-geolocation"><c- s>"geolocation"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-gyroscope"><c- s>"gyroscope"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-magnetometer"><c- s>"magnetometer"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-clipboard-write"><c- s>"clipboard-write"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-display-capture"><c- s>"display-capture"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-microphone"><c- s>"microphone"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-midi"><c- s>"midi"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-nfc"><c- s>"nfc"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-notifications"><c- s>"notifications"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-persistent-storage"><c- s>"persistent-storage"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-push"><c- s>"push"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-speaker-selection"><c- s>"speaker-selection"</c-></a>,
 };
 
 <c- b>dictionary</c-> <a href="#dictdef-pushpermissiondescriptor"><code><c- g>PushPermissionDescriptor</c-></code></a> : <a data-link-type="idl-name" href="#dictdef-permissiondescriptor"><c- n>PermissionDescriptor</c-></a> {
@@ -2690,7 +2694,7 @@ navigator.permissions.query({ name: 'notifications' }).then((result) => {
    <b><a href="#permissions">#permissions</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-permissions">7. 
-    Navigator and WorkerNavigator extension </a> <a href="#ref-for-permissions①">(2)</a>
+    Extensions to the Navigator and WorkerNavigator interfaces </a> <a href="#ref-for-permissions①">(2)</a>
     <li><a href="#ref-for-permissions②">10. 
     Permission Registry </a>
    </ul>
