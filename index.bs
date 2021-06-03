@@ -890,7 +890,7 @@ spec:infra; type:dfn; text:list
       </dt>
       <dd>
         This is the result of calling the
-        <a>media device permission revocation algorithm</a> passing {{name}}
+        [=device permission revocation algorithm=] passing {{name}}
         and {{deviceId}} as arguments. If the descriptor does not have a
         {{deviceId}}, then <code>undefined</code> is passed in place of
         {{deviceId}}.
