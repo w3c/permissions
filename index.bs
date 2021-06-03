@@ -39,8 +39,6 @@ spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
         for: MediaDevices; text: getUserMedia(); url: dom-mediadevices-getusermedia
     type: event
         for: MediaDevices; text: devicechange
-    type: dfn
-        text: media device permission revocation algorithm; url: dfn-device-permission-revocation-algorithm
 spec: sensors; urlPrefix: https://w3c.github.io/sensors/#
     type: dfn
         text: generic sensor permission revocation algorithm; url: generic-sensor-permission-revocation-algorithm
