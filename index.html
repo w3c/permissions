@@ -6,6 +6,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet">
   <meta content="Bikeshed version 800b43329, updated Tue May 25 14:13:32 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
+  <meta content="91670b5f1d6d5c8ac6d7a0999affb0bc7a5a1810" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -633,7 +634,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-06-02">2 June 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-06-15">15 June 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -802,7 +803,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       authors believe is appropriate. This information can come from explicit
       user action, aggregate behavior of both the relevant user and other users,
       or <a data-link-type="dfn" href="#implicit-signals" id="ref-for-implicit-signals">implicit signals</a> this specification hasn’t anticipated. 
-      <div class="note" role="note"> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="implicit-signals">implicit signals</dfn> could be, for example, the <a data-link-type="dfn">install</a> status of a web application or frequency and recency of
+      <div class="note" role="note"> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="implicit-signals">implicit signals</dfn> could be, for example, the <a data-link-type="dfn" href="https://www.w3.org/TR/appmanifest/#dfn-installed-web-application" id="ref-for-dfn-installed-web-application">install</a> status of a web application or frequency and recency of
         visits. A user that has installed a web application and used it
         frequently and recently is more likely to trust it. Implementations are
         advised to exercise caution when relying on implicit signals. </div>
@@ -1380,7 +1381,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         <li>Return <var>result</var>. 
        </ol>
       <dt> <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm①">permission revocation algorithm</a> 
-      <dd> This is the result of calling the <a data-link-type="dfn">device permission revocation algorithm</a> passing <code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①②">name</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid④">deviceId</a></code> as arguments. If the descriptor does not have a <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid⑤">deviceId</a></code>, then <code>undefined</code> is passed in place of <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid⑥">deviceId</a></code>. 
+      <dd> This is the result of calling the <a data-link-type="dfn" href="https://www.w3.org/TR/mediacapture-streams/#dfn-device-permission-revocation-algorithm" id="ref-for-dfn-device-permission-revocation-algorithm">device permission revocation algorithm</a> passing <code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①②">name</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid④">deviceId</a></code> as arguments. If the descriptor does not have a <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid⑤">deviceId</a></code>, then <code>undefined</code> is passed in place of <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid⑥">deviceId</a></code>. 
      </dl>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-device-info"><code>"device-info"</code></dfn> permission controls access to the name and capabilities associated with a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/mediacapture-main/#deviceid" id="ref-for-deviceid①">deviceId</a></code>, as well as whether <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/mediacapture-main/#devicechange" id="ref-for-devicechange">devicechange</a></code> events fire when the current browsing
       context is not in focus. The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-device-info" id="ref-for-dom-permissionname-device-info③">"device-info"</a></code> permission MUST be revoked
@@ -1806,6 +1807,12 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <li><a href="#dom-midipermissiondescriptor-sysex">sysex</a><span>, in §10.4</span>
    <li><a href="#dom-pushpermissiondescriptor-uservisibleonly">userVisibleOnly</a><span>, in §10.3</span>
   </ul>
+  <aside class="dfn-panel" data-for="term-for-dfn-installed-web-application">
+   <a href="https://www.w3.org/TR/appmanifest/#dfn-installed-web-application">https://www.w3.org/TR/appmanifest/#dfn-installed-web-application</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dfn-installed-web-application">3. Definitions</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-eventtarget">
    <a href="https://dom.spec.whatwg.org/#eventtarget">https://dom.spec.whatwg.org/#eventtarget</a><b>Referenced in:</b>
    <ul>
@@ -1834,6 +1841,13 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <li><a href="#ref-for-sec-code-realms④">5.3. Reacting to users revoking permission</a>
     <li><a href="#ref-for-sec-code-realms⑤">10.5. 
       Media Devices </a> <a href="#ref-for-sec-code-realms⑥">(2)</a> <a href="#ref-for-sec-code-realms⑦">(3)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dfn-device-permission-revocation-algorithm">
+   <a href="https://www.w3.org/TR/mediacapture-streams/#dfn-device-permission-revocation-algorithm">https://www.w3.org/TR/mediacapture-streams/#dfn-device-permission-revocation-algorithm</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dfn-device-permission-revocation-algorithm">10.5. 
+      Media Devices </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-eventhandler">
@@ -2233,6 +2247,11 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
   <ul class="index">
    <li>
+    <a data-link-type="biblio">[appmanifest]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="term-for-dfn-installed-web-application">installed web application</span>
+    </ul>
+   <li>
     <a data-link-type="biblio">[DOM]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-eventtarget">EventTarget</span>
@@ -2243,6 +2262,11 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <ul>
      <li><span class="dfn-paneled" id="term-for-current-realm">current realm</span>
      <li><span class="dfn-paneled" id="term-for-sec-code-realms">realm</span>
+    </ul>
+   <li>
+    <a data-link-type="biblio">[GETUSERMEDIA]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="term-for-dfn-device-permission-revocation-algorithm">device permission revocation algorithm</span>
     </ul>
    <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
@@ -2344,6 +2368,8 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <dd>Anne van Kesteren. <a href="https://dom.spec.whatwg.org/">DOM Standard</a>. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
    <dt id="biblio-ecmascript">[ECMASCRIPT]
    <dd><a href="https://tc39.es/ecma262/multipage/">ECMAScript Language Specification</a>. URL: <a href="https://tc39.es/ecma262/multipage/">https://tc39.es/ecma262/multipage/</a>
+   <dt id="biblio-getusermedia">[GETUSERMEDIA]
+   <dd>Cullen Jennings; et al. <a href="https://www.w3.org/TR/mediacapture-streams/">Media Capture and Streams</a>. 10 June 2021. CR. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
    <dt id="biblio-html">[HTML]
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
    <dt id="biblio-infra">[INFRA]
@@ -2366,17 +2392,17 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <dt id="biblio-accelerometer">[ACCELEROMETER]
    <dd>Anssi Kostiainen. <a href="https://www.w3.org/TR/accelerometer/">Accelerometer</a>. 12 December 2019. CR. URL: <a href="https://www.w3.org/TR/accelerometer/">https://www.w3.org/TR/accelerometer/</a>
    <dt id="biblio-ambient-light">[AMBIENT-LIGHT]
-   <dd>Anssi Kostiainen; Rijubrata Bhaumik; Tobie Langel. <a href="https://www.w3.org/TR/ambient-light/">Ambient Light Sensor</a>. 1 June 2021. WD. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a>
+   <dd>Anssi Kostiainen; Rijubrata Bhaumik; Tobie Langel. <a href="https://www.w3.org/TR/ambient-light/">Ambient Light Sensor</a>. 6 June 2021. WD. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a>
+   <dt id="biblio-appmanifest">[APPMANIFEST]
+   <dd>Marcos Caceres; et al. <a href="https://www.w3.org/TR/appmanifest/">Web Application Manifest</a>. 9 June 2021. WD. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
    <dt id="biblio-audio-output">[AUDIO-OUTPUT]
    <dd>Justin Uberti; Guido Urdaneta; youenn fablet. <a href="https://www.w3.org/TR/audio-output/">Audio Output Devices API</a>. 15 February 2021. CR. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a>
    <dt id="biblio-background-fetch">[BACKGROUND-FETCH]
    <dd><a href="https://wicg.github.io/background-fetch/">Background Fetch</a>. cg-draft. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a>
    <dt id="biblio-clipboard-apis">[CLIPBOARD-APIS]
-   <dd>Gary Kacmarcik; Grisha Lyukshin. <a href="https://www.w3.org/TR/clipboard-apis/">Clipboard API and events</a>. 25 May 2021. WD. URL: <a href="https://www.w3.org/TR/clipboard-apis/">https://www.w3.org/TR/clipboard-apis/</a>
+   <dd>Gary Kacmarcik; Grisha Lyukshin. <a href="https://www.w3.org/TR/clipboard-apis/">Clipboard API and events</a>. 4 June 2021. WD. URL: <a href="https://www.w3.org/TR/clipboard-apis/">https://www.w3.org/TR/clipboard-apis/</a>
    <dt id="biblio-geolocation-api">[geolocation-API]
    <dd>Andrei Popescu. <a href="https://www.w3.org/TR/geolocation-API/">Geolocation API Specification 2nd Edition</a>. 8 November 2016. REC. URL: <a href="https://www.w3.org/TR/geolocation-API/">https://www.w3.org/TR/geolocation-API/</a>
-   <dt id="biblio-getusermedia">[GETUSERMEDIA]
-   <dd>Cullen Jennings; et al. <a href="https://www.w3.org/TR/mediacapture-streams/">Media Capture and Streams</a>. 1 June 2021. CR. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
    <dt id="biblio-gyroscope">[GYROSCOPE]
    <dd>Anssi Kostiainen. <a href="https://www.w3.org/TR/gyroscope/">Gyroscope</a>. 12 December 2019. CR. URL: <a href="https://www.w3.org/TR/gyroscope/">https://www.w3.org/TR/gyroscope/</a>
    <dt id="biblio-magnetometer">[MAGNETOMETER]
@@ -2386,7 +2412,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <dt id="biblio-push-api">[PUSH-API]
    <dd>Peter Beverloo; Martin Thomson. <a href="https://www.w3.org/TR/push-api/">Push API</a>. 4 February 2020. WD. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
    <dt id="biblio-screen-capture">[SCREEN-CAPTURE]
-   <dd>Martin Thomson; et al. <a href="https://www.w3.org/TR/screen-capture/">Screen Capture</a>. 27 May 2021. WD. URL: <a href="https://www.w3.org/TR/screen-capture/">https://www.w3.org/TR/screen-capture/</a>
+   <dd>Martin Thomson; et al. <a href="https://www.w3.org/TR/screen-capture/">Screen Capture</a>. 10 June 2021. WD. URL: <a href="https://www.w3.org/TR/screen-capture/">https://www.w3.org/TR/screen-capture/</a>
    <dt id="biblio-web-background-sync">[WEB-BACKGROUND-SYNC]
    <dd><a href="https://wicg.github.io/background-sync/spec/">Web Background Synchronization</a>. cg-draft. URL: <a href="https://wicg.github.io/background-sync/spec/">https://wicg.github.io/background-sync/spec/</a>
    <dt id="biblio-web-bluetooth">[WEB-BLUETOOTH]
