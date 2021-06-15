@@ -55,7 +55,6 @@ spec: webdriver; urlPrefix: https://w3c.github.io/webdriver/#
         text: session; url: dfn-session
         text: success; url: dfn-success
 spec:webidl; type:interface; text:Promise
-    {{Promise}}
 </pre>
 <pre class="link-defaults">
 spec:infra; type:dfn; text:user agent
