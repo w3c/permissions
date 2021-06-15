@@ -56,7 +56,7 @@ spec: webdriver; urlPrefix: https://w3c.github.io/webdriver/#
         text: success; url: dfn-success
 spec:webidl; urlPrefix: https://heycam.github.io/webidl/#
     type: interface
-        text:Promise; ur: idl-promise
+        text:Promise; url: idl-promise
 </pre>
 <pre class="link-defaults">
 spec:infra; type:dfn; text:user agent
