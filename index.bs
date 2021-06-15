@@ -10,8 +10,7 @@ Group: webappsec
 Editor: Mounir Lamouri, w3cid 45389, Google Inc. https://google.com/
 Editor: Marcos Cáceres, w3cid 39125, W3C https://w3.org/
 Editor: Jeffrey Yasskin, w3cid 72192, Google Inc. https://google.com/
-Previous Version: https://www.w3.org/TR/2017/WD-permissions-20170925/
-Previous Version: https://www.w3.org/TR/2015/WD-permissions-20150407/
+Previous Version: from biblio
 
 Abstract: The <cite>Permissions</cite> specification defines common infrastructure for other specifications that need to interact with browser permissions. It also defines an API to allow web applications to query and be notified of changes to the status of a given permission.
 Mailing List: public-webappsec@w3.org
