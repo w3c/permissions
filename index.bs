@@ -589,6 +589,7 @@ spec:infra; type:dfn; text:list
       "clipboard-write",
       "device-info",
       "display-capture",
+      "gamepad",
       "geolocation",
       "gyroscope",
       "magnetometer",
@@ -705,6 +706,17 @@ spec:infra; type:dfn; text:list
       The <dfn for="PermissionName" enum-value>"geolocation"</dfn>
       permission is the permission associated with the usage of the
       [[geolocation-API]]. It is a <a>boolean feature</a> and is <a>allowed in
+      non-secure contexts</a>.
+    </p>
+  </section>
+  <section>
+    <h3 id="gamepad">
+      Gamepad
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"gamepad"</dfn>
+      permission is the permission associated with the usage of the
+      [[Gamepad]]. It is a <a>boolean feature</a> and is <a>allowed in
       non-secure contexts</a>.
     </p>
   </section>
