@@ -576,7 +576,6 @@ spec:infra; type:dfn; text:list
       "background-sync",
       "bluetooth",
       "camera",
-      "clipboard-write",
       "device-info",
       "display-capture",
       "gamepad",
@@ -991,16 +990,6 @@ spec:infra; type:dfn; text:list
       Its <a>permission revocation algorithm</a> is the result of calling
       <a>generic sensor permission revocation algorithm</a>
       passing it <a enum-value>"magnetometer"</a> as argument.
-    </p>
-  </section>
-  <section>
-    <h3 id="clipboard-write">
-      Clipboard Write
-    </h3>
-    <p>
-      The <dfn for="PermissionName" enum-value>"clipboard-write"</dfn>
-      permission is the permission associated with the usage of the
-      asynchronous write methods in the [[clipboard-apis]].
     </p>
   </section>
   <section>
