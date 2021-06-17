@@ -8,11 +8,11 @@ Shortname: permissions
 Level: none
 Group: webappsec
 Editor: Mounir Lamouri, w3cid 45389, Google Inc. https://google.com/
-Editor: Marcos Cáceres, w3cid 39125, Mozilla https://mozilla.com/
+Editor: Marcos Cáceres, w3cid 39125, W3C https://w3.org/
 Editor: Jeffrey Yasskin, w3cid 72192, Google Inc. https://google.com/
-Previous Version: https://www.w3.org/TR/2015/WD-permissions-20150407/
+Previous Version: from biblio
 
-Abstract: The <cite>Permissions Standard</cite> defines common infrastructure for other specifications that need to interact with browser permissions. It also defines an API to allow web applications to query and request changes to the status of a given permission.
+Abstract: The <cite>Permissions</cite> specification defines common infrastructure for other specifications that need to interact with browser permissions. It also defines an API to allow web applications to query and be notified of changes to the status of a given permission.
 Mailing List: public-webappsec@w3.org
 Mailing List Archives: http://lists.w3.org/Archives/Public/public-webappsec/
 
@@ -40,22 +40,13 @@ spec: ECMAScript; urlPrefix: https://tc39.github.io/ecma262/#
     type: dfn
         text: Realm; url: sec-code-realms
         text: current realm; url: current-realm
-    type: interface
-        text: TypeError; url: sec-native-error-types-used-in-this-standard-typeerror
 spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
-    type: attribute
-        for: MediaDeviceInfo; text: deviceId
-    type: method
-        for: MediaDevices; text: getUserMedia(); url: dom-mediadevices-getusermedia
     type: event
         for: MediaDevices; text: devicechange
 spec: sensors; urlPrefix: https://w3c.github.io/sensors/#
     type: dfn
         text: generic sensor permission revocation algorithm; url: generic-sensor-permission-revocation-algorithm
-spec: manifest; urlPrefix: https://w3c.github.io/manifest/#
-    type: dfn
-        text: install; url: dfn-install
-spec: webdriver; urlPrefix: https://w3c.github.io/webdriver/webdriver-spec.html#
+spec: webdriver; urlPrefix: https://w3c.github.io/webdriver/#
     type: dfn
         text: current browsing context; url: dfn-current-browsing-context
         text: WebDriver error; url: dfn-error
@@ -69,34 +60,9 @@ spec: webdriver; urlPrefix: https://w3c.github.io/webdriver/webdriver-spec.html#
         text: success; url: dfn-success
 </pre>
 <pre class="link-defaults">
-spec: dom
-    type: interface
-        text: Document
-spec: html
-    type: dfn
-        text: event handler
-        text: event handler event type
-        text: in parallel
-        text: origin; for: /
-        text: queue a task
-spec: storage
-    type: enum-value
-        for: PermissionName; text: "persistent-storage"
-spec: infra
-    type: dfn
-        text: list
-        for: list; text: append
-spec: ui-events
-    type: dfn
-        text: user agent
-spec: web-bluetooth
-    type: enum-value
-        for: PermissionName; text: "bluetooth"
-spec: webidl
-    type: interface
-        text: Promise
+spec:infra; type:dfn; text:user agent
+spec:infra; type:dfn; text:list
 </pre>
-
 <section class='non-normative'>
   <h2 id="scope-of-this-document">
     Scope of this document
@@ -116,8 +82,8 @@ spec: webidl
     beforehand.
   </p>
   <p>
-    The {{Permissions/query()}} function provides a tool for developers to
-    control when permission prompts are shown.
+    The {{Permissions/query()}} method allows querying the state of a given permission,
+    which a developer can then use to make UI decisions within a web application.
   </p>
   <p>
     The solution described in this document is meant to be extensible, but isn't
@@ -130,7 +96,7 @@ spec: webidl
 </section>
 <section class='non-normative'>
   <h2 id="privacy-considerations">
-    Privacy considerations
+    Security and privacy considerations
   </h2>
   <p><em>This section is non-normative.</em></p>
   <p>
@@ -157,7 +123,7 @@ spec: webidl
       or <a>implicit signals</a> this specification hasn't anticipated.
       <div class="note">
         The <dfn>implicit signals</dfn> could be, for example, the
-        <a>install</a> status of a web application or frequency and recency of
+        [=installed web application|install=] status of a web application or frequency and recency of
         visits. A user that has installed a web application and used it
         frequently and recently is more likely to trust it. Implementations are
         advised to exercise caution when relying on implicit signals.
@@ -521,7 +487,7 @@ spec: webidl
       and <var>status</var>.
     </li>
     <li>
-      <a>Queue a task</a> on the <dfn>permission task source</dfn> to
+      <a>Queue a task</a> on the <dfn export>permission task source</dfn> to
       <a>fire an event</a> named <code>change</code> at
       <var>status</var>.
     </li>
@@ -529,7 +495,7 @@ spec: webidl
 </section>
 <section>
   <h2 id="navigator-and-workernavigator-extension">
-    Navigator and WorkerNavigator extension
+    Extensions to the `Navigator` and `WorkerNavigator` interfaces
   </h2>
   <pre class='idl'>
     [Exposed=(Window)]
@@ -613,39 +579,31 @@ spec: webidl
   <h2 id="permission-registry">
     Permission Registry
   </h2>
-  <!-- IDL blocks can't link outside the current spec, but these enum-values are
-       supposed to be defined in other specs. -->
-  <pre highlight='idl' link-for="PermissionName">
-    enum <dfn enum>PermissionName</dfn> {
-      <a enum-value>"geolocation"</a>,
-      <a enum-value>"notifications"</a>,
-      <a enum-value>"push"</a>,
-      <a enum-value>"midi"</a>,
-      <a enum-value>"camera"</a>,
-      <a enum-value>"microphone"</a>,
-      <a enum-value>"speaker"</a>,
-      <a enum-value>"device-info"</a>,
-      <a enum-value>"background-fetch"</a>,
-      <a enum-value>"background-sync"</a>,
-      <a enum-value>"periodic-background-sync"</a>,
-      <a enum-value>"bluetooth"</a>,
-      <a enum-value>"persistent-storage"</a>,
-      <a enum-value>"ambient-light-sensor"</a>,
-      <a enum-value>"accelerometer"</a>,
-      <a enum-value>"gyroscope"</a>,
-      <a enum-value>"magnetometer"</a>,
-      <a enum-value>"clipboard"</a>,
-      <a enum-value>"display-capture"</a>,
-      <a enum-value>"nfc"</a>,
+  <pre class='idl'>
+    enum PermissionName {
+      "accelerometer",
+      "ambient-light-sensor",
+      "background-fetch",
+      "background-sync",
+      "bluetooth",
+      "camera",
+      "clipboard-write",
+      "device-info",
+      "display-capture",
+      "gamepad",
+      "geolocation",
+      "gyroscope",
+      "magnetometer",
+      "microphone",
+      "midi",
+      "nfc",
+      "notifications",
+      "periodic-background-sync"
+      "persistent-storage",
+      "push",
+      "speaker-selection",
     };
   </pre>
-  <p class="note">
-  The enumeration values {{"accelerometer"}}, {{"gyroscope"}} and
-  {{"magnetometer"}} are considered provisional and are subject to change
-  based on feedback from early implementations. See
-  <a href="https://github.com/w3c/sensors/issues/22">w3c/sensors#22</a> issue
-  for more information.
-  </p>
   <p>
     Each enumeration value in the {{PermissionName}} enum identifies a
     <a>powerful feature</a>. Each <a>powerful feature</a> has the following
@@ -754,6 +712,17 @@ spec: webidl
     </p>
   </section>
   <section>
+    <h3 id="gamepad">
+      Gamepad
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"gamepad"</dfn>
+      permission is the permission associated with the usage of the
+      [[Gamepad]]. It is a <a>boolean feature</a> and is <a>allowed in
+      non-secure contexts</a>.
+    </p>
+  </section>
+  <section>
     <h3 id="notifications">
       Notifications
     </h3>
@@ -822,11 +791,9 @@ spec: webidl
     </h3>
     <p dfn-for="PermissionName" dfn-type="enum-value">
       The <dfn>"camera"</dfn>, <dfn>"microphone"</dfn> , and
-      <dfn>"speaker"</dfn>
+      <dfn>"speaker-selection"</dfn>
       permissions are associated with permission to use media devices as
-      specified in [[GETUSERMEDIA]] and [[audio-output]]. {{"speaker"}} is
-      <a>allowed in non-secure contexts</a>. {{"camera"}} and {{"microphone"}}
-      MAY be <a>allowed in non-secure contexts</a>.
+      specified in [[GETUSERMEDIA]] and [[audio-output]].
     </p>
     <dl>
       <dt>
@@ -836,6 +803,10 @@ spec: webidl
         <pre class='idl'>
           dictionary DevicePermissionDescriptor : PermissionDescriptor {
             DOMString deviceId;
+          };
+
+          dictionary CameraDevicePermissionDescriptor : DevicePermissionDescriptor {
+            boolean panTiltZoom = false;
           };
         </pre>
         <p>
@@ -856,6 +827,10 @@ spec: webidl
           If a permission state is present for access to some, but not all,
           cameras, a query without the {{DevicePermissionDescriptor/deviceId}}
           will return {{"prompt"}}.
+        </p>
+        <p>
+          `{name: "camera", panTiltZoom: true}` is <a>stronger than</a>
+          `{name: "camera", panTiltZoom: false}`.
         </p>
         <p>
           Note that a "granted" permission is no guarantee that getUserMedia
@@ -917,10 +892,11 @@ spec: webidl
         <a>permission revocation algorithm</a>
       </dt>
       <dd>
-        When permission for a device is revoked, the UA MUST run the
-        algorithm to stop the track for any other reason than the stop()
-        method being invoked for each MediaStreamTrack sourced from that
-        device. <!--TODO make a link target in the spec -->
+        This is the result of calling the
+        [=device permission revocation algorithm=] passing {{name}}
+        and {{deviceId}} as arguments. If the descriptor does not have a
+        {{deviceId}}, then <code>undefined</code> is passed in place of
+        {{deviceId}}.
       </dd>
     </dl>
     <p>
@@ -960,6 +936,27 @@ spec: webidl
       The <dfn for="PermissionName" enum-value>"periodic-background-sync"</dfn>
       permission is the permission associated with the usage of
       [[periodic-background-sync]].
+    </p>
+   </section>
+   <section>
+    <h3 id="bluetooth">
+      Bluetooth
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"bluetooth"</dfn>
+      permission ([[web-bluetooth#permission-api-integration]]) controls usage
+      of [[web-bluetooth]].
+    </p>
+  </section>
+  <section>
+    <h3 id="persistent-storage">
+      Persistent Storage
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"persistent-storage"</dfn>
+      permission ([[storage#persistence]]) is the permission associated with the
+      usage of the `"persistent"` storage bucket <a spec="storage" for="local
+      storage bucket">mode</a>.
     </p>
   </section>
   <section>
@@ -1019,13 +1016,13 @@ spec: webidl
     </p>
   </section>
   <section>
-    <h3 id="clipboard">
-      Clipboard
+    <h3 id="clipboard-write">
+      Clipboard Write
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"clipboard"</dfn>
+      The <dfn for="PermissionName" enum-value>"clipboard-write"</dfn>
       permission is the permission associated with the usage of the
-      asynchronous methods in the [[clipboard-apis]].
+      asynchronous write methods in the [[clipboard-apis]].
     </p>
   </section>
   <section>
@@ -1093,7 +1090,7 @@ spec: webidl
         </tr>
       </tbody>
     </table>
-    <p>The <dfn>Set Permission</dfn> <a>extension command</a> simulates user
+    <p>The <dfn noexport>Set Permission</dfn> <a>extension command</a> simulates user
     modification of a {{PermissionDescriptor}}'s <a>permission state</a>.</p>
     <p>The <a>remote end steps</a> are:</p>
     <ol>
@@ -1137,8 +1134,9 @@ spec: webidl
         For each <a>environment settings object</a> |target| in |targets|:
         <ol>
           <li><a>Queue a task</a> |task| on the <a>permission task source</a>
-            of |target|'s [=environment settings object/responsible browsing
-            context=] to perform the following step:</li>
+            of |target|'s [=relevant settings object=]'s [=environment settings
+            object/global object=]'s [=Window/browsing context=] to perform the
+            following step:</li>
             <ol>
             <li>Interpret |parameters|.{{PermissionSetParameters/state}} as if
               it were the result of an invocation of <a>permission state</a>
@@ -1146,7 +1144,7 @@ spec: webidl
               moment.</li>
             </ol>
           </li>
-          <li><a>Append</a> |task| to |tasks|.</li>
+          <li>[=list/Append=]</a> |task| to |tasks|.</li>
         </ol>
       </li>
       <li>Wait for all <a>tasks</a> in |tasks| to have executed.</li>
@@ -1180,20 +1178,21 @@ spec: webidl
     should be shown using the Geolocation API or with a button offering to
     add the feature.
   </p>
-  <pre class='highlight'>
-    navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
-      switch (state) {
-        case "granted":
-          showLocalNewsWithGeolocation();
-          break;
-        case "prompt":
-          showButtonToEnableLocalNews();
-          break;
-        default:
-          // Don't do anything if the permission was denied.
-          break;
-      }
+  <pre highlight="js">
+    const { state } = await navigator.permissions.query({
+      name: "geolocation"
     });
+    switch (state) {
+      case "granted":
+        showLocalNewsWithGeolocation();
+        break;
+      case "prompt":
+        showButtonToEnableLocalNews();
+        break;
+      default:
+        // Don't do anything if the permission was denied.
+        break;
+    }
   </pre>
   </div>
   <div class="example" id="example-notifications">
@@ -1202,17 +1201,19 @@ spec: webidl
     chat application to show a notification button depending on the
     permission state.
   </p>
-  <pre class='highlight'>
+  <pre highlight="js">
     function updateNotificationButton(state) {
-      document.getElementById('chat-notification-button')
-        .disabled = (state === 'denied');
+      const button = document.getElementById("chat-notification-button");
+      button.disabled = state === "denied";
     }
 
-    navigator.permissions.query({ name: 'notifications' }).then((result) => {
-      updateNotificationButton(result.state);
-      result.addEventListener('change', () => {
-        updateNotificationButton(result.state);
-      });
+    const permission = navigator.permissions.query({
+      name: "notifications",
+    });
+
+    updateNotificationButton(permission.state);
+    permission.addEventListener("change", () => {
+      updateNotificationButton(permission.state);
     });
   </pre>
   </div>
@@ -1222,7 +1223,7 @@ spec: webidl
     {{"geolocation"}} and the {{"notifications"}} permissions
     using <code>{{Promise}}.all</code>.
   </p>
-  <pre class='highlight'>
+  <pre highlight="js">
     Promise.all([
       navigator.permissions.query({ name: "geolocation" }),
       navigator.permissions.query({ name: "notifications" })
@@ -1237,26 +1238,25 @@ spec: webidl
   <p>
     This example is checking the permission state of the available cameras.
   </p>
-  <pre class='highlight'>
-    navigator.mediaDevices
-      .enumerateDevices()
-      .then(devices => {
-        return Promise.all(devices
-          // filter on video inputs
-          .filter(({ kind }) => kind === "videoinput")
-          // map to query object
-          .map(({ deviceId }) => ({ name: "camera", deviceId }))
-          // map to query promise
-          .map(queryObj => navigator.permissions.query(queryObj))
-        );
-      })
+  <pre highlight="js">
+    const devices = await navigator.mediaDevices.enumerateDevices();
+
+    // filter on video inputs, and map to query object
+    const queries = devices
+      .filter(({ kind }) => kind === "videoinput")
+      .map(({ deviceId }) => ({ name: "camera", deviceId }));
+
+    const promises = queries.map((queryObj) =>
+      navigator.permissions.query(queryObj)
+    );
+
+    try {
+      const results = await Promise.all(promises);
       // log the state or each camera
-      .then(results => results.forEach(
-        ({ state }, i) => console.log(`Camera ${i}: "${state}"`)
-      ))
-      .catch(
-        err => console.error(err.stack)
-      );
+      results.forEach(({ state }, i) => console.log("Camera", i, state));
+    } catch (error) {
+      console.error(error);
+    }
   </pre>
   </div>
 </section>
