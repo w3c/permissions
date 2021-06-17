@@ -8,12 +8,11 @@ Shortname: permissions
 Level: none
 Group: webappsec
 Editor: Mounir Lamouri, w3cid 45389, Google Inc. https://google.com/
-Editor: Marcos Cáceres, w3cid 39125, Mozilla https://mozilla.com/
+Editor: Marcos Cáceres, w3cid 39125, W3C https://w3.org/
 Editor: Jeffrey Yasskin, w3cid 72192, Google Inc. https://google.com/
-Previous Version: https://www.w3.org/TR/2017/WD-permissions-20170925/
-Previous Version: https://www.w3.org/TR/2015/WD-permissions-20150407/
+Previous Version: from biblio
 
-Abstract: The <cite>Permissions Standard</cite> defines common infrastructure for other specifications that need to interact with browser permissions. It also defines an API to allow web applications to query and request changes to the status of a given permission.
+Abstract: The <cite>Permissions</cite> specification defines common infrastructure for other specifications that need to interact with browser permissions. It also defines an API to allow web applications to query and be notified of changes to the status of a given permission.
 Mailing List: public-webappsec@w3.org
 Mailing List Archives: http://lists.w3.org/Archives/Public/public-webappsec/
 
@@ -42,9 +41,6 @@ spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
 spec: sensors; urlPrefix: https://w3c.github.io/sensors/#
     type: dfn
         text: generic sensor permission revocation algorithm; url: generic-sensor-permission-revocation-algorithm
-spec: manifest; urlPrefix: https://w3c.github.io/manifest/#
-    type: dfn
-        text: install; url: dfn-install
 spec: webdriver; urlPrefix: https://w3c.github.io/webdriver/#
     type: dfn
         text: current browsing context; url: dfn-current-browsing-context
@@ -57,6 +53,9 @@ spec: webdriver; urlPrefix: https://w3c.github.io/webdriver/#
         text: remote end steps; url: dfn-remote-end-steps
         text: session; url: dfn-session
         text: success; url: dfn-success
+spec:webidl; urlPrefix: https://heycam.github.io/webidl/#
+    type: interface
+        text:Promise; url: idl-promise
 </pre>
 <pre class="link-defaults">
 spec:infra; type:dfn; text:user agent
@@ -82,8 +81,8 @@ spec:infra; type:dfn; text:list
     beforehand.
   </p>
   <p>
-    The {{Permissions/query()}} function provides a tool for developers to
-    control when permission prompts are shown.
+    The {{Permissions/query()}} method allows querying the state of a given permission,
+    which a developer can then use to make UI decisions within a web application.
   </p>
   <p>
     The solution described in this document is meant to be extensible, but isn't
@@ -123,7 +122,7 @@ spec:infra; type:dfn; text:list
       or <a>implicit signals</a> this specification hasn't anticipated.
       <div class="note">
         The <dfn>implicit signals</dfn> could be, for example, the
-        <a>install</a> status of a web application or frequency and recency of
+        [=installed web application|install=] status of a web application or frequency and recency of
         visits. A user that has installed a web application and used it
         frequently and recently is more likely to trust it. Implementations are
         advised to exercise caution when relying on implicit signals.
@@ -495,7 +494,7 @@ spec:infra; type:dfn; text:list
 </section>
 <section>
   <h2 id="navigator-and-workernavigator-extension">
-    Navigator and WorkerNavigator extension
+    Extensions to the `Navigator` and `WorkerNavigator` interfaces
   </h2>
   <pre class='idl'>
     [Exposed=(Window)]
@@ -581,26 +580,26 @@ spec:infra; type:dfn; text:list
   </h2>
   <pre class='idl'>
     enum PermissionName {
-      "geolocation",
-      "notifications",
-      "push",
-      "midi",
-      "camera",
-      "microphone",
-      "speaker-selection",
-      "device-info",
+      "accelerometer",
+      "ambient-light-sensor",
       "background-fetch",
       "background-sync",
       "bluetooth",
-      "persistent-storage",
-      "ambient-light-sensor",
-      "accelerometer",
+      "camera",
+      "clipboard-write",
+      "device-info",
+      "display-capture",
+      "gamepad",
+      "geolocation",
       "gyroscope",
       "magnetometer",
-      "clipboard-write",
-      "display-capture",
+      "microphone",
+      "midi",
       "nfc",
-      "gamepad",
+      "notifications",
+      "persistent-storage",
+      "push",
+      "speaker-selection",
     };
   </pre>
   <p>
@@ -891,10 +890,11 @@ spec:infra; type:dfn; text:list
         <a>permission revocation algorithm</a>
       </dt>
       <dd>
-        When permission for a device is revoked, the UA MUST run the
-        algorithm to stop the track for any other reason than the stop()
-        method being invoked for each MediaStreamTrack sourced from that
-        device. <!--TODO make a link target in the spec -->
+        This is the result of calling the
+        [=device permission revocation algorithm=] passing {{name}}
+        and {{deviceId}} as arguments. If the descriptor does not have a
+        {{deviceId}}, then <code>undefined</code> is passed in place of
+        {{deviceId}}.
       </dd>
     </dl>
     <p>
@@ -1166,20 +1166,21 @@ spec:infra; type:dfn; text:list
     should be shown using the Geolocation API or with a button offering to
     add the feature.
   </p>
-  <pre class='highlight'>
-    navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
-      switch (state) {
-        case "granted":
-          showLocalNewsWithGeolocation();
-          break;
-        case "prompt":
-          showButtonToEnableLocalNews();
-          break;
-        default:
-          // Don't do anything if the permission was denied.
-          break;
-      }
+  <pre highlight="js">
+    const { state } = await navigator.permissions.query({
+      name: "geolocation"
     });
+    switch (state) {
+      case "granted":
+        showLocalNewsWithGeolocation();
+        break;
+      case "prompt":
+        showButtonToEnableLocalNews();
+        break;
+      default:
+        // Don't do anything if the permission was denied.
+        break;
+    }
   </pre>
   </div>
   <div class="example" id="example-notifications">
@@ -1188,17 +1189,19 @@ spec:infra; type:dfn; text:list
     chat application to show a notification button depending on the
     permission state.
   </p>
-  <pre class='highlight'>
+  <pre highlight="js">
     function updateNotificationButton(state) {
-      document.getElementById('chat-notification-button')
-        .disabled = (state === 'denied');
+      const button = document.getElementById("chat-notification-button");
+      button.disabled = state === "denied";
     }
 
-    navigator.permissions.query({ name: 'notifications' }).then((result) => {
-      updateNotificationButton(result.state);
-      result.addEventListener('change', () => {
-        updateNotificationButton(result.state);
-      });
+    const permission = navigator.permissions.query({
+      name: "notifications",
+    });
+
+    updateNotificationButton(permission.state);
+    permission.addEventListener("change", () => {
+      updateNotificationButton(permission.state);
     });
   </pre>
   </div>
@@ -1208,7 +1211,7 @@ spec:infra; type:dfn; text:list
     {{"geolocation"}} and the {{"notifications"}} permissions
     using <code>{{Promise}}.all</code>.
   </p>
-  <pre class='highlight'>
+  <pre highlight="js">
     Promise.all([
       navigator.permissions.query({ name: "geolocation" }),
       navigator.permissions.query({ name: "notifications" })
@@ -1223,26 +1226,25 @@ spec:infra; type:dfn; text:list
   <p>
     This example is checking the permission state of the available cameras.
   </p>
-  <pre class='highlight'>
-    navigator.mediaDevices
-      .enumerateDevices()
-      .then(devices => {
-        return Promise.all(devices
-          // filter on video inputs
-          .filter(({ kind }) => kind === "videoinput")
-          // map to query object
-          .map(({ deviceId }) => ({ name: "camera", deviceId }))
-          // map to query promise
-          .map(queryObj => navigator.permissions.query(queryObj))
-        );
-      })
+  <pre highlight="js">
+    const devices = await navigator.mediaDevices.enumerateDevices();
+
+    // filter on video inputs, and map to query object
+    const queries = devices
+      .filter(({ kind }) => kind === "videoinput")
+      .map(({ deviceId }) => ({ name: "camera", deviceId }));
+
+    const promises = queries.map((queryObj) =>
+      navigator.permissions.query(queryObj)
+    );
+
+    try {
+      const results = await Promise.all(promises);
       // log the state or each camera
-      .then(results => results.forEach(
-        ({ state }, i) => console.log(`Camera ${i}: "${state}"`)
-      ))
-      .catch(
-        err => console.error(err.stack)
-      );
+      results.forEach(({ state }, i) => console.log("Camera", i, state));
+    } catch (error) {
+      console.error(error);
+    }
   </pre>
   </div>
 </section>
