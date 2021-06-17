@@ -29,13 +29,7 @@ spec: ECMAScript; urlPrefix: https://tc39.github.io/ecma262/#
     type: dfn
         text: Realm; url: sec-code-realms
         text: current realm; url: current-realm
-    type: interface
-        text: TypeError; url: sec-native-error-types-used-in-this-standard-typeerror
 spec: mediacapture-main; urlPrefix: https://w3c.github.io/mediacapture-main/#
-    type: attribute
-        for: MediaDeviceInfo; text: deviceId
-    type: method
-        for: MediaDevices; text: getUserMedia(); url: dom-mediadevices-getusermedia
     type: event
         for: MediaDevices; text: devicechange
 spec: sensors; urlPrefix: https://w3c.github.io/sensors/#
@@ -53,15 +47,11 @@ spec: webdriver; urlPrefix: https://w3c.github.io/webdriver/#
         text: remote end steps; url: dfn-remote-end-steps
         text: session; url: dfn-session
         text: success; url: dfn-success
-spec:webidl; urlPrefix: https://heycam.github.io/webidl/#
-    type: interface
-        text:Promise; url: idl-promise
 </pre>
 <pre class="link-defaults">
 spec:infra; type:dfn; text:user agent
 spec:infra; type:dfn; text:list
 </pre>
-
 <section class='non-normative'>
   <h2 id="scope-of-this-document">
     Scope of this document
@@ -95,7 +85,7 @@ spec:infra; type:dfn; text:list
 </section>
 <section class='non-normative'>
   <h2 id="privacy-considerations">
-    Privacy considerations
+    Security and privacy considerations
   </h2>
   <p><em>This section is non-normative.</em></p>
   <p>
