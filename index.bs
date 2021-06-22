@@ -23,6 +23,7 @@ Mailing List Archives: http://lists.w3.org/Archives/Public/public-webappsec/
 !Implementation status: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1105827">Gecko</a>
 
 Markup Shorthands: css no, markdown yes
+Assume Explicit For: true
 </pre>
 <pre class="anchors">
 spec: ECMAScript; urlPrefix: https://tc39.github.io/ecma262/#
@@ -49,8 +50,6 @@ spec: webdriver; urlPrefix: https://w3c.github.io/webdriver/#
         text: success; url: dfn-success
 </pre>
 <pre class="link-defaults">
-spec:infra; type:dfn; text:user agent
-spec:infra; type:dfn; text:list
 spec:webidl; type:interface; text:Promise
 </pre>
 <section class='non-normative'>
