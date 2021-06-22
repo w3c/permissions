@@ -51,6 +51,7 @@ spec: webdriver; urlPrefix: https://w3c.github.io/webdriver/#
 <pre class="link-defaults">
 spec:infra; type:dfn; text:user agent
 spec:infra; type:dfn; text:list
+spec:webidl; type:interface; text:Promise
 </pre>
 <section class='non-normative'>
   <h2 id="scope-of-this-document">
