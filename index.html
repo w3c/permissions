@@ -6,7 +6,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet">
   <meta content="Bikeshed version 3d6a6fcbb, updated Wed Jun 16 16:19:39 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
-  <meta content="5c8fc9bb862bc8ffc841aa1a43f566886eaed32c" name="document-revision">
+  <meta content="86e21cadc2f1b2f6428066a3cd2aab3a64d389f8" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -634,7 +634,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-06-17">17 June 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-06-22">22 June 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -642,7 +642,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <dt>Latest published version:
      <dd><a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
      <dt>Previous Versions:
-     <dd><a href="https://www.w3.org/TR/2021/WD-permissions-20210615/" rel="prev">https://www.w3.org/TR/2021/WD-permissions-20210615/</a>
+     <dd><a href="https://www.w3.org/TR/2021/WD-permissions-20210617/" rel="prev">https://www.w3.org/TR/2021/WD-permissions-20210617/</a>
      <dt>Feedback:
      <dd><span><a href="mailto:public-webappsec@w3.org?subject=%5Bpermissions%5D%20YOUR%20TOPIC%20HERE">public-webappsec@w3.org</a> with subject line “<kbd>[permissions] <i data-lt>… message topic …</i></kbd>” (<a href="http://lists.w3.org/Archives/Public/public-webappsec/" rel="discussion">archives</a>)</span>
      <dt>Issue Tracking:
@@ -696,7 +696,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
    <ol class="toc" role="directory">
     <li><a href="#scope-of-this-document"><span class="secno">1</span> <span class="content"> Scope of this document </span></a>
-    <li><a href="#privacy-considerations"><span class="secno">2</span> <span class="content"> Privacy considerations </span></a>
+    <li><a href="#privacy-considerations"><span class="secno">2</span> <span class="content"> Security and privacy considerations </span></a>
     <li><a href="#definitions"><span class="secno">3</span> <span class="content">Definitions</span></a>
     <li><a href="#permission-descriptor"><span class="secno">4</span> <span class="content"> Descriptions of permission requests </span></a>
     <li>
@@ -782,7 +782,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     this document should contact the editors by <a href="https://github.com/w3c/permissions/issues">filing an issue</a>. </p>
    </section>
    <section class="non-normative">
-    <h2 class="heading settled" data-level="2" id="privacy-considerations"><span class="secno">2. </span><span class="content"> Privacy considerations </span><a class="self-link" href="#privacy-considerations"></a></h2>
+    <h2 class="heading settled" data-level="2" id="privacy-considerations"><span class="secno">2. </span><span class="content"> Security and privacy considerations </span><a class="self-link" href="#privacy-considerations"></a></h2>
     <p><em>This section is non-normative.</em></p>
     <p> An adversary could use a <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state">permission state</a> as an element in creating a
     "fingerprint" corresponding to an end-user. Although an adversary can
@@ -891,7 +891,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      </div>
      <div class="algorithm" data-algorithm="extra permission data">
       <p> Some <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature④">powerful features</a> have more information associated with them
-        than just a <code class="idl"><a data-link-type="idl" href="#enumdef-permissionstate" id="ref-for-enumdef-permissionstate">PermissionState</a></code>. For example, <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia" id="ref-for-dom-mediadevices-getusermedia">getUserMedia()</a></code> needs to determine <em>which</em> cameras
+        than just a <code class="idl"><a data-link-type="idl" href="#enumdef-permissionstate" id="ref-for-enumdef-permissionstate">PermissionState</a></code>. For example, <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadevices-getusermedia" id="ref-for-dom-mediadevices-getusermedia">getUserMedia()</a></code> needs to determine <em>which</em> cameras
         the user has granted the <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#current-realm" id="ref-for-current-realm">current realm</a> permission to access. Each
         of these features defines an <a data-link-type="dfn" href="#extra-permission-data-type" id="ref-for-extra-permission-data-type">extra permission data type</a>. If a <code class="idl"><a data-link-type="idl" href="#enumdef-permissionname" id="ref-for-enumdef-permissionname②">PermissionName</a></code> <var>name</var> names one of these features, then <var>name</var>’s <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="extra-permission-data">extra permission data</dfn> for an optional <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object②">environment
         settings object</a> <var>settings</var> is the result of the following algorithm: </p>
@@ -1361,7 +1361,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
           constraints or the camera being in use) that can cause getUserMedia
           to fail. </p>
       <dt> <a data-link-type="dfn" href="#extra-permission-data-type" id="ref-for-extra-permission-data-type②">extra permission data type</a> 
-      <dd> A list of <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/mediacapture-main/#deviceid" id="ref-for-deviceid">deviceId</a></code> values for the devices the user
+      <dd> A list of <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadeviceinfo-deviceid" id="ref-for-dom-mediadeviceinfo-deviceid">deviceId</a></code> values for the devices the user
         has made a non-default decision on access to. 
       <dt> <a data-link-type="dfn" href="#permission-query-algorithm" id="ref-for-permission-query-algorithm②">permission query algorithm</a> 
       <dd>
@@ -1389,9 +1389,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <dt> <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm①">permission revocation algorithm</a> 
       <dd> This is the result of calling the <a data-link-type="dfn" href="https://www.w3.org/TR/mediacapture-streams/#dfn-device-permission-revocation-algorithm" id="ref-for-dfn-device-permission-revocation-algorithm">device permission revocation algorithm</a> passing <code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①②">name</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid④">deviceId</a></code> as arguments. If the descriptor does not have a <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid⑤">deviceId</a></code>, then <code>undefined</code> is passed in place of <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid⑥">deviceId</a></code>. 
      </dl>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-device-info"><code>"device-info"</code></dfn> permission controls access to the name and capabilities associated with a <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/mediacapture-main/#deviceid" id="ref-for-deviceid①">deviceId</a></code>, as well as whether <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/mediacapture-main/#devicechange" id="ref-for-devicechange">devicechange</a></code> events fire when the current browsing
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-device-info"><code>"device-info"</code></dfn> permission controls access to the name and capabilities associated with a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadeviceinfo-deviceid" id="ref-for-dom-mediadeviceinfo-deviceid①">deviceId</a></code>, as well as whether <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/mediacapture-main/#devicechange" id="ref-for-devicechange">devicechange</a></code> events fire when the current browsing
       context is not in focus. The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-device-info" id="ref-for-dom-permissionname-device-info③">"device-info"</a></code> permission MUST be revoked
-      when <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/mediacapture-main/#deviceid" id="ref-for-deviceid②">deviceId</a></code>s for an origin are reset. </p>
+      when <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadeviceinfo-deviceid" id="ref-for-dom-mediadeviceinfo-deviceid②">deviceId</a></code>s for an origin are reset. </p>
     </section>
     <section>
      <h3 class="heading settled" data-level="10.7" id="background-fetch"><span class="secno">10.7. </span><span class="content"> Background Fetch </span><a class="self-link" href="#background-fetch"></a></h3>
@@ -1857,6 +1857,19 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
       Media Devices </a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-dom-mediadeviceinfo-deviceid">
+   <a href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadeviceinfo-deviceid">https://www.w3.org/TR/mediacapture-streams/#dom-mediadeviceinfo-deviceid</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-mediadeviceinfo-deviceid">10.6. 
+      Media Devices </a> <a href="#ref-for-dom-mediadeviceinfo-deviceid①">(2)</a> <a href="#ref-for-dom-mediadeviceinfo-deviceid②">(3)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dom-mediadevices-getusermedia">
+   <a href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadevices-getusermedia">https://www.w3.org/TR/mediacapture-streams/#dom-mediadevices-getusermedia</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-mediadevices-getusermedia">5.1. Reading the current permission state</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-eventhandler">
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler</a><b>Referenced in:</b>
    <ul>
@@ -2035,24 +2048,11 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
       Set Permission </a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-deviceid">
-   <a href="https://w3c.github.io/mediacapture-main/#deviceid">https://w3c.github.io/mediacapture-main/#deviceid</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-deviceid">10.6. 
-      Media Devices </a> <a href="#ref-for-deviceid①">(2)</a> <a href="#ref-for-deviceid②">(3)</a>
-   </ul>
-  </aside>
   <aside class="dfn-panel" data-for="term-for-devicechange">
    <a href="https://w3c.github.io/mediacapture-main/#devicechange">https://w3c.github.io/mediacapture-main/#devicechange</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-devicechange">10.6. 
       Media Devices </a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-mediadevices-getusermedia">
-   <a href="https://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia">https://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-mediadevices-getusermedia">5.1. Reading the current permission state</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-policy-controlled-feature">
@@ -2274,6 +2274,8 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <a data-link-type="biblio">[GETUSERMEDIA]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-dfn-device-permission-revocation-algorithm">device permission revocation algorithm</span>
+     <li><span class="dfn-paneled" id="term-for-dom-mediadeviceinfo-deviceid">deviceId</span>
+     <li><span class="dfn-paneled" id="term-for-dom-mediadevices-getusermedia">getUserMedia()</span>
     </ul>
    <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
@@ -2310,9 +2312,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <li>
     <a data-link-type="biblio">[mediacapture-main]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-deviceid">deviceId</span>
      <li><span class="dfn-paneled" id="term-for-devicechange">devicechange</span>
-     <li><span class="dfn-paneled" id="term-for-dom-mediadevices-getusermedia">getUserMedia()</span>
     </ul>
    <li>
     <a data-link-type="biblio">[permissions-policy-1]</a> defines the following terms:
@@ -2600,7 +2600,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <b><a href="#permission-state">#permission-state</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-permission-state">2. 
-    Privacy considerations </a> <a href="#ref-for-permission-state①">(2)</a>
+    Security and privacy considerations </a> <a href="#ref-for-permission-state①">(2)</a>
     <li><a href="#ref-for-permission-state②">5.1. Reading the current permission state</a> <a href="#ref-for-permission-state③">(2)</a>
     <li><a href="#ref-for-permission-state④">5.2. Requesting more permission</a> <a href="#ref-for-permission-state⑤">(2)</a> <a href="#ref-for-permission-state⑥">(3)</a>
     <li><a href="#ref-for-permission-state⑦">9. 
@@ -2650,7 +2650,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <b><a href="#dom-permissionstate-granted">#dom-permissionstate-granted</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-permissionstate-granted">2. 
-    Privacy considerations </a>
+    Security and privacy considerations </a>
     <li><a href="#ref-for-dom-permissionstate-granted①">5.1. Reading the current permission state</a> <a href="#ref-for-dom-permissionstate-granted②">(2)</a>
     <li><a href="#ref-for-dom-permissionstate-granted③">5.2. Requesting more permission</a> <a href="#ref-for-dom-permissionstate-granted④">(2)</a> <a href="#ref-for-dom-permissionstate-granted⑤">(3)</a>
     <li><a href="#ref-for-dom-permissionstate-granted⑥">6. 
