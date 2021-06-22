@@ -590,6 +590,7 @@ spec:webidl; type:interface; text:Promise
       "notifications",
       "persistent-storage",
       "push",
+      "screen-wake-lock",
       "speaker-selection",
     };
   </pre>
@@ -773,6 +774,16 @@ spec:webidl; type:interface; text:Promise
         </p>
       </dd>
     </dl>
+  </section>
+  <section>
+    <h3 id="screen-wake-lock">
+      Screen wake lock
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"screen-wake-lock"</dfn>
+      permission is the permission associated with the usage of the
+      [[screen-wake-lock]] API. It is a <a>boolean feature</a>.
+    </p>
   </section>
   <section>
     <h3 id="media-devices">
