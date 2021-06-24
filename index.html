@@ -6,7 +6,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet">
   <meta content="Bikeshed version 3d6a6fcbb, updated Wed Jun 16 16:19:39 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
-  <meta content="86e21cadc2f1b2f6428066a3cd2aab3a64d389f8" name="document-revision">
+  <meta content="f5d8cacbe81ec024426a2420a394a64d620d4aa9" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -634,7 +634,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-06-22">22 June 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-06-24">24 June 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -642,7 +642,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <dt>Latest published version:
      <dd><a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
      <dt>Previous Versions:
-     <dd><a href="https://www.w3.org/TR/2021/WD-permissions-20210617/" rel="prev">https://www.w3.org/TR/2021/WD-permissions-20210617/</a>
+     <dd><a href="https://www.w3.org/TR/2021/WD-permissions-20210622/" rel="prev">https://www.w3.org/TR/2021/WD-permissions-20210622/</a>
      <dt>Feedback:
      <dd><span><a href="mailto:public-webappsec@w3.org?subject=%5Bpermissions%5D%20YOUR%20TOPIC%20HERE">public-webappsec@w3.org</a> with subject line “<kbd>[permissions] <i data-lt>… message topic …</i></kbd>” (<a href="http://lists.w3.org/Archives/Public/public-webappsec/" rel="discussion">archives</a>)</span>
      <dt>Issue Tracking:
@@ -961,8 +961,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <section>
      <h3 class="heading settled" data-level="5.3" id="reacting-to-revocation"><span class="secno">5.3. </span><span class="content">Reacting to users revoking permission</span><a class="self-link" href="#reacting-to-revocation"></a></h3>
      <p> When the UA learns that the user no longer intends to grant permission
-      for a <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-code-realms" id="ref-for-sec-code-realms④">realm</a> to use a <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature⑥">feature</a>, it must <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task">queue a task</a> on the Realm’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-realm-settings-object" id="ref-for-concept-realm-settings-object">settings object</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#responsible-event-loop" id="ref-for-responsible-event-loop">responsible event
-      loop</a> to run that feature’s <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm">permission revocation algorithm</a>. </p>
+      for a <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-code-realms" id="ref-for-sec-code-realms④">realm</a> to use a <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature⑥">feature</a>, it must <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task">queue a task</a> on the Realm’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-realm-settings-object" id="ref-for-concept-realm-settings-object">settings object</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#responsible-event-loop" id="ref-for-responsible-event-loop">responsible event loop</a> to run that feature’s <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm">permission revocation algorithm</a>. </p>
     </section>
    </section>
    <section>
@@ -1331,7 +1330,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        </div>
       </div>
      </div>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-camera"><code>"camera"</code></dfn>, <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-microphone"><code>"microphone"</code></dfn> , and <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-speaker-selection"><code>"speaker-selection"</code></dfn> permissions are associated with permission to use media devices as
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export data-lt="&quot;camera&quot;|camera" id="dom-permissionname-camera"><code>camera</code></dfn>, <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export data-lt="&quot;microphone&quot;|microphone" id="dom-permissionname-microphone"><code>microphone</code></dfn> , and <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export data-lt="&quot;speaker-selection&quot;|speaker-selection" id="dom-permissionname-speaker-selection"><code>speaker-selection</code></dfn> permissions are associated with permission to use media devices as
       specified in <a data-link-type="biblio" href="#biblio-getusermedia">[GETUSERMEDIA]</a> and <a data-link-type="biblio" href="#biblio-audio-output">[audio-output]</a>. </p>
      <dl>
       <dt> <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type⑨">permission descriptor type</a> 
@@ -1429,8 +1428,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        </div>
       </div>
      </div>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-ambient-light-sensor"><code>"ambient-light-sensor"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-ambient-light">[ambient-light]</a> API. </p>
-     <p>Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm②">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> passing it <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor①">"ambient-light-sensor"</a> as argument.</p>
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export data-lt="&quot;ambient-light-sensor&quot;|ambient-light-sensor" id="dom-permissionname-ambient-light-sensor"><code>ambient-light-sensor</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-ambient-light">[ambient-light]</a> API. </p>
+     <p>Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm②">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> passing it <code class="idl"><a data-link-type="idl" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor①">"ambient-light-sensor"</a></code> as argument.</p>
      <p></p>
     </section>
     <section>
@@ -1452,7 +1451,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       </div>
      </div>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-accelerometer"><code>"accelerometer"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-accelerometer">[accelerometer]</a> API. </p>
-     <p>Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm③">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm①">generic sensor permission revocation algorithm</a> passing it <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer①">"accelerometer"</a> as argument.</p>
+     <p>Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm③">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm①">generic sensor permission revocation algorithm</a> passing it <code class="idl"><a data-link-type="idl" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer①">"accelerometer"</a></code> as argument.</p>
      <p></p>
     </section>
     <section>
@@ -1474,7 +1473,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       </div>
      </div>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-gyroscope"><code>"gyroscope"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-gyroscope">[gyroscope]</a> API. </p>
-     <p>Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm④">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm②">generic sensor permission revocation algorithm</a> passing it <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope①">"gyroscope"</a> as argument.</p>
+     <p>Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm④">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm②">generic sensor permission revocation algorithm</a> passing it <code class="idl"><a data-link-type="idl" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope①">"gyroscope"</a></code> as argument.</p>
      <p></p>
     </section>
     <section>
@@ -1496,7 +1495,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       </div>
      </div>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-magnetometer"><code>"magnetometer"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-magnetometer">[magnetometer]</a> API. </p>
-     <p>Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm⑤">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm③">generic sensor permission revocation algorithm</a> passing it <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-magnetometer" id="ref-for-dom-permissionname-magnetometer①">"magnetometer"</a> as argument.</p>
+     <p>Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm⑤">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm③">generic sensor permission revocation algorithm</a> passing it <code class="idl"><a data-link-type="idl" href="#dom-permissionname-magnetometer" id="ref-for-dom-permissionname-magnetometer①">"magnetometer"</a></code> as argument.</p>
      <p></p>
     </section>
     <section>
@@ -1734,6 +1733,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <li><a href="#dom-permissionname-accelerometer">"accelerometer"</a><span>, in §10.12</span>
    <li><a href="#allowed-in-non-secure-contexts">allowed in non-secure contexts</a><span>, in §10</span>
    <li><a href="#dom-permissionname-ambient-light-sensor">"ambient-light-sensor"</a><span>, in §10.11</span>
+   <li><a href="#dom-permissionname-ambient-light-sensor">ambient-light-sensor</a><span>, in §10.11</span>
    <li><a href="#aspects">aspects</a><span>, in §4</span>
    <li><a href="#dom-permissionname-background-fetch">"background-fetch"</a><span>, in §10.7</span>
    <li><a href="#dom-permissionname-background-sync">"background-sync"</a><span>, in §10.8</span>
@@ -1741,6 +1741,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <li><a href="#boolean-feature">boolean feature</a><span>, in §10</span>
    <li><a href="#boolean-permission-query-algorithm">boolean permission query algorithm</a><span>, in §9</span>
    <li><a href="#dom-permissionname-camera">"camera"</a><span>, in §10.6</span>
+   <li><a href="#dom-permissionname-camera">camera</a><span>, in §10.6</span>
    <li><a href="#dictdef-cameradevicepermissiondescriptor">CameraDevicePermissionDescriptor</a><span>, in §10.6</span>
    <li><a href="#dom-permissionname-clipboard-write">"clipboard-write"</a><span>, in §10.15</span>
    <li><a href="#create-a-permissionstatus">create a PermissionStatus</a><span>, in §6</span>
@@ -1761,6 +1762,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <li><a href="#implicit-signals">implicit signals</a><span>, in §3</span>
    <li><a href="#dom-permissionname-magnetometer">"magnetometer"</a><span>, in §10.14</span>
    <li><a href="#dom-permissionname-microphone">"microphone"</a><span>, in §10.6</span>
+   <li><a href="#dom-permissionname-microphone">microphone</a><span>, in §10.6</span>
    <li><a href="#dom-permissionname-midi">"midi"</a><span>, in §10.5</span>
    <li><a href="#dictdef-midipermissiondescriptor">MidiPermissionDescriptor</a><span>, in §10.5</span>
    <li><a href="#dom-permissiondescriptor-name">name</a><span>, in §4</span>
@@ -1803,6 +1805,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <li><a href="#request-permission-to-use">request permission to use</a><span>, in §5.2</span>
    <li><a href="#set-permission">Set Permission</a><span>, in §11.1</span>
    <li><a href="#dom-permissionname-speaker-selection">"speaker-selection"</a><span>, in §10.6</span>
+   <li><a href="#dom-permissionname-speaker-selection">speaker-selection</a><span>, in §10.6</span>
    <li>
     state
     <ul>
@@ -2401,7 +2404,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <dt id="biblio-ambient-light">[AMBIENT-LIGHT]
    <dd>Anssi Kostiainen; Rijubrata Bhaumik; Tobie Langel. <a href="https://www.w3.org/TR/ambient-light/">Ambient Light Sensor</a>. 6 June 2021. WD. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a>
    <dt id="biblio-appmanifest">[APPMANIFEST]
-   <dd>Marcos Caceres; et al. <a href="https://www.w3.org/TR/appmanifest/">Web Application Manifest</a>. 9 June 2021. WD. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
+   <dd>Marcos Caceres; et al. <a href="https://www.w3.org/TR/appmanifest/">Web Application Manifest</a>. 23 June 2021. WD. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
    <dt id="biblio-audio-output">[AUDIO-OUTPUT]
    <dd>Justin Uberti; Guido Urdaneta; youenn fablet. <a href="https://www.w3.org/TR/audio-output/">Audio Output Devices API</a>. 15 February 2021. CR. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a>
    <dt id="biblio-background-fetch">[BACKGROUND-FETCH]
