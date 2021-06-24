@@ -6,7 +6,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet">
   <meta content="Bikeshed version 3d6a6fcbb, updated Wed Jun 16 16:19:39 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
-  <meta content="f5d8cacbe81ec024426a2420a394a64d620d4aa9" name="document-revision">
+  <meta content="69a3a36a61559e2dd71d221a921a8b59bef9f6a5" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -642,7 +642,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <dt>Latest published version:
      <dd><a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
      <dt>Previous Versions:
-     <dd><a href="https://www.w3.org/TR/2021/WD-permissions-20210622/" rel="prev">https://www.w3.org/TR/2021/WD-permissions-20210622/</a>
+     <dd><a href="https://www.w3.org/TR/2021/WD-permissions-20210624/" rel="prev">https://www.w3.org/TR/2021/WD-permissions-20210624/</a>
      <dt>Feedback:
      <dd><span><a href="mailto:public-webappsec@w3.org?subject=%5Bpermissions%5D%20YOUR%20TOPIC%20HERE">public-webappsec@w3.org</a> with subject line “<kbd>[permissions] <i data-lt>… message topic …</i></kbd>” (<a href="http://lists.w3.org/Archives/Public/public-webappsec/" rel="discussion">archives</a>)</span>
      <dt>Issue Tracking:
@@ -1330,7 +1330,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        </div>
       </div>
      </div>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export data-lt="&quot;camera&quot;|camera" id="dom-permissionname-camera"><code>camera</code></dfn>, <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export data-lt="&quot;microphone&quot;|microphone" id="dom-permissionname-microphone"><code>microphone</code></dfn> , and <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export data-lt="&quot;speaker-selection&quot;|speaker-selection" id="dom-permissionname-speaker-selection"><code>speaker-selection</code></dfn> permissions are associated with permission to use media devices as
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-camera"><code>"camera"</code></dfn>, <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-microphone"><code>"microphone"</code></dfn> , and <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-speaker-selection"><code>"speaker-selection"</code></dfn> permissions are associated with permission to use media devices as
       specified in <a data-link-type="biblio" href="#biblio-getusermedia">[GETUSERMEDIA]</a> and <a data-link-type="biblio" href="#biblio-audio-output">[audio-output]</a>. </p>
      <dl>
       <dt> <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type⑨">permission descriptor type</a> 
@@ -1428,7 +1428,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        </div>
       </div>
      </div>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export data-lt="&quot;ambient-light-sensor&quot;|ambient-light-sensor" id="dom-permissionname-ambient-light-sensor"><code>ambient-light-sensor</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-ambient-light">[ambient-light]</a> API. </p>
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-ambient-light-sensor"><code>"ambient-light-sensor"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-ambient-light">[ambient-light]</a> API. </p>
      <p>Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm②">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> passing it <code class="idl"><a data-link-type="idl" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor①">"ambient-light-sensor"</a></code> as argument.</p>
      <p></p>
     </section>
@@ -1733,7 +1733,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <li><a href="#dom-permissionname-accelerometer">"accelerometer"</a><span>, in §10.12</span>
    <li><a href="#allowed-in-non-secure-contexts">allowed in non-secure contexts</a><span>, in §10</span>
    <li><a href="#dom-permissionname-ambient-light-sensor">"ambient-light-sensor"</a><span>, in §10.11</span>
-   <li><a href="#dom-permissionname-ambient-light-sensor">ambient-light-sensor</a><span>, in §10.11</span>
    <li><a href="#aspects">aspects</a><span>, in §4</span>
    <li><a href="#dom-permissionname-background-fetch">"background-fetch"</a><span>, in §10.7</span>
    <li><a href="#dom-permissionname-background-sync">"background-sync"</a><span>, in §10.8</span>
@@ -1741,7 +1740,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <li><a href="#boolean-feature">boolean feature</a><span>, in §10</span>
    <li><a href="#boolean-permission-query-algorithm">boolean permission query algorithm</a><span>, in §9</span>
    <li><a href="#dom-permissionname-camera">"camera"</a><span>, in §10.6</span>
-   <li><a href="#dom-permissionname-camera">camera</a><span>, in §10.6</span>
    <li><a href="#dictdef-cameradevicepermissiondescriptor">CameraDevicePermissionDescriptor</a><span>, in §10.6</span>
    <li><a href="#dom-permissionname-clipboard-write">"clipboard-write"</a><span>, in §10.15</span>
    <li><a href="#create-a-permissionstatus">create a PermissionStatus</a><span>, in §6</span>
@@ -1762,7 +1760,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <li><a href="#implicit-signals">implicit signals</a><span>, in §3</span>
    <li><a href="#dom-permissionname-magnetometer">"magnetometer"</a><span>, in §10.14</span>
    <li><a href="#dom-permissionname-microphone">"microphone"</a><span>, in §10.6</span>
-   <li><a href="#dom-permissionname-microphone">microphone</a><span>, in §10.6</span>
    <li><a href="#dom-permissionname-midi">"midi"</a><span>, in §10.5</span>
    <li><a href="#dictdef-midipermissiondescriptor">MidiPermissionDescriptor</a><span>, in §10.5</span>
    <li><a href="#dom-permissiondescriptor-name">name</a><span>, in §4</span>
@@ -1805,7 +1802,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <li><a href="#request-permission-to-use">request permission to use</a><span>, in §5.2</span>
    <li><a href="#set-permission">Set Permission</a><span>, in §11.1</span>
    <li><a href="#dom-permissionname-speaker-selection">"speaker-selection"</a><span>, in §10.6</span>
-   <li><a href="#dom-permissionname-speaker-selection">speaker-selection</a><span>, in §10.6</span>
    <li>
     state
     <ul>
