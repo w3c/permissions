@@ -93,7 +93,7 @@ spec:webidl; type:interface; text:Promise
     "fingerprint" corresponding to an end-user. Although an adversary can
     already determine the state of a permission by actually using the API, that
     often leads to a permission request UI being presented to the end-user (if
-    the permission was not already {{"granted"}}). Thus, even though this API
+    the permission was not already {{PermissionState/"granted"}}). Thus, even though this API
     doesn't expose new fingerprinting information to websites, it makes it
     easier for an adversary to have discreet access to this information. Thus,
     implementations are encouraged to have an option for users to block
@@ -144,7 +144,7 @@ spec:webidl; type:interface; text:Promise
   </p>
   <div class="example" id="example-descriptors">
     <p>
-      The {{"midi"}} <a>feature</a> has two <a>aspects</a>: access to normal messages, and
+      The {{PermissionName/"midi"}} <a>feature</a> has two <a>aspects</a>: access to normal messages, and
       access to system exclusive messages. Thus, its <a>permission descriptor type</a>
       is:
     </p>
@@ -154,7 +154,7 @@ spec:webidl; type:interface; text:Promise
       };
     </pre>
     <p>
-      The {{"bluetooth"}} feature lets sites request to access whatever
+      The {{PermissionName/"bluetooth"}} feature lets sites request to access whatever
       Bluetooth devices are close to to the user's device. Thus, its
       <a>permission descriptor type</a> is:
     </p>
@@ -203,7 +203,7 @@ spec:webidl; type:interface; text:Promise
         A |descriptor|'s <dfn export local-lt="state">permission state</dfn> for
         an optional <a>environment settings object</a> |settings| is
         the result of the following algorithm, which returns one of
-        {{"granted"}}, {{"prompt"}}, or {{"denied"}}:
+        {{PermissionState/"granted"}}, {{PermissionState/"prompt"}}, or {{PermissionState/"denied"}}:
       </p>
       <ol class="algorithm">
         <li>
@@ -212,7 +212,7 @@ spec:webidl; type:interface; text:Promise
         <li>
           If |settings| is a <a>non-secure context</a>
           and <code>|descriptor|.{{PermissionDescriptor/name}}</code> isn't
-          <a>allowed in non-secure contexts</a>, then return {{"denied"}}.
+          <a>allowed in non-secure contexts</a>, then return {{PermissionState/"denied"}}.
         </li>
         <li>
           If there exists a [=policy-controlled feature=] identified by
@@ -222,7 +222,7 @@ spec:webidl; type:interface; text:Promise
             <li>
               If <var>document</var> is not <a>allowed to use</a> the feature
               identified by <code>|descriptor|.{{PermissionDescriptor/name}}</code>
-              return {{"denied"}}.
+              return {{PermissionState/"denied"}}.
             </li>
           </ol>
         </li>
@@ -239,13 +239,13 @@ spec:webidl; type:interface; text:Promise
           <code>|descriptor|.{{PermissionDescriptor/name}}</code>:
           <dl class="switch">
             <dt>succeed without prompting the user</dt>
-            <dd>{{"granted"}}</dd>
+            <dd>{{PermissionState/"granted"}}</dd>
 
             <dt>show the user a prompt to decide whether to succeed</dt>
-            <dd>{{"prompt"}}</dd>
+            <dd>{{PermissionState/"prompt"}}</dd>
 
             <dt>fail without prompting the user</dt>
-            <dd>{{"denied"}}</dd>
+            <dd>{{PermissionState/"denied"}}</dd>
           </dl>
         </li>
       </ol>
@@ -308,7 +308,7 @@ spec:webidl; type:interface; text:Promise
         To <dfn lt="request permission to use|requesting permission to use"
                 export>request permission to use</dfn> a |descriptor|, the UA
         must perform the following steps. This algorithm returns either
-        {{"granted"}} or {{"denied"}}.
+        {{PermissionState/"granted"}} or {{PermissionState/"denied"}}.
       </p>
       <ol>
         <li>
@@ -316,7 +316,7 @@ spec:webidl; type:interface; text:Promise
           state</a>.
         </li>
         <li>
-          If <var>current state</var> is not {{"prompt"}}, return
+          If <var>current state</var> is not {{PermissionState/"prompt"}}, return
           <var>current state</var> and abort these steps.
         </li>
         <li>
@@ -324,8 +324,8 @@ spec:webidl; type:interface; text:Promise
           <a>powerful feature</a> described by |descriptor|.
         </li>
         <li>
-          If the user grants permission, return {{"granted"}}; otherwise return
-          {{"denied"}}. The user's interaction may provide <a>new information
+          If the user grants permission, return {{PermissionState/"granted"}}; otherwise return
+          {{PermissionState/"denied"}}. The user's interaction may provide <a>new information
           about the user's intent</a> for this <a>realm</a> and other
           <a>realms</a> with the <a>same origin</a>.
 
@@ -350,15 +350,15 @@ spec:webidl; type:interface; text:Promise
         To <dfn lt="prompt the user to choose|prompting the user to choose"
                 export>prompt the user to choose</dfn> one of several |options|
         associated with a |descriptor|, the UA must perform the following steps.
-        This algorithm returns either {{"denied"}} or one of the options.
+        This algorithm returns either {{PermissionState/"denied"}} or one of the options.
       </p>
       <ol>
         <li>
-          If |descriptor|'s <a>permission state</a> is {{"denied"}},
-          return {{"denied"}} and abort these steps.
+          If |descriptor|'s <a>permission state</a> is {{PermissionState/"denied"}},
+          return {{PermissionState/"denied"}} and abort these steps.
         </li>
         <li>
-          If |descriptor|'s <a>permission state</a> is {{"granted"}}, the UA may
+          If |descriptor|'s <a>permission state</a> is {{PermissionState/"granted"}}, the UA may
           return one of |options| and abort these steps. If the UA returns
           without prompting, then subsequent <a lt="prompt the user to
           choose">prompts for the user to choose</a> from the same set of
@@ -371,7 +371,7 @@ spec:webidl; type:interface; text:Promise
           information to include in the prompt, include it.
         </li>
         <li>
-          If the user chose an option, return it; otherwise return {{"denied"}}.
+          If the user chose an option, return it; otherwise return {{PermissionState/"denied"}}.
           If the user's interaction indicates they intend this choice to apply
           to other realms, then treat this this as <a>new information about
           the user's intent</a> for other <a>realms</a> with the <a>same
@@ -400,8 +400,8 @@ spec:webidl; type:interface; text:Promise
     <p>
       When the UA learns that the user no longer intends to grant permission
       for a <a>realm</a> to use a <a>feature</a>, it must <a>queue a task</a>
-      on the Realm's <a for="Realm">settings object</a>'s <a>responsible event
-      loop</a> to run that feature's <a>permission revocation algorithm</a>.
+      on the Realm's <a for="Realm">settings object</a>'s [=environment settings object/responsible event loop=]
+      to run that feature's <a>permission revocation algorithm</a>.
     </p>
   </section>
 </section>
@@ -450,7 +450,7 @@ spec:webidl; type:interface; text:Promise
   <p>
     To <dfn>create a PermissionStatus</dfn> for a given {{PermissionDescriptor}}
     |permissionDesc|, return a new instance of the <a>permission result
-    type</a> for the feature named by <code>|permissionDesc|.{{name}}</code>,
+    type</a> for the feature named by <code>|permissionDesc|.{{PermissionDescriptor/name}}</code>,
     with the {{PermissionStatus/[[query]]}} internal slot initialized to
     |permissionDesc|.
   </p>
@@ -471,8 +471,8 @@ spec:webidl; type:interface; text:Promise
   </p>
   <ol>
     <li>
-      Run <code><var>status</var>@{{[[query]]}}.{{name}}</code>'s <a>permission
-      query algorithm</a>, passing <code><var>status</var>@{{[[query]]}}</code>
+      Run <code><var>status</var>@{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s <a>permission
+      query algorithm</a>, passing <code><var>status</var>@{{PermissionStatus/[[query]]}}</code>
       and <var>status</var>.
     </li>
     <li>
@@ -536,8 +536,8 @@ spec:webidl; type:interface; text:Promise
     and let <var>status</var> be the result.
     </li>
     <li>
-      Run <code>|status|@{{[[query]]}}.{{name}}</code>'s <a>permission query
-      algorithm</a>, passing <code>|status|@{{[[query]]}}</code> and |status|.
+      Run <code>|status|@{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s <a>permission query
+      algorithm</a>, passing <code>|status|@{{PermissionStatus/[[query]]}}</code> and |status|.
     </li>
     <li>Resolve <var>promise</var> with <var>status</var>.
     </li>
@@ -618,14 +618,14 @@ spec:webidl; type:interface; text:Promise
         href="https://en.wikipedia.org/wiki/Partially_ordered_set">partial
         order</a> on descriptor instances. If |descriptorA| is <dfn
         for="PermissionDescriptor">stronger than</dfn> |descriptorB|, then if
-        |descriptorA|'s <a>permission state</a> is {{"granted"}},
-        |descriptorB|'s <a>permission state</a> must also be {{"granted"}}, and
-        if |descriptorB|'s <a>permission state</a> is {{"denied"}},
-        |descriptorA|'s <a>permission state</a> must also be {{"denied"}}.
+        |descriptorA|'s <a>permission state</a> is {{PermissionState/"granted"}},
+        |descriptorB|'s <a>permission state</a> must also be {{PermissionState/"granted"}}, and
+        if |descriptorB|'s <a>permission state</a> is {{PermissionState/"denied"}},
+        |descriptorA|'s <a>permission state</a> must also be {{PermissionState/"denied"}}.
       </p>
       <p class="example" id="example-stronger-than">
-        <code>{name: {{"midi"}}, sysex: true}</code> ("midi-with-sysex") is
-        <a>stronger than</a> <code>{name: {{"midi"}}, sysex: false}</code>
+        <code>{name: {{PermissionName/"midi"}}, sysex: true}</code> ("midi-with-sysex") is
+        [=PermissionDescriptor/stronger than=] <code>{name: {{PermissionName/"midi"}}, sysex: false}</code>
         ("midi-without-sysex"), so if the user denies access to
         midi-without-sysex, the UA must also deny access to midi-with-sysex, and
         similarly if the user grants access to midi-with-sysex, the UA must also
@@ -741,7 +741,7 @@ spec:webidl; type:interface; text:Promise
           };
         </pre>
         <p>
-          `{name: "push", userVisibleOnly: false}` is <a>stronger than</a>
+          `{name: "push", userVisibleOnly: false}` is [=PermissionDescriptor/stronger than=]
           `{name: "push", userVisibleOnly: true}`.
         </p>
       </dd>
@@ -754,7 +754,7 @@ spec:webidl; type:interface; text:Promise
     <p>
       The <dfn for="PermissionName" enum-value>"midi"</dfn>
       permission is the permission associated with the usage of
-      [[webmidi]]. {{"midi"}} is <a>allowed in non-secure contexts</a>.
+      [[webmidi]]. {{PermissionName/"midi"}} is <a>allowed in non-secure contexts</a>.
     </p>
     <dl>
       <dt>
@@ -767,7 +767,7 @@ spec:webidl; type:interface; text:Promise
           };
         </pre>
         <p>
-          `{name: "midi", sysex: true}` is <a>stronger than</a> `{name: "midi",
+          `{name: "midi", sysex: true}` is [=PermissionDescriptor/stronger than=] `{name: "midi",
           sysex: false}`.
         </p>
       </dd>
@@ -778,8 +778,8 @@ spec:webidl; type:interface; text:Promise
       Media Devices
     </h3>
     <p dfn-for="PermissionName" dfn-type="enum-value">
-      The <dfn>"camera"</dfn>, <dfn>"microphone"</dfn> , and
-      <dfn>"speaker-selection"</dfn>
+      The <dfn for="PermissionName" enum-value>camera</dfn>, <dfn for="PermissionName" enum-value>microphone</dfn> , and
+      <dfn for="PermissionName" enum-value>speaker-selection</dfn>
       permissions are associated with permission to use media devices as
       specified in [[GETUSERMEDIA]] and [[audio-output]].
     </p>
@@ -805,19 +805,19 @@ spec:webidl; type:interface; text:Promise
           If the descriptor does not have a
           {{DevicePermissionDescriptor/deviceId}}, its semantic is that it
           queries for access to all devices of that class. Thus, if a query for
-          the {{"camera"}} permission with no
-          {{DevicePermissionDescriptor/deviceId}} returns {{"granted"}}, the
+          the {{PermissionName/"camera"}} permission with no
+          {{DevicePermissionDescriptor/deviceId}} returns {{PermissionState/"granted"}}, the
           client knows that there will never be a permission prompt for a
-          camera, and if {{"denied"}} is returned, it knows that no getUserMedia
+          camera, and if {{PermissionState/"denied"}} is returned, it knows that no getUserMedia
           request for a camera will succeed.
         </p>
         <p>
           If a permission state is present for access to some, but not all,
           cameras, a query without the {{DevicePermissionDescriptor/deviceId}}
-          will return {{"prompt"}}.
+          will return {{PermissionState/"prompt"}}.
         </p>
         <p>
-          `{name: "camera", panTiltZoom: true}` is <a>stronger than</a>
+          `{name: "camera", panTiltZoom: true}` is [=PermissionDescriptor/stronger than=]
           `{name: "camera", panTiltZoom: false}`.
         </p>
         <p>
@@ -865,11 +865,11 @@ spec:webidl; type:interface; text:Promise
         Let <var>result</var> be the result of running the <a>boolean permission
         request algorithm</a>.
         </li>
-        <li>If <var>result</var> is {{"granted"}}, the UA MUST set the
-        {{"device-info"}} permission to {{"granted"}} for this <a>realm</a>.
+        <li>If <var>result</var> is {{PermissionState/"granted"}}, the UA MUST set the
+        {{PermissionName/"device-info"}} permission to {{PermissionState/"granted"}} for this <a>realm</a>.
         </li>
         <li>The UA MAY treat <var>result</var> as <a>new information about the
-        user's intent</a> with respect to the {{"device-info"}} permission for
+        user's intent</a> with respect to the {{PermissionName/"device-info"}} permission for
         this <a>realm</a> and other <a>realms</a> with the <a>same origin</a>,
         provided it doesn't violate the previous step.
         </li>
@@ -881,10 +881,10 @@ spec:webidl; type:interface; text:Promise
       </dt>
       <dd>
         This is the result of calling the
-        [=device permission revocation algorithm=] passing {{name}}
-        and {{deviceId}} as arguments. If the descriptor does not have a
-        {{deviceId}}, then <code>undefined</code> is passed in place of
-        {{deviceId}}.
+        [=device permission revocation algorithm=] passing {{PermissionDescriptor/name}}
+        and {{DevicePermissionDescriptor/deviceId}} as arguments. If the descriptor does not have a
+        {{DevicePermissionDescriptor/deviceId}}, then <code>undefined</code> is passed in place of
+        {{DevicePermissionDescriptor/deviceId}}.
       </dd>
     </dl>
     <p>
@@ -892,7 +892,7 @@ spec:webidl; type:interface; text:Promise
       permission controls access to the name and capabilities associated with a
       {{MediaDeviceInfo/deviceId}}, as well as whether
       {{MediaDevices/devicechange}} events fire when the current browsing
-      context is not in focus. The {{"device-info"}} permission MUST be revoked
+      context is not in focus. The {{PermissionName/"device-info"}} permission MUST be revoked
       when {{MediaDeviceInfo/deviceId}}s for an origin are reset.
     </p>
   </section>
@@ -942,13 +942,13 @@ spec:webidl; type:interface; text:Promise
       Ambient Light Sensor
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"ambient-light-sensor"</dfn>
+      The <dfn for="PermissionName" enum-value>ambient-light-sensor</dfn>
       permission is the permission associated with the usage of the
       [[ambient-light]] API.
 
       Its <a>permission revocation algorithm</a> is the result of calling
       <a>generic sensor permission revocation algorithm</a>
-      passing it <a enum-value>"ambient-light-sensor"</a> as argument.
+      passing it {{PermissionName/"ambient-light-sensor"}} as argument.
     </p>
   </section>
   <section>
@@ -962,7 +962,7 @@ spec:webidl; type:interface; text:Promise
 
       Its <a>permission revocation algorithm</a> is the result of calling
       <a>generic sensor permission revocation algorithm</a>
-      passing it <a enum-value>"accelerometer"</a> as argument.
+      passing it {{PermissionName/"accelerometer"}} as argument.
     </p>
   </section>
   <section>
@@ -976,7 +976,7 @@ spec:webidl; type:interface; text:Promise
 
       Its <a>permission revocation algorithm</a> is the result of calling
       <a>generic sensor permission revocation algorithm</a>
-      passing it <a enum-value>"gyroscope"</a> as argument.
+      passing it {{PermissionName/"gyroscope"}} as argument.
     </p>
   </section>
   <section>
@@ -990,7 +990,7 @@ spec:webidl; type:interface; text:Promise
 
       Its <a>permission revocation algorithm</a> is the result of calling
       <a>generic sensor permission revocation algorithm</a>
-      passing it <a enum-value>"magnetometer"</a> as argument.
+      passing it {{PermissionName/"magnetometer"}} as argument.
     </p>
   </section>
   <section>
@@ -1018,8 +1018,8 @@ spec:webidl; type:interface; text:Promise
       </dt>
       <dd>
         Valid values for this descriptor's <a>permission state</a> are
-        {{"prompt"}} and {{"denied"}}. The user agent MUST NOT ever set this
-        descriptor's <a>permission state</a> to {{"granted"}}.
+        {{PermissionState/"prompt"}} and {{PermissionState/"denied"}}. The user agent MUST NOT ever set this
+        descriptor's <a>permission state</a> to {{PermissionState/"granted"}}.
       </dd>
     </dl>
   </section>
@@ -1089,9 +1089,9 @@ spec:webidl; type:interface; text:Promise
         <a>WebDriver error</a> with <a>WebDriver error code</a> <a>invalid
         argument</a>.
         <p class="note">
-          For example, <a>user agents</a> that define the {{"midi"}}
+          For example, <a>user agents</a> that define the {{PermissionName/"midi"}}
           <a>feature</a> as "always on" may choose to reject command
-          to set the <a>permission state</a> to {{"denied"}} at this step.
+          to set the <a>permission state</a> to {{PermissionState/"denied"}} at this step.
         </p>
       </li>
       <li>Let |settings| be the <a>environment settings object</a> of the
@@ -1129,7 +1129,7 @@ spec:webidl; type:interface; text:Promise
       <li>Return <a>success</a> with data `null`.</li>
     </ol>
     <div class="example">
-      To set permission for <code>{name: {{"midi"}}, sysex: true}</code> of the
+      To set permission for <code>{name: {{PermissionName/"midi"}}, sysex: true}</code> of the
       <a>current browsing context</a> of the <a>session</a> with ID 23 to
       "`granted`", the <a>local end</a> would POST to `/session/23/permissions`
       with the body:
@@ -1175,7 +1175,7 @@ spec:webidl; type:interface; text:Promise
   </div>
   <div class="example" id="example-notifications">
   <p>
-    This example is using the {{"notifications"}} permission for a
+    This example is using the {{PermissionName/"notifications"}} permission for a
     chat application to show a notification button depending on the
     permission state.
   </p>
@@ -1198,7 +1198,7 @@ spec:webidl; type:interface; text:Promise
   <div class="example" id="example-two-permissions">
   <p>
     This example is checking whether the page has the
-    {{"geolocation"}} and the {{"notifications"}} permissions
+    {{PermissionName/"geolocation"}} and the {{PermissionName/"notifications"}} permissions
     using <code>{{Promise}}.all</code>.
   </p>
   <pre highlight="js">
