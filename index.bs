@@ -580,10 +580,6 @@ spec:webidl; type:interface; text:Promise
       Run <code>|status|@{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s <a>permission query
       algorithm</a>, passing <code>|status|@{{PermissionStatus/[[query]]}}</code> and |status|.
     </li>
-    <li>
-      If |doc| is not longer [=Document/fully active=] when this step is reached,
-      set |status|.{{PermissionStatus/state}} to {{PermissionState/"denied"}}.
-    </li>
     <li>Resolve <var>promise</var> with <var>status</var>.
     </li>
   </ol>
