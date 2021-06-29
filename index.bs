@@ -465,6 +465,12 @@ spec:webidl; type:interface; text:Promise
   </p>
   <ol>
     <li>
+      Let |document| this |status|'s [=relevant global object=]'s [=associated Document=].
+    <li>
+    <li>
+      If |document| is null or |document| is not [=Document/fully active=], terminate this algorithm.
+    </li>
+    <li>
       Run <code><var>status</var>@{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s <a>permission
       query algorithm</a>, passing <code><var>status</var>@{{PermissionStatus/[[query]]}}</code>
       and <var>status</var>.
