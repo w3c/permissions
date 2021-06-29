@@ -144,9 +144,14 @@ spec:webidl; type:interface; text:Promise
   </p>
   <div class="example" id="example-descriptors">
     <p>
-      The {{PermissionName/"midi"}} <a>feature</a> has two <a>aspects</a>: access to normal messages, and
-      access to system exclusive messages. Thus, its <a>permission descriptor type</a>
-      is:
+      The {{PermissionName/"midi"}} <a>feature</a> has two <a>aspects</a>:
+    </p>
+    <ol>
+      <li>Access to "normal" messages: implied by default as when {{MidiPermissionDescriptor/sysex}} is missing or explicitly set to false.</li>
+      <li>Access to "system exclusive messages": when {{MidiPermissionDescriptor/sysex}} is explicitly set to true.
+    </ol>
+    <p>
+      Thus, its <a>permission descriptor type</a> is:
     </p>
     <pre>
       dictionary MidiPermissionDescriptor : PermissionDescriptor {
