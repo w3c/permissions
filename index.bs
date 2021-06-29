@@ -553,9 +553,9 @@ spec:webidl; type:interface; text:Promise
     <var>permissionDesc</var>:
   </p>
   <ol>
-    <li>Let |doc| be the [=current settings object=]'s [=associated Document=].</li>
-    <li>If |doc| is not [=Document/fully active=], return [=a promise rejected with=]
-    a "InvalidStateError" {{DOMException}}.
+    <li>If the [=current settings object=]'s [=associated Document=] is not
+    [=Document/fully active=], return [=a promise rejected with=] a
+    "InvalidStateError" {{DOMException}}.
     </li>
     <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to
     an IDL value</a> of type {{PermissionDescriptor}}. If this throws an
