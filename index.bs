@@ -465,6 +465,12 @@ spec:webidl; type:interface; text:Promise
   </p>
   <ol>
     <li>
+      Let |document| this |status|'s [=relevant global object=]'s [=associated Document=].
+    <li>
+    <li>
+      If |document| is null or |document| is not [=Document/fully active=], terminate this algorithm.
+    </li>
+    <li>
       Run <code><var>status</var>@{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s <a>permission
       query algorithm</a>, passing <code><var>status</var>@{{PermissionStatus/[[query]]}}</code>
       and <var>status</var>.
@@ -510,6 +516,10 @@ spec:webidl; type:interface; text:Promise
     <var>permissionDesc</var>:
   </p>
   <ol>
+    <li>If the [=current settings object=]'s [=associated Document=] is not
+    [=Document/fully active=], return [=a promise rejected with=] a
+    "InvalidStateError" {{DOMException}}.
+    </li>
     <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to
     an IDL value</a> of type {{PermissionDescriptor}}. If this throws an
     exception, return <a>a promise rejected with</a> that exception and abort
