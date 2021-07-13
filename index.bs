@@ -6,24 +6,18 @@ ED: https://w3c.github.io/permissions/
 TR: https://www.w3.org/TR/permissions/
 Shortname: permissions
 Level: none
-Group: webappsec
+Group: WebAppSec
+indent: 4
 Editor: Mounir Lamouri, w3cid 45389, Google Inc. https://google.com/
 Editor: Marcos Cáceres, w3cid 39125, W3C https://w3.org/
 Editor: Jeffrey Yasskin, w3cid 72192, Google Inc. https://google.com/
+
 Previous Version: from biblio
-
-Abstract: The <cite>Permissions</cite> specification defines common infrastructure for other specifications that need to interact with browser permissions. It also defines an API to allow web applications to query and be notified of changes to the status of a given permission.
-Mailing List: public-webappsec@w3.org
-Mailing List Archives: http://lists.w3.org/Archives/Public/public-webappsec/
-
-!Participate: <a href="https://github.com/w3c/permissions">We are on Github.</a>
-!Participate: <a href="https://github.com/w3c/permissions/issues">File a bug.</a>
-!Participate: <a href="https://github.com/w3c/permissions/commits/gh-pages">Commit history.</a>
-!Implementation status: <a href="https://code.google.com/p/chromium/issues/detail?id=437770">Blink/Chromium</a>
-!Implementation status: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1105827">Gecko</a>
-
 Markup Shorthands: css no, markdown yes
 Assume Explicit For: true
+Prepare For TR: true
+
+Abstract: The <cite>Permissions</cite> specification defines common infrastructure for other specifications that need to interact with browser permissions. It also defines an API to allow web applications to query and be notified of changes to the status of a given permission.
 </pre>
 <pre class="anchors">
 spec: ECMAScript; urlPrefix: https://tc39.github.io/ecma262/#
