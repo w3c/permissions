@@ -432,6 +432,7 @@ spec:webidl; type:interface; text:Promise
     [Exposed=(Window,Worker)]
     interface PermissionStatus : EventTarget {
       readonly attribute PermissionState state;
+      readonly attribute PermissionName name;
       attribute EventHandler onchange;
     };
   </pre>
@@ -446,7 +447,11 @@ spec:webidl; type:interface; text:Promise
     |permissionDesc|, return a new instance of the <a>permission result
     type</a> for the feature named by <code>|permissionDesc|.{{PermissionDescriptor/name}}</code>,
     with the {{PermissionStatus/[[query]]}} internal slot initialized to
-    |permissionDesc|.
+    |permissionDesc|, and {{PermissionStatus/name}} initialized to |permissionDesc|.{{PermissionDescriptor/name}}.
+  </p>
+  <p>
+    The <dfn for="PermissionStatus" attribute>name</dfn>
+    attribute returns the value it was initialized to.
   </p>
   <p>
     The <dfn for="PermissionStatus" attribute>state</dfn>
