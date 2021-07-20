@@ -414,7 +414,7 @@ spec:webidl; type:interface; text:Promise
   <p>
     The <dfn for="PermissionState" enum-value>"granted"</dfn> state represents
     that the caller will be able
-    to successfuly access the feature without having the <a>user agent</a>
+    to successfully access the feature without having the <a>user agent</a>
     asking the user's permission.
   </p>
   <p>
