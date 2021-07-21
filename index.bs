@@ -998,8 +998,8 @@ spec:webidl; type:interface; text:Promise
     </p>
   </section>
   <section>
-    <h3 id="screen-capture">
-      Screen Capture
+    <h3 id="display-capture">
+      Display Capture
     </h3>
     <p>
       The <dfn for="PermissionName" enum-value>"display-capture"</dfn>
