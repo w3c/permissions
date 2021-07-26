@@ -495,7 +495,7 @@ spec:webidl; type:interface; text:Promise
 </section>
 <section>
   <h2 id="permissions-interface">
-    Permissions interface
+    `Permissions` interface
   </h2>
   <pre class='idl'>
     [Exposed=(Window,Worker)]
@@ -503,44 +503,47 @@ spec:webidl; type:interface; text:Promise
       Promise&lt;PermissionStatus&gt; query(object permissionDesc);
     };
   </pre>
-  <p>
-    When the <dfn for='Permissions' method>query(permissionDesc)</dfn> method is
-    invoked, the <a>user agent</a> MUST run the following <dfn export>query a
-    permission</dfn> algorithm, passing the parameter
-    <var>permissionDesc</var>:
-  </p>
-  <ol>
-    <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to
-    an IDL value</a> of type {{PermissionDescriptor}}. If this throws an
-    exception, return <a>a promise rejected with</a> that exception and abort
-    these steps.
-    </li>
-    <li>Let |typedDescriptor| be the object |permissionDesc| refers to,
-    <a>converted to an IDL value</a> of
-    <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s <a>permission
-    descriptor type</a>. If this throws an exception, return <a>a promise
-    rejected with</a> that exception and abort these steps.
-    </li>
-    <li>Let <var>promise</var> be a newly-created {{Promise}}.
-    </li>
-    <li>Return <var>promise</var> and continue the following steps
-    asynchronously.
-    </li>
-    <li>Run the steps to <a>create a PermissionStatus</a> for |typedDescriptor|,
-    and let <var>status</var> be the result.
-    </li>
-    <li>
-      Run <code>|status|@{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s <a>permission query
-      algorithm</a>, passing <code>|status|@{{PermissionStatus/[[query]]}}</code> and |status|.
-    </li>
-    <li>Resolve <var>promise</var> with <var>status</var>.
-    </li>
-  </ol>
-  <div class='note'>
-    If a developer wants to check multiple permissions at once, the editors
-    recommend the use of <code>{{Promise}}.all()</code>. An example can be
-    found in the <a href='#examples'>Examples section</a>.
-  </div>
+  <section>
+    <h3 id="query-method">`query()` method</h3>
+    <p>
+      When the <dfn for='Permissions' method>query(permissionDesc)</dfn> method is
+      invoked, the <a>user agent</a> MUST run the following <dfn export>query a
+      permission</dfn> algorithm, passing the parameter
+      <var>permissionDesc</var>:
+    </p>
+    <ol>
+      <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to
+      an IDL value</a> of type {{PermissionDescriptor}}. If this throws an
+      exception, return <a>a promise rejected with</a> that exception and abort
+      these steps.
+      </li>
+      <li>Let |typedDescriptor| be the object |permissionDesc| refers to,
+      <a>converted to an IDL value</a> of
+      <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s <a>permission
+      descriptor type</a>. If this throws an exception, return <a>a promise
+      rejected with</a> that exception and abort these steps.
+      </li>
+      <li>Let <var>promise</var> be a newly-created {{Promise}}.
+      </li>
+      <li>Return <var>promise</var> and continue the following steps
+      asynchronously.
+      </li>
+      <li>Run the steps to <a>create a PermissionStatus</a> for |typedDescriptor|,
+      and let <var>status</var> be the result.
+      </li>
+      <li>
+        Run <code>|status|@{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s <a>permission query
+        algorithm</a>, passing <code>|status|@{{PermissionStatus/[[query]]}}</code> and |status|.
+      </li>
+      <li>Resolve <var>promise</var> with <var>status</var>.
+      </li>
+    </ol>
+    <div class='note'>
+      If a developer wants to check multiple permissions at once, the editors
+      recommend the use of <code>{{Promise}}.all()</code>. An example can be
+      found in the <a href='#examples'>Examples section</a>.
+    </div>
+  </section>
 </section>
 <section>
   <h2 id="common-permission-algorithms">
