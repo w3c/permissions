@@ -587,6 +587,7 @@ spec:webidl; type:interface; text:Promise
       "push",
       "screen-wake-lock",
       "speaker-selection",
+      "xr",
     };
   </pre>
   <p>
@@ -1028,6 +1029,16 @@ spec:webidl; type:interface; text:Promise
       The <dfn for="PermissionName" enum-value>"nfc"</dfn>
       permission is the permission associated with the usage of the
       [[web-nfc]] API.
+    </p>
+  </section>
+  <section>
+    <h3 id="xr-api">
+      XR
+    </h3>
+    <p>
+      The <dfn for="PermissionName" enum-value>"xr"</dfn>
+      permission is the permission associated with the usage of the
+      [[webxr]] Device API.
     </p>
   </section>
 </section>
