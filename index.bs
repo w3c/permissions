@@ -8,9 +8,9 @@ Shortname: permissions
 Level: none
 Group: WebAppSec
 indent: 4
-Editor: Mounir Lamouri, w3cid 45389, Google Inc. https://google.com/
 Editor: Marcos Cáceres, w3cid 39125, W3C https://w3.org/
 Editor: Jeffrey Yasskin, w3cid 72192, Google Inc. https://google.com/
+Former Editor: Mounir Lamouri, Google Inc. https://google.com/
 
 Previous Version: from biblio
 Markup Shorthands: css no, markdown yes
