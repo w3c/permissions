@@ -584,7 +584,6 @@ spec:webidl; type:interface; text:Promise
       "persistent-storage",
       "push",
       "screen-wake-lock",
-      "speaker-selection",
     };
   </pre>
   <p>
@@ -772,10 +771,9 @@ spec:webidl; type:interface; text:Promise
       Media Devices
     </h3>
     <p dfn-for="PermissionName" dfn-type="enum-value">
-      The <dfn for="PermissionName" enum-value>"camera"</dfn>, <dfn for="PermissionName" enum-value>"microphone"</dfn> , and
-      <dfn for="PermissionName" enum-value>"speaker-selection"</dfn>
+      The <dfn for="PermissionName" enum-value>"camera"</dfn>, <dfn for="PermissionName" enum-value>"microphone"</dfn>
       permissions are associated with permission to use media devices as
-      specified in [[GETUSERMEDIA]] and [[audio-output]].
+      specified in [[GETUSERMEDIA]].
     </p>
     <dl>
       <dt>
