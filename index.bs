@@ -476,7 +476,7 @@ spec:webidl; type:interface; text:Promise
     </li>
   </ol>
   <section>
-    <h3>Garbage collection</h3>
+    <h3 id="permissionstatus-gc">Garbage collection</h3>
     <p>
       While an {{PermissionStatus}} object has one or more event listeners registered for "change",
       there must be a strong reference from the {{Window}} or {{WorkerGlobalScope}} object
