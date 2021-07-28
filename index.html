@@ -5,7 +5,7 @@
   <title>Permissions</title>
   <meta content="Bikeshed version 59d067506, updated Fri Jul 23 15:43:29 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
-  <meta content="886b8708593a40f4a572b3df1b372e1366e636d6" name="document-revision">
+  <meta content="3af5370fbfa3292f08fed11955c6fc99e87a0c42" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -401,39 +401,40 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#reacting-to-revocation"><span class="secno">5.3</span> <span class="content">Reacting to users revoking permission</span></a>
      </ol>
     <li><a href="#status-of-a-permission"><span class="secno">6</span> <span class="content"> Status of a permission </span></a>
-    <li><a href="#navigator-and-workernavigator-extension"><span class="secno">7</span> <span class="content"> Extensions to the <code>Navigator</code> and <code>WorkerNavigator</code> interfaces </span></a>
+    <li><a href="#permissionstatus-interface"><span class="secno">7</span> <span class="content"><code>PermissionStatus</code> interface</span></a>
+    <li><a href="#navigator-and-workernavigator-extension"><span class="secno">8</span> <span class="content"> Extensions to the <code>Navigator</code> and <code>WorkerNavigator</code> interfaces </span></a>
     <li>
-     <a href="#permissions-interface"><span class="secno">8</span> <span class="content"> <code>Permissions</code> interface </span></a>
+     <a href="#permissions-interface"><span class="secno">9</span> <span class="content"> <code>Permissions</code> interface </span></a>
      <ol class="toc">
-      <li><a href="#query-method"><span class="secno">8.1</span> <span class="content"><code>query()</code> method</span></a>
+      <li><a href="#query-method"><span class="secno">9.1</span> <span class="content"><code>query()</code> method</span></a>
      </ol>
-    <li><a href="#common-permission-algorithms"><span class="secno">9</span> <span class="content"> Common permission algorithms </span></a>
+    <li><a href="#common-permission-algorithms"><span class="secno">10</span> <span class="content"> Common permission algorithms </span></a>
     <li>
-     <a href="#permission-registry"><span class="secno">10</span> <span class="content"> Permission Registry </span></a>
+     <a href="#permission-registry"><span class="secno">11</span> <span class="content"> Permission Registry </span></a>
      <ol class="toc">
-      <li><a href="#geolocation"><span class="secno">10.1</span> <span class="content"> Geolocation </span></a>
-      <li><a href="#notifications"><span class="secno">10.2</span> <span class="content"> Notifications </span></a>
-      <li><a href="#push"><span class="secno">10.3</span> <span class="content"> Push </span></a>
-      <li><a href="#midi"><span class="secno">10.4</span> <span class="content"> Midi </span></a>
-      <li><a href="#screen-wake-lock"><span class="secno">10.5</span> <span class="content"> Screen wake lock </span></a>
-      <li><a href="#media-devices"><span class="secno">10.6</span> <span class="content"> Media Devices </span></a>
-      <li><a href="#background-fetch"><span class="secno">10.7</span> <span class="content"> Background Fetch </span></a>
-      <li><a href="#background-sync"><span class="secno">10.8</span> <span class="content"> Background Sync </span></a>
-      <li><a href="#bluetooth"><span class="secno">10.9</span> <span class="content"> Bluetooth </span></a>
-      <li><a href="#persistent-storage"><span class="secno">10.10</span> <span class="content"> Persistent Storage </span></a>
-      <li><a href="#ambient-light-sensor"><span class="secno">10.11</span> <span class="content"> Ambient Light Sensor </span></a>
-      <li><a href="#accelerometer"><span class="secno">10.12</span> <span class="content"> Accelerometer </span></a>
-      <li><a href="#gyroscope"><span class="secno">10.13</span> <span class="content"> Gyroscope </span></a>
-      <li><a href="#magnetometer"><span class="secno">10.14</span> <span class="content"> Magnetometer </span></a>
-      <li><a href="#display-capture"><span class="secno">10.15</span> <span class="content"> Display Capture </span></a>
-      <li><a href="#nfc"><span class="secno">10.16</span> <span class="content"> NFC </span></a>
+      <li><a href="#geolocation"><span class="secno">11.1</span> <span class="content"> Geolocation </span></a>
+      <li><a href="#notifications"><span class="secno">11.2</span> <span class="content"> Notifications </span></a>
+      <li><a href="#push"><span class="secno">11.3</span> <span class="content"> Push </span></a>
+      <li><a href="#midi"><span class="secno">11.4</span> <span class="content"> Midi </span></a>
+      <li><a href="#screen-wake-lock"><span class="secno">11.5</span> <span class="content"> Screen wake lock </span></a>
+      <li><a href="#media-devices"><span class="secno">11.6</span> <span class="content"> Media Devices </span></a>
+      <li><a href="#background-fetch"><span class="secno">11.7</span> <span class="content"> Background Fetch </span></a>
+      <li><a href="#background-sync"><span class="secno">11.8</span> <span class="content"> Background Sync </span></a>
+      <li><a href="#bluetooth"><span class="secno">11.9</span> <span class="content"> Bluetooth </span></a>
+      <li><a href="#persistent-storage"><span class="secno">11.10</span> <span class="content"> Persistent Storage </span></a>
+      <li><a href="#ambient-light-sensor"><span class="secno">11.11</span> <span class="content"> Ambient Light Sensor </span></a>
+      <li><a href="#accelerometer"><span class="secno">11.12</span> <span class="content"> Accelerometer </span></a>
+      <li><a href="#gyroscope"><span class="secno">11.13</span> <span class="content"> Gyroscope </span></a>
+      <li><a href="#magnetometer"><span class="secno">11.14</span> <span class="content"> Magnetometer </span></a>
+      <li><a href="#display-capture"><span class="secno">11.15</span> <span class="content"> Display Capture </span></a>
+      <li><a href="#nfc"><span class="secno">11.16</span> <span class="content"> NFC </span></a>
      </ol>
     <li>
-     <a href="#automation"><span class="secno">11</span> <span class="content"> Automation </span></a>
+     <a href="#automation"><span class="secno">12</span> <span class="content"> Automation </span></a>
      <ol class="toc">
-      <li><a href="#set-permission-command"><span class="secno">11.1</span> <span class="content"> Set Permission </span></a>
+      <li><a href="#set-permission-command"><span class="secno">12.1</span> <span class="content"> Set Permission </span></a>
      </ol>
-    <li><a href="#examples"><span class="secno">12</span> <span class="content"> Examples </span></a>
+    <li><a href="#examples"><span class="secno">13</span> <span class="content"> Examples </span></a>
     <li><a href="#acknowledgments"><span class="secno"></span> <span class="content"> Acknowledgments </span></a>
     <li>
      <a href="#conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
@@ -693,6 +694,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionState" data-dfn-type="enum-value" data-export id="dom-permissionstate-prompt"><code>"prompt"</code></dfn> state represents
     that the <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent" id="ref-for-user-agent①">user agent</a> will be asking the user’s permission if the caller tries to access the
     feature. The user might grant, deny or dismiss the request. </p>
+   </section>
+   <section>
+    <h2 class="heading settled" data-level="7" id="permissionstatus-interface"><span class="secno">7. </span><span class="content"><code>PermissionStatus</code> interface</span><a class="self-link" href="#permissionstatus-interface"></a></h2>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=(<c- n>Window</c->,<c- n>Worker</c->)]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="permissionstatus"><code><c- g>PermissionStatus</c-></code></dfn> : <a data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget"><c- n>EventTarget</c-></a> {
   <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#enumdef-permissionstate" id="ref-for-enumdef-permissionstate①"><c- n>PermissionState</c-></a> <a class="idl-code" data-link-type="attribute" data-readonly data-type="PermissionState" href="#dom-permissionstatus-state" id="ref-for-dom-permissionstatus-state"><c- g>state</c-></a>;
@@ -747,7 +751,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </ol>
    </section>
    <section>
-    <h2 class="heading settled" data-level="7" id="navigator-and-workernavigator-extension"><span class="secno">7. </span><span class="content"> Extensions to the <code>Navigator</code> and <code>WorkerNavigator</code> interfaces </span><a class="self-link" href="#navigator-and-workernavigator-extension"></a></h2>
+    <h2 class="heading settled" data-level="8" id="navigator-and-workernavigator-extension"><span class="secno">8. </span><span class="content"> Extensions to the <code>Navigator</code> and <code>WorkerNavigator</code> interfaces </span><a class="self-link" href="#navigator-and-workernavigator-extension"></a></h2>
     <div class="mdn-anno wrapped">
      <button class="mdn-anno-btn"><span>MDN</span></button>
      <div class="feature">
@@ -791,7 +795,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 </pre>
    </section>
    <section>
-    <h2 class="heading settled" data-level="8" id="permissions-interface"><span class="secno">8. </span><span class="content"> <code>Permissions</code> interface </span><a class="self-link" href="#permissions-interface"></a></h2>
+    <h2 class="heading settled" data-level="9" id="permissions-interface"><span class="secno">9. </span><span class="content"> <code>Permissions</code> interface </span><a class="self-link" href="#permissions-interface"></a></h2>
     <div class="mdn-anno wrapped after">
      <button class="mdn-anno-btn"><span>MDN</span></button>
      <div class="feature">
@@ -813,7 +817,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 };
 </pre>
     <section>
-     <h3 class="heading settled" data-level="8.1" id="query-method"><span class="secno">8.1. </span><span class="content"><code>query()</code> method</span><a class="self-link" href="#query-method"></a></h3>
+     <h3 class="heading settled" data-level="9.1" id="query-method"><span class="secno">9.1. </span><span class="content"><code>query()</code> method</span><a class="self-link" href="#query-method"></a></h3>
      <div class="mdn-anno wrapped">
       <button class="mdn-anno-btn"><span>MDN</span></button>
       <div class="feature">
@@ -855,14 +859,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </section>
    </section>
    <section>
-    <h2 class="heading settled" data-level="9" id="common-permission-algorithms"><span class="secno">9. </span><span class="content"> Common permission algorithms </span><a class="self-link" href="#common-permission-algorithms"></a></h2>
+    <h2 class="heading settled" data-level="10" id="common-permission-algorithms"><span class="secno">10. </span><span class="content"> Common permission algorithms </span><a class="self-link" href="#common-permission-algorithms"></a></h2>
     <p> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="boolean-permission-query-algorithm">boolean permission query algorithm</dfn>, given a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor⑥">PermissionDescriptor</a></code> <var>permissionDesc</var> and a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus③">PermissionStatus</a></code> <var>status</var>, runs the following steps: </p>
     <ol class="algorithm">
      <li> Set <code><var>status</var>.state</code> to <var>permissionDesc</var>’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state⑦">permission state</a>. 
     </ol>
    </section>
    <section>
-    <h2 class="heading settled" data-level="10" id="permission-registry"><span class="secno">10. </span><span class="content"> Permission Registry </span><a class="self-link" href="#permission-registry"></a></h2>
+    <h2 class="heading settled" data-level="11" id="permission-registry"><span class="secno">11. </span><span class="content"> Permission Registry </span><a class="self-link" href="#permission-registry"></a></h2>
 <pre class="idl highlight def"><c- b>enum</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export id="enumdef-permissionname"><code><c- g>PermissionName</c-></code></dfn> {
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer"><c- s>"accelerometer"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor"><c- s>"ambient-light-sensor"</c-></a>,
@@ -927,7 +931,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <p> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="boolean-feature">boolean feature</dfn> is a <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①⓪">powerful feature</a> with all
     of the above types and algorithms defaulted. </p>
     <section>
-     <h3 class="heading settled" data-level="10.1" id="geolocation"><span class="secno">10.1. </span><span class="content"> Geolocation </span><a class="self-link" href="#geolocation"></a></h3>
+     <h3 class="heading settled" data-level="11.1" id="geolocation"><span class="secno">11.1. </span><span class="content"> Geolocation </span><a class="self-link" href="#geolocation"></a></h3>
      <div class="mdn-anno wrapped after">
       <button class="mdn-anno-btn"><span>MDN</span></button>
       <div class="feature">
@@ -947,12 +951,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       non-secure contexts</a>. </p>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.2" id="notifications"><span class="secno">10.2. </span><span class="content"> Notifications </span><a class="self-link" href="#notifications"></a></h3>
+     <h3 class="heading settled" data-level="11.2" id="notifications"><span class="secno">11.2. </span><span class="content"> Notifications </span><a class="self-link" href="#notifications"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-notifications"><code>"notifications"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-notifications">[notifications]</a> API. It is a <a data-link-type="dfn" href="#boolean-feature" id="ref-for-boolean-feature①">boolean feature</a> and is <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts②">allowed in
       non-secure contexts</a>. </p>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.3" id="push"><span class="secno">10.3. </span><span class="content"> Push </span><a class="self-link" href="#push"></a></h3>
+     <h3 class="heading settled" data-level="11.3" id="push"><span class="secno">11.3. </span><span class="content"> Push </span><a class="self-link" href="#push"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-push"><code>"push"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-push-api">[push-api]</a>. </p>
      <dl>
       <dt> <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type⑦">permission descriptor type</a> 
@@ -965,7 +969,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      </dl>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.4" id="midi"><span class="secno">10.4. </span><span class="content"> Midi </span><a class="self-link" href="#midi"></a></h3>
+     <h3 class="heading settled" data-level="11.4" id="midi"><span class="secno">11.4. </span><span class="content"> Midi </span><a class="self-link" href="#midi"></a></h3>
      <div class="mdn-anno wrapped after">
       <button class="mdn-anno-btn"><span>MDN</span></button>
       <div class="feature">
@@ -993,11 +997,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      </dl>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.5" id="screen-wake-lock"><span class="secno">10.5. </span><span class="content"> Screen wake lock </span><a class="self-link" href="#screen-wake-lock"></a></h3>
+     <h3 class="heading settled" data-level="11.5" id="screen-wake-lock"><span class="secno">11.5. </span><span class="content"> Screen wake lock </span><a class="self-link" href="#screen-wake-lock"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-screen-wake-lock"><code>"screen-wake-lock"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-screen-wake-lock">[screen-wake-lock]</a> API. It is a <a data-link-type="dfn" href="#boolean-feature" id="ref-for-boolean-feature②">boolean feature</a>. </p>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.6" id="media-devices"><span class="secno">10.6. </span><span class="content"> Media Devices </span><a class="self-link" href="#media-devices"></a></h3>
+     <h3 class="heading settled" data-level="11.6" id="media-devices"><span class="secno">11.6. </span><span class="content"> Media Devices </span><a class="self-link" href="#media-devices"></a></h3>
      <div class="mdn-anno wrapped after">
       <button class="mdn-anno-btn"><b class="all-engines-flag" title="This feature is in all current engines.">✔</b><span>MDN</span></button>
       <div class="feature">
@@ -1082,25 +1086,25 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      </dl>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.7" id="background-fetch"><span class="secno">10.7. </span><span class="content"> Background Fetch </span><a class="self-link" href="#background-fetch"></a></h3>
+     <h3 class="heading settled" data-level="11.7" id="background-fetch"><span class="secno">11.7. </span><span class="content"> Background Fetch </span><a class="self-link" href="#background-fetch"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-background-fetch"><code>"background-fetch"</code></dfn> permission is the permission associated with the usage of <a data-link-type="biblio" href="#biblio-background-fetch">[background-fetch]</a>. </p>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.8" id="background-sync"><span class="secno">10.8. </span><span class="content"> Background Sync </span><a class="self-link" href="#background-sync"></a></h3>
+     <h3 class="heading settled" data-level="11.8" id="background-sync"><span class="secno">11.8. </span><span class="content"> Background Sync </span><a class="self-link" href="#background-sync"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-background-sync"><code>"background-sync"</code></dfn> permission is the permission associated with the usage of <a data-link-type="biblio" href="#biblio-web-background-sync">[web-background-sync]</a>. </p>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.9" id="bluetooth"><span class="secno">10.9. </span><span class="content"> Bluetooth </span><a class="self-link" href="#bluetooth"></a></h3>
+     <h3 class="heading settled" data-level="11.9" id="bluetooth"><span class="secno">11.9. </span><span class="content"> Bluetooth </span><a class="self-link" href="#bluetooth"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-bluetooth"><code>"bluetooth"</code></dfn> permission (<a href="https://webbluetoothcg.github.io/web-bluetooth/#permission-api-integration">Web Bluetooth §3.1 Permission API Integration</a>) controls usage
       of <a data-link-type="biblio" href="#biblio-web-bluetooth">[web-bluetooth]</a>. </p>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.10" id="persistent-storage"><span class="secno">10.10. </span><span class="content"> Persistent Storage </span><a class="self-link" href="#persistent-storage"></a></h3>
+     <h3 class="heading settled" data-level="11.10" id="persistent-storage"><span class="secno">11.10. </span><span class="content"> Persistent Storage </span><a class="self-link" href="#persistent-storage"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-persistent-storage"><code>"persistent-storage"</code></dfn> permission (<a href="https://storage.spec.whatwg.org/#persistence">Storage §5 Persistence permission</a>) is the permission associated with the
       usage of the <code>"persistent"</code> storage bucket <a data-link-type="dfn" href="https://storage.spec.whatwg.org/#bucket-mode" id="ref-for-bucket-mode">mode</a>. </p>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.11" id="ambient-light-sensor"><span class="secno">10.11. </span><span class="content"> Ambient Light Sensor </span><a class="self-link" href="#ambient-light-sensor"></a></h3>
+     <h3 class="heading settled" data-level="11.11" id="ambient-light-sensor"><span class="secno">11.11. </span><span class="content"> Ambient Light Sensor </span><a class="self-link" href="#ambient-light-sensor"></a></h3>
      <div class="mdn-anno wrapped after">
       <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
       <div class="feature">
@@ -1122,7 +1126,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <p></p>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.12" id="accelerometer"><span class="secno">10.12. </span><span class="content"> Accelerometer </span><a class="self-link" href="#accelerometer"></a></h3>
+     <h3 class="heading settled" data-level="11.12" id="accelerometer"><span class="secno">11.12. </span><span class="content"> Accelerometer </span><a class="self-link" href="#accelerometer"></a></h3>
      <div class="mdn-anno wrapped after">
       <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
       <div class="feature">
@@ -1144,7 +1148,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <p></p>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.13" id="gyroscope"><span class="secno">10.13. </span><span class="content"> Gyroscope </span><a class="self-link" href="#gyroscope"></a></h3>
+     <h3 class="heading settled" data-level="11.13" id="gyroscope"><span class="secno">11.13. </span><span class="content"> Gyroscope </span><a class="self-link" href="#gyroscope"></a></h3>
      <div class="mdn-anno wrapped after">
       <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
       <div class="feature">
@@ -1166,7 +1170,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <p></p>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.14" id="magnetometer"><span class="secno">10.14. </span><span class="content"> Magnetometer </span><a class="self-link" href="#magnetometer"></a></h3>
+     <h3 class="heading settled" data-level="11.14" id="magnetometer"><span class="secno">11.14. </span><span class="content"> Magnetometer </span><a class="self-link" href="#magnetometer"></a></h3>
      <div class="mdn-anno wrapped after">
       <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
       <div class="feature">
@@ -1188,7 +1192,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <p></p>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.15" id="display-capture"><span class="secno">10.15. </span><span class="content"> Display Capture </span><a class="self-link" href="#display-capture"></a></h3>
+     <h3 class="heading settled" data-level="11.15" id="display-capture"><span class="secno">11.15. </span><span class="content"> Display Capture </span><a class="self-link" href="#display-capture"></a></h3>
      <div class="mdn-anno wrapped after">
       <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
       <div class="feature">
@@ -1213,12 +1217,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      </dl>
     </section>
     <section>
-     <h3 class="heading settled" data-level="10.16" id="nfc"><span class="secno">10.16. </span><span class="content"> NFC </span><a class="self-link" href="#nfc"></a></h3>
+     <h3 class="heading settled" data-level="11.16" id="nfc"><span class="secno">11.16. </span><span class="content"> NFC </span><a class="self-link" href="#nfc"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-nfc"><code>"nfc"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-web-nfc">[web-nfc]</a> API. </p>
     </section>
    </section>
    <section>
-    <h2 class="heading settled" data-level="11" id="automation"><span class="secno">11. </span><span class="content"> Automation </span><a class="self-link" href="#automation"></a></h2>
+    <h2 class="heading settled" data-level="12" id="automation"><span class="secno">12. </span><span class="content"> Automation </span><a class="self-link" href="#automation"></a></h2>
     <p> For the purposes of user-agent automation and application testing, this
     document defines the following <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-extension-commands" id="ref-for-dfn-extension-commands">extension command</a> for the <a data-link-type="biblio" href="#biblio-webdriver">[WebDriver]</a> specification. </p>
 <pre class="idl highlight def"><c- b>dictionary</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="dictionary" data-export id="dictdef-permissionsetparameters"><code><c- g>PermissionSetParameters</c-></code></dfn> {
@@ -1228,7 +1232,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 };
 </pre>
     <section>
-     <h3 class="heading settled" data-level="11.1" id="set-permission-command"><span class="secno">11.1. </span><span class="content"> Set Permission </span><a class="self-link" href="#set-permission-command"></a></h3>
+     <h3 class="heading settled" data-level="12.1" id="set-permission-command"><span class="secno">12.1. </span><span class="content"> Set Permission </span><a class="self-link" href="#set-permission-command"></a></h3>
      <table>
       <tbody>
        <tr>
@@ -1292,7 +1296,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </section>
    </section>
    <section class="non-normative">
-    <h2 class="heading settled" data-level="12" id="examples"><span class="secno">12. </span><span class="content"> Examples </span><a class="self-link" href="#examples"></a></h2>
+    <h2 class="heading settled" data-level="13" id="examples"><span class="secno">13. </span><span class="content"> Examples </span><a class="self-link" href="#examples"></a></h2>
     <div class="example" id="example-geolocation">
      <a class="self-link" href="#example-geolocation"></a> 
      <p> This example uses the Permissions API to decide whether local news
@@ -1414,86 +1418,86 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
   <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
-   <li><a href="#dom-permissionname-accelerometer">"accelerometer"</a><span>, in §10.12</span>
-   <li><a href="#allowed-in-non-secure-contexts">allowed in non-secure contexts</a><span>, in §10</span>
-   <li><a href="#dom-permissionname-ambient-light-sensor">"ambient-light-sensor"</a><span>, in §10.11</span>
+   <li><a href="#dom-permissionname-accelerometer">"accelerometer"</a><span>, in §11.12</span>
+   <li><a href="#allowed-in-non-secure-contexts">allowed in non-secure contexts</a><span>, in §11</span>
+   <li><a href="#dom-permissionname-ambient-light-sensor">"ambient-light-sensor"</a><span>, in §11.11</span>
    <li><a href="#aspects">aspects</a><span>, in §4</span>
-   <li><a href="#dom-permissionname-background-fetch">"background-fetch"</a><span>, in §10.7</span>
-   <li><a href="#dom-permissionname-background-sync">"background-sync"</a><span>, in §10.8</span>
-   <li><a href="#dom-permissionname-bluetooth">"bluetooth"</a><span>, in §10.9</span>
-   <li><a href="#boolean-feature">boolean feature</a><span>, in §10</span>
-   <li><a href="#boolean-permission-query-algorithm">boolean permission query algorithm</a><span>, in §9</span>
-   <li><a href="#dom-permissionname-camera">"camera"</a><span>, in §10.6</span>
-   <li><a href="#dictdef-cameradevicepermissiondescriptor">CameraDevicePermissionDescriptor</a><span>, in §10.6</span>
-   <li><a href="#create-a-permissionstatus">create a PermissionStatus</a><span>, in §6</span>
+   <li><a href="#dom-permissionname-background-fetch">"background-fetch"</a><span>, in §11.7</span>
+   <li><a href="#dom-permissionname-background-sync">"background-sync"</a><span>, in §11.8</span>
+   <li><a href="#dom-permissionname-bluetooth">"bluetooth"</a><span>, in §11.9</span>
+   <li><a href="#boolean-feature">boolean feature</a><span>, in §11</span>
+   <li><a href="#boolean-permission-query-algorithm">boolean permission query algorithm</a><span>, in §10</span>
+   <li><a href="#dom-permissionname-camera">"camera"</a><span>, in §11.6</span>
+   <li><a href="#dictdef-cameradevicepermissiondescriptor">CameraDevicePermissionDescriptor</a><span>, in §11.6</span>
+   <li><a href="#create-a-permissionstatus">create a PermissionStatus</a><span>, in §7</span>
    <li><a href="#dom-permissionstate-denied">"denied"</a><span>, in §6</span>
-   <li><a href="#dom-permissionsetparameters-descriptor">descriptor</a><span>, in §11</span>
-   <li><a href="#dom-devicepermissiondescriptor-deviceid">deviceId</a><span>, in §10.6</span>
-   <li><a href="#dictdef-devicepermissiondescriptor">DevicePermissionDescriptor</a><span>, in §10.6</span>
-   <li><a href="#dom-permissionname-display-capture">"display-capture"</a><span>, in §10.15</span>
+   <li><a href="#dom-permissionsetparameters-descriptor">descriptor</a><span>, in §12</span>
+   <li><a href="#dom-devicepermissiondescriptor-deviceid">deviceId</a><span>, in §11.6</span>
+   <li><a href="#dictdef-devicepermissiondescriptor">DevicePermissionDescriptor</a><span>, in §11.6</span>
+   <li><a href="#dom-permissionname-display-capture">"display-capture"</a><span>, in §11.15</span>
    <li><a href="#extra-permission-data">extra permission data</a><span>, in §5.1</span>
-   <li><a href="#extra-permission-data-constraints">extra permission data constraints</a><span>, in §10</span>
-   <li><a href="#extra-permission-data-type">extra permission data type</a><span>, in §10</span>
+   <li><a href="#extra-permission-data-constraints">extra permission data constraints</a><span>, in §11</span>
+   <li><a href="#extra-permission-data-type">extra permission data type</a><span>, in §11</span>
    <li><a href="#powerful-feature">feature</a><span>, in §3</span>
-   <li><a href="#dom-permissionname-geolocation">"geolocation"</a><span>, in §10.1</span>
+   <li><a href="#dom-permissionname-geolocation">"geolocation"</a><span>, in §11.1</span>
    <li><a href="#dom-permissionstate-granted">"granted"</a><span>, in §6</span>
-   <li><a href="#dom-permissionname-gyroscope">"gyroscope"</a><span>, in §10.13</span>
+   <li><a href="#dom-permissionname-gyroscope">"gyroscope"</a><span>, in §11.13</span>
    <li><a href="#implicit-signals">implicit signals</a><span>, in §3</span>
-   <li><a href="#dom-permissionname-magnetometer">"magnetometer"</a><span>, in §10.14</span>
-   <li><a href="#dom-permissionname-microphone">"microphone"</a><span>, in §10.6</span>
-   <li><a href="#dom-permissionname-midi">"midi"</a><span>, in §10.4</span>
-   <li><a href="#dictdef-midipermissiondescriptor">MidiPermissionDescriptor</a><span>, in §10.4</span>
+   <li><a href="#dom-permissionname-magnetometer">"magnetometer"</a><span>, in §11.14</span>
+   <li><a href="#dom-permissionname-microphone">"microphone"</a><span>, in §11.6</span>
+   <li><a href="#dom-permissionname-midi">"midi"</a><span>, in §11.4</span>
+   <li><a href="#dictdef-midipermissiondescriptor">MidiPermissionDescriptor</a><span>, in §11.4</span>
    <li><a href="#dom-permissiondescriptor-name">name</a><span>, in §4</span>
    <li><a href="#new-information-about-the-users-intent">New information about the user’s intent</a><span>, in §3</span>
-   <li><a href="#dom-permissionname-nfc">"nfc"</a><span>, in §10.16</span>
-   <li><a href="#dom-permissionname-notifications">"notifications"</a><span>, in §10.2</span>
-   <li><a href="#dom-permissionstatus-onchange">onchange</a><span>, in §6</span>
-   <li><a href="#dom-permissionsetparameters-onerealm">oneRealm</a><span>, in §11</span>
-   <li><a href="#dom-cameradevicepermissiondescriptor-pantiltzoom">panTiltZoom</a><span>, in §10.6</span>
+   <li><a href="#dom-permissionname-nfc">"nfc"</a><span>, in §11.16</span>
+   <li><a href="#dom-permissionname-notifications">"notifications"</a><span>, in §11.2</span>
+   <li><a href="#dom-permissionstatus-onchange">onchange</a><span>, in §7</span>
+   <li><a href="#dom-permissionsetparameters-onerealm">oneRealm</a><span>, in §12</span>
+   <li><a href="#dom-cameradevicepermissiondescriptor-pantiltzoom">panTiltZoom</a><span>, in §11.6</span>
    <li><a href="#dictdef-permissiondescriptor">PermissionDescriptor</a><span>, in §4</span>
-   <li><a href="#permission-descriptor-type">permission descriptor type</a><span>, in §10</span>
-   <li><a href="#enumdef-permissionname">PermissionName</a><span>, in §10</span>
-   <li><a href="#permission-query-algorithm">permission query algorithm</a><span>, in §10</span>
-   <li><a href="#permission-result-type">permission result type</a><span>, in §10</span>
-   <li><a href="#permission-revocation-algorithm">permission revocation algorithm</a><span>, in §10</span>
-   <li><a href="#permissions">Permissions</a><span>, in §8</span>
+   <li><a href="#permission-descriptor-type">permission descriptor type</a><span>, in §11</span>
+   <li><a href="#enumdef-permissionname">PermissionName</a><span>, in §11</span>
+   <li><a href="#permission-query-algorithm">permission query algorithm</a><span>, in §11</span>
+   <li><a href="#permission-result-type">permission result type</a><span>, in §11</span>
+   <li><a href="#permission-revocation-algorithm">permission revocation algorithm</a><span>, in §11</span>
+   <li><a href="#permissions">Permissions</a><span>, in §9</span>
    <li>
     permissions
     <ul>
-     <li><a href="#dom-navigator-permissions">attribute for Navigator</a><span>, in §7</span>
-     <li><a href="#dom-workernavigator-permissions">attribute for WorkerNavigator</a><span>, in §7</span>
+     <li><a href="#dom-navigator-permissions">attribute for Navigator</a><span>, in §8</span>
+     <li><a href="#dom-workernavigator-permissions">attribute for WorkerNavigator</a><span>, in §8</span>
     </ul>
-   <li><a href="#dictdef-permissionsetparameters">PermissionSetParameters</a><span>, in §11</span>
+   <li><a href="#dictdef-permissionsetparameters">PermissionSetParameters</a><span>, in §12</span>
    <li><a href="#permission-state">permission state</a><span>, in §5.1</span>
    <li><a href="#enumdef-permissionstate">PermissionState</a><span>, in §6</span>
-   <li><a href="#permission-state-constraints">permission state constraints</a><span>, in §10</span>
-   <li><a href="#permissionstatus">PermissionStatus</a><span>, in §6</span>
-   <li><a href="#permission-task-source">permission task source</a><span>, in §6</span>
-   <li><a href="#dom-permissionname-persistent-storage">"persistent-storage"</a><span>, in §10.10</span>
+   <li><a href="#permission-state-constraints">permission state constraints</a><span>, in §11</span>
+   <li><a href="#permissionstatus">PermissionStatus</a><span>, in §7</span>
+   <li><a href="#permission-task-source">permission task source</a><span>, in §7</span>
+   <li><a href="#dom-permissionname-persistent-storage">"persistent-storage"</a><span>, in §11.10</span>
    <li><a href="#powerful-feature">Powerful feature</a><span>, in §3</span>
    <li><a href="#dom-permissionstate-prompt">"prompt"</a><span>, in §6</span>
    <li><a href="#prompt-the-user-to-choose">prompting the user to choose</a><span>, in §5.2</span>
    <li><a href="#prompt-the-user-to-choose">prompt the user to choose</a><span>, in §5.2</span>
-   <li><a href="#dom-permissionname-push">"push"</a><span>, in §10.3</span>
-   <li><a href="#dictdef-pushpermissiondescriptor">PushPermissionDescriptor</a><span>, in §10.3</span>
-   <li><a href="#dom-permissionstatus-query-slot">[[query]]</a><span>, in §6</span>
-   <li><a href="#query-a-permission">query a permission</a><span>, in §8.1</span>
-   <li><a href="#dom-permissions-query">query(permissionDesc)</a><span>, in §8.1</span>
+   <li><a href="#dom-permissionname-push">"push"</a><span>, in §11.3</span>
+   <li><a href="#dictdef-pushpermissiondescriptor">PushPermissionDescriptor</a><span>, in §11.3</span>
+   <li><a href="#dom-permissionstatus-query-slot">[[query]]</a><span>, in §7</span>
+   <li><a href="#query-a-permission">query a permission</a><span>, in §9.1</span>
+   <li><a href="#dom-permissions-query">query(permissionDesc)</a><span>, in §9.1</span>
    <li><a href="#request-permission-to-use">requesting permission to use</a><span>, in §5.2</span>
    <li><a href="#request-permission-to-use">request permission to use</a><span>, in §5.2</span>
-   <li><a href="#dom-permissionname-screen-wake-lock">"screen-wake-lock"</a><span>, in §10.5</span>
-   <li><a href="#set-permission">Set Permission</a><span>, in §11.1</span>
-   <li><a href="#dom-permissionname-speaker-selection">"speaker-selection"</a><span>, in §10.6</span>
+   <li><a href="#dom-permissionname-screen-wake-lock">"screen-wake-lock"</a><span>, in §11.5</span>
+   <li><a href="#set-permission">Set Permission</a><span>, in §12.1</span>
+   <li><a href="#dom-permissionname-speaker-selection">"speaker-selection"</a><span>, in §11.6</span>
    <li>
     state
     <ul>
-     <li><a href="#dom-permissionstatus-state">attribute for PermissionStatus</a><span>, in §6</span>
+     <li><a href="#dom-permissionstatus-state">attribute for PermissionStatus</a><span>, in §7</span>
      <li><a href="#permission-state">definition of</a><span>, in §5.1</span>
-     <li><a href="#dom-permissionsetparameters-state">dict-member for PermissionSetParameters</a><span>, in §11</span>
+     <li><a href="#dom-permissionsetparameters-state">dict-member for PermissionSetParameters</a><span>, in §12</span>
     </ul>
-   <li><a href="#permissiondescriptor-stronger-than">stronger than</a><span>, in §10</span>
-   <li><a href="#dom-midipermissiondescriptor-sysex">sysex</a><span>, in §10.4</span>
-   <li><a href="#dom-pushpermissiondescriptor-uservisibleonly">userVisibleOnly</a><span>, in §10.3</span>
+   <li><a href="#permissiondescriptor-stronger-than">stronger than</a><span>, in §11</span>
+   <li><a href="#dom-midipermissiondescriptor-sysex">sysex</a><span>, in §11.4</span>
+   <li><a href="#dom-pushpermissiondescriptor-uservisibleonly">userVisibleOnly</a><span>, in §11.3</span>
   </ul>
   <aside class="dfn-panel" data-for="term-for-dfn-installed-web-application">
    <a href="https://www.w3.org/TR/appmanifest/#dfn-installed-web-application">https://www.w3.org/TR/appmanifest/#dfn-installed-web-application</a><b>Referenced in:</b>
@@ -1504,15 +1508,13 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <aside class="dfn-panel" data-for="term-for-eventtarget">
    <a href="https://dom.spec.whatwg.org/#eventtarget">https://dom.spec.whatwg.org/#eventtarget</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-eventtarget">6. 
-    Status of a permission </a>
+    <li><a href="#ref-for-eventtarget">7. PermissionStatus interface</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-concept-event-fire">
    <a href="https://dom.spec.whatwg.org/#concept-event-fire">https://dom.spec.whatwg.org/#concept-event-fire</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-concept-event-fire">6. 
-    Status of a permission </a>
+    <li><a href="#ref-for-concept-event-fire">7. PermissionStatus interface</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-current-realm">
@@ -1532,14 +1534,14 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <aside class="dfn-panel" data-for="term-for-dfn-device-permission-revocation-algorithm">
    <a href="https://www.w3.org/TR/mediacapture-streams/#dfn-device-permission-revocation-algorithm">https://www.w3.org/TR/mediacapture-streams/#dfn-device-permission-revocation-algorithm</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-device-permission-revocation-algorithm">10.6. 
+    <li><a href="#ref-for-dfn-device-permission-revocation-algorithm">11.6. 
       Media Devices </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dom-mediadeviceinfo-deviceid">
    <a href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadeviceinfo-deviceid">https://www.w3.org/TR/mediacapture-streams/#dom-mediadeviceinfo-deviceid</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-mediadeviceinfo-deviceid">10.6. 
+    <li><a href="#ref-for-dom-mediadeviceinfo-deviceid">11.6. 
       Media Devices </a>
    </ul>
   </aside>
@@ -1552,28 +1554,27 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <aside class="dfn-panel" data-for="term-for-eventhandler">
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-eventhandler">6. 
-    Status of a permission </a>
+    <li><a href="#ref-for-eventhandler">7. PermissionStatus interface</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-navigator">
    <a href="https://html.spec.whatwg.org/multipage/system-state.html#navigator">https://html.spec.whatwg.org/multipage/system-state.html#navigator</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-navigator">7. 
+    <li><a href="#ref-for-navigator">8. 
     Extensions to the Navigator and WorkerNavigator interfaces </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-workernavigator">
    <a href="https://html.spec.whatwg.org/multipage/workers.html#workernavigator">https://html.spec.whatwg.org/multipage/workers.html#workernavigator</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-workernavigator">7. 
+    <li><a href="#ref-for-workernavigator">8. 
     Extensions to the Navigator and WorkerNavigator interfaces </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-active-document">
    <a href="https://html.spec.whatwg.org/multipage/browsers.html#active-document">https://html.spec.whatwg.org/multipage/browsers.html#active-document</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-active-document">11.1. 
+    <li><a href="#ref-for-active-document">12.1. 
       Set Permission </a>
    </ul>
   </aside>
@@ -1592,7 +1593,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <aside class="dfn-panel" data-for="term-for-window-bc">
    <a href="https://html.spec.whatwg.org/multipage/window-object.html#window-bc">https://html.spec.whatwg.org/multipage/window-object.html#window-bc</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-window-bc">11.1. 
+    <li><a href="#ref-for-window-bc">12.1. 
       Set Permission </a>
    </ul>
   </aside>
@@ -1607,28 +1608,26 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <ul>
     <li><a href="#ref-for-environment-settings-object">3. Definitions</a>
     <li><a href="#ref-for-environment-settings-object①">5.1. Reading the current permission state</a> <a href="#ref-for-environment-settings-object②">(2)</a>
-    <li><a href="#ref-for-environment-settings-object③">11.1. 
+    <li><a href="#ref-for-environment-settings-object③">12.1. 
       Set Permission </a> <a href="#ref-for-environment-settings-object④">(2)</a> <a href="#ref-for-environment-settings-object⑤">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-event-handlers">
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handlers">https://html.spec.whatwg.org/multipage/webappapis.html#event-handlers</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-event-handlers">6. 
-    Status of a permission </a>
+    <li><a href="#ref-for-event-handlers">7. PermissionStatus interface</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-event-handler-event-type">
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handler-event-type">https://html.spec.whatwg.org/multipage/webappapis.html#event-handler-event-type</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-event-handler-event-type">6. 
-    Status of a permission </a>
+    <li><a href="#ref-for-event-handler-event-type">7. PermissionStatus interface</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-concept-settings-object-global">
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-global">https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-global</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-concept-settings-object-global">11.1. 
+    <li><a href="#ref-for-concept-settings-object-global">12.1. 
       Set Permission </a>
    </ul>
   </aside>
@@ -1636,16 +1635,16 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#non-secure-context">https://html.spec.whatwg.org/multipage/webappapis.html#non-secure-context</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-non-secure-context">5.1. Reading the current permission state</a>
-    <li><a href="#ref-for-non-secure-context①">10. 
+    <li><a href="#ref-for-non-secure-context①">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-non-secure-context②">11.1. 
+    <li><a href="#ref-for-non-secure-context②">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-concept-settings-object-origin">
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-concept-settings-object-origin">11.1. 
+    <li><a href="#ref-for-concept-settings-object-origin">12.1. 
       Set Permission </a> <a href="#ref-for-concept-settings-object-origin①">(2)</a>
    </ul>
   </aside>
@@ -1653,16 +1652,15 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-queue-a-task">5.3. Reacting to users revoking permission</a>
-    <li><a href="#ref-for-queue-a-task①">6. 
-    Status of a permission </a>
-    <li><a href="#ref-for-queue-a-task②">11.1. 
+    <li><a href="#ref-for-queue-a-task①">7. PermissionStatus interface</a>
+    <li><a href="#ref-for-queue-a-task②">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-relevant-settings-object">
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#relevant-settings-object">https://html.spec.whatwg.org/multipage/webappapis.html#relevant-settings-object</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-relevant-settings-object">11.1. 
+    <li><a href="#ref-for-relevant-settings-object">12.1. 
       Set Permission </a>
    </ul>
   </aside>
@@ -1676,14 +1674,14 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <a href="https://html.spec.whatwg.org/multipage/origin.html#same-origin">https://html.spec.whatwg.org/multipage/origin.html#same-origin</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-same-origin">5.2. Requesting more permission</a> <a href="#ref-for-same-origin①">(2)</a>
-    <li><a href="#ref-for-same-origin②">11.1. 
+    <li><a href="#ref-for-same-origin②">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-secure-context">
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#secure-context">https://html.spec.whatwg.org/multipage/webappapis.html#secure-context</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-secure-context">10. 
+    <li><a href="#ref-for-secure-context">11. 
     Permission Registry </a>
    </ul>
   </aside>
@@ -1696,21 +1694,21 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <aside class="dfn-panel" data-for="term-for-concept-task">
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-task">https://html.spec.whatwg.org/multipage/webappapis.html#concept-task</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-concept-task">11.1. 
+    <li><a href="#ref-for-concept-task">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-list-append">
    <a href="https://infra.spec.whatwg.org/#list-append">https://infra.spec.whatwg.org/#list-append</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-list-append">11.1. 
+    <li><a href="#ref-for-list-append">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-list">
    <a href="https://infra.spec.whatwg.org/#list">https://infra.spec.whatwg.org/#list</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-list">11.1. 
+    <li><a href="#ref-for-list">12.1. 
       Set Permission </a> <a href="#ref-for-list①">(2)</a> <a href="#ref-for-list②">(3)</a>
    </ul>
   </aside>
@@ -1718,9 +1716,10 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <a href="https://infra.spec.whatwg.org/#user-agent">https://infra.spec.whatwg.org/#user-agent</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-user-agent">6. 
-    Status of a permission </a> <a href="#ref-for-user-agent①">(2)</a> <a href="#ref-for-user-agent②">(3)</a>
-    <li><a href="#ref-for-user-agent③">8.1. query() method</a>
-    <li><a href="#ref-for-user-agent④">11.1. 
+    Status of a permission </a> <a href="#ref-for-user-agent①">(2)</a>
+    <li><a href="#ref-for-user-agent②">7. PermissionStatus interface</a>
+    <li><a href="#ref-for-user-agent③">9.1. query() method</a>
+    <li><a href="#ref-for-user-agent④">12.1. 
       Set Permission </a>
    </ul>
   </aside>
@@ -1733,34 +1732,34 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <aside class="dfn-panel" data-for="term-for-boolean-permission-request-algorithm">
    <a href="https://wicg.github.io/permissions-request/#boolean-permission-request-algorithm">https://wicg.github.io/permissions-request/#boolean-permission-request-algorithm</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-boolean-permission-request-algorithm">10.6. 
+    <li><a href="#ref-for-boolean-permission-request-algorithm">11.6. 
       Media Devices </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-permission-request-algorithm">
    <a href="https://wicg.github.io/permissions-request/#permission-request-algorithm">https://wicg.github.io/permissions-request/#permission-request-algorithm</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-permission-request-algorithm">10.6. 
+    <li><a href="#ref-for-permission-request-algorithm">11.6. 
       Media Devices </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-generic-sensor-permission-revocation-algorithm">
    <a href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm">https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-generic-sensor-permission-revocation-algorithm">10.11. 
+    <li><a href="#ref-for-generic-sensor-permission-revocation-algorithm">11.11. 
       Ambient Light Sensor </a>
-    <li><a href="#ref-for-generic-sensor-permission-revocation-algorithm①">10.12. 
+    <li><a href="#ref-for-generic-sensor-permission-revocation-algorithm①">11.12. 
       Accelerometer </a>
-    <li><a href="#ref-for-generic-sensor-permission-revocation-algorithm②">10.13. 
+    <li><a href="#ref-for-generic-sensor-permission-revocation-algorithm②">11.13. 
       Gyroscope </a>
-    <li><a href="#ref-for-generic-sensor-permission-revocation-algorithm③">10.14. 
+    <li><a href="#ref-for-generic-sensor-permission-revocation-algorithm③">11.14. 
       Magnetometer </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-bucket-mode">
    <a href="https://storage.spec.whatwg.org/#bucket-mode">https://storage.spec.whatwg.org/#bucket-mode</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-bucket-mode">10.10. 
+    <li><a href="#ref-for-bucket-mode">11.10. 
       Persistent Storage </a>
    </ul>
   </aside>
@@ -1781,141 +1780,140 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <aside class="dfn-panel" data-for="term-for-dfn-current-browsing-context">
    <a href="https://w3c.github.io/webdriver/#dfn-current-browsing-context">https://w3c.github.io/webdriver/#dfn-current-browsing-context</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-current-browsing-context">11.1. 
+    <li><a href="#ref-for-dfn-current-browsing-context">12.1. 
       Set Permission </a> <a href="#ref-for-dfn-current-browsing-context①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-extension-commands">
    <a href="https://w3c.github.io/webdriver/#dfn-extension-commands">https://w3c.github.io/webdriver/#dfn-extension-commands</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-extension-commands">11. 
+    <li><a href="#ref-for-dfn-extension-commands">12. 
     Automation </a>
-    <li><a href="#ref-for-dfn-extension-commands①">11.1. 
+    <li><a href="#ref-for-dfn-extension-commands①">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-extension-command-uri-template">
    <a href="https://w3c.github.io/webdriver/#dfn-extension-command-uri-template">https://w3c.github.io/webdriver/#dfn-extension-command-uri-template</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-extension-command-uri-template">11.1. 
+    <li><a href="#ref-for-dfn-extension-command-uri-template">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-invalid-argument">
    <a href="https://w3c.github.io/webdriver/#dfn-invalid-argument">https://w3c.github.io/webdriver/#dfn-invalid-argument</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-invalid-argument">11.1. 
+    <li><a href="#ref-for-dfn-invalid-argument">12.1. 
       Set Permission </a> <a href="#ref-for-dfn-invalid-argument①">(2)</a> <a href="#ref-for-dfn-invalid-argument②">(3)</a> <a href="#ref-for-dfn-invalid-argument③">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-local-end">
    <a href="https://w3c.github.io/webdriver/#dfn-local-end">https://w3c.github.io/webdriver/#dfn-local-end</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-local-end">11.1. 
+    <li><a href="#ref-for-dfn-local-end">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-remote-end-steps">
    <a href="https://w3c.github.io/webdriver/#dfn-remote-end-steps">https://w3c.github.io/webdriver/#dfn-remote-end-steps</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-remote-end-steps">11.1. 
+    <li><a href="#ref-for-dfn-remote-end-steps">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-session">
    <a href="https://w3c.github.io/webdriver/#dfn-session">https://w3c.github.io/webdriver/#dfn-session</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-session">11.1. 
+    <li><a href="#ref-for-dfn-session">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-success">
    <a href="https://w3c.github.io/webdriver/#dfn-success">https://w3c.github.io/webdriver/#dfn-success</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-success">11.1. 
+    <li><a href="#ref-for-dfn-success">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-error">
    <a href="https://w3c.github.io/webdriver/#dfn-error">https://w3c.github.io/webdriver/#dfn-error</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-error">11.1. 
+    <li><a href="#ref-for-dfn-error">12.1. 
       Set Permission </a> <a href="#ref-for-dfn-error①">(2)</a> <a href="#ref-for-dfn-error②">(3)</a> <a href="#ref-for-dfn-error③">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-error-code">
    <a href="https://w3c.github.io/webdriver/#dfn-error-code">https://w3c.github.io/webdriver/#dfn-error-code</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-error-code">11.1. 
+    <li><a href="#ref-for-dfn-error-code">12.1. 
       Set Permission </a> <a href="#ref-for-dfn-error-code①">(2)</a> <a href="#ref-for-dfn-error-code②">(3)</a> <a href="#ref-for-dfn-error-code③">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-idl-DOMString">
    <a href="https://heycam.github.io/webidl/#idl-DOMString">https://heycam.github.io/webidl/#idl-DOMString</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-idl-DOMString">10.6. 
+    <li><a href="#ref-for-idl-DOMString">11.6. 
       Media Devices </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-Exposed">
    <a href="https://heycam.github.io/webidl/#Exposed">https://heycam.github.io/webidl/#Exposed</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-Exposed">6. 
-    Status of a permission </a>
-    <li><a href="#ref-for-Exposed①">7. 
+    <li><a href="#ref-for-Exposed">7. PermissionStatus interface</a>
+    <li><a href="#ref-for-Exposed①">8. 
     Extensions to the Navigator and WorkerNavigator interfaces </a> <a href="#ref-for-Exposed②">(2)</a>
-    <li><a href="#ref-for-Exposed③">8. 
+    <li><a href="#ref-for-Exposed③">9. 
     Permissions interface </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-idl-promise">
    <a href="https://heycam.github.io/webidl/#idl-promise">https://heycam.github.io/webidl/#idl-promise</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-idl-promise">8. 
+    <li><a href="#ref-for-idl-promise">9. 
     Permissions interface </a>
-    <li><a href="#ref-for-idl-promise①">8.1. query() method</a> <a href="#ref-for-idl-promise②">(2)</a>
-    <li><a href="#ref-for-idl-promise③">12. 
+    <li><a href="#ref-for-idl-promise①">9.1. query() method</a> <a href="#ref-for-idl-promise②">(2)</a>
+    <li><a href="#ref-for-idl-promise③">13. 
     Examples </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-SameObject">
    <a href="https://heycam.github.io/webidl/#SameObject">https://heycam.github.io/webidl/#SameObject</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-SameObject">7. 
+    <li><a href="#ref-for-SameObject">8. 
     Extensions to the Navigator and WorkerNavigator interfaces </a> <a href="#ref-for-SameObject①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-a-promise-rejected-with">
    <a href="https://heycam.github.io/webidl/#a-promise-rejected-with">https://heycam.github.io/webidl/#a-promise-rejected-with</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-a-promise-rejected-with">8.1. query() method</a> <a href="#ref-for-a-promise-rejected-with①">(2)</a>
+    <li><a href="#ref-for-a-promise-rejected-with">9.1. query() method</a> <a href="#ref-for-a-promise-rejected-with①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-idl-boolean">
    <a href="https://heycam.github.io/webidl/#idl-boolean">https://heycam.github.io/webidl/#idl-boolean</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-idl-boolean">10.3. 
+    <li><a href="#ref-for-idl-boolean">11.3. 
       Push </a>
-    <li><a href="#ref-for-idl-boolean①">10.4. 
+    <li><a href="#ref-for-idl-boolean①">11.4. 
       Midi </a>
-    <li><a href="#ref-for-idl-boolean②">10.6. 
+    <li><a href="#ref-for-idl-boolean②">11.6. 
       Media Devices </a>
-    <li><a href="#ref-for-idl-boolean③">11. 
+    <li><a href="#ref-for-idl-boolean③">12. 
     Automation </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-convert-ecmascript-to-idl-value">
    <a href="https://heycam.github.io/webidl/#dfn-convert-ecmascript-to-idl-value">https://heycam.github.io/webidl/#dfn-convert-ecmascript-to-idl-value</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dfn-convert-ecmascript-to-idl-value">8.1. query() method</a> <a href="#ref-for-dfn-convert-ecmascript-to-idl-value①">(2)</a>
-    <li><a href="#ref-for-dfn-convert-ecmascript-to-idl-value②">11.1. 
+    <li><a href="#ref-for-dfn-convert-ecmascript-to-idl-value">9.1. query() method</a> <a href="#ref-for-dfn-convert-ecmascript-to-idl-value①">(2)</a>
+    <li><a href="#ref-for-dfn-convert-ecmascript-to-idl-value②">12.1. 
       Set Permission </a> <a href="#ref-for-dfn-convert-ecmascript-to-idl-value③">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-idl-object">
    <a href="https://heycam.github.io/webidl/#idl-object">https://heycam.github.io/webidl/#idl-object</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-idl-object">8. 
+    <li><a href="#ref-for-idl-object">9. 
     Permissions interface </a>
    </ul>
   </aside>
@@ -2197,9 +2195,9 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <li><a href="#ref-for-powerful-feature④">5.1. Reading the current permission state</a>
     <li><a href="#ref-for-powerful-feature⑤">5.2. Requesting more permission</a>
     <li><a href="#ref-for-powerful-feature⑥">5.3. Reacting to users revoking permission</a>
-    <li><a href="#ref-for-powerful-feature⑦">10. 
+    <li><a href="#ref-for-powerful-feature⑦">11. 
     Permission Registry </a> <a href="#ref-for-powerful-feature⑧">(2)</a> <a href="#ref-for-powerful-feature⑨">(3)</a> <a href="#ref-for-powerful-feature①⓪">(4)</a>
-    <li><a href="#ref-for-powerful-feature①①">11.1. 
+    <li><a href="#ref-for-powerful-feature①①">12.1. 
       Set Permission </a>
    </ul>
   </aside>
@@ -2210,22 +2208,21 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     Descriptions of permission requests </a>
     <li><a href="#ref-for-dictdef-permissiondescriptor①">5.1. Reading the current permission state</a>
     <li><a href="#ref-for-dictdef-permissiondescriptor②">5.2. Requesting more permission</a> <a href="#ref-for-dictdef-permissiondescriptor③">(2)</a>
-    <li><a href="#ref-for-dictdef-permissiondescriptor④">6. 
-    Status of a permission </a>
-    <li><a href="#ref-for-dictdef-permissiondescriptor⑤">8.1. query() method</a>
-    <li><a href="#ref-for-dictdef-permissiondescriptor⑥">9. 
+    <li><a href="#ref-for-dictdef-permissiondescriptor④">7. PermissionStatus interface</a>
+    <li><a href="#ref-for-dictdef-permissiondescriptor⑤">9.1. query() method</a>
+    <li><a href="#ref-for-dictdef-permissiondescriptor⑥">10. 
     Common permission algorithms </a>
-    <li><a href="#ref-for-dictdef-permissiondescriptor⑦">10. 
+    <li><a href="#ref-for-dictdef-permissiondescriptor⑦">11. 
     Permission Registry </a> <a href="#ref-for-dictdef-permissiondescriptor⑧">(2)</a>
-    <li><a href="#ref-for-dictdef-permissiondescriptor⑨">10.3. 
+    <li><a href="#ref-for-dictdef-permissiondescriptor⑨">11.3. 
       Push </a>
-    <li><a href="#ref-for-dictdef-permissiondescriptor①⓪">10.4. 
+    <li><a href="#ref-for-dictdef-permissiondescriptor①⓪">11.4. 
       Midi </a>
-    <li><a href="#ref-for-dictdef-permissiondescriptor①①">10.6. 
+    <li><a href="#ref-for-dictdef-permissiondescriptor①①">11.6. 
       Media Devices </a>
-    <li><a href="#ref-for-dictdef-permissiondescriptor①②">11. 
+    <li><a href="#ref-for-dictdef-permissiondescriptor①②">12. 
     Automation </a>
-    <li><a href="#ref-for-dictdef-permissiondescriptor①③">11.1. 
+    <li><a href="#ref-for-dictdef-permissiondescriptor①③">12.1. 
       Set Permission </a>
    </ul>
   </aside>
@@ -2235,12 +2232,11 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <li><a href="#ref-for-dom-permissiondescriptor-name">5. Permission states</a>
     <li><a href="#ref-for-dom-permissiondescriptor-name①">5.1. Reading the current permission state</a> <a href="#ref-for-dom-permissiondescriptor-name②">(2)</a> <a href="#ref-for-dom-permissiondescriptor-name③">(3)</a> <a href="#ref-for-dom-permissiondescriptor-name④">(4)</a> <a href="#ref-for-dom-permissiondescriptor-name⑤">(5)</a>
     <li><a href="#ref-for-dom-permissiondescriptor-name⑥">5.2. Requesting more permission</a> <a href="#ref-for-dom-permissiondescriptor-name⑦">(2)</a>
-    <li><a href="#ref-for-dom-permissiondescriptor-name⑧">6. 
-    Status of a permission </a> <a href="#ref-for-dom-permissiondescriptor-name⑨">(2)</a>
-    <li><a href="#ref-for-dom-permissiondescriptor-name①⓪">8.1. query() method</a> <a href="#ref-for-dom-permissiondescriptor-name①①">(2)</a>
-    <li><a href="#ref-for-dom-permissiondescriptor-name①②">10.6. 
+    <li><a href="#ref-for-dom-permissiondescriptor-name⑧">7. PermissionStatus interface</a> <a href="#ref-for-dom-permissiondescriptor-name⑨">(2)</a>
+    <li><a href="#ref-for-dom-permissiondescriptor-name①⓪">9.1. query() method</a> <a href="#ref-for-dom-permissiondescriptor-name①①">(2)</a>
+    <li><a href="#ref-for-dom-permissiondescriptor-name①②">11.6. 
       Media Devices </a>
-    <li><a href="#ref-for-dom-permissiondescriptor-name①③">11.1. 
+    <li><a href="#ref-for-dom-permissiondescriptor-name①③">12.1. 
       Set Permission </a> <a href="#ref-for-dom-permissiondescriptor-name①④">(2)</a>
    </ul>
   </aside>
@@ -2258,24 +2254,24 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     Security and privacy considerations </a> <a href="#ref-for-permission-state①">(2)</a>
     <li><a href="#ref-for-permission-state②">5.1. Reading the current permission state</a> <a href="#ref-for-permission-state③">(2)</a>
     <li><a href="#ref-for-permission-state④">5.2. Requesting more permission</a> <a href="#ref-for-permission-state⑤">(2)</a> <a href="#ref-for-permission-state⑥">(3)</a>
-    <li><a href="#ref-for-permission-state⑦">9. 
+    <li><a href="#ref-for-permission-state⑦">10. 
     Common permission algorithms </a>
-    <li><a href="#ref-for-permission-state⑧">10. 
+    <li><a href="#ref-for-permission-state⑧">11. 
     Permission Registry </a> <a href="#ref-for-permission-state⑨">(2)</a> <a href="#ref-for-permission-state①⓪">(3)</a> <a href="#ref-for-permission-state①①">(4)</a> <a href="#ref-for-permission-state①②">(5)</a> <a href="#ref-for-permission-state①③">(6)</a>
-    <li><a href="#ref-for-permission-state①④">10.6. 
+    <li><a href="#ref-for-permission-state①④">11.6. 
       Media Devices </a> <a href="#ref-for-permission-state①⑤">(2)</a>
-    <li><a href="#ref-for-permission-state①⑥">10.15. 
+    <li><a href="#ref-for-permission-state①⑥">11.15. 
       Display Capture </a> <a href="#ref-for-permission-state①⑦">(2)</a>
-    <li><a href="#ref-for-permission-state①⑧">11.1. 
+    <li><a href="#ref-for-permission-state①⑧">12.1. 
       Set Permission </a> <a href="#ref-for-permission-state①⑨">(2)</a> <a href="#ref-for-permission-state②⓪">(3)</a> <a href="#ref-for-permission-state②①">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="extra-permission-data">
    <b><a href="#extra-permission-data">#extra-permission-data</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-extra-permission-data">10. 
+    <li><a href="#ref-for-extra-permission-data">11. 
     Permission Registry </a> <a href="#ref-for-extra-permission-data①">(2)</a> <a href="#ref-for-extra-permission-data②">(3)</a>
-    <li><a href="#ref-for-extra-permission-data③">10.6. 
+    <li><a href="#ref-for-extra-permission-data③">11.6. 
       Media Devices </a>
    </ul>
   </aside>
@@ -2295,9 +2291,8 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <b><a href="#enumdef-permissionstate">#enumdef-permissionstate</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-enumdef-permissionstate">5.1. Reading the current permission state</a>
-    <li><a href="#ref-for-enumdef-permissionstate①">6. 
-    Status of a permission </a>
-    <li><a href="#ref-for-enumdef-permissionstate②">11. 
+    <li><a href="#ref-for-enumdef-permissionstate①">7. PermissionStatus interface</a>
+    <li><a href="#ref-for-enumdef-permissionstate②">12. 
     Automation </a>
    </ul>
   </aside>
@@ -2310,11 +2305,11 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <li><a href="#ref-for-dom-permissionstate-granted③">5.2. Requesting more permission</a> <a href="#ref-for-dom-permissionstate-granted④">(2)</a> <a href="#ref-for-dom-permissionstate-granted⑤">(3)</a>
     <li><a href="#ref-for-dom-permissionstate-granted⑥">6. 
     Status of a permission </a>
-    <li><a href="#ref-for-dom-permissionstate-granted⑦">10. 
+    <li><a href="#ref-for-dom-permissionstate-granted⑦">11. 
     Permission Registry </a> <a href="#ref-for-dom-permissionstate-granted⑧">(2)</a>
-    <li><a href="#ref-for-dom-permissionstate-granted⑨">10.6. 
+    <li><a href="#ref-for-dom-permissionstate-granted⑨">11.6. 
       Media Devices </a>
-    <li><a href="#ref-for-dom-permissionstate-granted①⓪">10.15. 
+    <li><a href="#ref-for-dom-permissionstate-granted①⓪">11.15. 
       Display Capture </a>
    </ul>
   </aside>
@@ -2325,13 +2320,13 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <li><a href="#ref-for-dom-permissionstate-denied④">5.2. Requesting more permission</a> <a href="#ref-for-dom-permissionstate-denied⑤">(2)</a> <a href="#ref-for-dom-permissionstate-denied⑥">(3)</a> <a href="#ref-for-dom-permissionstate-denied⑦">(4)</a> <a href="#ref-for-dom-permissionstate-denied⑧">(5)</a> <a href="#ref-for-dom-permissionstate-denied⑨">(6)</a>
     <li><a href="#ref-for-dom-permissionstate-denied①⓪">6. 
     Status of a permission </a>
-    <li><a href="#ref-for-dom-permissionstate-denied①①">10. 
+    <li><a href="#ref-for-dom-permissionstate-denied①①">11. 
     Permission Registry </a> <a href="#ref-for-dom-permissionstate-denied①②">(2)</a>
-    <li><a href="#ref-for-dom-permissionstate-denied①③">10.6. 
+    <li><a href="#ref-for-dom-permissionstate-denied①③">11.6. 
       Media Devices </a>
-    <li><a href="#ref-for-dom-permissionstate-denied①④">10.15. 
+    <li><a href="#ref-for-dom-permissionstate-denied①④">11.15. 
       Display Capture </a>
-    <li><a href="#ref-for-dom-permissionstate-denied①⑤">11.1. 
+    <li><a href="#ref-for-dom-permissionstate-denied①⑤">12.1. 
       Set Permission </a>
    </ul>
   </aside>
@@ -2342,66 +2337,62 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <li><a href="#ref-for-dom-permissionstate-prompt②">5.2. Requesting more permission</a>
     <li><a href="#ref-for-dom-permissionstate-prompt③">6. 
     Status of a permission </a>
-    <li><a href="#ref-for-dom-permissionstate-prompt④">10.6. 
+    <li><a href="#ref-for-dom-permissionstate-prompt④">11.6. 
       Media Devices </a>
-    <li><a href="#ref-for-dom-permissionstate-prompt⑤">10.15. 
+    <li><a href="#ref-for-dom-permissionstate-prompt⑤">11.15. 
       Display Capture </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="permissionstatus">
    <b><a href="#permissionstatus">#permissionstatus</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-permissionstatus">6. 
-    Status of a permission </a> <a href="#ref-for-permissionstatus①">(2)</a>
-    <li><a href="#ref-for-permissionstatus②">8. 
+    <li><a href="#ref-for-permissionstatus">7. PermissionStatus interface</a> <a href="#ref-for-permissionstatus①">(2)</a>
+    <li><a href="#ref-for-permissionstatus②">9. 
     Permissions interface </a>
-    <li><a href="#ref-for-permissionstatus③">9. 
+    <li><a href="#ref-for-permissionstatus③">10. 
     Common permission algorithms </a>
-    <li><a href="#ref-for-permissionstatus④">10. 
+    <li><a href="#ref-for-permissionstatus④">11. 
     Permission Registry </a> <a href="#ref-for-permissionstatus⑤">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionstatus-query-slot">
    <b><a href="#dom-permissionstatus-query-slot">#dom-permissionstatus-query-slot</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionstatus-query-slot">6. 
-    Status of a permission </a> <a href="#ref-for-dom-permissionstatus-query-slot①">(2)</a> <a href="#ref-for-dom-permissionstatus-query-slot②">(3)</a>
-    <li><a href="#ref-for-dom-permissionstatus-query-slot③">8.1. query() method</a> <a href="#ref-for-dom-permissionstatus-query-slot④">(2)</a>
+    <li><a href="#ref-for-dom-permissionstatus-query-slot">7. PermissionStatus interface</a> <a href="#ref-for-dom-permissionstatus-query-slot①">(2)</a> <a href="#ref-for-dom-permissionstatus-query-slot②">(3)</a>
+    <li><a href="#ref-for-dom-permissionstatus-query-slot③">9.1. query() method</a> <a href="#ref-for-dom-permissionstatus-query-slot④">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="create-a-permissionstatus">
    <b><a href="#create-a-permissionstatus">#create-a-permissionstatus</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-create-a-permissionstatus">8.1. query() method</a>
+    <li><a href="#ref-for-create-a-permissionstatus">9.1. query() method</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionstatus-state">
    <b><a href="#dom-permissionstatus-state">#dom-permissionstatus-state</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionstatus-state">6. 
-    Status of a permission </a>
+    <li><a href="#ref-for-dom-permissionstatus-state">7. PermissionStatus interface</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionstatus-onchange">
    <b><a href="#dom-permissionstatus-onchange">#dom-permissionstatus-onchange</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionstatus-onchange">6. 
-    Status of a permission </a>
+    <li><a href="#ref-for-dom-permissionstatus-onchange">7. PermissionStatus interface</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="permission-task-source">
    <b><a href="#permission-task-source">#permission-task-source</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-permission-task-source">11.1. 
+    <li><a href="#ref-for-permission-task-source">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="permissions">
    <b><a href="#permissions">#permissions</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-permissions">7. 
+    <li><a href="#ref-for-permissions">8. 
     Extensions to the Navigator and WorkerNavigator interfaces </a> <a href="#ref-for-permissions①">(2)</a>
-    <li><a href="#ref-for-permissions②">10. 
+    <li><a href="#ref-for-permissions②">11. 
     Permission Registry </a>
    </ul>
   </aside>
@@ -2410,16 +2401,16 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <ul>
     <li><a href="#ref-for-dom-permissions-query">1. 
     Scope of this document </a>
-    <li><a href="#ref-for-dom-permissions-query①">8. 
+    <li><a href="#ref-for-dom-permissions-query①">9. 
     Permissions interface </a>
-    <li><a href="#ref-for-dom-permissions-query②">10. 
+    <li><a href="#ref-for-dom-permissions-query②">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="boolean-permission-query-algorithm">
    <b><a href="#boolean-permission-query-algorithm">#boolean-permission-query-algorithm</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-boolean-permission-query-algorithm">10. 
+    <li><a href="#ref-for-boolean-permission-query-algorithm">11. 
     Permission Registry </a>
    </ul>
   </aside>
@@ -2430,7 +2421,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     Descriptions of permission requests </a>
     <li><a href="#ref-for-enumdef-permissionname①">5.1. Reading the current permission state</a> <a href="#ref-for-enumdef-permissionname②">(2)</a>
     <li><a href="#ref-for-enumdef-permissionname③">5.2. Requesting more permission</a> <a href="#ref-for-enumdef-permissionname④">(2)</a>
-    <li><a href="#ref-for-enumdef-permissionname⑤">10. 
+    <li><a href="#ref-for-enumdef-permissionname⑤">11. 
     Permission Registry </a> <a href="#ref-for-enumdef-permissionname⑥">(2)</a>
    </ul>
   </aside>
@@ -2438,13 +2429,13 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <b><a href="#allowed-in-non-secure-contexts">#allowed-in-non-secure-contexts</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-allowed-in-non-secure-contexts">5.1. Reading the current permission state</a>
-    <li><a href="#ref-for-allowed-in-non-secure-contexts①">10.1. 
+    <li><a href="#ref-for-allowed-in-non-secure-contexts①">11.1. 
       Geolocation </a>
-    <li><a href="#ref-for-allowed-in-non-secure-contexts②">10.2. 
+    <li><a href="#ref-for-allowed-in-non-secure-contexts②">11.2. 
       Notifications </a>
-    <li><a href="#ref-for-allowed-in-non-secure-contexts③">10.4. 
+    <li><a href="#ref-for-allowed-in-non-secure-contexts③">11.4. 
       Midi </a>
-    <li><a href="#ref-for-allowed-in-non-secure-contexts④">11.1. 
+    <li><a href="#ref-for-allowed-in-non-secure-contexts④">12.1. 
       Set Permission </a>
    </ul>
   </aside>
@@ -2454,31 +2445,30 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <li><a href="#ref-for-permission-descriptor-type">4. 
     Descriptions of permission requests </a> <a href="#ref-for-permission-descriptor-type①">(2)</a> <a href="#ref-for-permission-descriptor-type②">(3)</a>
     <li><a href="#ref-for-permission-descriptor-type③">5. Permission states</a>
-    <li><a href="#ref-for-permission-descriptor-type④">6. 
-    Status of a permission </a>
-    <li><a href="#ref-for-permission-descriptor-type⑤">8.1. query() method</a>
-    <li><a href="#ref-for-permission-descriptor-type⑥">10. 
+    <li><a href="#ref-for-permission-descriptor-type④">7. PermissionStatus interface</a>
+    <li><a href="#ref-for-permission-descriptor-type⑤">9.1. query() method</a>
+    <li><a href="#ref-for-permission-descriptor-type⑥">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-permission-descriptor-type⑦">10.3. 
+    <li><a href="#ref-for-permission-descriptor-type⑦">11.3. 
       Push </a>
-    <li><a href="#ref-for-permission-descriptor-type⑧">10.4. 
+    <li><a href="#ref-for-permission-descriptor-type⑧">11.4. 
       Midi </a>
-    <li><a href="#ref-for-permission-descriptor-type⑨">10.6. 
+    <li><a href="#ref-for-permission-descriptor-type⑨">11.6. 
       Media Devices </a>
-    <li><a href="#ref-for-permission-descriptor-type①⓪">11.1. 
+    <li><a href="#ref-for-permission-descriptor-type①⓪">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="permissiondescriptor-stronger-than">
    <b><a href="#permissiondescriptor-stronger-than">#permissiondescriptor-stronger-than</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-permissiondescriptor-stronger-than">10. 
+    <li><a href="#ref-for-permissiondescriptor-stronger-than">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-permissiondescriptor-stronger-than①">10.3. 
+    <li><a href="#ref-for-permissiondescriptor-stronger-than①">11.3. 
       Push </a>
-    <li><a href="#ref-for-permissiondescriptor-stronger-than②">10.4. 
+    <li><a href="#ref-for-permissiondescriptor-stronger-than②">11.4. 
       Midi </a>
-    <li><a href="#ref-for-permissiondescriptor-stronger-than③">10.6. 
+    <li><a href="#ref-for-permissiondescriptor-stronger-than③">11.6. 
       Media Devices </a>
    </ul>
   </aside>
@@ -2486,7 +2476,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <b><a href="#permission-state-constraints">#permission-state-constraints</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-permission-state-constraints">5.1. Reading the current permission state</a>
-    <li><a href="#ref-for-permission-state-constraints①">10.15. 
+    <li><a href="#ref-for-permission-state-constraints①">11.15. 
       Display Capture </a>
    </ul>
   </aside>
@@ -2494,7 +2484,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <b><a href="#extra-permission-data-type">#extra-permission-data-type</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-extra-permission-data-type">5.1. Reading the current permission state</a> <a href="#ref-for-extra-permission-data-type①">(2)</a>
-    <li><a href="#ref-for-extra-permission-data-type②">10.6. 
+    <li><a href="#ref-for-extra-permission-data-type②">11.6. 
       Media Devices </a>
    </ul>
   </aside>
@@ -2507,19 +2497,17 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <aside class="dfn-panel" data-for="permission-result-type">
    <b><a href="#permission-result-type">#permission-result-type</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-permission-result-type">6. 
-    Status of a permission </a>
-    <li><a href="#ref-for-permission-result-type①">10. 
+    <li><a href="#ref-for-permission-result-type">7. PermissionStatus interface</a>
+    <li><a href="#ref-for-permission-result-type①">11. 
     Permission Registry </a> <a href="#ref-for-permission-result-type②">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="permission-query-algorithm">
    <b><a href="#permission-query-algorithm">#permission-query-algorithm</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-permission-query-algorithm">6. 
-    Status of a permission </a>
-    <li><a href="#ref-for-permission-query-algorithm①">8.1. query() method</a>
-    <li><a href="#ref-for-permission-query-algorithm②">10.6. 
+    <li><a href="#ref-for-permission-query-algorithm">7. PermissionStatus interface</a>
+    <li><a href="#ref-for-permission-query-algorithm①">9.1. query() method</a>
+    <li><a href="#ref-for-permission-query-algorithm②">11.6. 
       Media Devices </a>
    </ul>
   </aside>
@@ -2527,51 +2515,51 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <b><a href="#permission-revocation-algorithm">#permission-revocation-algorithm</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-permission-revocation-algorithm">5.3. Reacting to users revoking permission</a>
-    <li><a href="#ref-for-permission-revocation-algorithm①">10.6. 
+    <li><a href="#ref-for-permission-revocation-algorithm①">11.6. 
       Media Devices </a>
-    <li><a href="#ref-for-permission-revocation-algorithm②">10.11. 
+    <li><a href="#ref-for-permission-revocation-algorithm②">11.11. 
       Ambient Light Sensor </a>
-    <li><a href="#ref-for-permission-revocation-algorithm③">10.12. 
+    <li><a href="#ref-for-permission-revocation-algorithm③">11.12. 
       Accelerometer </a>
-    <li><a href="#ref-for-permission-revocation-algorithm④">10.13. 
+    <li><a href="#ref-for-permission-revocation-algorithm④">11.13. 
       Gyroscope </a>
-    <li><a href="#ref-for-permission-revocation-algorithm⑤">10.14. 
+    <li><a href="#ref-for-permission-revocation-algorithm⑤">11.14. 
       Magnetometer </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="boolean-feature">
    <b><a href="#boolean-feature">#boolean-feature</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-boolean-feature">10.1. 
+    <li><a href="#ref-for-boolean-feature">11.1. 
       Geolocation </a>
-    <li><a href="#ref-for-boolean-feature①">10.2. 
+    <li><a href="#ref-for-boolean-feature①">11.2. 
       Notifications </a>
-    <li><a href="#ref-for-boolean-feature②">10.5. 
+    <li><a href="#ref-for-boolean-feature②">11.5. 
       Screen wake lock </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-geolocation">
    <b><a href="#dom-permissionname-geolocation">#dom-permissionname-geolocation</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-geolocation">10. 
+    <li><a href="#ref-for-dom-permissionname-geolocation">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-geolocation①">12. 
+    <li><a href="#ref-for-dom-permissionname-geolocation①">13. 
     Examples </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-notifications">
    <b><a href="#dom-permissionname-notifications">#dom-permissionname-notifications</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-notifications">10. 
+    <li><a href="#ref-for-dom-permissionname-notifications">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-notifications①">12. 
+    <li><a href="#ref-for-dom-permissionname-notifications①">13. 
     Examples </a> <a href="#ref-for-dom-permissionname-notifications②">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-push">
    <b><a href="#dom-permissionname-push">#dom-permissionname-push</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-push">10. 
+    <li><a href="#ref-for-dom-permissionname-push">11. 
     Permission Registry </a>
    </ul>
   </aside>
@@ -2580,69 +2568,69 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <ul>
     <li><a href="#ref-for-dom-permissionname-midi">4. 
     Descriptions of permission requests </a>
-    <li><a href="#ref-for-dom-permissionname-midi①">10. 
+    <li><a href="#ref-for-dom-permissionname-midi①">11. 
     Permission Registry </a> <a href="#ref-for-dom-permissionname-midi②">(2)</a> <a href="#ref-for-dom-permissionname-midi③">(3)</a>
-    <li><a href="#ref-for-dom-permissionname-midi④">10.4. 
+    <li><a href="#ref-for-dom-permissionname-midi④">11.4. 
       Midi </a>
-    <li><a href="#ref-for-dom-permissionname-midi⑤">11.1. 
+    <li><a href="#ref-for-dom-permissionname-midi⑤">12.1. 
       Set Permission </a> <a href="#ref-for-dom-permissionname-midi⑥">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-screen-wake-lock">
    <b><a href="#dom-permissionname-screen-wake-lock">#dom-permissionname-screen-wake-lock</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-screen-wake-lock">10. 
+    <li><a href="#ref-for-dom-permissionname-screen-wake-lock">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-camera">
    <b><a href="#dom-permissionname-camera">#dom-permissionname-camera</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-camera">10. 
+    <li><a href="#ref-for-dom-permissionname-camera">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-camera①">10.6. 
+    <li><a href="#ref-for-dom-permissionname-camera①">11.6. 
       Media Devices </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-microphone">
    <b><a href="#dom-permissionname-microphone">#dom-permissionname-microphone</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-microphone">10. 
+    <li><a href="#ref-for-dom-permissionname-microphone">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-speaker-selection">
    <b><a href="#dom-permissionname-speaker-selection">#dom-permissionname-speaker-selection</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-speaker-selection">10. 
+    <li><a href="#ref-for-dom-permissionname-speaker-selection">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dictdef-devicepermissiondescriptor">
    <b><a href="#dictdef-devicepermissiondescriptor">#dictdef-devicepermissiondescriptor</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dictdef-devicepermissiondescriptor">10.6. 
+    <li><a href="#ref-for-dictdef-devicepermissiondescriptor">11.6. 
       Media Devices </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-devicepermissiondescriptor-deviceid">
    <b><a href="#dom-devicepermissiondescriptor-deviceid">#dom-devicepermissiondescriptor-deviceid</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-devicepermissiondescriptor-deviceid">10.6. 
+    <li><a href="#ref-for-dom-devicepermissiondescriptor-deviceid">11.6. 
       Media Devices </a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid①">(2)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid②">(3)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid③">(4)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid④">(5)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid⑤">(6)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid⑥">(7)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-background-fetch">
    <b><a href="#dom-permissionname-background-fetch">#dom-permissionname-background-fetch</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-background-fetch">10. 
+    <li><a href="#ref-for-dom-permissionname-background-fetch">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-background-sync">
    <b><a href="#dom-permissionname-background-sync">#dom-permissionname-background-sync</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-background-sync">10. 
+    <li><a href="#ref-for-dom-permissionname-background-sync">11. 
     Permission Registry </a>
    </ul>
   </aside>
@@ -2651,92 +2639,92 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <ul>
     <li><a href="#ref-for-dom-permissionname-bluetooth">4. 
     Descriptions of permission requests </a>
-    <li><a href="#ref-for-dom-permissionname-bluetooth①">10. 
+    <li><a href="#ref-for-dom-permissionname-bluetooth①">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-persistent-storage">
    <b><a href="#dom-permissionname-persistent-storage">#dom-permissionname-persistent-storage</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-persistent-storage">10. 
+    <li><a href="#ref-for-dom-permissionname-persistent-storage">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-ambient-light-sensor">
    <b><a href="#dom-permissionname-ambient-light-sensor">#dom-permissionname-ambient-light-sensor</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-ambient-light-sensor">10. 
+    <li><a href="#ref-for-dom-permissionname-ambient-light-sensor">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-ambient-light-sensor①">10.11. 
+    <li><a href="#ref-for-dom-permissionname-ambient-light-sensor①">11.11. 
       Ambient Light Sensor </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-accelerometer">
    <b><a href="#dom-permissionname-accelerometer">#dom-permissionname-accelerometer</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-accelerometer">10. 
+    <li><a href="#ref-for-dom-permissionname-accelerometer">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-accelerometer①">10.12. 
+    <li><a href="#ref-for-dom-permissionname-accelerometer①">11.12. 
       Accelerometer </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-gyroscope">
    <b><a href="#dom-permissionname-gyroscope">#dom-permissionname-gyroscope</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-gyroscope">10. 
+    <li><a href="#ref-for-dom-permissionname-gyroscope">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-gyroscope①">10.13. 
+    <li><a href="#ref-for-dom-permissionname-gyroscope①">11.13. 
       Gyroscope </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-magnetometer">
    <b><a href="#dom-permissionname-magnetometer">#dom-permissionname-magnetometer</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-magnetometer">10. 
+    <li><a href="#ref-for-dom-permissionname-magnetometer">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-magnetometer①">10.14. 
+    <li><a href="#ref-for-dom-permissionname-magnetometer①">11.14. 
       Magnetometer </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-display-capture">
    <b><a href="#dom-permissionname-display-capture">#dom-permissionname-display-capture</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-display-capture">10. 
+    <li><a href="#ref-for-dom-permissionname-display-capture">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-nfc">
    <b><a href="#dom-permissionname-nfc">#dom-permissionname-nfc</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-nfc">10. 
+    <li><a href="#ref-for-dom-permissionname-nfc">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dictdef-permissionsetparameters">
    <b><a href="#dictdef-permissionsetparameters">#dictdef-permissionsetparameters</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dictdef-permissionsetparameters">11.1. 
+    <li><a href="#ref-for-dictdef-permissionsetparameters">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionsetparameters-descriptor">
    <b><a href="#dom-permissionsetparameters-descriptor">#dom-permissionsetparameters-descriptor</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionsetparameters-descriptor">11.1. 
+    <li><a href="#ref-for-dom-permissionsetparameters-descriptor">12.1. 
       Set Permission </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionsetparameters-state">
    <b><a href="#dom-permissionsetparameters-state">#dom-permissionsetparameters-state</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionsetparameters-state">11.1. 
+    <li><a href="#ref-for-dom-permissionsetparameters-state">12.1. 
       Set Permission </a> <a href="#ref-for-dom-permissionsetparameters-state①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionsetparameters-onerealm">
    <b><a href="#dom-permissionsetparameters-onerealm">#dom-permissionsetparameters-onerealm</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionsetparameters-onerealm">11.1. 
+    <li><a href="#ref-for-dom-permissionsetparameters-onerealm">12.1. 
       Set Permission </a>
    </ul>
   </aside>
