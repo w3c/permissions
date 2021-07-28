@@ -5,7 +5,7 @@
   <title>Permissions</title>
   <meta content="Bikeshed version 59d067506, updated Fri Jul 23 15:43:29 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
-  <meta content="0bd65c8934110926b80524fb9b81bc1c796e4577" name="document-revision">
+  <meta content="886b8708593a40f4a572b3df1b372e1366e636d6" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -870,7 +870,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-sync" id="ref-for-dom-permissionname-background-sync"><c- s>"background-sync"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-bluetooth" id="ref-for-dom-permissionname-bluetooth①"><c- s>"bluetooth"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-camera" id="ref-for-dom-permissionname-camera"><c- s>"camera"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-device-info" id="ref-for-dom-permissionname-device-info"><c- s>"device-info"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-display-capture" id="ref-for-dom-permissionname-display-capture"><c- s>"display-capture"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-geolocation" id="ref-for-dom-permissionname-geolocation"><c- s>"geolocation"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope"><c- s>"gyroscope"</c-></a>,
@@ -1076,19 +1075,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        <ol class="algorithm">
         <li> Let <var>result</var> be the result of running the <a data-link-type="dfn" href="https://wicg.github.io/permissions-request/#boolean-permission-request-algorithm" id="ref-for-boolean-permission-request-algorithm">boolean permission
         request algorithm</a>. 
-        <li>If <var>result</var> is <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted①⓪">"granted"</a></code>, the UA MUST set the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-device-info" id="ref-for-dom-permissionname-device-info①">"device-info"</a></code> permission to <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted①①">"granted"</a></code> for this <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-code-realms" id="ref-for-sec-code-realms⑤">realm</a>. 
-        <li>The UA MAY treat <var>result</var> as <a data-link-type="dfn" href="#new-information-about-the-users-intent" id="ref-for-new-information-about-the-users-intent⑤">new information about the
-        user’s intent</a> with respect to the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-device-info" id="ref-for-dom-permissionname-device-info②">"device-info"</a></code> permission for
-        this <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-code-realms" id="ref-for-sec-code-realms⑥">realm</a> and other <a data-link-type="dfn" href="https://tc39.github.io/ecma262/#sec-code-realms" id="ref-for-sec-code-realms⑦">realms</a> with the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/origin.html#same-origin" id="ref-for-same-origin②">same origin</a>,
-        provided it doesn’t violate the previous step. 
         <li>Return <var>result</var>. 
        </ol>
       <dt> <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm①">permission revocation algorithm</a> 
       <dd> This is the result of calling the <a data-link-type="dfn" href="https://www.w3.org/TR/mediacapture-streams/#dfn-device-permission-revocation-algorithm" id="ref-for-dfn-device-permission-revocation-algorithm">device permission revocation algorithm</a> passing <code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①②">name</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid④">deviceId</a></code> as arguments. If the descriptor does not have a <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid⑤">deviceId</a></code>, then <code>undefined</code> is passed in place of <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid⑥">deviceId</a></code>. 
      </dl>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-device-info"><code>"device-info"</code></dfn> permission controls access to the name and capabilities associated with a <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadeviceinfo-deviceid" id="ref-for-dom-mediadeviceinfo-deviceid①">deviceId</a></code>, as well as whether <code class="idl"><a data-link-type="idl" href="https://w3c.github.io/mediacapture-main/#devicechange" id="ref-for-devicechange">devicechange</a></code> events fire when the current browsing
-      context is not in focus. The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-device-info" id="ref-for-dom-permissionname-device-info③">"device-info"</a></code> permission MUST be revoked
-      when <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadeviceinfo-deviceid" id="ref-for-dom-mediadeviceinfo-deviceid②">deviceId</a></code>s for an origin are reset. </p>
     </section>
     <section>
      <h3 class="heading settled" data-level="10.7" id="background-fetch"><span class="secno">10.7. </span><span class="content"> Background Fetch </span><a class="self-link" href="#background-fetch"></a></h3>
@@ -1218,7 +1209,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <dl>
       <dt> <a data-link-type="dfn" href="#permission-state-constraints" id="ref-for-permission-state-constraints①">permission state constraints</a> 
       <dd> Valid values for this descriptor’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑥">permission state</a> are <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-prompt" id="ref-for-dom-permissionstate-prompt⑤">"prompt"</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①④">"denied"</a></code>. The user agent MUST NOT ever set this
-        descriptor’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑦">permission state</a> to <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted①②">"granted"</a></code>. 
+        descriptor’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑦">permission state</a> to <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted①⓪">"granted"</a></code>. 
      </dl>
     </section>
     <section>
@@ -1269,7 +1260,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li>If <var>settings</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#non-secure-context" id="ref-for-non-secure-context②">non-secure context</a> and <code><var>rootDesc</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①④">name</a></code></code> isn’t <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts④">allowed
         in non-secure contexts</a>, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error" id="ref-for-dfn-error③">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error-code" id="ref-for-dfn-error-code③">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-invalid-argument" id="ref-for-dfn-invalid-argument③">invalid argument</a>.
       <li>If <var>parameters</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionsetparameters-onerealm" id="ref-for-dom-permissionsetparameters-onerealm">oneRealm</a></code> is true, let <var>targets</var> be a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list">list</a> whose sole member is <var>settings</var>.
-      <li>Otherwise, let <var>targets</var> be a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list①">list</a> containing all <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object④">environment settings objects</a> whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin" id="ref-for-concept-settings-object-origin">origin</a> is the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/origin.html#same-origin" id="ref-for-same-origin③">same</a> as the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin" id="ref-for-concept-settings-object-origin①">origin</a> of <var>settings</var>.
+      <li>Otherwise, let <var>targets</var> be a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list①">list</a> containing all <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object④">environment settings objects</a> whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin" id="ref-for-concept-settings-object-origin">origin</a> is the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/origin.html#same-origin" id="ref-for-same-origin②">same</a> as the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin" id="ref-for-concept-settings-object-origin①">origin</a> of <var>settings</var>.
       <li>Let <var>tasks</var> be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list②">list</a>. 
       <li>
         For each <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object⑤">environment settings object</a> <var>target</var> in <var>targets</var>: 
@@ -1438,7 +1429,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <li><a href="#dom-permissionstate-denied">"denied"</a><span>, in §6</span>
    <li><a href="#dom-permissionsetparameters-descriptor">descriptor</a><span>, in §11</span>
    <li><a href="#dom-devicepermissiondescriptor-deviceid">deviceId</a><span>, in §10.6</span>
-   <li><a href="#dom-permissionname-device-info">"device-info"</a><span>, in §10.6</span>
    <li><a href="#dictdef-devicepermissiondescriptor">DevicePermissionDescriptor</a><span>, in §10.6</span>
    <li><a href="#dom-permissionname-display-capture">"display-capture"</a><span>, in §10.15</span>
    <li><a href="#extra-permission-data">extra permission data</a><span>, in §5.1</span>
@@ -1537,8 +1527,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <li><a href="#ref-for-sec-code-realms">5. Permission states</a>
     <li><a href="#ref-for-sec-code-realms①">5.2. Requesting more permission</a> <a href="#ref-for-sec-code-realms②">(2)</a> <a href="#ref-for-sec-code-realms③">(3)</a>
     <li><a href="#ref-for-sec-code-realms④">5.3. Reacting to users revoking permission</a>
-    <li><a href="#ref-for-sec-code-realms⑤">10.6. 
-      Media Devices </a> <a href="#ref-for-sec-code-realms⑥">(2)</a> <a href="#ref-for-sec-code-realms⑦">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dfn-device-permission-revocation-algorithm">
@@ -1552,7 +1540,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <a href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadeviceinfo-deviceid">https://www.w3.org/TR/mediacapture-streams/#dom-mediadeviceinfo-deviceid</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-mediadeviceinfo-deviceid">10.6. 
-      Media Devices </a> <a href="#ref-for-dom-mediadeviceinfo-deviceid①">(2)</a> <a href="#ref-for-dom-mediadeviceinfo-deviceid②">(3)</a>
+      Media Devices </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dom-mediadevices-getusermedia">
@@ -1688,9 +1676,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <a href="https://html.spec.whatwg.org/multipage/origin.html#same-origin">https://html.spec.whatwg.org/multipage/origin.html#same-origin</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-same-origin">5.2. Requesting more permission</a> <a href="#ref-for-same-origin①">(2)</a>
-    <li><a href="#ref-for-same-origin②">10.6. 
-      Media Devices </a>
-    <li><a href="#ref-for-same-origin③">11.1. 
+    <li><a href="#ref-for-same-origin②">11.1. 
       Set Permission </a>
    </ul>
   </aside>
@@ -1736,13 +1722,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <li><a href="#ref-for-user-agent③">8.1. query() method</a>
     <li><a href="#ref-for-user-agent④">11.1. 
       Set Permission </a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-devicechange">
-   <a href="https://w3c.github.io/mediacapture-main/#devicechange">https://w3c.github.io/mediacapture-main/#devicechange</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-devicechange">10.6. 
-      Media Devices </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-policy-controlled-feature">
@@ -1999,11 +1978,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
      <li><span class="dfn-paneled" id="term-for-user-agent">user agent</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[mediacapture-main]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-devicechange">devicechange</span>
-    </ul>
-   <li>
     <a data-link-type="biblio">[permissions-policy-1]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-policy-controlled-feature">policy-controlled feature</span>
@@ -2157,7 +2131,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-sync"><c- s>"background-sync"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-bluetooth"><c- s>"bluetooth"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-camera"><c- s>"camera"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-device-info"><c- s>"device-info"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-display-capture"><c- s>"display-capture"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-geolocation"><c- s>"geolocation"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-gyroscope"><c- s>"gyroscope"</c-></a>,
@@ -2207,8 +2180,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <ul>
     <li><a href="#ref-for-new-information-about-the-users-intent">5.1. Reading the current permission state</a> <a href="#ref-for-new-information-about-the-users-intent①">(2)</a>
     <li><a href="#ref-for-new-information-about-the-users-intent②">5.2. Requesting more permission</a> <a href="#ref-for-new-information-about-the-users-intent③">(2)</a> <a href="#ref-for-new-information-about-the-users-intent④">(3)</a>
-    <li><a href="#ref-for-new-information-about-the-users-intent⑤">10.6. 
-      Media Devices </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="implicit-signals">
@@ -2342,8 +2313,8 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <li><a href="#ref-for-dom-permissionstate-granted⑦">10. 
     Permission Registry </a> <a href="#ref-for-dom-permissionstate-granted⑧">(2)</a>
     <li><a href="#ref-for-dom-permissionstate-granted⑨">10.6. 
-      Media Devices </a> <a href="#ref-for-dom-permissionstate-granted①⓪">(2)</a> <a href="#ref-for-dom-permissionstate-granted①①">(3)</a>
-    <li><a href="#ref-for-dom-permissionstate-granted①②">10.15. 
+      Media Devices </a>
+    <li><a href="#ref-for-dom-permissionstate-granted①⓪">10.15. 
       Display Capture </a>
    </ul>
   </aside>
@@ -2659,15 +2630,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <ul>
     <li><a href="#ref-for-dom-devicepermissiondescriptor-deviceid">10.6. 
       Media Devices </a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid①">(2)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid②">(3)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid③">(4)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid④">(5)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid⑤">(6)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid⑥">(7)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-permissionname-device-info">
-   <b><a href="#dom-permissionname-device-info">#dom-permissionname-device-info</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-permissionname-device-info">10. 
-    Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-device-info①">10.6. 
-      Media Devices </a> <a href="#ref-for-dom-permissionname-device-info②">(2)</a> <a href="#ref-for-dom-permissionname-device-info③">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-background-fetch">
