@@ -690,8 +690,7 @@ spec:webidl; type:interface; text:Promise
     <p>
       The <dfn for="PermissionName" enum-value>"geolocation"</dfn>
       permission is the permission associated with the usage of the
-      [[geolocation-API]]. It is a <a>boolean feature</a> and is <a>allowed in
-      non-secure contexts</a>.
+      [[geolocation-API]]. It is a <a>boolean feature</a>.
     </p>
   </section>
   <section>
