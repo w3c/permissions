@@ -425,6 +425,9 @@ spec:webidl; type:interface; text:Promise
     will be asking the user's permission if the caller tries to access the
     feature. The user might grant, deny or dismiss the request.
   </p>
+</section>
+<section>
+  <h2 id="permissionstatus-interface">`PermissionStatus` interface</h2>
   <pre class='idl'>
     [Exposed=(Window,Worker)]
     interface PermissionStatus : EventTarget {
