@@ -738,7 +738,7 @@ spec:webidl; type:interface; text:Promise
     <p>
       The <dfn for="PermissionName" enum-value>"midi"</dfn>
       permission is the permission associated with the usage of
-      [[webmidi]]. {{PermissionName/"midi"}} is <a>allowed in non-secure contexts</a>.
+      [[webmidi]].
     </p>
     <dl>
       <dt>
