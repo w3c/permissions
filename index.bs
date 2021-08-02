@@ -550,7 +550,7 @@ spec:webidl; type:interface; text:Promise
     Common permission algorithms
   </h2>
   <p>
-    The <dfn export>boolean permission query algorithm</dfn>, given a
+    The <dfn export>default permission query algorithm</dfn>, given a
     {{PermissionDescriptor}} <var>permissionDesc</var> and a
     {{PermissionStatus}} <var>status</var>, runs the following steps:
   </p>
@@ -666,7 +666,7 @@ spec:webidl; type:interface; text:Promise
       <a>permission result type</a> instance with the query result. Used by
       {{Permissions}}' {{Permissions/query(permissionDesc)}} method and the <a
       href="#PermissionStatus-update">PermissionStatus update steps</a>. If
-      unspecified, this defaults to the <a>boolean permission query
+      unspecified, this defaults to the <a>default permission query
       algorithm</a>.
     </dd>
     <dt>
@@ -847,19 +847,6 @@ spec:webidl; type:interface; text:Promise
         <li>
         Set <code><var>status</var>.state</code> to <var>global</var>'s
         <a>permission state</a>.
-        </li>
-      </dd>
-      <dt>
-        <a>permission request algorithm</a>
-      </dt>
-      <dd>
-        The permission request algorithm runs the following steps:
-        <ol class="algorithm">
-        <li>
-        Let <var>result</var> be the result of running the <a>boolean permission
-        request algorithm</a>.
-        </li>
-        <li>Return <var>result</var>.
         </li>
       </dd>
       <dt>
