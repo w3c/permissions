@@ -5,7 +5,7 @@
   <title>Permissions</title>
   <meta content="Bikeshed version 59d067506, updated Fri Jul 23 15:43:29 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
-  <meta content="dce7db7bef08da0b36dc33e202e63dd83a845e62" name="document-revision">
+  <meta content="5e35b9f32fdc20cd964bd87d73dc425383edc935" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -335,7 +335,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Permissions</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-07-28">28 July 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-08-02">2 August 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -469,7 +469,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <p> Current Web APIs have different ways to deal with permissions. For example,
     the <a data-link-type="biblio" href="#biblio-notifications">[notifications]</a> API allows developers to request a permission and
     check the permission status explicitly. Others expose the status to web
-    pages when they try to use the API, like the <a data-link-type="biblio" href="#biblio-geolocation-api">[geolocation-API]</a> which fails
+    pages when they try to use the API, like the <a data-link-type="biblio" href="#biblio-geolocation">[Geolocation]</a> which fails
     if the permission was not granted without allowing the developer to check
     beforehand. </p>
     <p> The <code class="idl"><a data-link-type="idl" href="#dom-permissions-query" id="ref-for-dom-permissions-query">query()</a></code> method allows querying the state of a given permission,
@@ -948,7 +948,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        </div>
       </div>
      </div>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-geolocation"><code>"geolocation"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-geolocation-api">[geolocation-API]</a>. It is a <a data-link-type="dfn" href="#boolean-feature" id="ref-for-boolean-feature">boolean feature</a> and is <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts①">allowed in
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-geolocation"><code>"geolocation"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-geolocation">[Geolocation]</a> API. It is a <a data-link-type="dfn" href="#boolean-feature" id="ref-for-boolean-feature">boolean feature</a> and is <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts①">allowed in
       non-secure contexts</a>. </p>
     </section>
     <section>
@@ -2068,8 +2068,8 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <dd>Justin Uberti; Guido Urdaneta; youenn fablet. <a href="https://www.w3.org/TR/audio-output/">Audio Output Devices API</a>. 6 July 2021. CR. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a>
    <dt id="biblio-background-fetch">[BACKGROUND-FETCH]
    <dd><a href="https://wicg.github.io/background-fetch/">Background Fetch</a>. cg-draft. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a>
-   <dt id="biblio-geolocation-api">[geolocation-API]
-   <dd>Andrei Popescu. <a href="https://www.w3.org/TR/geolocation-API/">Geolocation API Specification 2nd Edition</a>. 8 November 2016. REC. URL: <a href="https://www.w3.org/TR/geolocation-API/">https://www.w3.org/TR/geolocation-API/</a>
+   <dt id="biblio-geolocation">[Geolocation]
+   <dd>Marcos Caceres. <a href="https://www.w3.org/TR/geolocation/">Geolocation API</a>. 30 July 2021. WD. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
    <dt id="biblio-gyroscope">[GYROSCOPE]
    <dd>Anssi Kostiainen; Mikhail Pozdnyakov. <a href="https://www.w3.org/TR/gyroscope/">Gyroscope</a>. 24 July 2021. CR. URL: <a href="https://www.w3.org/TR/gyroscope/">https://www.w3.org/TR/gyroscope/</a>
    <dt id="biblio-magnetometer">[MAGNETOMETER]
