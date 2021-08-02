@@ -57,7 +57,7 @@ spec:webidl; type:interface; text:Promise
     Current Web APIs have different ways to deal with permissions. For example,
     the [[notifications]] API allows developers to request a permission and
     check the permission status explicitly. Others expose the status to web
-    pages when they try to use the API, like the [[geolocation-API]] which fails
+    pages when they try to use the API, like the [[Geolocation]] which fails
     if the permission was not granted without allowing the developer to check
     beforehand.
   </p>
@@ -690,7 +690,7 @@ spec:webidl; type:interface; text:Promise
     <p>
       The <dfn for="PermissionName" enum-value>"geolocation"</dfn>
       permission is the permission associated with the usage of the
-      [[geolocation-API]]. It is a <a>boolean feature</a>.
+      [[Geolocation]]. It is a <a>boolean feature</a>.
     </p>
   </section>
   <section>
