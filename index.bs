@@ -18,8 +18,26 @@ Assume Explicit For: true
 Prepare For TR: true
 
 Abstract: The <cite>Permissions</cite> specification defines common infrastructure for other specifications that need to interact with browser permissions. It also defines an API to allow web applications to query and be notified of changes to the status of a given permission.
+
+At Risk: The {{PermissionName/"accelerometer"}} permission.
+At Risk: The {{PermissionName/"ambient-light-sensor"}} permission.
+At Risk: The {{PermissionName/"background-fetch"}} permission.
+At Risk: The {{PermissionName/"background-sync"}} permission.
+At Risk: The {{PermissionName/"bluetooth"}} permission.
+At Risk: The {{PermissionName/"camera"}} permission.
+At Risk: The {{PermissionName/"display-capture"}} permission.
+At Risk: The {{PermissionName/"gyroscope"}} permission.
+At Risk: The {{PermissionName/"magnetometer"}} permission.
+At Risk: The {{PermissionName/"microphone"}} permission.
+At Risk: The {{PermissionName/"midi"}} permission.
+At Risk: The {{PermissionName/"nfc"}} permission.
+At Risk: The {{PermissionName/"screen-wake-lock"}} permission.
+At Risk: The {{PermissionName/"speaker-selection"}} permission.
 </pre>
 <pre class="anchors">
+spec: W3C-Process; https://www.w3.org/Consortium/Process/#
+    type: dfn
+        text: at risk; url: at-risk
 spec: ECMAScript; urlPrefix: https://tc39.github.io/ecma262/#
     type: dfn
         text: Realm; url: sec-code-realms
@@ -745,6 +763,10 @@ spec:webidl; type:interface; text:Promise
       permission is the permission associated with the usage of
       [[webmidi]]. {{PermissionName/"midi"}} is <a>allowed in non-secure contexts</a>.
     </p>
+    <p class="issue">
+      This permission only has a single implementation, and therefore, as per the W3C Process,
+      is [=at risk=].
+    </p>
     <dl>
       <dt>
         <a>permission descriptor type</a>
@@ -771,6 +793,10 @@ spec:webidl; type:interface; text:Promise
       permission is the permission associated with the usage of the
       [[screen-wake-lock]] API. It is a <a>boolean feature</a>.
     </p>
+    <p class="issue">
+      This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is [=at risk=].
+    </p>
   </section>
   <section>
     <h3 id="media-devices">
@@ -781,6 +807,10 @@ spec:webidl; type:interface; text:Promise
       <dfn for="PermissionName" enum-value>"speaker-selection"</dfn>
       permissions are associated with permission to use media devices as
       specified in [[GETUSERMEDIA]] and [[audio-output]].
+    </p>
+    <p class="issue">
+      These permissions only have a single implementation, and therefore, as per the W3C Process,
+      are [=at risk=].
     </p>
     <dl>
       <dt>
@@ -888,6 +918,10 @@ spec:webidl; type:interface; text:Promise
       permission is the permission associated with the usage of
       [[background-fetch]].
     </p>
+    <p class="issue">
+      This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is [=at risk=].
+    </p>
   </section>
   <section>
     <h3 id="background-sync">
@@ -898,6 +932,10 @@ spec:webidl; type:interface; text:Promise
       permission is the permission associated with the usage of
       [[web-background-sync]].
     </p>
+    <p class="issue">
+      This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is [=at risk=].
+    </p>
   </section>
   <section>
     <h3 id="bluetooth">
@@ -907,6 +945,10 @@ spec:webidl; type:interface; text:Promise
       The <dfn for="PermissionName" enum-value>"bluetooth"</dfn>
       permission ([[web-bluetooth#permission-api-integration]]) controls usage
       of [[web-bluetooth]].
+    </p>
+    <p class="issue">
+      This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is [=at risk=].
     </p>
   </section>
   <section>
@@ -928,7 +970,12 @@ spec:webidl; type:interface; text:Promise
       The <dfn for="PermissionName" enum-value>"ambient-light-sensor"</dfn>
       permission is the permission associated with the usage of the
       [[ambient-light]] API.
-
+    </p>
+    <p class="issue">
+      This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is [=at risk=].
+    </p>
+    <p>
       Its <a>permission revocation algorithm</a> is the result of calling
       <a>generic sensor permission revocation algorithm</a>
       passing it {{PermissionName/"ambient-light-sensor"}} as argument.
@@ -942,7 +989,12 @@ spec:webidl; type:interface; text:Promise
       The <dfn for="PermissionName" enum-value>"accelerometer"</dfn>
       permission is the permission associated with the usage of the
       [[accelerometer]] API.
-
+    </p>
+    <p class="issue">
+      This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is [=at risk=].
+    </p>
+    <p>
       Its <a>permission revocation algorithm</a> is the result of calling
       <a>generic sensor permission revocation algorithm</a>
       passing it {{PermissionName/"accelerometer"}} as argument.
@@ -956,7 +1008,12 @@ spec:webidl; type:interface; text:Promise
       The <dfn for="PermissionName" enum-value>"gyroscope"</dfn>
       permission is the permission associated with the usage of the
       [[gyroscope]] API.
-
+    </p>
+    <p class="issue">
+      This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is [=at risk=].
+    </p>
+    <p>
       Its <a>permission revocation algorithm</a> is the result of calling
       <a>generic sensor permission revocation algorithm</a>
       passing it {{PermissionName/"gyroscope"}} as argument.
@@ -970,7 +1027,12 @@ spec:webidl; type:interface; text:Promise
       The <dfn for="PermissionName" enum-value>"magnetometer"</dfn>
       permission is the permission associated with the usage of the
       [[magnetometer]] API.
-
+    </p>
+    <p class="issue">
+      This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is [=at risk=].
+    </p>
+    <p>
       Its <a>permission revocation algorithm</a> is the result of calling
       <a>generic sensor permission revocation algorithm</a>
       passing it {{PermissionName/"magnetometer"}} as argument.
@@ -984,6 +1046,10 @@ spec:webidl; type:interface; text:Promise
       The <dfn for="PermissionName" enum-value>"display-capture"</dfn>
       permission is the permission associated with the usage of
       [[screen-capture]].
+    </p>
+    <p class="issue">
+      This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is [=at risk=].
     </p>
     <dl>
       <dt>
@@ -1000,6 +1066,10 @@ spec:webidl; type:interface; text:Promise
     <h3 id="nfc">
       NFC
     </h3>
+    <p class="issue">
+      This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is [=at risk=].
+    </p>
     <p>
       The <dfn for="PermissionName" enum-value>"nfc"</dfn>
       permission is the permission associated with the usage of the
