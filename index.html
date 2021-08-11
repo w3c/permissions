@@ -5,7 +5,7 @@
   <title>Permissions</title>
   <meta content="Bikeshed version 4f053d00e, updated Tue Aug 10 14:13:32 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
-  <meta content="99a72561b307f499c6ef5e689188f5f0c77beabf" name="document-revision">
+  <meta content="e63e69094820a98f0dd4a78f1a4c3fec7f0a6426" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -969,12 +969,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        </div>
       </div>
      </div>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-geolocation"><code>"geolocation"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-geolocation">[Geolocation]</a> API. It is a <a data-link-type="dfn" href="#boolean-feature" id="ref-for-boolean-feature">boolean feature</a> and is <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts①">allowed in
-      non-secure contexts</a>. </p>
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-geolocation"><code>"geolocation"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-geolocation">[Geolocation]</a>. It is a <a data-link-type="dfn" href="#boolean-feature" id="ref-for-boolean-feature">boolean feature</a>. </p>
     </section>
     <section>
      <h3 class="heading settled" data-level="11.2" id="notifications"><span class="secno">11.2. </span><span class="content"> Notifications </span><a class="self-link" href="#notifications"></a></h3>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-notifications"><code>"notifications"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-notifications">[notifications]</a> API. It is a <a data-link-type="dfn" href="#boolean-feature" id="ref-for-boolean-feature①">boolean feature</a> and is <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts②">allowed in
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-notifications"><code>"notifications"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-notifications">[notifications]</a> API. It is a <a data-link-type="dfn" href="#boolean-feature" id="ref-for-boolean-feature①">boolean feature</a> and is <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts①">allowed in
       non-secure contexts</a>. </p>
     </section>
     <section>
@@ -1303,7 +1302,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        <p class="note" role="note"> For example, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent" id="ref-for-user-agent④">user agents</a> that define the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi⑤">"midi"</a></code> <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①①">feature</a> as "always on" may choose to reject command
           to set the <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state②⓪">permission state</a> to <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①⑤">"denied"</a></code> at this step. </p>
       <li>Let <var>settings</var> be the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object③">environment settings object</a> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-current-browsing-context" id="ref-for-dfn-current-browsing-context">current browsing context</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#active-document" id="ref-for-active-document">active document</a>.
-      <li>If <var>settings</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#non-secure-context" id="ref-for-non-secure-context②">non-secure context</a> and <code><var>rootDesc</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①⑤">name</a></code></code> isn’t <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts③">allowed
+      <li>If <var>settings</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#non-secure-context" id="ref-for-non-secure-context②">non-secure context</a> and <code><var>rootDesc</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①⑤">name</a></code></code> isn’t <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts②">allowed
         in non-secure contexts</a>, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error" id="ref-for-dfn-error③">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error-code" id="ref-for-dfn-error-code③">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-invalid-argument" id="ref-for-dfn-invalid-argument③">invalid argument</a>.
       <li>If <var>parameters</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionsetparameters-onerealm" id="ref-for-dom-permissionsetparameters-onerealm">oneRealm</a></code> is true, let <var>targets</var> be a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list">list</a> whose sole member is <var>settings</var>.
       <li>Otherwise, let <var>targets</var> be a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list①">list</a> containing all <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object④">environment settings objects</a> whose <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin" id="ref-for-concept-settings-object-origin">origin</a> is the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/origin.html#same-origin" id="ref-for-same-origin②">same</a> as the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin" id="ref-for-concept-settings-object-origin①">origin</a> of <var>settings</var>.
@@ -2513,11 +2512,9 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <b><a href="#allowed-in-non-secure-contexts">#allowed-in-non-secure-contexts</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-allowed-in-non-secure-contexts">5.1. Reading the current permission state</a>
-    <li><a href="#ref-for-allowed-in-non-secure-contexts①">11.1. 
-      Geolocation </a>
-    <li><a href="#ref-for-allowed-in-non-secure-contexts②">11.2. 
+    <li><a href="#ref-for-allowed-in-non-secure-contexts①">11.2. 
       Notifications </a>
-    <li><a href="#ref-for-allowed-in-non-secure-contexts③">12.1. 
+    <li><a href="#ref-for-allowed-in-non-secure-contexts②">12.1. 
       Set Permission </a>
    </ul>
   </aside>
