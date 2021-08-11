@@ -5,7 +5,7 @@
   <title>Permissions</title>
   <meta content="Bikeshed version 4f053d00e, updated Tue Aug 10 14:13:32 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
-  <meta content="9c6fdc293a9d49657658e91200d9e21012daa692" name="document-revision">
+  <meta content="8c38e8e6f328758504cccd99e3a0cf3993c04ae7" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -386,7 +386,26 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p> This document is governed by the <a href="https://www.w3.org/2020/Process-20200915/" id="w3c_process_revision">15 September 2020 W3C Process Document</a>. </p>
    <p></p>
   </div>
-  <div data-fill-with="at-risk"></div>
+  <div data-fill-with="at-risk">
+   <p>The following features are at-risk, and may be dropped during the CR period: </p>
+   <ul>
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer">"accelerometer"</a></code> permission.
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor">"ambient-light-sensor"</a></code> permission.
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-background-fetch" id="ref-for-dom-permissionname-background-fetch">"background-fetch"</a></code> permission.
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-background-sync" id="ref-for-dom-permissionname-background-sync">"background-sync"</a></code> permission.
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-bluetooth" id="ref-for-dom-permissionname-bluetooth">"bluetooth"</a></code> permission.
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-camera" id="ref-for-dom-permissionname-camera">"camera"</a></code> permission.
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-display-capture" id="ref-for-dom-permissionname-display-capture">"display-capture"</a></code> permission.
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope">"gyroscope"</a></code> permission.
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-magnetometer" id="ref-for-dom-permissionname-magnetometer">"magnetometer"</a></code> permission.
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-microphone" id="ref-for-dom-permissionname-microphone">"microphone"</a></code> permission.
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi">"midi"</a></code> permission.
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-nfc" id="ref-for-dom-permissionname-nfc">"nfc"</a></code> permission.
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-screen-wake-lock" id="ref-for-dom-permissionname-screen-wake-lock">"screen-wake-lock"</a></code> permission.
+    <li>The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-speaker-selection" id="ref-for-dom-permissionname-speaker-selection">"speaker-selection"</a></code> permission.
+   </ul>
+   <p>“At-risk” is a W3C Process term-of-art, and does not necessarily imply that the feature is in danger of being dropped or delayed. It means that the WG believes the feature may have difficulty being interoperably implemented in a timely manner, and marking it as such allows the WG to drop the feature if necessary when transitioning to the Proposed Rec stage, without having to publish a new Candidate Rec without the feature first.</p>
+  </div>
   <nav data-fill-with="table-of-contents" id="toc">
    <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
    <ol class="toc" role="directory">
@@ -523,13 +542,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     each feature defines a subtype of <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor">PermissionDescriptor</a></code> to be its <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type">permission descriptor type</a>. </p>
     <div class="example" id="example-descriptors">
      <a class="self-link" href="#example-descriptors"></a> 
-     <p> The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi">"midi"</a></code> <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①">feature</a> has two <a data-link-type="dfn" href="#aspects" id="ref-for-aspects">aspects</a>: access to normal messages, and
+     <p> The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi①">"midi"</a></code> <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①">feature</a> has two <a data-link-type="dfn" href="#aspects" id="ref-for-aspects">aspects</a>: access to normal messages, and
       access to system exclusive messages. Thus, its <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type①">permission descriptor type</a> is: </p>
 <pre>dictionary MidiPermissionDescriptor : PermissionDescriptor {
   boolean sysex = false;
 };
 </pre>
-     <p> The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-bluetooth" id="ref-for-dom-permissionname-bluetooth">"bluetooth"</a></code> feature lets sites request to access whatever
+     <p> The <code class="idl"><a data-link-type="idl" href="#dom-permissionname-bluetooth" id="ref-for-dom-permissionname-bluetooth①">"bluetooth"</a></code> feature lets sites request to access whatever
       Bluetooth devices are close to to the user’s device. Thus, its <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type②">permission descriptor type</a> is: </p>
 <pre>dictionary BluetoothPermissionDescriptor : PermissionDescriptor {
   DOMString deviceId;
@@ -871,24 +890,24 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <section>
     <h2 class="heading settled" data-level="11" id="permission-registry"><span class="secno">11. </span><span class="content"> Permission Registry </span><a class="self-link" href="#permission-registry"></a></h2>
 <pre class="idl highlight def"><c- b>enum</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export id="enumdef-permissionname"><code><c- g>PermissionName</c-></code></dfn> {
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer"><c- s>"accelerometer"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor"><c- s>"ambient-light-sensor"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-fetch" id="ref-for-dom-permissionname-background-fetch"><c- s>"background-fetch"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-sync" id="ref-for-dom-permissionname-background-sync"><c- s>"background-sync"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-bluetooth" id="ref-for-dom-permissionname-bluetooth①"><c- s>"bluetooth"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-camera" id="ref-for-dom-permissionname-camera"><c- s>"camera"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-display-capture" id="ref-for-dom-permissionname-display-capture"><c- s>"display-capture"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer①"><c- s>"accelerometer"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor①"><c- s>"ambient-light-sensor"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-fetch" id="ref-for-dom-permissionname-background-fetch①"><c- s>"background-fetch"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-background-sync" id="ref-for-dom-permissionname-background-sync①"><c- s>"background-sync"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-bluetooth" id="ref-for-dom-permissionname-bluetooth②"><c- s>"bluetooth"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-camera" id="ref-for-dom-permissionname-camera①"><c- s>"camera"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-display-capture" id="ref-for-dom-permissionname-display-capture①"><c- s>"display-capture"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-geolocation" id="ref-for-dom-permissionname-geolocation"><c- s>"geolocation"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope"><c- s>"gyroscope"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-magnetometer" id="ref-for-dom-permissionname-magnetometer"><c- s>"magnetometer"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-microphone" id="ref-for-dom-permissionname-microphone"><c- s>"microphone"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi①"><c- s>"midi"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-nfc" id="ref-for-dom-permissionname-nfc"><c- s>"nfc"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope①"><c- s>"gyroscope"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-magnetometer" id="ref-for-dom-permissionname-magnetometer①"><c- s>"magnetometer"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-microphone" id="ref-for-dom-permissionname-microphone①"><c- s>"microphone"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi②"><c- s>"midi"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-nfc" id="ref-for-dom-permissionname-nfc①"><c- s>"nfc"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-notifications" id="ref-for-dom-permissionname-notifications"><c- s>"notifications"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-persistent-storage" id="ref-for-dom-permissionname-persistent-storage"><c- s>"persistent-storage"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-push" id="ref-for-dom-permissionname-push"><c- s>"push"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-screen-wake-lock" id="ref-for-dom-permissionname-screen-wake-lock"><c- s>"screen-wake-lock"</c-></a>,
-  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-speaker-selection" id="ref-for-dom-permissionname-speaker-selection"><c- s>"speaker-selection"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-screen-wake-lock" id="ref-for-dom-permissionname-screen-wake-lock①"><c- s>"screen-wake-lock"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-speaker-selection" id="ref-for-dom-permissionname-speaker-selection①"><c- s>"speaker-selection"</c-></a>,
 };
 </pre>
     <p> Each enumeration value in the <code class="idl"><a data-link-type="idl" href="#enumdef-permissionname" id="ref-for-enumdef-permissionname⑥">PermissionName</a></code> enum identifies a <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature⑦">powerful feature</a>. Each <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature⑧">powerful feature</a> has the following
@@ -904,7 +923,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <p> The feature can define a <a href="https://en.wikipedia.org/wiki/Partially_ordered_set">partial
         order</a> on descriptor instances. If <var>descriptorA</var> is <dfn class="dfn-paneled" data-dfn-for="PermissionDescriptor" data-dfn-type="dfn" data-noexport id="permissiondescriptor-stronger-than">stronger than</dfn> <var>descriptorB</var>, then if <var>descriptorA</var>’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state⑧">permission state</a> is <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted⑦">"granted"</a></code>, <var>descriptorB</var>’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state⑨">permission state</a> must also be <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted⑧">"granted"</a></code>, and
         if <var>descriptorB</var>’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⓪">permission state</a> is <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①①">"denied"</a></code>, <var>descriptorA</var>’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①①">permission state</a> must also be <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①②">"denied"</a></code>. </p>
-      <p class="example" id="example-stronger-than"><a class="self-link" href="#example-stronger-than"></a> <code>{name: <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi②">"midi"</a></code>, sysex: true}</code> ("midi-with-sysex") is <a data-link-type="dfn" href="#permissiondescriptor-stronger-than" id="ref-for-permissiondescriptor-stronger-than">stronger than</a> <code>{name: <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi③">"midi"</a></code>, sysex: false}</code> ("midi-without-sysex"), so if the user denies access to
+      <p class="example" id="example-stronger-than"><a class="self-link" href="#example-stronger-than"></a> <code>{name: <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi③">"midi"</a></code>, sysex: true}</code> ("midi-with-sysex") is <a data-link-type="dfn" href="#permissiondescriptor-stronger-than" id="ref-for-permissiondescriptor-stronger-than">stronger than</a> <code>{name: <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi④">"midi"</a></code>, sysex: false}</code> ("midi-without-sysex"), so if the user denies access to
         midi-without-sysex, the UA must also deny access to midi-with-sysex, and
         similarly if the user grants access to midi-with-sysex, the UA must also
         grant access to midi-without-sysex. </p>
@@ -988,7 +1007,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        </div>
       </div>
      </div>
-     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-midi"><code>"midi"</code></dfn> permission is the permission associated with the usage of <a data-link-type="biblio" href="#biblio-webmidi">[webmidi]</a>. <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi④">"midi"</a></code> is <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts③">allowed in non-secure contexts</a>. </p>
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-midi"><code>"midi"</code></dfn> permission is the permission associated with the usage of <a data-link-type="biblio" href="#biblio-webmidi">[webmidi]</a>. <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi⑤">"midi"</a></code> is <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts③">allowed in non-secure contexts</a>. </p>
+     <p class="issue" id="issue-ff18e24c"><a class="self-link" href="#issue-ff18e24c"></a> This permission only has a single implementation, and therefore, as per the W3C Process,
+      is <a data-link-type="dfn" href="#at-risk" id="ref-for-at-risk">at risk</a>. </p>
      <dl>
       <dt> <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type⑧">permission descriptor type</a> 
       <dd>
@@ -1002,6 +1023,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <section>
      <h3 class="heading settled" data-level="11.5" id="screen-wake-lock"><span class="secno">11.5. </span><span class="content"> Screen wake lock </span><a class="self-link" href="#screen-wake-lock"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-screen-wake-lock"><code>"screen-wake-lock"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-screen-wake-lock">[screen-wake-lock]</a> API. It is a <a data-link-type="dfn" href="#boolean-feature" id="ref-for-boolean-feature②">boolean feature</a>. </p>
+     <p class="issue" id="issue-1b0d731f"><a class="self-link" href="#issue-1b0d731f"></a> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk" id="ref-for-at-risk①">at risk</a>. </p>
     </section>
     <section>
      <h3 class="heading settled" data-level="11.6" id="media-devices"><span class="secno">11.6. </span><span class="content"> Media Devices </span><a class="self-link" href="#media-devices"></a></h3>
@@ -1036,6 +1059,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      </div>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-camera"><code>"camera"</code></dfn>, <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-microphone"><code>"microphone"</code></dfn> , and <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-speaker-selection"><code>"speaker-selection"</code></dfn> permissions are associated with permission to use media devices as
       specified in <a data-link-type="biblio" href="#biblio-getusermedia">[GETUSERMEDIA]</a> and <a data-link-type="biblio" href="#biblio-audio-output">[audio-output]</a>. </p>
+     <p class="issue" id="issue-0e918a38"><a class="self-link" href="#issue-0e918a38"></a> These permissions only have a single implementation, and therefore, as per the W3C Process,
+      are <a data-link-type="dfn" href="#at-risk" id="ref-for-at-risk②">at risk</a>. </p>
      <dl>
       <dt> <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type⑨">permission descriptor type</a> 
       <dd>
@@ -1051,7 +1076,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
           descriptor. </p>
        <p> If the descriptor does not have a <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid">deviceId</a></code>, its semantic is that it
           queries for access to all devices of that class. Thus, if a query for
-          the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-camera" id="ref-for-dom-permissionname-camera①">"camera"</a></code> permission with no <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid①">deviceId</a></code> returns <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted⑨">"granted"</a></code>, the
+          the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-camera" id="ref-for-dom-permissionname-camera②">"camera"</a></code> permission with no <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid①">deviceId</a></code> returns <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted⑨">"granted"</a></code>, the
           client knows that there will never be a permission prompt for a
           camera, and if <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①③">"denied"</a></code> is returned, it knows that no getUserMedia
           request for a camera will succeed. </p>
@@ -1091,15 +1116,21 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <section>
      <h3 class="heading settled" data-level="11.7" id="background-fetch"><span class="secno">11.7. </span><span class="content"> Background Fetch </span><a class="self-link" href="#background-fetch"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-background-fetch"><code>"background-fetch"</code></dfn> permission is the permission associated with the usage of <a data-link-type="biblio" href="#biblio-background-fetch">[background-fetch]</a>. </p>
+     <p class="issue" id="issue-1b0d731f①"><a class="self-link" href="#issue-1b0d731f①"></a> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk" id="ref-for-at-risk③">at risk</a>. </p>
     </section>
     <section>
      <h3 class="heading settled" data-level="11.8" id="background-sync"><span class="secno">11.8. </span><span class="content"> Background Sync </span><a class="self-link" href="#background-sync"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-background-sync"><code>"background-sync"</code></dfn> permission is the permission associated with the usage of <a data-link-type="biblio" href="#biblio-web-background-sync">[web-background-sync]</a>. </p>
+     <p class="issue" id="issue-1b0d731f②"><a class="self-link" href="#issue-1b0d731f②"></a> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk" id="ref-for-at-risk④">at risk</a>. </p>
     </section>
     <section>
      <h3 class="heading settled" data-level="11.9" id="bluetooth"><span class="secno">11.9. </span><span class="content"> Bluetooth </span><a class="self-link" href="#bluetooth"></a></h3>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-bluetooth"><code>"bluetooth"</code></dfn> permission (<a href="https://webbluetoothcg.github.io/web-bluetooth/#permission-api-integration"><cite>Web Bluetooth</cite> § 3.1 Permission API Integration</a>) controls usage
       of <a data-link-type="biblio" href="#biblio-web-bluetooth">[web-bluetooth]</a>. </p>
+     <p class="issue" id="issue-1b0d731f③"><a class="self-link" href="#issue-1b0d731f③"></a> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk" id="ref-for-at-risk⑤">at risk</a>. </p>
     </section>
     <section>
      <h3 class="heading settled" data-level="11.10" id="persistent-storage"><span class="secno">11.10. </span><span class="content"> Persistent Storage </span><a class="self-link" href="#persistent-storage"></a></h3>
@@ -1125,8 +1156,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       </div>
      </div>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-ambient-light-sensor"><code>"ambient-light-sensor"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-ambient-light">[ambient-light]</a> API. </p>
-     <p>Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm②">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> passing it <code class="idl"><a data-link-type="idl" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor①">"ambient-light-sensor"</a></code> as argument.</p>
-     <p></p>
+     <p class="issue" id="issue-1b0d731f④"><a class="self-link" href="#issue-1b0d731f④"></a> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk" id="ref-for-at-risk⑥">at risk</a>. </p>
+     <p> Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm②">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> passing it <code class="idl"><a data-link-type="idl" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor②">"ambient-light-sensor"</a></code> as argument. </p>
     </section>
     <section>
      <h3 class="heading settled" data-level="11.12" id="accelerometer"><span class="secno">11.12. </span><span class="content"> Accelerometer </span><a class="self-link" href="#accelerometer"></a></h3>
@@ -1147,8 +1179,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       </div>
      </div>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-accelerometer"><code>"accelerometer"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-accelerometer">[accelerometer]</a> API. </p>
-     <p>Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm③">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm①">generic sensor permission revocation algorithm</a> passing it <code class="idl"><a data-link-type="idl" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer①">"accelerometer"</a></code> as argument.</p>
-     <p></p>
+     <p class="issue" id="issue-1b0d731f⑤"><a class="self-link" href="#issue-1b0d731f⑤"></a> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk" id="ref-for-at-risk⑦">at risk</a>. </p>
+     <p> Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm③">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm①">generic sensor permission revocation algorithm</a> passing it <code class="idl"><a data-link-type="idl" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer②">"accelerometer"</a></code> as argument. </p>
     </section>
     <section>
      <h3 class="heading settled" data-level="11.13" id="gyroscope"><span class="secno">11.13. </span><span class="content"> Gyroscope </span><a class="self-link" href="#gyroscope"></a></h3>
@@ -1169,8 +1202,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       </div>
      </div>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-gyroscope"><code>"gyroscope"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-gyroscope">[gyroscope]</a> API. </p>
-     <p>Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm④">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm②">generic sensor permission revocation algorithm</a> passing it <code class="idl"><a data-link-type="idl" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope①">"gyroscope"</a></code> as argument.</p>
-     <p></p>
+     <p class="issue" id="issue-1b0d731f⑥"><a class="self-link" href="#issue-1b0d731f⑥"></a> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk" id="ref-for-at-risk⑧">at risk</a>. </p>
+     <p> Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm④">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm②">generic sensor permission revocation algorithm</a> passing it <code class="idl"><a data-link-type="idl" href="#dom-permissionname-gyroscope" id="ref-for-dom-permissionname-gyroscope②">"gyroscope"</a></code> as argument. </p>
     </section>
     <section>
      <h3 class="heading settled" data-level="11.14" id="magnetometer"><span class="secno">11.14. </span><span class="content"> Magnetometer </span><a class="self-link" href="#magnetometer"></a></h3>
@@ -1191,8 +1225,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       </div>
      </div>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-magnetometer"><code>"magnetometer"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-magnetometer">[magnetometer]</a> API. </p>
-     <p>Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm⑤">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm③">generic sensor permission revocation algorithm</a> passing it <code class="idl"><a data-link-type="idl" href="#dom-permissionname-magnetometer" id="ref-for-dom-permissionname-magnetometer①">"magnetometer"</a></code> as argument.</p>
-     <p></p>
+     <p class="issue" id="issue-1b0d731f⑦"><a class="self-link" href="#issue-1b0d731f⑦"></a> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk" id="ref-for-at-risk⑨">at risk</a>. </p>
+     <p> Its <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm⑤">permission revocation algorithm</a> is the result of calling <a data-link-type="dfn" href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm" id="ref-for-generic-sensor-permission-revocation-algorithm③">generic sensor permission revocation algorithm</a> passing it <code class="idl"><a data-link-type="idl" href="#dom-permissionname-magnetometer" id="ref-for-dom-permissionname-magnetometer②">"magnetometer"</a></code> as argument. </p>
     </section>
     <section>
      <h3 class="heading settled" data-level="11.15" id="display-capture"><span class="secno">11.15. </span><span class="content"> Display Capture </span><a class="self-link" href="#display-capture"></a></h3>
@@ -1213,6 +1248,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       </div>
      </div>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-display-capture"><code>"display-capture"</code></dfn> permission is the permission associated with the usage of <a data-link-type="biblio" href="#biblio-screen-capture">[screen-capture]</a>. </p>
+     <p class="issue" id="issue-1b0d731f⑧"><a class="self-link" href="#issue-1b0d731f⑧"></a> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk" id="ref-for-at-risk①⓪">at risk</a>. </p>
      <dl>
       <dt> <a data-link-type="dfn" href="#permission-state-constraints" id="ref-for-permission-state-constraints①">permission state constraints</a> 
       <dd> Valid values for this descriptor’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑥">permission state</a> are <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-prompt" id="ref-for-dom-permissionstate-prompt⑤">"prompt"</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①④">"denied"</a></code>. The user agent MUST NOT ever set this
@@ -1221,6 +1258,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </section>
     <section>
      <h3 class="heading settled" data-level="11.16" id="nfc"><span class="secno">11.16. </span><span class="content"> NFC </span><a class="self-link" href="#nfc"></a></h3>
+     <p class="issue" id="issue-1b0d731f⑨"><a class="self-link" href="#issue-1b0d731f⑨"></a> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk" id="ref-for-at-risk①①">at risk</a>. </p>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-nfc"><code>"nfc"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-web-nfc">[web-nfc]</a> API. </p>
     </section>
    </section>
@@ -1261,7 +1300,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li>
        If <var>parameters</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionsetparameters-state" id="ref-for-dom-permissionsetparameters-state">state</a></code> is an inappropriate <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑨">permission state</a> for any implementation-defined reason, return a <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error" id="ref-for-dfn-error②">WebDriver error</a> with <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-error-code" id="ref-for-dfn-error-code②">WebDriver error code</a> <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-invalid-argument" id="ref-for-dfn-invalid-argument②">invalid
         argument</a>. 
-       <p class="note" role="note"> For example, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent" id="ref-for-user-agent④">user agents</a> that define the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi⑤">"midi"</a></code> <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①①">feature</a> as "always on" may choose to reject command
+       <p class="note" role="note"> For example, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent" id="ref-for-user-agent④">user agents</a> that define the <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi⑥">"midi"</a></code> <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①①">feature</a> as "always on" may choose to reject command
           to set the <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state②⓪">permission state</a> to <code class="idl"><a data-link-type="idl" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied①⑤">"denied"</a></code> at this step. </p>
       <li>Let <var>settings</var> be the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object③">environment settings object</a> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-current-browsing-context" id="ref-for-dfn-current-browsing-context">current browsing context</a>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#active-document" id="ref-for-active-document">active document</a>.
       <li>If <var>settings</var> is a <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#non-secure-context" id="ref-for-non-secure-context②">non-secure context</a> and <code><var>rootDesc</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①⑤">name</a></code></code> isn’t <a data-link-type="dfn" href="#allowed-in-non-secure-contexts" id="ref-for-allowed-in-non-secure-contexts④">allowed
@@ -1285,7 +1324,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li>Return <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-success" id="ref-for-dfn-success">success</a> with data <code>null</code>.
      </ol>
      <div class="example" id="example-4345ddfe">
-      <a class="self-link" href="#example-4345ddfe"></a> To set permission for <code>{name: <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi⑥">"midi"</a></code>, sysex: true}</code> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-current-browsing-context" id="ref-for-dfn-current-browsing-context①">current browsing context</a> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-session" id="ref-for-dfn-session">session</a> with ID 23 to
+      <a class="self-link" href="#example-4345ddfe"></a> To set permission for <code>{name: <code class="idl"><a data-link-type="idl" href="#dom-permissionname-midi" id="ref-for-dom-permissionname-midi⑦">"midi"</a></code>, sysex: true}</code> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-current-browsing-context" id="ref-for-dfn-current-browsing-context①">current browsing context</a> of the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-session" id="ref-for-dfn-session">session</a> with ID 23 to
       "<code>granted</code>", the <a data-link-type="dfn" href="https://w3c.github.io/webdriver/#dfn-local-end" id="ref-for-dfn-local-end">local end</a> would POST to <code>/session/23/permissions</code> with the body: 
 <pre class="lang-json highlight"><c- p>{</c->
   <c- f>"descriptor"</c-><c- p>:</c-> <c- p>{</c->
@@ -2005,6 +2044,11 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
      <li><span class="dfn-paneled" id="term-for-bucket-mode">mode</span>
     </ul>
    <li>
+    <a data-link-type="biblio">[w3c-process]</a> defines the following terms:
+    <ul>
+     <li><span>at risk</span>
+    </ul>
+   <li>
     <a data-link-type="biblio">[web-bluetooth]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-dictdef-bluetoothlescanfilterinit">BluetoothLEScanFilterInit</span>
@@ -2181,6 +2225,30 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
         algorithm for different settings objects with the same origin. We should
         test which of the <a href="https://html.spec.whatwg.org/multipage/webappapis.html#realms-settings-objects-global-objects">several
         possible settings objects</a> it uses. <a href="#issue-current-entry-incumbent-or-relevant"> ↵ </a></div>
+   <div class="issue"> This permission only has a single implementation, and therefore, as per the W3C Process,
+      is <a data-link-type="dfn" href="#at-risk">at risk</a>. <a href="#issue-ff18e24c"> ↵ </a></div>
+   <div class="issue"> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk">at risk</a>. <a href="#issue-1b0d731f"> ↵ </a></div>
+   <div class="issue"> These permissions only have a single implementation, and therefore, as per the W3C Process,
+      are <a data-link-type="dfn" href="#at-risk">at risk</a>. <a href="#issue-0e918a38"> ↵ </a></div>
+   <div class="issue"> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk">at risk</a>. <a href="#issue-1b0d731f①"> ↵ </a></div>
+   <div class="issue"> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk">at risk</a>. <a href="#issue-1b0d731f②"> ↵ </a></div>
+   <div class="issue"> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk">at risk</a>. <a href="#issue-1b0d731f③"> ↵ </a></div>
+   <div class="issue"> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk">at risk</a>. <a href="#issue-1b0d731f④"> ↵ </a></div>
+   <div class="issue"> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk">at risk</a>. <a href="#issue-1b0d731f⑤"> ↵ </a></div>
+   <div class="issue"> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk">at risk</a>. <a href="#issue-1b0d731f⑥"> ↵ </a></div>
+   <div class="issue"> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk">at risk</a>. <a href="#issue-1b0d731f⑦"> ↵ </a></div>
+   <div class="issue"> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk">at risk</a>. <a href="#issue-1b0d731f⑧"> ↵ </a></div>
+   <div class="issue"> This permission only has a single implementation, and therefore, as per the W3C Process,
+      it is <a data-link-type="dfn" href="#at-risk">at risk</a>. <a href="#issue-1b0d731f⑨"> ↵ </a></div>
   </div>
   <aside class="dfn-panel" data-for="new-information-about-the-users-intent">
    <b><a href="#new-information-about-the-users-intent">#new-information-about-the-users-intent</a></b><b>Referenced in:</b>
@@ -2582,43 +2650,43 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <aside class="dfn-panel" data-for="dom-permissionname-midi">
    <b><a href="#dom-permissionname-midi">#dom-permissionname-midi</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-midi">4. 
+    <li><a href="#ref-for-dom-permissionname-midi①">4. 
     Descriptions of permission requests </a>
-    <li><a href="#ref-for-dom-permissionname-midi①">11. 
-    Permission Registry </a> <a href="#ref-for-dom-permissionname-midi②">(2)</a> <a href="#ref-for-dom-permissionname-midi③">(3)</a>
-    <li><a href="#ref-for-dom-permissionname-midi④">11.4. 
+    <li><a href="#ref-for-dom-permissionname-midi②">11. 
+    Permission Registry </a> <a href="#ref-for-dom-permissionname-midi③">(2)</a> <a href="#ref-for-dom-permissionname-midi④">(3)</a>
+    <li><a href="#ref-for-dom-permissionname-midi⑤">11.4. 
       Midi </a>
-    <li><a href="#ref-for-dom-permissionname-midi⑤">12.1. 
-      Set Permission </a> <a href="#ref-for-dom-permissionname-midi⑥">(2)</a>
+    <li><a href="#ref-for-dom-permissionname-midi⑥">12.1. 
+      Set Permission </a> <a href="#ref-for-dom-permissionname-midi⑦">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-screen-wake-lock">
    <b><a href="#dom-permissionname-screen-wake-lock">#dom-permissionname-screen-wake-lock</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-screen-wake-lock">11. 
+    <li><a href="#ref-for-dom-permissionname-screen-wake-lock①">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-camera">
    <b><a href="#dom-permissionname-camera">#dom-permissionname-camera</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-camera">11. 
+    <li><a href="#ref-for-dom-permissionname-camera①">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-camera①">11.6. 
+    <li><a href="#ref-for-dom-permissionname-camera②">11.6. 
       Media Devices </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-microphone">
    <b><a href="#dom-permissionname-microphone">#dom-permissionname-microphone</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-microphone">11. 
+    <li><a href="#ref-for-dom-permissionname-microphone①">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-speaker-selection">
    <b><a href="#dom-permissionname-speaker-selection">#dom-permissionname-speaker-selection</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-speaker-selection">11. 
+    <li><a href="#ref-for-dom-permissionname-speaker-selection①">11. 
     Permission Registry </a>
    </ul>
   </aside>
@@ -2639,23 +2707,23 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <aside class="dfn-panel" data-for="dom-permissionname-background-fetch">
    <b><a href="#dom-permissionname-background-fetch">#dom-permissionname-background-fetch</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-background-fetch">11. 
+    <li><a href="#ref-for-dom-permissionname-background-fetch①">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-background-sync">
    <b><a href="#dom-permissionname-background-sync">#dom-permissionname-background-sync</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-background-sync">11. 
+    <li><a href="#ref-for-dom-permissionname-background-sync①">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-bluetooth">
    <b><a href="#dom-permissionname-bluetooth">#dom-permissionname-bluetooth</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-bluetooth">4. 
+    <li><a href="#ref-for-dom-permissionname-bluetooth①">4. 
     Descriptions of permission requests </a>
-    <li><a href="#ref-for-dom-permissionname-bluetooth①">11. 
+    <li><a href="#ref-for-dom-permissionname-bluetooth②">11. 
     Permission Registry </a>
    </ul>
   </aside>
@@ -2669,50 +2737,50 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <aside class="dfn-panel" data-for="dom-permissionname-ambient-light-sensor">
    <b><a href="#dom-permissionname-ambient-light-sensor">#dom-permissionname-ambient-light-sensor</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-ambient-light-sensor">11. 
+    <li><a href="#ref-for-dom-permissionname-ambient-light-sensor①">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-ambient-light-sensor①">11.11. 
+    <li><a href="#ref-for-dom-permissionname-ambient-light-sensor②">11.11. 
       Ambient Light Sensor </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-accelerometer">
    <b><a href="#dom-permissionname-accelerometer">#dom-permissionname-accelerometer</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-accelerometer">11. 
+    <li><a href="#ref-for-dom-permissionname-accelerometer①">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-accelerometer①">11.12. 
+    <li><a href="#ref-for-dom-permissionname-accelerometer②">11.12. 
       Accelerometer </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-gyroscope">
    <b><a href="#dom-permissionname-gyroscope">#dom-permissionname-gyroscope</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-gyroscope">11. 
+    <li><a href="#ref-for-dom-permissionname-gyroscope①">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-gyroscope①">11.13. 
+    <li><a href="#ref-for-dom-permissionname-gyroscope②">11.13. 
       Gyroscope </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-magnetometer">
    <b><a href="#dom-permissionname-magnetometer">#dom-permissionname-magnetometer</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-magnetometer">11. 
+    <li><a href="#ref-for-dom-permissionname-magnetometer①">11. 
     Permission Registry </a>
-    <li><a href="#ref-for-dom-permissionname-magnetometer①">11.14. 
+    <li><a href="#ref-for-dom-permissionname-magnetometer②">11.14. 
       Magnetometer </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-display-capture">
    <b><a href="#dom-permissionname-display-capture">#dom-permissionname-display-capture</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-display-capture">11. 
+    <li><a href="#ref-for-dom-permissionname-display-capture①">11. 
     Permission Registry </a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionname-nfc">
    <b><a href="#dom-permissionname-nfc">#dom-permissionname-nfc</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-permissionname-nfc">11. 
+    <li><a href="#ref-for-dom-permissionname-nfc①">11. 
     Permission Registry </a>
    </ul>
   </aside>
