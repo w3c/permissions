@@ -587,7 +587,7 @@ spec:webidl; type:interface; text:Promise
       "push",
       "screen-wake-lock",
       "speaker-selection",
-      "xr",
+      "xr-spatial-tracking",
     };
   </pre>
   <p>
@@ -1033,10 +1033,10 @@ spec:webidl; type:interface; text:Promise
   </section>
   <section>
     <h3 id="xr-api">
-      XR
+      XR Spatial tracking
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"xr"</dfn>
+      The <dfn for="PermissionName" enum-value>"xr-spatial-tracking"</dfn>
       permission is the permission associated with the usage of the
       [[webxr]] Device API.
     </p>
