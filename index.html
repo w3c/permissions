@@ -5,7 +5,7 @@
   <title>Permissions</title>
   <meta content="Bikeshed version 4f053d00e, updated Tue Aug 10 14:13:32 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
-  <meta content="4e6b6215b5d592b6c0fde110cc15dfe23fac21d0" name="document-revision">
+  <meta content="5e6a8dfe5cf623e86637a44a0ddca7bb9711aa74" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -883,7 +883,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    </section>
    <section>
     <h2 class="heading settled" data-level="10" id="common-permission-algorithms"><span class="secno">10. </span><span class="content"> Common permission algorithms </span><a class="self-link" href="#common-permission-algorithms"></a></h2>
-    <p> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="boolean-permission-query-algorithm">boolean permission query algorithm</dfn>, given a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor⑥">PermissionDescriptor</a></code> <var>permissionDesc</var> and a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus③">PermissionStatus</a></code> <var>status</var>, runs the following steps: </p>
+    <p> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="default-permission-query-algorithm">default permission query algorithm</dfn>, given a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor⑥">PermissionDescriptor</a></code> <var>permissionDesc</var> and a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus③">PermissionStatus</a></code> <var>status</var>, runs the following steps: </p>
     <ol class="algorithm">
      <li> Set <code><var>status</var>.state</code> to <var>permissionDesc</var>’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state⑦">permission state</a>. 
     </ol>
@@ -975,7 +975,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <dt> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="permission-query-algorithm">permission query algorithm</dfn> 
      <dd> Takes an instance of the <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type⑥">permission descriptor type</a> and a new or
       existing instance of the <a data-link-type="dfn" href="#permission-result-type" id="ref-for-permission-result-type①">permission result type</a>, and updates the <a data-link-type="dfn" href="#permission-result-type" id="ref-for-permission-result-type②">permission result type</a> instance with the query result. Used by <code class="idl"><a data-link-type="idl" href="#permissions" id="ref-for-permissions②">Permissions</a></code>' <code class="idl"><a data-link-type="idl" href="#dom-permissions-query" id="ref-for-dom-permissions-query②">query(permissionDesc)</a></code> method and the <a href="#PermissionStatus-update">PermissionStatus update steps</a>. If
-      unspecified, this defaults to the <a data-link-type="dfn" href="#boolean-permission-query-algorithm" id="ref-for-boolean-permission-query-algorithm">boolean permission query
+      unspecified, this defaults to the <a data-link-type="dfn" href="#default-permission-query-algorithm" id="ref-for-default-permission-query-algorithm">default permission query
       algorithm</a>. 
      <dt> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="permission-revocation-algorithm">permission revocation algorithm</dfn> 
      <dd> Takes no arguments. Updates any other parts of the implementation that
@@ -1132,14 +1132,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
         steps. 
         <li>Let <var>global</var> be a copy of <var>permissionDesc</var> with the <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid③">deviceId</a></code> member removed. 
         <li> Set <code><var>status</var>.state</code> to <var>global</var>’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state①⑤">permission state</a>. 
-       </ol>
-      <dt> <a data-link-type="dfn" href="https://wicg.github.io/permissions-request/#permission-request-algorithm" id="ref-for-permission-request-algorithm">permission request algorithm</a> 
-      <dd>
-        The permission request algorithm runs the following steps: 
-       <ol class="algorithm">
-        <li> Let <var>result</var> be the result of running the <a data-link-type="dfn" href="https://wicg.github.io/permissions-request/#boolean-permission-request-algorithm" id="ref-for-boolean-permission-request-algorithm">boolean permission
-        request algorithm</a>. 
-        <li>Return <var>result</var>. 
        </ol>
       <dt> <a data-link-type="dfn" href="#permission-revocation-algorithm" id="ref-for-permission-revocation-algorithm①">permission revocation algorithm</a> 
       <dd> This is the result of calling the <a data-link-type="dfn" href="https://www.w3.org/TR/mediacapture-streams/#dfn-device-permission-revocation-algorithm" id="ref-for-dfn-device-permission-revocation-algorithm">device permission revocation algorithm</a> passing <code class="idl"><a data-link-type="idl" href="#dom-permissiondescriptor-name" id="ref-for-dom-permissiondescriptor-name①③">name</a></code> and <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid④">deviceId</a></code> as arguments. If the descriptor does not have a <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid⑤">deviceId</a></code>, then <code>undefined</code> is passed in place of <code class="idl"><a data-link-type="idl" href="#dom-devicepermissiondescriptor-deviceid" id="ref-for-dom-devicepermissiondescriptor-deviceid⑥">deviceId</a></code>. 
@@ -1500,10 +1492,10 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <li><a href="#dom-permissionname-background-sync">"background-sync"</a><span>, in § 12.8</span>
    <li><a href="#dom-permissionname-bluetooth">"bluetooth"</a><span>, in § 12.9</span>
    <li><a href="#boolean-feature">boolean feature</a><span>, in § 12</span>
-   <li><a href="#boolean-permission-query-algorithm">boolean permission query algorithm</a><span>, in § 10</span>
    <li><a href="#dom-permissionname-camera">"camera"</a><span>, in § 12.6</span>
    <li><a href="#dictdef-cameradevicepermissiondescriptor">CameraDevicePermissionDescriptor</a><span>, in § 12.6</span>
    <li><a href="#create-a-permissionstatus">create a PermissionStatus</a><span>, in § 7</span>
+   <li><a href="#default-permission-query-algorithm">default permission query algorithm</a><span>, in § 10</span>
    <li><a href="#dom-permissionstate-denied">"denied"</a><span>, in § 6</span>
    <li><a href="#dom-permissionsetparameters-descriptor">descriptor</a><span>, in § 13</span>
    <li><a href="#dom-devicepermissiondescriptor-deviceid">deviceId</a><span>, in § 12.6</span>
@@ -1824,20 +1816,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <li><a href="#ref-for-policy-controlled-feature">5.1. Reading the current permission state</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-boolean-permission-request-algorithm">
-   <a href="https://wicg.github.io/permissions-request/#boolean-permission-request-algorithm">https://wicg.github.io/permissions-request/#boolean-permission-request-algorithm</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-boolean-permission-request-algorithm">12.6. 
-      Media Devices </a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-permission-request-algorithm">
-   <a href="https://wicg.github.io/permissions-request/#permission-request-algorithm">https://wicg.github.io/permissions-request/#permission-request-algorithm</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-permission-request-algorithm">12.6. 
-      Media Devices </a>
-   </ul>
-  </aside>
   <aside class="dfn-panel" data-for="term-for-generic-sensor-permission-revocation-algorithm">
    <a href="https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm">https://w3c.github.io/sensors/#generic-sensor-permission-revocation-algorithm</a><b>Referenced in:</b>
    <ul>
@@ -2078,12 +2056,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
      <li><span class="dfn-paneled" id="term-for-policy-controlled-feature">policy-controlled feature</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[PERMISSIONS-REQUEST]</a> defines the following terms:
-    <ul>
-     <li><span class="dfn-paneled" id="term-for-boolean-permission-request-algorithm">boolean permission request algorithm</span>
-     <li><span class="dfn-paneled" id="term-for-permission-request-algorithm">permission request algorithm</span>
-    </ul>
-   <li>
     <a data-link-type="biblio">[sensors]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</span>
@@ -2146,8 +2118,6 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
    <dt id="biblio-permissions-policy">[Permissions-Policy]
    <dd>Ian Clelland. <a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. 16 July 2020. WD. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a>
-   <dt id="biblio-permissions-request">[PERMISSIONS-REQUEST]
-   <dd><a href="https://wicg.github.io/permissions-request/"><cite>Requesting Permissions</cite></a>. cg-draft. URL: <a href="https://wicg.github.io/permissions-request/">https://wicg.github.io/permissions-request/</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
    <dt id="biblio-storage">[STORAGE]
@@ -2544,10 +2514,10 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     Permission Registry </a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="boolean-permission-query-algorithm">
-   <b><a href="#boolean-permission-query-algorithm">#boolean-permission-query-algorithm</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="default-permission-query-algorithm">
+   <b><a href="#default-permission-query-algorithm">#default-permission-query-algorithm</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-boolean-permission-query-algorithm">12. 
+    <li><a href="#ref-for-default-permission-query-algorithm">12. 
     Permission Registry </a>
    </ul>
   </aside>
