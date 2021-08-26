@@ -1135,6 +1135,17 @@ spec:webidl; type:interface; text:Promise
     </p>
   </section>
 </section>
+<section class="informative">
+  <h2 id="automation">
+    Automated testing
+  </h2>
+  <p>
+    Automated testing of this specification is performed using the
+    API provided by the
+    <a href="https://w3c.github.io/permissions-automation/">Permissions Automation</a>
+    document.
+  </p>
+</section>
 <section class='non-normative'>
   <h2 id="examples">
     Examples
