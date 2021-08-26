@@ -5,7 +5,7 @@
   <title>Permissions</title>
   <meta content="Bikeshed version 4f053d00e, updated Tue Aug 10 14:13:32 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
-  <meta content="2107ad47d21b3c15f4348ba9ce09442ee6247f20" name="document-revision">
+  <meta content="37db6ae106486ef54bc564e157f5feba02bd8ace" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -453,6 +453,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#magnetometer"><span class="secno">12.14</span> <span class="content"> Magnetometer </span></a>
       <li><a href="#display-capture"><span class="secno">12.15</span> <span class="content"> Display Capture </span></a>
       <li><a href="#nfc"><span class="secno">12.16</span> <span class="content"> NFC </span></a>
+      <li><a href="#xr-api"><span class="secno">12.17</span> <span class="content"> XR Spatial tracking </span></a>
      </ol>
     <li>
      <a href="#automation"><span class="secno">13</span> <span class="content"> Automation </span></a>
@@ -953,6 +954,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-push" id="ref-for-dom-permissionname-push"><c- s>"push"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-screen-wake-lock" id="ref-for-dom-permissionname-screen-wake-lock①"><c- s>"screen-wake-lock"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-speaker-selection" id="ref-for-dom-permissionname-speaker-selection①"><c- s>"speaker-selection"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-xr-spatial-tracking" id="ref-for-dom-permissionname-xr-spatial-tracking"><c- s>"xr-spatial-tracking"</c-></a>,
 };
 </pre>
     <p> Each enumeration value in the <code class="idl"><a data-link-type="idl" href="#enumdef-permissionname" id="ref-for-enumdef-permissionname⑨">PermissionName</a></code> enum identifies a <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature⑨">powerful feature</a>. Each <a data-link-type="dfn" href="#powerful-feature" id="ref-for-powerful-feature①⓪">powerful feature</a> has the following
@@ -1298,6 +1300,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       it is <a data-link-type="dfn" href="#at-risk" id="ref-for-at-risk①①">at risk</a>. </p>
      <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-nfc"><code>"nfc"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-web-nfc">[web-nfc]</a> API. </p>
     </section>
+    <section>
+     <h3 class="heading settled" data-level="12.17" id="xr-api"><span class="secno">12.17. </span><span class="content"> XR Spatial tracking </span><a class="self-link" href="#xr-api"></a></h3>
+     <p> The <dfn class="dfn-paneled idl-code" data-dfn-for="PermissionName" data-dfn-type="enum-value" data-export id="dom-permissionname-xr-spatial-tracking"><code>"xr-spatial-tracking"</code></dfn> permission is the permission associated with the usage of the <a data-link-type="biblio" href="#biblio-webxr">[webxr]</a> Device API. </p>
+    </section>
    </section>
    <section>
     <h2 class="heading settled" data-level="13" id="automation"><span class="secno">13. </span><span class="content"> Automation </span><a class="self-link" href="#automation"></a></h2>
@@ -1581,6 +1587,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <li><a href="#permissiondescriptor-stronger-than">stronger than</a><span>, in § 12</span>
    <li><a href="#dom-midipermissiondescriptor-sysex">sysex</a><span>, in § 12.4</span>
    <li><a href="#dom-pushpermissiondescriptor-uservisibleonly">userVisibleOnly</a><span>, in § 12.3</span>
+   <li><a href="#dom-permissionname-xr-spatial-tracking">"xr-spatial-tracking"</a><span>, in § 12.17</span>
   </ul>
   <aside class="dfn-panel" data-for="term-for-dfn-installed-web-application">
    <a href="https://www.w3.org/TR/appmanifest/#dfn-installed-web-application">https://www.w3.org/TR/appmanifest/#dfn-installed-web-application</a><b>Referenced in:</b>
@@ -2189,6 +2196,8 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <dd><a href="https://w3c.github.io/web-nfc/"><cite>Web NFC API</cite></a>. ED. URL: <a href="https://w3c.github.io/web-nfc/">https://w3c.github.io/web-nfc/</a>
    <dt id="biblio-webmidi">[WEBMIDI]
    <dd>Chris Wilson; Jussi Kalliokoski. <a href="https://www.w3.org/TR/webmidi/"><cite>Web MIDI API</cite></a>. 17 March 2015. WD. URL: <a href="https://www.w3.org/TR/webmidi/">https://www.w3.org/TR/webmidi/</a>
+   <dt id="biblio-webxr">[WEBXR]
+   <dd>Brandon Jones; et al. <a href="https://www.w3.org/TR/webxr/"><cite>WebXR Device API</cite></a>. 24 August 2021. WD. URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
 <pre class="idl highlight def"><c- b>dictionary</c-> <a href="#dictdef-permissiondescriptor"><code><c- g>PermissionDescriptor</c-></code></a> {
@@ -2242,6 +2251,7 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-push"><c- s>"push"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-screen-wake-lock"><c- s>"screen-wake-lock"</c-></a>,
   <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-speaker-selection"><c- s>"speaker-selection"</c-></a>,
+  <a class="idl-code" data-link-type="enum-value" href="#dom-permissionname-xr-spatial-tracking"><c- s>"xr-spatial-tracking"</c-></a>,
 };
 
 <c- b>dictionary</c-> <a href="#dictdef-pushpermissiondescriptor"><code><c- g>PushPermissionDescriptor</c-></code></a> : <a data-link-type="idl-name" href="#dictdef-permissiondescriptor"><c- n>PermissionDescriptor</c-></a> {
@@ -2829,6 +2839,13 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <b><a href="#dom-permissionname-nfc">#dom-permissionname-nfc</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-dom-permissionname-nfc①">12. 
+    Permission Registry </a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-permissionname-xr-spatial-tracking">
+   <b><a href="#dom-permissionname-xr-spatial-tracking">#dom-permissionname-xr-spatial-tracking</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-permissionname-xr-spatial-tracking">12. 
     Permission Registry </a>
    </ul>
   </aside>
