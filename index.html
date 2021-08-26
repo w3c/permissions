@@ -5,7 +5,7 @@
   <title>Permissions</title>
   <meta content="Bikeshed version 4f053d00e, updated Tue Aug 10 14:13:32 2021 -0700" name="generator">
   <link href="https://www.w3.org/TR/permissions/" rel="canonical">
-  <meta content="5e6a8dfe5cf623e86637a44a0ddca7bb9711aa74" name="document-revision">
+  <meta content="2107ad47d21b3c15f4348ba9ce09442ee6247f20" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -421,7 +421,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#reacting-to-revocation"><span class="secno">5.3</span> <span class="content">Reacting to users revoking permission</span></a>
      </ol>
     <li><a href="#status-of-a-permission"><span class="secno">6</span> <span class="content"> Status of a permission </span></a>
-    <li><a href="#permissionstatus-interface"><span class="secno">7</span> <span class="content"><code>PermissionStatus</code> interface</span></a>
+    <li>
+     <a href="#permissionstatus-interface"><span class="secno">7</span> <span class="content"><code>PermissionStatus</code> interface</span></a>
+     <ol class="toc">
+      <li><a href="#permissionstatus-gc"><span class="secno">7.1</span> <span class="content">Garbage collection</span></a>
+     </ol>
     <li><a href="#navigator-and-workernavigator-extension"><span class="secno">8</span> <span class="content"> Extensions to the <code>Navigator</code> and <code>WorkerNavigator</code> interfaces </span></a>
     <li>
      <a href="#permissions-interface"><span class="secno">9</span> <span class="content"> <code>Permissions</code> interface </span></a>
@@ -772,6 +776,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       query algorithm</a>, passing <code><var>status</var>@<code class="idl"><a data-link-type="idl" href="#dom-permissionstatus-query-slot" id="ref-for-dom-permissionstatus-query-slot②">[[query]]</a></code></code> and <var>status</var>. 
      <li> <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task①">Queue a task</a> on the <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="permission-task-source">permission task source</dfn> to <a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-fire" id="ref-for-concept-event-fire">fire an event</a> named <code>change</code> at <var>status</var>. 
     </ol>
+    <section>
+     <h3 class="heading settled" data-level="7.1" id="permissionstatus-gc"><span class="secno">7.1. </span><span class="content">Garbage collection</span><a class="self-link" href="#permissionstatus-gc"></a></h3>
+     <p> While an <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus②">PermissionStatus</a></code> object has one or more event listeners registered for "change",
+      there must be a strong reference from the <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/window-object.html#window" id="ref-for-window">Window</a></code> or <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope" id="ref-for-workerglobalscope">WorkerGlobalScope</a></code> object
+      that the <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus③">PermissionStatus</a></code> object’s constructor was invoked from to the <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus④">PermissionStatus</a></code> object itself. </p>
+     <p> While there is a task queued by an <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus⑤">PermissionStatus</a></code> object on the <a data-link-type="dfn" href="#permission-task-source" id="ref-for-permission-task-source">permissions task source</a>,
+      there must be a strong reference from the <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/window-object.html#window" id="ref-for-window①">Window</a></code> or <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope" id="ref-for-workerglobalscope①">WorkerGlobalScope</a></code> object that the <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus⑥">PermissionStatus</a></code> object’s constructor was invoked from to that <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus⑦">PermissionStatus</a></code> object. </p>
+    </section>
    </section>
    <section>
     <h2 class="heading settled" data-level="8" id="navigator-and-workernavigator-extension"><span class="secno">8. </span><span class="content"> Extensions to the <code>Navigator</code> and <code>WorkerNavigator</code> interfaces </span><a class="self-link" href="#navigator-and-workernavigator-extension"></a></h2>
@@ -836,7 +848,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </div>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed③"><c- g>Exposed</c-></a>=(<c- n>Window</c->,<c- n>Worker</c->)]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="permissions"><code><c- g>Permissions</c-></code></dfn> {
-  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-promise" id="ref-for-idl-promise"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#permissionstatus" id="ref-for-permissionstatus②"><c- n>PermissionStatus</c-></a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-query" id="ref-for-dom-permissions-query①"><c- g>query</c-></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-object" id="ref-for-idl-object"><c- b>object</c-></a> <dfn class="idl-code" data-dfn-for="Permissions/query(permissionDesc)" data-dfn-type="argument" data-export id="dom-permissions-query-permissiondesc-permissiondesc"><code><c- g>permissionDesc</c-></code><a class="self-link" href="#dom-permissions-query-permissiondesc-permissiondesc"></a></dfn>);
+  <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-promise" id="ref-for-idl-promise"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#permissionstatus" id="ref-for-permissionstatus⑧"><c- n>PermissionStatus</c-></a>> <a class="idl-code" data-link-type="method" href="#dom-permissions-query" id="ref-for-dom-permissions-query①"><c- g>query</c-></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-object" id="ref-for-idl-object"><c- b>object</c-></a> <dfn class="idl-code" data-dfn-for="Permissions/query(permissionDesc)" data-dfn-type="argument" data-export id="dom-permissions-query-permissiondesc-permissiondesc"><code><c- g>permissionDesc</c-></code><a class="self-link" href="#dom-permissions-query-permissiondesc-permissiondesc"></a></dfn>);
 };
 </pre>
     <section>
@@ -883,7 +895,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    </section>
    <section>
     <h2 class="heading settled" data-level="10" id="common-permission-algorithms"><span class="secno">10. </span><span class="content"> Common permission algorithms </span><a class="self-link" href="#common-permission-algorithms"></a></h2>
-    <p> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="default-permission-query-algorithm">default permission query algorithm</dfn>, given a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor⑥">PermissionDescriptor</a></code> <var>permissionDesc</var> and a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus③">PermissionStatus</a></code> <var>status</var>, runs the following steps: </p>
+    <p> The <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="default-permission-query-algorithm">default permission query algorithm</dfn>, given a <code class="idl"><a data-link-type="idl" href="#dictdef-permissiondescriptor" id="ref-for-dictdef-permissiondescriptor⑥">PermissionDescriptor</a></code> <var>permissionDesc</var> and a <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus⑨">PermissionStatus</a></code> <var>status</var>, runs the following steps: </p>
     <ol class="algorithm">
      <li> Set <code><var>status</var>.state</code> to <var>permissionDesc</var>’s <a data-link-type="dfn" href="#permission-state" id="ref-for-permission-state⑦">permission state</a>. 
     </ol>
@@ -970,8 +982,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <dd> Constraints on the values that the UA can return as a <code class="idl"><a data-link-type="idl" href="#enumdef-permissionname" id="ref-for-enumdef-permissionname①⓪">PermissionName</a></code>'s <a data-link-type="dfn" href="#extra-permission-data" id="ref-for-extra-permission-data①">extra permission data</a>. Defaults to no constraints beyond the user’s
       intent. 
      <dt> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="permission-result-type">permission result type</dfn> 
-     <dd> <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus④">PermissionStatus</a></code> or one of its subtypes.
-      If unspecified, this defaults to <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus⑤">PermissionStatus</a></code>. 
+     <dd> <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus①⓪">PermissionStatus</a></code> or one of its subtypes.
+      If unspecified, this defaults to <code class="idl"><a data-link-type="idl" href="#permissionstatus" id="ref-for-permissionstatus①①">PermissionStatus</a></code>. 
      <dt> A <dfn class="dfn-paneled" data-dfn-type="dfn" data-export id="permission-query-algorithm">permission query algorithm</dfn> 
      <dd> Takes an instance of the <a data-link-type="dfn" href="#permission-descriptor-type" id="ref-for-permission-descriptor-type⑥">permission descriptor type</a> and a new or
       existing instance of the <a data-link-type="dfn" href="#permission-result-type" id="ref-for-permission-result-type①">permission result type</a>, and updates the <a data-link-type="dfn" href="#permission-result-type" id="ref-for-permission-result-type②">permission result type</a> instance with the query result. Used by <code class="idl"><a data-link-type="idl" href="#permissions" id="ref-for-permissions②">Permissions</a></code>' <code class="idl"><a data-link-type="idl" href="#dom-permissions-query" id="ref-for-dom-permissions-query②">query(permissionDesc)</a></code> method and the <a href="#PermissionStatus-update">PermissionStatus update steps</a>. If
@@ -1335,7 +1347,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li>
         For each <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object" id="ref-for-environment-settings-object⑤">environment settings object</a> <var>target</var> in <var>targets</var>: 
        <ol>
-        <li><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task②">Queue a task</a> <var>task</var> on the <a data-link-type="dfn" href="#permission-task-source" id="ref-for-permission-task-source">permission task source</a> of <var>target</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#relevant-settings-object" id="ref-for-relevant-settings-object">relevant settings object</a>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-global" id="ref-for-concept-settings-object-global">global object</a>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/window-object.html#window-bc" id="ref-for-window-bc">browsing context</a> to perform the
+        <li><a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task" id="ref-for-queue-a-task②">Queue a task</a> <var>task</var> on the <a data-link-type="dfn" href="#permission-task-source" id="ref-for-permission-task-source①">permission task source</a> of <var>target</var>’s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#relevant-settings-object" id="ref-for-relevant-settings-object">relevant settings object</a>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-global" id="ref-for-concept-settings-object-global">global object</a>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/window-object.html#window-bc" id="ref-for-window-bc">browsing context</a> to perform the
             following step:
         <ol>
          <li>Interpret <var>parameters</var>.<code class="idl"><a data-link-type="idl" href="#dom-permissionsetparameters-state" id="ref-for-dom-permissionsetparameters-state①">state</a></code> as if
@@ -1633,6 +1645,18 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <ul>
     <li><a href="#ref-for-navigator">8. 
     Extensions to the Navigator and WorkerNavigator interfaces </a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-window">
+   <a href="https://html.spec.whatwg.org/multipage/window-object.html#window">https://html.spec.whatwg.org/multipage/window-object.html#window</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-window">7.1. Garbage collection</a> <a href="#ref-for-window①">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-workerglobalscope">
+   <a href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-workerglobalscope">7.1. Garbage collection</a> <a href="#ref-for-workerglobalscope①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-workernavigator">
@@ -2021,6 +2045,8 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
     <ul>
      <li><span class="dfn-paneled" id="term-for-eventhandler">EventHandler</span>
      <li><span class="dfn-paneled" id="term-for-navigator">Navigator</span>
+     <li><span class="dfn-paneled" id="term-for-window">Window</span>
+     <li><span class="dfn-paneled" id="term-for-workerglobalscope">WorkerGlobalScope</span>
      <li><span class="dfn-paneled" id="term-for-workernavigator">WorkerNavigator</span>
      <li><span class="dfn-paneled" id="term-for-active-document">active document</span>
      <li><span class="dfn-paneled" id="term-for-attr-iframe-allow">allow</span>
@@ -2448,12 +2474,13 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
    <b><a href="#permissionstatus">#permissionstatus</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-permissionstatus">7. PermissionStatus interface</a> <a href="#ref-for-permissionstatus①">(2)</a>
-    <li><a href="#ref-for-permissionstatus②">9. 
+    <li><a href="#ref-for-permissionstatus②">7.1. Garbage collection</a> <a href="#ref-for-permissionstatus③">(2)</a> <a href="#ref-for-permissionstatus④">(3)</a> <a href="#ref-for-permissionstatus⑤">(4)</a> <a href="#ref-for-permissionstatus⑥">(5)</a> <a href="#ref-for-permissionstatus⑦">(6)</a>
+    <li><a href="#ref-for-permissionstatus⑧">9. 
     Permissions interface </a>
-    <li><a href="#ref-for-permissionstatus③">10. 
+    <li><a href="#ref-for-permissionstatus⑨">10. 
     Common permission algorithms </a>
-    <li><a href="#ref-for-permissionstatus④">12. 
-    Permission Registry </a> <a href="#ref-for-permissionstatus⑤">(2)</a>
+    <li><a href="#ref-for-permissionstatus①⓪">12. 
+    Permission Registry </a> <a href="#ref-for-permissionstatus①①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-permissionstatus-query-slot">
@@ -2490,7 +2517,8 @@ permission<c- p>.</c->addEventListener<c- p>(</c-><c- u>"change"</c-><c- p>,</c-
   <aside class="dfn-panel" data-for="permission-task-source">
    <b><a href="#permission-task-source">#permission-task-source</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-permission-task-source">13.1. 
+    <li><a href="#ref-for-permission-task-source">7.1. Garbage collection</a>
+    <li><a href="#ref-for-permission-task-source①">13.1. 
       Set Permission </a>
    </ul>
   </aside>
