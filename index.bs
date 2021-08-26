@@ -582,7 +582,7 @@ spec:webidl; type:interface; text:Promise
   <p>
     On the other hand, the Permissions Policy specification allows developers to
     selectively enable and disable [=powerful features=] through a
-    "[=permissions policy=]" (be it a HTTP header or a the <{iframe/allow}>
+    "[=Document/permissions policy=]" (be it a HTTP header or a the <{iframe/allow}>
     attribute). The APIs and features in scope for the Permissions Policy
     specification go beyond those identified in this specification's
     {{PermissionName}} enum (e.g., "sync-xhr" and "gamepad"). In that sense, the
