@@ -498,6 +498,20 @@ spec:webidl; type:interface; text:Promise
       <var>status</var>.
     </li>
   </ol>
+  <section>
+    <h3 id="permissionstatus-gc">Garbage collection</h3>
+    <p>
+      While an {{PermissionStatus}} object has one or more event listeners registered for "change",
+      there must be a strong reference from the {{Window}} or {{WorkerGlobalScope}} object
+      that the {{PermissionStatus}} object's constructor was invoked from to the {{PermissionStatus}}
+      object itself.
+    </p>
+    <p>
+      While there is a task queued by an {{PermissionStatus}} object on the [=permissions task source=],
+      there must be a strong reference from the {{Window}} or {{WorkerGlobalScope}} object that the
+      {{PermissionStatus}} object's constructor was invoked from to that {{PermissionStatus}} object.
+    </p>
+  </section>
 </section>
 <section>
   <h2 id="navigator-and-workernavigator-extension">
