@@ -12,8 +12,7 @@ jobs:
       - uses: w3c/spec-prod@v2
         with:
           GH_PAGES_BRANCH: gh-pages
-          TOOLCHAIN: bikeshed
-          BUILD_FAIL_ON: "link-error"
+          TOOLCHAIN: respec
           W3C_NOTIFICATIONS_CC: ${{ secrets.CC }}
           W3C_ECHIDNA_TOKEN: ${{ secrets.ECHIDNA_TOKEN }}
           W3C_WG_DECISION_URL: https://lists.w3.org/Archives/Public/public-webappsec/2015Mar/0170.html

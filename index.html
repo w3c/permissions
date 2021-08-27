@@ -1,71 +1,61 @@
-<pre class='metadata'>
-Title: Permissions
-Repository: w3c/permissions
-Status: ED
-ED: https://w3c.github.io/permissions/
-TR: https://www.w3.org/TR/permissions/
-Shortname: permissions
-Level: none
-Group: WebAppSec
-indent: 4
-Editor: Marcos Cáceres, w3cid 39125, W3C https://w3.org/
-Editor: Jeffrey Yasskin, w3cid 72192, Google Inc. https://google.com/
-Former Editor: Mounir Lamouri, Google Inc. https://google.com/
-
-Previous Version: from biblio
-Markup Shorthands: css no, markdown yes
-Assume Explicit For: true
-Prepare For TR: true
-
-Abstract: The <cite>Permissions</cite> specification defines common infrastructure for other specifications that need to interact with browser permissions. It also defines an API to allow web applications to query and be notified of changes to the status of a given permission.
-
-At Risk: The {{PermissionName/"accelerometer"}} permission.
-At Risk: The {{PermissionName/"ambient-light-sensor"}} permission.
-At Risk: The {{PermissionName/"background-fetch"}} permission.
-At Risk: The {{PermissionName/"background-sync"}} permission.
-At Risk: The {{PermissionName/"bluetooth"}} permission.
-At Risk: The {{PermissionName/"camera"}} permission.
-At Risk: The {{PermissionName/"display-capture"}} permission.
-At Risk: The {{PermissionName/"gyroscope"}} permission.
-At Risk: The {{PermissionName/"magnetometer"}} permission.
-At Risk: The {{PermissionName/"microphone"}} permission.
-At Risk: The {{PermissionName/"midi"}} permission.
-At Risk: The {{PermissionName/"nfc"}} permission.
-At Risk: The {{PermissionName/"screen-wake-lock"}} permission.
-At Risk: The {{PermissionName/"speaker-selection"}} permission.
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Permissions</title>
+    <script src='https://www.w3.org/Tools/respec/respec-w3c' async class='remove'></script>
+    <script class='remove'>
+      // All config options at https://respec.org/docs/
+      var respecConfig = {
+        // Working Groups ids at https://respec.org/w3c/groups/
+        shortName: "permissions",
+        group: "webappsec",
+        specStatus: "ED",
+        editors: [{
+          name: "Marcos Cáceres",
+          url: "https://www.w3.org/",
+          company: "W3C",
+          companyURL: "https://www.w3.org/",
+          w3cid: "39125",
+        }, {
+          name: "Jeffrey Yasskin",
+          companyURL: "https://google.com/",
+          company: "Google Inc.",
+          w3cid: "72192",
+        }],
+        formerEditors: [{
+          // Mounir Lamouri, Google Inc. https://google.com/
+          name: "Mounir Lamouri",
+          companyURL: "https://google.com/",
+          company: "Google Inc.",
+        }],
+        github: {
+          branch: "main",
+          repoURL: "user/permissions",
+        },
+        mdn: true,
+        // See https://respec.org/docs/#xref for usage.
+        xref: "web-platform",
+      };
+    </script>
+  </head>
+  <body>
+<section id="abstract">
+  <p>
+    The <cite>Permissions</cite> specification defines common infrastructure for other specifications that need to interact with browser permissions. It also defines an API to allow web applications to query and be notified of changes to the status of a given permission.
+  </p>
 </pre>
-<pre class="anchors">
-spec: W3C-Process; https://www.w3.org/Consortium/Process/#
-    type: dfn
-        text: at risk; url: at-risk
-spec: ECMAScript; urlPrefix: https://tc39.github.io/ecma262/#
-    type: dfn
-        text: Realm; url: sec-code-realms
-        text: current realm; url: current-realm
-spec: sensors; urlPrefix: https://w3c.github.io/sensors/#
-    type: dfn
-        text: generic sensor permission revocation algorithm; url: generic-sensor-permission-revocation-algorithm
-spec: webdriver; urlPrefix: https://w3c.github.io/webdriver/#
-    type: dfn
-        text: current browsing context; url: dfn-current-browsing-context
-        text: WebDriver error; url: dfn-error
-        text: WebDriver error code; url: dfn-error-code
-        text: extension command; url: dfn-extension-commands
-        text: extension command URI template; url: dfn-extension-command-uri-template
-        text: invalid argument; url: dfn-invalid-argument
-        text: local end; url: dfn-local-end
-        text: remote end steps; url: dfn-remote-end-steps
-        text: session; url: dfn-session
-        text: success; url: dfn-success
-</pre>
-<pre class="link-defaults">
-spec:webidl; type:interface; text:Promise
-</pre>
-<section class='non-normative'>
+</section>
+<section id="sotd">
+  <p>This is a work in progress.</p>
+  <p>
+    Some features in this specification are supported by only one user agent, and as such, are marked as <dfn>at risk</dfn>.
+  </p>
+</section>
+<section class='informative'>
   <h2 id="scope-of-this-document">
     Scope of this document
   </h2>
-  <p><em>This section is non-normative.</em></p>
   <p>
     This document specifies a model for permissions to use powerful features on
     the Web platform and an API to query the current permission state of those
@@ -92,11 +82,10 @@ spec:webidl; type:interface; text:Promise
     <a href="https://github.com/w3c/permissions/issues">filing an issue</a>.
   </p>
 </section>
-<section class='non-normative'>
+<section class='informative'>
   <h2 id="privacy-considerations">
     Security and privacy considerations
   </h2>
-  <p><em>This section is non-normative.</em></p>
   <p>
     An adversary could use a <a>permission state</a> as an element in creating a
     "fingerprint" corresponding to an end-user. Although an adversary can
@@ -111,15 +100,14 @@ spec:webidl; type:interface; text:Promise
 </section>
 <section>
   <h2 id="definitions">Definitions</h2>
-
   <dl>
-    <dt><dfn export>New information about the user's intent</dfn></dt>
+    <dt><dfn class="export">New information about the user's intent</dfn></dt>
     <dd>
       The UA may collect information about a user's intentions in any way its
       authors believe is appropriate. This information can come from explicit
       user action, aggregate behavior of both the relevant user and other users,
       or <a>implicit signals</a> this specification hasn't anticipated.
-      <div class="note">
+      <div class="note" data-cite="appmanifest">
         The <dfn>implicit signals</dfn> could be, for example, the
         [=installed web application|install=] status of a web application or frequency and recency of
         visits. A user that has installed a web application and used it
@@ -128,7 +116,7 @@ spec:webidl; type:interface; text:Promise
       </div>
     </dd>
 
-    <dt><dfn export local-lt="feature">Powerful feature</dfn></dt>
+    <dt><dfn class="export" data-local-lt="feature">Powerful feature</dfn></dt>
     <dd>
       A feature of a UA that some code might not be allowed to access, for
       example because its <a>environment settings object</a> doesn't satisfy
@@ -170,8 +158,8 @@ spec:webidl; type:interface; text:Promise
     <pre>
       dictionary BluetoothPermissionDescriptor : PermissionDescriptor {
         DOMString deviceId;
-        sequence&lt;<a idl>BluetoothLEScanFilterInit</a>> filters;
-        sequence&lt;<a idl>BluetoothServiceUUID</a>> optionalServices = [];
+        sequence&lt;BluetoothLEScanFilterInit> filters;
+        sequence&lt;BluetoothServiceUUID> optionalServices = [];
         boolean acceptAllDevices = false;
       };
     </pre>
@@ -188,7 +176,7 @@ spec:webidl; type:interface; text:Promise
   <h2 id="permission-operations">Permission states</h2>
   <p>
     The user agent is responsible for tracking what <a>powerful features</a>
-    each <a>realm</a> has the user's permission to use. Other specifications can
+    each [=global object/realm=] has the user's permission to use. Other specifications can
     use the operations defined in this section to retrieve the UA's notion of
     what permissions are granted or denied, and to ask the user to grant or deny
     more permissions.
@@ -205,11 +193,11 @@ spec:webidl; type:interface; text:Promise
     <code>|descriptor|.{{PermissionDescriptor/name}}</code>.
   </p>
 
-  <section>
+  <section data-cite="permissions-policy">
     <h3 id="reading-current-states">Reading the current permission state</h3>
-    <div algorithm>
+    <div>
       <p>
-        A |descriptor|'s <dfn export local-lt="state">permission state</dfn> for
+        A |descriptor|'s <dfn class="export" local-lt="state">permission state</dfn> for
         an optional <a>environment settings object</a> |settings| is
         the result of the following algorithm, which returns one of
         {{PermissionState/"granted"}}, {{PermissionState/"prompt"}}, or {{PermissionState/"denied"}}:
@@ -274,15 +262,15 @@ spec:webidl; type:interface; text:Promise
       </p>
     </div>
 
-    <div algorithm>
-      <p>
+    <div>
+      <p data-cite="mediacapture-streams">
         Some <a>powerful features</a> have more information associated with them
         than just a {{PermissionState}}. For example,
         {{MediaDevices/getUserMedia()}} needs to determine <em>which</em> cameras
-        the user has granted the <a>current realm</a> permission to access. Each
+        the user has granted the <a data-cite="ECMASCRIPT#current-realm">current realm</a> permission to access. Each
         of these features defines an <a>extra permission data type</a>. If a
         {{PermissionName}} |name| names one of these features, then |name|'s
-        <dfn export>extra permission data</dfn> for an optional <a>environment
+        <dfn class="export">extra permission data</dfn> for an optional <a>environment
         settings object</a> |settings| is the result of the following algorithm:
       </p>
       <ol class="algorithm">
@@ -314,7 +302,7 @@ spec:webidl; type:interface; text:Promise
 
     <div algorithm="request-permission-to-use">
       <p>
-        To <dfn lt="request permission to use|requesting permission to use"
+        To <dfn data-lt="request permission to use|requesting permission to use"
                 export>request permission to use</dfn> a |descriptor|, the UA
         must perform the following steps. This algorithm returns either
         {{PermissionState/"granted"}} or {{PermissionState/"denied"}}.
@@ -335,8 +323,8 @@ spec:webidl; type:interface; text:Promise
         <li>
           If the user grants permission, return {{PermissionState/"granted"}}; otherwise return
           {{PermissionState/"denied"}}. The user's interaction may provide <a>new information
-          about the user's intent</a> for this <a>realm</a> and other
-          <a>realms</a> with the <a>same origin</a>.
+          about the user's intent</a> for this [=global object/realm=] and other
+          [=global object/realms=] with the <a>same origin</a>.
 
           <p class="note">
             This is intentionally vague about the details of the permission UI
@@ -356,7 +344,7 @@ spec:webidl; type:interface; text:Promise
 
     <div algorithm="prompt-user-to-choose">
       <p>
-        To <dfn lt="prompt the user to choose|prompting the user to choose"
+        To <dfn data-lt="prompt the user to choose|prompting the user to choose"
                 export>prompt the user to choose</dfn> one of several |options|
         associated with a |descriptor|, the UA must perform the following steps.
         This algorithm returns either {{PermissionState/"denied"}} or one of the options.
@@ -369,7 +357,7 @@ spec:webidl; type:interface; text:Promise
         <li>
           If |descriptor|'s <a>permission state</a> is {{PermissionState/"granted"}}, the UA may
           return one of |options| and abort these steps. If the UA returns
-          without prompting, then subsequent <a lt="prompt the user to
+          without prompting, then subsequent <a data-lt="prompt the user to
           choose">prompts for the user to choose</a> from the same set of
           options with the same |descriptor| must return the same option, unless
           the UA receives <a>new information about the user's intent</a>.
@@ -383,7 +371,7 @@ spec:webidl; type:interface; text:Promise
           If the user chose an option, return it; otherwise return {{PermissionState/"denied"}}.
           If the user's interaction indicates they intend this choice to apply
           to other realms, then treat this this as <a>new information about
-          the user's intent</a> for other <a>realms</a> with the <a>same
+          the user's intent</a> for other [=global object/realms=] with the <a>same
           origin</a>.
 
           <p class="note">
@@ -408,8 +396,8 @@ spec:webidl; type:interface; text:Promise
 
     <p>
       When the UA learns that the user no longer intends to grant permission
-      for a <a>realm</a> to use a <a>feature</a>, it must <a>queue a task</a>
-      on the Realm's <a for="Realm">settings object</a>'s [=environment settings object/responsible event loop=]
+      for a [=global object/realm=] to use a <a>feature</a>, it must <a>queue a task</a>
+      on the Realm's [=Realm/settings object=]'s [=environment settings object/responsible event loop=]
       to run that feature's <a>permission revocation algorithm</a>.
     </p>
   </section>
@@ -427,24 +415,24 @@ spec:webidl; type:interface; text:Promise
     };
   </pre>
   <p>
-    The <dfn for="PermissionState" enum-value>"granted"</dfn> state represents
+    The <dfn data-dfn-for="PermissionState">"granted"</dfn> state represents
     that the caller will be able
     to successfully access the feature without having the <a>user agent</a>
     asking the user's permission.
   </p>
   <p>
-    The <dfn for="PermissionState" enum-value>"denied"</dfn> state represents
+    The <dfn data-dfn-for="PermissionState">"denied"</dfn> state represents
     that the caller will not be
     able to access the feature.
   </p>
   <p>
-    The <dfn for="PermissionState" enum-value>"prompt"</dfn> state represents
+    The <dfn data-dfn-for="PermissionState">"prompt"</dfn> state represents
     that the <a>user agent</a>
     will be asking the user's permission if the caller tries to access the
     feature. The user might grant, deny or dismiss the request.
   </p>
 </section>
-<section>
+<section data-dfn-for="PermissionStatus">
   <h2 id="permissionstatus-interface">`PermissionStatus` interface</h2>
   <pre class='idl'>
     [Exposed=(Window,Worker)]
@@ -455,8 +443,7 @@ spec:webidl; type:interface; text:Promise
     };
   </pre>
   <p>
-    {{PermissionStatus}} instances are created with a <dfn
-    for="PermissionStatus" attribute>\[[query]]</dfn> internal slot, which is an
+    {{PermissionStatus}} instances are created with a <dfn>[[\query]]</dfn> internal slot, which is an
     instance of a feature's <a>permission descriptor type</a>.
   </p>
 
@@ -472,12 +459,12 @@ spec:webidl; type:interface; text:Promise
     attribute returns the value it was initialized to.
   </p>
   <p>
-    The <dfn for="PermissionStatus" attribute>state</dfn>
+    The <dfn>state</dfn>
     attribute MUST return the latest value that was set on the current
     instance.
   </p>
   <p>
-    The <dfn for="PermissionStatus" attribute>onchange</dfn> attribute is an
+    The <dfn>onchange</dfn> attribute is an
     <a>event handler</a> whose corresponding <a>event handler event
     type</a> is <code>change</code>.
   </p>
@@ -493,7 +480,7 @@ spec:webidl; type:interface; text:Promise
       and <var>status</var>.
     </li>
     <li>
-      <a>Queue a task</a> on the <dfn export>permission task source</dfn> to
+      <a>Queue a task</a> on the <dfn class="export">permissions task source</dfn> to
       <a>fire an event</a> named <code>change</code> at
       <var>status</var>.
     </li>
@@ -543,8 +530,8 @@ spec:webidl; type:interface; text:Promise
   <section>
     <h3 id="query-method">`query()` method</h3>
     <p>
-      When the <dfn for='Permissions' method>query(permissionDesc)</dfn> method is
-      invoked, the <a>user agent</a> MUST run the following <dfn export>query a
+      When the <dfn data-dfn-for='Permissions' method>query(permissionDesc)</dfn> method is
+      invoked, the <a>user agent</a> MUST run the following <dfn class="export">query a
       permission</dfn> algorithm, passing the parameter
       <var>permissionDesc</var>:
     </p>
@@ -587,7 +574,7 @@ spec:webidl; type:interface; text:Promise
     Common permission algorithms
   </h2>
   <p>
-    The <dfn export>default permission query algorithm</dfn>, given a
+    The <dfn class="export">default permission query algorithm</dfn>, given a
     {{PermissionDescriptor}} <var>permissionDesc</var> and a
     {{PermissionStatus}} <var>status</var>, runs the following steps:
   </p>
@@ -678,7 +665,7 @@ spec:webidl; type:interface; text:Promise
     permission-related flags, algorithms, and types:
   </p>
   <dl>
-    <dt>An <dfn export>allowed in non-secure contexts</dfn> flag</dt>
+    <dt>An <dfn class="export">allowed in non-secure contexts</dfn> flag</dt>
     <dd>
       By default, only <a>secure contexts</a> can use <a>powerful features</a>.
       If this flag is set for a feature, the UA may grant access to it in
@@ -686,7 +673,7 @@ spec:webidl; type:interface; text:Promise
     </dd>
 
     <dt>
-      A <dfn export>permission descriptor type</dfn>
+      A <dfn class="export">permission descriptor type</dfn>
     </dt>
     <dd>
       <p>
@@ -713,7 +700,7 @@ spec:webidl; type:interface; text:Promise
       </p>
     </dd>
 
-    <dt>Optional <dfn export>permission state constraints</dfn></dt>
+    <dt>Optional <dfn class="export">permission state constraints</dfn></dt>
     <dd>
       Constraints on the values that the UA can return as a descriptor's
       <a>permission state</a>. Defaults to no constraints beyond the user's
@@ -721,14 +708,14 @@ spec:webidl; type:interface; text:Promise
     </dd>
 
     <dt>
-      An optional <dfn export>extra permission data type</dfn>
+      An optional <dfn class="export">extra permission data type</dfn>
     </dt>
     <dd>
       If specified, the <a>extra permission data</a> algorithm is usable for
       this feature.
     </dd>
 
-    <dt>Optional <dfn export>extra permission data constraints</dfn></dt>
+    <dt>Optional <dfn class="export">extra permission data constraints</dfn></dt>
     <dd>
       Constraints on the values that the UA can return as a {{PermissionName}}'s
       <a>extra permission data</a>. Defaults to no constraints beyond the user's
@@ -736,14 +723,14 @@ spec:webidl; type:interface; text:Promise
     </dd>
 
     <dt>
-      A <dfn export>permission result type</dfn>
+      A <dfn class="export">permission result type</dfn>
     </dt>
     <dd>
       {{PermissionStatus}} or one of its subtypes.
       If unspecified, this defaults to {{PermissionStatus}}.
     </dd>
     <dt>
-      A <dfn export>permission query algorithm</dfn>
+      A <dfn class="export">permission query algorithm</dfn>
     </dt>
     <dd>
       Takes an instance of the <a>permission descriptor type</a> and a new or
@@ -755,7 +742,7 @@ spec:webidl; type:interface; text:Promise
       algorithm</a>.
     </dd>
     <dt>
-      A <dfn export>permission revocation algorithm</dfn>
+      A <dfn class="export">permission revocation algorithm</dfn>
     </dt>
     <dd>
       Takes no arguments. Updates any other parts of the implementation that
@@ -765,7 +752,7 @@ spec:webidl; type:interface; text:Promise
     </dd>
   </dl>
   <p>
-    A <dfn export>boolean feature</dfn> is a <a>powerful feature</a> with all
+    A <dfn class="export">boolean feature</dfn> is a <a>powerful feature</a> with all
     of the above types and algorithms defaulted.
   </p>
   <section>
@@ -773,7 +760,7 @@ spec:webidl; type:interface; text:Promise
       Geolocation
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"geolocation"</dfn>
+      The <dfn data-dfn-for="PermissionName">"geolocation"</dfn>
       permission is the permission associated with the usage of the
       [[Geolocation]]. It is a <a>boolean feature</a>.
     </p>
@@ -783,7 +770,7 @@ spec:webidl; type:interface; text:Promise
       Notifications
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"notifications"</dfn>
+      The <dfn data-dfn-for="PermissionName">"notifications"</dfn>
       permission is the permission associated with the usage of the
       [[notifications]] API. It is a <a>boolean feature</a> and is <a>allowed in
       non-secure contexts</a>.
@@ -794,7 +781,7 @@ spec:webidl; type:interface; text:Promise
       Push
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"push"</dfn>
+      The <dfn data-dfn-for="PermissionName">"push"</dfn>
       permission is the permission associated with the usage of the
       [[push-api]].
     </p>
@@ -820,7 +807,7 @@ spec:webidl; type:interface; text:Promise
       Midi
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"midi"</dfn>
+      The <dfn data-dfn-for="PermissionName">"midi"</dfn>
       permission is the permission associated with the usage of
       [[webmidi]].
     </p>
@@ -850,7 +837,7 @@ spec:webidl; type:interface; text:Promise
       Screen wake lock
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"screen-wake-lock"</dfn>
+      The <dfn data-dfn-for="PermissionName">"screen-wake-lock"</dfn>
       permission is the permission associated with the usage of the
       [[screen-wake-lock]] API. It is a <a>boolean feature</a>.
     </p>
@@ -859,13 +846,13 @@ spec:webidl; type:interface; text:Promise
       it is [=at risk=].
     </p>
   </section>
-  <section>
+  <section data-cite="mediacapture-streams">
     <h3 id="media-devices">
       Media Devices
     </h3>
-    <p dfn-for="PermissionName" dfn-type="enum-value">
-      The <dfn for="PermissionName" enum-value>"camera"</dfn>, <dfn for="PermissionName" enum-value>"microphone"</dfn> , and
-      <dfn for="PermissionName" enum-value>"speaker-selection"</dfn>
+    <p data-dfn-for="PermissionName">
+      The <dfn>"camera"</dfn>, <dfn>"microphone"</dfn> , and
+      <dfn>"speaker-selection"</dfn>
       permissions are associated with permission to use media devices as
       specified in [[GETUSERMEDIA]] and [[audio-output]].
     </p>
@@ -962,7 +949,7 @@ spec:webidl; type:interface; text:Promise
       Background Fetch
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"background-fetch"</dfn>
+      The <dfn data-dfn-for="PermissionName">"background-fetch"</dfn>
       permission is the permission associated with the usage of
       [[background-fetch]].
     </p>
@@ -976,7 +963,7 @@ spec:webidl; type:interface; text:Promise
       Background Sync
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"background-sync"</dfn>
+      The <dfn data-dfn-for="PermissionName">"background-sync"</dfn>
       permission is the permission associated with the usage of
       [[web-background-sync]].
     </p>
@@ -990,8 +977,8 @@ spec:webidl; type:interface; text:Promise
       Bluetooth
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"bluetooth"</dfn>
-      permission ([[web-bluetooth#permission-api-integration]]) controls usage
+      The <dfn data-dfn-for="PermissionName">"bluetooth"</dfn>
+      permission controls usage
       of [[web-bluetooth]].
     </p>
     <p class="issue">
@@ -999,23 +986,22 @@ spec:webidl; type:interface; text:Promise
       it is [=at risk=].
     </p>
   </section>
-  <section>
+  <section data-cite="storage">
     <h3 id="persistent-storage">
       Persistent Storage
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"persistent-storage"</dfn>
-      permission ([[storage#persistence]]) is the permission associated with the
-      usage of the `"persistent"` storage bucket <a spec="storage" for="local
-      storage bucket">mode</a>.
+      The <dfn data-dfn-for="PermissionName">"persistent-storage"</dfn>
+      permission is the permission associated with the
+      usage of the `"persistent"` storage bucket's mode.
     </p>
   </section>
-  <section>
+  <section data-cite="ambient-light">
     <h3 id="ambient-light-sensor">
       Ambient Light Sensor
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"ambient-light-sensor"</dfn>
+      The <dfn data-dfn-for="PermissionName">"ambient-light-sensor"</dfn>
       permission is the permission associated with the usage of the
       [[ambient-light]] API.
     </p>
@@ -1023,9 +1009,9 @@ spec:webidl; type:interface; text:Promise
       This permission only has a single implementation, and therefore, as per the W3C Process,
       it is [=at risk=].
     </p>
-    <p>
+    <p data-cite="generic-sensor">
       Its <a>permission revocation algorithm</a> is the result of calling
-      <a>generic sensor permission revocation algorithm</a>
+      [=generic sensor permission revocation algorithm=]
       passing it {{PermissionName/"ambient-light-sensor"}} as argument.
     </p>
   </section>
@@ -1034,7 +1020,7 @@ spec:webidl; type:interface; text:Promise
       Accelerometer
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"accelerometer"</dfn>
+      The <dfn data-dfn-for="PermissionName">"accelerometer"</dfn>
       permission is the permission associated with the usage of the
       [[accelerometer]] API.
     </p>
@@ -1042,9 +1028,9 @@ spec:webidl; type:interface; text:Promise
       This permission only has a single implementation, and therefore, as per the W3C Process,
       it is [=at risk=].
     </p>
-    <p>
+    <p data-cite="generic-sensor">
       Its <a>permission revocation algorithm</a> is the result of calling
-      <a>generic sensor permission revocation algorithm</a>
+      [=generic sensor permission revocation algorithm=]
       passing it {{PermissionName/"accelerometer"}} as argument.
     </p>
   </section>
@@ -1053,7 +1039,7 @@ spec:webidl; type:interface; text:Promise
       Gyroscope
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"gyroscope"</dfn>
+      The <dfn data-dfn-for="PermissionName">"gyroscope"</dfn>
       permission is the permission associated with the usage of the
       [[gyroscope]] API.
     </p>
@@ -1061,9 +1047,9 @@ spec:webidl; type:interface; text:Promise
       This permission only has a single implementation, and therefore, as per the W3C Process,
       it is [=at risk=].
     </p>
-    <p>
+    <p data-cite="generic-sensor">
       Its <a>permission revocation algorithm</a> is the result of calling
-      <a>generic sensor permission revocation algorithm</a>
+      [=generic sensor permission revocation algorithm=]
       passing it {{PermissionName/"gyroscope"}} as argument.
     </p>
   </section>
@@ -1072,7 +1058,7 @@ spec:webidl; type:interface; text:Promise
       Magnetometer
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"magnetometer"</dfn>
+      The <dfn data-dfn-for="PermissionName">"magnetometer"</dfn>
       permission is the permission associated with the usage of the
       [[magnetometer]] API.
     </p>
@@ -1080,9 +1066,9 @@ spec:webidl; type:interface; text:Promise
       This permission only has a single implementation, and therefore, as per the W3C Process,
       it is [=at risk=].
     </p>
-    <p>
+    <p data-cite="generic-sensor">
       Its <a>permission revocation algorithm</a> is the result of calling
-      <a>generic sensor permission revocation algorithm</a>
+      [=generic sensor permission revocation algorithm=]
       passing it {{PermissionName/"magnetometer"}} as argument.
     </p>
   </section>
@@ -1091,7 +1077,7 @@ spec:webidl; type:interface; text:Promise
       Display Capture
     </h3>
     <p>
-      The <dfn for="PermissionName" enum-value>"display-capture"</dfn>
+      The <dfn data-dfn-for="PermissionName">"display-capture"</dfn>
       permission is the permission associated with the usage of
       [[screen-capture]].
     </p>
@@ -1119,7 +1105,7 @@ spec:webidl; type:interface; text:Promise
       it is [=at risk=].
     </p>
     <p>
-      The <dfn for="PermissionName" enum-value>"nfc"</dfn>
+      The <dfn data-dfn-for="PermissionName">"nfc"</dfn>
       permission is the permission associated with the usage of the
       [[web-nfc]] API.
     </p>
@@ -1135,6 +1121,7 @@ spec:webidl; type:interface; text:Promise
     </p>
   </section>
 </section>
+<<<<<<< HEAD:index.bs
 <section class="informative">
   <h2 id="automation">
     Automated testing
@@ -1147,6 +1134,9 @@ spec:webidl; type:interface; text:Promise
   </p>
 </section>
 <section class='non-normative'>
+=======
+<section class='informative'>
+>>>>>>> 0d54e8b (Chore: convert back to ReSpec):index.html
   <h2 id="examples">
     Examples
   </h2>
@@ -1238,7 +1228,8 @@ spec:webidl; type:interface; text:Promise
   </pre>
   </div>
 </section>
-<section class='non-normative'>
+<section id="conformance"></section>
+<section class='informative'>
   <h2 id="acknowledgments" class="no-num">
     Acknowledgments
   </h2>
