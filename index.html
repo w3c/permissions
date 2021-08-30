@@ -98,7 +98,7 @@
           return navigator.permissions.query({ name });
         });
         for await (const status of queryPromises) {
-          constructor.log(`${status.name}: ${status.state}`);
+          console.log(`${status.name}: ${status.state}`);
         }
       </pre>
       <p>
