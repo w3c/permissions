@@ -347,8 +347,8 @@
                 or existing instance of the [=powerful feature/permission result type=], and
                 updates the [=powerful feature/permission result type=] instance with the query
                 result. Used by {{Permissions}}' {{Permissions/query(permissionDesc)}} method and
-                the <a href="#PermissionStatus-update">`PermissionStatus` update steps</a>. If
-                unspecified, this defaults to the <a>default permission query algorithm</a>.
+                the [=`PermissionStatus` update steps=]. If unspecified, this defaults to the
+                <a>default permission query algorithm</a>.
               </p>
               <p>
                 The <dfn>default permission query algorithm</dfn>, given a {{PermissionDescriptor}}
@@ -365,9 +365,15 @@
               algorithm</dfn>:
             </dt>
             <dd>
-              Takes no arguments. Updates any other parts of the implementation that need to be
-              kept in sync with changes in the results of <a>permission states</a> or [=powerful
-              feature/extra permission data=], and then [=react to the user revoking permission=].
+              <p>
+                Takes no arguments. Updates any other parts of the implementation that need to be
+                kept in sync with changes in the results of <a>permission states</a> or [=powerful
+                feature/extra permission data=], and then [=react to the user revoking
+                permission=].
+              </p>
+              <p>
+                If unspecified, this defaults to running [=react to the user revoking permission=].
+              </p>
             </dd>
           </dl>
           <p>
@@ -711,7 +717,8 @@
         </p>
         <p id="PermissionStatus-update">
           Whenever the [=user agent=] is aware that the state of a {{PermissionStatus}} instance
-          |status| has changed, it MUST asynchronously run the following steps:
+          |status| has changed, it asynchronously runs the <dfn>`PermissionStatus` update
+          steps</dfn>:
         </p>
         <ol class="algorithm">
           <li>Run
