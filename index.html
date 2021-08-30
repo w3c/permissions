@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <title>
       Permissions
     </title>
-    <script src='https://www.w3.org/Tools/respec/respec-w3c' async class='remove'></script>
-    <script class='remove'>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" async class="remove"></script>
+    <script class="remove">
       // All config options at https://respec.org/docs/
       var respecConfig = {
         // Working Groups ids at https://respec.org/w3c/groups/
         shortName: "permissions",
         group: "webappsec",
         specStatus: "ED",
-        editors: [{
-          name: "Marcos Cáceres",
-          url: "https://www.w3.org/",
-          company: "W3C",
-          companyURL: "https://www.w3.org/",
-          w3cid: "39125",
-        }, {
-          name: "Jeffrey Yasskin",
-          companyURL: "https://google.com/",
-          company: "Google Inc.",
-          w3cid: "72192",
-        }],
-        formerEditors: [{
-          // Mounir Lamouri, Google Inc. https://google.com/
-          name: "Mounir Lamouri",
-          companyURL: "https://google.com/",
-          company: "Google Inc.",
-        }],
+        editors: [
+          {
+            name: "Marcos Cáceres",
+            url: "https://www.w3.org/",
+            company: "W3C",
+            companyURL: "https://www.w3.org/",
+            w3cid: "39125",
+          },
+          {
+            name: "Jeffrey Yasskin",
+            companyURL: "https://google.com/",
+            company: "Google Inc.",
+            w3cid: "72192",
+          },
+        ],
+        formerEditors: [
+          {
+            // Mounir Lamouri, Google Inc. https://google.com/
+            name: "Mounir Lamouri",
+            companyURL: "https://google.com/",
+            company: "Google Inc.",
+          },
+        ],
         github: {
           branch: "main",
           repoURL: "user/permissions",
@@ -59,144 +64,361 @@
         marked as <dfn>at risk</dfn>.
       </p>
     </section>
-    <section class='informative'>
-      <h2>
-        Scope of this document
+    <section class="informative">
+      <h2 id="examples">
+        Examples of usage
       </h2>
       <p>
-        This document specifies a model for permissions to use powerful features on the Web
-        platform and an API to query the current permission state of those features.
+        This example uses the Permissions API to decide whether local news should be shown using
+        the Geolocation API or with a button offering to add the feature.
       </p>
+      <pre class="example js" title="Using .state attribute">
+        const { state } = await navigator.permissions.query({
+          name: "geolocation"
+        });
+        switch (state) {
+          case "granted":
+            showLocalNewsWithGeolocation();
+            break;
+          case "prompt":
+            showButtonToEnableLocalNews();
+            break;
+          case "denied":
+            showNationalNews();
+            break;
+        }
+      </pre>
       <p>
-        Current Web APIs have different ways to deal with permissions. For example, the
-        [[notifications]] API allows developers to request a permission and check the permission
-        status explicitly. Others expose the status to web pages when they try to use the API, like
-        the [[Geolocation]] which fails if the permission was not granted without allowing the
-        developer to check beforehand.
+        This example is checking whether the page has the {{PermissionName/"geolocation"}} and the
+        {{PermissionName/"notifications"}} permissions:
       </p>
+      <pre class="example js" title="Checking the state of multiple permissions">
+        const queryPromises = ["geolocation", "notifications"].map(name =&gt; {
+          return navigator.permissions.query({ name });
+        });
+        for await (const status of queryPromises) {
+          constructor.log(`${status.name}: ${status.state}`);
+        }
+      </pre>
       <p>
-        The {{Permissions/query()}} method allows querying the state of a given permission, which a
-        developer can then use to make UI decisions within a web application.
+        This example is checking the permission state of the available cameras.
       </p>
-      <p>
-        The solution described in this document is meant to be extensible, but isn't expected to be
-        applicable to all the current and future permissions available in the web platform. Working
-        Groups that are creating specifications whose permission model doesn't fit in the model
-        described in this document should contact the editors by <a href=
-        "https://github.com/w3c/permissions/issues">filing an issue</a>.
-      </p>
-    </section>
-    <section class='informative'>
-      <h2 id="privacy-considerations">
-        Security and privacy considerations
-      </h2>
-      <p>
-        An adversary could use a <a>permission state</a> as an element in creating a "fingerprint"
-        corresponding to an end-user. Although an adversary can already determine the state of a
-        permission by actually using the API, that often leads to a permission request UI being
-        presented to the end-user (if the permission was not already
-        {{PermissionState/"granted"}}). Thus, even though this API doesn't expose new
-        fingerprinting information to websites, it makes it easier for an adversary to have
-        discreet access to this information. Thus, implementations are encouraged to have an option
-        for users to block (globally or selectively) the querying of <a>permission states</a>.
-      </p>
+      <pre class="example js">
+        const devices = await navigator.mediaDevices.enumerateDevices();
+
+        // filter on video inputs, and map to query object
+        const queries = devices
+          .filter(({ kind }) =&gt; kind === "videoinput")
+          .map(({ deviceId }) =&gt; ({ name: "camera", deviceId }));
+
+        const promises = queries.map((queryObj) =&gt;
+          navigator.permissions.query(queryObj)
+        );
+
+        try {
+          const results = await Promise.all(promises);
+          // log the state or each camera
+          results.forEach(({ state }, i) =&gt; console.log("Camera", i, state));
+        } catch (error) {
+          console.error(error);
+        }
+      </pre>
     </section>
     <section>
       <h2>
-        Definitions
+        Model
       </h2>
-      <dl>
-        <dt>
-          <dfn class="export">New information about the user's intent</dfn>
-        </dt>
-        <dd>
-          The UA may collect information about a user's intentions in any way its authors believe
-          is appropriate. This information can come from explicit user action, aggregate behavior
-          of both the relevant user and other users, or <a>implicit signals</a> this specification
-          hasn't anticipated.
-          <div class="note" data-cite="appmanifest">
-            The <dfn>implicit signals</dfn> could be, for example, the [=installed web
+      <p>
+        This section specifies a model for [=permissions=] to use [=powerful features=] on the Web
+        platform.
+      </p>
+      <section>
+        <h3>
+          Permissions
+        </h3>
+        <p>
+          A <dfn class="export">permission</dfn> represents a user's decision to allow a web
+          application to access a [=powerful feature=].
+        </p>
+        <aside class="note" title="Limitations">
+          <p>
+            Current Web APIs have different ways to deal with permissions. For example, the
+            [[notifications]] API allows developers to request a permission and check the
+            permission status explicitly. Others expose the status to web pages when they try to
+            use the API, like the [[Geolocation]] which fails if the permission was not granted
+            without allowing the developer to check beforehand.
+          </p>
+          <p>
+            The solution described in this document is meant to be extensible, but isn't expected
+            to be applicable to all the current and future permissions available in the web
+            platform. Working Groups that are creating specifications whose permission model
+            doesn't fit in the model described in this document should contact the editors by
+            <a href="https://github.com/w3c/permissions/issues">filing an issue</a>.
+          </p>
+        </aside>
+        <p>
+          Conceptually, a [=permission=] can be in one of the following <dfn data-dfn-for=
+          "permission">states</dfn>:
+        </p>
+        <dl>
+          <dt>
+            <dfn class="export" data-dfn-for="permission">Prompt</dfn>:
+          </dt>
+          <dd>
+            The prompt [=permission/state=] represents that the user has not made a decision (i.e.,
+            it's the same a [=permission/denied=]), and the [=user agent=] will be asking the user
+            for permission if the caller tries to access the feature. The user might then grant,
+            deny, ignore, or dismiss the request. In the Permission API, this is represented by the
+            {{PermissionState}}'s {{PermissionState/"prompt"}} enum value.
+          </dd>
+          <dt>
+            <dfn class="export" data-dfn-for="permission">Granted</dfn>:
+          </dt>
+          <dd>
+            The granted [=permission/state=] represents that the caller will be able to
+            successfully access the feature without having the [=user agent=] asking the user's
+            permission. In the Permission API, this is represented by the {{PermissionState}}'s
+            {{PermissionState/"granted"}} enum value.
+          </dd>
+          <dt>
+            <dfn class="export" data-dfn-for="permission">Denied</dfn>:
+          </dt>
+          <dd>
+            The denied [=permission/state=] represents that the caller will not be able to access
+            the feature. In the Permission API, this is represented by the {{PermissionState}}'s
+            {{PermissionState/"denied"}} enum value.
+          </dd>
+        </dl>
+        <p>
+          To ascertain <dfn class="export">new information about the user's intent</dfn>, a user
+          agent MAY collect information about a user's intentions. This information can come from
+          explicit user action, aggregate behavior of both the relevant user and other users, or
+          <dfn>implicit signals</dfn> this specification hasn't anticipated.
+        </p>
+        <aside class="note" data-cite="appmanifest" title="Implicit signals">
+          <p>
+            The <a>implicit signals</a> could be, for example, the [=installed web
             application|install=] status of a web application or frequency and recency of visits. A
             user that has installed a web application and used it frequently and recently is more
             likely to trust it. Implementations are advised to exercise caution when relying on
             implicit signals.
-          </div>
-        </dd>
-        <dt>
-          <dfn class="export" data-local-lt="feature">Powerful feature</dfn>
-        </dt>
-        <dd>
-          A feature of a UA that some code might not be allowed to access, for example because its
-          <a>environment settings object</a> doesn't satisfy some criteria, or because the user
-          hasn't given permission.
-        </dd>
-      </dl>
-    </section>
-    <section>
-      <h2 id="permission-descriptor">
-        Descriptions of permission requests
-      </h2>
-      <pre class='idl' title=''>
-        dictionary PermissionDescriptor {
-          required PermissionName name;
-        };
-      </pre>
-      <p>
-        Each <a>powerful feature</a> has one or more <dfn>aspects</dfn> that websites can request
-        permission to access. To describe these aspects, each feature defines a subtype of
-        {{PermissionDescriptor}} to be its <a>permission descriptor type</a>.
-      </p>
-      <aside class="example">
+          </p>
+        </aside>
+      </section>
+      <section>
+        <h2>
+          Powerful features
+        </h2>
         <p>
-          The {{PermissionName/"midi"}} <a>feature</a> has two <a>aspects</a>: access to normal
-          messages, and access to system exclusive messages. Thus, its <a>permission descriptor
-          type</a> is:
+          A <dfn class="export" data-local-lt="feature">powerful feature</dfn> is a web platform
+          feature (usually an API) for which a user is asked to give express consent to use before
+          a realm is [=allowed to use=] the feature. Access to the feature is determined by the
+          <a>environment settings object</a> doesn't satisfy some criteria, and by the user having
+          granted permission.
         </p>
-        <pre>
-          dictionary MidiPermissionDescriptor : PermissionDescriptor {
-            boolean sysex = false;
-          };
-        </pre>
         <p>
-          The {{PermissionName/"bluetooth"}} feature lets sites request to access whatever
-          Bluetooth devices are close to to the user's device. Thus, its <a>permission descriptor
-          type</a> is:
+          A [=powerful feature=] is identified by its <dfn data-dfn-for=
+          "powerful feature">name</dfn>, which is a string literal (e.g., "geolocation"). In the
+          Permission API, the names of powerful features are represented by enum values of the
+          {{PermissionName}} enum.
         </p>
-        <pre>
-          dictionary BluetoothPermissionDescriptor : PermissionDescriptor {
-            DOMString deviceId;
-            sequence&lt;BluetoothLEScanFilterInit&gt; filters;
-            sequence&lt;BluetoothServiceUUID&gt; optionalServices = [];
-            boolean acceptAllDevices = false;
-          };
-        </pre>
         <p>
-          General access to Bluetooth devices is represented by `{name: 'bluetooth'}`; access to a
-          particular device is represented by `{name: 'bluetooth', deviceId: "id"}`; and access to
-          a device with a particular service is represented by `{name: 'bluetooth', filters:
-          [{services: ['service']}]}`
+          The user agent is responsible for tracking what <a>powerful features</a> each [=global
+          object/realm=] has the user's [=permission=] to use. Other specifications can use the
+          operations defined in this section to retrieve the UA's notion of what permissions are
+          granted or denied, and to ask the user to grant or deny more permissions.
         </p>
-      </aside>
-    </section>
-    <section>
-      <h2>
-        Permission states
-      </h2>
-      <p>
-        The user agent is responsible for tracking what <a>powerful features</a> each [=global
-        object/realm=] has the user's permission to use. Other specifications can use the
-        operations defined in this section to retrieve the UA's notion of what permissions are
-        granted or denied, and to ask the user to grant or deny more permissions.
-      </p>
-      <p>
-        Other specifications can also add more constraints on the UA's behavior in these
-        algorithms.
-      </p>
-      <p>
-        Within this section, |descriptor| is an instance of the <a>permission descriptor type</a>
-        of the <a>powerful feature</a> named by
-        <code>|descriptor|.{{PermissionDescriptor/name}}</code>.
-      </p>
+        <section>
+          <h3>
+            Specifying a powerful feature
+          </h3>
+          <p class="note">
+            Specifications wanting to add a new [=powerful feature=] are encouraged to coordinate
+            with us on this specification via GitHub.
+          </p>
+          <p>
+            Each <a>powerful feature</a> has the following permission-related flags, algorithms,
+            and types. If the defaults are not suitable for a particular [=powerful feature=],
+            specifications can override below flags, algorithms, and types below. If none are
+            needed, the specification just state itself as being a [=default powerful feature=].
+          </p>
+          <dl>
+            <dt>
+              An <dfn data-dfn-for="powerful feature" class="export">allowed in non-secure
+              contexts</dfn> flag:
+            </dt>
+            <dd>
+              By default, only <a>secure contexts</a> can use <a>powerful features</a>. If this
+              flag is set for a feature, the UA may grant access to it in <a>non-secure
+              contexts</a> too.
+            </dd>
+            <dt>
+              A <dfn data-dfn-for="powerful feature" class="export">permission descriptor
+              type</dfn>:
+            </dt>
+            <dd>
+              <p>
+                {{PermissionDescriptor}} or one of its subtypes. If unspecified, this defaults to
+                {{PermissionDescriptor}}.
+              </p>
+              <p>
+                The feature can define a <a href=
+                "https://en.wikipedia.org/wiki/Partially_ordered_set">partial order</a> on
+                descriptor instances. If |descriptorA| is <dfn data-dfn-for=
+                "PermissionDescriptor">stronger than</dfn> |descriptorB|, then if |descriptorA|'s
+                <a>permission state</a> is {{PermissionState/"granted"}}, |descriptorB|'s
+                <a>permission state</a> must also be {{PermissionState/"granted"}}, and if
+                |descriptorB|'s <a>permission state</a> is {{PermissionState/"denied"}},
+                |descriptorA|'s <a>permission state</a> must also be {{PermissionState/"denied"}}.
+              </p>
+              <p class="example" id="example-stronger-than">
+                <code>{name: {{PermissionName/"midi"}}, sysex: true}</code> ("midi-with-sysex") is
+                [=PermissionDescriptor/stronger than=] <code>{name: {{PermissionName/"midi"}},
+                sysex: false}</code> ("midi-without-sysex"), so if the user denies access to
+                midi-without-sysex, the UA must also deny access to midi-with-sysex, and similarly
+                if the user grants access to midi-with-sysex, the UA must also grant access to
+                midi-without-sysex.
+              </p>
+            </dd>
+            <dt>
+              Optional <dfn data-dfn-for="powerful feature" class="export">permission state
+              constraints</dfn>:
+            </dt>
+            <dd>
+              Constraints on the values that the UA can return as a descriptor's <a>permission
+              state</a>. Defaults to no constraints beyond the user's intent.
+            </dd>
+            <dt>
+              An optional <dfn data-dfn-for="powerful feature" class="export">extra permission data
+              type</dfn>:
+            </dt>
+            <dd>
+              <p data-cite="mediacapture-streams">
+                Some <a>powerful features</a> have more information associated with them than just
+                a {{PermissionState}}. For example, {{MediaDevices/getUserMedia()}} needs to
+                determine <em>which</em> cameras the user has granted the <a data-cite=
+                "ECMASCRIPT#current-realm">current realm</a> permission to access. Each of these
+                features defines an [=powerful feature/extra permission data type=]. If a
+                {{PermissionName}} |name| names one of these features, then |name|'s
+                <dfn data-dfn-for="powerful feature" class="export">extra permission data</dfn> for
+                an optional <a>environment settings object</a> |settings| is the result of the
+                following algorithm:
+              </p>
+              <ol class="algorithm">
+                <li>If |settings| wasn't passed, set it to the [=current settings object=].
+                </li>
+                <li>If there was a previous invocation of this algorithm with the same |name| and
+                |settings|, returning |previousResult|, and the UA has not received <a>new
+                information about the user's intent</a> since that invocation, return
+                |previousResult|.
+                </li>
+                <li>Return the instance of |name|'s [=powerful feature/extra permission data type=]
+                that matches the UA's impression of the user's intent, taking into account any
+                [=powerful feature/extra permission data constraints=] for |name|.
+                </li>
+              </ol>
+              <p>
+                If specified, the [=powerful feature/extra permission data=] algorithm is usable
+                for this feature.
+              </p>
+            </dd>
+            <dt>
+              Optional <dfn data-dfn-for="powerful feature" class="export">extra permission data
+              constraints</dfn>:
+            </dt>
+            <dd>
+              Constraints on the values that the UA can return as a {{PermissionName}}'s [=powerful
+              feature/extra permission data=]. Defaults to no constraints beyond the user's intent.
+            </dd>
+            <dt>
+              A <dfn data-dfn-for="powerful feature" class="export">permission result type</dfn>:
+            </dt>
+            <dd>
+              {{PermissionStatus}} or one of its subtypes. If unspecified, this defaults to
+              {{PermissionStatus}}.
+            </dd>
+            <dt>
+              A <dfn data-dfn-for="powerful feature" class="export">permission query
+              algorithm</dfn>:
+            </dt>
+            <dd>
+              <p>
+                Takes an instance of the [=powerful feature/permission descriptor type=] and a new
+                or existing instance of the [=powerful feature/permission result type=], and
+                updates the [=powerful feature/permission result type=] instance with the query
+                result. Used by {{Permissions}}' {{Permissions/query(permissionDesc)}} method and
+                the <a href="#PermissionStatus-update">`PermissionStatus` update steps</a>. If
+                unspecified, this defaults to the <a>default permission query algorithm</a>.
+              </p>
+              <p>
+                The <dfn>default permission query algorithm</dfn>, given a {{PermissionDescriptor}}
+                <var>permissionDesc</var> and a {{PermissionStatus}} |status|, runs the following
+                steps:
+              </p>
+              <ol class="algorithm">
+                <li>Set <code>|status|.state</code> to |permissionDesc|'s <a>permission state</a>.
+                </li>
+              </ol>
+            </dd>
+            <dt>
+              A <dfn data-dfn-for="powerful feature" class="export">permission revocation
+              algorithm</dfn>:
+            </dt>
+            <dd>
+              Takes no arguments. Updates any other parts of the implementation that need to be
+              kept in sync with changes in the results of <a>permission states</a> or [=powerful
+              feature/extra permission data=]. Run by [[#reacting-to-revocation]]. If unspecified,
+              this defaults to doing nothing.
+            </dd>
+          </dl>
+          <p>
+            A <dfn class="export">default powerful feature</dfn> is a <a>powerful feature</a> with
+            all of the above types and algorithms defaulted.
+          </p>
+        </section>
+        <section>
+          <h3>
+            Aspects
+          </h3>
+          <p>
+            Each <a>powerful feature</a> has one or more <dfn data-dfn-for=
+            "powerful feature">aspects</dfn> that websites can request permission to access. To
+            describe these aspects, each feature defines a subtype of {{PermissionDescriptor}} to
+            be its [=powerful feature/permission descriptor type=].
+          </p>
+          <aside class="example">
+            <p>
+              The {{PermissionName/"midi"}} <a>feature</a> has two [=powerful feature/aspects=]:
+              access to normal messages, and access to system exclusive messages. Thus, its
+              [=powerful feature/permission descriptor type=] is:
+            </p>
+            <pre>
+              dictionary MidiPermissionDescriptor : PermissionDescriptor {
+                boolean sysex = false;
+              };
+            </pre>
+            <p>
+              The {{PermissionName/"bluetooth"}} feature lets sites request to access whatever
+              Bluetooth devices are close to to the user's device. Thus, its [=powerful
+              feature/permission descriptor type=] is:
+            </p>
+            <pre>
+              dictionary BluetoothPermissionDescriptor : PermissionDescriptor {
+                DOMString deviceId;
+                sequence&lt;BluetoothLEScanFilterInit&gt; filters;
+                sequence&lt;BluetoothServiceUUID&gt; optionalServices = [];
+                boolean acceptAllDevices = false;
+              };
+            </pre>
+            <p>
+              General access to Bluetooth devices is represented by `{name: 'bluetooth'}`; access
+              to a particular device is represented by `{name: 'bluetooth', deviceId: "id"}`; and
+              access to a device with a particular service is represented by `{name: 'bluetooth',
+              filters: [{services: ['service']}]}`
+            </p>
+          </aside>
+        </section>
+      </section>
       <section data-cite="permissions-policy">
         <h3 id="reading-current-states">
           Reading the current permission state
@@ -208,11 +430,11 @@
           {{PermissionState/"prompt"}}, or {{PermissionState/"denied"}}:
         </p>
         <ol class="algorithm">
-          <li>If |settings| wasn't passed, set it to the <a>current settings object</a>.
+          <li>If |settings| wasn't passed, set it to the [=current settings object=].
           </li>
           <li>If |settings| is a <a>non-secure context</a> and
-          <code>|descriptor|.{{PermissionDescriptor/name}}</code> isn't <a>allowed in non-secure
-          contexts</a>, then return {{PermissionState/"denied"}}.
+          <code>|descriptor|.{{PermissionDescriptor/name}}</code> isn't [=powerful feature/allowed
+          in non-secure contexts=], then return {{PermissionState/"denied"}}.
           </li>
           <li>If there exists a [=policy-controlled feature=] identified by
           <code>|descriptor|.{{PermissionDescriptor/name}}</code> and |settings| has an
@@ -229,8 +451,8 @@
           about the user's intent</a> since that invocation, return |previousResult|.
           </li>
           <li>Return whichever of the following options most accurately reflects the user's intent
-          for the calling algorithm, taking into account any <a>permission state constraints</a>
-          for <code>|descriptor|.{{PermissionDescriptor/name}}</code>:
+          for the calling algorithm, taking into account any [=powerful feature/permission state
+          constraints=] for <code>|descriptor|.{{PermissionDescriptor/name}}</code>:
             <dl class="switch">
               <dt>
                 succeed without prompting the user
@@ -264,32 +486,10 @@
           <a>permission state</a> of a {{PermissionDescriptor}} with its
           {{PermissionDescriptor/name}} member set to |name|.
         </p>
-        <p data-cite="mediacapture-streams">
-          Some <a>powerful features</a> have more information associated with them than just a
-          {{PermissionState}}. For example, {{MediaDevices/getUserMedia()}} needs to determine
-          <em>which</em> cameras the user has granted the <a data-cite=
-          "ECMASCRIPT#current-realm">current realm</a> permission to access. Each of these features
-          defines an <a>extra permission data type</a>. If a {{PermissionName}} |name| names one of
-          these features, then |name|'s <dfn class="export">extra permission data</dfn> for an
-          optional <a>environment settings object</a> |settings| is the result of the following
-          algorithm:
-        </p>
-        <ol class="algorithm">
-          <li>If |settings| wasn't passed, set it to the <a>current settings object</a>.
-          </li>
-          <li>If there was a previous invocation of this algorithm with the same |name| and
-          |settings|, returning |previousResult|, and the UA has not received <a>new information
-          about the user's intent</a> since that invocation, return |previousResult|.
-          </li>
-          <li>Return the instance of |name|'s <a>extra permission data type</a> that matches the
-          UA's impression of the user's intent, taking into account any <a>extra permission data
-          constraints</a> for |name|.
-          </li>
-        </ol>
       </section>
       <section>
         <h3 id="requesting-more-permission">
-          Requesting more permission
+          Requesting permission to use a powerful feature
         </h3>
         <p class="note">
           Spec authors, please note that algorithms in this section can wait for user input; so
@@ -301,7 +501,7 @@
           following steps. This algorithm returns either {{PermissionState/"granted"}} or
           {{PermissionState/"denied"}}.
         </p>
-        <ol>
+        <ol class="algorithm">
           <li>Let <var>current state</var> be the |descriptor|'s <a>permission state</a>.
           </li>
           <li>If <var>current state</var> is not {{PermissionState/"prompt"}}, return <var>current
@@ -325,13 +525,18 @@
           same as <a>requesting permission to use</a> a {{PermissionDescriptor}} with its
           {{PermissionDescriptor/name}} member set to |name|.
         </p>
+      </section>
+      <section>
+        <h3>
+          Prompt the user to choose
+        </h3>
         <p>
           To <dfn data-lt="prompt the user to choose|prompting the user to choose" class=
           "export">prompt the user to choose</dfn> one of several |options| associated with a
           |descriptor|, the UA must perform the following steps. This algorithm returns either
           {{PermissionState/"denied"}} or one of the options.
         </p>
-        <ol>
+        <ol class="algorithm">
           <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"denied"}}, return
           {{PermissionState/"denied"}} and abort these steps.
           </li>
@@ -370,15 +575,88 @@
           When the UA learns that the user no longer intends to grant permission for a [=global
           object/realm=] to use a <a>feature</a>, it must <a>queue a task</a> on the Realm's
           [=Realm/settings object=]'s [=environment settings object/responsible event loop=] to run
-          that feature's <a>permission revocation algorithm</a>.
+          that feature's [=powerful feature/permission revocation algorithm=].
         </p>
       </section>
     </section>
     <section>
-      <h2 id="status-of-a-permission">
-        Status of a permission
+      <h2 id="navigator-and-workernavigator-extension">
+        Extensions to the `Navigator` and `WorkerNavigator` interfaces
       </h2>
-      <pre class='idl'>
+      <pre class="idl">
+        [Exposed=(Window)]
+        partial interface Navigator {
+          [SameObject] readonly attribute Permissions permissions;
+        };
+
+        [Exposed=(Worker)]
+        partial interface WorkerNavigator {
+          [SameObject] readonly attribute Permissions permissions;
+        };
+      </pre>
+    </section>
+    <section data-dfn-for="Permissions">
+      <h2 id="permissions-interface">
+        `Permissions` interface
+      </h2>
+      <pre class="idl">
+        [Exposed=(Window,Worker)]
+        interface Permissions {
+          Promise&lt;PermissionStatus&gt; query(object permissionDesc);
+        };
+
+        dictionary PermissionDescriptor {
+          required PermissionName name;
+        };
+      </pre>
+      <section>
+        <h3 id="query-method">
+          `query()` method
+        </h3>
+        <p>
+          When the <dfn>query()</dfn> method is invoked, the <a>user agent</a> MUST run the
+          following <dfn class="export">query a permission</dfn> algorithm, passing the parameter
+          <var>permissionDesc</var>:
+        </p>
+        <ol class="algorithm">
+          <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to an IDL
+          value</a> of type {{PermissionDescriptor}}. If this throws an exception, return <a>a
+          promise rejected with</a> that exception and abort these steps.
+          </li>
+          <li>Let |typedDescriptor| be the object |permissionDesc| refers to, <a>converted to an
+          IDL value</a> of <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s [=powerful
+          feature/permission descriptor type=]. If this throws an exception, return <a>a promise
+          rejected with</a> that exception and abort these steps.
+          </li>
+          <li>Let <var>promise</var> be a newly-created {{Promise}}.
+          </li>
+          <li>Return <var>promise</var> and continue the following steps asynchronously.
+          </li>
+          <li>Run the steps to <a>create a `PermissionStatus`</a> for |typedDescriptor|, and let
+          |status| be the result.
+          </li>
+          <li>Run
+          <code>|status|.{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s
+          [powerful feature/permission query algorithm, passing
+          <code>|status|.{{PermissionStatus/[[query]]}}</code> and |status|.
+          </li>
+          <li>Resolve <var>promise</var> with |status|.
+          </li>
+        </ol>
+      </section>
+    </section>
+    <section data-dfn-for="PermissionStatus">
+      <h2 id="permissionstatus-interface">
+        `PermissionStatus` interface
+      </h2>
+      <pre class="idl">
+        [Exposed=(Window,Worker)]
+        interface PermissionStatus : EventTarget {
+          readonly attribute PermissionState state;
+          readonly attribute PermissionName name;
+          attribute EventHandler onchange;
+        };
+
         enum PermissionState {
           "granted",
           "denied",
@@ -386,69 +664,62 @@
         };
       </pre>
       <p>
-        The <dfn data-dfn-for="PermissionState">granted</dfn> state represents that the caller
-        will be able to successfully access the feature without having the <a>user agent</a> asking
-        the user's permission.
-      </p>
-      <p>
-        The <dfn data-dfn-for="PermissionState">denied</dfn> state represents that the caller
-        will not be able to access the feature.
-      </p>
-      <p>
-        The <dfn data-dfn-for="PermissionState">prompt</dfn> state represents that the <a>user
-        agent</a> will be asking the user's permission if the caller tries to access the feature.
-        The user might grant, deny or dismiss the request.
-      </p>
-    </section>
-    <section data-dfn-for="PermissionStatus">
-      <h2 id="permissionstatus-interface">
-        `PermissionStatus` interface
-      </h2>
-      <pre class='idl'>
-        [Exposed=(Window,Worker)]
-        interface PermissionStatus : EventTarget {
-          readonly attribute PermissionState state;
-          readonly attribute PermissionName name;
-          attribute EventHandler onchange;
-        };
-      </pre>
-      <p>
         {{PermissionStatus}} instances are created with a <dfn>[[\query]]</dfn> internal slot,
-        which is an instance of a feature's <a>permission descriptor type</a>.
+        which is an instance of a feature's [=powerful feature/permission descriptor type=].
       </p>
-      <p>
-        To <dfn>create a `PermissionStatus`</dfn> for a given {{PermissionDescriptor}}
-        |permissionDesc|, return a new instance of the <a>permission result type</a> for the
-        feature named by <code>|permissionDesc|.{{PermissionDescriptor/name}}</code>, with the
-        {{PermissionStatus/[[query]]}} internal slot initialized to |permissionDesc|, and
-        {{PermissionStatus/name}} initialized to |permissionDesc|.{{PermissionDescriptor/name}}.
-      </p>
-      <p>
-        The <dfn>name</dfn> attribute returns the value it was initialized to.
-      </p>
-      <p>
-        The <dfn>state</dfn> attribute MUST return the latest value that was set on the current
-        instance.
-      </p>
-      <p>
-        The <dfn>onchange</dfn> attribute is an <a>event handler</a> whose corresponding <a>event
-        handler event type</a> is <code>change</code>.
-      </p>
-      <p id="PermissionStatus-update">
-        Whenever the <a>user agent</a> is aware that the state of a {{PermissionStatus}} instance
-        <var>status</var> has changed, it MUST asynchronously run the following steps:
-      </p>
-      <ol>
-        <li>Run
-        <code><var>status</var>@{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s
-        <a>permission query algorithm</a>, passing
-        <code><var>status</var>@{{PermissionStatus/[[query]]}}</code> and <var>status</var>.
-        </li>
-        <li>
-          <a>Queue a task</a> on the <dfn class="export">permissions task source</dfn> to <a>fire
-          an event</a> named <code>change</code> at <var>status</var>.
-        </li>
-      </ol>
+      <section>
+        <h3>
+          Creating instances
+        </h3>
+        <p>
+          To <dfn>create a `PermissionStatus`</dfn> for a given {{PermissionDescriptor}}
+          |permissionDesc|, return a new instance of the [=powerful feature/permission result
+          type=] for the feature named by |permissionDesc|.{{PermissionDescriptor/name}}, with the
+          {{PermissionStatus/[[query]]}} internal slot initialized to |permissionDesc|, and
+          {{PermissionStatus/name}} initialized to |permissionDesc|.{{PermissionDescriptor/name}}.
+        </p>
+      </section>
+      <section>
+        <h3>
+          `name` attribute
+        </h3>
+        <p>
+          The <dfn>name</dfn> attribute returns the value it was initialized to.
+        </p>
+      </section>
+      <section>
+        <h3>
+          `state` attribute
+        </h3>
+        <p>
+          The <dfn>state</dfn> attribute returns the latest value that was set on the current
+          instance.
+        </p>
+      </section>
+      <section>
+        <h3>
+          `onchange` attribute
+        </h3>
+        <p>
+          The <dfn>onchange</dfn> attribute is an <a>event handler</a> whose corresponding <a>event
+          handler event type</a> is <code>change</code>.
+        </p>
+        <p id="PermissionStatus-update">
+          Whenever the [=user agent=] is aware that the state of a {{PermissionStatus}} instance
+          |status| has changed, it MUST asynchronously run the following steps:
+        </p>
+        <ol class="algorithm">
+          <li>Run
+          <code>|status|.{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s
+          [=powerful feature/permission query algorithm=], passing
+          <code>|status|.{{PermissionStatus/[[query]]}}</code> and |status|.
+          </li>
+          <li>
+            <a>Queue a task</a> on the <dfn class="export">permissions task source</dfn> to <a>fire
+            an event</a> named <code>change</code> at |status|.
+          </li>
+        </ol>
+      </section>
       <section>
         <h3 id="permissionstatus-gc">
           Garbage collection
@@ -467,87 +738,377 @@
         </p>
       </section>
     </section>
-    <section>
-      <h2 id="navigator-and-workernavigator-extension">
-        Extensions to the `Navigator` and `WorkerNavigator` interfaces
+    <section data-dfn-for="PermissionName">
+      <h2>
+        Powerful features registry
       </h2>
-      <pre class='idl'>
-        [Exposed=(Window)]
-        partial interface Navigator {
-          [SameObject] readonly attribute Permissions permissions;
-        };
-
-        [Exposed=(Worker)]
-        partial interface WorkerNavigator {
-          [SameObject] readonly attribute Permissions permissions;
+      <pre class="idl">
+        enum PermissionName {
+          "accelerometer",
+          "ambient-light-sensor",
+          "background-fetch",
+          "background-sync",
+          "bluetooth",
+          "camera",
+          "display-capture",
+          "geolocation",
+          "gyroscope",
+          "magnetometer",
+          "microphone",
+          "midi",
+          "nfc",
+          "notifications",
+          "persistent-storage",
+          "push",
+          "screen-wake-lock",
+          "speaker-selection",
+          "xr-spatial-tracking",
         };
       </pre>
-    </section>
-    <section>
-      <h2 id="permissions-interface">
-        `Permissions` interface
-      </h2>
-      <pre class='idl'>
-        [Exposed=(Window,Worker)]
-        interface Permissions {
-          Promise&lt;PermissionStatus&gt; query(object permissionDesc);
-        };
-      </pre>
-      <section data-dfn-for='Permissions'>
-        <h3 id="query-method">
-          `query()` method
+      <p>
+        Each enumeration value in the {{PermissionName}} enum identifies a <a>powerful feature</a>.
+      </p>
+      <section>
+        <h3 id="geolocation">
+          Geolocation
         </h3>
         <p>
-          When the <dfn>query(permissionDesc)</dfn> method is invoked, the <a>user agent</a> MUST
-          run the following <dfn class="export">query a permission</dfn> algorithm, passing the
-          parameter <var>permissionDesc</var>:
+          The <dfn>geolocation</dfn> enum value identifies the [[[Geolocation]]] [=powerful
+          feature=]. It is a [=default powerful feature=].
         </p>
-        <ol>
-          <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to an IDL
-          value</a> of type {{PermissionDescriptor}}. If this throws an exception, return <a>a
-          promise rejected with</a> that exception and abort these steps.
-          </li>
-          <li>Let |typedDescriptor| be the object |permissionDesc| refers to, <a>converted to an
-          IDL value</a> of <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s <a>permission
-          descriptor type</a>. If this throws an exception, return <a>a promise rejected with</a>
-          that exception and abort these steps.
-          </li>
-          <li>Let <var>promise</var> be a newly-created {{Promise}}.
-          </li>
-          <li>Return <var>promise</var> and continue the following steps asynchronously.
-          </li>
-          <li>Run the steps to <a>create a PermissionStatus</a> for |typedDescriptor|, and let
-          <var>status</var> be the result.
-          </li>
-          <li>Run
-          <code>|status|@{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s <a>
-            permission query algorithm</a>, passing
-            <code>|status|@{{PermissionStatus/[[query]]}}</code> and |status|.
-          </li>
-          <li>Resolve <var>promise</var> with <var>status</var>.
-          </li>
-        </ol>
-        <div class='note'>
-          If a developer wants to check multiple permissions at once, the editors recommend the use
-          of <code>{{Promise}}.all()</code>. An example can be found in [[[#examples]]].
-        </div>
+      </section>
+      <section>
+        <h3 id="notifications">
+          Notifications
+        </h3>
+        <p>
+          The <dfn>notifications</dfn> enum value identifies the [[[notifications]]] [=powerful
+          feature=]. It is a [=default powerful feature=] and is [=powerful feature/allowed in
+          non-secure contexts=].
+        </p>
+      </section>
+      <section>
+        <h3 id="push">
+          Push
+        </h3>
+        <p>
+          The <dfn>push</dfn> enum value identifies the [[[push-api]]] [=powerful feature=].
+        </p>
+        <dl>
+          <dt>
+            [=powerful feature/permission descriptor type=]
+          </dt>
+          <dd>
+            <pre class="idl">
+              dictionary PushPermissionDescriptor : PermissionDescriptor {
+                boolean userVisibleOnly = false;
+              };
+            </pre>
+            <p>
+              `{name: "push", userVisibleOnly: false}` is [=PermissionDescriptor/stronger than=]
+              `{name: "push", userVisibleOnly: true}`.
+            </p>
+          </dd>
+        </dl>
+      </section>
+      <section>
+        <h3 id="midi">
+          Midi
+        </h3>
+        <p>
+          The <dfn>midi</dfn> enum value identifies the [[[webmidi]]] [=powerful feature=].
+        </p>
+        <p class="issue">
+          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
+          Process, is [=at risk=].
+        </p>
+        <dl>
+          <dt>
+            [=powerful feature/permission descriptor type=]
+          </dt>
+          <dd>
+            <pre class="idl">
+              dictionary MidiPermissionDescriptor : PermissionDescriptor {
+                boolean sysex = false;
+              };
+            </pre>
+            <p>
+              `{name: "midi", sysex: true}` is [=PermissionDescriptor/stronger than=] `{name:
+              "midi", sysex: false}`.
+            </p>
+          </dd>
+        </dl>
+      </section>
+      <section>
+        <h3 id="screen-wake-lock">
+          Screen wake lock
+        </h3>
+        <p>
+          The <dfn>screen-wake-lock</dfn> enum value identifies the [[[screen-wake-lock]]] API
+          [=powerful feature=]. It is a [=default powerful feature=].
+        </p>
+        <p class="issue">
+          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
+          Process, it is [=at risk=].
+        </p>
+      </section>
+      <section data-cite="mediacapture-streams">
+        <h3 id="media-devices">
+          Media Devices
+        </h3>
+        <p>
+          The <dfn>camera</dfn>, <dfn>microphone</dfn> , and <dfn>speaker-selection</dfn>
+          permissions are associated with permission to use media devices as specified in
+          [[GETUSERMEDIA]] and [[audio-output]].
+        </p>
+        <p class="issue">
+          These permissions only have a single implementation, and therefore, as per the W3C
+          Process, are [=at risk=].
+        </p>
+        <dl>
+          <dt>
+            [=powerful feature/permission descriptor type=]
+          </dt>
+          <dd>
+            <pre class="idl">
+              dictionary DevicePermissionDescriptor : PermissionDescriptor {
+                DOMString deviceId;
+              };
+
+              dictionary CameraDevicePermissionDescriptor : DevicePermissionDescriptor {
+                boolean panTiltZoom = false;
+              };
+            </pre>
+            <p>
+              A permission covers access to the device given in the associated descriptor.
+            </p>
+            <p>
+              If the descriptor does not have a {{DevicePermissionDescriptor/deviceId}}, its
+              semantic is that it queries for access to all devices of that class. Thus, if a query
+              for the {{PermissionName/"camera"}} permission with no
+              {{DevicePermissionDescriptor/deviceId}} returns {{PermissionState/"granted"}}, the
+              client knows that there will never be a permission prompt for a camera, and if
+              {{PermissionState/"denied"}} is returned, it knows that no getUserMedia request for a
+              camera will succeed.
+            </p>
+            <p>
+              If a permission state is present for access to some, but not all, cameras, a query
+              without the {{DevicePermissionDescriptor/deviceId}} will return
+              {{PermissionState/"prompt"}}.
+            </p>
+            <p>
+              `{name: "camera", panTiltZoom: true}` is [=PermissionDescriptor/stronger than=]
+              `{name: "camera", panTiltZoom: false}`.
+            </p>
+            <p>
+              Note that a "granted" permission is no guarantee that getUserMedia will succeed. It
+              only guarantees that the user will not be prompted for permission. There are many
+              other things (such as constraints or the camera being in use) that can cause
+              getUserMedia to fail.
+            </p>
+          </dd>
+          <dt>
+            [=powerful feature/extra permission data type=]
+          </dt>
+          <dd>
+            A list of {{MediaDeviceInfo/deviceId}} values for the devices the user has made a
+            non-default decision on access to.
+          </dd>
+          <dt>
+            [=powerful feature/permission query algorithm=]
+          </dt>
+          <dd>
+            The permission query algorithm runs the following steps:
+            <ol class="algorithm">
+              <li>If |permissionDesc|.deviceId exists in the [=powerful feature/extra permission
+              data=], set <code>|status|.state</code> to |permissionDesc|'s <a>permission state</a>
+              and terminate these steps.
+              </li>
+              <li>Let <var>global</var> be a copy of |permissionDesc| with the
+              {{DevicePermissionDescriptor/deviceId}} member removed.
+              </li>
+              <li>Set <code>|status|.state</code> to <var>global</var>'s <a>permission state</a>.
+              </li>
+            </ol>
+          </dd>
+          <dt>
+            [=powerful feature/permission revocation algorithm=]
+          </dt>
+          <dd>
+            This is the result of calling the [=device permission revocation algorithm=] passing
+            {{PermissionDescriptor/name}} and {{DevicePermissionDescriptor/deviceId}} as arguments.
+            If the descriptor does not have a {{DevicePermissionDescriptor/deviceId}}, then
+            <code>undefined</code> is passed in place of {{DevicePermissionDescriptor/deviceId}}.
+          </dd>
+        </dl>
+      </section>
+      <section>
+        <h3 id="background-fetch">
+          Background Fetch
+        </h3>
+        <p>
+          The <dfn>background-fetch</dfn> enum value identifies the [[[background-fetch]]]
+          [=powerful feature=].
+        </p>
+        <p class="issue">
+          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
+          Process, it is [=at risk=].
+        </p>
+      </section>
+      <section>
+        <h3 id="background-sync">
+          Background Sync
+        </h3>
+        <p>
+          The <dfn>background-sync</dfn> enum value identifies the [[[web-background-sync]]]
+          [=powerful feature=].
+        </p>
+        <p class="issue">
+          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
+          Process, it is [=at risk=].
+        </p>
+      </section>
+      <section>
+        <h3 id="bluetooth">
+          Bluetooth
+        </h3>
+        <p>
+          The <dfn>bluetooth</dfn> enum value identifies the [[[web-bluetooth]]] [=powerful
+          feature=].
+        </p>
+        <p class="issue">
+          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
+          Process, it is [=at risk=].
+        </p>
+      </section>
+      <section data-cite="storage">
+        <h3 id="persistent-storage">
+          Persistent Storage
+        </h3>
+        <p>
+          The <dfn>persistent-storage</dfn> is enum value identifies the [[[storage]]] [=powerful
+          feature=].
+        </p>
+      </section>
+      <section data-cite="ambient-light">
+        <h3 id="ambient-light-sensor">
+          Ambient Light Sensor
+        </h3>
+        <p class="issue">
+          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
+          Process, it is [=at risk=].
+        </p>
+        <p>
+          The <dfn>ambient-light-sensor</dfn> enum value identifies the [[[ambient-light]]] API
+          [=powerful feature=].
+        </p>
+        <p data-cite="generic-sensor">
+          Its [=powerful feature/permission revocation algorithm=] is the result of calling
+          [=generic sensor permission revocation algorithm=] passing it
+          {{PermissionName/"ambient-light-sensor"}} as argument.
+        </p>
+      </section>
+      <section>
+        <h3 id="accelerometer">
+          Accelerometer
+        </h3>
+        <p class="issue">
+          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
+          Process, it is [=at risk=].
+        </p>
+        <p>
+          The <dfn>accelerometer</dfn> enum value identifies the [[[accelerometer]]] API [=powerful
+          feature=].
+        </p>
+        <p data-cite="generic-sensor">
+          Its [=powerful feature/permission revocation algorithm=] is the result of calling
+          [=generic sensor permission revocation algorithm=] passing it
+          {{PermissionName/"accelerometer"}} as argument.
+        </p>
+      </section>
+      <section>
+        <h3 id="gyroscope">
+          Gyroscope
+        </h3>
+        <p class="issue">
+          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
+          Process, it is [=at risk=].
+        </p>
+        <p>
+          The <dfn>gyroscope</dfn> enum value identifies the [[[gyroscope]]] API [=powerful
+          feature=].
+        </p>
+        <p data-cite="generic-sensor">
+          Its [=powerful feature/permission revocation algorithm=] is the result of calling
+          [=generic sensor permission revocation algorithm=] passing it
+          {{PermissionName/"gyroscope"}} as argument.
+        </p>
+      </section>
+      <section>
+        <h3 id="magnetometer">
+          Magnetometer
+        </h3>
+        <p class="issue">
+          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
+          Process, it is [=at risk=].
+        </p>
+        <p>
+          The <dfn>magnetometer</dfn> enum value identifies the [[[magnetometer]]] API [=powerful
+          feature=].
+        </p>
+        <p data-cite="generic-sensor">
+          Its [=powerful feature/permission revocation algorithm=] is the result of calling
+          [=generic sensor permission revocation algorithm=] passing it
+          {{PermissionName/"magnetometer"}} as argument.
+        </p>
+      </section>
+      <section>
+        <h3 id="display-capture">
+          Display Capture
+        </h3>
+        <p>
+          The <dfn>display-capture</dfn> enum value identifies the [[[screen-capture]]] [=powerful
+          feature=].
+        </p>
+        <p class="issue">
+          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
+          Process, it is [=at risk=].
+        </p>
+        <dl>
+          <dt>
+            [=powerful feature/permission state constraints=]
+          </dt>
+          <dd>
+            Valid values for this descriptor's <a>permission state</a> are
+            {{PermissionState/"prompt"}} and {{PermissionState/"denied"}}. The user agent MUST NOT
+            ever set this descriptor's <a>permission state</a> to {{PermissionState/"granted"}}.
+          </dd>
+        </dl>
+      </section>
+      <section>
+        <h3 id="nfc">
+          NFC
+        </h3>
+        <p class="issue">
+          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
+          Process, it is [=at risk=].
+        </p>
+        <p>
+          The <dfn>nfc</dfn> enum value identifies the [[[web-nfc]]] [=powerful feature=].
+        </p>
+      </section>
+      <section>
+        <h3 id="xr-api">
+          XR Spatial tracking
+        </h3>
+        <p>
+          The <dfn>xr-spatial-tracking</dfn> enum value identifies the [[[webxr]]] Device API
+          [=powerful feature=].
+        </p>
       </section>
     </section>
-    <section>
-      <h2 id="common-permission-algorithms">
-        Common permission algorithms
-      </h2>
-      <p>
-        The <dfn class="export">default permission query algorithm</dfn>, given a
-        {{PermissionDescriptor}} <var>permissionDesc</var> and a {{PermissionStatus}}
-        <var>status</var>, runs the following steps:
-      </p>
-      <ol class="algorithm">
-        <li>Set <code><var>status</var>.state</code> to |permissionDesc|'s <a>permission state</a>.
-        </li>
-      </ol>
-    </section>
-    <section class="non-normative">
+    <section id="conformance"></section>
+    <section class="informative appendix">
       <h2 id="relationship-to-permissions-policy">
         Relationship to the Permissions Policy specification
       </h2>
@@ -589,468 +1150,7 @@
         user agent policy.
       </p>
     </section>
-    <section>
-      <h2 id="permission-registry">
-        Permission Registry
-      </h2>
-      <pre class='idl'>
-        enum PermissionName {
-          "accelerometer",
-          "ambient-light-sensor",
-          "background-fetch",
-          "background-sync",
-          "bluetooth",
-          "camera",
-          "display-capture",
-          "geolocation",
-          "gyroscope",
-          "magnetometer",
-          "microphone",
-          "midi",
-          "nfc",
-          "notifications",
-          "persistent-storage",
-          "push",
-          "screen-wake-lock",
-          "speaker-selection",
-          "xr-spatial-tracking",
-        };
-      </pre>
-      <p>
-        Each enumeration value in the {{PermissionName}} enum identifies a <a>powerful feature</a>.
-        Each <a>powerful feature</a> has the following permission-related flags, algorithms, and
-        types:
-      </p>
-      <dl>
-        <dt>
-          An <dfn class="export">allowed in non-secure contexts</dfn> flag
-        </dt>
-        <dd>
-          By default, only <a>secure contexts</a> can use <a>powerful features</a>. If this flag is
-          set for a feature, the UA may grant access to it in <a>non-secure contexts</a> too.
-        </dd>
-        <dt>
-          A <dfn class="export">permission descriptor type</dfn>
-        </dt>
-        <dd>
-          <p>
-            {{PermissionDescriptor}} or one of its subtypes. If unspecified, this defaults to
-            {{PermissionDescriptor}}.
-          </p>
-          <p>
-            The feature can define a <a href=
-            "https://en.wikipedia.org/wiki/Partially_ordered_set">partial order</a> on descriptor
-            instances. If |descriptorA| is <dfn data-dfn-for="PermissionDescriptor">stronger
-            than</dfn> |descriptorB|, then if |descriptorA|'s <a>permission state</a> is
-            {{PermissionState/"granted"}}, |descriptorB|'s <a>permission state</a> must also be
-            {{PermissionState/"granted"}}, and if |descriptorB|'s <a>permission state</a> is
-            {{PermissionState/"denied"}}, |descriptorA|'s <a>permission state</a> must also be
-            {{PermissionState/"denied"}}.
-          </p>
-          <p class="example" id="example-stronger-than">
-            <code>{name: {{PermissionName/"midi"}}, sysex: true}</code> ("midi-with-sysex") is
-            [=PermissionDescriptor/stronger than=] <code>{name: {{PermissionName/"midi"}}, sysex:
-            false}</code> ("midi-without-sysex"), so if the user denies access to
-            midi-without-sysex, the UA must also deny access to midi-with-sysex, and similarly if
-            the user grants access to midi-with-sysex, the UA must also grant access to
-            midi-without-sysex.
-          </p>
-        </dd>
-        <dt>
-          Optional <dfn class="export">permission state constraints</dfn>
-        </dt>
-        <dd>
-          Constraints on the values that the UA can return as a descriptor's <a>permission
-          state</a>. Defaults to no constraints beyond the user's intent.
-        </dd>
-        <dt>
-          An optional <dfn class="export">extra permission data type</dfn>
-        </dt>
-        <dd>
-          If specified, the <a>extra permission data</a> algorithm is usable for this feature.
-        </dd>
-        <dt>
-          Optional <dfn class="export">extra permission data constraints</dfn>
-        </dt>
-        <dd>
-          Constraints on the values that the UA can return as a {{PermissionName}}'s <a>extra
-          permission data</a>. Defaults to no constraints beyond the user's intent.
-        </dd>
-        <dt>
-          A <dfn class="export">permission result type</dfn>
-        </dt>
-        <dd>
-          {{PermissionStatus}} or one of its subtypes. If unspecified, this defaults to
-          {{PermissionStatus}}.
-        </dd>
-        <dt>
-          A <dfn class="export">permission query algorithm</dfn>
-        </dt>
-        <dd>
-          Takes an instance of the <a>permission descriptor type</a> and a new or existing instance
-          of the <a>permission result type</a>, and updates the <a>permission result type</a>
-          instance with the query result. Used by {{Permissions}}'
-          {{Permissions/query(permissionDesc)}} method and the <a href=
-          "#PermissionStatus-update">PermissionStatus update steps</a>. If unspecified, this
-          defaults to the <a>default permission query algorithm</a>.
-        </dd>
-        <dt>
-          A <dfn class="export">permission revocation algorithm</dfn>
-        </dt>
-        <dd>
-          Takes no arguments. Updates any other parts of the implementation that need to be kept in
-          sync with changes in the results of <a>permission states</a> or <a>extra permission
-          data</a>. Run by [[#reacting-to-revocation]]. If unspecified, this defaults to doing
-          nothing.
-        </dd>
-      </dl>
-      <p>
-        A <dfn class="export">boolean feature</dfn> is a <a>powerful feature</a> with all of the
-        above types and algorithms defaulted.
-      </p>
-      <section>
-        <h3 id="geolocation">
-          Geolocation
-        </h3>
-        <p>
-          The <dfn>geolocation</dfn> permission is the permission associated with the usage of
-          the [[Geolocation]]. It is a <a>boolean feature</a>.
-        </p>
-      </section>
-      <section>
-        <h3 id="notifications">
-          Notifications
-        </h3>
-        <p>
-          The <dfn>notifications</dfn> permission is the permission associated with the usage of
-          the [[notifications]] API. It is a <a>boolean feature</a> and is <a>allowed in non-secure
-          contexts</a>.
-        </p>
-      </section>
-      <section>
-        <h3 id="push">
-          Push
-        </h3>
-        <p>
-          The <dfn>push</dfn> permission is the permission associated with the usage of the
-          [[push-api]].
-        </p>
-        <dl>
-          <dt>
-            <a>permission descriptor type</a>
-          </dt>
-          <dd>
-            <pre class='idl'>
-          dictionary PushPermissionDescriptor : PermissionDescriptor {
-            boolean userVisibleOnly = false;
-          };
-        </pre>
-            <p>
-              `{name: "push", userVisibleOnly: false}` is [=PermissionDescriptor/stronger than=]
-              `{name: "push", userVisibleOnly: true}`.
-            </p>
-          </dd>
-        </dl>
-      </section>
-      <section data-dfn-for="PermissionName">
-        <h3 id="midi">
-          Midi
-        </h3>
-        <p>
-          The <dfn>midi</dfn> permission is the permission associated with the usage of
-          [[webmidi]].
-        </p>
-        <p class="issue">
-          This permission only has a single implementation, and therefore, as per the W3C Process,
-          is [=at risk=].
-        </p>
-        <dl>
-          <dt>
-            <a>permission descriptor type</a>
-          </dt>
-          <dd>
-            <pre class='idl'>
-          dictionary MidiPermissionDescriptor : PermissionDescriptor {
-            boolean sysex = false;
-          };
-        </pre>
-            <p>
-              `{name: "midi", sysex: true}` is [=PermissionDescriptor/stronger than=] `{name:
-              "midi", sysex: false}`.
-            </p>
-          </dd>
-        </dl>
-      </section>
-      <section data-dfn-for="PermissionName">
-        <h3 id="screen-wake-lock">
-          Screen wake lock
-        </h3>
-        <p>
-          The <dfn>screen-wake-lock</dfn> permission is the permission associated with the usage
-          of the [[screen-wake-lock]] API. It is a <a>boolean feature</a>.
-        </p>
-        <p class="issue">
-          This permission only has a single implementation, and therefore, as per the W3C Process,
-          it is [=at risk=].
-        </p>
-      </section>
-      <section data-cite="mediacapture-streams">
-        <h3 id="media-devices">
-          Media Devices
-        </h3>
-        <p>
-          The <dfn>camera</dfn>, <dfn>microphone</dfn> , and <dfn>speaker-selection</dfn>
-          permissions are associated with permission to use media devices as specified in
-          [[GETUSERMEDIA]] and [[audio-output]].
-        </p>
-        <p class="issue">
-          These permissions only have a single implementation, and therefore, as per the W3C
-          Process, are [=at risk=].
-        </p>
-        <dl>
-          <dt>
-            <a>permission descriptor type</a>
-          </dt>
-          <dd>
-            <pre class='idl'>
-          dictionary DevicePermissionDescriptor : PermissionDescriptor {
-            DOMString deviceId;
-          };
-
-          dictionary CameraDevicePermissionDescriptor : DevicePermissionDescriptor {
-            boolean panTiltZoom = false;
-          };
-        </pre>
-            <p>
-              A permission covers access to the device given in the associated descriptor.
-            </p>
-            <p>
-              If the descriptor does not have a {{DevicePermissionDescriptor/deviceId}}, its
-              semantic is that it queries for access to all devices of that class. Thus, if a query
-              for the {{PermissionName/"camera"}} permission with no
-              {{DevicePermissionDescriptor/deviceId}} returns {{PermissionState/"granted"}}, the
-              client knows that there will never be a permission prompt for a camera, and if
-              {{PermissionState/"denied"}} is returned, it knows that no getUserMedia request for a
-              camera will succeed.
-            </p>
-            <p>
-              If a permission state is present for access to some, but not all, cameras, a query
-              without the {{DevicePermissionDescriptor/deviceId}} will return
-              {{PermissionState/"prompt"}}.
-            </p>
-            <p>
-              `{name: "camera", panTiltZoom: true}` is [=PermissionDescriptor/stronger than=]
-              `{name: "camera", panTiltZoom: false}`.
-            </p>
-            <p>
-              Note that a "granted" permission is no guarantee that getUserMedia will succeed. It
-              only guarantees that the user will not be prompted for permission. There are many
-              other things (such as constraints or the camera being in use) that can cause
-              getUserMedia to fail.
-            </p>
-          </dd>
-          <dt>
-            <a>extra permission data type</a>
-          </dt>
-          <dd>
-            A list of {{MediaDeviceInfo/deviceId}} values for the devices the user has made a
-            non-default decision on access to.
-          </dd>
-          <dt>
-            <a>permission query algorithm</a>
-          </dt>
-          <dd>
-            The permission query algorithm runs the following steps:
-            <ol class="algorithm">
-              <li>If |permissionDesc|.deviceId exists in the <a>extra permission data</a>, set
-              <code><var>status</var>.state</code> to |permissionDesc|'s <a>permission state</a>
-              and terminate these steps.
-              </li>
-              <li>Let <var>global</var> be a copy of |permissionDesc| with the
-              {{DevicePermissionDescriptor/deviceId}} member removed.
-              </li>
-              <li>Set <code><var>status</var>.state</code> to <var>global</var>'s <a>permission
-              state</a>.
-              </li>
-            </ol>
-          </dd>
-          <dt>
-            <a>permission revocation algorithm</a>
-          </dt>
-          <dd>
-            This is the result of calling the [=device permission revocation algorithm=] passing
-            {{PermissionDescriptor/name}} and {{DevicePermissionDescriptor/deviceId}} as arguments.
-            If the descriptor does not have a {{DevicePermissionDescriptor/deviceId}}, then
-            <code>undefined</code> is passed in place of {{DevicePermissionDescriptor/deviceId}}.
-          </dd>
-        </dl>
-      </section>
-      <section data-dfn-for="PermissionName">
-        <h3 id="background-fetch">
-          Background Fetch
-        </h3>
-        <p>
-          The <dfn data-dfn-for="PermissionName">"background-fetch</dfn> permission is the
-          permission associated with the usage of [[background-fetch]].
-        </p>
-        <p class="issue">
-          This permission only has a single implementation, and therefore, as per the W3C Process,
-          it is [=at risk=].
-        </p>
-      </section>
-      <section data-dfn-for="PermissionName">
-        <h3 id="background-sync">
-          Background Sync
-        </h3>
-        <p>
-          The <dfn data-dfn-for="PermissionName">"background-sync</dfn> permission is the
-          permission associated with the usage of [[web-background-sync]].
-        </p>
-        <p class="issue">
-          This permission only has a single implementation, and therefore, as per the W3C Process,
-          it is [=at risk=].
-        </p>
-      </section>
-      <section data-dfn-for="PermissionName">
-        <h3 id="bluetooth">
-          Bluetooth
-        </h3>
-        <p>
-          The <dfn data-dfn-for="PermissionName">"bluetooth</dfn> permission controls usage of
-          [[web-bluetooth]].
-        </p>
-        <p class="issue">
-          This permission only has a single implementation, and therefore, as per the W3C Process,
-          it is [=at risk=].
-        </p>
-      </section>
-      <section data-cite="storage">
-        <h3 id="persistent-storage">
-          Persistent Storage
-        </h3>
-        <p>
-          The <dfn data-dfn-for="PermissionName">"persistent-storage</dfn> permission is the
-          permission associated with the usage of the `"persistent"` storage bucket's mode.
-        </p>
-      </section>
-      <section data-cite="ambient-light">
-        <h3 id="ambient-light-sensor">
-          Ambient Light Sensor
-        </h3>
-        <p>
-          The <dfn data-dfn-for="PermissionName">"ambient-light-sensor</dfn> permission is the
-          permission associated with the usage of the [[ambient-light]] API.
-        </p>
-        <p class="issue">
-          This permission only has a single implementation, and therefore, as per the W3C Process,
-          it is [=at risk=].
-        </p>
-        <p data-cite="generic-sensor">
-          Its <a>permission revocation algorithm</a> is the result of calling [=generic sensor
-          permission revocation algorithm=] passing it {{PermissionName/"ambient-light-sensor"}} as
-          argument.
-        </p>
-      </section>
-      <section data-dfn-for="PermissionName">
-        <h3 id="accelerometer">
-          Accelerometer
-        </h3>
-        <p>
-          The <dfn data-dfn-for="PermissionName">"accelerometer</dfn> permission is the permission
-          associated with the usage of the [[accelerometer]] API.
-        </p>
-        <p class="issue">
-          This permission only has a single implementation, and therefore, as per the W3C Process,
-          it is [=at risk=].
-        </p>
-        <p data-cite="generic-sensor">
-          Its <a>permission revocation algorithm</a> is the result of calling [=generic sensor
-          permission revocation algorithm=] passing it {{PermissionName/"accelerometer"}} as
-          argument.
-        </p>
-      </section>
-      <section data-dfn-for="PermissionName">
-        <h3 id="gyroscope">
-          Gyroscope
-        </h3>
-        <p>
-          The <dfn data-dfn-for="PermissionName">"gyroscope</dfn> permission is the permission
-          associated with the usage of the [[gyroscope]] API.
-        </p>
-        <p class="issue">
-          This permission only has a single implementation, and therefore, as per the W3C Process,
-          it is [=at risk=].
-        </p>
-        <p data-cite="generic-sensor">
-          Its <a>permission revocation algorithm</a> is the result of calling [=generic sensor
-          permission revocation algorithm=] passing it {{PermissionName/"gyroscope"}} as argument.
-        </p>
-      </section>
-      <section data-dfn-for="PermissionName">
-        <h3 id="magnetometer">
-          Magnetometer
-        </h3>
-        <p>
-          The <dfn data-dfn-for="PermissionName">"magnetometer</dfn> permission is the permission
-          associated with the usage of the [[magnetometer]] API.
-        </p>
-        <p class="issue">
-          This permission only has a single implementation, and therefore, as per the W3C Process,
-          it is [=at risk=].
-        </p>
-        <p data-cite="generic-sensor">
-          Its <a>permission revocation algorithm</a> is the result of calling [=generic sensor
-          permission revocation algorithm=] passing it {{PermissionName/"magnetometer"}} as
-          argument.
-        </p>
-      </section>
-      <section data-dfn-for="PermissionName">
-        <h3 id="display-capture">
-          Display Capture
-        </h3>
-        <p>
-          The <dfn>display-capture</dfn> permission is the permission associated with the usage
-          of [[screen-capture]].
-        </p>
-        <p class="issue">
-          This permission only has a single implementation, and therefore, as per the W3C Process,
-          it is [=at risk=].
-        </p>
-        <dl>
-          <dt>
-            <a>permission state constraints</a>
-          </dt>
-          <dd>
-            Valid values for this descriptor's <a>permission state</a> are
-            {{PermissionState/"prompt"}} and {{PermissionState/"denied"}}. The user agent MUST NOT
-            ever set this descriptor's <a>permission state</a> to {{PermissionState/"granted"}}.
-          </dd>
-        </dl>
-      </section>
-      <section data-dfn-for="PermissionName">
-        <h3 id="nfc">
-          NFC
-        </h3>
-        <p class="issue">
-          This permission only has a single implementation, and therefore, as per the W3C Process,
-          it is [=at risk=].
-        </p>
-        <p>
-          The <dfn>nfc</dfn> permission is the permission associated with the usage of the
-          [[web-nfc]] API.
-        </p>
-      </section>
-      <section data-dfn-for="PermissionName">
-        <h3 id="xr-api">
-          XR Spatial tracking
-        </h3>
-        <p>
-          The <dfn>xr-spatial-tracking</dfn> permission is the permission associated with the
-          usage of the [[webxr]] Device API.
-        </p>
-      </section>
-    </section>
-    <section class="informative">
+    <section class="appendix informative">
       <h2 id="automation">
         Automated testing
       </h2>
@@ -1059,88 +1159,24 @@
         "https://w3c.github.io/permissions-automation/">Permissions Automation</a> document.
       </p>
     </section>
-    <section class='informative'>
-      <h2 id="examples">
-        Examples
+    <section class="appendix informative">
+      <h2 id="privacy-considerations">
+        Security and privacy considerations
       </h2>
       <p>
-        This example uses the Permissions API to decide whether local news should be shown using
-        the Geolocation API or with a button offering to add the feature.
+        An adversary could use a <a>permission state</a> as an element in creating a "fingerprint"
+        corresponding to an end-user. Although an adversary can already determine the state of a
+        permission by actually using the API, that often leads to a permission request UI being
+        presented to the end-user (if the permission was not already
+        {{PermissionState/"granted"}}). Thus, even though this API doesn't expose new
+        fingerprinting information to websites, it makes it easier for an adversary to have
+        discreet access to this information. Thus, implementations are encouraged to have an option
+        for users to block (globally or selectively) the querying of <a>permission states</a>.
       </p>
-      <pre class="example js">
-    const { state } = await navigator.permissions.query({
-      name: "geolocation"
-    });
-    switch (state) {
-      case "granted":
-        showLocalNewsWithGeolocation();
-        break;
-      case "prompt":
-        showButtonToEnableLocalNews();
-        break;
-      default:
-        // Don't do anything if the permission was denied.
-        break;
-    }
-  </pre>
-      <p>
-        This example is using the {{PermissionName/"notifications"}} permission for a chat
-        application to show a notification button depending on the permission state.
-      </p>
-      <pre class="example js">
-          function updateNotificationButton(state) {
-            const button = document.getElementById("chat-notification-button");
-            button.disabled = state === "denied";
-          }
-
-          const permission = navigator.permissions.query({
-            name: "notifications",
-          });
-
-          updateNotificationButton(permission.state);
-          permission.addEventListener("change", () =&gt; {
-            updateNotificationButton(permission.state);
-          });
-        </pre>
-      <p>
-        This example is checking whether the page has the {{PermissionName/"geolocation"}} and the
-        {{PermissionName/"notifications"}} permissions using <code>{{Promise}}.all</code>.
-      </p>
-      <pre class="example js">
-        const queryPromises = ["geolocation", "notifications"].map(name =&gt; {
-          return navigator.permissions.query({ name });
-        });
-        for await (const status of queryPromises) {
-          constructor.log(`${status.name}: ${status.state}`);
-        }
-        </pre>
-      <p>
-        This example is checking the permission state of the available cameras.
-      </p>
-      <pre class="example js">
-      const devices = await navigator.mediaDevices.enumerateDevices();
-
-      // filter on video inputs, and map to query object
-      const queries = devices
-        .filter(({ kind }) =&gt; kind === "videoinput")
-        .map(({ deviceId }) =&gt; ({ name: "camera", deviceId }));
-
-      const promises = queries.map((queryObj) =&gt;
-        navigator.permissions.query(queryObj)
-      );
-
-      try {
-        const results = await Promise.all(promises);
-        // log the state or each camera
-        results.forEach(({ state }, i) =&gt; console.log("Camera", i, state));
-      } catch (error) {
-        console.error(error);
-      }
-    </pre>
     </section>
-    <section id="conformance"></section>
-    <section class='informative'>
-      <h2 id="acknowledgments" class="no-num">
+    <section id="idl-index"></section>
+    <section class="appendix informative">
+      <h2 class="no-num">
         Acknowledgments
       </h2>
       <p>
