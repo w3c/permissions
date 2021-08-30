@@ -577,10 +577,10 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <a class="self-link" aria-label="§" href="#powerful-features"></a></h3>
         <p>
           A <dfn class="export" data-local-lt="feature" data-export="" data-lt="powerful feature|feature" data-plurals="powerful features" id="dfn-powerful-feature" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">powerful feature</dfn> is a web platform
-          feature (usually an API) for which a user is asked to give express consent to use before
-          a realm is <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">allowed to use</a> the feature. Access to the feature is determined by the
-          <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> doesn't satisfy some criteria, and by the user having
-          granted permission.
+          feature (usually an API) for which the user agent asks a user to give express consent to
+          use before a realm is <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">allowed to use</a> the feature. Access to the feature is determined
+          by the <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> satisfying some criteria, and by the user
+          having <a data-link-type="dfn" data-lt="grant" href="#dfn-granted" class="internalDFN" id="ref-for-dfn-granted-1">granted</a> permission.
         </p>
         <p>
           A <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-3">powerful feature</a> is identified by its <dfn data-dfn-for="powerful feature" id="dfn-name" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">name</dfn>, which is a string literal (e.g., "geolocation"). In the
@@ -726,8 +726,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
             </dt>
             <dd>
               Takes no arguments. Updates any other parts of the implementation that need to be
-              kept in sync with changes in the results of <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-10">permission states</a> or <a data-link-type="dfn" href="#dfn-extra-permission-data" class="internalDFN" id="ref-for-dfn-extra-permission-data-3">extra permission data</a>. Run by [[#reacting-to-revocation]]. If unspecified,
-              this defaults to doing nothing.
+              kept in sync with changes in the results of <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-10">permission states</a> or <a data-link-type="dfn" href="#dfn-extra-permission-data" class="internalDFN" id="ref-for-dfn-extra-permission-data-3">extra permission data</a>, and then <a data-link-type="dfn" href="#dfn-react-to-the-user-revoking-permission" class="internalDFN" id="ref-for-dfn-react-to-the-user-revoking-permission-1">react to the user revoking permission</a>.
             </dd>
           </dl>
           <p>
@@ -922,10 +921,14 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           Reacting to users revoking permission
         <a class="self-link" aria-label="§" href="#reacting-to-revocation"></a></h3>
         <p>
-          When the UA learns that the user no longer intends to grant permission for a <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realm</a> to use a <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-14">feature</a>, it must <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">queue a task</a> on the Realm's
-          <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-realm-settings-object">settings object</a>'s <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#responsible-event-loop">responsible event loop</a> to run
-          that feature's <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-1">permission revocation algorithm</a>.
+          When the UA learns that the user no longer intends to grant permission for a <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realm</a> to use a <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-14">feature</a>, <dfn id="dfn-react-to-the-user-revoking-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">react to the user revoking permission</dfn>
+          by:
         </p>
+        <ol class="algorithm">
+          <li>
+            <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">Queue a task</a> on the Realm's <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-realm-settings-object">settings object</a>'s <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#responsible-event-loop">responsible event loop</a> to run that feature's <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-1">permission revocation algorithm</a>.
+          </li>
+        </ol>
       </section>
     </section>
     <aside class="mdn"><details>
@@ -1165,7 +1168,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondesc
           </li>
           <li>Run
           <code><var>status</var>.<a data-lt="[[query]]" href="#dfn-query" class="internalDFN" data-link-type="idl" id="ref-for-dfn-query-1"><code>[[query]]</code></a>.<a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-9"><code>name</code></a></code>'s
-          [powerful feature/permission query algorithm, passing
+          <a data-link-type="dfn" href="#dfn-permission-query-algorithm" class="internalDFN" id="ref-for-dfn-permission-query-algorithm-1">permission query algorithm</a>, passing
           <code><var>status</var>.<a data-lt="[[query]]" href="#dfn-query" class="internalDFN" data-link-type="idl" id="ref-for-dfn-query-2"><code>[[query]]</code></a></code> and <var>status</var>.
           </li>
           <li>Resolve <var>promise</var> with <var>status</var>.
@@ -1328,7 +1331,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
         <ol class="algorithm">
           <li>Run
           <code><var>status</var>.<a data-lt="[[query]]" href="#dfn-query" class="internalDFN" data-link-type="idl" id="ref-for-dfn-query-4"><code>[[query]]</code></a>.<a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-12"><code>name</code></a></code>'s
-          <a data-link-type="dfn" href="#dfn-permission-query-algorithm" class="internalDFN" id="ref-for-dfn-permission-query-algorithm-1">permission query algorithm</a>, passing
+          <a data-link-type="dfn" href="#dfn-permission-query-algorithm" class="internalDFN" id="ref-for-dfn-permission-query-algorithm-2">permission query algorithm</a>, passing
           <code><var>status</var>.<a data-lt="[[query]]" href="#dfn-query" class="internalDFN" data-link-type="idl" id="ref-for-dfn-query-5"><code>[[query]]</code></a></code> and <var>status</var>.
           </li>
           <li>
@@ -1704,7 +1707,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
             non-default decision on access to.
           </dd>
           <dt>
-            <a data-link-type="dfn" href="#dfn-permission-query-algorithm" class="internalDFN" id="ref-for-dfn-permission-query-algorithm-2">permission query algorithm</a>
+            <a data-link-type="dfn" href="#dfn-permission-query-algorithm" class="internalDFN" id="ref-for-dfn-permission-query-algorithm-3">permission query algorithm</a>
           </dt>
           <dd>
             The permission query algorithm runs the following steps:
@@ -2145,8 +2148,8 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
       <p>
         On the other hand, the Permissions Policy specification allows developers to selectively
         enable and disable <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-44">powerful features</a> through a "<a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/dom.html#concept-document-permissions-policy">permissions policy</a>" (be it
-        a HTTP header or a the &lt;{iframe/allow}&gt; attribute). The APIs and features in scope
-        for the Permissions Policy specification go beyond those identified in this specification's
+        a HTTP header or a the <code><a data-type="element-attr" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-allow">allow</a></code> attribute). The APIs and features in scope for the
+        Permissions Policy specification go beyond those identified in this specification's
         <a data-link-type="idl" data-lt="PermissionName" href="#dom-permissionname" class="internalDFN" id="ref-for-dom-permissionname-11"><code>PermissionName</code></a> enum (e.g., "sync-xhr" and "gamepad"). In that sense, the Permissions
         Policy subsumes this specification in that Permissions Policy governs wether a feature is
         available at all, independently of this specification.
@@ -2363,8 +2366,10 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
+    <li>
+    <a href="#ref-for-dfn-granted-1" title="§ 2.2 Powerful features">§ 2.2 Powerful features</a> 
+  </li>
+  </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-denied" aria-label="Links in this document to definition: Denied">
       <span class="caret"></span>
       <div>
@@ -2610,9 +2615,11 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-query-algorithm-1" title="§ 5.4 onchange attribute">§ 5.4 onchange attribute</a> 
+    <a href="#ref-for-dfn-permission-query-algorithm-1" title="§ 4.1 query() method">§ 4.1 query() method</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-query-algorithm-2" title="§ 6.6 Media Devices">§ 6.6 Media Devices</a> 
+    <a href="#ref-for-dfn-permission-query-algorithm-2" title="§ 5.4 onchange attribute">§ 5.4 onchange attribute</a> 
+  </li><li>
+    <a href="#ref-for-dfn-permission-query-algorithm-3" title="§ 6.6 Media Devices">§ 6.6 Media Devices</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-default-permission-query-algorithm" aria-label="Links in this document to definition: default permission query algorithm">
@@ -2727,6 +2734,18 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
       <ul>
     <li>
     <a href="#ref-for-dfn-prompt-the-user-to-choose-1" title="§ 2.5 Prompt the user to choose">§ 2.5 Prompt the user to choose</a> <a href="#ref-for-dfn-prompt-the-user-to-choose-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-prompt-the-user-to-choose-3" title="Reference 3">(3)</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-react-to-the-user-revoking-permission" aria-label="Links in this document to definition: react to the user revoking permission">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-react-to-the-user-revoking-permission" aria-label="Permalink for definition: react to the user revoking permission. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-react-to-the-user-revoking-permission-1" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-navigator-permissions" aria-label="Links in this document to definition: permissions">
