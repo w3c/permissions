@@ -173,7 +173,7 @@
             {{PermissionState}}'s {{PermissionState/"prompt"}} enum value.
           </dd>
           <dt>
-            <dfn class="export" data-dfn-for="permission">Granted</dfn>:
+            <dfn class="export" data-local-lt="granted" data-dfn-for="permission">Granted</dfn>:
           </dt>
           <dd>
             The granted [=permission/state=] represents that the caller will be able to
@@ -212,10 +212,10 @@
         </h2>
         <p>
           A <dfn class="export" data-local-lt="feature">powerful feature</dfn> is a web platform
-          feature (usually an API) for which the user agent asks a user to give express consent to
-          use before a realm is [=allowed to use=] the feature. Access to the feature is determined
-          by the <a>environment settings object</a> satisfying some criteria, and by the user
-          having [=permission/grant|granted=] permission.
+          feature (usually an API) for which a user has to [=permission/grant=] [=permission=]
+          before the feature can be used. Access to the feature is determined by the <a>environment
+          settings object</a> by the user having [=permission/granted=] permission via UI, or by
+          satisfying some criteria that is equivalent to a permission [=permission/grant=].
         </p>
         <p>
           A [=powerful feature=] is identified by its <dfn data-dfn-for=
