@@ -169,25 +169,22 @@
             The prompt [=permission/state=] represents that the user has not made a decision (i.e.,
             it's the same a [=permission/denied=]), and the [=user agent=] will be asking the user
             for permission if the caller tries to access the feature. The user might then grant,
-            deny, ignore, or dismiss the request. In the Permission API, this is represented by the
-            {{PermissionState}}'s {{PermissionState/"prompt"}} enum value.
+            deny, ignore, or dismiss the request.
           </dd>
           <dt>
-            <dfn class="export" data-local-lt="granted" data-dfn-for="permission">Granted</dfn>:
+            <dfn class="export" data-local-lt="grant" data-dfn-for="permission">Granted</dfn>:
           </dt>
           <dd>
             The granted [=permission/state=] represents that the caller will be able to
             successfully access the feature without having the [=user agent=] asking the user's
-            permission. In the Permission API, this is represented by the {{PermissionState}}'s
-            {{PermissionState/"granted"}} enum value.
+            permission.
           </dd>
           <dt>
             <dfn class="export" data-dfn-for="permission">Denied</dfn>:
           </dt>
           <dd>
             The denied [=permission/state=] represents that the caller will not be able to access
-            the feature. In the Permission API, this is represented by the {{PermissionState}}'s
-            {{PermissionState/"denied"}} enum value.
+            the feature.
           </dd>
         </dl>
         <p>
@@ -219,9 +216,7 @@
         </p>
         <p>
           A [=powerful feature=] is identified by its <dfn data-dfn-for=
-          "powerful feature">name</dfn>, which is a string literal (e.g., "geolocation"). In the
-          Permission API, the names of powerful features are represented by enum values of the
-          {{PermissionName}} enum.
+          "powerful feature">name</dfn>, which is a string literal (e.g., "geolocation").
         </p>
         <p>
           The user agent is responsible for tracking what <a>powerful features</a> each [=global
@@ -678,6 +673,11 @@
       <p>
         {{PermissionStatus}} instances are created with a <dfn>[[\query]]</dfn> internal slot,
         which is an instance of a feature's [=powerful feature/permission descriptor type=].
+      </p>
+      <p data-dfn-for="PermissionState">
+        When using the API, the "<dfn>granted</dfn>", "<dfn>denied</dfn>", and "<dfn>prompt</dfn>"
+        enum values represent the concepts of [=permission/granted=], [=permission/denied=], and
+        [=permission/prompt=] respectively.
       </p>
       <section>
         <h3>
