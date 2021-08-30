@@ -707,8 +707,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                 or existing instance of the <a data-link-type="dfn" href="#dfn-permission-result-type" class="internalDFN" id="ref-for-dfn-permission-result-type-1">permission result type</a>, and
                 updates the <a data-link-type="dfn" href="#dfn-permission-result-type" class="internalDFN" id="ref-for-dfn-permission-result-type-2">permission result type</a> instance with the query
                 result. Used by <a data-link-type="idl" data-lt="Permissions" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-4"><code>Permissions</code></a>' <a data-link-type="idl" data-lt="query(permissionDesc)" href="#dom-permissions-query" class="internalDFN" id="ref-for-dom-permissions-query-1"><code>query</code></a><code>(<var>permissionDesc</var>)</code> method and
-                the <a href="#PermissionStatus-update"><code>PermissionStatus</code> update steps</a>. If
-                unspecified, this defaults to the <a href="#dfn-default-permission-query-algorithm" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-default-permission-query-algorithm-1">default permission query algorithm</a>.
+                the <a data-link-type="dfn" href="#dfn-permissionstatus-update-steps" class="internalDFN" id="ref-for-dfn-permissionstatus-update-steps-1"><code>PermissionStatus</code> update steps</a>. If unspecified, this defaults to the
+                <a href="#dfn-default-permission-query-algorithm" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-default-permission-query-algorithm-1">default permission query algorithm</a>.
               </p>
               <p>
                 The <dfn id="dfn-default-permission-query-algorithm" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">default permission query algorithm</dfn>, given a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-3"><code>PermissionDescriptor</code></a>
@@ -725,8 +725,13 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               algorithm</dfn>:
             </dt>
             <dd>
-              Takes no arguments. Updates any other parts of the implementation that need to be
-              kept in sync with changes in the results of <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-10">permission states</a> or <a data-link-type="dfn" href="#dfn-extra-permission-data" class="internalDFN" id="ref-for-dfn-extra-permission-data-3">extra permission data</a>, and then <a data-link-type="dfn" href="#dfn-react-to-the-user-revoking-permission" class="internalDFN" id="ref-for-dfn-react-to-the-user-revoking-permission-1">react to the user revoking permission</a>.
+              <p>
+                Takes no arguments. Updates any other parts of the implementation that need to be
+                kept in sync with changes in the results of <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-10">permission states</a> or <a data-link-type="dfn" href="#dfn-extra-permission-data" class="internalDFN" id="ref-for-dfn-extra-permission-data-3">extra permission data</a>, and then <a data-link-type="dfn" href="#dfn-react-to-the-user-revoking-permission" class="internalDFN" id="ref-for-dfn-react-to-the-user-revoking-permission-1">react to the user revoking permission</a>.
+              </p>
+              <p>
+                If unspecified, this defaults to running <a data-link-type="dfn" href="#dfn-react-to-the-user-revoking-permission" class="internalDFN" id="ref-for-dfn-react-to-the-user-revoking-permission-2">react to the user revoking permission</a>.
+              </p>
             </dd>
           </dl>
           <p>
@@ -1326,7 +1331,8 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
         </p>
         <p id="PermissionStatus-update">
           Whenever the <a data-link-type="dfn" data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agent</a> is aware that the state of a <a data-link-type="idl" data-lt="PermissionStatus" href="#dom-permissionstatus" class="internalDFN" id="ref-for-dom-permissionstatus-6"><code>PermissionStatus</code></a> instance
-          <var>status</var> has changed, it <em class="rfc2119">MUST</em> asynchronously run the following steps:
+          <var>status</var> has changed, it asynchronously runs the <dfn id="dfn-permissionstatus-update-steps" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn"><code>PermissionStatus</code> update
+          steps</dfn>:
         </p>
         <ol class="algorithm">
           <li>Run
@@ -2745,7 +2751,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-react-to-the-user-revoking-permission-1" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> 
+    <a href="#ref-for-dfn-react-to-the-user-revoking-permission-1" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> <a href="#ref-for-dfn-react-to-the-user-revoking-permission-2" title="Reference 2">(2)</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-navigator-permissions" aria-label="Links in this document to definition: permissions">
@@ -3040,6 +3046,18 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <a href="#ref-for-dom-permissionstatus-onchange-1" title="§ 5. PermissionStatus interface">§ 5. PermissionStatus interface</a> 
   </li><li>
     <a href="#ref-for-dom-permissionstatus-onchange-2" title="§ D. IDL Index">§ D. IDL Index</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permissionstatus-update-steps" aria-label="Links in this document to definition: PermissionStatus update steps">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-permissionstatus-update-steps" aria-label="Permalink for definition: PermissionStatus update steps. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-permissionstatus-update-steps-1" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permissions-task-source" aria-label="Links in this document to definition: permissions task source">
