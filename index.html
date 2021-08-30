@@ -118,7 +118,7 @@
 
         try {
           const results = await Promise.all(promises);
-          // log the state or each camera
+          // log the state of each camera
           results.forEach(({ state }, i) =&gt; console.log("Camera", i, state));
         } catch (error) {
           console.error(error);
