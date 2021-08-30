@@ -211,10 +211,10 @@
         </h2>
         <p>
           A <dfn class="export" data-local-lt="feature">powerful feature</dfn> is a web platform
-          feature (usually an API) for which a user is asked to give express consent to use before
-          a realm is [=allowed to use=] the feature. Access to the feature is determined by the
-          <a>environment settings object</a> doesn't satisfy some criteria, and by the user having
-          granted permission.
+          feature (usually an API) for which the user agent asks a user to give express consent to
+          use before a realm is [=allowed to use=] the feature. Access to the feature is determined
+          by the <a>environment settings object</a> satisfying some criteria, and by the user
+          having [=permission/grant|granted=] permission.
         </p>
         <p>
           A [=powerful feature=] is identified by its <dfn data-dfn-for=
@@ -367,8 +367,7 @@
             <dd>
               Takes no arguments. Updates any other parts of the implementation that need to be
               kept in sync with changes in the results of <a>permission states</a> or [=powerful
-              feature/extra permission data=]. Run by [[#reacting-to-revocation]]. If unspecified,
-              this defaults to doing nothing.
+              feature/extra permission data=], and then [=react to the user revoking permission=].
             </dd>
           </dl>
           <p>
@@ -573,10 +572,16 @@
         </h3>
         <p>
           When the UA learns that the user no longer intends to grant permission for a [=global
-          object/realm=] to use a <a>feature</a>, it must <a>queue a task</a> on the Realm's
-          [=Realm/settings object=]'s [=environment settings object/responsible event loop=] to run
-          that feature's [=powerful feature/permission revocation algorithm=].
+          object/realm=] to use a <a>feature</a>, <dfn>react to the user revoking permission</dfn>
+          by:
         </p>
+        <ol class="algorithm">
+          <li>
+            <a>Queue a task</a> on the Realm's [=Realm/settings object=]'s [=environment settings
+            object/responsible event loop=] to run that feature's [=powerful feature/permission
+            revocation algorithm=].
+          </li>
+        </ol>
       </section>
     </section>
     <section>
@@ -637,7 +642,7 @@
           </li>
           <li>Run
           <code>|status|.{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s
-          [powerful feature/permission query algorithm, passing
+          [=powerful feature/permission query algorithm=], passing
           <code>|status|.{{PermissionStatus/[[query]]}}</code> and |status|.
           </li>
           <li>Resolve <var>promise</var> with |status|.
@@ -1127,8 +1132,8 @@
       <p>
         On the other hand, the Permissions Policy specification allows developers to selectively
         enable and disable [=powerful features=] through a "[=Document/permissions policy=]" (be it
-        a HTTP header or a the &lt;{iframe/allow}&gt; attribute). The APIs and features in scope
-        for the Permissions Policy specification go beyond those identified in this specification's
+        a HTTP header or a the [^iframe/allow^] attribute). The APIs and features in scope for the
+        Permissions Policy specification go beyond those identified in this specification's
         {{PermissionName}} enum (e.g., "sync-xhr" and "gamepad"). In that sense, the Permissions
         Policy subsumes this specification in that Permissions Policy governs wether a feature is
         available at all, independently of this specification.
