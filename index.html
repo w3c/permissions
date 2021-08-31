@@ -105,7 +105,7 @@
           return navigator.permissions.query({ name });
         });
         for await (const status of queryPromises) {
-          constructor.log(`${status.name}: ${status.state}`);
+          console.log(`${status.name}: ${status.state}`);
         }
       </pre>
       <p>
@@ -125,7 +125,7 @@
 
         try {
           const results = await Promise.all(promises);
-          // log the state or each camera
+          // log the state of each camera
           results.forEach(({ state }, i) =&gt; console.log("Camera", i, state));
         } catch (error) {
           console.error(error);
