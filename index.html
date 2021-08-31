@@ -198,6 +198,11 @@
           </dd>
         </dl>
         <p>
+          A user agent SHOULD provide a means for the user to view, update, and
+          reset the [=permission=] [=permission/state=] of [=powerful features=]
+          associated with a realm or origin.
+        </p>
+        <p>
           To ascertain <dfn class="export">new information about the user's intent</dfn>, a user
           agent MAY collect information about a user's intentions. This information can come from
           explicit user action, aggregate behavior of both the relevant user and other users, or
@@ -212,6 +217,44 @@
             implicit signals.
           </p>
         </aside>
+        <section>
+          <h4>Lifetimes</h4>
+          <p>
+            Every [=permission=] has a <dfn class="export" data-dfn-for="permission">lifetime</dfn>,
+            which is the duration for which a particular permission remains [=permission/granted=].
+            Depending on the [=powerful feature=], the lifetime of a permission is negotiated between the
+            user and the [=user agent=], usually via some permission UI or policy.
+          </p>
+          <p>
+            Specifications that identify themselves as <a>powerful feature</a> SHOULD suggest
+            a [=permission=] [=permission/lifetime=] that is best suited for the particular feature
+            - with a strong emphasis on user privacy.
+          </p>
+          <aside class="Note" title="Determining the lifetime of a permission">
+            <p>
+              For particularly privacy-sensitive [=features=], such as [[[GETUSERMEDIA]]],
+              which can provide access
+              to a user's camera and microphone, user agents are known to expire a permission
+              [=permission/grant=] as soon as a browser tab is closed or navigated.
+              For other features, like the [[[Geolocation]]], user agents are known to offer a choice of
+              only granting the permission for the session, or for one day. Others, like the [[[Notifications]]] and [[[Push]]] APIs,
+              remember a user's decision indefinitely or until the user manually denies the permission.
+            </p>
+            <p>
+              Finding the right balance for the lifetime of a permission requires a lot of
+              thought and experimentation, and often evolves over a long period of time (often years!).
+              Implementers are encouraged to work with their UX security teams to find the right balance
+              between ease of access to a [=powerful feature=] (i.e., reducing the number of permission prompts),
+              respecting a user's privacy, and making users aware when a web application is making use
+              of a particular powerful feature (e.g., via some visual or auditory UI indicator).
+            </p>
+            <p>
+              If you are unsure about what [=permission/lifetime=] to suggest for a [=powerful feature=],
+              please contact the <a href="https://www.w3.org/Privacy/IG/">Privacy Interest Group</a>
+              for guidance.
+            </p>
+          </aside>
+        </section>
       </section>
       <section>
         <h2>
@@ -390,7 +433,8 @@
             A <dfn class="export">default powerful feature</dfn> is a <a>powerful feature</a> with
             all of the above types and algorithms defaulted.
           </p>
-        </section>
+          </section>
+          </p>
         <section>
           <h3>
             Aspects
