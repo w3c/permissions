@@ -474,7 +474,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   <span class="hljs-keyword">return</span> navigator.permissions.query({ name });
 });
 <span class="hljs-keyword">for</span> <span class="hljs-keyword">await</span> (<span class="hljs-keyword">const</span> status <span class="hljs-keyword">of</span> queryPromises) {
-  <span class="hljs-title">constructor</span>.<span class="hljs-title">log</span>(<span class="hljs-params"><span class="hljs-string">`<span class="hljs-subst">${status.name}</span>: <span class="hljs-subst">${status.state}</span>`</span></span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">${status.name}</span>: <span class="hljs-subst">${status.state}</span>`</span>);
 }</code></pre>
       </div>
       <p>
@@ -496,7 +496,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
 
 <span class="hljs-keyword">try</span> {
   <span class="hljs-keyword">const</span> results = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.all(promises);
-  <span class="hljs-comment">// log the state or each camera</span>
+  <span class="hljs-comment">// log the state of each camera</span>
   results.forEach(<span class="hljs-function">(<span class="hljs-params">{ state }, i</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Camera"</span>, i, state));
 } <span class="hljs-keyword">catch</span> (error) {
   <span class="hljs-built_in">console</span>.error(error);
