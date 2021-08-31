@@ -2153,7 +2153,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
       <p>
         Although technically this specification and the Permissions Policy specification
         ([<cite><a class="bibref" data-link-type="biblio" href="#bib-permissions-policy" title="Permissions Policy">Permissions-Policy</a></cite>]) deal with "permissions", each specification serves a distinct
-        purpose in the platform. Nevertheless, the two specifications do explicity overlap.
+        purpose in the platform. Nevertheless, the two specifications do explicitly overlap.
       </p>
       <p>
         On the one hand, this specification exclusively concerns itself with <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-43">powerful features</a>
@@ -2168,7 +2168,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
         a HTTP header or a the <code><a data-type="element-attr" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-allow">allow</a></code> attribute). The APIs and features in scope for the
         Permissions Policy specification go beyond those identified in this specification's
         <a data-link-type="idl" data-lt="PermissionName" href="#dom-permissionname" class="internalDFN" id="ref-for-dom-permissionname-10"><code>PermissionName</code></a> enum (e.g., "sync-xhr" and "gamepad"). In that sense, the Permissions
-        Policy subsumes this specification in that Permissions Policy governs wether a feature is
+        Policy subsumes this specification in that Permissions Policy governs whether a feature is
         available at all, independently of this specification.
       </p>
       <p>
@@ -2176,7 +2176,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
         has its permission state reflected as "denied" by this specification. This occurs because
         reading the current permission state relies on [<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">HTML</a></cite>]'s "<a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">allowed to use</a>" check, which
         itself calls into the Permissions Policy specification. Important to note here is the
-        sharing of permission names across both specifications. Where this specifications has the
+        sharing of permission names across both specifications. Where this specification has the
         <a data-link-type="idl" data-lt="PermissionName" href="#dom-permissionname" class="internalDFN" id="ref-for-dom-permissionname-11"><code>PermissionName</code></a> enum, the Permissions Policy specification relies on other
         specifications defining the names of the permissions (e.g., the permission "gamepad" is
         defined in [<cite><a class="bibref" data-link-type="biblio" href="#bib-gamepad" title="Gamepad">Gamepad</a></cite>], and so on).
