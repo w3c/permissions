@@ -97,8 +97,8 @@
         }
       </pre>
       <p>
-        This example is checking whether the page has the {{PowerfulFeatureName/"geolocation"}} and the
-        {{PowerfulFeatureName/"notifications"}} permissions:
+        This example is checking whether the page has the {{FeatureName/"geolocation"}} and the
+        {{FeatureName/"notifications"}} permissions:
       </p>
       <pre class="example js" title="Checking the state of multiple permissions">
         const queryPromises = ["geolocation", "notifications"].map(name =&gt; {
@@ -274,8 +274,8 @@
                 |descriptorA|'s <a>permission state</a> must also be {{PermissionState/"denied"}}.
               </p>
               <p class="example" id="example-stronger-than">
-                <code>{name: {{PowerfulFeatureName/"midi"}}, sysex: true}</code> ("midi-with-sysex") is
-                [=PermissionDescriptor/stronger than=] <code>{name: {{PowerfulFeatureName/"midi"}},
+                <code>{name: {{FeatureName/"midi"}}, sysex: true}</code> ("midi-with-sysex") is
+                [=PermissionDescriptor/stronger than=] <code>{name: {{FeatureName/"midi"}},
                 sysex: false}</code> ("midi-without-sysex"), so if the user denies access to
                 midi-without-sysex, the UA must also deny access to midi-with-sysex, and similarly
                 if the user grants access to midi-with-sysex, the UA must also grant access to
@@ -301,7 +301,7 @@
                 determine <em>which</em> cameras the user has granted the <a data-cite=
                 "ECMASCRIPT#current-realm">current realm</a> permission to access. Each of these
                 features defines an [=powerful feature/extra permission data type=]. If a
-                {{PowerfulFeatureName}} |name| names one of these features, then |name|'s
+                {{FeatureName}} |name| names one of these features, then |name|'s
                 <dfn data-dfn-for="powerful feature" class="export">extra permission data</dfn> for
                 an optional <a>environment settings object</a> |settings| is the result of the
                 following algorithm:
@@ -329,7 +329,7 @@
               constraints</dfn>:
             </dt>
             <dd>
-              Constraints on the values that the UA can return as a {{PowerfulFeatureName}}'s [=powerful
+              Constraints on the values that the UA can return as a {{FeatureName}}'s [=powerful
               feature/extra permission data=]. Defaults to no constraints beyond the user's intent.
             </dd>
             <dt>
@@ -395,7 +395,7 @@
           </p>
           <aside class="example">
             <p>
-              The {{PowerfulFeatureName/"midi"}} <a>feature</a> has two [=powerful feature/aspects=]:
+              The {{FeatureName/"midi"}} <a>feature</a> has two [=powerful feature/aspects=]:
               access to normal messages, and access to system exclusive messages. Thus, its
               [=powerful feature/permission descriptor type=] is:
             </p>
@@ -405,7 +405,7 @@
               };
             </pre>
             <p>
-              The {{PowerfulFeatureName/"bluetooth"}} feature lets sites request to access whatever
+              The {{FeatureName/"bluetooth"}} feature lets sites request to access whatever
               Bluetooth devices are close to to the user's device. Thus, its [=powerful
               feature/permission descriptor type=] is:
             </p>
@@ -489,7 +489,7 @@
           several possible settings objects</a> it uses.
         </p>
         <p>
-          As a shorthand, a {{PowerfulFeatureName}} |name|'s <a>permission state</a> is the
+          As a shorthand, a {{FeatureName}} |name|'s <a>permission state</a> is the
           <a>permission state</a> of a {{PermissionDescriptor}} with its
           {{PermissionDescriptor/name}} member set to |name|.
         </p>
@@ -528,7 +528,7 @@
           </li>
         </ol>
         <p>
-          As a shorthand, <a>requesting permission to use</a> a {{PowerfulFeatureName}} |name|, is the
+          As a shorthand, <a>requesting permission to use</a> a {{FeatureName}} |name|, is the
           same as <a>requesting permission to use</a> a {{PermissionDescriptor}} with its
           {{PermissionDescriptor/name}} member set to |name|.
         </p>
@@ -569,7 +569,7 @@
         </ol>
         <p>
           As a shorthand, <a>prompting the user to choose</a> from options associated with a
-          {{PowerfulFeatureName}} |name|, is the same as <a>prompting the user to choose</a> from those
+          {{FeatureName}} |name|, is the same as <a>prompting the user to choose</a> from those
           options associated with a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}}
           member set to |name|.
         </p>
@@ -619,7 +619,7 @@
         };
 
         dictionary PermissionDescriptor {
-          required PowerfulFeatureName name;
+          required FeatureName name;
         };
       </pre>
       <section>
@@ -666,7 +666,7 @@
         [Exposed=(Window,Worker)]
         interface PermissionStatus : EventTarget {
           readonly attribute PermissionState state;
-          readonly attribute PowerfulFeatureName name;
+          readonly attribute FeatureName name;
           attribute EventHandler onchange;
         };
 
@@ -757,12 +757,12 @@
         </p>
       </section>
     </section>
-    <section data-dfn-for="PowerfulFeatureName">
+    <section data-dfn-for="FeatureName">
       <h2>
         Powerful features registry
       </h2>
       <pre class="idl">
-        enum PowerfulFeatureName {
+        enum FeatureName {
           "accelerometer",
           "ambient-light-sensor",
           "background-fetch",
@@ -785,7 +785,7 @@
         };
       </pre>
       <p>
-        Each enumeration value in the {{PowerfulFeatureName}} enum identifies a <a>powerful feature</a>.
+        Each enumeration value in the {{FeatureName}} enum identifies a <a>powerful feature</a>.
       </p>
       <section>
         <h3 id="geolocation">
@@ -904,7 +904,7 @@
             <p>
               If the descriptor does not have a {{DevicePermissionDescriptor/deviceId}}, its
               semantic is that it queries for access to all devices of that class. Thus, if a query
-              for the {{PowerfulFeatureName/"camera"}} permission with no
+              for the {{FeatureName/"camera"}} permission with no
               {{DevicePermissionDescriptor/deviceId}} returns {{PermissionState/"granted"}}, the
               client knows that there will never be a permission prompt for a camera, and if
               {{PermissionState/"denied"}} is returned, it knows that no getUserMedia request for a
@@ -1024,7 +1024,7 @@
         <p data-cite="generic-sensor">
           Its [=powerful feature/permission revocation algorithm=] is the result of calling
           [=generic sensor permission revocation algorithm=] passing it
-          {{PowerfulFeatureName/"ambient-light-sensor"}} as argument.
+          {{FeatureName/"ambient-light-sensor"}} as argument.
         </p>
       </section>
       <section>
@@ -1042,7 +1042,7 @@
         <p data-cite="generic-sensor">
           Its [=powerful feature/permission revocation algorithm=] is the result of calling
           [=generic sensor permission revocation algorithm=] passing it
-          {{PowerfulFeatureName/"accelerometer"}} as argument.
+          {{FeatureName/"accelerometer"}} as argument.
         </p>
       </section>
       <section>
@@ -1060,7 +1060,7 @@
         <p data-cite="generic-sensor">
           Its [=powerful feature/permission revocation algorithm=] is the result of calling
           [=generic sensor permission revocation algorithm=] passing it
-          {{PowerfulFeatureName/"gyroscope"}} as argument.
+          {{FeatureName/"gyroscope"}} as argument.
         </p>
       </section>
       <section>
@@ -1078,7 +1078,7 @@
         <p data-cite="generic-sensor">
           Its [=powerful feature/permission revocation algorithm=] is the result of calling
           [=generic sensor permission revocation algorithm=] passing it
-          {{PowerfulFeatureName/"magnetometer"}} as argument.
+          {{FeatureName/"magnetometer"}} as argument.
         </p>
       </section>
       <section>
@@ -1141,14 +1141,14 @@
         whose access is managed through a user-agent mediated permissions UI (i.e., permissions
         where the user gives express consent before that feature can be used, and where the user
         retains the ability to deny that permission at any time for any reason). These powerful
-        features are explicitly identified by this specification's {{PowerfulFeatureName}} enum.
+        features are explicitly identified by this specification's {{FeatureName}} enum.
       </p>
       <p>
         On the other hand, the Permissions Policy specification allows developers to selectively
         enable and disable [=powerful features=] through a "[=Document/permissions policy=]" (be it
         a HTTP header or a the [^iframe/allow^] attribute). The APIs and features in scope for the
         Permissions Policy specification go beyond those identified in this specification's
-        {{PowerfulFeatureName}} enum (e.g., "sync-xhr" and "gamepad"). In that sense, the Permissions
+        {{FeatureName}} enum (e.g., "sync-xhr" and "gamepad"). In that sense, the Permissions
         Policy subsumes this specification in that Permissions Policy governs wether a feature is
         available at all, independently of this specification.
       </p>
@@ -1158,7 +1158,7 @@
         reading the current permission state relies on [[HTML]]'s "[=allowed to use=]" check, which
         itself calls into the Permissions Policy specification. Important to note here is the
         sharing of permission names across both specifications. Where this specifications has the
-        {{PowerfulFeatureName}} enum, the Permissions Policy specification relies on other
+        {{FeatureName}} enum, the Permissions Policy specification relies on other
         specifications defining the names of the permissions (e.g., the permission "gamepad" is
         defined in [[Gamepad]], and so on).
       </p>
