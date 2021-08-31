@@ -3,4 +3,5 @@ This repo holds some of the sources for the Permissions API, an interface for We
 
 The latest editor’s draft is at https://w3c.github.io/permissions/
 
-# [Contributing](https://github.com/w3c/permissions/blob/main/.github/CONTRIBUTING.md)
+# Contributing
+We welcome contributions to this repo. For more info, please see [CONTRIBUTING](https://github.com/w3c/permissions/blob/main/.github/CONTRIBUTING.md).
