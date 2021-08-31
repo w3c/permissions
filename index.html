@@ -166,7 +166,7 @@
         </aside>
         <p>
           Conceptually, a [=permission=] can be in one of the following <dfn data-dfn-for=
-          "permission">states</dfn>:
+          "permission" data-local-lt="permission state|state">states</dfn>:
         </p>
         <dl>
           <dt>
@@ -268,10 +268,10 @@
                 "https://en.wikipedia.org/wiki/Partially_ordered_set">partial order</a> on
                 descriptor instances. If |descriptorA| is <dfn data-dfn-for=
                 "PermissionDescriptor">stronger than</dfn> |descriptorB|, then if |descriptorA|'s
-                <a>permission state</a> is {{PermissionState/"granted"}}, |descriptorB|'s
-                <a>permission state</a> must also be {{PermissionState/"granted"}}, and if
-                |descriptorB|'s <a>permission state</a> is {{PermissionState/"denied"}},
-                |descriptorA|'s <a>permission state</a> must also be {{PermissionState/"denied"}}.
+                [=permission/state=] is [permission/granted], |descriptorB|'s
+                [=permission/state=] must also be [permission/granted], and if
+                |descriptorB|'s [=permission/state=] is [=permission/denied=],
+                |descriptorA|'s [=permission/state=] must also be [=permission/denied=].
               </p>
               <p class="example" id="example-stronger-than">
                 <code>{name: {{PermissionName/"midi"}}, sysex: true}</code> ("midi-with-sysex") is
@@ -287,8 +287,8 @@
               constraints</dfn>:
             </dt>
             <dd>
-              Constraints on the values that the UA can return as a descriptor's <a>permission
-              state</a>. Defaults to no constraints beyond the user's intent.
+              Constraints on the values that the UA can return as a descriptor's permission
+              [=permission/state=]. Defaults to no constraints beyond the user's intent.
             </dd>
             <dt>
               An optional <dfn data-dfn-for="powerful feature" class="export">extra permission data
@@ -353,12 +353,15 @@
                 <a>default permission query algorithm</a>.
               </p>
               <p>
-                The <dfn>default permission query algorithm</dfn>, given a {{PermissionDescriptor}}
-                <var>permissionDesc</var> and a {{PermissionStatus}} |status|, runs the following
+                The <dfn>default permission query algorithm</dfn>, given a to |permissionDesc|'s
+                |permissionDesc:PermissionDescriptor| and a {{PermissionStatus}} |status:PermissionStatus|, runs the following
                 steps:
               </p>
               <ol class="algorithm">
-                <li>Set <code>|status|.state</code> to |permissionDesc|'s <a>permission state</a>.
+                <li>
+                  Let |name:PermissionName| be |permissionDesc|.{{PermissionStatus/name}}.
+                </li>
+                <li>Set |status|.{{PermissionStatus/state}} to |permissionDesc|'s the {{PermissionState}} enum value that matches the |name|'s [=permission=] [=permission/state=].
                 </li>
               </ol>
             </dd>
@@ -369,7 +372,7 @@
             <dd>
               <p>
                 Takes no arguments. Updates any other parts of the implementation that need to be
-                kept in sync with changes in the results of <a>permission states</a> or [=powerful
+                kept in sync with changes in the results of permission [=permission/states=] or [=powerful
                 feature/extra permission data=], and then [=react to the user revoking
                 permission=].
               </p>
@@ -431,17 +434,17 @@
           Reading the current permission state
         </h3>
         <p>
-          A |descriptor|'s <dfn class="export" data-local-lt="state">permission state</dfn> for an
+          A |descriptor|'s permission [=permission/state=] for an
           optional <a>environment settings object</a> |settings| is the result of the following
-          algorithm, which returns one of {{PermissionState/"granted"}},
-          {{PermissionState/"prompt"}}, or {{PermissionState/"denied"}}:
+          algorithm, which returns one of [=permission/granted=],
+          [=permission/prompt=], or [=permission/denied=]:
         </p>
         <ol class="algorithm">
           <li>If |settings| wasn't passed, set it to the [=current settings object=].
           </li>
           <li>If |settings| is a <a>non-secure context</a> and
           <code>|descriptor|.{{PermissionDescriptor/name}}</code> isn't [=powerful feature/allowed
-          in non-secure contexts=], then return {{PermissionState/"denied"}}.
+          in non-secure contexts=], then return [=permission/denied=].
           </li>
           <li>If there exists a [=policy-controlled feature=] identified by
           <code>|descriptor|.{{PermissionDescriptor/name}}</code> and |settings| has an
@@ -449,7 +452,7 @@
             <ol class="algorithm">
               <li>If <var>document</var> is not <a>allowed to use</a> the feature identified by
               <code>|descriptor|.{{PermissionDescriptor/name}}</code> return
-              {{PermissionState/"denied"}}.
+              [=permission/denied=].
               </li>
             </ol>
           </li>
@@ -465,19 +468,19 @@
                 succeed without prompting the user
               </dt>
               <dd>
-                {{PermissionState/"granted"}}
+                [=permission/granted=]
               </dd>
               <dt>
                 show the user a prompt to decide whether to succeed
               </dt>
               <dd>
-                {{PermissionState/"prompt"}}
+                [=permission/prompt=]
               </dd>
               <dt>
                 fail without prompting the user
               </dt>
               <dd>
-                {{PermissionState/"denied"}}
+                [=permission/denied=]
               </dd>
             </dl>
           </li>
@@ -489,8 +492,8 @@
           several possible settings objects</a> it uses.
         </p>
         <p>
-          As a shorthand, a {{PermissionName}} |name|'s <a>permission state</a> is the
-          <a>permission state</a> of a {{PermissionDescriptor}} with its
+          As a shorthand, a {{PermissionName}} |name|'s [=permission/state=] is the
+          [=permission/state=] of a {{PermissionDescriptor}} with its
           {{PermissionDescriptor/name}} member set to |name|.
         </p>
       </section>
@@ -505,20 +508,20 @@
         <p>
           To <dfn data-lt="request permission to use|requesting permission to use" class=
           "export">request permission to use</dfn> a |descriptor|, the UA must perform the
-          following steps. This algorithm returns either {{PermissionState/"granted"}} or
-          {{PermissionState/"denied"}}.
+          following steps. This algorithm returns either [=permission/granted=] or
+          [=permission/denied=].
         </p>
         <ol class="algorithm">
-          <li>Let <var>current state</var> be the |descriptor|'s <a>permission state</a>.
+          <li>Let <var>current state</var> be the |descriptor|'s [=permission/state=].
           </li>
-          <li>If <var>current state</var> is not {{PermissionState/"prompt"}}, return <var>current
+          <li>If <var>current state</var> is not [=permission/prompt=], return <var>current
           state</var> and abort these steps.
           </li>
           <li>Ask the user's permission for the calling algorithm to use the <a>powerful
           feature</a> described by |descriptor|.
           </li>
-          <li>If the user grants permission, return {{PermissionState/"granted"}}; otherwise return
-          {{PermissionState/"denied"}}. The user's interaction may provide <a>new information about
+          <li>If the user grants permission, return [=permission/granted=]; otherwise return
+          [=permission/denied=]. The user's interaction may provide <a>new information about
           the user's intent</a> for this [=global object/realm=] and other [=global object/realms=]
           with the <a>same origin</a>.
             <p class="note">
@@ -541,13 +544,13 @@
           To <dfn data-lt="prompt the user to choose|prompting the user to choose" class=
           "export">prompt the user to choose</dfn> one of several |options| associated with a
           |descriptor|, the UA must perform the following steps. This algorithm returns either
-          {{PermissionState/"denied"}} or one of the options.
+          [=permission/denied=] or one of the options.
         </p>
         <ol class="algorithm">
-          <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"denied"}}, return
-          {{PermissionState/"denied"}} and abort these steps.
+          <li>If |descriptor|'s [=permission/state=] is [=permission/denied=], return
+          [=permission/denied=] and abort these steps.
           </li>
-          <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"granted"}}, the UA
+          <li>If |descriptor|'s [=permission/state=] is [=permission/granted=], the UA
           may return one of |options| and abort these steps. If the UA returns without prompting,
           then subsequent <a data-lt="prompt the user to choose">prompts for the user to choose</a>
           from the same set of options with the same |descriptor| must return the same option,
@@ -558,7 +561,7 @@
           include it.
           </li>
           <li>If the user chose an option, return it; otherwise return
-          {{PermissionState/"denied"}}. If the user's interaction indicates they intend this choice
+          [=permission/denied=]. If the user's interaction indicates they intend this choice
           to apply to other realms, then treat this this as <a>new information about the user's
           intent</a> for other [=global object/realms=] with the <a>same origin</a>.
             <p class="note">
@@ -940,13 +943,13 @@
             The permission query algorithm runs the following steps:
             <ol class="algorithm">
               <li>If |permissionDesc|.deviceId exists in the [=powerful feature/extra permission
-              data=], set <code>|status|.state</code> to |permissionDesc|'s <a>permission state</a>
+              data=], set <code>|status|.state</code> to |permissionDesc|'s [=permission/state=]
               and terminate these steps.
               </li>
               <li>Let <var>global</var> be a copy of |permissionDesc| with the
               {{DevicePermissionDescriptor/deviceId}} member removed.
               </li>
-              <li>Set <code>|status|.state</code> to <var>global</var>'s <a>permission state</a>.
+              <li>Set <code>|status|.state</code> to <var>global</var>'s [=permission/state=].
               </li>
             </ol>
           </dd>
@@ -1098,9 +1101,9 @@
             [=powerful feature/permission state constraints=]
           </dt>
           <dd>
-            Valid values for this descriptor's <a>permission state</a> are
+            Valid values for this descriptor's [=permission/state=] are
             {{PermissionState/"prompt"}} and {{PermissionState/"denied"}}. The user agent MUST NOT
-            ever set this descriptor's <a>permission state</a> to {{PermissionState/"granted"}}.
+            ever set this descriptor's [=permission/state=] to [=permission/granted=].
           </dd>
         </dl>
       </section>
@@ -1183,14 +1186,14 @@
         Security and privacy considerations
       </h2>
       <p>
-        An adversary could use a <a>permission state</a> as an element in creating a "fingerprint"
+        An adversary could use a [=permission/state=] as an element in creating a "fingerprint"
         corresponding to an end-user. Although an adversary can already determine the state of a
         permission by actually using the API, that often leads to a permission request UI being
         presented to the end-user (if the permission was not already
-        {{PermissionState/"granted"}}). Thus, even though this API doesn't expose new
+        [=permission/granted=]). Thus, even though this API doesn't expose new
         fingerprinting information to websites, it makes it easier for an adversary to have
         discreet access to this information. Thus, implementations are encouraged to have an option
-        for users to block (globally or selectively) the querying of <a>permission states</a>.
+        for users to block (globally or selectively) the querying of permission [=permission/states=].
       </p>
     </section>
     <section id="idl-index"></section>
