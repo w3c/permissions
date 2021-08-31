@@ -28,16 +28,28 @@ in the relevant W3C Working Group or make a non-member patent licensing commitme
     - `Chore:` - when fixing ReSpec stuff or other non-spec related stuff (e.g., CI).
     - Normative changes should not be prefixed with anything. These go into the changelog.
 
-## Running HTML5 Tidy
+## Optional - Running HTML5 Tidy
 
-Please make sure you have [HTML5 Tidy](https://github.com/w3c/tidy-html5) installed.
+We run HTML5 tidy on the server after every commit.
+
+But, if you are planning to make a lot of edits, please make sure you
+have [HTML5 Tidy](https://github.com/w3c/tidy-html5) installed.
+
+On MacOS:
+
+```
+brew install tidy-html5
+```
+
 Don't use the the one that ships with \*nix systems.
 
-You can confirm check the version by running:
+You can confirm check the version by running the following.
 
 ```bash
-tidy --version  #HTML Tidy for HTML5 (experimental) for ...
+tidy --version
 ```
+
+It should say "HTML Tidy for Apple macOS version 5.8.0" or something similar for your OS.
 
 Once you have confirmed (make sure you have committed your changes before
 running tidy, as the changes are destructive ... in a good way:)):
