@@ -1135,7 +1135,7 @@
       <p>
         Although technically this specification and the Permissions Policy specification
         ([[Permissions-Policy]]) deal with "permissions", each specification serves a distinct
-        purpose in the platform. Nevertheless, the two specifications do explicity overlap.
+        purpose in the platform. Nevertheless, the two specifications do explicitly overlap.
       </p>
       <p>
         On the one hand, this specification exclusively concerns itself with [=powerful features=]
@@ -1150,7 +1150,7 @@
         a HTTP header or a the [^iframe/allow^] attribute). The APIs and features in scope for the
         Permissions Policy specification go beyond those identified in this specification's
         {{PermissionName}} enum (e.g., "sync-xhr" and "gamepad"). In that sense, the Permissions
-        Policy subsumes this specification in that Permissions Policy governs wether a feature is
+        Policy subsumes this specification in that Permissions Policy governs weather a feature is
         available at all, independently of this specification.
       </p>
       <p>
@@ -1158,7 +1158,7 @@
         has its permission state reflected as "denied" by this specification. This occurs because
         reading the current permission state relies on [[HTML]]'s "[=allowed to use=]" check, which
         itself calls into the Permissions Policy specification. Important to note here is the
-        sharing of permission names across both specifications. Where this specifications has the
+        sharing of permission names across both specifications. Where this specification has the
         {{PermissionName}} enum, the Permissions Policy specification relies on other
         specifications defining the names of the permissions (e.g., the permission "gamepad" is
         defined in [[Gamepad]], and so on).
