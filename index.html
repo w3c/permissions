@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 26.13.4">
+<meta name="generator" content="ReSpec 26.14.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -230,54 +230,59 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   },
   "mdn": true,
   "xref": "web-platform",
-  "publishISODate": "2021-09-07T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 07 September 2021"
+  "publishISODate": "2021-10-12T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 12 October 2021"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"></head>
-  <body class="h-entry" data-cite="WebIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
+  <body class="h-entry" data-cite="WEBIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
     <a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72">
   </a> <h1 id="title" class="title">Permissions</h1>
-    <h2 id="subtitle" class="subtitle">Interacting with Permissions for Powerful Features</h2>
-    <h2>
-      W3C Editor's Draft
-      <time class="dt-published" datetime="2021-09-07">07 September 2021</time>
+    <h2 id="subtitle" class="subtitle">
+      Interacting with Permissions for Powerful Features
     </h2>
-    <dl>
-      <dt>This version:</dt><dd>
-              <a class="u-url" href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a>
-            </dd><dt>Latest published version:</dt><dd>
-              <a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
-            </dd>
-      <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a></dd>
-      
-      
-      
-      
-      
-      <dt>Editors:</dt>
-      <dd class="editor p-author h-card vcard" data-editor-id="39125">
+    <h2><a href="https://www.w3.org/standards/types">W3C Editor's Draft</a> <time class="dt-published" datetime="2021-10-12">12 October 2021</time></h2>
+    <details open="">
+      <summary>More details about this document</summary>
+      <dl>
+        <dt>This version:</dt><dd>
+                <a class="u-url" href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a>
+              </dd><dt>Latest published version:</dt><dd>
+                <a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
+              </dd>
+        <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a></dd>
+        <dt>History:</dt><dd>
+      <a href="https://www.w3.org/standards/history/permissions">Publication history</a>
+    </dd><dd>
+        <a href="https://github.com/w3c/permissions/commits/main">Commit history</a>
+      </dd>
+        
+        
+        
+        
+        
+        <dt>Editors:</dt>
+        <dd class="editor p-author h-card vcard" data-editor-id="39125">
     <a class="u-url url p-name fn" href="https://www.w3.org/">Marcos Cáceres</a> (<a class="p-org org h-org" href="https://www.w3.org/">W3C</a>)
   </dd><dd class="editor p-author h-card vcard" data-editor-id="90704">
     <a class="u-url url p-name fn" href="https://miketaylr.com/posts/">Mike Taylor</a> (<a class="p-org org h-org" href="https://google.com/">Google LLC</a>)
   </dd>
-      <dt>
-              Former editors:
-            </dt><dd class="editor p-author h-card vcard">
+        <dt>
+                Former editors:
+              </dt><dd class="editor p-author h-card vcard">
     <span class="p-name fn">Mounir Lamouri</span> (<a class="p-org org h-org" href="https://google.com/">Google LLC</a>)
   </dd><dd class="editor p-author h-card vcard" data-editor-id="72192">
     <span class="p-name fn">Jeffrey Yasskin</span> (<a class="p-org org h-org" href="https://google.com/">Google LLC</a>)
   </dd>
-      
-      <dt>Participate:</dt><dd>
-    <a href="https://github.com/w3c/permissions/">GitHub w3c/permissions</a>
-  </dd><dd>
-    <a href="https://github.com/w3c/permissions/issues/">File an issue</a>
-  </dd><dd>
-    <a href="https://github.com/w3c/permissions/commits/main">Commit history</a>
-  </dd><dd>
-    <a href="https://github.com/w3c/permissions/pulls/">Pull requests</a>
-  </dd>
-    </dl>
+        
+        <dt>Feedback:</dt><dd>
+        <a href="https://github.com/w3c/permissions/">GitHub w3c/permissions</a>
+        (<a href="https://github.com/w3c/permissions/pulls/">pull requests</a>,
+        <a href="https://github.com/w3c/permissions/issues/new/choose">new issue</a>,
+        <a href="https://github.com/w3c/permissions/issues/">open issues</a>)
+      </dd>
+        
+      </dl>
+    </details>
     
     
     
@@ -446,9 +451,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         This example uses the Permissions API to decide whether local news should be shown using
         the Geolocation API or with a button offering to add the feature.
       </p>
-      <div class="example" id="example-1-using-state-attribute">
+      <div class="example" id="example-using-state-attribute">
         <div class="marker">
-    <a class="self-link" href="#example-1-using-state-attribute">Example<bdi> 1</bdi></a><span class="example-title">: Using .state attribute</span>
+    <a class="self-link" href="#example-using-state-attribute">Example<bdi> 1</bdi></a><span class="example-title">: Using .state attribute</span>
   </div> <pre aria-busy="false"><code class="hljs js"><span class="hljs-keyword">const</span> { state } = <span class="hljs-keyword">await</span> navigator.permissions.query({
   <span class="hljs-attr">name</span>: <span class="hljs-string">"geolocation"</span>
 });
@@ -468,9 +473,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         This example is checking whether the page has the "<a data-link-type="idl" href="#dom-permissionname-geolocation" class="internalDFN" id="ref-for-dom-permissionname-geolocation-1"><code>geolocation</code></a>" and the
         "<a data-link-type="idl" href="#dom-permissionname-notifications" class="internalDFN" id="ref-for-dom-permissionname-notifications-1"><code>notifications</code></a>" permissions:
       </p>
-      <div class="example" id="example-2-checking-the-state-of-multiple-permissions">
+      <div class="example" id="example-checking-the-state-of-multiple-permissions">
         <div class="marker">
-    <a class="self-link" href="#example-2-checking-the-state-of-multiple-permissions">Example<bdi> 2</bdi></a><span class="example-title">: Checking the state of multiple permissions</span>
+    <a class="self-link" href="#example-checking-the-state-of-multiple-permissions">Example<bdi> 2</bdi></a><span class="example-title">: Checking the state of multiple permissions</span>
   </div> <pre aria-busy="false"><code class="hljs js"><span class="hljs-keyword">const</span> queryPromises = [<span class="hljs-string">"geolocation"</span>, <span class="hljs-string">"notifications"</span>].map(<span class="hljs-function"><span class="hljs-params">name</span> =&gt;</span> {
   <span class="hljs-keyword">return</span> navigator.permissions.query({ name });
 });
@@ -609,8 +614,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           </p></div>
           <p>
             Each <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-6">powerful feature</a> has the following permission-related flags, algorithms,
-            and types. When the defaults are not suitable for a particular <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-7">powerful feature</a>,
-            a specification <em class="rfc2119">MAY</em> override below flags, algorithms, and types below.
+            and types. When the defaults are not suitable for a particular <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-7">powerful feature</a>, a
+            specification <em class="rfc2119">MAY</em> override below flags, algorithms, and types below.
           </p>
           <dl>
             <dt>
@@ -1038,14 +1043,14 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       <h2 id="navigator-and-workernavigator-extension"><bdi class="secno">3. </bdi>
         Extensions to the <code>Navigator</code> and <code>WorkerNavigator</code> interfaces
       <a class="self-link" aria-label="§" href="#navigator-and-workernavigator-extension"></a></h2>
-      <pre class="idl def" id="webidl-2112232240"><span class="idlHeader"><a class="self-link" href="#webidl-2112232240">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-navigator-partial-1" data-title="Navigator">[<span class="extAttr"><a data-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>)</span>]
+      <pre class="idl def" id="webidl-2112232240"><span class="idlHeader"><a class="self-link" href="#webidl-2112232240">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-navigator-partial-1" data-title="Navigator">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>)</span>]
 partial interface <a data-idl="partial" data-link-type="interface" data-title="Navigator" class="idlID" data-dfn-for="Navigator" data-type="interface" href="https://html.spec.whatwg.org/multipage/system-state.html#navigator">Navigator</a> {<span data-idl="" class="idlAttribute" id="idl-def-navigator-permissions" data-title="permissions" data-dfn-for="Navigator">
-  [<span class="extAttr"><a data-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-5">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" id="dom-navigator-permissions" data-idl="attribute" data-title="permissions" data-dfn-for="Navigator" data-type="Permissions" data-lt="permissions" data-local-lt="Navigator.permissions" class="idlName" tabindex="0" aria-haspopup="dialog"><code>permissions</code></dfn>;</span>
+  [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-5">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" id="dom-navigator-permissions" data-idl="attribute" data-title="permissions" data-dfn-for="Navigator" data-type="Permissions" data-lt="permissions" data-local-lt="Navigator.permissions" class="idlName" tabindex="0" aria-haspopup="dialog"><code>permissions</code></dfn>;</span>
 };</span><span data-idl="" class="idlInterface" id="idl-def-workernavigator-partial-1" data-title="WorkerNavigator">
 
-[<span class="extAttr"><a data-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed">Exposed</a>=(<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
+[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
 partial interface <a data-idl="partial" data-link-type="interface" data-title="WorkerNavigator" class="idlID" data-dfn-for="WorkerNavigator" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workernavigator">WorkerNavigator</a> {<span data-idl="" class="idlAttribute" id="idl-def-workernavigator-permissions" data-title="permissions" data-dfn-for="WorkerNavigator">
-  [<span class="extAttr"><a data-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-6">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" id="dom-workernavigator-permissions" data-idl="attribute" data-title="permissions" data-dfn-for="WorkerNavigator" data-type="Permissions" data-lt="permissions" data-local-lt="WorkerNavigator.permissions" class="idlName" tabindex="0" aria-haspopup="dialog"><code>permissions</code></dfn>;</span>
+  [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-6">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" id="dom-workernavigator-permissions" data-idl="attribute" data-title="permissions" data-dfn-for="WorkerNavigator" data-type="Permissions" data-lt="permissions" data-local-lt="WorkerNavigator.permissions" class="idlName" tabindex="0" aria-haspopup="dialog"><code>permissions</code></dfn>;</span>
 };</span></code></pre>
     </section>
     <aside class="mdn"><details>
@@ -1098,9 +1103,9 @@ partial interface <a data-idl="partial" data-link-type="interface" data-title="W
       <h2 id="permissions-interface"><bdi class="secno">4. </bdi>
         <code>Permissions</code> interface
       <a class="self-link" aria-label="§" href="#permissions-interface"></a></h2>
-      <pre class="idl def" id="webidl-402168873"><span class="idlHeader"><a class="self-link" href="#webidl-402168873">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-permissions" data-title="Permissions">[<span class="extAttr"><a data-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>,<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
+      <pre class="idl def" id="webidl-402168873"><span class="idlHeader"><a class="self-link" href="#webidl-402168873">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-permissions" data-title="Permissions">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>,<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
 interface <dfn data-export="" data-dfn-type="interface" id="dom-permissions" data-idl="interface" data-title="Permissions" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>Permissions</code></dfn> {<span data-idl="" class="idlMethod" id="idl-def-permissions-query-permissiondesc" data-title="query" data-dfn-for="Permissions"><span class="idlType">
-  <a data-type="interface" href="https://heycam.github.io/webidl/#idl-promise">Promise</a>&lt;<a href="#dom-permissionstatus" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissionstatus-4"><code>PermissionStatus</code></a>&gt;</span> <a class="internalDFN idlName" data-link-type="method" href="#dom-permissions-query" id="ref-for-dom-permissions-query-2"><code>query</code></a>(<span class="idlType"><a data-type="interface" href="https://heycam.github.io/webidl/#idl-object">object</a></span> <span class="idlParamName">permissionDesc</span>);</span>
+  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise">Promise</a>&lt;<a href="#dom-permissionstatus" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissionstatus-4"><code>PermissionStatus</code></a>&gt;</span> <a class="internalDFN idlName" data-link-type="method" href="#dom-permissions-query" id="ref-for-dom-permissions-query-2"><code>query</code></a>(<span class="idlType"><a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-object">object</a></span> <span class="idlParamName">permissionDesc</span>);</span>
 };</span><span data-idl="" class="idlDictionary" id="idl-def-permissiondescriptor" data-title="PermissionDescriptor">
 
 dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondescriptor" data-idl="dictionary" data-title="PermissionDescriptor" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>PermissionDescriptor</code></dfn> {<span data-idl="" class="idlMember" id="idl-def-permissiondescriptor-name" data-title="name" data-dfn-for="PermissionDescriptor">
@@ -1162,15 +1167,15 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondesc
           <var>permissionDesc</var>:
         </p>
         <ol class="algorithm">
-          <li>Let <var>rootDesc</var> be the object <var>permissionDesc</var> refers to, <a data-type="dfn" href="https://heycam.github.io/webidl/#dfn-convert-ecmascript-to-idl-value">converted to an IDL
-          value</a> of type <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-8"><code>PermissionDescriptor</code></a>. If this throws an exception, return <a data-type="dfn" href="https://heycam.github.io/webidl/#a-promise-rejected-with">a
+          <li>Let <var>rootDesc</var> be the object <var>permissionDesc</var> refers to, <a data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL
+          value</a> of type <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-8"><code>PermissionDescriptor</code></a>. If this throws an exception, return <a data-type="dfn" href="https://webidl.spec.whatwg.org/#a-promise-rejected-with">a
           promise rejected with</a> that exception and abort these steps.
           </li>
-          <li>Let <var>typedDescriptor</var> be the object <var>permissionDesc</var> refers to, <a data-type="dfn" href="https://heycam.github.io/webidl/#dfn-convert-ecmascript-to-idl-value">converted to an
-          IDL value</a> of <code><var>rootDesc</var>.<a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-8"><code>name</code></a></code>'s <a data-link-type="dfn" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-5">permission descriptor type</a>. If this throws an exception, return <a data-type="dfn" href="https://heycam.github.io/webidl/#a-promise-rejected-with">a promise
+          <li>Let <var>typedDescriptor</var> be the object <var>permissionDesc</var> refers to, <a data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an
+          IDL value</a> of <code><var>rootDesc</var>.<a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-8"><code>name</code></a></code>'s <a data-link-type="dfn" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-5">permission descriptor type</a>. If this throws an exception, return <a data-type="dfn" href="https://webidl.spec.whatwg.org/#a-promise-rejected-with">a promise
           rejected with</a> that exception and abort these steps.
           </li>
-          <li>Let <var>promise</var> be a newly-created <a data-link-type="idl" data-lt="Promise" data-type="interface" href="https://heycam.github.io/webidl/#idl-promise"><code>Promise</code></a>.
+          <li>Let <var>promise</var> be a newly-created <a data-link-type="idl" data-lt="Promise" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise"><code>Promise</code></a>.
           </li>
           <li>Return <var>promise</var> and continue the following steps asynchronously.
           </li>
@@ -1237,7 +1242,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondesc
       <h2 id="permissionstatus-interface"><bdi class="secno">5. </bdi>
         <code>PermissionStatus</code> interface
       <a class="self-link" aria-label="§" href="#permissionstatus-interface"></a></h2>
-      <pre class="idl def" id="webidl-717592932"><span class="idlHeader"><a class="self-link" href="#webidl-717592932">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-permissionstatus" data-title="PermissionStatus">[<span class="extAttr"><a data-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>,<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
+      <pre class="idl def" id="webidl-717592932"><span class="idlHeader"><a class="self-link" href="#webidl-717592932">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-permissionstatus" data-title="PermissionStatus">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>,<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
 interface <dfn data-export="" data-dfn-type="interface" id="dom-permissionstatus" data-idl="interface" data-title="PermissionStatus" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>PermissionStatus</code></dfn> : <span class="idlSuperclass"><a data-type="interface" href="https://dom.spec.whatwg.org/#eventtarget">EventTarget</a></span> {<span data-idl="" class="idlAttribute" id="idl-def-permissionstatus-state" data-title="state" data-dfn-for="PermissionStatus">
   readonly attribute<span class="idlType"> <a href="#dom-permissionstate" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissionstate-2"><code>PermissionState</code></a></span> <a class="internalDFN idlName" data-link-type="attribute" href="#dom-permissionstatus-state" id="ref-for-dom-permissionstatus-state-1"><code>state</code></a>;</span><span data-idl="" class="idlAttribute" id="idl-def-permissionstatus-name" data-title="name" data-dfn-for="PermissionStatus">
   readonly attribute<span class="idlType"> <a href="#dom-permissionname" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissionname-7"><code>PermissionName</code></a></span> <a class="internalDFN idlName" data-link-type="attribute" href="#dom-permissionstatus-name" id="ref-for-dom-permissionstatus-name-1"><code>name</code></a>;</span><span data-idl="" class="idlAttribute" id="idl-def-permissionstatus-onchange" data-title="onchange" data-dfn-for="PermissionStatus">
@@ -1507,7 +1512,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           Notifications
         <a class="self-link" aria-label="§" href="#notifications"></a></h3>
         <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-notifications" data-idl="enum-value" data-title="notifications" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>notifications</code></dfn> enum value identifies the <cite><a href="https://notifications.spec.whatwg.org/">Notifications API Standard</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-17">powerful feature</a>. It is a <a data-link-type="dfn" href="#dfn-default-powerful-feature" class="internalDFN" id="ref-for-dfn-default-powerful-feature-2">default powerful feature</a> and is <a data-link-type="dfn" href="#dfn-allowed-in-non-secure-contexts" class="internalDFN" id="ref-for-dfn-allowed-in-non-secure-contexts-2">allowed in non-secure contexts</a>.
+          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-notifications" data-idl="enum-value" data-title="notifications" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>notifications</code></dfn> enum value identifies the <cite><a href="https://notifications.spec.whatwg.org/">Notifications API Standard</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-17">powerful feature</a>. It is a <a data-link-type="dfn" href="#dfn-default-powerful-feature" class="internalDFN" id="ref-for-dfn-default-powerful-feature-2">default powerful feature</a> with its <a data-link-type="dfn" href="#dfn-allowed-in-non-secure-contexts" class="internalDFN" id="ref-for-dfn-allowed-in-non-secure-contexts-2">allowed in non-secure contexts</a> flag set.
         </p>
       </section>
       <section id="push-0">
@@ -1523,7 +1528,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           </dt>
           <dd>
             <pre class="idl def" id="webidl-1117437819"><span class="idlHeader"><a class="self-link" href="#webidl-1117437819">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-pushpermissiondescriptor" data-title="PushPermissionDescriptor">dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-pushpermissiondescriptor" data-idl="dictionary" data-title="PushPermissionDescriptor" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>PushPermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-permissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissiondescriptor-10"><code>PermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" id="idl-def-pushpermissiondescriptor-uservisibleonly" data-title="userVisibleOnly" data-dfn-for="PushPermissionDescriptor"><span class="idlType">
-  <a data-type="interface" href="https://heycam.github.io/webidl/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-pushpermissiondescriptor-uservisibleonly" data-idl="field" data-title="userVisibleOnly" data-dfn-for="PushPermissionDescriptor" data-type="boolean" class="idlName" tabindex="0" aria-haspopup="dialog"><code>userVisibleOnly</code></dfn> = false;</span>
+  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-pushpermissiondescriptor-uservisibleonly" data-idl="field" data-title="userVisibleOnly" data-dfn-for="PushPermissionDescriptor" data-type="boolean" class="idlName" tabindex="0" aria-haspopup="dialog"><code>userVisibleOnly</code></dfn> = false;</span>
 };</span></code></pre>
             <p>
               <code>{name: "push", userVisibleOnly: false}</code> is <a data-link-type="dfn" href="#dfn-stronger-than" class="internalDFN" id="ref-for-dfn-stronger-than-2">stronger than</a>
@@ -1595,7 +1600,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           </dt>
           <dd>
             <pre class="idl def" id="webidl-1632041439"><span class="idlHeader"><a class="self-link" href="#webidl-1632041439">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-midipermissiondescriptor" data-title="MidiPermissionDescriptor">dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-midipermissiondescriptor" data-idl="dictionary" data-title="MidiPermissionDescriptor" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>MidiPermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-permissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissiondescriptor-11"><code>PermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" id="idl-def-midipermissiondescriptor-sysex" data-title="sysex" data-dfn-for="MidiPermissionDescriptor"><span class="idlType">
-  <a data-type="interface" href="https://heycam.github.io/webidl/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-midipermissiondescriptor-sysex" data-idl="field" data-title="sysex" data-dfn-for="MidiPermissionDescriptor" data-type="boolean" class="idlName" tabindex="0" aria-haspopup="dialog"><code>sysex</code></dfn> = false;</span>
+  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-midipermissiondescriptor-sysex" data-idl="field" data-title="sysex" data-dfn-for="MidiPermissionDescriptor" data-type="boolean" class="idlName" tabindex="0" aria-haspopup="dialog"><code>sysex</code></dfn> = false;</span>
 };</span></code></pre>
             <p>
               <code>{name: "midi", sysex: true}</code> is <a data-link-type="dfn" href="#dfn-stronger-than" class="internalDFN" id="ref-for-dfn-stronger-than-3">stronger than</a> <code>{name:
@@ -1709,7 +1714,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
       <td>60+</td>
     </tr>
   </table>
-  </details></aside><section data-cite="WebIDL mediacapture-streams" id="media-devices-0">
+  </details></aside><section data-cite="WEBIDL mediacapture-streams" id="media-devices-0">
         <h3 id="media-devices"><bdi class="secno">6.6 </bdi>
           Media Devices
         <a class="self-link" aria-label="§" href="#media-devices"></a></h3>
@@ -1728,11 +1733,11 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           </dt>
           <dd>
             <pre class="idl def" id="webidl-1580257238"><span class="idlHeader"><a class="self-link" href="#webidl-1580257238">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-devicepermissiondescriptor" data-title="DevicePermissionDescriptor">dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-devicepermissiondescriptor" data-idl="dictionary" data-title="DevicePermissionDescriptor" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>DevicePermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-permissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissiondescriptor-12"><code>PermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" id="idl-def-devicepermissiondescriptor-deviceid" data-title="deviceId" data-dfn-for="DevicePermissionDescriptor"><span class="idlType">
-  <a data-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-devicepermissiondescriptor-deviceid" data-idl="field" data-title="deviceId" data-dfn-for="DevicePermissionDescriptor" data-type="DOMString" class="idlName" tabindex="0" aria-haspopup="dialog"><code>deviceId</code></dfn>;</span>
+  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-devicepermissiondescriptor-deviceid" data-idl="field" data-title="deviceId" data-dfn-for="DevicePermissionDescriptor" data-type="DOMString" class="idlName" tabindex="0" aria-haspopup="dialog"><code>deviceId</code></dfn>;</span>
 };</span><span data-idl="" class="idlDictionary" id="idl-def-cameradevicepermissiondescriptor" data-title="CameraDevicePermissionDescriptor">
 
 dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepermissiondescriptor" data-idl="dictionary" data-title="CameraDevicePermissionDescriptor" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>CameraDevicePermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-devicepermissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-devicepermissiondescriptor-1"><code>DevicePermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" id="idl-def-cameradevicepermissiondescriptor-pantiltzoom" data-title="panTiltZoom" data-dfn-for="CameraDevicePermissionDescriptor"><span class="idlType">
-  <a data-type="interface" href="https://heycam.github.io/webidl/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-cameradevicepermissiondescriptor-pantiltzoom" data-idl="field" data-title="panTiltZoom" data-dfn-for="CameraDevicePermissionDescriptor" data-type="boolean" class="idlName" tabindex="0" aria-haspopup="dialog"><code>panTiltZoom</code></dfn> = false;</span>
+  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-cameradevicepermissiondescriptor-pantiltzoom" data-idl="field" data-title="panTiltZoom" data-dfn-for="CameraDevicePermissionDescriptor" data-type="boolean" class="idlName" tabindex="0" aria-haspopup="dialog"><code>panTiltZoom</code></dfn> = false;</span>
 };</span></code></pre>
             <p>
               A permission covers access to the device given in the associated descriptor.
@@ -2096,13 +2101,13 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
         </p>
       </section>
       <aside class="mdn"><details>
-    <summary aria-label="Expand MDN details for display-capture"><span>MDN</span><span title="This feature has limited support.">🚫</span></summary>
+    <summary aria-label="Expand MDN details for display-capture"><span>MDN</span><span> </span></summary>
     <a title="The HTTP Feature-Policy header display-capture directive controls whether or not the document is permitted to use Screen Capture API, that is, getDisplayMedia() to capture the screen's contents." href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/display-capture">Headers/Feature-Policy/display-capture</a>
-    <p class="engines-some">This feature has limited support.</p>
+    
     <table>
-    <tr class="chrome no">
+    <tr class="chrome yes">
       <td>Chrome</td>
-      <td>No</td>
+      <td>94+</td>
     </tr><tr class="chrome_android no">
       <td>Chrome Android</td>
       <td>No</td>
@@ -2121,9 +2126,9 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
     </tr><tr class="ie no">
       <td>Internet Explorer</td>
       <td>No</td>
-    </tr><tr class="opera no">
+    </tr><tr class="opera yes">
       <td>Opera</td>
-      <td>No</td>
+      <td>80+</td>
     </tr><tr class="opera_android no">
       <td>Opera Android</td>
       <td>No</td>
@@ -2257,26 +2262,26 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
         for users to block (globally or selectively) the querying of <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-21">permission states</a>.
       </p>
     </section>
-    <section id="idl-index"><h2 id="d-idl-index"><bdi class="secno">D. </bdi>IDL Index<a class="self-link" aria-label="§" href="#idl-index"></a></h2><pre class="idl def" id="actual-idl-index"><span class="idlHeader"><a class="self-link" href="#actual-idl-index">WebIDL</a></span><code><span data-idl="" class="idlInterface" data-title="Navigator">[<span class="extAttr"><a data-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>)</span>]
+    <section id="idl-index"><h2 id="d-idl-index"><bdi class="secno">D. </bdi>IDL Index<a class="self-link" aria-label="§" href="#idl-index"></a></h2><pre class="idl def" id="actual-idl-index"><span class="idlHeader"><a class="self-link" href="#actual-idl-index">WebIDL</a></span><code><span data-idl="" class="idlInterface" data-title="Navigator">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>)</span>]
 partial interface <a data-idl="partial" data-link-type="interface" data-title="Navigator" class="idlID" data-dfn-for="Navigator" data-type="interface" href="https://html.spec.whatwg.org/multipage/system-state.html#navigator">Navigator</a> {<span data-idl="" class="idlAttribute" data-title="permissions" data-dfn-for="Navigator">
-  [<span class="extAttr"><a data-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-7">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" data-idl="attribute" data-title="permissions" data-dfn-for="Navigator" data-type="Permissions" data-lt="permissions" data-local-lt="Navigator.permissions" class="idlName"><code>permissions</code></dfn>;</span>
+  [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-7">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" data-idl="attribute" data-title="permissions" data-dfn-for="Navigator" data-type="Permissions" data-lt="permissions" data-local-lt="Navigator.permissions" class="idlName"><code>permissions</code></dfn>;</span>
 };</span><span data-idl="" class="idlInterface" data-title="WorkerNavigator">
 
-[<span class="extAttr"><a data-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed">Exposed</a>=(<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
+[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
 partial interface <a data-idl="partial" data-link-type="interface" data-title="WorkerNavigator" class="idlID" data-dfn-for="WorkerNavigator" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workernavigator">WorkerNavigator</a> {<span data-idl="" class="idlAttribute" data-title="permissions" data-dfn-for="WorkerNavigator">
-  [<span class="extAttr"><a data-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-8">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" data-idl="attribute" data-title="permissions" data-dfn-for="WorkerNavigator" data-type="Permissions" data-lt="permissions" data-local-lt="WorkerNavigator.permissions" class="idlName"><code>permissions</code></dfn>;</span>
+  [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-8">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" data-idl="attribute" data-title="permissions" data-dfn-for="WorkerNavigator" data-type="Permissions" data-lt="permissions" data-local-lt="WorkerNavigator.permissions" class="idlName"><code>permissions</code></dfn>;</span>
 };</span>
 
-<span data-idl="" class="idlInterface" data-title="Permissions">[<span class="extAttr"><a data-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>,<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
+<span data-idl="" class="idlInterface" data-title="Permissions">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>,<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
 interface <dfn data-export="" data-dfn-type="interface" data-idl="interface" data-title="Permissions" data-dfn-for="" class="idlID"><code>Permissions</code></dfn> {<span data-idl="" class="idlMethod" data-title="query" data-dfn-for="Permissions"><span class="idlType">
-  <a data-type="interface" href="https://heycam.github.io/webidl/#idl-promise">Promise</a>&lt;<a href="#dom-permissionstatus" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissionstatus-13"><code>PermissionStatus</code></a>&gt;</span> <a class="internalDFN idlName" data-link-type="method" href="#dom-permissions-query" id="ref-for-dom-permissions-query-3"><code>query</code></a>(<span class="idlType"><a data-type="interface" href="https://heycam.github.io/webidl/#idl-object">object</a></span> <span class="idlParamName">permissionDesc</span>);</span>
+  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise">Promise</a>&lt;<a href="#dom-permissionstatus" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissionstatus-13"><code>PermissionStatus</code></a>&gt;</span> <a class="internalDFN idlName" data-link-type="method" href="#dom-permissions-query" id="ref-for-dom-permissions-query-3"><code>query</code></a>(<span class="idlType"><a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-object">object</a></span> <span class="idlParamName">permissionDesc</span>);</span>
 };</span><span data-idl="" class="idlDictionary" data-title="PermissionDescriptor">
 
 dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" data-title="PermissionDescriptor" data-dfn-for="" class="idlID"><code>PermissionDescriptor</code></dfn> {<span data-idl="" class="idlMember" data-title="name" data-dfn-for="PermissionDescriptor">
   required<span class="idlType"> <a href="#dom-permissionname" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissionname-12"><code>PermissionName</code></a></span> <dfn data-export="" data-dfn-type="dict-member" data-idl="field" data-title="name" data-dfn-for="PermissionDescriptor" data-type="PermissionName" class="idlName"><code>name</code></dfn>;</span>
 };</span>
 
-<span data-idl="" class="idlInterface" data-title="PermissionStatus">[<span class="extAttr"><a data-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>,<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
+<span data-idl="" class="idlInterface" data-title="PermissionStatus">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>,<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
 interface <dfn data-export="" data-dfn-type="interface" data-idl="interface" data-title="PermissionStatus" data-dfn-for="" class="idlID"><code>PermissionStatus</code></dfn> : <span class="idlSuperclass"><a data-type="interface" href="https://dom.spec.whatwg.org/#eventtarget">EventTarget</a></span> {<span data-idl="" class="idlAttribute" data-title="state" data-dfn-for="PermissionStatus">
   readonly attribute<span class="idlType"> <a href="#dom-permissionstate" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissionstate-3"><code>PermissionState</code></a></span> <a class="internalDFN idlName" data-link-type="attribute" href="#dom-permissionstatus-state" id="ref-for-dom-permissionstatus-state-2"><code>state</code></a>;</span><span data-idl="" class="idlAttribute" data-title="name" data-dfn-for="PermissionStatus">
   readonly attribute<span class="idlType"> <a href="#dom-permissionname" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissionname-13"><code>PermissionName</code></a></span> <a class="internalDFN idlName" data-link-type="attribute" href="#dom-permissionstatus-name" id="ref-for-dom-permissionstatus-name-3"><code>name</code></a>;</span><span data-idl="" class="idlAttribute" data-title="onchange" data-dfn-for="PermissionStatus">
@@ -2312,19 +2317,19 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
 };</span>
 
 <span data-idl="" class="idlDictionary" data-title="PushPermissionDescriptor">dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" data-title="PushPermissionDescriptor" data-dfn-for="" class="idlID"><code>PushPermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-permissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissiondescriptor-13"><code>PermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" data-title="userVisibleOnly" data-dfn-for="PushPermissionDescriptor"><span class="idlType">
-  <a data-type="interface" href="https://heycam.github.io/webidl/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" data-idl="field" data-title="userVisibleOnly" data-dfn-for="PushPermissionDescriptor" data-type="boolean" class="idlName"><code>userVisibleOnly</code></dfn> = false;</span>
+  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" data-idl="field" data-title="userVisibleOnly" data-dfn-for="PushPermissionDescriptor" data-type="boolean" class="idlName"><code>userVisibleOnly</code></dfn> = false;</span>
 };</span>
 
 <span data-idl="" class="idlDictionary" data-title="MidiPermissionDescriptor">dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" data-title="MidiPermissionDescriptor" data-dfn-for="" class="idlID"><code>MidiPermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-permissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissiondescriptor-14"><code>PermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" data-title="sysex" data-dfn-for="MidiPermissionDescriptor"><span class="idlType">
-  <a data-type="interface" href="https://heycam.github.io/webidl/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" data-idl="field" data-title="sysex" data-dfn-for="MidiPermissionDescriptor" data-type="boolean" class="idlName"><code>sysex</code></dfn> = false;</span>
+  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" data-idl="field" data-title="sysex" data-dfn-for="MidiPermissionDescriptor" data-type="boolean" class="idlName"><code>sysex</code></dfn> = false;</span>
 };</span>
 
 <span data-idl="" class="idlDictionary" data-title="DevicePermissionDescriptor">dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" data-title="DevicePermissionDescriptor" data-dfn-for="" class="idlID"><code>DevicePermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-permissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissiondescriptor-15"><code>PermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" data-title="deviceId" data-dfn-for="DevicePermissionDescriptor"><span class="idlType">
-  <a data-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" data-idl="field" data-title="deviceId" data-dfn-for="DevicePermissionDescriptor" data-type="DOMString" class="idlName"><code>deviceId</code></dfn>;</span>
+  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" data-idl="field" data-title="deviceId" data-dfn-for="DevicePermissionDescriptor" data-type="DOMString" class="idlName"><code>deviceId</code></dfn>;</span>
 };</span><span data-idl="" class="idlDictionary" data-title="CameraDevicePermissionDescriptor">
 
 dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" data-title="CameraDevicePermissionDescriptor" data-dfn-for="" class="idlID"><code>CameraDevicePermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-devicepermissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-devicepermissiondescriptor-2"><code>DevicePermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" data-title="panTiltZoom" data-dfn-for="CameraDevicePermissionDescriptor"><span class="idlType">
-  <a data-type="interface" href="https://heycam.github.io/webidl/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" data-idl="field" data-title="panTiltZoom" data-dfn-for="CameraDevicePermissionDescriptor" data-type="boolean" class="idlName"><code>panTiltZoom</code></dfn> = false;</span>
+  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" data-idl="field" data-title="panTiltZoom" data-dfn-for="CameraDevicePermissionDescriptor" data-type="boolean" class="idlName"><code>panTiltZoom</code></dfn> = false;</span>
 };</span></code></pre></section>
     <section class="appendix informative" id="acknowledgments">
       <h2 class="no-num" id="e-acknowledgments"><bdi class="secno">E. </bdi>
@@ -2339,10 +2344,10 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
 
 <section id="references" class="appendix"><h2 id="f-references"><bdi class="secno">F. </bdi>References<a class="self-link" aria-label="§" href="#references"></a></h2><section id="normative-references">
     <h3 id="f-1-normative-references"><bdi class="secno">F.1 </bdi>Normative references<a class="self-link" aria-label="§" href="#normative-references"></a></h3>
-    <dl class="bibliography"><dt id="bib-accelerometer">[accelerometer]</dt><dd><a href="https://www.w3.org/TR/accelerometer/"><cite>Accelerometer</cite></a>. Anssi Kostiainen; Alexander Shalamov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/accelerometer/">https://www.w3.org/TR/accelerometer/</a></dd><dt id="bib-ambient-light">[ambient-light]</dt><dd><a href="https://www.w3.org/TR/ambient-light/"><cite>Ambient Light Sensor</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik; Tobie Langel.  W3C. 3 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a></dd><dt id="bib-audio-output">[audio-output]</dt><dd><a href="https://www.w3.org/TR/audio-output/"><cite>Audio Output Devices API</cite></a>. Justin Uberti; Guido Urdaneta; youenn fablet.  W3C. 6 July 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a></dd><dt id="bib-background-fetch">[background-fetch]</dt><dd><a href="https://wicg.github.io/background-fetch/"><cite>Background Fetch</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a></dd><dt id="bib-dom">[dom]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-ecmascript">[ECMASCRIPT]</dt><dd><a href="https://tc39.es/ecma262/multipage/"><cite>ECMAScript Language Specification</cite></a>.  Ecma International. URL: <a href="https://tc39.es/ecma262/multipage/">https://tc39.es/ecma262/multipage/</a></dd><dt id="bib-generic-sensor">[generic-sensor]</dt><dd><a href="https://www.w3.org/TR/generic-sensor/"><cite>Generic Sensor API</cite></a>. Rick Waldron; Mikhail Pozdnyakov; Alexander Shalamov; Tobie Langel.  W3C. 29 July 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/generic-sensor/">https://www.w3.org/TR/generic-sensor/</a></dd><dt id="bib-geolocation">[Geolocation]</dt><dd><a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres.  W3C. 12 August 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a></dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd><a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet; Daniel Burnett; Adam Bergkvist; Anant Narayanan.  W3C. 19 August 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a></dd><dt id="bib-gyroscope">[gyroscope]</dt><dd><a href="https://www.w3.org/TR/gyroscope/"><cite>Gyroscope</cite></a>. Anssi Kostiainen; Mikhail Pozdnyakov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/gyroscope/">https://www.w3.org/TR/gyroscope/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-infra">[infra]</dt><dd><a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a></dd><dt id="bib-magnetometer">[magnetometer]</dt><dd><a href="https://www.w3.org/TR/magnetometer/"><cite>Magnetometer</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik.  W3C. 2 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/magnetometer/">https://www.w3.org/TR/magnetometer/</a></dd><dt id="bib-notifications">[notifications]</dt><dd><a href="https://notifications.spec.whatwg.org/"><cite>Notifications API Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a></dd><dt id="bib-permissions-policy">[Permissions-Policy]</dt><dd><a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. Ian Clelland.  W3C. 16 July 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a></dd><dt id="bib-push-api">[push-api]</dt><dd><a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson.  W3C. 16 June 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a></dd><dt id="bib-screen-capture">[screen-capture]</dt><dd><a href="https://www.w3.org/TR/screen-capture/"><cite>Screen Capture</cite></a>. Martin Thomson; Keith Griffin; Suhas Nandakumar; Henrik Boström; Jan-Ivar Bruaroey; Elad Alon.  W3C. 2 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-capture/">https://www.w3.org/TR/screen-capture/</a></dd><dt id="bib-screen-wake-lock">[screen-wake-lock]</dt><dd><a href="https://www.w3.org/TR/screen-wake-lock/"><cite>Screen Wake Lock API</cite></a>. Kenneth Christiansen; Marcos Caceres; Raphael Kubo da Costa; Ilya Bogdanovich; Andrey Logvinov.  W3C. 26 August 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-wake-lock/">https://www.w3.org/TR/screen-wake-lock/</a></dd><dt id="bib-storage">[storage]</dt><dd><a href="https://storage.spec.whatwg.org/"><cite>Storage Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://storage.spec.whatwg.org/">https://storage.spec.whatwg.org/</a></dd><dt id="bib-web-background-sync">[web-background-sync]</dt><dd><a href="https://wicg.github.io/background-sync/spec/"><cite>Web Background Synchronization</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-sync/spec/">https://wicg.github.io/background-sync/spec/</a></dd><dt id="bib-web-bluetooth">[web-bluetooth]</dt><dd><a href="https://webbluetoothcg.github.io/web-bluetooth/"><cite>Web Bluetooth</cite></a>. Jeffrey Yasskin.  W3C Web Bluetooth Community Group. Draft Community Group Report. URL: <a href="https://webbluetoothcg.github.io/web-bluetooth/">https://webbluetoothcg.github.io/web-bluetooth/</a></dd><dt id="bib-web-nfc">[web-nfc]</dt><dd><a href="https://w3c.github.io/web-nfc/"><cite>Web NFC API</cite></a>.  W3C. W3C Editor's Draft. URL: <a href="https://w3c.github.io/web-nfc/">https://w3c.github.io/web-nfc/</a></dd><dt id="bib-webidl">[WebIDL]</dt><dd><a href="https://heycam.github.io/webidl/"><cite>Web IDL</cite></a>. Boris Zbarsky.  W3C. 15 December 2016. W3C Editor's Draft. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a></dd><dt id="bib-webmidi">[webmidi]</dt><dd><a href="https://www.w3.org/TR/webmidi/"><cite>Web MIDI API</cite></a>. Chris Wilson; Jussi Kalliokoski.  W3C. 17 March 2015. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webmidi/">https://www.w3.org/TR/webmidi/</a></dd><dt id="bib-webxr">[webxr]</dt><dd><a href="https://www.w3.org/TR/webxr/"><cite>WebXR Device API</cite></a>. Brandon Jones; Manish Goregaokar; Rik Cabanier; Nell Waliczek.  W3C. 24 August 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a></dd></dl>
+    <dl class="bibliography"><dt id="bib-accelerometer">[accelerometer]</dt><dd><a href="https://www.w3.org/TR/accelerometer/"><cite>Accelerometer</cite></a>. Anssi Kostiainen; Alexander Shalamov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/accelerometer/">https://www.w3.org/TR/accelerometer/</a></dd><dt id="bib-ambient-light">[ambient-light]</dt><dd><a href="https://www.w3.org/TR/ambient-light/"><cite>Ambient Light Sensor</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik; Tobie Langel.  W3C. 3 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a></dd><dt id="bib-audio-output">[audio-output]</dt><dd><a href="https://www.w3.org/TR/audio-output/"><cite>Audio Output Devices API</cite></a>. Justin Uberti; Guido Urdaneta; youenn fablet.  W3C. 6 July 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a></dd><dt id="bib-background-fetch">[background-fetch]</dt><dd><a href="https://wicg.github.io/background-fetch/"><cite>Background Fetch</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a></dd><dt id="bib-dom">[dom]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-ecmascript">[ECMASCRIPT]</dt><dd><a href="https://tc39.es/ecma262/multipage/"><cite>ECMAScript Language Specification</cite></a>.  Ecma International. URL: <a href="https://tc39.es/ecma262/multipage/">https://tc39.es/ecma262/multipage/</a></dd><dt id="bib-generic-sensor">[generic-sensor]</dt><dd><a href="https://www.w3.org/TR/generic-sensor/"><cite>Generic Sensor API</cite></a>. Rick Waldron; Mikhail Pozdnyakov; Alexander Shalamov; Tobie Langel.  W3C. 29 July 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/generic-sensor/">https://www.w3.org/TR/generic-sensor/</a></dd><dt id="bib-geolocation">[Geolocation]</dt><dd><a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres.  W3C. 30 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a></dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd><a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet; Daniel Burnett; Adam Bergkvist; Anant Narayanan.  W3C. 19 August 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a></dd><dt id="bib-gyroscope">[gyroscope]</dt><dd><a href="https://www.w3.org/TR/gyroscope/"><cite>Gyroscope</cite></a>. Anssi Kostiainen; Mikhail Pozdnyakov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/gyroscope/">https://www.w3.org/TR/gyroscope/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-infra">[infra]</dt><dd><a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a></dd><dt id="bib-magnetometer">[magnetometer]</dt><dd><a href="https://www.w3.org/TR/magnetometer/"><cite>Magnetometer</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik.  W3C. 2 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/magnetometer/">https://www.w3.org/TR/magnetometer/</a></dd><dt id="bib-notifications">[notifications]</dt><dd><a href="https://notifications.spec.whatwg.org/"><cite>Notifications API Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a></dd><dt id="bib-permissions-policy">[Permissions-Policy]</dt><dd><a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. Ian Clelland.  W3C. 16 July 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a></dd><dt id="bib-push-api">[push-api]</dt><dd><a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson.  W3C. 16 June 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a></dd><dt id="bib-screen-capture">[screen-capture]</dt><dd><a href="https://www.w3.org/TR/screen-capture/"><cite>Screen Capture</cite></a>. Martin Thomson; Keith Griffin; Suhas Nandakumar; Henrik Boström; Jan-Ivar Bruaroey; Elad Alon.  W3C. 2 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-capture/">https://www.w3.org/TR/screen-capture/</a></dd><dt id="bib-screen-wake-lock">[screen-wake-lock]</dt><dd><a href="https://www.w3.org/TR/screen-wake-lock/"><cite>Screen Wake Lock API</cite></a>. Kenneth Christiansen; Marcos Caceres; Raphael Kubo da Costa; Ilya Bogdanovich; Andrey Logvinov.  W3C. 30 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-wake-lock/">https://www.w3.org/TR/screen-wake-lock/</a></dd><dt id="bib-storage">[storage]</dt><dd><a href="https://storage.spec.whatwg.org/"><cite>Storage Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://storage.spec.whatwg.org/">https://storage.spec.whatwg.org/</a></dd><dt id="bib-web-background-sync">[web-background-sync]</dt><dd><a href="https://wicg.github.io/background-sync/spec/"><cite>Web Background Synchronization</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-sync/spec/">https://wicg.github.io/background-sync/spec/</a></dd><dt id="bib-web-bluetooth">[web-bluetooth]</dt><dd><a href="https://webbluetoothcg.github.io/web-bluetooth/"><cite>Web Bluetooth</cite></a>. Jeffrey Yasskin.  W3C Web Bluetooth Community Group. Draft Community Group Report. URL: <a href="https://webbluetoothcg.github.io/web-bluetooth/">https://webbluetoothcg.github.io/web-bluetooth/</a></dd><dt id="bib-web-nfc">[web-nfc]</dt><dd><a href="https://w3c.github.io/web-nfc/"><cite>Web NFC API</cite></a>.  W3C. W3C Editor's Draft. URL: <a href="https://w3c.github.io/web-nfc/">https://w3c.github.io/web-nfc/</a></dd><dt id="bib-webidl">[WEBIDL]</dt><dd><a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a></dd><dt id="bib-webmidi">[webmidi]</dt><dd><a href="https://www.w3.org/TR/webmidi/"><cite>Web MIDI API</cite></a>. Chris Wilson; Jussi Kalliokoski.  W3C. 17 March 2015. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webmidi/">https://www.w3.org/TR/webmidi/</a></dd><dt id="bib-webxr">[webxr]</dt><dd><a href="https://www.w3.org/TR/webxr/"><cite>WebXR Device API</cite></a>. Brandon Jones; Manish Goregaokar; Rik Cabanier; Nell Waliczek.  W3C. 30 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a></dd></dl>
   </section><section id="informative-references">
     <h3 id="f-2-informative-references"><bdi class="secno">F.2 </bdi>Informative references<a class="self-link" aria-label="§" href="#informative-references"></a></h3>
-    <dl class="bibliography"><dt id="bib-appmanifest">[appmanifest]</dt><dd><a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Anssi Kostiainen; Matt Giuca; Aaron Gustafson.  W3C. 25 August 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a></dd><dt id="bib-gamepad">[Gamepad]</dt><dd><a href="https://www.w3.org/TR/gamepad/"><cite>Gamepad</cite></a>. Steve Agoston; James Hollyer; Matthew Reynolds; Brandon Jones; Scott Graham; Theodore Mielczarek.  W3C. 5 August 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/gamepad/">https://www.w3.org/TR/gamepad/</a></dd></dl>
+    <dl class="bibliography"><dt id="bib-appmanifest">[appmanifest]</dt><dd><a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Anssi Kostiainen; Matt Giuca; Aaron Gustafson.  W3C. 7 October 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a></dd><dt id="bib-gamepad">[Gamepad]</dt><dd><a href="https://www.w3.org/TR/gamepad/"><cite>Gamepad</cite></a>. Steve Agoston; James Hollyer; Matthew Reynolds; Brandon Jones; Scott Graham; Theodore Mielczarek.  W3C. 5 August 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/gamepad/">https://www.w3.org/TR/gamepad/</a></dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
   </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-at-risk" aria-label="Links in this document to definition: at risk">
