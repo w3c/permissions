@@ -395,13 +395,15 @@
             "powerful feature">aspects</dfn> that websites can request permission to access.
           </p>
           <p>
-            To describe an [=powerful feature/aspect=], a specification MUST define a WebIDL [=dictionary=] that [=dictionary/inherits=]
-            from {{PermissionDescriptor}}, and have that interface be its [=powerful feature/permission descriptor type=].
+            To describe an [=powerful feature/aspect=], a specification MUST define a WebIDL
+            [=dictionary=] that [=dictionary/inherits=] from {{PermissionDescriptor}}, and have
+            that interface be its [=powerful feature/permission descriptor type=].
           </p>
           <aside class="example" title="Defining your own permission descriptor type">
             <p>
-              A hypothetical [=powerful feature=] "food detector API" has two [=powerful feature/aspects=] that allow sensing taste and smell.
-              So, a specification would define a new WebIDL interface that [=dictionary/inherits=] {{PermissionDescriptor}}:
+              A hypothetical [=powerful feature=] "food detector API" has two [=powerful
+              feature/aspects=] that allow sensing taste and smell. So, a specification would
+              define a new WebIDL interface that [=dictionary/inherits=] {{PermissionDescriptor}}:
             </p>
             <pre>
               dictionary SensesPermissionDescriptor : PermissionDescriptor {
@@ -421,8 +423,9 @@
               // Do something interesting with the status.
             </pre>
             <p>
-              A user can restrict the "sense" powerful feature to only "taste", in which case
-              the {{PermissionStatus}}'s {{PermissionStatus/state}} above would be {{PermissionState/"denied"}} .
+              A user can restrict the "sense" powerful feature to only "taste", in which case the
+              {{PermissionStatus}}'s {{PermissionStatus/state}} above would be
+              {{PermissionState/"denied"}} .
             </p>
           </aside>
         </section>
@@ -691,11 +694,12 @@
           Creating instances
         </h3>
         <p>
-          To <dfn>create a `PermissionStatus`</dfn> for a given {{PermissionDescriptor}}
-          |permissionDesc|, return a new instance of the [=powerful feature/permission result
-          type=] for the feature named by |permissionDesc|.{{PermissionDescriptor/name}}, with the
-          {{PermissionStatus/[[query]]}} internal slot initialized to |permissionDesc|, and
-          {{PermissionStatus/name}} initialized to |permissionDesc|.{{PermissionDescriptor/name}}.
+          To <dfn class="export">create a `PermissionStatus`</dfn> for a given
+          {{PermissionDescriptor}} |permissionDesc|, return a new instance of the [=powerful
+          feature/permission result type=] for the feature named by
+          |permissionDesc|.{{PermissionDescriptor/name}}, with the {{PermissionStatus/[[query]]}}
+          internal slot initialized to |permissionDesc|, and {{PermissionStatus/name}} initialized
+          to |permissionDesc|.{{PermissionDescriptor/name}}.
         </p>
       </section>
       <section>
