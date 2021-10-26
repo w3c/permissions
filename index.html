@@ -219,10 +219,15 @@
         </h2>
         <p>
           A <dfn class="export" data-local-lt="feature">powerful feature</dfn> is a web platform
-          feature (usually an API) for which a user has to [=permission/grant=] [=permission=]
-          before the feature can be used. Access to the feature is determined by the <a>environment
-          settings object</a> by the user having [=permission/granted=] permission via UI, or by
-          satisfying some criteria that is equivalent to a permission [=permission/grant=].
+          feature (usually an API) for which a user gives [=express permission=] before the feature
+          can be used. Access to the feature is determined by the <a>environment settings
+          object</a> by the user having [=permission/granted=] permission via UI, or by satisfying
+          some criteria that is equivalent to a permission [=permission/grant=].
+        </p>
+        <p>
+          <dfn class="export">Express permission</dfn> refers to an act by the user, e.g. via user
+          interface or host device platform features, via which the user [=permission/grants=]
+          [=permission=] the use of the feature by the web application.
         </p>
         <p>
           A [=powerful feature=] is identified by its <dfn class="export" data-dfn-for=
@@ -486,7 +491,8 @@
             </dl>
           </li>
         </ol>
-        <aside class="issue" id="issue-current-entry-incumbent-or-relevant" data-number="278"></aside>
+        <aside class="issue" id="issue-current-entry-incumbent-or-relevant" data-number="278">
+        </aside>
         <p>
           As a shorthand, a {{PermissionName}} |name|'s <a>permission state</a> is the
           <a>permission state</a> of a {{PermissionDescriptor}} with its
