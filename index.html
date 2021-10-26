@@ -54,7 +54,9 @@
     </script>
   </head>
   <body>
-    <h2 id="subtitle">Interacting with Permissions for Powerful Features</h2>
+    <h2 id="subtitle">
+      Interacting with Permissions for Powerful Features
+    </h2>
     <section id="abstract">
       <p>
         The <cite>Permissions API</cite> specification defines common infrastructure that other
@@ -223,7 +225,7 @@
           satisfying some criteria that is equivalent to a permission [=permission/grant=].
         </p>
         <p>
-          A [=powerful feature=] is identified by its <dfn data-dfn-for=
+          A [=powerful feature=] is identified by its <dfn class="export" data-dfn-for=
           "powerful feature">name</dfn>, which is a string literal (e.g., "geolocation").
         </p>
         <p>
@@ -242,8 +244,8 @@
           </p>
           <p>
             Each <a>powerful feature</a> has the following permission-related flags, algorithms,
-            and types. When the defaults are not suitable for a particular [=powerful feature=],
-            a specification MAY override below flags, algorithms, and types below.
+            and types. When the defaults are not suitable for a particular [=powerful feature=], a
+            specification MAY override below flags, algorithms, and types below.
           </p>
           <dl>
             <dt>
@@ -267,7 +269,7 @@
               <p>
                 The feature can define a <a href=
                 "https://en.wikipedia.org/wiki/Partially_ordered_set">partial order</a> on
-                descriptor instances. If |descriptorA| is <dfn data-dfn-for=
+                descriptor instances. If |descriptorA| is <dfn class="export" data-dfn-for=
                 "PermissionDescriptor">stronger than</dfn> |descriptorB|, then if |descriptorA|'s
                 <a>permission state</a> is {{PermissionState/"granted"}}, |descriptorB|'s
                 <a>permission state</a> must also be {{PermissionState/"granted"}}, and if
@@ -389,40 +391,41 @@
             Aspects
           </h3>
           <p>
-            Each <a>powerful feature</a> has one or more <dfn data-dfn-for=
-            "powerful feature">aspects</dfn> that websites can request permission to access. To
-            describe these aspects, each feature defines a subtype of {{PermissionDescriptor}} to
-            be its [=powerful feature/permission descriptor type=].
+            Each <a>powerful feature</a> can define zero or more additional <dfn data-dfn-for=
+            "powerful feature">aspects</dfn> that websites can request permission to access.
           </p>
-          <aside class="example">
+          <p>
+            To describe an [=powerful feature/aspect=], a specification MUST define a WebIDL
+            [=dictionary=] that [=dictionary/inherits=] from {{PermissionDescriptor}}, and have
+            that interface be its [=powerful feature/permission descriptor type=].
+          </p>
+          <aside class="example" title="Defining your own permission descriptor type">
             <p>
-              The {{PowerfulFeatureName/"midi"}} <a>feature</a> has two [=powerful feature/aspects=]:
-              access to normal messages, and access to system exclusive messages. Thus, its
-              [=powerful feature/permission descriptor type=] is:
+              A hypothetical [=powerful feature=] "food detector API" has two [=powerful
+              feature/aspects=] that allow sensing taste and smell. So, a specification would
+              define a new WebIDL interface that [=dictionary/inherits=] {{PermissionDescriptor}}:
             </p>
             <pre>
-              dictionary MidiPermissionDescriptor : PermissionDescriptor {
-                boolean sysex = false;
-              };
+              dictionary SensesPermissionDescriptor : PermissionDescriptor {
+                boolean canSmell = false;
+                boolean canTaste = false;
+              }
             </pre>
             <p>
-              The {{PowerfulFeatureName/"bluetooth"}} feature lets sites request to access whatever
-              Bluetooth devices are close to to the user's device. Thus, its [=powerful
-              feature/permission descriptor type=] is:
+              Which would then be queried via the API in the following way:
             </p>
-            <pre>
-              dictionary BluetoothPermissionDescriptor : PermissionDescriptor {
-                DOMString deviceId;
-                sequence&lt;BluetoothLEScanFilterInit&gt; filters;
-                sequence&lt;BluetoothServiceUUID&gt; optionalServices = [];
-                boolean acceptAllDevices = false;
-              };
+            <pre class="js">
+              // Check if the "sense" powerful feature is allowed to smell things
+              const status = await navigator.permissions.query({
+                name: "senses",
+                canSmell: true,
+              });
+              // Do something interesting with the status.
             </pre>
             <p>
-              General access to Bluetooth devices is represented by `{name: 'bluetooth'}`; access
-              to a particular device is represented by `{name: 'bluetooth', deviceId: "id"}`; and
-              access to a device with a particular service is represented by `{name: 'bluetooth',
-              filters: [{services: ['service']}]}`
+              A user can restrict the "sense" powerful feature to only "taste", in which case the
+              {{PermissionStatus}}'s {{PermissionStatus/state}} above would be
+              {{PermissionState/"denied"}} .
             </p>
           </aside>
         </section>
@@ -483,12 +486,8 @@
             </dl>
           </li>
         </ol>
-        <p class="issue" id="issue-current-entry-incumbent-or-relevant">
-          Safari is the only known UA that returns different results from this algorithm for
-          different settings objects with the same origin. We should test which of the <a href=
-          "https://html.spec.whatwg.org/multipage/webappapis.html#realms-settings-objects-global-objects">
-          several possible settings objects</a> it uses.
-        </p>
+        <aside class="issue" id="issue-current-entry-incumbent-or-relevant" data-number="278">
+        </aside>
         <p>
           As a shorthand, a {{PowerfulFeatureName}} |name|'s <a>permission state</a> is the
           <a>permission state</a> of a {{PermissionDescriptor}} with its
@@ -691,11 +690,12 @@
           Creating instances
         </h3>
         <p>
-          To <dfn>create a `PermissionStatus`</dfn> for a given {{PermissionDescriptor}}
-          |permissionDesc|, return a new instance of the [=powerful feature/permission result
-          type=] for the feature named by |permissionDesc|.{{PermissionDescriptor/name}}, with the
-          {{PermissionStatus/[[query]]}} internal slot initialized to |permissionDesc|, and
-          {{PermissionStatus/name}} initialized to |permissionDesc|.{{PermissionDescriptor/name}}.
+          To <dfn class="export">create a `PermissionStatus`</dfn> for a given
+          {{PermissionDescriptor}} |permissionDesc|, return a new instance of the [=powerful
+          feature/permission result type=] for the feature named by
+          |permissionDesc|.{{PermissionDescriptor/name}}, with the {{PermissionStatus/[[query]]}}
+          internal slot initialized to |permissionDesc|, and {{PermissionStatus/name}} initialized
+          to |permissionDesc|.{{PermissionDescriptor/name}}.
         </p>
       </section>
       <section>
@@ -803,8 +803,8 @@
         </h3>
         <p>
           The <dfn>notifications</dfn> enum value identifies the [[[notifications]]] [=powerful
-          feature=]. It is a [=default powerful feature=] and is [=powerful feature/allowed in
-          non-secure contexts=].
+          feature=]. It is a [=default powerful feature=] with its [=powerful feature/allowed in
+          non-secure contexts=] flag set.
         </p>
       </section>
       <section>
