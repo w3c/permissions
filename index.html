@@ -448,17 +448,16 @@
         <ol class="algorithm">
           <li>If |settings| wasn't passed, set it to the [=current settings object=].
           </li>
-          <li>If |settings| is a <a>non-secure context</a> and
-          <code>|descriptor|.{{PermissionDescriptor/name}}</code> isn't [=powerful feature/allowed
-          in non-secure contexts=], then return {{PermissionState/"denied"}}.
+          <li>If |settings| is a <a>non-secure context</a> and |descriptor|'s
+          {{PermissionDescriptor/name}} isn't [=powerful feature/allowed in non-secure contexts=],
+          then return {{PermissionState/"denied"}}.
           </li>
-          <li>If there exists a [=policy-controlled feature=] identified by
-          <code>|descriptor|.{{PermissionDescriptor/name}}</code> and |settings| has an
-          <a>associated `Document`</a> named <var>document</var>, run the following step:
+          <li>If there exists a [=policy-controlled feature=] identified by |descriptor|'s
+          {{PermissionDescriptor/name}} and |settings| has an <a>associated `Document`</a> named
+          <var>document</var>, run the following step:
             <ol class="algorithm">
               <li>If <var>document</var> is not <a>allowed to use</a> the feature identified by
-              <code>|descriptor|.{{PermissionDescriptor/name}}</code> return
-              {{PermissionState/"denied"}}.
+              |descriptor|'s {{PermissionDescriptor/name}} return {{PermissionState/"denied"}}.
               </li>
             </ol>
           </li>
@@ -468,7 +467,7 @@
           </li>
           <li>Return whichever of the following options most accurately reflects the user's intent
           for the calling algorithm, taking into account any [=powerful feature/permission state
-          constraints=] for <code>|descriptor|.{{PermissionDescriptor/name}}</code>:
+          constraints=] for |descriptor|'s {{PermissionDescriptor/name}}:
             <dl class="switch">
               <dt>
                 succeed without prompting the user
@@ -642,7 +641,7 @@
           promise rejected with</a> that exception and abort these steps.
           </li>
           <li>Let |typedDescriptor| be the object |permissionDesc| refers to, <a>converted to an
-          IDL value</a> of <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s [=powerful
+          IDL value</a> of |rootDesc|'s {{PermissionDescriptor/name}}'s [=powerful
           feature/permission descriptor type=]. If this throws an exception, return <a>a promise
           rejected with</a> that exception and abort these steps.
           </li>
@@ -653,10 +652,10 @@
           <li>Run the steps to <a>create a `PermissionStatus`</a> for |typedDescriptor|, and let
           |status| be the result.
           </li>
-          <li>Run
-          <code>|status|.{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s
-          [=powerful feature/permission query algorithm=], passing
-          <code>|status|.{{PermissionStatus/[[query]]}}</code> and |status|.
+          <li>Let |query| be |status|'s {{PermissionStatus/[[query]]}} internal slot.
+          </li>
+          <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission query
+          algorithm=], passing |query| and |status|.
           </li>
           <li>Resolve <var>promise</var> with |status|.
           </li>
@@ -697,10 +696,10 @@
         <p>
           To <dfn class="export">create a `PermissionStatus`</dfn> for a given
           {{PermissionDescriptor}} |permissionDesc|, return a new instance of the [=powerful
-          feature/permission result type=] for the feature named by
-          |permissionDesc|.{{PermissionDescriptor/name}}, with the {{PermissionStatus/[[query]]}}
-          internal slot initialized to |permissionDesc|, and {{PermissionStatus/name}} initialized
-          to |permissionDesc|.{{PermissionDescriptor/name}}.
+          feature/permission result type=] for the feature named by |permissionDesc|'s
+          {{PermissionDescriptor/name}}, with the {{PermissionStatus/[[query]]}} internal slot
+          initialized to |permissionDesc|, and {{PermissionStatus/name}} initialized to
+          |permissionDesc|'s {{PermissionDescriptor/name}}.
         </p>
       </section>
       <section>
@@ -734,10 +733,10 @@
           steps</dfn>:
         </p>
         <ol class="algorithm">
-          <li>Run
-          <code>|status|.{{PermissionStatus/[[query]]}}.{{PermissionDescriptor/name}}</code>'s
-          [=powerful feature/permission query algorithm=], passing
-          <code>|status|.{{PermissionStatus/[[query]]}}</code> and |status|.
+          <li>Let |query| be |status|'s {{PermissionStatus/[[query]]}} internal slot.
+          </li>
+          <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission query
+          algorithm=], passing |query| and |status|.
           </li>
           <li>
             <a>Queue a task</a> on the <dfn class="export">permissions task source</dfn> to <a>fire
