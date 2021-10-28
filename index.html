@@ -1580,20 +1580,6 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-20">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
           Process, is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-1">at risk</a>.
         </p></div>
-        <dl>
-          <dt>
-            <a data-link-type="dfn" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-5">permission descriptor type</a>
-          </dt>
-          <dd>
-            <pre class="idl def" id="webidl-1632041439"><span class="idlHeader"><a class="self-link" href="#webidl-1632041439">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-midipermissiondescriptor" data-title="MidiPermissionDescriptor">dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-midipermissiondescriptor" data-idl="dictionary" data-title="MidiPermissionDescriptor" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>MidiPermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-permissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissiondescriptor-11"><code>PermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" id="idl-def-midipermissiondescriptor-sysex" data-title="sysex" data-dfn-for="MidiPermissionDescriptor"><span class="idlType">
-  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-midipermissiondescriptor-sysex" data-idl="field" data-title="sysex" data-dfn-for="MidiPermissionDescriptor" data-type="boolean" class="idlName" tabindex="0" aria-haspopup="dialog"><code>sysex</code></dfn> = false;</span>
-};</span></code></pre>
-            <p>
-              <code>{name: "midi", sysex: true}</code> is <a data-link-type="dfn" href="#dfn-stronger-than" class="internalDFN" id="ref-for-dfn-stronger-than-2">stronger than</a> <code>{name:
-              "midi", sysex: false}</code>.
-            </p>
-          </dd>
-        </dl>
       </section>
       <section id="screen-wake-lock-0">
         <h3 id="screen-wake-lock"><bdi class="secno">6.5 </bdi>
@@ -1715,10 +1701,10 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
         </p></div>
         <dl>
           <dt>
-            <a data-link-type="dfn" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-6">permission descriptor type</a>
+            <a data-link-type="dfn" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-5">permission descriptor type</a>
           </dt>
           <dd>
-            <pre class="idl def" id="webidl-1580257238"><span class="idlHeader"><a class="self-link" href="#webidl-1580257238">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-devicepermissiondescriptor" data-title="DevicePermissionDescriptor">dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-devicepermissiondescriptor" data-idl="dictionary" data-title="DevicePermissionDescriptor" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>DevicePermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-permissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissiondescriptor-12"><code>PermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" id="idl-def-devicepermissiondescriptor-deviceid" data-title="deviceId" data-dfn-for="DevicePermissionDescriptor"><span class="idlType">
+            <pre class="idl def" id="webidl-1580257238"><span class="idlHeader"><a class="self-link" href="#webidl-1580257238">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-devicepermissiondescriptor" data-title="DevicePermissionDescriptor">dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-devicepermissiondescriptor" data-idl="dictionary" data-title="DevicePermissionDescriptor" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>DevicePermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-permissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissiondescriptor-11"><code>PermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" id="idl-def-devicepermissiondescriptor-deviceid" data-title="deviceId" data-dfn-for="DevicePermissionDescriptor"><span class="idlType">
   <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-devicepermissiondescriptor-deviceid" data-idl="field" data-title="deviceId" data-dfn-for="DevicePermissionDescriptor" data-type="DOMString" class="idlName" tabindex="0" aria-haspopup="dialog"><code>deviceId</code></dfn>;</span>
 };</span><span data-idl="" class="idlDictionary" id="idl-def-cameradevicepermissiondescriptor" data-title="CameraDevicePermissionDescriptor">
 
@@ -1743,7 +1729,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
               "<a data-link-type="idl" href="#dom-permissionstate-prompt" class="internalDFN" id="ref-for-dom-permissionstate-prompt-5"><code>prompt</code></a>".
             </p>
             <p>
-              <code>{name: "camera", panTiltZoom: true}</code> is <a data-link-type="dfn" href="#dfn-stronger-than" class="internalDFN" id="ref-for-dfn-stronger-than-3">stronger than</a>
+              <code>{name: "camera", panTiltZoom: true}</code> is <a data-link-type="dfn" href="#dfn-stronger-than" class="internalDFN" id="ref-for-dfn-stronger-than-2">stronger than</a>
               <code>{name: "camera", panTiltZoom: false}</code>.
             </p>
             <p>
@@ -2302,11 +2288,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
   <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionname-xr-spatial-tracking" id="ref-for-dom-permissionname-xr-spatial-tracking-2"><code>xr-spatial-tracking</code></a>"</span>,
 };</span>
 
-<span data-idl="" class="idlDictionary" data-title="MidiPermissionDescriptor">dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" data-title="MidiPermissionDescriptor" data-dfn-for="" class="idlID"><code>MidiPermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-permissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissiondescriptor-13"><code>PermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" data-title="sysex" data-dfn-for="MidiPermissionDescriptor"><span class="idlType">
-  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-boolean">boolean</a></span> <dfn data-export="" data-dfn-type="dict-member" data-idl="field" data-title="sysex" data-dfn-for="MidiPermissionDescriptor" data-type="boolean" class="idlName"><code>sysex</code></dfn> = false;</span>
-};</span>
-
-<span data-idl="" class="idlDictionary" data-title="DevicePermissionDescriptor">dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" data-title="DevicePermissionDescriptor" data-dfn-for="" class="idlID"><code>DevicePermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-permissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissiondescriptor-14"><code>PermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" data-title="deviceId" data-dfn-for="DevicePermissionDescriptor"><span class="idlType">
+<span data-idl="" class="idlDictionary" data-title="DevicePermissionDescriptor">dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" data-title="DevicePermissionDescriptor" data-dfn-for="" class="idlID"><code>DevicePermissionDescriptor</code></dfn> : <span class="idlSuperclass"><a href="#dom-permissiondescriptor" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissiondescriptor-12"><code>PermissionDescriptor</code></a></span> {<span data-idl="" class="idlMember" data-title="deviceId" data-dfn-for="DevicePermissionDescriptor"><span class="idlType">
   <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" data-idl="field" data-title="deviceId" data-dfn-for="DevicePermissionDescriptor" data-type="DOMString" class="idlName"><code>deviceId</code></dfn>;</span>
 };</span><span data-idl="" class="idlDictionary" data-title="CameraDevicePermissionDescriptor">
 
@@ -2579,9 +2561,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dfn-permission-descriptor-type-4" title="§ 5. PermissionStatus interface">§ 5. PermissionStatus interface</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-descriptor-type-5" title="§ 6.4 Midi">§ 6.4 Midi</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-descriptor-type-6" title="§ 6.6 Media Devices">§ 6.6 Media Devices</a> 
+    <a href="#ref-for-dfn-permission-descriptor-type-5" title="§ 6.6 Media Devices">§ 6.6 Media Devices</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-stronger-than" aria-label="Links in this document to definition: stronger than">
@@ -2595,9 +2575,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <li>
     <a href="#ref-for-dfn-stronger-than-1" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> 
   </li><li>
-    <a href="#ref-for-dfn-stronger-than-2" title="§ 6.4 Midi">§ 6.4 Midi</a> 
-  </li><li>
-    <a href="#ref-for-dfn-stronger-than-3" title="§ 6.6 Media Devices">§ 6.6 Media Devices</a> 
+    <a href="#ref-for-dfn-stronger-than-2" title="§ 6.6 Media Devices">§ 6.6 Media Devices</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-state-constraints" aria-label="Links in this document to definition: permission state constraints">
@@ -2863,11 +2841,9 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dom-permissiondescriptor-10" title="§ 5.1 Creating instances">§ 5.1 Creating instances</a> 
   </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-11" title="§ 6.4 Midi">§ 6.4 Midi</a> 
+    <a href="#ref-for-dom-permissiondescriptor-11" title="§ 6.6 Media Devices">§ 6.6 Media Devices</a> 
   </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-12" title="§ 6.6 Media Devices">§ 6.6 Media Devices</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-13" title="§ D. IDL Index">§ D. IDL Index</a> <a href="#ref-for-dom-permissiondescriptor-14" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dom-permissiondescriptor-12" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissiondescriptor-name" aria-label="Links in this document to definition: name">
@@ -3226,26 +3202,6 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <a href="#ref-for-dom-permissionname-midi-4" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
   </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-midipermissiondescriptor" aria-label="Links in this document to definition: MidiPermissionDescriptor">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-midipermissiondescriptor" aria-label="Permalink for definition: MidiPermissionDescriptor. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-midipermissiondescriptor-sysex" aria-label="Links in this document to definition: sysex">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-midipermissiondescriptor-sysex" aria-label="Permalink for definition: sysex. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-      <li>Not referenced in this document.</li>
-    </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionname-screen-wake-lock" aria-label="Links in this document to definition: screen-wake-lock">
       <span class="caret"></span>
       <div>
