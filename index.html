@@ -818,22 +818,6 @@
         <p>
           The <dfn>push</dfn> enum value identifies the [[[push-api]]] [=powerful feature=].
         </p>
-        <dl>
-          <dt>
-            [=powerful feature/permission descriptor type=]
-          </dt>
-          <dd>
-            <pre class="idl">
-              dictionary PushPermissionDescriptor : PermissionDescriptor {
-                boolean userVisibleOnly = false;
-              };
-            </pre>
-            <p>
-              `{name: "push", userVisibleOnly: false}` is [=PermissionDescriptor/stronger than=]
-              `{name: "push", userVisibleOnly: true}`.
-            </p>
-          </dd>
-        </dl>
       </section>
       <section>
         <h3 id="midi">
