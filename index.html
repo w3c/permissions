@@ -846,22 +846,6 @@
           This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
           Process, is [=at risk=].
         </p>
-        <dl>
-          <dt>
-            [=powerful feature/permission descriptor type=]
-          </dt>
-          <dd>
-            <pre class="idl">
-              dictionary MidiPermissionDescriptor : PermissionDescriptor {
-                boolean sysex = false;
-              };
-            </pre>
-            <p>
-              `{name: "midi", sysex: true}` is [=PermissionDescriptor/stronger than=] `{name:
-              "midi", sysex: false}`.
-            </p>
-          </dd>
-        </dl>
       </section>
       <section>
         <h3 id="screen-wake-lock">
