@@ -2224,6 +2224,17 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
         Security and privacy considerations
       <a class="self-link" aria-label="§" href="#privacy-considerations"></a></h2><p><em>This section is non-normative.</em></p>
       <p>
+        Web pages often run more- and less-trusted components as the same origin. For example, a
+        newspaper may run advertising code without sandboxing it into a cross-origin iframe. If the
+        newspaper has a legitimate reason to use a person's location, that also happens to grant
+        access to the less trusted advertiser. Without the <a data-link-type="idl" data-lt="query()" href="#dom-permissions-query" class="internalDFN" id="ref-for-dom-permissions-query-3"><code>query</code></a><code>()</code> function in this
+        specification, to read the person's location, an advertisement needs to risk showing a
+        prompt, which exposes it to detection. With this function, the advertisement can silently
+        track just the people who've already granted their location to the newspaper. The UA might
+        provide notice of when permissions are in use on a page which might increase the visibility
+        of abuse.
+      </p>
+      <p>
         An adversary could use a <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-20">permission state</a> as an element in creating a "fingerprint"
         corresponding to an end-user. Although an adversary can already determine the state of a
         permission by actually using the API, that often leads to a permission request UI being
@@ -2246,7 +2257,7 @@ partial interface <a data-idl="partial" data-link-type="interface" data-title="W
 
 <span data-idl="" class="idlInterface" data-title="Permissions">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>,<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
 interface <dfn data-export="" data-dfn-type="interface" data-idl="interface" data-title="Permissions" data-dfn-for="" class="idlID"><code>Permissions</code></dfn> {<span data-idl="" class="idlMethod" data-title="query" data-dfn-for="Permissions"><span class="idlType">
-  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise">Promise</a>&lt;<a href="#dom-permissionstatus" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissionstatus-14"><code>PermissionStatus</code></a>&gt;</span> <a class="internalDFN idlName" data-link-type="method" href="#dom-permissions-query" id="ref-for-dom-permissions-query-3"><code>query</code></a>(<span class="idlType"><a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-object">object</a></span> <span class="idlParamName">permissionDesc</span>);</span>
+  <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise">Promise</a>&lt;<a href="#dom-permissionstatus" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissionstatus-14"><code>PermissionStatus</code></a>&gt;</span> <a class="internalDFN idlName" data-link-type="method" href="#dom-permissions-query" id="ref-for-dom-permissions-query-4"><code>query</code></a>(<span class="idlType"><a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-object">object</a></span> <span class="idlParamName">permissionDesc</span>);</span>
 };</span><span data-idl="" class="idlDictionary" data-title="PermissionDescriptor">
 
 dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" data-title="PermissionDescriptor" data-dfn-for="" class="idlID"><code>PermissionDescriptor</code></dfn> {<span data-idl="" class="idlMember" data-title="name" data-dfn-for="PermissionDescriptor">
@@ -2883,7 +2894,9 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dom-permissions-query-2" title="§ 4. Permissions interface">§ 4. Permissions interface</a> 
   </li><li>
-    <a href="#ref-for-dom-permissions-query-3" title="§ D. IDL Index">§ D. IDL Index</a> 
+    <a href="#ref-for-dom-permissions-query-3" title="§ C. Security and privacy considerations">§ C. Security and privacy considerations</a> 
+  </li><li>
+    <a href="#ref-for-dom-permissions-query-4" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-query-a-permission" aria-label="Links in this document to definition: query a permission">
