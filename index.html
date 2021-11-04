@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 26.16.1">
+<meta name="generator" content="ReSpec 27.0.4">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -229,17 +229,17 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   },
   "mdn": true,
   "xref": "web-platform",
-  "publishISODate": "2021-10-28T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 28 October 2021"
+  "publishISODate": "2021-11-04T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 04 November 2021"
 }</script>
-<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED"></head>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
-    <a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72">
+    <a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a> <h1 id="title" class="title">Permissions</h1>
     <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <h2><a href="https://www.w3.org/standards/types">W3C Editor's Draft</a> <time class="dt-published" datetime="2021-10-28">28 October 2021</time></h2>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2021-11-04">04 November 2021</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -250,7 +250,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               </dd>
         <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a></dd>
         <dt>History:</dt><dd>
-      <a href="https://www.w3.org/standards/history/permissions">Publication history</a>
+      <a href="https://www.w3.org/standards/history/permissions">https://www.w3.org/standards/history/permissions</a>
     </dd><dd>
         <a href="https://github.com/w3c/permissions/commits/main">Commit history</a>
       </dd>
@@ -280,9 +280,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <a href="https://github.com/w3c/permissions/issues/">open issues</a>)
       </dd>
         
+        
       </dl>
     </details>
-    
     
     
     <p class="copyright">
@@ -310,10 +310,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       </p>
     </section>
     <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this
-      document at the time of its publication. Other documents may supersede
-      this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision
-      of this technical report can be found in the
-      <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
+      document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr>
+      publications and the latest revision of this technical report can be found
+      in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
       https://www.w3.org/TR/.</em></p>
       <p>
         This is a work in progress.
@@ -323,27 +322,21 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         marked as <dfn id="dfn-at-risk" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">at risk</dfn>.
       </p>
     <p>
-    This document was published by the <a href="https://www.w3.org/2011/webappsec/">Web Application Security Working Group</a> as an
-    Editor's Draft. 
+    This document was published by the <a href="https://www.w3.org/groups/wg/webappsec">Web Application Security Working Group</a> as
+    an Editor's Draft. 
+  </p><p>Publication as an Editor's Draft does not
+  imply endorsement by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. </p><p>
+    This is a draft document and may be updated, replaced or obsoleted by other
+    documents at any time. It is inappropriate to cite this document as other
+    than work in progress.
     
   </p><p>
-    <a href="https://github.com/w3c/permissions/issues/">GitHub Issues</a> are preferred for
-          discussion of this specification.
-        
-    
-  </p><p>
-      Publication as an Editor's Draft does not imply endorsement
-      by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. 
-    </p><p>This is a draft document and may be updated, replaced
-  or obsoleted by other documents at any time. It is inappropriate to cite this
-  document as other than work in progress.
-  </p><p></p><p>
     
         This document was produced by a group
         operating under the
         <a href="https://www.w3.org/Consortium/Patent-Policy-20170801/">1 August 2017 <abbr title="World Wide Web Consortium">W3C</abbr> Patent
           Policy</a>.
-       
+      
     
                 <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
                 <a rel="disclosure" href="https://www.w3.org/groups/wg/webappsec/ipr">public list of any patent disclosures</a>
@@ -355,10 +348,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           must disclose the information in accordance with
           <a href="https://www.w3.org/Consortium/Patent-Policy-20170801/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
         
-    
   </p><p>
                   This document is governed by the
-                  <a id="w3c_process_revision" href="https://www.w3.org/2020/Process-20200915/">15 September 2020 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                  <a id="w3c_process_revision" href="https://www.w3.org/2021/Process-20211102/">2 November 2021 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
                 </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#examples"><bdi class="secno">1. </bdi>
         Examples of usage
       </a></li><li class="tocline"><a class="tocxref" href="#model"><bdi class="secno">2. </bdi>
@@ -1877,11 +1869,6 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
           The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-ambient-light-sensor" data-idl="enum-value" data-title="ambient-light-sensor" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>ambient-light-sensor</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/ambient-light/">Ambient Light Sensor</a></cite> API
           <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-31">powerful feature</a>.
         </p>
-        <p data-cite="generic-sensor">
-          Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-3">permission revocation algorithm</a> is the result of calling
-          <a data-link-type="dfn" data-type="dfn" href="https://www.w3.org/TR/generic-sensor/#generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> passing it
-          "<a data-link-type="idl" href="#dom-permissionname-ambient-light-sensor" class="internalDFN" id="ref-for-dom-permissionname-ambient-light-sensor-2"><code>ambient-light-sensor</code></a>" as argument.
-        </p>
       </section>
       <aside class="mdn"><details>
     <summary aria-label="Expand MDN details for accelerometer"><span>MDN</span><span title="This feature has limited support.">🚫</span></summary>
@@ -1941,7 +1928,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
           The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-accelerometer" data-idl="enum-value" data-title="accelerometer" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>accelerometer</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/accelerometer/">Accelerometer</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-33">powerful feature</a>.
         </p>
         <p data-cite="generic-sensor">
-          Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-4">permission revocation algorithm</a> is the result of calling
+          Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-3">permission revocation algorithm</a> is the result of calling
           <a data-link-type="dfn" data-type="dfn" href="https://www.w3.org/TR/generic-sensor/#generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> passing it
           "<a data-link-type="idl" href="#dom-permissionname-accelerometer" class="internalDFN" id="ref-for-dom-permissionname-accelerometer-2"><code>accelerometer</code></a>" as argument.
         </p>
@@ -2004,7 +1991,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
           The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-gyroscope" data-idl="enum-value" data-title="gyroscope" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>gyroscope</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/gyroscope/">Gyroscope</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-35">powerful feature</a>.
         </p>
         <p data-cite="generic-sensor">
-          Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-5">permission revocation algorithm</a> is the result of calling
+          Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-4">permission revocation algorithm</a> is the result of calling
           <a data-link-type="dfn" data-type="dfn" href="https://www.w3.org/TR/generic-sensor/#generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> passing it
           "<a data-link-type="idl" href="#dom-permissionname-gyroscope" class="internalDFN" id="ref-for-dom-permissionname-gyroscope-2"><code>gyroscope</code></a>" as argument.
         </p>
@@ -2067,7 +2054,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
           The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-magnetometer" data-idl="enum-value" data-title="magnetometer" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>magnetometer</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/magnetometer/">Magnetometer</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-37">powerful feature</a>.
         </p>
         <p data-cite="generic-sensor">
-          Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-6">permission revocation algorithm</a> is the result of calling
+          Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-5">permission revocation algorithm</a> is the result of calling
           <a data-link-type="dfn" data-type="dfn" href="https://www.w3.org/TR/generic-sensor/#generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> passing it
           "<a data-link-type="idl" href="#dom-permissionname-magnetometer" class="internalDFN" id="ref-for-dom-permissionname-magnetometer-2"><code>magnetometer</code></a>" as argument.
         </p>
@@ -2279,7 +2266,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
 
 <span data-idl="" class="idlEnum" data-title="PermissionName">enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="PermissionName" data-dfn-for="" class="idlID"><code>PermissionName</code></dfn> {
   <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer-3"><code>accelerometer</code></a>"</span>,
-  <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor-3"><code>ambient-light-sensor</code></a>"</span>,
+  <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor-2"><code>ambient-light-sensor</code></a>"</span>,
   <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionname-background-fetch" id="ref-for-dom-permissionname-background-fetch-2"><code>background-fetch</code></a>"</span>,
   <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionname-background-sync" id="ref-for-dom-permissionname-background-sync-2"><code>background-sync</code></a>"</span>,
   <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionname-bluetooth" id="ref-for-dom-permissionname-bluetooth-2"><code>bluetooth</code></a>"</span>,
@@ -2319,7 +2306,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
 
 <section id="references" class="appendix"><h2 id="f-references"><bdi class="secno">F. </bdi>References<a class="self-link" aria-label="§" href="#references"></a></h2><section id="normative-references">
     <h3 id="f-1-normative-references"><bdi class="secno">F.1 </bdi>Normative references<a class="self-link" aria-label="§" href="#normative-references"></a></h3>
-    <dl class="bibliography"><dt id="bib-accelerometer">[accelerometer]</dt><dd><a href="https://www.w3.org/TR/accelerometer/"><cite>Accelerometer</cite></a>. Anssi Kostiainen; Alexander Shalamov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/accelerometer/">https://www.w3.org/TR/accelerometer/</a></dd><dt id="bib-ambient-light">[ambient-light]</dt><dd><a href="https://www.w3.org/TR/ambient-light/"><cite>Ambient Light Sensor</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik; Tobie Langel.  W3C. 3 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a></dd><dt id="bib-audio-output">[audio-output]</dt><dd><a href="https://www.w3.org/TR/audio-output/"><cite>Audio Output Devices API</cite></a>. Justin Uberti; Guido Urdaneta; youenn fablet.  W3C. 6 July 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a></dd><dt id="bib-background-fetch">[background-fetch]</dt><dd><a href="https://wicg.github.io/background-fetch/"><cite>Background Fetch</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a></dd><dt id="bib-dom">[dom]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-ecmascript">[ECMASCRIPT]</dt><dd><a href="https://tc39.es/ecma262/multipage/"><cite>ECMAScript Language Specification</cite></a>.  Ecma International. URL: <a href="https://tc39.es/ecma262/multipage/">https://tc39.es/ecma262/multipage/</a></dd><dt id="bib-generic-sensor">[generic-sensor]</dt><dd><a href="https://www.w3.org/TR/generic-sensor/"><cite>Generic Sensor API</cite></a>. Rick Waldron; Mikhail Pozdnyakov; Alexander Shalamov; Tobie Langel.  W3C. 29 July 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/generic-sensor/">https://www.w3.org/TR/generic-sensor/</a></dd><dt id="bib-geolocation">[Geolocation]</dt><dd><a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres.  W3C. 12 October 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a></dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd><a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet; Daniel Burnett; Adam Bergkvist; Anant Narayanan.  W3C. 21 October 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a></dd><dt id="bib-gyroscope">[gyroscope]</dt><dd><a href="https://www.w3.org/TR/gyroscope/"><cite>Gyroscope</cite></a>. Anssi Kostiainen; Mikhail Pozdnyakov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/gyroscope/">https://www.w3.org/TR/gyroscope/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-infra">[infra]</dt><dd><a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a></dd><dt id="bib-magnetometer">[magnetometer]</dt><dd><a href="https://www.w3.org/TR/magnetometer/"><cite>Magnetometer</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik.  W3C. 2 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/magnetometer/">https://www.w3.org/TR/magnetometer/</a></dd><dt id="bib-notifications">[notifications]</dt><dd><a href="https://notifications.spec.whatwg.org/"><cite>Notifications API Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a></dd><dt id="bib-permissions-policy">[Permissions-Policy]</dt><dd><a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. Ian Clelland.  W3C. 16 July 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a></dd><dt id="bib-push-api">[push-api]</dt><dd><a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson.  W3C. 28 October 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a></dd><dt id="bib-screen-capture">[screen-capture]</dt><dd><a href="https://www.w3.org/TR/screen-capture/"><cite>Screen Capture</cite></a>. Martin Thomson; Keith Griffin; Suhas Nandakumar; Henrik Boström; Jan-Ivar Bruaroey; Elad Alon.  W3C. 2 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-capture/">https://www.w3.org/TR/screen-capture/</a></dd><dt id="bib-screen-wake-lock">[screen-wake-lock]</dt><dd><a href="https://www.w3.org/TR/screen-wake-lock/"><cite>Screen Wake Lock API</cite></a>. Kenneth Christiansen; Marcos Caceres; Raphael Kubo da Costa; Ilya Bogdanovich; Andrey Logvinov.  W3C. 30 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-wake-lock/">https://www.w3.org/TR/screen-wake-lock/</a></dd><dt id="bib-storage">[storage]</dt><dd><a href="https://storage.spec.whatwg.org/"><cite>Storage Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://storage.spec.whatwg.org/">https://storage.spec.whatwg.org/</a></dd><dt id="bib-web-background-sync">[web-background-sync]</dt><dd><a href="https://wicg.github.io/background-sync/spec/"><cite>Web Background Synchronization</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-sync/spec/">https://wicg.github.io/background-sync/spec/</a></dd><dt id="bib-web-bluetooth">[web-bluetooth]</dt><dd><a href="https://webbluetoothcg.github.io/web-bluetooth/"><cite>Web Bluetooth</cite></a>. Jeffrey Yasskin.  W3C Web Bluetooth Community Group. Draft Community Group Report. URL: <a href="https://webbluetoothcg.github.io/web-bluetooth/">https://webbluetoothcg.github.io/web-bluetooth/</a></dd><dt id="bib-web-nfc">[web-nfc]</dt><dd><a href="https://w3c.github.io/web-nfc/"><cite>Web NFC API</cite></a>.  W3C. W3C Editor's Draft. URL: <a href="https://w3c.github.io/web-nfc/">https://w3c.github.io/web-nfc/</a></dd><dt id="bib-webidl">[WEBIDL]</dt><dd><a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a></dd><dt id="bib-webmidi">[webmidi]</dt><dd><a href="https://www.w3.org/TR/webmidi/"><cite>Web MIDI API</cite></a>. Chris Wilson; Jussi Kalliokoski.  W3C. 17 March 2015. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webmidi/">https://www.w3.org/TR/webmidi/</a></dd><dt id="bib-webxr">[webxr]</dt><dd><a href="https://www.w3.org/TR/webxr/"><cite>WebXR Device API</cite></a>. Brandon Jones; Manish Goregaokar; Rik Cabanier; Nell Waliczek.  W3C. 26 October 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a></dd></dl>
+    <dl class="bibliography"><dt id="bib-accelerometer">[accelerometer]</dt><dd><a href="https://www.w3.org/TR/accelerometer/"><cite>Accelerometer</cite></a>. Anssi Kostiainen; Alexander Shalamov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/accelerometer/">https://www.w3.org/TR/accelerometer/</a></dd><dt id="bib-ambient-light">[ambient-light]</dt><dd><a href="https://www.w3.org/TR/ambient-light/"><cite>Ambient Light Sensor</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik; Tobie Langel.  W3C. 3 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a></dd><dt id="bib-audio-output">[audio-output]</dt><dd><a href="https://www.w3.org/TR/audio-output/"><cite>Audio Output Devices API</cite></a>. Justin Uberti; Guido Urdaneta; youenn fablet.  W3C. 6 July 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a></dd><dt id="bib-background-fetch">[background-fetch]</dt><dd><a href="https://wicg.github.io/background-fetch/"><cite>Background Fetch</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a></dd><dt id="bib-dom">[dom]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-ecmascript">[ECMASCRIPT]</dt><dd><a href="https://tc39.es/ecma262/multipage/"><cite>ECMAScript Language Specification</cite></a>.  Ecma International. URL: <a href="https://tc39.es/ecma262/multipage/">https://tc39.es/ecma262/multipage/</a></dd><dt id="bib-generic-sensor">[generic-sensor]</dt><dd><a href="https://www.w3.org/TR/generic-sensor/"><cite>Generic Sensor API</cite></a>. Rick Waldron; Mikhail Pozdnyakov; Alexander Shalamov; Tobie Langel.  W3C. 29 July 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/generic-sensor/">https://www.w3.org/TR/generic-sensor/</a></dd><dt id="bib-geolocation">[Geolocation]</dt><dd><a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres.  W3C. 3 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a></dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd><a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet; Daniel Burnett; Adam Bergkvist; Anant Narayanan.  W3C. 21 October 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a></dd><dt id="bib-gyroscope">[gyroscope]</dt><dd><a href="https://www.w3.org/TR/gyroscope/"><cite>Gyroscope</cite></a>. Anssi Kostiainen; Mikhail Pozdnyakov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/gyroscope/">https://www.w3.org/TR/gyroscope/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-infra">[infra]</dt><dd><a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a></dd><dt id="bib-magnetometer">[magnetometer]</dt><dd><a href="https://www.w3.org/TR/magnetometer/"><cite>Magnetometer</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik.  W3C. 2 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/magnetometer/">https://www.w3.org/TR/magnetometer/</a></dd><dt id="bib-notifications">[notifications]</dt><dd><a href="https://notifications.spec.whatwg.org/"><cite>Notifications API Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a></dd><dt id="bib-permissions-policy">[Permissions-Policy]</dt><dd><a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. Ian Clelland.  W3C. 16 July 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a></dd><dt id="bib-push-api">[push-api]</dt><dd><a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson.  W3C. 3 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a></dd><dt id="bib-screen-capture">[screen-capture]</dt><dd><a href="https://www.w3.org/TR/screen-capture/"><cite>Screen Capture</cite></a>. Martin Thomson; Keith Griffin; Suhas Nandakumar; Henrik Boström; Jan-Ivar Bruaroey; Elad Alon.  W3C. 2 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-capture/">https://www.w3.org/TR/screen-capture/</a></dd><dt id="bib-screen-wake-lock">[screen-wake-lock]</dt><dd><a href="https://www.w3.org/TR/screen-wake-lock/"><cite>Screen Wake Lock API</cite></a>. Kenneth Christiansen; Marcos Caceres; Raphael Kubo da Costa; Ilya Bogdanovich; Andrey Logvinov.  W3C. 30 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-wake-lock/">https://www.w3.org/TR/screen-wake-lock/</a></dd><dt id="bib-storage">[storage]</dt><dd><a href="https://storage.spec.whatwg.org/"><cite>Storage Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://storage.spec.whatwg.org/">https://storage.spec.whatwg.org/</a></dd><dt id="bib-web-background-sync">[web-background-sync]</dt><dd><a href="https://wicg.github.io/background-sync/spec/"><cite>Web Background Synchronization</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-sync/spec/">https://wicg.github.io/background-sync/spec/</a></dd><dt id="bib-web-bluetooth">[web-bluetooth]</dt><dd><a href="https://webbluetoothcg.github.io/web-bluetooth/"><cite>Web Bluetooth</cite></a>. Jeffrey Yasskin.  W3C Web Bluetooth Community Group. Draft Community Group Report. URL: <a href="https://webbluetoothcg.github.io/web-bluetooth/">https://webbluetoothcg.github.io/web-bluetooth/</a></dd><dt id="bib-web-nfc">[web-nfc]</dt><dd><a href="https://w3c.github.io/web-nfc/"><cite>Web NFC API</cite></a>.  W3C. W3C Editor's Draft. URL: <a href="https://w3c.github.io/web-nfc/">https://w3c.github.io/web-nfc/</a></dd><dt id="bib-webidl">[WEBIDL]</dt><dd><a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a></dd><dt id="bib-webmidi">[webmidi]</dt><dd><a href="https://www.w3.org/TR/webmidi/"><cite>Web MIDI API</cite></a>. Chris Wilson; Jussi Kalliokoski.  W3C. 17 March 2015. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webmidi/">https://www.w3.org/TR/webmidi/</a></dd><dt id="bib-webxr">[webxr]</dt><dd><a href="https://www.w3.org/TR/webxr/"><cite>WebXR Device API</cite></a>. Brandon Jones; Manish Goregaokar; Rik Cabanier; Nell Waliczek.  W3C. 26 October 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a></dd></dl>
   </section><section id="informative-references">
     <h3 id="f-2-informative-references"><bdi class="secno">F.2 </bdi>Informative references<a class="self-link" aria-label="§" href="#informative-references"></a></h3>
     <dl class="bibliography"><dt id="bib-appmanifest">[appmanifest]</dt><dd><a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Anssi Kostiainen; Matt Giuca; Aaron Gustafson.  W3C. 7 October 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a></dd><dt id="bib-gamepad">[Gamepad]</dt><dd><a href="https://www.w3.org/TR/gamepad/"><cite>Gamepad</cite></a>. Steve Agoston; James Hollyer; Matthew Reynolds; Brandon Jones; Scott Graham; Theodore Mielczarek.  W3C. 5 August 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/gamepad/">https://www.w3.org/TR/gamepad/</a></dd></dl>
@@ -2698,13 +2685,11 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dfn-permission-revocation-algorithm-2" title="§ 6.6 Media Devices">§ 6.6 Media Devices</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-3" title="§ 6.11 Ambient Light Sensor">§ 6.11 Ambient Light Sensor</a> 
+    <a href="#ref-for-dfn-permission-revocation-algorithm-3" title="§ 6.12 Accelerometer">§ 6.12 Accelerometer</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-4" title="§ 6.12 Accelerometer">§ 6.12 Accelerometer</a> 
+    <a href="#ref-for-dfn-permission-revocation-algorithm-4" title="§ 6.13 Gyroscope">§ 6.13 Gyroscope</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-5" title="§ 6.13 Gyroscope">§ 6.13 Gyroscope</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-6" title="§ 6.14 Magnetometer">§ 6.14 Magnetometer</a> 
+    <a href="#ref-for-dfn-permission-revocation-algorithm-5" title="§ 6.14 Magnetometer">§ 6.14 Magnetometer</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-default-powerful-feature" aria-label="Links in this document to definition: default powerful feature">
@@ -3386,9 +3371,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <li>
     <a href="#ref-for-dom-permissionname-ambient-light-sensor-1" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionname-ambient-light-sensor-2" title="§ 6.11 Ambient Light Sensor">§ 6.11 Ambient Light Sensor</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionname-ambient-light-sensor-3" title="§ D. IDL Index">§ D. IDL Index</a> 
+    <a href="#ref-for-dom-permissionname-ambient-light-sensor-2" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionname-accelerometer" aria-label="Links in this document to definition: accelerometer">
@@ -3703,4 +3686,4 @@ function hidePanel(panel) {
   panel.hidden = true;
   panel.classList.remove("docked");
 }
-})()</script><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>
