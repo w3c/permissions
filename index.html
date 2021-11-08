@@ -1942,16 +1942,6 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
           This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-37">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
           Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-9">at risk</a>.
         </p></div>
-        <dl>
-          <dt>
-            <a data-link-type="dfn" href="#dfn-permission-state-constraints" class="internalDFN" id="ref-for-dfn-permission-state-constraints-2">permission state constraints</a>
-          </dt>
-          <dd>
-            Valid values for this descriptor's <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-18">permission state</a> are
-            "<a data-link-type="idl" href="#dom-permissionstate-prompt" class="internalDFN" id="ref-for-dom-permissionstate-prompt-6"><code>prompt</code></a>" and "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-16"><code>denied</code></a>". The user agent <em class="rfc2119">MUST NOT</em>
-            ever set this descriptor's <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-19">permission state</a> to "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-10"><code>granted</code></a>".
-          </dd>
-        </dl>
       </section>
       <section id="nfc-0">
         <h3 id="nfc"><bdi class="secno">6.12 </bdi>
@@ -1976,7 +1966,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
       </section>
     </section>
     <section id="conformance"><h2 id="x7-conformance"><bdi class="secno">7. </bdi>Conformance<a class="self-link" aria-label="§" href="#conformance"></a></h2><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
-        The key words <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, and <em class="rfc2119">MUST NOT</em> in this document
+        The key words <em class="rfc2119">MAY</em> and <em class="rfc2119">MUST</em> in this document
         are to be interpreted as described in
         <a href="https://datatracker.ietf.org/doc/html/bcp14">BCP 14</a>
         [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
@@ -2048,14 +2038,14 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
         of abuse.
       </p>
       <p>
-        An adversary could use a <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-20">permission state</a> as an element in creating a "fingerprint"
+        An adversary could use a <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-18">permission state</a> as an element in creating a "fingerprint"
         corresponding to an end-user. Although an adversary can already determine the state of a
         permission by actually using the API, that often leads to a permission request UI being
         presented to the end-user (if the permission was not already
-        "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-11"><code>granted</code></a>"). Thus, even though this API doesn't expose new
+        "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-10"><code>granted</code></a>"). Thus, even though this API doesn't expose new
         fingerprinting information to websites, it makes it easier for an adversary to have
         discreet access to this information. Thus, implementations are encouraged to have an option
-        for users to block (globally or selectively) the querying of <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-21">permission states</a>.
+        for users to block (globally or selectively) the querying of <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-19">permission states</a>.
       </p>
     </section>
     <section id="idl-index"><h2 id="d-idl-index"><bdi class="secno">D. </bdi>IDL Index<a class="self-link" aria-label="§" href="#idl-index"></a></h2><pre class="idl def" id="actual-idl-index"><span class="idlHeader"><a class="self-link" href="#actual-idl-index">WebIDL</a></span><code><span data-idl="" class="idlInterface" data-title="Navigator">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>)</span>]
@@ -2085,9 +2075,9 @@ interface <dfn data-export="" data-dfn-type="interface" data-idl="interface" dat
 };</span><span data-idl="" class="idlEnum" data-title="PermissionState">
 
 enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="PermissionState" data-dfn-for="" class="idlID"><code>PermissionState</code></dfn> {
-  <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted-12"><code>granted</code></a>"</span>,
-  <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied-17"><code>denied</code></a>"</span>,
-  <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionstate-prompt" id="ref-for-dom-permissionstate-prompt-7"><code>prompt</code></a>"</span>,
+  <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionstate-granted" id="ref-for-dom-permissionstate-granted-11"><code>granted</code></a>"</span>,
+  <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionstate-denied" id="ref-for-dom-permissionstate-denied-16"><code>denied</code></a>"</span>,
+  <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionstate-prompt" id="ref-for-dom-permissionstate-prompt-6"><code>prompt</code></a>"</span>,
 };</span>
 
 <span data-idl="" class="idlEnum" data-title="PermissionName">enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="PermissionName" data-dfn-for="" class="idlID"><code>PermissionName</code></dfn> {
@@ -2400,8 +2390,6 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
       <ul>
     <li>
     <a href="#ref-for-dfn-permission-state-constraints-1" title="§ 2.3 Reading the current permission state">§ 2.3 Reading the current permission state</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-state-constraints-2" title="§ 6.11 Display Capture">§ 6.11 Display Capture</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-extra-permission-data-type" aria-label="Links in this document to definition: extra permission data type">
@@ -2553,9 +2541,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dfn-permission-state-16" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> <a href="#ref-for-dfn-permission-state-17" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-state-18" title="§ 6.11 Display Capture">§ 6.11 Display Capture</a> <a href="#ref-for-dfn-permission-state-19" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-state-20" title="§ C. Security and privacy considerations">§ C. Security and privacy considerations</a> <a href="#ref-for-dfn-permission-state-21" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-permission-state-18" title="§ C. Security and privacy considerations">§ C. Security and privacy considerations</a> <a href="#ref-for-dfn-permission-state-19" title="Reference 2">(2)</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-request-permission-to-use" aria-label="Links in this document to definition: request permission to use">
@@ -2783,11 +2769,9 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dom-permissionstate-granted-9" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionstate-granted-10" title="§ 6.11 Display Capture">§ 6.11 Display Capture</a> 
+    <a href="#ref-for-dom-permissionstate-granted-10" title="§ C. Security and privacy considerations">§ C. Security and privacy considerations</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionstate-granted-11" title="§ C. Security and privacy considerations">§ C. Security and privacy considerations</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-granted-12" title="§ D. IDL Index">§ D. IDL Index</a> 
+    <a href="#ref-for-dom-permissionstate-granted-11" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionstate-denied" aria-label="Links in this document to definition: denied">
@@ -2813,9 +2797,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dom-permissionstate-denied-15" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionstate-denied-16" title="§ 6.11 Display Capture">§ 6.11 Display Capture</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-denied-17" title="§ D. IDL Index">§ D. IDL Index</a> 
+    <a href="#ref-for-dom-permissionstate-denied-16" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionstate-prompt" aria-label="Links in this document to definition: prompt">
@@ -2835,9 +2817,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dom-permissionstate-prompt-5" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionstate-prompt-6" title="§ 6.11 Display Capture">§ 6.11 Display Capture</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-prompt-7" title="§ D. IDL Index">§ D. IDL Index</a> 
+    <a href="#ref-for-dom-permissionstate-prompt-6" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-create-a-permissionstatus" aria-label="Links in this document to definition: create a PermissionStatus">
