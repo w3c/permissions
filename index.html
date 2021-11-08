@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 27.0.4">
+<meta name="generator" content="ReSpec 28.0.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -229,8 +229,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   },
   "mdn": true,
   "xref": "web-platform",
-  "publishISODate": "2021-11-04T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 04 November 2021"
+  "publishISODate": "2021-11-08T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 08 November 2021"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -239,8 +239,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2021-11-04">04 November 2021</time></p>
-    <details open="">
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2021-11-08">08 November 2021</time></p>
+    <details>
       <summary>More details about this document</summary>
       <dl>
         <dt>This version:</dt><dd>
@@ -393,33 +393,29 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         Powerful features registry
       </a><ol class="toc"><li class="tocline"><a class="tocxref" href="#notifications"><bdi class="secno">6.1 </bdi>
           Notifications
-        </a></li><li class="tocline"><a class="tocxref" href="#midi"><bdi class="secno">6.2 </bdi>
-          Midi
-        </a></li><li class="tocline"><a class="tocxref" href="#screen-wake-lock"><bdi class="secno">6.3 </bdi>
+        </a></li><li class="tocline"><a class="tocxref" href="#screen-wake-lock"><bdi class="secno">6.2 </bdi>
           Screen wake lock
-        </a></li><li class="tocline"><a class="tocxref" href="#media-devices"><bdi class="secno">6.4 </bdi>
+        </a></li><li class="tocline"><a class="tocxref" href="#media-devices"><bdi class="secno">6.3 </bdi>
           Media Devices
-        </a></li><li class="tocline"><a class="tocxref" href="#background-fetch"><bdi class="secno">6.5 </bdi>
+        </a></li><li class="tocline"><a class="tocxref" href="#background-fetch"><bdi class="secno">6.4 </bdi>
           Background Fetch
-        </a></li><li class="tocline"><a class="tocxref" href="#background-sync"><bdi class="secno">6.6 </bdi>
+        </a></li><li class="tocline"><a class="tocxref" href="#background-sync"><bdi class="secno">6.5 </bdi>
           Background Sync
-        </a></li><li class="tocline"><a class="tocxref" href="#bluetooth"><bdi class="secno">6.7 </bdi>
+        </a></li><li class="tocline"><a class="tocxref" href="#bluetooth"><bdi class="secno">6.6 </bdi>
           Bluetooth
-        </a></li><li class="tocline"><a class="tocxref" href="#persistent-storage"><bdi class="secno">6.8 </bdi>
+        </a></li><li class="tocline"><a class="tocxref" href="#persistent-storage"><bdi class="secno">6.7 </bdi>
           Persistent Storage
-        </a></li><li class="tocline"><a class="tocxref" href="#ambient-light-sensor"><bdi class="secno">6.9 </bdi>
-          Ambient Light Sensor
-        </a></li><li class="tocline"><a class="tocxref" href="#accelerometer"><bdi class="secno">6.10 </bdi>
+        </a></li><li class="tocline"><a class="tocxref" href="#accelerometer"><bdi class="secno">6.8 </bdi>
           Accelerometer
-        </a></li><li class="tocline"><a class="tocxref" href="#gyroscope"><bdi class="secno">6.11 </bdi>
+        </a></li><li class="tocline"><a class="tocxref" href="#gyroscope"><bdi class="secno">6.9 </bdi>
           Gyroscope
-        </a></li><li class="tocline"><a class="tocxref" href="#magnetometer"><bdi class="secno">6.12 </bdi>
+        </a></li><li class="tocline"><a class="tocxref" href="#magnetometer"><bdi class="secno">6.10 </bdi>
           Magnetometer
-        </a></li><li class="tocline"><a class="tocxref" href="#display-capture"><bdi class="secno">6.13 </bdi>
+        </a></li><li class="tocline"><a class="tocxref" href="#display-capture"><bdi class="secno">6.11 </bdi>
           Display Capture
-        </a></li><li class="tocline"><a class="tocxref" href="#nfc"><bdi class="secno">6.14 </bdi>
+        </a></li><li class="tocline"><a class="tocxref" href="#nfc"><bdi class="secno">6.12 </bdi>
           NFC
-        </a></li><li class="tocline"><a class="tocxref" href="#xr-api"><bdi class="secno">6.15 </bdi>
+        </a></li><li class="tocline"><a class="tocxref" href="#xr-api"><bdi class="secno">6.13 </bdi>
           XR Spatial tracking
         </a></li></ol></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">7. </bdi>Conformance</a></li><li class="tocline"><a class="tocxref" href="#relationship-to-permissions-policy"><bdi class="secno">A. </bdi>
         Relationship to the Permissions Policy specification
@@ -836,7 +832,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
             </dl>
           </li>
         </ol>
-        <div class="issue" id="issue-current-entry-incumbent-or-relevant"><div role="heading" class="issue-title marker" id="h-issue" aria-level="4"><a href="https://github.com/w3c/permissions/issues/278"><span class="issue-number">Issue 278</span></a><span class="issue-label">: Safari returns different results for current permission state</span></div><p>Safari is the only known UA that returns different results from this algorithm for different settings objects with the same origin. We should test which of the <a href="https://html.spec.whatwg.org/multipage/webappapis.html#realms-settings-objects-global-objects" rel="nofollow">several possible settings objects</a> it uses.</p></div>
+        <div class="issue" id="issue-current-entry-incumbent-or-relevant"><div role="heading" class="issue-title marker" id="h-issue" aria-level="4"><a href="https://github.com/w3c/permissions/issues/278"><span class="issue-number">Issue 278</span></a><span class="issue-label">: Safari returns different results for current permission state</span></div><p dir="auto">Safari is the only known UA that returns different results from this algorithm for different settings objects with the same origin. We should test which of the <a href="https://html.spec.whatwg.org/multipage/webappapis.html#realms-settings-objects-global-objects" rel="nofollow">several possible settings objects</a> it uses.</p></div>
         <p>
           As a shorthand, a <a data-link-type="idl" data-lt="PermissionName" href="#dom-permissionname" class="internalDFN" id="ref-for-dom-permissionname-3"><code>PermissionName</code></a> <var>name</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-11">permission state</a> is the
           <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-12">permission state</a> of a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-6"><code>PermissionDescriptor</code></a> with its
@@ -1442,88 +1438,37 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
         Each enumeration value in the <a data-link-type="idl" data-lt="PermissionName" href="#dom-permissionname" class="internalDFN" id="ref-for-dom-permissionname-8"><code>PermissionName</code></a> enum identifies a <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-15">powerful feature</a>.
       </p>
       <p>
-        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-push" data-idl="enum-value" data-title="push" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>push</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/push-api/">Push API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-16">powerful feature</a>.
+        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-ambient-light-sensor" data-idl="enum-value" data-title="ambient-light-sensor" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>ambient-light-sensor</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/ambient-light/">Ambient Light Sensor</a></cite> API
+        <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-16">powerful feature</a>.
       </p>
       <p>
         The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-geolocation" data-idl="enum-value" data-title="geolocation" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>geolocation</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/geolocation/">Geolocation API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-17">powerful feature</a>.
+      </p>
+      <p>
+        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-midi" data-idl="enum-value" data-title="midi" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>midi</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/webmidi/">Web MIDI API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-18">powerful feature</a>.
+      </p>
+      <p>
+        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-push" data-idl="enum-value" data-title="push" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>push</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/push-api/">Push API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-19">powerful feature</a>.
       </p>
       <section id="notifications-0">
         <h3 id="notifications"><bdi class="secno">6.1 </bdi>
           Notifications
         <a class="self-link" aria-label="§" href="#notifications"></a></h3>
         <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-notifications" data-idl="enum-value" data-title="notifications" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>notifications</code></dfn> enum value identifies the <cite><a href="https://notifications.spec.whatwg.org/">Notifications API Standard</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-18">powerful feature</a>. It is a <a data-link-type="dfn" href="#dfn-default-powerful-feature" class="internalDFN" id="ref-for-dfn-default-powerful-feature-1">default powerful feature</a> with its <a data-link-type="dfn" href="#dfn-allowed-in-non-secure-contexts" class="internalDFN" id="ref-for-dfn-allowed-in-non-secure-contexts-2">allowed in non-secure contexts</a> flag set.
+          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-notifications" data-idl="enum-value" data-title="notifications" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>notifications</code></dfn> enum value identifies the <cite><a href="https://notifications.spec.whatwg.org/">Notifications API Standard</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-20">powerful feature</a>. It is a <a data-link-type="dfn" href="#dfn-default-powerful-feature" class="internalDFN" id="ref-for-dfn-default-powerful-feature-1">default powerful feature</a> with its <a data-link-type="dfn" href="#dfn-allowed-in-non-secure-contexts" class="internalDFN" id="ref-for-dfn-allowed-in-non-secure-contexts-2">allowed in non-secure contexts</a> flag set.
         </p>
-      </section>
-      <aside class="mdn"><details>
-    <summary aria-label="Expand MDN details for midi"><span>MDN</span><span> </span></summary>
-    <a title="The HTTP Feature-Policy header midi directive controls whether the current document is allowed to use the Web MIDI API. When this policy is enabled, the Promise returned by Navigator.requestMIDIAccess() will reject with a DOMException." href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/midi">Headers/Feature-Policy/midi</a>
-    
-    <table>
-    <tr class="chrome yes">
-      <td>Chrome</td>
-      <td>60+</td>
-    </tr><tr class="chrome_android yes">
-      <td>Chrome Android</td>
-      <td>60+</td>
-    </tr><tr class="edge no">
-      <td>Edge</td>
-      <td>No</td>
-    </tr><tr class="edge_mobile unknown">
-      <td>Edge Mobile</td>
-      <td>?</td>
-    </tr><tr class="firefox yes">
-      <td>Firefox</td>
-      <td>65+</td>
-    </tr><tr class="firefox_android yes">
-      <td>Firefox Android</td>
-      <td>65+</td>
-    </tr><tr class="ie no">
-      <td>Internet Explorer</td>
-      <td>No</td>
-    </tr><tr class="opera yes">
-      <td>Opera</td>
-      <td>47+</td>
-    </tr><tr class="opera_android yes">
-      <td>Opera Android</td>
-      <td>44+</td>
-    </tr><tr class="safari no">
-      <td>Safari</td>
-      <td>No</td>
-    </tr><tr class="safari_ios no">
-      <td>Safari iOS</td>
-      <td>No</td>
-    </tr><tr class="samsunginternet_android yes">
-      <td>Samsung Internet</td>
-      <td>8.0+</td>
-    </tr><tr class="webview_android yes">
-      <td>WebView Android</td>
-      <td>60+</td>
-    </tr>
-  </table>
-  </details></aside><section id="midi-0">
-        <h3 id="midi"><bdi class="secno">6.2 </bdi>
-          Midi
-        <a class="self-link" aria-label="§" href="#midi"></a></h3>
-        <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-midi" data-idl="enum-value" data-title="midi" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>midi</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/webmidi/">Web MIDI API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-19">powerful feature</a>.
-        </p>
-        <div class="issue" id="issue-container-generatedID-5"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-20">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
-          Process, is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-1">at risk</a>.
-        </p></div>
       </section>
       <section id="screen-wake-lock-0">
-        <h3 id="screen-wake-lock"><bdi class="secno">6.3 </bdi>
+        <h3 id="screen-wake-lock"><bdi class="secno">6.2 </bdi>
           Screen wake lock
         <a class="self-link" aria-label="§" href="#screen-wake-lock"></a></h3>
         <p>
           The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-screen-wake-lock" data-idl="enum-value" data-title="screen-wake-lock" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>screen-wake-lock</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/screen-wake-lock/">Screen Wake Lock API</a></cite> API
           <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-21">powerful feature</a>. It is a <a data-link-type="dfn" href="#dfn-default-powerful-feature" class="internalDFN" id="ref-for-dfn-default-powerful-feature-2">default powerful feature</a>.
         </p>
-        <div class="issue" id="issue-container-generatedID-6"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="4"><span>Issue</span></div><p class="">
+        <div class="issue" id="issue-container-generatedID-5"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="4"><span>Issue</span></div><p class="">
           This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-22">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
-          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-2">at risk</a>.
+          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-1">at risk</a>.
         </p></div>
       </section>
       <aside class="mdn"><details>
@@ -1619,7 +1564,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
     </tr>
   </table>
   </details></aside><section data-cite="WEBIDL mediacapture-streams" id="media-devices-0">
-        <h3 id="media-devices"><bdi class="secno">6.4 </bdi>
+        <h3 id="media-devices"><bdi class="secno">6.3 </bdi>
           Media Devices
         <a class="self-link" aria-label="§" href="#media-devices"></a></h3>
         <p>
@@ -1627,9 +1572,9 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           permissions are associated with permission to use media devices as specified in
           [<cite><a class="bibref" data-link-type="biblio" href="#bib-getusermedia" title="Media Capture and Streams">GETUSERMEDIA</a></cite>] and [<cite><a class="bibref" data-link-type="biblio" href="#bib-audio-output" title="Audio Output Devices API">audio-output</a></cite>].
         </p>
-        <div class="issue" id="issue-container-generatedID-7"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="4"><span>Issue</span></div><p class="">
+        <div class="issue" id="issue-container-generatedID-6"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="4"><span>Issue</span></div><p class="">
           These permissions only have a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
-          Process, are <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-3">at risk</a>.
+          Process, are <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-2">at risk</a>.
         </p></div>
         <dl>
           <dt>
@@ -1706,108 +1651,49 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
         </dl>
       </section>
       <section id="background-fetch-0">
-        <h3 id="background-fetch"><bdi class="secno">6.5 </bdi>
+        <h3 id="background-fetch"><bdi class="secno">6.4 </bdi>
           Background Fetch
         <a class="self-link" aria-label="§" href="#background-fetch"></a></h3>
         <p>
           The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-background-fetch" data-idl="enum-value" data-title="background-fetch" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>background-fetch</code></dfn> enum value identifies the <cite><a href="https://wicg.github.io/background-fetch/">Background Fetch</a></cite>
           <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-23">powerful feature</a>.
         </p>
-        <div class="issue" id="issue-container-generatedID-8"><div role="heading" class="issue-title marker" id="h-issue-3" aria-level="4"><span>Issue</span></div><p class="">
+        <div class="issue" id="issue-container-generatedID-7"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="4"><span>Issue</span></div><p class="">
           This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-24">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
-          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-4">at risk</a>.
+          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-3">at risk</a>.
         </p></div>
       </section>
       <section id="background-sync-0">
-        <h3 id="background-sync"><bdi class="secno">6.6 </bdi>
+        <h3 id="background-sync"><bdi class="secno">6.5 </bdi>
           Background Sync
         <a class="self-link" aria-label="§" href="#background-sync"></a></h3>
         <p>
           The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-background-sync" data-idl="enum-value" data-title="background-sync" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>background-sync</code></dfn> enum value identifies the <cite><a href="https://wicg.github.io/background-sync/spec/">Web Background Synchronization</a></cite>
           <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-25">powerful feature</a>.
         </p>
-        <div class="issue" id="issue-container-generatedID-9"><div role="heading" class="issue-title marker" id="h-issue-4" aria-level="4"><span>Issue</span></div><p class="">
+        <div class="issue" id="issue-container-generatedID-8"><div role="heading" class="issue-title marker" id="h-issue-3" aria-level="4"><span>Issue</span></div><p class="">
           This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-26">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
-          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-5">at risk</a>.
+          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-4">at risk</a>.
         </p></div>
       </section>
       <section id="bluetooth-0">
-        <h3 id="bluetooth"><bdi class="secno">6.7 </bdi>
+        <h3 id="bluetooth"><bdi class="secno">6.6 </bdi>
           Bluetooth
         <a class="self-link" aria-label="§" href="#bluetooth"></a></h3>
         <p>
           The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-bluetooth" data-idl="enum-value" data-title="bluetooth" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>bluetooth</code></dfn> enum value identifies the <cite><a href="https://webbluetoothcg.github.io/web-bluetooth/">Web Bluetooth</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-27">powerful feature</a>.
         </p>
-        <div class="issue" id="issue-container-generatedID-10"><div role="heading" class="issue-title marker" id="h-issue-5" aria-level="4"><span>Issue</span></div><p class="">
+        <div class="issue" id="issue-container-generatedID-9"><div role="heading" class="issue-title marker" id="h-issue-4" aria-level="4"><span>Issue</span></div><p class="">
           This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-28">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
-          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-6">at risk</a>.
+          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-5">at risk</a>.
         </p></div>
       </section>
       <section data-cite="storage" id="persistent-storage-0">
-        <h3 id="persistent-storage"><bdi class="secno">6.8 </bdi>
+        <h3 id="persistent-storage"><bdi class="secno">6.7 </bdi>
           Persistent Storage
         <a class="self-link" aria-label="§" href="#persistent-storage"></a></h3>
         <p>
           The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-persistent-storage" data-idl="enum-value" data-title="persistent-storage" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>persistent-storage</code></dfn> is enum value identifies the <cite><a href="https://storage.spec.whatwg.org/">Storage Standard</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-29">powerful feature</a>.
-        </p>
-      </section>
-      <aside class="mdn"><details>
-    <summary aria-label="Expand MDN details for ambient-light-sensor"><span>MDN</span><span title="This feature has limited support.">🚫</span></summary>
-    <a title="The HTTP Feature-Policy header ambient-light-sensor directive controls whether the current document is allowed to gather information about the amount of light in the environment around the device through the AmbientLightSensor interface." href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy/ambient-light-sensor">Headers/Feature-Policy/ambient-light-sensor</a>
-    <p class="engines-some">This feature has limited support.</p>
-    <table>
-    <tr class="chrome yes">
-      <td>Chrome</td>
-      <td>67+</td>
-    </tr><tr class="chrome_android yes">
-      <td>Chrome Android</td>
-      <td>67+</td>
-    </tr><tr class="edge no">
-      <td>Edge</td>
-      <td>No</td>
-    </tr><tr class="edge_mobile unknown">
-      <td>Edge Mobile</td>
-      <td>?</td>
-    </tr><tr class="firefox no">
-      <td>Firefox</td>
-      <td>No</td>
-    </tr><tr class="firefox_android no">
-      <td>Firefox Android</td>
-      <td>No</td>
-    </tr><tr class="ie no">
-      <td>Internet Explorer</td>
-      <td>No</td>
-    </tr><tr class="opera yes">
-      <td>Opera</td>
-      <td>54+</td>
-    </tr><tr class="opera_android yes">
-      <td>Opera Android</td>
-      <td>48+</td>
-    </tr><tr class="safari no">
-      <td>Safari</td>
-      <td>No</td>
-    </tr><tr class="safari_ios no">
-      <td>Safari iOS</td>
-      <td>No</td>
-    </tr><tr class="samsunginternet_android yes">
-      <td>Samsung Internet</td>
-      <td>9.0+</td>
-    </tr><tr class="webview_android yes">
-      <td>WebView Android</td>
-      <td>67+</td>
-    </tr>
-  </table>
-  </details></aside><section data-cite="ambient-light" id="ambient-light-sensor-0">
-        <h3 id="ambient-light-sensor"><bdi class="secno">6.9 </bdi>
-          Ambient Light Sensor
-        <a class="self-link" aria-label="§" href="#ambient-light-sensor"></a></h3>
-        <div class="issue" id="issue-container-generatedID-11"><div role="heading" class="issue-title marker" id="h-issue-6" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-30">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
-          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-7">at risk</a>.
-        </p></div>
-        <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-ambient-light-sensor" data-idl="enum-value" data-title="ambient-light-sensor" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>ambient-light-sensor</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/ambient-light/">Ambient Light Sensor</a></cite> API
-          <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-31">powerful feature</a>.
         </p>
       </section>
       <aside class="mdn"><details>
@@ -1857,15 +1743,15 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
     </tr>
   </table>
   </details></aside><section id="accelerometer-0">
-        <h3 id="accelerometer"><bdi class="secno">6.10 </bdi>
+        <h3 id="accelerometer"><bdi class="secno">6.8 </bdi>
           Accelerometer
         <a class="self-link" aria-label="§" href="#accelerometer"></a></h3>
-        <div class="issue" id="issue-container-generatedID-12"><div role="heading" class="issue-title marker" id="h-issue-7" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-32">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
-          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-8">at risk</a>.
+        <div class="issue" id="issue-container-generatedID-10"><div role="heading" class="issue-title marker" id="h-issue-5" aria-level="4"><span>Issue</span></div><p class="">
+          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-30">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
+          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-6">at risk</a>.
         </p></div>
         <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-accelerometer" data-idl="enum-value" data-title="accelerometer" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>accelerometer</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/accelerometer/">Accelerometer</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-33">powerful feature</a>.
+          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-accelerometer" data-idl="enum-value" data-title="accelerometer" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>accelerometer</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/accelerometer/">Accelerometer</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-31">powerful feature</a>.
         </p>
         <p data-cite="generic-sensor">
           Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-3">permission revocation algorithm</a> is the result of calling
@@ -1920,15 +1806,15 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
     </tr>
   </table>
   </details></aside><section id="gyroscope-0">
-        <h3 id="gyroscope"><bdi class="secno">6.11 </bdi>
+        <h3 id="gyroscope"><bdi class="secno">6.9 </bdi>
           Gyroscope
         <a class="self-link" aria-label="§" href="#gyroscope"></a></h3>
-        <div class="issue" id="issue-container-generatedID-13"><div role="heading" class="issue-title marker" id="h-issue-8" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-34">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
-          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-9">at risk</a>.
+        <div class="issue" id="issue-container-generatedID-11"><div role="heading" class="issue-title marker" id="h-issue-6" aria-level="4"><span>Issue</span></div><p class="">
+          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-32">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
+          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-7">at risk</a>.
         </p></div>
         <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-gyroscope" data-idl="enum-value" data-title="gyroscope" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>gyroscope</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/gyroscope/">Gyroscope</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-35">powerful feature</a>.
+          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-gyroscope" data-idl="enum-value" data-title="gyroscope" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>gyroscope</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/gyroscope/">Gyroscope</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-33">powerful feature</a>.
         </p>
         <p data-cite="generic-sensor">
           Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-4">permission revocation algorithm</a> is the result of calling
@@ -1983,15 +1869,15 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
     </tr>
   </table>
   </details></aside><section id="magnetometer-0">
-        <h3 id="magnetometer"><bdi class="secno">6.12 </bdi>
+        <h3 id="magnetometer"><bdi class="secno">6.10 </bdi>
           Magnetometer
         <a class="self-link" aria-label="§" href="#magnetometer"></a></h3>
-        <div class="issue" id="issue-container-generatedID-14"><div role="heading" class="issue-title marker" id="h-issue-9" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-36">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
-          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-10">at risk</a>.
+        <div class="issue" id="issue-container-generatedID-12"><div role="heading" class="issue-title marker" id="h-issue-7" aria-level="4"><span>Issue</span></div><p class="">
+          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-34">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
+          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-8">at risk</a>.
         </p></div>
         <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-magnetometer" data-idl="enum-value" data-title="magnetometer" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>magnetometer</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/magnetometer/">Magnetometer</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-37">powerful feature</a>.
+          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-magnetometer" data-idl="enum-value" data-title="magnetometer" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>magnetometer</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/magnetometer/">Magnetometer</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-35">powerful feature</a>.
         </p>
         <p data-cite="generic-sensor">
           Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-5">permission revocation algorithm</a> is the result of calling
@@ -2046,15 +1932,15 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
     </tr>
   </table>
   </details></aside><section id="display-capture-0">
-        <h3 id="display-capture"><bdi class="secno">6.13 </bdi>
+        <h3 id="display-capture"><bdi class="secno">6.11 </bdi>
           Display Capture
         <a class="self-link" aria-label="§" href="#display-capture"></a></h3>
         <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-display-capture" data-idl="enum-value" data-title="display-capture" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>display-capture</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/screen-capture/">Screen Capture</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-38">powerful feature</a>.
+          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-display-capture" data-idl="enum-value" data-title="display-capture" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>display-capture</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/screen-capture/">Screen Capture</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-36">powerful feature</a>.
         </p>
-        <div class="issue" id="issue-container-generatedID-15"><div role="heading" class="issue-title marker" id="h-issue-10" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-39">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
-          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-11">at risk</a>.
+        <div class="issue" id="issue-container-generatedID-13"><div role="heading" class="issue-title marker" id="h-issue-8" aria-level="4"><span>Issue</span></div><p class="">
+          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-37">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
+          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-9">at risk</a>.
         </p></div>
         <dl>
           <dt>
@@ -2068,24 +1954,24 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
         </dl>
       </section>
       <section id="nfc-0">
-        <h3 id="nfc"><bdi class="secno">6.14 </bdi>
+        <h3 id="nfc"><bdi class="secno">6.12 </bdi>
           NFC
         <a class="self-link" aria-label="§" href="#nfc"></a></h3>
-        <div class="issue" id="issue-container-generatedID-16"><div role="heading" class="issue-title marker" id="h-issue-11" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-40">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
-          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-12">at risk</a>.
+        <div class="issue" id="issue-container-generatedID-14"><div role="heading" class="issue-title marker" id="h-issue-9" aria-level="4"><span>Issue</span></div><p class="">
+          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-38">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
+          Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-10">at risk</a>.
         </p></div>
         <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-nfc" data-idl="enum-value" data-title="nfc" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>nfc</code></dfn> enum value identifies the <cite><a href="https://w3c.github.io/web-nfc/">Web NFC API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-41">powerful feature</a>.
+          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-nfc" data-idl="enum-value" data-title="nfc" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>nfc</code></dfn> enum value identifies the <cite><a href="https://w3c.github.io/web-nfc/">Web NFC API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-39">powerful feature</a>.
         </p>
       </section>
       <section id="xr-spatial-tracking">
-        <h3 id="xr-api"><bdi class="secno">6.15 </bdi>
+        <h3 id="xr-api"><bdi class="secno">6.13 </bdi>
           XR Spatial tracking
         <a class="self-link" aria-label="§" href="#xr-api"></a></h3>
         <p>
           The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-xr-spatial-tracking" data-idl="enum-value" data-title="xr-spatial-tracking" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>xr-spatial-tracking</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/webxr/">WebXR Device API</a></cite> Device API
-          <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-42">powerful feature</a>.
+          <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-40">powerful feature</a>.
         </p>
       </section>
     </section>
@@ -2106,7 +1992,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
         purpose in the platform. Nevertheless, the two specifications do explicitly overlap.
       </p>
       <p>
-        On the one hand, this specification exclusively concerns itself with <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-43">powerful features</a>
+        On the one hand, this specification exclusively concerns itself with <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-41">powerful features</a>
         whose access is managed through a user-agent mediated permissions UI (i.e., permissions
         where the user gives express consent before that feature can be used, and where the user
         retains the ability to deny that permission at any time for any reason). These powerful
@@ -2114,7 +2000,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-cameradevicepe
       </p>
       <p>
         On the other hand, the Permissions Policy specification allows developers to selectively
-        enable and disable <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-44">powerful features</a> through a "<a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/dom.html#concept-document-permissions-policy">permissions policy</a>" (be it
+        enable and disable <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-42">powerful features</a> through a "<a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/dom.html#concept-document-permissions-policy">permissions policy</a>" (be it
         a HTTP header or a the <code><a data-type="element-attr" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-allow">allow</a></code> attribute). The APIs and features in scope for the
         Permissions Policy specification go beyond those identified in this specification's
         <a data-link-type="idl" data-lt="PermissionName" href="#dom-permissionname" class="internalDFN" id="ref-for-dom-permissionname-10"><code>PermissionName</code></a> enum (e.g., "sync-xhr" and "gamepad"). In that sense, the Permissions
@@ -2246,10 +2132,10 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
 
 <section id="references" class="appendix"><h2 id="f-references"><bdi class="secno">F. </bdi>References<a class="self-link" aria-label="§" href="#references"></a></h2><section id="normative-references">
     <h3 id="f-1-normative-references"><bdi class="secno">F.1 </bdi>Normative references<a class="self-link" aria-label="§" href="#normative-references"></a></h3>
-    <dl class="bibliography"><dt id="bib-accelerometer">[accelerometer]</dt><dd><a href="https://www.w3.org/TR/accelerometer/"><cite>Accelerometer</cite></a>. Anssi Kostiainen; Alexander Shalamov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/accelerometer/">https://www.w3.org/TR/accelerometer/</a></dd><dt id="bib-ambient-light">[ambient-light]</dt><dd><a href="https://www.w3.org/TR/ambient-light/"><cite>Ambient Light Sensor</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik; Tobie Langel.  W3C. 3 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a></dd><dt id="bib-audio-output">[audio-output]</dt><dd><a href="https://www.w3.org/TR/audio-output/"><cite>Audio Output Devices API</cite></a>. Justin Uberti; Guido Urdaneta; youenn fablet.  W3C. 6 July 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a></dd><dt id="bib-background-fetch">[background-fetch]</dt><dd><a href="https://wicg.github.io/background-fetch/"><cite>Background Fetch</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a></dd><dt id="bib-dom">[dom]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-ecmascript">[ECMASCRIPT]</dt><dd><a href="https://tc39.es/ecma262/multipage/"><cite>ECMAScript Language Specification</cite></a>.  Ecma International. URL: <a href="https://tc39.es/ecma262/multipage/">https://tc39.es/ecma262/multipage/</a></dd><dt id="bib-generic-sensor">[generic-sensor]</dt><dd><a href="https://www.w3.org/TR/generic-sensor/"><cite>Generic Sensor API</cite></a>. Rick Waldron; Mikhail Pozdnyakov; Alexander Shalamov; Tobie Langel.  W3C. 29 July 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/generic-sensor/">https://www.w3.org/TR/generic-sensor/</a></dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd><a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet; Daniel Burnett; Adam Bergkvist; Anant Narayanan.  W3C. 21 October 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a></dd><dt id="bib-gyroscope">[gyroscope]</dt><dd><a href="https://www.w3.org/TR/gyroscope/"><cite>Gyroscope</cite></a>. Anssi Kostiainen; Mikhail Pozdnyakov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/gyroscope/">https://www.w3.org/TR/gyroscope/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-infra">[infra]</dt><dd><a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a></dd><dt id="bib-magnetometer">[magnetometer]</dt><dd><a href="https://www.w3.org/TR/magnetometer/"><cite>Magnetometer</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik.  W3C. 2 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/magnetometer/">https://www.w3.org/TR/magnetometer/</a></dd><dt id="bib-notifications">[notifications]</dt><dd><a href="https://notifications.spec.whatwg.org/"><cite>Notifications API Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a></dd><dt id="bib-permissions-policy">[Permissions-Policy]</dt><dd><a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. Ian Clelland.  W3C. 16 July 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a></dd><dt id="bib-screen-capture">[screen-capture]</dt><dd><a href="https://www.w3.org/TR/screen-capture/"><cite>Screen Capture</cite></a>. Martin Thomson; Keith Griffin; Suhas Nandakumar; Henrik Boström; Jan-Ivar Bruaroey; Elad Alon.  W3C. 2 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-capture/">https://www.w3.org/TR/screen-capture/</a></dd><dt id="bib-screen-wake-lock">[screen-wake-lock]</dt><dd><a href="https://www.w3.org/TR/screen-wake-lock/"><cite>Screen Wake Lock API</cite></a>. Kenneth Christiansen; Marcos Caceres; Raphael Kubo da Costa; Ilya Bogdanovich; Andrey Logvinov.  W3C. 30 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-wake-lock/">https://www.w3.org/TR/screen-wake-lock/</a></dd><dt id="bib-storage">[storage]</dt><dd><a href="https://storage.spec.whatwg.org/"><cite>Storage Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://storage.spec.whatwg.org/">https://storage.spec.whatwg.org/</a></dd><dt id="bib-web-background-sync">[web-background-sync]</dt><dd><a href="https://wicg.github.io/background-sync/spec/"><cite>Web Background Synchronization</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-sync/spec/">https://wicg.github.io/background-sync/spec/</a></dd><dt id="bib-web-bluetooth">[web-bluetooth]</dt><dd><a href="https://webbluetoothcg.github.io/web-bluetooth/"><cite>Web Bluetooth</cite></a>. Jeffrey Yasskin.  W3C Web Bluetooth Community Group. Draft Community Group Report. URL: <a href="https://webbluetoothcg.github.io/web-bluetooth/">https://webbluetoothcg.github.io/web-bluetooth/</a></dd><dt id="bib-web-nfc">[web-nfc]</dt><dd><a href="https://w3c.github.io/web-nfc/"><cite>Web NFC API</cite></a>.  W3C. W3C Editor's Draft. URL: <a href="https://w3c.github.io/web-nfc/">https://w3c.github.io/web-nfc/</a></dd><dt id="bib-webidl">[WEBIDL]</dt><dd><a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a></dd><dt id="bib-webmidi">[webmidi]</dt><dd><a href="https://www.w3.org/TR/webmidi/"><cite>Web MIDI API</cite></a>. Chris Wilson; Jussi Kalliokoski.  W3C. 17 March 2015. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webmidi/">https://www.w3.org/TR/webmidi/</a></dd><dt id="bib-webxr">[webxr]</dt><dd><a href="https://www.w3.org/TR/webxr/"><cite>WebXR Device API</cite></a>. Brandon Jones; Manish Goregaokar; Rik Cabanier; Nell Waliczek.  W3C. 26 October 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a></dd></dl>
+    <dl class="bibliography"><dt id="bib-accelerometer">[accelerometer]</dt><dd><a href="https://www.w3.org/TR/accelerometer/"><cite>Accelerometer</cite></a>. Anssi Kostiainen; Alexander Shalamov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/accelerometer/">https://www.w3.org/TR/accelerometer/</a></dd><dt id="bib-ambient-light">[ambient-light]</dt><dd><a href="https://www.w3.org/TR/ambient-light/"><cite>Ambient Light Sensor</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik; Tobie Langel.  W3C. 3 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a></dd><dt id="bib-audio-output">[audio-output]</dt><dd><a href="https://www.w3.org/TR/audio-output/"><cite>Audio Output Devices API</cite></a>. Justin Uberti; Guido Urdaneta; youenn fablet.  W3C. 6 July 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a></dd><dt id="bib-background-fetch">[background-fetch]</dt><dd><a href="https://wicg.github.io/background-fetch/"><cite>Background Fetch</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a></dd><dt id="bib-dom">[dom]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-ecmascript">[ECMASCRIPT]</dt><dd><a href="https://tc39.es/ecma262/multipage/"><cite>ECMAScript Language Specification</cite></a>.  Ecma International. URL: <a href="https://tc39.es/ecma262/multipage/">https://tc39.es/ecma262/multipage/</a></dd><dt id="bib-generic-sensor">[generic-sensor]</dt><dd><a href="https://www.w3.org/TR/generic-sensor/"><cite>Generic Sensor API</cite></a>. Rick Waldron; Mikhail Pozdnyakov; Alexander Shalamov; Tobie Langel.  W3C. 29 July 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/generic-sensor/">https://www.w3.org/TR/generic-sensor/</a></dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd><a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet; Daniel Burnett; Adam Bergkvist; Anant Narayanan.  W3C. 21 October 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a></dd><dt id="bib-gyroscope">[gyroscope]</dt><dd><a href="https://www.w3.org/TR/gyroscope/"><cite>Gyroscope</cite></a>. Anssi Kostiainen; Mikhail Pozdnyakov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/gyroscope/">https://www.w3.org/TR/gyroscope/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-infra">[infra]</dt><dd><a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a></dd><dt id="bib-magnetometer">[magnetometer]</dt><dd><a href="https://www.w3.org/TR/magnetometer/"><cite>Magnetometer</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik.  W3C. 2 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/magnetometer/">https://www.w3.org/TR/magnetometer/</a></dd><dt id="bib-notifications">[notifications]</dt><dd><a href="https://notifications.spec.whatwg.org/"><cite>Notifications API Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a></dd><dt id="bib-permissions-policy">[Permissions-Policy]</dt><dd><a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. Ian Clelland.  W3C. 16 July 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a></dd><dt id="bib-screen-capture">[screen-capture]</dt><dd><a href="https://www.w3.org/TR/screen-capture/"><cite>Screen Capture</cite></a>. Martin Thomson; Keith Griffin; Suhas Nandakumar; Henrik Boström; Jan-Ivar Bruaroey; Elad Alon.  W3C. 2 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-capture/">https://www.w3.org/TR/screen-capture/</a></dd><dt id="bib-screen-wake-lock">[screen-wake-lock]</dt><dd><a href="https://www.w3.org/TR/screen-wake-lock/"><cite>Screen Wake Lock API</cite></a>. Kenneth Christiansen; Marcos Caceres; Raphael Kubo da Costa; Ilya Bogdanovich; Andrey Logvinov.  W3C. 30 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-wake-lock/">https://www.w3.org/TR/screen-wake-lock/</a></dd><dt id="bib-storage">[storage]</dt><dd><a href="https://storage.spec.whatwg.org/"><cite>Storage Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://storage.spec.whatwg.org/">https://storage.spec.whatwg.org/</a></dd><dt id="bib-web-background-sync">[web-background-sync]</dt><dd><a href="https://wicg.github.io/background-sync/spec/"><cite>Web Background Synchronization</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-sync/spec/">https://wicg.github.io/background-sync/spec/</a></dd><dt id="bib-web-bluetooth">[web-bluetooth]</dt><dd><a href="https://webbluetoothcg.github.io/web-bluetooth/"><cite>Web Bluetooth</cite></a>. Jeffrey Yasskin.  W3C Web Bluetooth Community Group. Draft Community Group Report. URL: <a href="https://webbluetoothcg.github.io/web-bluetooth/">https://webbluetoothcg.github.io/web-bluetooth/</a></dd><dt id="bib-web-nfc">[web-nfc]</dt><dd><a href="https://w3c.github.io/web-nfc/"><cite>Web NFC API</cite></a>.  W3C. W3C Editor's Draft. URL: <a href="https://w3c.github.io/web-nfc/">https://w3c.github.io/web-nfc/</a></dd><dt id="bib-webidl">[WEBIDL]</dt><dd><a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a></dd><dt id="bib-webxr">[webxr]</dt><dd><a href="https://www.w3.org/TR/webxr/"><cite>WebXR Device API</cite></a>. Brandon Jones; Manish Goregaokar; Rik Cabanier; Nell Waliczek.  W3C. 26 October 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a></dd></dl>
   </section><section id="informative-references">
     <h3 id="f-2-informative-references"><bdi class="secno">F.2 </bdi>Informative references<a class="self-link" aria-label="§" href="#informative-references"></a></h3>
-    <dl class="bibliography"><dt id="bib-appmanifest">[appmanifest]</dt><dd><a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Anssi Kostiainen; Matt Giuca; Aaron Gustafson.  W3C. 7 October 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a></dd><dt id="bib-gamepad">[Gamepad]</dt><dd><a href="https://www.w3.org/TR/gamepad/"><cite>Gamepad</cite></a>. Steve Agoston; James Hollyer; Matthew Reynolds; Brandon Jones; Scott Graham; Theodore Mielczarek.  W3C. 5 August 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/gamepad/">https://www.w3.org/TR/gamepad/</a></dd><dt id="bib-geolocation">[Geolocation]</dt><dd><a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres.  W3C. 3 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a></dd><dt id="bib-push-api">[push-api]</dt><dd><a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson.  W3C. 3 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a></dd></dl>
+    <dl class="bibliography"><dt id="bib-appmanifest">[appmanifest]</dt><dd><a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Anssi Kostiainen; Matt Giuca; Aaron Gustafson.  W3C. 7 October 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a></dd><dt id="bib-gamepad">[Gamepad]</dt><dd><a href="https://www.w3.org/TR/gamepad/"><cite>Gamepad</cite></a>. Steve Agoston; James Hollyer; Matthew Reynolds; Brandon Jones; Scott Graham; Theodore Mielczarek.  W3C. 5 August 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/gamepad/">https://www.w3.org/TR/gamepad/</a></dd><dt id="bib-geolocation">[Geolocation]</dt><dd><a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres.  W3C. 3 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a></dd><dt id="bib-push-api">[push-api]</dt><dd><a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson.  W3C. 3 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a></dd><dt id="bib-webmidi">[webmidi]</dt><dd><a href="https://www.w3.org/TR/webmidi/"><cite>Web MIDI API</cite></a>. Chris Wilson; Jussi Kalliokoski.  W3C. 17 March 2015. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webmidi/">https://www.w3.org/TR/webmidi/</a></dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
   </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-at-risk" aria-label="Links in this document to definition: at risk">
@@ -2261,29 +2147,25 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-at-risk-1" title="§ 6.2 Midi">§ 6.2 Midi</a> 
+    <a href="#ref-for-dfn-at-risk-1" title="§ 6.2 Screen wake lock">§ 6.2 Screen wake lock</a> 
   </li><li>
-    <a href="#ref-for-dfn-at-risk-2" title="§ 6.3 Screen wake lock">§ 6.3 Screen wake lock</a> 
+    <a href="#ref-for-dfn-at-risk-2" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li><li>
-    <a href="#ref-for-dfn-at-risk-3" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dfn-at-risk-3" title="§ 6.4 Background Fetch">§ 6.4 Background Fetch</a> 
   </li><li>
-    <a href="#ref-for-dfn-at-risk-4" title="§ 6.5 Background Fetch">§ 6.5 Background Fetch</a> 
+    <a href="#ref-for-dfn-at-risk-4" title="§ 6.5 Background Sync">§ 6.5 Background Sync</a> 
   </li><li>
-    <a href="#ref-for-dfn-at-risk-5" title="§ 6.6 Background Sync">§ 6.6 Background Sync</a> 
+    <a href="#ref-for-dfn-at-risk-5" title="§ 6.6 Bluetooth">§ 6.6 Bluetooth</a> 
   </li><li>
-    <a href="#ref-for-dfn-at-risk-6" title="§ 6.7 Bluetooth">§ 6.7 Bluetooth</a> 
+    <a href="#ref-for-dfn-at-risk-6" title="§ 6.8 Accelerometer">§ 6.8 Accelerometer</a> 
   </li><li>
-    <a href="#ref-for-dfn-at-risk-7" title="§ 6.9 Ambient Light Sensor">§ 6.9 Ambient Light Sensor</a> 
+    <a href="#ref-for-dfn-at-risk-7" title="§ 6.9 Gyroscope">§ 6.9 Gyroscope</a> 
   </li><li>
-    <a href="#ref-for-dfn-at-risk-8" title="§ 6.10 Accelerometer">§ 6.10 Accelerometer</a> 
+    <a href="#ref-for-dfn-at-risk-8" title="§ 6.10 Magnetometer">§ 6.10 Magnetometer</a> 
   </li><li>
-    <a href="#ref-for-dfn-at-risk-9" title="§ 6.11 Gyroscope">§ 6.11 Gyroscope</a> 
+    <a href="#ref-for-dfn-at-risk-9" title="§ 6.11 Display Capture">§ 6.11 Display Capture</a> 
   </li><li>
-    <a href="#ref-for-dfn-at-risk-10" title="§ 6.12 Magnetometer">§ 6.12 Magnetometer</a> 
-  </li><li>
-    <a href="#ref-for-dfn-at-risk-11" title="§ 6.13 Display Capture">§ 6.13 Display Capture</a> 
-  </li><li>
-    <a href="#ref-for-dfn-at-risk-12" title="§ 6.14 NFC">§ 6.14 NFC</a> 
+    <a href="#ref-for-dfn-at-risk-10" title="§ 6.12 NFC">§ 6.12 NFC</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission" aria-label="Links in this document to definition: permission">
@@ -2409,37 +2291,33 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dfn-powerful-feature-14" title="§ 2.6 Reacting to users revoking permission">§ 2.6 Reacting to users revoking permission</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-15" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> <a href="#ref-for-dfn-powerful-feature-16" title="Reference 2">(2)</a> <a href="#ref-for-dfn-powerful-feature-17" title="Reference 3">(3)</a> 
+    <a href="#ref-for-dfn-powerful-feature-15" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> <a href="#ref-for-dfn-powerful-feature-16" title="Reference 2">(2)</a> <a href="#ref-for-dfn-powerful-feature-17" title="Reference 3">(3)</a> <a href="#ref-for-dfn-powerful-feature-18" title="Reference 4">(4)</a> <a href="#ref-for-dfn-powerful-feature-19" title="Reference 5">(5)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-18" title="§ 6.1 Notifications">§ 6.1 Notifications</a> 
+    <a href="#ref-for-dfn-powerful-feature-20" title="§ 6.1 Notifications">§ 6.1 Notifications</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-19" title="§ 6.2 Midi">§ 6.2 Midi</a> <a href="#ref-for-dfn-powerful-feature-20" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-21" title="§ 6.2 Screen wake lock">§ 6.2 Screen wake lock</a> <a href="#ref-for-dfn-powerful-feature-22" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-21" title="§ 6.3 Screen wake lock">§ 6.3 Screen wake lock</a> <a href="#ref-for-dfn-powerful-feature-22" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-23" title="§ 6.4 Background Fetch">§ 6.4 Background Fetch</a> <a href="#ref-for-dfn-powerful-feature-24" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-23" title="§ 6.5 Background Fetch">§ 6.5 Background Fetch</a> <a href="#ref-for-dfn-powerful-feature-24" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-25" title="§ 6.5 Background Sync">§ 6.5 Background Sync</a> <a href="#ref-for-dfn-powerful-feature-26" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-25" title="§ 6.6 Background Sync">§ 6.6 Background Sync</a> <a href="#ref-for-dfn-powerful-feature-26" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-27" title="§ 6.6 Bluetooth">§ 6.6 Bluetooth</a> <a href="#ref-for-dfn-powerful-feature-28" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-27" title="§ 6.7 Bluetooth">§ 6.7 Bluetooth</a> <a href="#ref-for-dfn-powerful-feature-28" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-29" title="§ 6.7 Persistent Storage">§ 6.7 Persistent Storage</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-29" title="§ 6.8 Persistent Storage">§ 6.8 Persistent Storage</a> 
+    <a href="#ref-for-dfn-powerful-feature-30" title="§ 6.8 Accelerometer">§ 6.8 Accelerometer</a> <a href="#ref-for-dfn-powerful-feature-31" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-30" title="§ 6.9 Ambient Light Sensor">§ 6.9 Ambient Light Sensor</a> <a href="#ref-for-dfn-powerful-feature-31" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-32" title="§ 6.9 Gyroscope">§ 6.9 Gyroscope</a> <a href="#ref-for-dfn-powerful-feature-33" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-32" title="§ 6.10 Accelerometer">§ 6.10 Accelerometer</a> <a href="#ref-for-dfn-powerful-feature-33" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-34" title="§ 6.10 Magnetometer">§ 6.10 Magnetometer</a> <a href="#ref-for-dfn-powerful-feature-35" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-34" title="§ 6.11 Gyroscope">§ 6.11 Gyroscope</a> <a href="#ref-for-dfn-powerful-feature-35" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-36" title="§ 6.11 Display Capture">§ 6.11 Display Capture</a> <a href="#ref-for-dfn-powerful-feature-37" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-36" title="§ 6.12 Magnetometer">§ 6.12 Magnetometer</a> <a href="#ref-for-dfn-powerful-feature-37" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-38" title="§ 6.12 NFC">§ 6.12 NFC</a> <a href="#ref-for-dfn-powerful-feature-39" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-38" title="§ 6.13 Display Capture">§ 6.13 Display Capture</a> <a href="#ref-for-dfn-powerful-feature-39" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-40" title="§ 6.13 XR Spatial tracking">§ 6.13 XR Spatial tracking</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-40" title="§ 6.14 NFC">§ 6.14 NFC</a> <a href="#ref-for-dfn-powerful-feature-41" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-powerful-feature-42" title="§ 6.15 XR Spatial tracking">§ 6.15 XR Spatial tracking</a> 
-  </li><li>
-    <a href="#ref-for-dfn-powerful-feature-43" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> <a href="#ref-for-dfn-powerful-feature-44" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-41" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> <a href="#ref-for-dfn-powerful-feature-42" title="Reference 2">(2)</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-express-permission" aria-label="Links in this document to definition: Express permission">
@@ -2495,7 +2373,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dfn-permission-descriptor-type-4" title="§ 5. PermissionStatus interface">§ 5. PermissionStatus interface</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-descriptor-type-5" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dfn-permission-descriptor-type-5" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-stronger-than" aria-label="Links in this document to definition: stronger than">
@@ -2509,7 +2387,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <li>
     <a href="#ref-for-dfn-stronger-than-1" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> 
   </li><li>
-    <a href="#ref-for-dfn-stronger-than-2" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dfn-stronger-than-2" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-state-constraints" aria-label="Links in this document to definition: permission state constraints">
@@ -2523,7 +2401,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <li>
     <a href="#ref-for-dfn-permission-state-constraints-1" title="§ 2.3 Reading the current permission state">§ 2.3 Reading the current permission state</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-state-constraints-2" title="§ 6.13 Display Capture">§ 6.13 Display Capture</a> 
+    <a href="#ref-for-dfn-permission-state-constraints-2" title="§ 6.11 Display Capture">§ 6.11 Display Capture</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-extra-permission-data-type" aria-label="Links in this document to definition: extra permission data type">
@@ -2537,7 +2415,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <li>
     <a href="#ref-for-dfn-extra-permission-data-type-1" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> <a href="#ref-for-dfn-extra-permission-data-type-2" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-extra-permission-data-type-3" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dfn-extra-permission-data-type-3" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-extra-permission-data" aria-label="Links in this document to definition: extra permission data">
@@ -2551,7 +2429,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <li>
     <a href="#ref-for-dfn-extra-permission-data-1" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> <a href="#ref-for-dfn-extra-permission-data-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-extra-permission-data-3" title="Reference 3">(3)</a> 
   </li><li>
-    <a href="#ref-for-dfn-extra-permission-data-4" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dfn-extra-permission-data-4" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-extra-permission-data-constraints" aria-label="Links in this document to definition: extra permission data constraints">
@@ -2593,7 +2471,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dfn-permission-query-algorithm-2" title="§ 5.4 onchange attribute">§ 5.4 onchange attribute</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-query-algorithm-3" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dfn-permission-query-algorithm-3" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-default-permission-query-algorithm" aria-label="Links in this document to definition: default permission query algorithm">
@@ -2619,13 +2497,13 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <li>
     <a href="#ref-for-dfn-permission-revocation-algorithm-1" title="§ 2.6 Reacting to users revoking permission">§ 2.6 Reacting to users revoking permission</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-2" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dfn-permission-revocation-algorithm-2" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-3" title="§ 6.10 Accelerometer">§ 6.10 Accelerometer</a> 
+    <a href="#ref-for-dfn-permission-revocation-algorithm-3" title="§ 6.8 Accelerometer">§ 6.8 Accelerometer</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-4" title="§ 6.11 Gyroscope">§ 6.11 Gyroscope</a> 
+    <a href="#ref-for-dfn-permission-revocation-algorithm-4" title="§ 6.9 Gyroscope">§ 6.9 Gyroscope</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-5" title="§ 6.12 Magnetometer">§ 6.12 Magnetometer</a> 
+    <a href="#ref-for-dfn-permission-revocation-algorithm-5" title="§ 6.10 Magnetometer">§ 6.10 Magnetometer</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-default-powerful-feature" aria-label="Links in this document to definition: default powerful feature">
@@ -2639,7 +2517,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <li>
     <a href="#ref-for-dfn-default-powerful-feature-1" title="§ 6.1 Notifications">§ 6.1 Notifications</a> 
   </li><li>
-    <a href="#ref-for-dfn-default-powerful-feature-2" title="§ 6.3 Screen wake lock">§ 6.3 Screen wake lock</a> 
+    <a href="#ref-for-dfn-default-powerful-feature-2" title="§ 6.2 Screen wake lock">§ 6.2 Screen wake lock</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-aspects" aria-label="Links in this document to definition: aspects">
@@ -2673,9 +2551,9 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dfn-permission-state-14" title="§ 2.5 Prompt the user to choose">§ 2.5 Prompt the user to choose</a> <a href="#ref-for-dfn-permission-state-15" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-state-16" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> <a href="#ref-for-dfn-permission-state-17" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-permission-state-16" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> <a href="#ref-for-dfn-permission-state-17" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-state-18" title="§ 6.13 Display Capture">§ 6.13 Display Capture</a> <a href="#ref-for-dfn-permission-state-19" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-permission-state-18" title="§ 6.11 Display Capture">§ 6.11 Display Capture</a> <a href="#ref-for-dfn-permission-state-19" title="Reference 2">(2)</a> 
   </li><li>
     <a href="#ref-for-dfn-permission-state-20" title="§ C. Security and privacy considerations">§ C. Security and privacy considerations</a> <a href="#ref-for-dfn-permission-state-21" title="Reference 2">(2)</a> 
   </li>
@@ -2771,7 +2649,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dom-permissiondescriptor-10" title="§ 5.1 Creating instances">§ 5.1 Creating instances</a> 
   </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-11" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dom-permissiondescriptor-11" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li><li>
     <a href="#ref-for-dom-permissiondescriptor-12" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
@@ -2797,7 +2675,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dom-permissiondescriptor-name-12" title="§ 5.4 onchange attribute">§ 5.4 onchange attribute</a> 
   </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-name-13" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dom-permissiondescriptor-name-13" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissions-query" aria-label="Links in this document to definition: query()">
@@ -2903,9 +2781,9 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dom-permissionstate-granted-8" title="§ 5. PermissionStatus interface">§ 5. PermissionStatus interface</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionstate-granted-9" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dom-permissionstate-granted-9" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionstate-granted-10" title="§ 6.13 Display Capture">§ 6.13 Display Capture</a> 
+    <a href="#ref-for-dom-permissionstate-granted-10" title="§ 6.11 Display Capture">§ 6.11 Display Capture</a> 
   </li><li>
     <a href="#ref-for-dom-permissionstate-granted-11" title="§ C. Security and privacy considerations">§ C. Security and privacy considerations</a> 
   </li><li>
@@ -2933,9 +2811,9 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dom-permissionstate-denied-14" title="§ 5. PermissionStatus interface">§ 5. PermissionStatus interface</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionstate-denied-15" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dom-permissionstate-denied-15" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionstate-denied-16" title="§ 6.13 Display Capture">§ 6.13 Display Capture</a> 
+    <a href="#ref-for-dom-permissionstate-denied-16" title="§ 6.11 Display Capture">§ 6.11 Display Capture</a> 
   </li><li>
     <a href="#ref-for-dom-permissionstate-denied-17" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
@@ -2955,9 +2833,9 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
   </li><li>
     <a href="#ref-for-dom-permissionstate-prompt-4" title="§ 5. PermissionStatus interface">§ 5. PermissionStatus interface</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionstate-prompt-5" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dom-permissionstate-prompt-5" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionstate-prompt-6" title="§ 6.13 Display Capture">§ 6.13 Display Capture</a> 
+    <a href="#ref-for-dom-permissionstate-prompt-6" title="§ 6.11 Display Capture">§ 6.11 Display Capture</a> 
   </li><li>
     <a href="#ref-for-dom-permissionstate-prompt-7" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
@@ -3072,18 +2950,18 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <a href="#ref-for-dom-permissionname-12" title="§ D. IDL Index">§ D. IDL Index</a> <a href="#ref-for-dom-permissionname-13" title="Reference 2">(2)</a> 
   </li>
   </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionname-push" aria-label="Links in this document to definition: push">
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionname-ambient-light-sensor" aria-label="Links in this document to definition: ambient-light-sensor">
       <span class="caret"></span>
       <div>
-        <a class="self-link" href="#dom-permissionname-push" aria-label="Permalink for definition: push. Activate to close this dialog.">Permalink</a>
+        <a class="self-link" href="#dom-permissionname-ambient-light-sensor" aria-label="Permalink for definition: ambient-light-sensor. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1342630210">IDL</a>
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissionname-push-1" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> 
+    <a href="#ref-for-dom-permissionname-ambient-light-sensor-1" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionname-push-2" title="§ D. IDL Index">§ D. IDL Index</a> 
+    <a href="#ref-for-dom-permissionname-ambient-light-sensor-2" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionname-geolocation" aria-label="Links in this document to definition: geolocation">
@@ -3102,22 +2980,6 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <a href="#ref-for-dom-permissionname-geolocation-3" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
   </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionname-notifications" aria-label="Links in this document to definition: notifications">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-permissionname-notifications" aria-label="Permalink for definition: notifications. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1342630210">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-    <a href="#ref-for-dom-permissionname-notifications-1" title="§ 1. Examples of usage">§ 1. Examples of usage</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionname-notifications-2" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionname-notifications-3" title="§ D. IDL Index">§ D. IDL Index</a> 
-  </li>
-  </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionname-midi" aria-label="Links in this document to definition: midi">
       <span class="caret"></span>
       <div>
@@ -3132,6 +2994,36 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <a href="#ref-for-dom-permissionname-midi-3" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> 
   </li><li>
     <a href="#ref-for-dom-permissionname-midi-4" title="§ D. IDL Index">§ D. IDL Index</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionname-push" aria-label="Links in this document to definition: push">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-permissionname-push" aria-label="Permalink for definition: push. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1342630210">IDL</a>
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dom-permissionname-push-1" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> 
+  </li><li>
+    <a href="#ref-for-dom-permissionname-push-2" title="§ D. IDL Index">§ D. IDL Index</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionname-notifications" aria-label="Links in this document to definition: notifications">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dom-permissionname-notifications" aria-label="Permalink for definition: notifications. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1342630210">IDL</a>
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dom-permissionname-notifications-1" title="§ 1. Examples of usage">§ 1. Examples of usage</a> 
+  </li><li>
+    <a href="#ref-for-dom-permissionname-notifications-2" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> 
+  </li><li>
+    <a href="#ref-for-dom-permissionname-notifications-3" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionname-screen-wake-lock" aria-label="Links in this document to definition: screen-wake-lock">
@@ -3159,7 +3051,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <li>
     <a href="#ref-for-dom-permissionname-camera-1" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionname-camera-2" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dom-permissionname-camera-2" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li><li>
     <a href="#ref-for-dom-permissionname-camera-3" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
@@ -3201,7 +3093,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-devicepermissiondescriptor-1" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> 
+    <a href="#ref-for-dom-devicepermissiondescriptor-1" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> 
   </li><li>
     <a href="#ref-for-dom-devicepermissiondescriptor-2" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
@@ -3215,7 +3107,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-1" title="§ 6.4 Media Devices">§ 6.4 Media Devices</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-3" title="Reference 3">(3)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-4" title="Reference 4">(4)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-5" title="Reference 5">(5)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-6" title="Reference 6">(6)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-7" title="Reference 7">(7)</a> 
+    <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-1" title="§ 6.3 Media Devices">§ 6.3 Media Devices</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-3" title="Reference 3">(3)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-4" title="Reference 4">(4)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-5" title="Reference 5">(5)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-6" title="Reference 6">(6)</a> <a href="#ref-for-dom-devicepermissiondescriptor-deviceid-7" title="Reference 7">(7)</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-cameradevicepermissiondescriptor" aria-label="Links in this document to definition: CameraDevicePermissionDescriptor">
@@ -3294,20 +3186,6 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <a href="#ref-for-dom-permissionname-persistent-storage-2" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
   </ul>
-    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionname-ambient-light-sensor" aria-label="Links in this document to definition: ambient-light-sensor">
-      <span class="caret"></span>
-      <div>
-        <a class="self-link" href="#dom-permissionname-ambient-light-sensor" aria-label="Permalink for definition: ambient-light-sensor. Activate to close this dialog.">Permalink</a>
-        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1342630210">IDL</a>
-      </div>
-      <p><b>Referenced in:</b></p>
-      <ul>
-    <li>
-    <a href="#ref-for-dom-permissionname-ambient-light-sensor-1" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionname-ambient-light-sensor-2" title="§ D. IDL Index">§ D. IDL Index</a> 
-  </li>
-  </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionname-accelerometer" aria-label="Links in this document to definition: accelerometer">
       <span class="caret"></span>
       <div>
@@ -3319,7 +3197,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <li>
     <a href="#ref-for-dom-permissionname-accelerometer-1" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionname-accelerometer-2" title="§ 6.10 Accelerometer">§ 6.10 Accelerometer</a> 
+    <a href="#ref-for-dom-permissionname-accelerometer-2" title="§ 6.8 Accelerometer">§ 6.8 Accelerometer</a> 
   </li><li>
     <a href="#ref-for-dom-permissionname-accelerometer-3" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
@@ -3335,7 +3213,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <li>
     <a href="#ref-for-dom-permissionname-gyroscope-1" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionname-gyroscope-2" title="§ 6.11 Gyroscope">§ 6.11 Gyroscope</a> 
+    <a href="#ref-for-dom-permissionname-gyroscope-2" title="§ 6.9 Gyroscope">§ 6.9 Gyroscope</a> 
   </li><li>
     <a href="#ref-for-dom-permissionname-gyroscope-3" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
@@ -3351,7 +3229,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" data-idl="dictionary" 
     <li>
     <a href="#ref-for-dom-permissionname-magnetometer-1" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> 
   </li><li>
-    <a href="#ref-for-dom-permissionname-magnetometer-2" title="§ 6.12 Magnetometer">§ 6.12 Magnetometer</a> 
+    <a href="#ref-for-dom-permissionname-magnetometer-2" title="§ 6.10 Magnetometer">§ 6.10 Magnetometer</a> 
   </li><li>
     <a href="#ref-for-dom-permissionname-magnetometer-3" title="§ D. IDL Index">§ D. IDL Index</a> 
   </li>
