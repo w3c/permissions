@@ -411,13 +411,17 @@
                 the user agent provides one.
               </p>
               <p>
-                When the permission [=permission/lifetime=] expires for a permission grant to an origin, and if there are
-                [=browsing contexts=] present pertaining to the [=permission=]'s associated origin,
-                the user agent MUST run the [=powerful feature/permission revocation algorithm=].
-                Alternatively, if there is no [=browsing context=] present, the user agent MUST
-                revoke a permission for the origin by setting it back to its default [=permission
-                state=] (e.g. setting it back to "[=permission/prompt=]").
+                When the permission [=permission/lifetime=] expires for an origin:
               </p>
+              <ol>
+                <li>Set the permission back to its default [=permission state=] (e.g. setting it
+                back to "[=permission/prompt=]").
+                </li>
+                <li>For each |browsing context| associated with the origin (if any), [=queue a
+                global task=] on the [=permissions task source=] with the |browsing context|'s
+                [=global object=] to run the [=powerful feature/permission revocation algorithm=].
+                </li>
+              </ol>
               <aside class="note" title="Determining the lifetime of a permission">
                 <p>
                   For particularly privacy-sensitive [=features=], such as [[[GETUSERMEDIA]]],
