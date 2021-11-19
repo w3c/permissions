@@ -440,6 +440,18 @@
           Reading the current permission state
         </h3>
         <p>
+          To <dfn class="export" data-lt="getting the current permission state">get the current
+          permission state</dfn>, given a [=powerful feature/name=] |name| and an optional
+          [=environment settings object]= |settings|:
+        </p>
+        <ol class="algorithm">
+          <li>Let |descriptor:PermissionDescriptor| be a newly-created {{PermissionDescriptor}}
+          whose {{PermissionDescriptor/name}} is initialized with |name|.
+          </li>
+          <li>Return the [=permission state=] of |descriptor| and |settings|.
+          </li>
+        </ol>
+        <p>
           A |descriptor|'s <dfn class="export" data-local-lt="state">permission state</dfn> for an
           optional <a>environment settings object</a> |settings| is the result of the following
           algorithm, which returns one of {{PermissionState/"granted"}},
@@ -448,9 +460,7 @@
         <ol class="algorithm">
           <li>If |settings| wasn't passed, set it to the [=current settings object=].
           </li>
-          <li>If |settings| is a <a>non-secure context</a> and |descriptor|'s
-          {{PermissionDescriptor/name}} isn't [=powerful feature/allowed in non-secure contexts=],
-          then return {{PermissionState/"denied"}}.
+          <li>If |settings| is a <a>non-secure context</a>, return {{PermissionState/"denied"}}.
           </li>
           <li>If there exists a [=policy-controlled feature=] identified by |descriptor|'s
           {{PermissionDescriptor/name}} and |settings| has an <a>associated `Document`</a> named
