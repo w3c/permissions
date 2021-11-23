@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 28.0.4">
+<meta name="generator" content="ReSpec 28.0.5">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -229,8 +229,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   },
   "mdn": true,
   "xref": "web-platform",
-  "publishISODate": "2021-11-21T00:00:00.000Z",
-  "generatedSubtitle": "Editor's Draft 21 November 2021"
+  "publishISODate": "2021-11-23T00:00:00.000Z",
+  "generatedSubtitle": "Editor's Draft 23 November 2021"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -239,7 +239,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2021-11-21">21 November 2021</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2021-11-23">23 November 2021</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -300,7 +300,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <hr title="Separator for header">
   </div>
     
-    <section id="abstract" class="introductory"><h2>Abstract</h2>
+    <section id="abstract" class="introductory"><h2 id="abstract-0"><a class="self-link" href="#abstract" aria-label="Permalink for Section"></a>Abstract</h2>
       <p>
         The <cite>Permissions API</cite> specification defines common infrastructure that other
         specifications can use to interact with browser permissions that allow or deny access to
@@ -309,7 +309,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         powerful feature changes state.
       </p>
     </section>
-    <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this
+    <section id="sotd" class="introductory"><h2 id="status-of-this-document"><a class="self-link" href="#sotd" aria-label="Permalink for Section"></a>Status of This Document</h2><p><em>This section describes the status of this
       document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr>
       publications and the latest revision of this technical report can be found
       in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at
@@ -419,9 +419,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         Acknowledgments
       </a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">F. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">F.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">F.2 </bdi>Informative references</a></li></ol></li></ol></nav>
     <section class="informative" id="examples-of-usage">
-      <h2 id="examples"><bdi class="secno">1. </bdi>
+      <h2 id="examples"><a class="self-link" href="#examples" aria-label="Permalink for Section 1."></a><bdi class="secno">1. </bdi>
         Examples of usage
-      <a class="self-link" aria-label="§" href="#examples"></a></h2><p><em>This section is non-normative.</em></p>
+      </h2><p><em>This section is non-normative.</em></p>
       <p>
         This example uses the Permissions API to decide whether local news should be shown using
         the Geolocation API or with a button offering to add the feature.
@@ -485,17 +485,17 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       </div>
     </section>
     <section id="model">
-      <h2 id="x2-model"><bdi class="secno">2. </bdi>
+      <h2 id="x2-model"><a class="self-link" href="#model" aria-label="Permalink for Section 2."></a><bdi class="secno">2. </bdi>
         Model
-      <a class="self-link" aria-label="§" href="#model"></a></h2>
+      </h2>
       <p>
         This section specifies a model for <a data-link-type="dfn" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-1">permissions</a> to use <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-1">powerful features</a> on the Web
         platform.
       </p>
       <section id="permissions">
-        <h3 id="x2-1-permissions"><bdi class="secno">2.1 </bdi>
+        <h3 id="x2-1-permissions"><a class="self-link" href="#permissions" aria-label="Permalink for Section 2.1"></a><bdi class="secno">2.1 </bdi>
           Permissions
-        <a class="self-link" aria-label="§" href="#permissions"></a></h3>
+        </h3>
         <p>
           A <dfn class="export" data-export="" data-plurals="permissions" id="dfn-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">permission</dfn> represents a user's decision to allow a web
           application to access a <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-2">powerful feature</a>.
@@ -546,6 +546,11 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           </dd>
         </dl>
         <p>
+          A user agent <em class="rfc2119">SHOULD</em> provide a means for the user to review, update, and reset the
+          <a data-link-type="dfn" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-3">permission</a> <a data-link-type="dfn" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-4">state</a> of <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-3">powerful features</a> associated with a realm or
+          origin.
+        </p>
+        <p>
           To ascertain <dfn class="export" data-export="" id="dfn-new-information-about-the-user-s-intent" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">new information about the user's intent</dfn>, a user
           agent <em class="rfc2119">MAY</em> collect information about a user's intentions. This information can come from
           explicit user action, aggregate behavior of both the relevant user and other users, or
@@ -561,11 +566,11 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         </aside></div>
       </section>
       <section id="powerful-features">
-        <h3 id="x2-2-powerful-features"><bdi class="secno">2.2 </bdi>
+        <h3 id="x2-2-powerful-features"><a class="self-link" href="#powerful-features" aria-label="Permalink for Section 2.2"></a><bdi class="secno">2.2 </bdi>
           Powerful features
-        <a class="self-link" aria-label="§" href="#powerful-features"></a></h3>
+        </h3>
         <p>
-          A <dfn class="export" data-local-lt="feature" data-export="" data-lt="powerful feature|feature" data-plurals="powerful features" id="dfn-powerful-feature" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">powerful feature</dfn> is a web platform
+          A <dfn class="export" data-local-lt="feature" data-export="" data-lt="powerful feature|feature" data-plurals="powerful features|features" id="dfn-powerful-feature" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">powerful feature</dfn> is a web platform
           feature (usually an API) for which a user gives <a data-link-type="dfn" href="#dfn-express-permission" class="internalDFN" id="ref-for-dfn-express-permission-1">express permission</a> before the feature
           can be used. Access to the feature is determined by the <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings
           object</a> by the user having <a data-link-type="dfn" href="#dfn-granted" class="internalDFN" id="ref-for-dfn-granted-1">granted</a> permission via UI, or by satisfying
@@ -574,27 +579,27 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <p>
           <dfn class="export" data-export="" id="dfn-express-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Express permission</dfn> refers to an act by the user, e.g. via user
           interface or host device platform features, through which the user <a data-link-type="dfn" href="#dfn-granted" class="internalDFN" id="ref-for-dfn-granted-3">grants</a>
-          <a data-link-type="dfn" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-3">permission</a> the use of the feature by the web application.
+          <a data-link-type="dfn" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-4">permission</a> the use of the feature by the web application.
         </p>
         <p>
-          A <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-3">powerful feature</a> is identified by its <dfn class="export" data-dfn-for="powerful feature" data-export="" id="dfn-name" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">name</dfn>, which is a string literal (e.g., "geolocation").
+          A <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-4">powerful feature</a> is identified by its <dfn class="export" data-dfn-for="powerful feature" data-export="" id="dfn-name" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">name</dfn>, which is a string literal (e.g., "geolocation").
         </p>
         <p>
-          The user agent is responsible for tracking what <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-4">powerful features</a> each <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realm</a> has the user's <a data-link-type="dfn" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-4">permission</a> to use. Other specifications can use the
+          The user agent is responsible for tracking what <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-5">powerful features</a> each <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realm</a> has the user's <a data-link-type="dfn" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-5">permission</a> to use. Other specifications can use the
           operations defined in this section to retrieve the UA's notion of what permissions are
           granted or denied, and to ask the user to grant or deny more permissions.
         </p>
         <section id="specifying-a-powerful-feature">
-          <h4 id="x2-2-1-specifying-a-powerful-feature"><bdi class="secno">2.2.1 </bdi>
+          <h4 id="x2-2-1-specifying-a-powerful-feature"><a class="self-link" href="#specifying-a-powerful-feature" aria-label="Permalink for Section 2.2.1"></a><bdi class="secno">2.2.1 </bdi>
             Specifying a powerful feature
-          <a class="self-link" aria-label="§" href="#specifying-a-powerful-feature"></a></h4>
+          </h4>
           <div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="5"><span>Note</span></div><p class="">
-            Specifications wanting to add a new <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-5">powerful feature</a> are encouraged to coordinate
+            Specifications wanting to add a new <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-6">powerful feature</a> are encouraged to coordinate
             with us on this specification via GitHub.
           </p></div>
           <p>
-            Each <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-6">powerful feature</a> has the following permission-related algorithms and types.
-            When the defaults are not suitable for a particular <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-7">powerful feature</a>, a
+            Each <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-7">powerful feature</a> has the following permission-related algorithms and types.
+            When the defaults are not suitable for a particular <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-8">powerful feature</a>, a
             specification <em class="rfc2119">MAY</em> override below algorithms and types below.
           </p>
           <dl>
@@ -610,10 +615,10 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               <p>
                 The feature can define a <a href="https://en.wikipedia.org/wiki/Partially_ordered_set">partial order</a> on
                 descriptor instances. If <var>descriptorA</var> is <dfn class="export" data-dfn-for="PermissionDescriptor" data-export="" id="dfn-stronger-than" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">stronger than</dfn> <var>descriptorB</var>, then if <var>descriptorA</var>'s
-                <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-4">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-1"><code>granted</code></a>", <var>descriptorB</var>'s
-                <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-5">permission state</a> must also be "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-2"><code>granted</code></a>", and if
-                <var>descriptorB</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-6">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-1"><code>denied</code></a>",
-                <var>descriptorA</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-7">permission state</a> must also be "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-2"><code>denied</code></a>".
+                <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-5">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-1"><code>granted</code></a>", <var>descriptorB</var>'s
+                <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-6">permission state</a> must also be "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-2"><code>granted</code></a>", and if
+                <var>descriptorB</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-7">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-1"><code>denied</code></a>",
+                <var>descriptorA</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-8">permission state</a> must also be "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-2"><code>denied</code></a>".
               </p>
               <p class="example" id="example-stronger-than">
                 <code>{name: "<a data-link-type="idl" href="#dom-permissionname-midi" class="internalDFN" id="ref-for-dom-permissionname-midi-1"><code>midi</code></a>", sysex: true}</code> ("midi-with-sysex") is
@@ -629,7 +634,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               constraints</dfn>:
             </dt>
             <dd>
-              Constraints on the values that the UA can return as a descriptor's <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-8">permission
+              Constraints on the values that the UA can return as a descriptor's <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-9">permission
               state</a>. Defaults to no constraints beyond the user's intent.
             </dd>
             <dt>
@@ -638,7 +643,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
             </dt>
             <dd>
               <p data-cite="mediacapture-streams">
-                Some <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-8">powerful features</a> have more information associated with them than just
+                Some <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-9">powerful features</a> have more information associated with them than just
                 a <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-1"><code>PermissionState</code></a>. For example, <a data-link-type="idl" data-lt="getUserMedia()" data-type="method" href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadevices-getusermedia"><code>getUserMedia</code></a><code>()</code> needs to
                 determine <em>which</em> cameras the user has granted the <a href="https://tc39.es/ecma262/multipage/#current-realm">current realm</a> permission to access. Each of these
                 features defines an <a data-link-type="dfn" href="#dfn-extra-permission-data-type" class="internalDFN" id="ref-for-dfn-extra-permission-data-type-1">extra permission data type</a>. If a
@@ -698,7 +703,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
                 steps:
               </p>
               <ol class="algorithm">
-                <li>Set <code><var>status</var>.state</code> to <var>permissionDesc</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-9">permission state</a>.
+                <li>Set <code><var>status</var>.state</code> to <var>permissionDesc</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-10">permission state</a>.
                 </li>
               </ol>
             </dd>
@@ -709,24 +714,82 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
             <dd>
               <p>
                 Takes no arguments. Updates any other parts of the implementation that need to be
-                kept in sync with changes in the results of <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-10">permission states</a> or <a data-link-type="dfn" href="#dfn-extra-permission-data" class="internalDFN" id="ref-for-dfn-extra-permission-data-3">extra permission data</a>, and then <a data-link-type="dfn" href="#dfn-react-to-the-user-revoking-permission" class="internalDFN" id="ref-for-dfn-react-to-the-user-revoking-permission-1">react to the user revoking permission</a>.
+                kept in sync with changes in the results of <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-11">permission states</a> or <a data-link-type="dfn" href="#dfn-extra-permission-data" class="internalDFN" id="ref-for-dfn-extra-permission-data-3">extra permission data</a>, and then <a data-link-type="dfn" href="#dfn-react-to-the-user-revoking-permission" class="internalDFN" id="ref-for-dfn-react-to-the-user-revoking-permission-1">react to the user revoking permission</a>.
               </p>
               <p>
                 If unspecified, this defaults to running <a data-link-type="dfn" href="#dfn-react-to-the-user-revoking-permission" class="internalDFN" id="ref-for-dfn-react-to-the-user-revoking-permission-2">react to the user revoking permission</a>.
               </p>
             </dd>
+            <dt>
+              A permission <dfn class="export" data-dfn-for="permission" data-export="" data-plurals="lifetimes" id="dfn-lifetime" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">lifetime</dfn>:
+            </dt>
+            <dd>
+              <p>
+                Every <a data-link-type="dfn" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-6">permission</a> has a <a data-link-type="dfn" href="#dfn-lifetime" class="internalDFN" id="ref-for-dfn-lifetime-1">lifetime</a>, which is the duration for which
+                a particular permission remains <a data-link-type="dfn" href="#dfn-granted" class="internalDFN" id="ref-for-dfn-granted-4">granted</a> before it reverts back to
+                its default <a data-link-type="dfn" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-12">permission state</a>. 
+                A <a data-link-type="dfn" href="#dfn-lifetime" class="internalDFN" id="ref-for-dfn-lifetime-2">lifetime</a> could be until a particular Realm is destroyed, until a particular <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context">top-level browsing context</a> is destroyed, an amount of time, or infinite.
+                The lifetime is negotiated between the end-user
+                and the <a data-link-type="dfn" data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agent</a> when the user gives <a data-link-type="dfn" href="#dfn-express-permission" class="internalDFN" id="ref-for-dfn-express-permission-2">express permission</a> to use a
+                <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-10">feature</a> - usually via some permission UI or policy.
+              </p>
+              <p>
+                Specifications that define one or more <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-11">powerful features</a> <em class="rfc2119">SHOULD</em> suggest a
+                <a data-link-type="dfn" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-7">permission</a> <a data-link-type="dfn" href="#dfn-lifetime" class="internalDFN" id="ref-for-dfn-lifetime-3">lifetime</a> that is best suited for the particular
+                feature. Some guidance on determining the lifetime of a permission is noted below,
+                with a strong emphasis on user privacy. If no <a data-link-type="dfn" href="#dfn-lifetime" class="internalDFN" id="ref-for-dfn-lifetime-4">lifetime</a> is specified,
+                the user agent provides one.
+              </p>
+              <p>
+                When the permission <a data-link-type="dfn" href="#dfn-lifetime" class="internalDFN" id="ref-for-dfn-lifetime-5">lifetime</a> expires for an origin:
+              </p>
+              <ol>
+                <li>Set the permission back to its default <a data-link-type="dfn" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-13">permission state</a> (e.g. setting it
+                back to "<a data-link-type="dfn" href="#dfn-prompt" class="internalDFN" id="ref-for-dfn-prompt-1">prompt</a>").
+                </li>
+                <li>For each <var>browsing context</var> associated with the origin (if any), <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-global-task">queue a global task</a> on the <a data-link-type="dfn" href="#dfn-permissions-task-source" class="internalDFN" id="ref-for-dfn-permissions-task-source-1">permissions task source</a> with the <var>browsing context</var>'s
+                <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#global-object">global object</a> to run the <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-1">permission revocation algorithm</a>.
+                </li>
+              </ol>
+              <div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="5"><span>Note</span><span class="issue-label">: Determining the lifetime of a permission</span></div><aside class="">
+                <p>
+                  For particularly privacy-sensitive <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-12">features</a>, such as <cite><a href="https://www.w3.org/TR/mediacapture-streams/">Media Capture and Streams</a></cite>,
+                  which can provide a web application access to a user's camera and microphone,
+                  some user agents expire a permission <a data-link-type="dfn" href="#dfn-granted" class="internalDFN" id="ref-for-dfn-granted-5">grant</a> as soon as a
+                  browser tab is closed or navigated. For other features, like the
+                  <cite><a href="https://www.w3.org/TR/geolocation/">Geolocation API</a></cite>, user agents are known to offer a choice of only granting the
+                  permission for the session, or for one day. Others, like the <cite><a href="https://notifications.spec.whatwg.org/">Notifications API Standard</a></cite>
+                  and <cite><a href="https://www.w3.org/TR/push-api/">Push API</a></cite> APIs, remember a user's decision indefinitely or until the
+                  user manually revokes the permission. Note that permission
+                  <a data-link-type="dfn" href="#dfn-lifetime" class="internalDFN" id="ref-for-dfn-lifetime-6">lifetimes</a> can vary significantly between user agents.
+                </p>
+                <p>
+                  Finding the right balance for the lifetime of a permission requires a lot of
+                  thought and experimentation, and often evolves over a period of years.
+                  Implementers are encouraged to work with their UX security teams to find
+                  the right balance between ease of access to a <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-13">powerful feature</a> (i.e.,
+                  reducing the number of permission prompts), respecting a user's privacy, and
+                  making users aware when a web application is making use of a particular powerful
+                  feature (e.g., via some visual or auditory UI indicator).
+                </p>
+                <p>
+                  If you are unsure about what <a data-link-type="dfn" href="#dfn-lifetime" class="internalDFN" id="ref-for-dfn-lifetime-7">lifetime</a> to suggest for a <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-14">powerful feature</a>, please contact the <a href="https://www.w3.org/Privacy/IG/">Privacy
+                  Interest Group</a> for guidance.
+                </p>
+              </aside></div>
+            </dd>
           </dl>
           <p>
-            A <dfn class="export" data-export="" id="dfn-default-powerful-feature" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">default powerful feature</dfn> is a <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-9">powerful feature</a> with
+            A <dfn class="export" data-export="" id="dfn-default-powerful-feature" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">default powerful feature</dfn> is a <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-15">powerful feature</a> with
             all of the above types and algorithms defaulted.
           </p>
         </section>
         <section id="aspects">
-          <h4 id="x2-2-2-aspects"><bdi class="secno">2.2.2 </bdi>
+          <h4 id="x2-2-2-aspects"><a class="self-link" href="#aspects" aria-label="Permalink for Section 2.2.2"></a><bdi class="secno">2.2.2 </bdi>
             Aspects
-          <a class="self-link" aria-label="§" href="#aspects"></a></h4>
+          </h4>
           <p>
-            Each <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-10">powerful feature</a> can define zero or more additional <dfn data-dfn-for="powerful feature" data-plurals="aspect" id="dfn-aspects" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">aspects</dfn> that websites can request permission to access.
+            Each <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-16">powerful feature</a> can define zero or more additional <dfn data-dfn-for="powerful feature" data-plurals="aspect" id="dfn-aspects" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">aspects</dfn> that websites can request permission to access.
           </p>
           <p>
             To describe an <a data-link-type="dfn" href="#dfn-aspects" class="internalDFN" id="ref-for-dfn-aspects-1">aspect</a>, a specification <em class="rfc2119">MUST</em> define a WebIDL
@@ -737,7 +800,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <a class="self-link" href="#example-defining-your-own-permission-descriptor-type">Example<bdi> 4</bdi></a><span class="example-title">: Defining your own permission descriptor type</span>
   </div>
             <p>
-              A hypothetical <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-11">powerful feature</a> "food detector API" has two <a data-link-type="dfn" href="#dfn-aspects" class="internalDFN" id="ref-for-dfn-aspects-2">aspects</a> that allow sensing taste and smell. So, a specification would
+              A hypothetical <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-17">powerful feature</a> "food detector API" has two <a data-link-type="dfn" href="#dfn-aspects" class="internalDFN" id="ref-for-dfn-aspects-2">aspects</a> that allow sensing taste and smell. So, a specification would
               define a new WebIDL interface that <a data-link-type="dfn" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-inherit-dictionary">inherits</a> <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-5"><code>PermissionDescriptor</code></a>:
             </p>
             <pre aria-busy="false"><code class="hljs javascript">dictionary SensesPermissionDescriptor : PermissionDescriptor {
@@ -762,9 +825,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         </section>
       </section>
       <section data-cite="permissions-policy" id="reading-the-current-permission-state">
-        <h3 id="reading-current-states"><bdi class="secno">2.3 </bdi>
+        <h3 id="reading-current-states"><a class="self-link" href="#reading-current-states" aria-label="Permalink for Section 2.3"></a><bdi class="secno">2.3 </bdi>
           Reading the current permission state
-        <a class="self-link" aria-label="§" href="#reading-current-states"></a></h3>
+        </h3>
         <p>
           To <dfn class="export" data-lt="getting the current permission state|get the current permission state" data-export="" id="dfn-getting-the-current-permission-state" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">get the current
           permission state</dfn>, given a <a data-link-type="dfn" href="#dfn-name" class="internalDFN" id="ref-for-dfn-name-1">name</a> <var>name</var> and an optional
@@ -774,7 +837,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           <li>Let <var data-type="PermissionDescriptor">descriptor</var> be a newly-created <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-6"><code>PermissionDescriptor</code></a>
           whose <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-1"><code>name</code></a> is initialized with <var>name</var>.
           </li>
-          <li>Return the <a data-link-type="dfn" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-11">permission state</a> of <var data-type="PermissionDescriptor">descriptor</var> and <var>settings</var>.
+          <li>Return the <a data-link-type="dfn" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-14">permission state</a> of <var data-type="PermissionDescriptor">descriptor</var> and <var>settings</var>.
           </li>
         </ol>
         <p>
@@ -827,16 +890,16 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         </ol>
         <div class="issue" id="issue-current-entry-incumbent-or-relevant"><div role="heading" class="issue-title marker" id="h-issue" aria-level="4"><a href="https://github.com/w3c/permissions/issues/278"><span class="issue-number">Issue 278</span></a><span class="issue-label">: Safari returns different results for current permission state</span></div><p dir="auto">Safari is the only known UA that returns different results from this algorithm for different settings objects with the same origin. We should test which of the <a href="https://html.spec.whatwg.org/multipage/webappapis.html#realms-settings-objects-global-objects" rel="nofollow">several possible settings objects</a> it uses.</p></div>
         <p>
-          As a shorthand, a <a data-link-type="idl" data-lt="PermissionName" href="#dom-permissionname" class="internalDFN" id="ref-for-dom-permissionname-3"><code>PermissionName</code></a> <var>name</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-12">permission state</a> is the
-          <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-13">permission state</a> of a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-7"><code>PermissionDescriptor</code></a> with its
+          As a shorthand, a <a data-link-type="idl" data-lt="PermissionName" href="#dom-permissionname" class="internalDFN" id="ref-for-dom-permissionname-3"><code>PermissionName</code></a> <var>name</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-15">permission state</a> is the
+          <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-16">permission state</a> of a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-7"><code>PermissionDescriptor</code></a> with its
           <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-5"><code>name</code></a> member set to <var>name</var>.
         </p>
       </section>
       <section id="requesting-permission-to-use-a-powerful-feature">
-        <h3 id="requesting-more-permission"><bdi class="secno">2.4 </bdi>
+        <h3 id="requesting-more-permission"><a class="self-link" href="#requesting-more-permission" aria-label="Permalink for Section 2.4"></a><bdi class="secno">2.4 </bdi>
           Requesting permission to use a powerful feature
-        <a class="self-link" aria-label="§" href="#requesting-more-permission"></a></h3>
-        <div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="4"><span>Note</span></div><p class="">
+        </h3>
+        <div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="4"><span>Note</span></div><p class="">
           Spec authors, please note that algorithms in this section can wait for user input; so
           they shouldn't be used from other algorithms running on the main thread.
         </p></div>
@@ -846,19 +909,19 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-8"><code>denied</code></a>".
         </p>
         <ol class="algorithm">
-          <li>Let <var>current state</var> be the <var>descriptor</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-14">permission state</a>.
+          <li>Let <var>current state</var> be the <var>descriptor</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-17">permission state</a>.
           </li>
           <li>If <var>current state</var> is not "<a data-link-type="idl" href="#dom-permissionstate-prompt" class="internalDFN" id="ref-for-dom-permissionstate-prompt-3"><code>prompt</code></a>", return <var>current
           state</var> and abort these steps.
           </li>
-          <li>Ask the user's permission for the calling algorithm to use the <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-12">powerful
+          <li>Ask the user's permission for the calling algorithm to use the <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-18">powerful
           feature</a> described by <var>descriptor</var>.
           </li>
           <li>If the user grants permission, return "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-6"><code>granted</code></a>"; otherwise return
           "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-9"><code>denied</code></a>". The user's interaction may provide <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-3">new information about
           the user's intent</a> for this <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realm</a> and other <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realms</a>
           with the <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/origin.html#same-origin">same origin</a>.
-            <div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="4"><span>Note</span></div><p class="">
+            <div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="4"><span>Note</span></div><p class="">
               This is intentionally vague about the details of the permission UI and how the UA
               infers user intent. UAs should be able to explore lots of UI within this framework.
             </p></div>
@@ -871,19 +934,19 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         </p>
       </section>
       <section id="prompt-the-user-to-choose">
-        <h3 id="x2-5-prompt-the-user-to-choose"><bdi class="secno">2.5 </bdi>
+        <h3 id="x2-5-prompt-the-user-to-choose"><a class="self-link" href="#prompt-the-user-to-choose" aria-label="Permalink for Section 2.5"></a><bdi class="secno">2.5 </bdi>
           Prompt the user to choose
-        <a class="self-link" aria-label="§" href="#prompt-the-user-to-choose"></a></h3>
+        </h3>
         <p>
           To <dfn data-lt="prompt the user to choose|prompting the user to choose" class="export" data-export="" id="dfn-prompt-the-user-to-choose" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">prompt the user to choose</dfn> one of several <var>options</var> associated with a
           <var>descriptor</var>, the UA must perform the following steps. This algorithm returns either
           "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-10"><code>denied</code></a>" or one of the options.
         </p>
         <ol class="algorithm">
-          <li>If <var>descriptor</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-15">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-11"><code>denied</code></a>", return
+          <li>If <var>descriptor</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-18">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-11"><code>denied</code></a>", return
           "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-12"><code>denied</code></a>" and abort these steps.
           </li>
-          <li>If <var>descriptor</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-16">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-7"><code>granted</code></a>", the UA
+          <li>If <var>descriptor</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-19">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-7"><code>granted</code></a>", the UA
           may return one of <var>options</var> and abort these steps. If the UA returns without prompting,
           then subsequent <a data-lt="prompt the user to choose" href="#dfn-prompt-the-user-to-choose" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-prompt-the-user-to-choose-1">prompts for the user to choose</a>
           from the same set of options with the same <var>descriptor</var> must return the same option,
@@ -897,7 +960,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-13"><code>denied</code></a>". If the user's interaction indicates they intend this choice
           to apply to other realms, then treat this this as <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-5">new information about the user's
           intent</a> for other <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realms</a> with the <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/origin.html#same-origin">same origin</a>.
-            <div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="4"><span>Note</span></div><p class="">
+            <div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="4"><span>Note</span></div><p class="">
               This is intentionally vague about the details of the permission UI and how the UA
               infers user intent. UAs should be able to explore lots of UI within this framework.
             </p></div>
@@ -911,16 +974,16 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         </p>
       </section>
       <section id="reacting-to-users-revoking-permission">
-        <h3 id="reacting-to-revocation"><bdi class="secno">2.6 </bdi>
+        <h3 id="reacting-to-revocation"><a class="self-link" href="#reacting-to-revocation" aria-label="Permalink for Section 2.6"></a><bdi class="secno">2.6 </bdi>
           Reacting to users revoking permission
-        <a class="self-link" aria-label="§" href="#reacting-to-revocation"></a></h3>
+        </h3>
         <p>
-          When the UA learns that the user no longer intends to grant permission for a <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realm</a> to use a <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-13">feature</a>, <dfn id="dfn-react-to-the-user-revoking-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">react to the user revoking permission</dfn>
+          When the UA learns that the user no longer intends to grant permission for a <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realm</a> to use a <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-19">feature</a>, <dfn id="dfn-react-to-the-user-revoking-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">react to the user revoking permission</dfn>
           by:
         </p>
         <ol class="algorithm">
           <li>
-            <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">Queue a task</a> on the Realm's <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-realm-settings-object">settings object</a>'s <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#responsible-event-loop">responsible event loop</a> to run that feature's <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-1">permission revocation algorithm</a>.
+            <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">Queue a task</a> on the Realm's <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-realm-settings-object">settings object</a>'s <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#responsible-event-loop">responsible event loop</a> to run that feature's <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-2">permission revocation algorithm</a>.
           </li>
         </ol>
       </section>
@@ -1018,17 +1081,17 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     </tr>
   </table>
   </details></aside><section id="extensions-to-the-navigator-and-workernavigator-interfaces">
-      <h2 id="navigator-and-workernavigator-extension"><bdi class="secno">3. </bdi>
+      <h2 id="navigator-and-workernavigator-extension"><a class="self-link" href="#navigator-and-workernavigator-extension" aria-label="Permalink for Section 3."></a><bdi class="secno">3. </bdi>
         Extensions to the <code>Navigator</code> and <code>WorkerNavigator</code> interfaces
-      <a class="self-link" aria-label="§" href="#navigator-and-workernavigator-extension"></a></h2>
+      </h2>
       <pre class="idl def" id="webidl-2112232240"><span class="idlHeader"><a class="self-link" href="#webidl-2112232240">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-navigator-partial-1" data-title="Navigator">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>)</span>]
 partial interface <a data-idl="partial" data-link-type="interface" data-title="Navigator" class="idlID" data-dfn-for="Navigator" data-type="interface" href="https://html.spec.whatwg.org/multipage/system-state.html#navigator">Navigator</a> {<span data-idl="" class="idlAttribute" id="idl-def-navigator-permissions" data-title="permissions" data-dfn-for="Navigator">
-  [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-5">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" id="dom-navigator-permissions" data-idl="attribute" data-title="permissions" data-dfn-for="Navigator" data-type="Permissions" data-lt="permissions" data-local-lt="Navigator.permissions" class="idlName" tabindex="0" aria-haspopup="dialog"><code>permissions</code></dfn>;</span>
+  [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-8">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" id="dom-navigator-permissions" data-idl="attribute" data-title="permissions" data-dfn-for="Navigator" data-type="Permissions" data-lt="permissions" data-local-lt="Navigator.permissions" class="idlName" tabindex="0" aria-haspopup="dialog"><code>permissions</code></dfn>;</span>
 };</span><span data-idl="" class="idlInterface" id="idl-def-workernavigator-partial-1" data-title="WorkerNavigator">
 
 [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
 partial interface <a data-idl="partial" data-link-type="interface" data-title="WorkerNavigator" class="idlID" data-dfn-for="WorkerNavigator" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workernavigator">WorkerNavigator</a> {<span data-idl="" class="idlAttribute" id="idl-def-workernavigator-permissions" data-title="permissions" data-dfn-for="WorkerNavigator">
-  [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-6">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" id="dom-workernavigator-permissions" data-idl="attribute" data-title="permissions" data-dfn-for="WorkerNavigator" data-type="Permissions" data-lt="permissions" data-local-lt="WorkerNavigator.permissions" class="idlName" tabindex="0" aria-haspopup="dialog"><code>permissions</code></dfn>;</span>
+  [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-9">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" id="dom-workernavigator-permissions" data-idl="attribute" data-title="permissions" data-dfn-for="WorkerNavigator" data-type="Permissions" data-lt="permissions" data-local-lt="WorkerNavigator.permissions" class="idlName" tabindex="0" aria-haspopup="dialog"><code>permissions</code></dfn>;</span>
 };</span></code></pre>
     </section>
     <aside class="mdn"><details>
@@ -1078,9 +1141,9 @@ partial interface <a data-idl="partial" data-link-type="interface" data-title="W
     </tr>
   </table>
   </details></aside><section data-dfn-for="Permissions" id="permissions-interface-0">
-      <h2 id="permissions-interface"><bdi class="secno">4. </bdi>
+      <h2 id="permissions-interface"><a class="self-link" href="#permissions-interface" aria-label="Permalink for Section 4."></a><bdi class="secno">4. </bdi>
         <code>Permissions</code> interface
-      <a class="self-link" aria-label="§" href="#permissions-interface"></a></h2>
+      </h2>
       <pre class="idl def" id="webidl-402168873"><span class="idlHeader"><a class="self-link" href="#webidl-402168873">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-permissions" data-title="Permissions">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>,<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
 interface <dfn data-export="" data-dfn-type="interface" id="dom-permissions" data-idl="interface" data-title="Permissions" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>Permissions</code></dfn> {<span data-idl="" class="idlMethod" id="idl-def-permissions-query-permissiondesc" data-title="query" data-dfn-for="Permissions"><span class="idlType">
   <a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise">Promise</a>&lt;<a href="#dom-permissionstatus" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissionstatus-5"><code>PermissionStatus</code></a>&gt;</span> <a class="internalDFN idlName" data-link-type="method" href="#dom-permissions-query" id="ref-for-dom-permissions-query-2"><code>query</code></a>(<span class="idlType"><a data-type="interface" href="https://webidl.spec.whatwg.org/#idl-object">object</a></span> <span class="idlParamName">permissionDesc</span>);</span>
@@ -1136,9 +1199,9 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondesc
     </tr>
   </table>
   </details></aside><section id="query-method-0">
-        <h3 id="query-method"><bdi class="secno">4.1 </bdi>
+        <h3 id="query-method"><a class="self-link" href="#query-method" aria-label="Permalink for Section 4.1"></a><bdi class="secno">4.1 </bdi>
           <code>query()</code> method
-        <a class="self-link" aria-label="§" href="#query-method"></a></h3>
+        </h3>
         <p>
           When the <dfn data-export="" data-dfn-type="method" id="dom-permissions-query" data-idl="operation" data-title="query()" data-dfn-for="Permissions" data-type="Promise" data-lt="query()|query(permissionDesc)" data-local-lt="Permissions.query|Permissions.query()|query" tabindex="0" aria-haspopup="dialog"><code>query()</code></dfn> method is invoked, the <a data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agent</a> <em class="rfc2119">MUST</em> run the
           following <dfn class="export" data-export="" id="dfn-query-a-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">query a permission</dfn> algorithm, passing the parameter
@@ -1216,9 +1279,9 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondesc
     </tr>
   </table>
   </details></aside><section data-dfn-for="PermissionStatus" id="permissionstatus-interface-0">
-      <h2 id="permissionstatus-interface"><bdi class="secno">5. </bdi>
+      <h2 id="permissionstatus-interface"><a class="self-link" href="#permissionstatus-interface" aria-label="Permalink for Section 5."></a><bdi class="secno">5. </bdi>
         <code>PermissionStatus</code> interface
-      <a class="self-link" aria-label="§" href="#permissionstatus-interface"></a></h2>
+      </h2>
       <pre class="idl def" id="webidl-717592932"><span class="idlHeader"><a class="self-link" href="#webidl-717592932">WebIDL</a></span><code><span data-idl="" class="idlInterface" id="idl-def-permissionstatus" data-title="PermissionStatus">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>,<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
 interface <dfn data-export="" data-dfn-type="interface" id="dom-permissionstatus" data-idl="interface" data-title="PermissionStatus" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>PermissionStatus</code></dfn> : <span class="idlSuperclass"><a data-type="interface" href="https://dom.spec.whatwg.org/#eventtarget">EventTarget</a></span> {<span data-idl="" class="idlAttribute" id="idl-def-permissionstatus-state" data-title="state" data-dfn-for="PermissionStatus">
   readonly attribute<span class="idlType"> <a href="#dom-permissionstate" class="internalDFN" data-link-type="idl" id="ref-for-dom-permissionstate-2"><code>PermissionState</code></a></span> <a class="internalDFN idlName" data-link-type="attribute" href="#dom-permissionstatus-state" id="ref-for-dom-permissionstatus-state-2"><code>state</code></a>;</span><span data-idl="" class="idlAttribute" id="idl-def-permissionstatus-name" data-title="name" data-dfn-for="PermissionStatus">
@@ -1237,13 +1300,13 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
       </p>
       <p data-dfn-for="PermissionState">
         When using the API, the "<dfn data-export="" data-dfn-type="enum-value" id="dom-permissionstate-granted" data-idl="enum-value" data-title="granted" data-dfn-for="PermissionState" tabindex="0" aria-haspopup="dialog"><code>granted</code></dfn>", "<dfn data-export="" data-dfn-type="enum-value" id="dom-permissionstate-denied" data-idl="enum-value" data-title="denied" data-dfn-for="PermissionState" tabindex="0" aria-haspopup="dialog"><code>denied</code></dfn>", and "<dfn data-export="" data-dfn-type="enum-value" id="dom-permissionstate-prompt" data-idl="enum-value" data-title="prompt" data-dfn-for="PermissionState" tabindex="0" aria-haspopup="dialog"><code>prompt</code></dfn>"
-        enum values represent the concepts of <a data-link-type="dfn" href="#dfn-granted" class="internalDFN" id="ref-for-dfn-granted-4">granted</a>, <a data-link-type="dfn" href="#dfn-denied" class="internalDFN" id="ref-for-dfn-denied-2">denied</a>, and
-        <a data-link-type="dfn" href="#dfn-prompt" class="internalDFN" id="ref-for-dfn-prompt-1">prompt</a> respectively.
+        enum values represent the concepts of <a data-link-type="dfn" href="#dfn-granted" class="internalDFN" id="ref-for-dfn-granted-6">granted</a>, <a data-link-type="dfn" href="#dfn-denied" class="internalDFN" id="ref-for-dfn-denied-2">denied</a>, and
+        <a data-link-type="dfn" href="#dfn-prompt" class="internalDFN" id="ref-for-dfn-prompt-2">prompt</a> respectively.
       </p>
       <section id="creating-instances">
-        <h3 id="x5-1-creating-instances"><bdi class="secno">5.1 </bdi>
+        <h3 id="x5-1-creating-instances"><a class="self-link" href="#creating-instances" aria-label="Permalink for Section 5.1"></a><bdi class="secno">5.1 </bdi>
           Creating instances
-        <a class="self-link" aria-label="§" href="#creating-instances"></a></h3>
+        </h3>
         <p>
           To <dfn class="export" data-export="" id="dfn-create-a-permissionstatus" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">create a <code>PermissionStatus</code></dfn> for a given
           <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-11"><code>PermissionDescriptor</code></a> <var>permissionDesc</var>, return a new instance of the <a data-link-type="dfn" href="#dfn-permission-result-type" class="internalDFN" id="ref-for-dfn-permission-result-type-3">permission result type</a> for the feature named by <var>permissionDesc</var>'s
@@ -1253,9 +1316,9 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
         </p>
       </section>
       <section id="name-attribute">
-        <h3 id="x5-2-name-attribute"><bdi class="secno">5.2 </bdi>
+        <h3 id="x5-2-name-attribute"><a class="self-link" href="#name-attribute" aria-label="Permalink for Section 5.2"></a><bdi class="secno">5.2 </bdi>
           <code>name</code> attribute
-        <a class="self-link" aria-label="§" href="#name-attribute"></a></h3>
+        </h3>
         <p>
           The <dfn data-export="" data-dfn-type="attribute" id="dom-permissionstatus-name" data-idl="attribute" data-title="name" data-dfn-for="PermissionStatus" data-type="PermissionName" data-lt="name" data-local-lt="PermissionStatus.name" tabindex="0" aria-haspopup="dialog"><code>name</code></dfn> attribute returns the value it was initialized to.
         </p>
@@ -1307,9 +1370,9 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
     </tr>
   </table>
   </details></aside><section id="state-attribute">
-        <h3 id="x5-3-state-attribute"><bdi class="secno">5.3 </bdi>
+        <h3 id="x5-3-state-attribute"><a class="self-link" href="#state-attribute" aria-label="Permalink for Section 5.3"></a><bdi class="secno">5.3 </bdi>
           <code>state</code> attribute
-        <a class="self-link" aria-label="§" href="#state-attribute"></a></h3>
+        </h3>
         <p>
           The <dfn data-export="" data-dfn-type="attribute" id="dom-permissionstatus-state" data-idl="attribute" data-title="state" data-dfn-for="PermissionStatus" data-type="PermissionState" data-lt="state" data-local-lt="PermissionStatus.state" tabindex="0" aria-haspopup="dialog"><code>state</code></dfn> attribute returns the latest value that was set on the current
           instance.
@@ -1362,9 +1425,9 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
     </tr>
   </table>
   </details></aside><section id="onchange-attribute">
-        <h3 id="x5-4-onchange-attribute"><bdi class="secno">5.4 </bdi>
+        <h3 id="x5-4-onchange-attribute"><a class="self-link" href="#onchange-attribute" aria-label="Permalink for Section 5.4"></a><bdi class="secno">5.4 </bdi>
           <code>onchange</code> attribute
-        <a class="self-link" aria-label="§" href="#onchange-attribute"></a></h3>
+        </h3>
         <p>
           The <dfn data-export="" data-dfn-type="attribute" id="dom-permissionstatus-onchange" data-idl="attribute" data-title="onchange" data-dfn-for="PermissionStatus" data-type="EventHandler" data-lt="onchange" data-local-lt="PermissionStatus.onchange" tabindex="0" aria-haspopup="dialog"><code>onchange</code></dfn> attribute is an <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handlers">event handler</a> whose corresponding <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handler-event-type">event
           handler event type</a> is <code>change</code>.
@@ -1386,9 +1449,9 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
         </ol>
       </section>
       <section id="garbage-collection">
-        <h3 id="permissionstatus-gc"><bdi class="secno">5.5 </bdi>
+        <h3 id="permissionstatus-gc"><a class="self-link" href="#permissionstatus-gc" aria-label="Permalink for Section 5.5"></a><bdi class="secno">5.5 </bdi>
           Garbage collection
-        <a class="self-link" aria-label="§" href="#permissionstatus-gc"></a></h3>
+        </h3>
         <p>
           While an <a data-link-type="idl" data-lt="PermissionStatus" href="#dom-permissionstatus" class="internalDFN" id="ref-for-dom-permissionstatus-8"><code>PermissionStatus</code></a> object has one or more event listeners registered for
           "change", there must be a strong reference from the <a data-link-type="idl" data-lt="Window" data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window"><code>Window</code></a> or <a data-link-type="idl" data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope"><code>WorkerGlobalScope</code></a>
@@ -1396,16 +1459,16 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           <a data-link-type="idl" data-lt="PermissionStatus" href="#dom-permissionstatus" class="internalDFN" id="ref-for-dom-permissionstatus-10"><code>PermissionStatus</code></a> object itself.
         </p>
         <p>
-          While there is a task queued by an <a data-link-type="idl" data-lt="PermissionStatus" href="#dom-permissionstatus" class="internalDFN" id="ref-for-dom-permissionstatus-11"><code>PermissionStatus</code></a> object on the <a data-link-type="dfn" href="#dfn-permissions-task-source" class="internalDFN" id="ref-for-dfn-permissions-task-source-1">permissions task source</a>, there must be a strong reference from the <a data-link-type="idl" data-lt="Window" data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window"><code>Window</code></a> or <a data-link-type="idl" data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope"><code>WorkerGlobalScope</code></a>
+          While there is a task queued by an <a data-link-type="idl" data-lt="PermissionStatus" href="#dom-permissionstatus" class="internalDFN" id="ref-for-dom-permissionstatus-11"><code>PermissionStatus</code></a> object on the <a data-link-type="dfn" href="#dfn-permissions-task-source" class="internalDFN" id="ref-for-dfn-permissions-task-source-2">permissions task source</a>, there must be a strong reference from the <a data-link-type="idl" data-lt="Window" data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window"><code>Window</code></a> or <a data-link-type="idl" data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope"><code>WorkerGlobalScope</code></a>
           object that the <a data-link-type="idl" data-lt="PermissionStatus" href="#dom-permissionstatus" class="internalDFN" id="ref-for-dom-permissionstatus-12"><code>PermissionStatus</code></a> object's constructor was invoked from to that
           <a data-link-type="idl" data-lt="PermissionStatus" href="#dom-permissionstatus" class="internalDFN" id="ref-for-dom-permissionstatus-13"><code>PermissionStatus</code></a> object.
         </p>
       </section>
     </section>
     <section data-dfn-for="PermissionName" id="powerful-features-registry">
-      <h2 id="x6-powerful-features-registry"><bdi class="secno">6. </bdi>
+      <h2 id="x6-powerful-features-registry"><a class="self-link" href="#powerful-features-registry" aria-label="Permalink for Section 6."></a><bdi class="secno">6. </bdi>
         Powerful features registry
-      <a class="self-link" aria-label="§" href="#powerful-features-registry"></a></h2>
+      </h2>
       <pre class="idl def" id="webidl-1342630210"><span class="idlHeader"><a class="self-link" href="#webidl-1342630210">WebIDL</a></span><code><span data-idl="" class="idlEnum" id="idl-def-permissionname" data-title="PermissionName">enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionname" data-idl="enum" data-title="PermissionName" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>PermissionName</code></dfn> {
   <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionname-accelerometer" id="ref-for-dom-permissionname-accelerometer-1"><code>accelerometer</code></a>"</span>,
   <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionname-ambient-light-sensor" id="ref-for-dom-permissionname-ambient-light-sensor-1"><code>ambient-light-sensor</code></a>"</span>,
@@ -1428,70 +1491,70 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
   <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionname-xr-spatial-tracking" id="ref-for-dom-permissionname-xr-spatial-tracking-1"><code>xr-spatial-tracking</code></a>"</span>,
 };</span></code></pre>
       <p>
-        Each enumeration value in the <a data-link-type="idl" data-lt="PermissionName" href="#dom-permissionname" class="internalDFN" id="ref-for-dom-permissionname-8"><code>PermissionName</code></a> enum identifies a <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-14">powerful feature</a>.
+        Each enumeration value in the <a data-link-type="idl" data-lt="PermissionName" href="#dom-permissionname" class="internalDFN" id="ref-for-dom-permissionname-8"><code>PermissionName</code></a> enum identifies a <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-20">powerful feature</a>.
       </p>
       <p>
         The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-ambient-light-sensor" data-idl="enum-value" data-title="ambient-light-sensor" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>ambient-light-sensor</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/ambient-light/">Ambient Light Sensor</a></cite>
-        <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-15">powerful feature</a>.
+        <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-21">powerful feature</a>.
       </p>
       <p>
         The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-background-sync" data-idl="enum-value" data-title="background-sync" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>background-sync</code></dfn> enum value identifies the <cite><a href="https://wicg.github.io/background-sync/spec/">Web Background Synchronization</a></cite>
-        <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-16">powerful feature</a>.
+        <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-22">powerful feature</a>.
       </p>
       <p>
-        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-bluetooth" data-idl="enum-value" data-title="bluetooth" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>bluetooth</code></dfn> enum value identifies the <cite><a href="https://webbluetoothcg.github.io/web-bluetooth/">Web Bluetooth</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-17">powerful feature</a>.
+        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-bluetooth" data-idl="enum-value" data-title="bluetooth" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>bluetooth</code></dfn> enum value identifies the <cite><a href="https://webbluetoothcg.github.io/web-bluetooth/">Web Bluetooth</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-23">powerful feature</a>.
       </p>
       <p>
         The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-camera" data-idl="enum-value" data-title="camera" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>camera</code></dfn> and <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-microphone" data-idl="enum-value" data-title="microphone" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>microphone</code></dfn> enum values identify the
-        <cite><a href="https://www.w3.org/TR/mediacapture-streams/">Media Capture and Streams</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-18">powerful features</a>.
+        <cite><a href="https://www.w3.org/TR/mediacapture-streams/">Media Capture and Streams</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-24">powerful features</a>.
       </p>
       <p>
-        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-geolocation" data-idl="enum-value" data-title="geolocation" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>geolocation</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/geolocation/">Geolocation API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-19">powerful feature</a>.
+        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-geolocation" data-idl="enum-value" data-title="geolocation" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>geolocation</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/geolocation/">Geolocation API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-25">powerful feature</a>.
       </p>
       <p>
-        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-midi" data-idl="enum-value" data-title="midi" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>midi</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/webmidi/">Web MIDI API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-20">powerful feature</a>.
+        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-midi" data-idl="enum-value" data-title="midi" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>midi</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/webmidi/">Web MIDI API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-26">powerful feature</a>.
       </p>
       <p>
-        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-notifications" data-idl="enum-value" data-title="notifications" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>notifications</code></dfn> enum value identifies the <cite><a href="https://notifications.spec.whatwg.org/">Notifications API Standard</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-21">powerful feature</a>.
+        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-notifications" data-idl="enum-value" data-title="notifications" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>notifications</code></dfn> enum value identifies the <cite><a href="https://notifications.spec.whatwg.org/">Notifications API Standard</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-27">powerful feature</a>.
       </p>
       <p>
-        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-push" data-idl="enum-value" data-title="push" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>push</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/push-api/">Push API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-22">powerful feature</a>.
+        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-push" data-idl="enum-value" data-title="push" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>push</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/push-api/">Push API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-28">powerful feature</a>.
       </p>
       <p>
-        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-speaker-selection" data-idl="enum-value" data-title="speaker-selection" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>speaker-selection</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/audio-output/">Audio Output Devices API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-23">powerful feature</a>.
+        The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-speaker-selection" data-idl="enum-value" data-title="speaker-selection" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>speaker-selection</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/audio-output/">Audio Output Devices API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-29">powerful feature</a>.
       </p>
       <section id="screen-wake-lock-0">
-        <h3 id="screen-wake-lock"><bdi class="secno">6.1 </bdi>
+        <h3 id="screen-wake-lock"><a class="self-link" href="#screen-wake-lock" aria-label="Permalink for Section 6.1"></a><bdi class="secno">6.1 </bdi>
           Screen wake lock
-        <a class="self-link" aria-label="§" href="#screen-wake-lock"></a></h3>
+        </h3>
         <p>
           The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-screen-wake-lock" data-idl="enum-value" data-title="screen-wake-lock" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>screen-wake-lock</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/screen-wake-lock/">Screen Wake Lock API</a></cite>
-          <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-24">powerful feature</a>. It is a <a data-link-type="dfn" href="#dfn-default-powerful-feature" class="internalDFN" id="ref-for-dfn-default-powerful-feature-1">default powerful feature</a>.
+          <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-30">powerful feature</a>. It is a <a data-link-type="dfn" href="#dfn-default-powerful-feature" class="internalDFN" id="ref-for-dfn-default-powerful-feature-1">default powerful feature</a>.
         </p>
-        <div class="issue" id="issue-container-generatedID-5"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-25">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
+        <div class="issue" id="issue-container-generatedID-6"><div role="heading" class="issue-title marker" id="h-issue-0" aria-level="4"><span>Issue</span></div><p class="">
+          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-31">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
           Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-1">at risk</a>.
         </p></div>
       </section>
       <section id="background-fetch-0">
-        <h3 id="background-fetch"><bdi class="secno">6.2 </bdi>
+        <h3 id="background-fetch"><a class="self-link" href="#background-fetch" aria-label="Permalink for Section 6.2"></a><bdi class="secno">6.2 </bdi>
           Background Fetch
-        <a class="self-link" aria-label="§" href="#background-fetch"></a></h3>
+        </h3>
         <p>
           The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-background-fetch" data-idl="enum-value" data-title="background-fetch" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>background-fetch</code></dfn> enum value identifies the <cite><a href="https://wicg.github.io/background-fetch/">Background Fetch</a></cite>
-          <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-26">powerful feature</a>.
+          <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-32">powerful feature</a>.
         </p>
-        <div class="issue" id="issue-container-generatedID-6"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-27">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
+        <div class="issue" id="issue-container-generatedID-7"><div role="heading" class="issue-title marker" id="h-issue-1" aria-level="4"><span>Issue</span></div><p class="">
+          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-33">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
           Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-2">at risk</a>.
         </p></div>
       </section>
       <section data-cite="storage" id="persistent-storage-0">
-        <h3 id="persistent-storage"><bdi class="secno">6.3 </bdi>
+        <h3 id="persistent-storage"><a class="self-link" href="#persistent-storage" aria-label="Permalink for Section 6.3"></a><bdi class="secno">6.3 </bdi>
           Persistent Storage
-        <a class="self-link" aria-label="§" href="#persistent-storage"></a></h3>
+        </h3>
         <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-persistent-storage" data-idl="enum-value" data-title="persistent-storage" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>persistent-storage</code></dfn> is enum value identifies the <cite><a href="https://storage.spec.whatwg.org/">Storage Standard</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-28">powerful feature</a>.
+          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-persistent-storage" data-idl="enum-value" data-title="persistent-storage" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>persistent-storage</code></dfn> is enum value identifies the <cite><a href="https://storage.spec.whatwg.org/">Storage Standard</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-34">powerful feature</a>.
         </p>
       </section>
       <aside class="mdn"><details>
@@ -1541,18 +1604,18 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
     </tr>
   </table>
   </details></aside><section id="accelerometer-0">
-        <h3 id="accelerometer"><bdi class="secno">6.4 </bdi>
+        <h3 id="accelerometer"><a class="self-link" href="#accelerometer" aria-label="Permalink for Section 6.4"></a><bdi class="secno">6.4 </bdi>
           Accelerometer
-        <a class="self-link" aria-label="§" href="#accelerometer"></a></h3>
-        <div class="issue" id="issue-container-generatedID-7"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-29">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
+        </h3>
+        <div class="issue" id="issue-container-generatedID-8"><div role="heading" class="issue-title marker" id="h-issue-2" aria-level="4"><span>Issue</span></div><p class="">
+          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-35">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
           Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-3">at risk</a>.
         </p></div>
         <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-accelerometer" data-idl="enum-value" data-title="accelerometer" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>accelerometer</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/accelerometer/">Accelerometer</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-30">powerful feature</a>.
+          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-accelerometer" data-idl="enum-value" data-title="accelerometer" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>accelerometer</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/accelerometer/">Accelerometer</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-36">powerful feature</a>.
         </p>
         <p data-cite="generic-sensor">
-          Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-2">permission revocation algorithm</a> is the result of calling
+          Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-3">permission revocation algorithm</a> is the result of calling
           <a data-link-type="dfn" data-type="dfn" href="https://www.w3.org/TR/generic-sensor/#generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> passing it
           "<a data-link-type="idl" href="#dom-permissionname-accelerometer" class="internalDFN" id="ref-for-dom-permissionname-accelerometer-2"><code>accelerometer</code></a>" as argument.
         </p>
@@ -1604,18 +1667,18 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
     </tr>
   </table>
   </details></aside><section id="gyroscope-0">
-        <h3 id="gyroscope"><bdi class="secno">6.5 </bdi>
+        <h3 id="gyroscope"><a class="self-link" href="#gyroscope" aria-label="Permalink for Section 6.5"></a><bdi class="secno">6.5 </bdi>
           Gyroscope
-        <a class="self-link" aria-label="§" href="#gyroscope"></a></h3>
-        <div class="issue" id="issue-container-generatedID-8"><div role="heading" class="issue-title marker" id="h-issue-3" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-31">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
+        </h3>
+        <div class="issue" id="issue-container-generatedID-9"><div role="heading" class="issue-title marker" id="h-issue-3" aria-level="4"><span>Issue</span></div><p class="">
+          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-37">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
           Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-4">at risk</a>.
         </p></div>
         <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-gyroscope" data-idl="enum-value" data-title="gyroscope" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>gyroscope</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/gyroscope/">Gyroscope</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-32">powerful feature</a>.
+          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-gyroscope" data-idl="enum-value" data-title="gyroscope" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>gyroscope</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/gyroscope/">Gyroscope</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-38">powerful feature</a>.
         </p>
         <p data-cite="generic-sensor">
-          Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-3">permission revocation algorithm</a> is the result of calling
+          Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-4">permission revocation algorithm</a> is the result of calling
           <a data-link-type="dfn" data-type="dfn" href="https://www.w3.org/TR/generic-sensor/#generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> passing it
           "<a data-link-type="idl" href="#dom-permissionname-gyroscope" class="internalDFN" id="ref-for-dom-permissionname-gyroscope-2"><code>gyroscope</code></a>" as argument.
         </p>
@@ -1667,18 +1730,18 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
     </tr>
   </table>
   </details></aside><section id="magnetometer-0">
-        <h3 id="magnetometer"><bdi class="secno">6.6 </bdi>
+        <h3 id="magnetometer"><a class="self-link" href="#magnetometer" aria-label="Permalink for Section 6.6"></a><bdi class="secno">6.6 </bdi>
           Magnetometer
-        <a class="self-link" aria-label="§" href="#magnetometer"></a></h3>
-        <div class="issue" id="issue-container-generatedID-9"><div role="heading" class="issue-title marker" id="h-issue-4" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-33">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
+        </h3>
+        <div class="issue" id="issue-container-generatedID-10"><div role="heading" class="issue-title marker" id="h-issue-4" aria-level="4"><span>Issue</span></div><p class="">
+          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-39">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
           Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-5">at risk</a>.
         </p></div>
         <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-magnetometer" data-idl="enum-value" data-title="magnetometer" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>magnetometer</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/magnetometer/">Magnetometer</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-34">powerful feature</a>.
+          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-magnetometer" data-idl="enum-value" data-title="magnetometer" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>magnetometer</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/magnetometer/">Magnetometer</a></cite> API <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-40">powerful feature</a>.
         </p>
         <p data-cite="generic-sensor">
-          Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-4">permission revocation algorithm</a> is the result of calling
+          Its <a data-link-type="dfn" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-5">permission revocation algorithm</a> is the result of calling
           <a data-link-type="dfn" data-type="dfn" href="https://www.w3.org/TR/generic-sensor/#generic-sensor-permission-revocation-algorithm">generic sensor permission revocation algorithm</a> passing it
           "<a data-link-type="idl" href="#dom-permissionname-magnetometer" class="internalDFN" id="ref-for-dom-permissionname-magnetometer-2"><code>magnetometer</code></a>" as argument.
         </p>
@@ -1730,57 +1793,57 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
     </tr>
   </table>
   </details></aside><section id="display-capture-0">
-        <h3 id="display-capture"><bdi class="secno">6.7 </bdi>
+        <h3 id="display-capture"><a class="self-link" href="#display-capture" aria-label="Permalink for Section 6.7"></a><bdi class="secno">6.7 </bdi>
           Display Capture
-        <a class="self-link" aria-label="§" href="#display-capture"></a></h3>
+        </h3>
         <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-display-capture" data-idl="enum-value" data-title="display-capture" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>display-capture</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/screen-capture/">Screen Capture</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-35">powerful feature</a>.
+          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-display-capture" data-idl="enum-value" data-title="display-capture" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>display-capture</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/screen-capture/">Screen Capture</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-41">powerful feature</a>.
         </p>
-        <div class="issue" id="issue-container-generatedID-10"><div role="heading" class="issue-title marker" id="h-issue-5" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-36">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
+        <div class="issue" id="issue-container-generatedID-11"><div role="heading" class="issue-title marker" id="h-issue-5" aria-level="4"><span>Issue</span></div><p class="">
+          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-42">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
           Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-6">at risk</a>.
         </p></div>
       </section>
       <section id="nfc-0">
-        <h3 id="nfc"><bdi class="secno">6.8 </bdi>
+        <h3 id="nfc"><a class="self-link" href="#nfc" aria-label="Permalink for Section 6.8"></a><bdi class="secno">6.8 </bdi>
           NFC
-        <a class="self-link" aria-label="§" href="#nfc"></a></h3>
-        <div class="issue" id="issue-container-generatedID-11"><div role="heading" class="issue-title marker" id="h-issue-6" aria-level="4"><span>Issue</span></div><p class="">
-          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-37">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
+        </h3>
+        <div class="issue" id="issue-container-generatedID-12"><div role="heading" class="issue-title marker" id="h-issue-6" aria-level="4"><span>Issue</span></div><p class="">
+          This <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-43">powerful feature</a> only has a single implementation, and therefore, as per the <abbr title="World Wide Web Consortium">W3C</abbr>
           Process, it is <a data-link-type="dfn" href="#dfn-at-risk" class="internalDFN" id="ref-for-dfn-at-risk-7">at risk</a>.
         </p></div>
         <p>
-          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-nfc" data-idl="enum-value" data-title="nfc" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>nfc</code></dfn> enum value identifies the <cite><a href="https://w3c.github.io/web-nfc/">Web NFC API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-38">powerful feature</a>.
+          The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-nfc" data-idl="enum-value" data-title="nfc" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>nfc</code></dfn> enum value identifies the <cite><a href="https://w3c.github.io/web-nfc/">Web NFC API</a></cite> <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-44">powerful feature</a>.
         </p>
       </section>
       <section id="xr-spatial-tracking">
-        <h3 id="xr-api"><bdi class="secno">6.9 </bdi>
+        <h3 id="xr-api"><a class="self-link" href="#xr-api" aria-label="Permalink for Section 6.9"></a><bdi class="secno">6.9 </bdi>
           XR Spatial tracking
-        <a class="self-link" aria-label="§" href="#xr-api"></a></h3>
+        </h3>
         <p>
           The <dfn data-export="" data-dfn-type="enum-value" id="dom-permissionname-xr-spatial-tracking" data-idl="enum-value" data-title="xr-spatial-tracking" data-dfn-for="PermissionName" tabindex="0" aria-haspopup="dialog"><code>xr-spatial-tracking</code></dfn> enum value identifies the <cite><a href="https://www.w3.org/TR/webxr/">WebXR Device API</a></cite> Device API
-          <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-39">powerful feature</a>.
+          <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-45">powerful feature</a>.
         </p>
       </section>
     </section>
-    <section id="conformance"><h2 id="x7-conformance"><bdi class="secno">7. </bdi>Conformance<a class="self-link" aria-label="§" href="#conformance"></a></h2><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
-        The key words <em class="rfc2119">MAY</em> and <em class="rfc2119">MUST</em> in this document
+    <section id="conformance"><h2 id="x7-conformance"><a class="self-link" href="#conformance" aria-label="Permalink for Section 7."></a><bdi class="secno">7. </bdi>Conformance</h2><p>As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.</p><p>
+        The key words <em class="rfc2119">MAY</em>, <em class="rfc2119">MUST</em>, and <em class="rfc2119">SHOULD</em> in this document
         are to be interpreted as described in
         <a href="https://datatracker.ietf.org/doc/html/bcp14">BCP 14</a>
         [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">RFC2119</a></cite>] [<cite><a class="bibref" data-link-type="biblio" href="#bib-rfc8174" title="Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words">RFC8174</a></cite>]
         when, and only when, they appear in all capitals, as shown here.
       </p></section>
     <section class="informative appendix" id="relationship-to-the-permissions-policy-specification">
-      <h2 id="relationship-to-permissions-policy"><bdi class="secno">A. </bdi>
+      <h2 id="relationship-to-permissions-policy"><a class="self-link" href="#relationship-to-permissions-policy" aria-label="Permalink for Appendix A."></a><bdi class="secno">A. </bdi>
         Relationship to the Permissions Policy specification
-      <a class="self-link" aria-label="§" href="#relationship-to-permissions-policy"></a></h2><p><em>This section is non-normative.</em></p>
+      </h2><p><em>This section is non-normative.</em></p>
       <p>
         Although technically this specification and the Permissions Policy specification
         ([<cite><a class="bibref" data-link-type="biblio" href="#bib-permissions-policy" title="Permissions Policy">Permissions-Policy</a></cite>]) deal with "permissions", each specification serves a distinct
         purpose in the platform. Nevertheless, the two specifications do explicitly overlap.
       </p>
       <p>
-        On the one hand, this specification exclusively concerns itself with <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-40">powerful features</a>
+        On the one hand, this specification exclusively concerns itself with <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-46">powerful features</a>
         whose access is managed through a user-agent mediated permissions UI (i.e., permissions
         where the user gives express consent before that feature can be used, and where the user
         retains the ability to deny that permission at any time for any reason). These powerful
@@ -1788,7 +1851,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
       </p>
       <p>
         On the other hand, the Permissions Policy specification allows developers to selectively
-        enable and disable <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-41">powerful features</a> through a "<a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/dom.html#concept-document-permissions-policy">permissions policy</a>" (be it
+        enable and disable <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-47">powerful features</a> through a "<a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/dom.html#concept-document-permissions-policy">permissions policy</a>" (be it
         a HTTP header or a the <code><a data-type="element-attr" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-allow">allow</a></code> attribute). The APIs and features in scope for the
         Permissions Policy specification go beyond those identified in this specification's
         <a data-link-type="idl" data-lt="PermissionName" href="#dom-permissionname" class="internalDFN" id="ref-for-dom-permissionname-10"><code>PermissionName</code></a> enum (e.g., "sync-xhr" and "gamepad"). In that sense, the Permissions
@@ -1813,17 +1876,17 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
       </p>
     </section>
     <section class="appendix informative" id="automated-testing">
-      <h2 id="automation"><bdi class="secno">B. </bdi>
+      <h2 id="automation"><a class="self-link" href="#automation" aria-label="Permalink for Appendix B."></a><bdi class="secno">B. </bdi>
         Automated testing
-      <a class="self-link" aria-label="§" href="#automation"></a></h2><p><em>This section is non-normative.</em></p>
+      </h2><p><em>This section is non-normative.</em></p>
       <p>
         Automated testing of this specification is performed using the API provided by the <a href="https://w3c.github.io/permissions-automation/">Permissions Automation</a> document.
       </p>
     </section>
     <section class="appendix informative" id="security-and-privacy-considerations">
-      <h2 id="privacy-considerations"><bdi class="secno">C. </bdi>
+      <h2 id="privacy-considerations"><a class="self-link" href="#privacy-considerations" aria-label="Permalink for Appendix C."></a><bdi class="secno">C. </bdi>
         Security and privacy considerations
-      <a class="self-link" aria-label="§" href="#privacy-considerations"></a></h2><p><em>This section is non-normative.</em></p>
+      </h2><p><em>This section is non-normative.</em></p>
       <p>
         Web pages often run more- and less-trusted components as the same origin. For example, a
         newspaper may run advertising code without sandboxing it into a cross-origin iframe. If the
@@ -1836,24 +1899,24 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
         of abuse.
       </p>
       <p>
-        An adversary could use a <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-17">permission state</a> as an element in creating a "fingerprint"
+        An adversary could use a <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-20">permission state</a> as an element in creating a "fingerprint"
         corresponding to an end-user. Although an adversary can already determine the state of a
         permission by actually using the API, that often leads to a permission request UI being
         presented to the end-user (if the permission was not already
         "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-9"><code>granted</code></a>"). Thus, even though this API doesn't expose new
         fingerprinting information to websites, it makes it easier for an adversary to have
         discreet access to this information. Thus, implementations are encouraged to have an option
-        for users to block (globally or selectively) the querying of <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-18">permission states</a>.
+        for users to block (globally or selectively) the querying of <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-21">permission states</a>.
       </p>
     </section>
-    <section id="idl-index"><h2 id="d-idl-index"><bdi class="secno">D. </bdi>IDL Index<a class="self-link" aria-label="§" href="#idl-index"></a></h2><pre class="idl def" id="actual-idl-index"><span class="idlHeader"><a class="self-link" href="#actual-idl-index">WebIDL</a></span><code><span data-idl="" class="idlInterface" data-title="Navigator">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>)</span>]
+    <section id="idl-index"><h2 id="d-idl-index"><a class="self-link" href="#idl-index" aria-label="Permalink for Section D."></a><bdi class="secno">D. </bdi>IDL Index</h2><pre class="idl def" id="actual-idl-index"><span class="idlHeader"><a class="self-link" href="#actual-idl-index">WebIDL</a></span><code><span data-idl="" class="idlInterface" data-title="Navigator">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>)</span>]
 partial interface <a data-idl="partial" data-link-type="interface" data-title="Navigator" class="idlID" data-dfn-for="Navigator" data-type="interface" href="https://html.spec.whatwg.org/multipage/system-state.html#navigator">Navigator</a> {<span data-idl="" class="idlAttribute" data-title="permissions" data-dfn-for="Navigator">
-  [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-7">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" data-idl="attribute" data-title="permissions" data-dfn-for="Navigator" data-type="Permissions" data-lt="permissions" data-local-lt="Navigator.permissions" class="idlName"><code>permissions</code></dfn>;</span>
+  [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-10">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" data-idl="attribute" data-title="permissions" data-dfn-for="Navigator" data-type="Permissions" data-lt="permissions" data-local-lt="Navigator.permissions" class="idlName"><code>permissions</code></dfn>;</span>
 };</span><span data-idl="" class="idlInterface" data-title="WorkerNavigator">
 
 [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
 partial interface <a data-idl="partial" data-link-type="interface" data-title="WorkerNavigator" class="idlID" data-dfn-for="WorkerNavigator" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workernavigator">WorkerNavigator</a> {<span data-idl="" class="idlAttribute" data-title="permissions" data-dfn-for="WorkerNavigator">
-  [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-8">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" data-idl="attribute" data-title="permissions" data-dfn-for="WorkerNavigator" data-type="Permissions" data-lt="permissions" data-local-lt="WorkerNavigator.permissions" class="idlName"><code>permissions</code></dfn>;</span>
+  [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a href="#dfn-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-11">Permissions</a></span> <dfn data-export="" data-dfn-type="attribute" data-idl="attribute" data-title="permissions" data-dfn-for="WorkerNavigator" data-type="Permissions" data-lt="permissions" data-local-lt="WorkerNavigator.permissions" class="idlName"><code>permissions</code></dfn>;</span>
 };</span>
 
 <span data-idl="" class="idlInterface" data-title="Permissions">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(<a data-type="interface" href="https://html.spec.whatwg.org/multipage/window-object.html#window">Window</a>,<a data-lt="WorkerGlobalScope" data-type="interface" href="https://html.spec.whatwg.org/multipage/workers.html#workerglobalscope">Worker</a>)</span>]
@@ -1900,9 +1963,9 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
   <span class="idlEnumItem">"<a class="internalDFN" data-link-type="enum-value" href="#dom-permissionname-xr-spatial-tracking" id="ref-for-dom-permissionname-xr-spatial-tracking-2"><code>xr-spatial-tracking</code></a>"</span>,
 };</span></code></pre></section>
     <section class="appendix informative" id="acknowledgments">
-      <h2 class="no-num" id="e-acknowledgments"><bdi class="secno">E. </bdi>
+      <h2 class="no-num" id="e-acknowledgments"><a class="self-link" href="#acknowledgments" aria-label="Permalink for Appendix E."></a><bdi class="secno">E. </bdi>
         Acknowledgments
-      <a class="self-link" aria-label="§" href="#acknowledgments"></a></h2><p><em>This section is non-normative.</em></p>
+      </h2><p><em>This section is non-normative.</em></p>
       <p>
         The editors would like to thank Adrienne Porter Felt, Anne van Kesteren, Domenic Denicola,
         Jake Archibald and Wendy Seltzer for their help with the API design and editorial work.
@@ -1910,12 +1973,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     </section>
   
 
-<section id="references" class="appendix"><h2 id="f-references"><bdi class="secno">F. </bdi>References<a class="self-link" aria-label="§" href="#references"></a></h2><section id="normative-references">
-    <h3 id="f-1-normative-references"><bdi class="secno">F.1 </bdi>Normative references<a class="self-link" aria-label="§" href="#normative-references"></a></h3>
+<section id="references" class="appendix"><h2 id="f-references"><a class="self-link" href="#references" aria-label="Permalink for Appendix F."></a><bdi class="secno">F. </bdi>References</h2><section id="normative-references">
+    <h3 id="f-1-normative-references"><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix F.1"></a><bdi class="secno">F.1 </bdi>Normative references</h3>
     <dl class="bibliography"><dt id="bib-accelerometer">[accelerometer]</dt><dd><a href="https://www.w3.org/TR/accelerometer/"><cite>Accelerometer</cite></a>. Anssi Kostiainen; Alexander Shalamov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/accelerometer/">https://www.w3.org/TR/accelerometer/</a></dd><dt id="bib-background-fetch">[background-fetch]</dt><dd><a href="https://wicg.github.io/background-fetch/"><cite>Background Fetch</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a></dd><dt id="bib-dom">[dom]</dt><dd><a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a></dd><dt id="bib-ecmascript">[ECMASCRIPT]</dt><dd><a href="https://tc39.es/ecma262/multipage/"><cite>ECMAScript Language Specification</cite></a>.  Ecma International. URL: <a href="https://tc39.es/ecma262/multipage/">https://tc39.es/ecma262/multipage/</a></dd><dt id="bib-generic-sensor">[generic-sensor]</dt><dd><a href="https://www.w3.org/TR/generic-sensor/"><cite>Generic Sensor API</cite></a>. Rick Waldron; Mikhail Pozdnyakov; Alexander Shalamov; Tobie Langel.  W3C. 29 July 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/generic-sensor/">https://www.w3.org/TR/generic-sensor/</a></dd><dt id="bib-gyroscope">[gyroscope]</dt><dd><a href="https://www.w3.org/TR/gyroscope/"><cite>Gyroscope</cite></a>. Anssi Kostiainen; Mikhail Pozdnyakov.  W3C. 2 September 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/gyroscope/">https://www.w3.org/TR/gyroscope/</a></dd><dt id="bib-html">[HTML]</dt><dd><a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a></dd><dt id="bib-infra">[infra]</dt><dd><a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a></dd><dt id="bib-magnetometer">[magnetometer]</dt><dd><a href="https://www.w3.org/TR/magnetometer/"><cite>Magnetometer</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik.  W3C. 2 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/magnetometer/">https://www.w3.org/TR/magnetometer/</a></dd><dt id="bib-mediacapture-streams">[mediacapture-streams]</dt><dd><a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet; Daniel Burnett; Adam Bergkvist; Anant Narayanan.  W3C. 21 October 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a></dd><dt id="bib-permissions-policy">[Permissions-Policy]</dt><dd><a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. Ian Clelland.  W3C. 16 July 2020. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a></dd><dt id="bib-rfc2119">[RFC2119]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a></dd><dt id="bib-rfc8174">[RFC8174]</dt><dd><a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a></dd><dt id="bib-screen-capture">[screen-capture]</dt><dd><a href="https://www.w3.org/TR/screen-capture/"><cite>Screen Capture</cite></a>. Martin Thomson; Keith Griffin; Suhas Nandakumar; Henrik Boström; Jan-Ivar Bruaroey; Elad Alon.  W3C. 16 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-capture/">https://www.w3.org/TR/screen-capture/</a></dd><dt id="bib-screen-wake-lock">[screen-wake-lock]</dt><dd><a href="https://www.w3.org/TR/screen-wake-lock/"><cite>Screen Wake Lock API</cite></a>. Kenneth Christiansen; Marcos Caceres; Raphael Kubo da Costa; Ilya Bogdanovich; Andrey Logvinov.  W3C. 30 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/screen-wake-lock/">https://www.w3.org/TR/screen-wake-lock/</a></dd><dt id="bib-storage">[storage]</dt><dd><a href="https://storage.spec.whatwg.org/"><cite>Storage Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://storage.spec.whatwg.org/">https://storage.spec.whatwg.org/</a></dd><dt id="bib-web-nfc">[web-nfc]</dt><dd><a href="https://w3c.github.io/web-nfc/"><cite>Web NFC API</cite></a>.  W3C. W3C Editor's Draft. URL: <a href="https://w3c.github.io/web-nfc/">https://w3c.github.io/web-nfc/</a></dd><dt id="bib-webidl">[WEBIDL]</dt><dd><a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a></dd><dt id="bib-webxr">[webxr]</dt><dd><a href="https://www.w3.org/TR/webxr/"><cite>WebXR Device API</cite></a>. Brandon Jones; Manish Goregaokar; Rik Cabanier; Nell Waliczek.  W3C. 26 October 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a></dd></dl>
   </section><section id="informative-references">
-    <h3 id="f-2-informative-references"><bdi class="secno">F.2 </bdi>Informative references<a class="self-link" aria-label="§" href="#informative-references"></a></h3>
-    <dl class="bibliography"><dt id="bib-ambient-light">[ambient-light]</dt><dd><a href="https://www.w3.org/TR/ambient-light/"><cite>Ambient Light Sensor</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik; Tobie Langel.  W3C. 3 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a></dd><dt id="bib-appmanifest">[appmanifest]</dt><dd><a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Matt Giuca; Aaron Gustafson; Daniel Murphy; Anssi Kostiainen.  W3C. 10 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a></dd><dt id="bib-audio-output">[audio-output]</dt><dd><a href="https://www.w3.org/TR/audio-output/"><cite>Audio Output Devices API</cite></a>. Justin Uberti; Guido Urdaneta; youenn fablet.  W3C. 15 November 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a></dd><dt id="bib-gamepad">[Gamepad]</dt><dd><a href="https://www.w3.org/TR/gamepad/"><cite>Gamepad</cite></a>. Steve Agoston; James Hollyer; Matthew Reynolds; Brandon Jones; Scott Graham; Theodore Mielczarek.  W3C. 5 August 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/gamepad/">https://www.w3.org/TR/gamepad/</a></dd><dt id="bib-geolocation">[Geolocation]</dt><dd><a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres.  W3C. 3 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a></dd><dt id="bib-notifications">[notifications]</dt><dd><a href="https://notifications.spec.whatwg.org/"><cite>Notifications API Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a></dd><dt id="bib-push-api">[push-api]</dt><dd><a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson.  W3C. 3 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a></dd><dt id="bib-web-background-sync">[web-background-sync]</dt><dd><a href="https://wicg.github.io/background-sync/spec/"><cite>Web Background Synchronization</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-sync/spec/">https://wicg.github.io/background-sync/spec/</a></dd><dt id="bib-web-bluetooth">[web-bluetooth]</dt><dd><a href="https://webbluetoothcg.github.io/web-bluetooth/"><cite>Web Bluetooth</cite></a>. Jeffrey Yasskin.  W3C Web Bluetooth Community Group. Draft Community Group Report. URL: <a href="https://webbluetoothcg.github.io/web-bluetooth/">https://webbluetoothcg.github.io/web-bluetooth/</a></dd><dt id="bib-webmidi">[webmidi]</dt><dd><a href="https://www.w3.org/TR/webmidi/"><cite>Web MIDI API</cite></a>. Chris Wilson; Jussi Kalliokoski.  W3C. 17 March 2015. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webmidi/">https://www.w3.org/TR/webmidi/</a></dd></dl>
+    <h3 id="f-2-informative-references"><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix F.2"></a><bdi class="secno">F.2 </bdi>Informative references</h3>
+    <dl class="bibliography"><dt id="bib-ambient-light">[ambient-light]</dt><dd><a href="https://www.w3.org/TR/ambient-light/"><cite>Ambient Light Sensor</cite></a>. Anssi Kostiainen; Rijubrata Bhaumik; Tobie Langel.  W3C. 3 September 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/ambient-light/">https://www.w3.org/TR/ambient-light/</a></dd><dt id="bib-appmanifest">[appmanifest]</dt><dd><a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Matt Giuca; Aaron Gustafson; Daniel Murphy; Anssi Kostiainen.  W3C. 10 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a></dd><dt id="bib-audio-output">[audio-output]</dt><dd><a href="https://www.w3.org/TR/audio-output/"><cite>Audio Output Devices API</cite></a>. Justin Uberti; Guido Urdaneta; youenn fablet.  W3C. 15 November 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/audio-output/">https://www.w3.org/TR/audio-output/</a></dd><dt id="bib-gamepad">[Gamepad]</dt><dd><a href="https://www.w3.org/TR/gamepad/"><cite>Gamepad</cite></a>. Steve Agoston; James Hollyer; Matthew Reynolds; Brandon Jones; Scott Graham; Theodore Mielczarek.  W3C. 5 August 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/gamepad/">https://www.w3.org/TR/gamepad/</a></dd><dt id="bib-geolocation">[Geolocation]</dt><dd><a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres.  W3C. 3 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a></dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd><a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet; Daniel Burnett; Adam Bergkvist; Anant Narayanan.  W3C. 21 October 2021. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a></dd><dt id="bib-notifications">[notifications]</dt><dd><a href="https://notifications.spec.whatwg.org/"><cite>Notifications API Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a></dd><dt id="bib-push-api">[push-api]</dt><dd><a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson.  W3C. 3 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a></dd><dt id="bib-web-background-sync">[web-background-sync]</dt><dd><a href="https://wicg.github.io/background-sync/spec/"><cite>Web Background Synchronization</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-sync/spec/">https://wicg.github.io/background-sync/spec/</a></dd><dt id="bib-web-bluetooth">[web-bluetooth]</dt><dd><a href="https://webbluetoothcg.github.io/web-bluetooth/"><cite>Web Bluetooth</cite></a>. Jeffrey Yasskin.  W3C Web Bluetooth Community Group. Draft Community Group Report. URL: <a href="https://webbluetoothcg.github.io/web-bluetooth/">https://webbluetoothcg.github.io/web-bluetooth/</a></dd><dt id="bib-webmidi">[webmidi]</dt><dd><a href="https://www.w3.org/TR/webmidi/"><cite>Web MIDI API</cite></a>. Chris Wilson; Jussi Kalliokoski.  W3C. 17 March 2015. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webmidi/">https://www.w3.org/TR/webmidi/</a></dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
   </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-at-risk" aria-label="Links in this document to definition: at risk">
@@ -1953,13 +2016,15 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     <li>
     <a href="#ref-for-dfn-permission-1" title="§ 2. Model">§ 2. Model</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-2" title="§ 2.1 Permissions">§ 2.1 Permissions</a> 
+    <a href="#ref-for-dfn-permission-2" title="§ 2.1 Permissions">§ 2.1 Permissions</a> <a href="#ref-for-dfn-permission-3" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-3" title="§ 2.2 Powerful features">§ 2.2 Powerful features</a> <a href="#ref-for-dfn-permission-4" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-permission-4" title="§ 2.2 Powerful features">§ 2.2 Powerful features</a> <a href="#ref-for-dfn-permission-5" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-5" title="§ 3. Extensions to the Navigator and WorkerNavigator interfaces">§ 3. Extensions to the Navigator and WorkerNavigator interfaces</a> <a href="#ref-for-dfn-permission-6" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-permission-6" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-7" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-7" title="§ D. IDL Index">§ D. IDL Index</a> <a href="#ref-for-dfn-permission-8" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-permission-8" title="§ 3. Extensions to the Navigator and WorkerNavigator interfaces">§ 3. Extensions to the Navigator and WorkerNavigator interfaces</a> <a href="#ref-for-dfn-permission-9" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-permission-10" title="§ D. IDL Index">§ D. IDL Index</a> <a href="#ref-for-dfn-permission-11" title="Reference 2">(2)</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-states" aria-label="Links in this document to definition: states">
@@ -1981,7 +2046,9 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-prompt-1" title="§ 5. PermissionStatus interface">§ 5. PermissionStatus interface</a> 
+    <a href="#ref-for-dfn-prompt-1" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> 
+  </li><li>
+    <a href="#ref-for-dfn-prompt-2" title="§ 5. PermissionStatus interface">§ 5. PermissionStatus interface</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-granted" aria-label="Links in this document to definition: Granted">
@@ -1995,7 +2062,9 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     <li>
     <a href="#ref-for-dfn-granted-1" title="§ 2.2 Powerful features">§ 2.2 Powerful features</a> <a href="#ref-for-dfn-granted-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-granted-3" title="Reference 3">(3)</a> 
   </li><li>
-    <a href="#ref-for-dfn-granted-4" title="§ 5. PermissionStatus interface">§ 5. PermissionStatus interface</a> 
+    <a href="#ref-for-dfn-granted-4" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> <a href="#ref-for-dfn-granted-5" title="Reference 2">(2)</a> 
+  </li><li>
+    <a href="#ref-for-dfn-granted-6" title="§ 5. PermissionStatus interface">§ 5. PermissionStatus interface</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-denied" aria-label="Links in this document to definition: Denied">
@@ -2053,39 +2122,39 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     <li>
     <a href="#ref-for-dfn-powerful-feature-1" title="§ 2. Model">§ 2. Model</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-2" title="§ 2.1 Permissions">§ 2.1 Permissions</a> 
+    <a href="#ref-for-dfn-powerful-feature-2" title="§ 2.1 Permissions">§ 2.1 Permissions</a> <a href="#ref-for-dfn-powerful-feature-3" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-3" title="§ 2.2 Powerful features">§ 2.2 Powerful features</a> <a href="#ref-for-dfn-powerful-feature-4" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-4" title="§ 2.2 Powerful features">§ 2.2 Powerful features</a> <a href="#ref-for-dfn-powerful-feature-5" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-5" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> <a href="#ref-for-dfn-powerful-feature-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-powerful-feature-7" title="Reference 3">(3)</a> <a href="#ref-for-dfn-powerful-feature-8" title="Reference 4">(4)</a> <a href="#ref-for-dfn-powerful-feature-9" title="Reference 5">(5)</a> 
+    <a href="#ref-for-dfn-powerful-feature-6" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> <a href="#ref-for-dfn-powerful-feature-7" title="Reference 2">(2)</a> <a href="#ref-for-dfn-powerful-feature-8" title="Reference 3">(3)</a> <a href="#ref-for-dfn-powerful-feature-9" title="Reference 4">(4)</a> <a href="#ref-for-dfn-powerful-feature-10" title="Reference 5">(5)</a> <a href="#ref-for-dfn-powerful-feature-11" title="Reference 6">(6)</a> <a href="#ref-for-dfn-powerful-feature-12" title="Reference 7">(7)</a> <a href="#ref-for-dfn-powerful-feature-13" title="Reference 8">(8)</a> <a href="#ref-for-dfn-powerful-feature-14" title="Reference 9">(9)</a> <a href="#ref-for-dfn-powerful-feature-15" title="Reference 10">(10)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-10" title="§ 2.2.2 Aspects">§ 2.2.2 Aspects</a> <a href="#ref-for-dfn-powerful-feature-11" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-16" title="§ 2.2.2 Aspects">§ 2.2.2 Aspects</a> <a href="#ref-for-dfn-powerful-feature-17" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-12" title="§ 2.4 Requesting permission to use a powerful feature">§ 2.4 Requesting permission to use a powerful feature</a> 
+    <a href="#ref-for-dfn-powerful-feature-18" title="§ 2.4 Requesting permission to use a powerful feature">§ 2.4 Requesting permission to use a powerful feature</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-13" title="§ 2.6 Reacting to users revoking permission">§ 2.6 Reacting to users revoking permission</a> 
+    <a href="#ref-for-dfn-powerful-feature-19" title="§ 2.6 Reacting to users revoking permission">§ 2.6 Reacting to users revoking permission</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-14" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> <a href="#ref-for-dfn-powerful-feature-15" title="Reference 2">(2)</a> <a href="#ref-for-dfn-powerful-feature-16" title="Reference 3">(3)</a> <a href="#ref-for-dfn-powerful-feature-17" title="Reference 4">(4)</a> <a href="#ref-for-dfn-powerful-feature-18" title="Reference 5">(5)</a> <a href="#ref-for-dfn-powerful-feature-19" title="Reference 6">(6)</a> <a href="#ref-for-dfn-powerful-feature-20" title="Reference 7">(7)</a> <a href="#ref-for-dfn-powerful-feature-21" title="Reference 8">(8)</a> <a href="#ref-for-dfn-powerful-feature-22" title="Reference 9">(9)</a> <a href="#ref-for-dfn-powerful-feature-23" title="Reference 10">(10)</a> 
+    <a href="#ref-for-dfn-powerful-feature-20" title="§ 6. Powerful features registry">§ 6. Powerful features registry</a> <a href="#ref-for-dfn-powerful-feature-21" title="Reference 2">(2)</a> <a href="#ref-for-dfn-powerful-feature-22" title="Reference 3">(3)</a> <a href="#ref-for-dfn-powerful-feature-23" title="Reference 4">(4)</a> <a href="#ref-for-dfn-powerful-feature-24" title="Reference 5">(5)</a> <a href="#ref-for-dfn-powerful-feature-25" title="Reference 6">(6)</a> <a href="#ref-for-dfn-powerful-feature-26" title="Reference 7">(7)</a> <a href="#ref-for-dfn-powerful-feature-27" title="Reference 8">(8)</a> <a href="#ref-for-dfn-powerful-feature-28" title="Reference 9">(9)</a> <a href="#ref-for-dfn-powerful-feature-29" title="Reference 10">(10)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-24" title="§ 6.1 Screen wake lock">§ 6.1 Screen wake lock</a> <a href="#ref-for-dfn-powerful-feature-25" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-30" title="§ 6.1 Screen wake lock">§ 6.1 Screen wake lock</a> <a href="#ref-for-dfn-powerful-feature-31" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-26" title="§ 6.2 Background Fetch">§ 6.2 Background Fetch</a> <a href="#ref-for-dfn-powerful-feature-27" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-32" title="§ 6.2 Background Fetch">§ 6.2 Background Fetch</a> <a href="#ref-for-dfn-powerful-feature-33" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-28" title="§ 6.3 Persistent Storage">§ 6.3 Persistent Storage</a> 
+    <a href="#ref-for-dfn-powerful-feature-34" title="§ 6.3 Persistent Storage">§ 6.3 Persistent Storage</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-29" title="§ 6.4 Accelerometer">§ 6.4 Accelerometer</a> <a href="#ref-for-dfn-powerful-feature-30" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-35" title="§ 6.4 Accelerometer">§ 6.4 Accelerometer</a> <a href="#ref-for-dfn-powerful-feature-36" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-31" title="§ 6.5 Gyroscope">§ 6.5 Gyroscope</a> <a href="#ref-for-dfn-powerful-feature-32" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-37" title="§ 6.5 Gyroscope">§ 6.5 Gyroscope</a> <a href="#ref-for-dfn-powerful-feature-38" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-33" title="§ 6.6 Magnetometer">§ 6.6 Magnetometer</a> <a href="#ref-for-dfn-powerful-feature-34" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-39" title="§ 6.6 Magnetometer">§ 6.6 Magnetometer</a> <a href="#ref-for-dfn-powerful-feature-40" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-35" title="§ 6.7 Display Capture">§ 6.7 Display Capture</a> <a href="#ref-for-dfn-powerful-feature-36" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-41" title="§ 6.7 Display Capture">§ 6.7 Display Capture</a> <a href="#ref-for-dfn-powerful-feature-42" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-37" title="§ 6.8 NFC">§ 6.8 NFC</a> <a href="#ref-for-dfn-powerful-feature-38" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-43" title="§ 6.8 NFC">§ 6.8 NFC</a> <a href="#ref-for-dfn-powerful-feature-44" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-39" title="§ 6.9 XR Spatial tracking">§ 6.9 XR Spatial tracking</a> 
+    <a href="#ref-for-dfn-powerful-feature-45" title="§ 6.9 XR Spatial tracking">§ 6.9 XR Spatial tracking</a> 
   </li><li>
-    <a href="#ref-for-dfn-powerful-feature-40" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> <a href="#ref-for-dfn-powerful-feature-41" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-powerful-feature-46" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> <a href="#ref-for-dfn-powerful-feature-47" title="Reference 2">(2)</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-express-permission" aria-label="Links in this document to definition: Express permission">
@@ -2098,6 +2167,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <ul>
     <li>
     <a href="#ref-for-dfn-express-permission-1" title="§ 2.2 Powerful features">§ 2.2 Powerful features</a> 
+  </li><li>
+    <a href="#ref-for-dfn-express-permission-2" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-name" aria-label="Links in this document to definition: name">
@@ -2239,13 +2310,27 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-1" title="§ 2.6 Reacting to users revoking permission">§ 2.6 Reacting to users revoking permission</a> 
+    <a href="#ref-for-dfn-permission-revocation-algorithm-1" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-2" title="§ 6.4 Accelerometer">§ 6.4 Accelerometer</a> 
+    <a href="#ref-for-dfn-permission-revocation-algorithm-2" title="§ 2.6 Reacting to users revoking permission">§ 2.6 Reacting to users revoking permission</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-3" title="§ 6.5 Gyroscope">§ 6.5 Gyroscope</a> 
+    <a href="#ref-for-dfn-permission-revocation-algorithm-3" title="§ 6.4 Accelerometer">§ 6.4 Accelerometer</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-4" title="§ 6.6 Magnetometer">§ 6.6 Magnetometer</a> 
+    <a href="#ref-for-dfn-permission-revocation-algorithm-4" title="§ 6.5 Gyroscope">§ 6.5 Gyroscope</a> 
+  </li><li>
+    <a href="#ref-for-dfn-permission-revocation-algorithm-5" title="§ 6.6 Magnetometer">§ 6.6 Magnetometer</a> 
+  </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-lifetime" aria-label="Links in this document to definition: lifetime">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-lifetime" aria-label="Permalink for definition: lifetime. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+    <a href="#ref-for-dfn-lifetime-1" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> <a href="#ref-for-dfn-lifetime-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-lifetime-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-lifetime-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-lifetime-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-lifetime-6" title="Reference 6">(6)</a> <a href="#ref-for-dfn-lifetime-7" title="Reference 7">(7)</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-default-powerful-feature" aria-label="Links in this document to definition: default powerful feature">
@@ -2291,17 +2376,17 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-state-1" title="§ 2.1 Permissions">§ 2.1 Permissions</a> <a href="#ref-for-dfn-permission-state-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-state-3" title="Reference 3">(3)</a> 
+    <a href="#ref-for-dfn-permission-state-1" title="§ 2.1 Permissions">§ 2.1 Permissions</a> <a href="#ref-for-dfn-permission-state-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-state-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-state-4" title="Reference 4">(4)</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-state-4" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-state-5" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-state-6" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-state-7" title="Reference 4">(4)</a> <a href="#ref-for-dfn-permission-state-8" title="Reference 5">(5)</a> <a href="#ref-for-dfn-permission-state-9" title="Reference 6">(6)</a> <a href="#ref-for-dfn-permission-state-10" title="Reference 7">(7)</a> 
+    <a href="#ref-for-dfn-permission-state-5" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-state-6" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-state-7" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-state-8" title="Reference 4">(4)</a> <a href="#ref-for-dfn-permission-state-9" title="Reference 5">(5)</a> <a href="#ref-for-dfn-permission-state-10" title="Reference 6">(6)</a> <a href="#ref-for-dfn-permission-state-11" title="Reference 7">(7)</a> <a href="#ref-for-dfn-permission-state-12" title="Reference 8">(8)</a> <a href="#ref-for-dfn-permission-state-13" title="Reference 9">(9)</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-state-11" title="§ 2.3 Reading the current permission state">§ 2.3 Reading the current permission state</a> <a href="#ref-for-dfn-permission-state-12" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-state-13" title="Reference 3">(3)</a> 
+    <a href="#ref-for-dfn-permission-state-14" title="§ 2.3 Reading the current permission state">§ 2.3 Reading the current permission state</a> <a href="#ref-for-dfn-permission-state-15" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-state-16" title="Reference 3">(3)</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-state-14" title="§ 2.4 Requesting permission to use a powerful feature">§ 2.4 Requesting permission to use a powerful feature</a> 
+    <a href="#ref-for-dfn-permission-state-17" title="§ 2.4 Requesting permission to use a powerful feature">§ 2.4 Requesting permission to use a powerful feature</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-state-15" title="§ 2.5 Prompt the user to choose">§ 2.5 Prompt the user to choose</a> <a href="#ref-for-dfn-permission-state-16" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-permission-state-18" title="§ 2.5 Prompt the user to choose">§ 2.5 Prompt the user to choose</a> <a href="#ref-for-dfn-permission-state-19" title="Reference 2">(2)</a> 
   </li><li>
-    <a href="#ref-for-dfn-permission-state-17" title="§ C. Security and privacy considerations">§ C. Security and privacy considerations</a> <a href="#ref-for-dfn-permission-state-18" title="Reference 2">(2)</a> 
+    <a href="#ref-for-dfn-permission-state-20" title="§ C. Security and privacy considerations">§ C. Security and privacy considerations</a> <a href="#ref-for-dfn-permission-state-21" title="Reference 2">(2)</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-request-permission-to-use" aria-label="Links in this document to definition: request permission to use">
@@ -2647,7 +2732,9 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permissions-task-source-1" title="§ 5.5 Garbage collection">§ 5.5 Garbage collection</a> 
+    <a href="#ref-for-dfn-permissions-task-source-1" title="§ 2.2.1 Specifying a powerful feature">§ 2.2.1 Specifying a powerful feature</a> 
+  </li><li>
+    <a href="#ref-for-dfn-permissions-task-source-2" title="§ 5.5 Garbage collection">§ 5.5 Garbage collection</a> 
   </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionname" aria-label="Links in this document to definition: PermissionName">
