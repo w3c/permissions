@@ -388,10 +388,10 @@
               <p>
                 Every [=permission=] has a [=permission/lifetime=], which is the duration for which
                 a particular permission remains [=permission/granted=] before it reverts back to
-                its default [=permission state=].
-                A [=permission/lifetime=] could be until a particular Realm is destroyed, until a particular [=top-level browsing context=] is destroyed, an amount of time, or infinite.
-                The lifetime is negotiated between the end-user
-                and the [=user agent=] when the user gives [=express permission=] to use a
+                its default [=permission state=]. A [=permission/lifetime=] could be until a
+                particular Realm is destroyed, until a particular [=top-level browsing context=] is
+                destroyed, an amount of time, or infinite. The lifetime is negotiated between the
+                end-user and the [=user agent=] when the user gives [=express permission=] to use a
                 [=feature=] - usually via some permission UI or policy.
               </p>
               <p>
@@ -417,22 +417,22 @@
                 <p>
                   For particularly privacy-sensitive [=features=], such as [[[GETUSERMEDIA]]],
                   which can provide a web application access to a user's camera and microphone,
-                  some user agents expire a permission [=permission/grant=] as soon as a
-                  browser tab is closed or navigated. For other features, like the
-                  [[[Geolocation]]], user agents are known to offer a choice of only granting the
-                  permission for the session, or for one day. Others, like the [[[Notifications]]]
-                  and [[[push-api]]] APIs, remember a user's decision indefinitely or until the
-                  user manually revokes the permission. Note that permission
-                  [=permission/lifetimes=] can vary significantly between user agents.
+                  some user agents expire a permission [=permission/grant=] as soon as a browser
+                  tab is closed or navigated. For other features, like the [[[Geolocation]]], user
+                  agents are known to offer a choice of only granting the permission for the
+                  session, or for one day. Others, like the [[[Notifications]]] and [[[push-api]]]
+                  APIs, remember a user's decision indefinitely or until the user manually revokes
+                  the permission. Note that permission [=permission/lifetimes=] can vary
+                  significantly between user agents.
                 </p>
                 <p>
                   Finding the right balance for the lifetime of a permission requires a lot of
                   thought and experimentation, and often evolves over a period of years.
-                  Implementers are encouraged to work with their UX security teams to find
-                  the right balance between ease of access to a [=powerful feature=] (i.e.,
-                  reducing the number of permission prompts), respecting a user's privacy, and
-                  making users aware when a web application is making use of a particular powerful
-                  feature (e.g., via some visual or auditory UI indicator).
+                  Implementers are encouraged to work with their UX security teams to find the
+                  right balance between ease of access to a [=powerful feature=] (i.e., reducing
+                  the number of permission prompts), respecting a user's privacy, and making users
+                  aware when a web application is making use of a particular powerful feature
+                  (e.g., via some visual or auditory UI indicator).
                 </p>
                 <p>
                   If you are unsure about what [=permission/lifetime=] to suggest for a [=powerful
