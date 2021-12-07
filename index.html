@@ -859,12 +859,16 @@
         Each enumeration value in the {{PermissionName}} enum identifies a <a>powerful feature</a>.
       </p>
       <p>
+        The <dfn>accelerometer</dfn> enum value identifies the [[[?accelerometer]]] API [=powerful
+        feature=].
+      </p>
+      <p>
         The <dfn>ambient-light-sensor</dfn> enum value identifies the [[[?ambient-light]]]
         [=powerful feature=].
       </p>
       <p>
-        The <dfn>background-fetch</dfn> enum value identifies the [[[background-fetch]]] [=powerful
-        feature=].
+        The <dfn>background-fetch</dfn> enum value identifies the [[[?background-fetch]]]
+        [=powerful feature=].
       </p>
       <p>
         The <dfn>background-sync</dfn> enum value identifies the [[[?web-background-sync]]]
@@ -887,6 +891,14 @@
         feature=].
       </p>
       <p>
+        The <dfn>gyroscope</dfn> enum value identifies the [[[?gyroscope]]] API [=powerful
+        feature=].
+      </p>
+      <p>
+        The <dfn>magnetometer</dfn> enum value identifies the [[[?magnetometer]]] API [=powerful
+        feature=].
+      </p>
+      <p>
         The <dfn>midi</dfn> enum value identifies the [[[?webmidi]]] [=powerful feature=].
       </p>
       <p>
@@ -905,7 +917,7 @@
         feature=].
       </p>
       <p>
-        The <dfn>xr-spatial-tracking</dfn> enum value identifies the [[[webxr]]] Device API
+        The <dfn>xr-spatial-tracking</dfn> enum value identifies the [[[?webxr]]] Device API
         [=powerful feature=].
       </p>
       <section>
@@ -919,60 +931,6 @@
         <p class="issue">
           This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
           Process, it is [=at risk=].
-        </p>
-      </section>
-      <section>
-        <h3 id="accelerometer">
-          Accelerometer
-        </h3>
-        <p class="issue">
-          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
-          Process, it is [=at risk=].
-        </p>
-        <p>
-          The <dfn>accelerometer</dfn> enum value identifies the [[[accelerometer]]] API [=powerful
-          feature=].
-        </p>
-        <p data-cite="generic-sensor">
-          Its [=powerful feature/permission revocation algorithm=] is the result of calling
-          [=generic sensor permission revocation algorithm=] passing it
-          {{PermissionName/"accelerometer"}} as argument.
-        </p>
-      </section>
-      <section>
-        <h3 id="gyroscope">
-          Gyroscope
-        </h3>
-        <p class="issue">
-          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
-          Process, it is [=at risk=].
-        </p>
-        <p>
-          The <dfn>gyroscope</dfn> enum value identifies the [[[gyroscope]]] API [=powerful
-          feature=].
-        </p>
-        <p data-cite="generic-sensor">
-          Its [=powerful feature/permission revocation algorithm=] is the result of calling
-          [=generic sensor permission revocation algorithm=] passing it
-          {{PermissionName/"gyroscope"}} as argument.
-        </p>
-      </section>
-      <section>
-        <h3 id="magnetometer">
-          Magnetometer
-        </h3>
-        <p class="issue">
-          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
-          Process, it is [=at risk=].
-        </p>
-        <p>
-          The <dfn>magnetometer</dfn> enum value identifies the [[[magnetometer]]] API [=powerful
-          feature=].
-        </p>
-        <p data-cite="generic-sensor">
-          Its [=powerful feature/permission revocation algorithm=] is the result of calling
-          [=generic sensor permission revocation algorithm=] passing it
-          {{PermissionName/"magnetometer"}} as argument.
         </p>
       </section>
       <section>
