@@ -198,11 +198,6 @@
           </dd>
         </dl>
         <p>
-          A user agent SHOULD provide a means for the user to review, update, and reset the
-          [=permission=] [=permission/state=] of [=powerful features=] associated with a realm or
-          origin.
-        </p>
-        <p>
           To ascertain <dfn class="export">new information about the user's intent</dfn>, a user
           agent MAY collect information about a user's intentions. This information can come from
           explicit user action, aggregate behavior of both the relevant user and other users, or
@@ -999,9 +994,12 @@
         permission by actually using the API, that often leads to a UI prompt being presented to
         the end-user (if the permission was not already [=permission/granted=]). Even though this
         API doesn't expose new fingerprinting information to websites, it makes it easier for an
-        adversary to have discreet access to this information. Thus, implementations SHOULD provide
-        a means for users to control (globally or selectively) the [=permission states=]= of each
-        [=power feature=].
+        adversary to have discreet access to this information.
+      </p>
+      <p>
+        To mitigate this, a user agent SHOULD provide a means for the user to review, update, and
+        reset the [=permission=] [=permission/state=] of [=powerful features=] associated with a
+        realm or origin.
       </p>
     </section>
     <section id="security-considerations">
