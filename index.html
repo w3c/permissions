@@ -712,17 +712,18 @@
             </li>
             <li>Let <var>promise</var> be a newly-created {{Promise}}.
             </li>
-            <li>Return <var>promise</var> and continue the following steps asynchronously.
-            </li>
-            <li>Run the steps to <a>create a `PermissionStatus`</a> for |typedDescriptor|, and let
-            |status| be the result.
-            </li>
-            <li>Let |query| be |status|'s {{PermissionStatus/[[query]]}} internal slot.
-            </li>
-            <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission query
-            algorithm=], passing |query| and |status|.
-            </li>
-            <li>Resolve <var>promise</var> with |status|.
+            <li>Return <var>promise</var> and continue [=in parallel=]:
+              <ol>
+                <li>Let |status| be <a>create a `PermissionStatus`</a> with |typedDescriptor|.
+                </li>
+                <li>Let |query| be |status|'s {{PermissionStatus/[[query]]}} internal slot.
+                </li>
+                <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission
+                query algorithm=], passing |query| and |status|.
+                </li>
+                <li>Resolve <var>promise</var> with |status|.
+                </li>
+              </ol>
             </li>
           </ol>
         </section>
