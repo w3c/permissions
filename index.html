@@ -105,7 +105,7 @@
       </p>
       <pre class="example js" title="Checking the state of multiple permissions">
         const queryPromises = ["geolocation", "notifications"].map(
-          name =&gt; navigator.permissions.query({ name });
+          name =&gt; navigator.permissions.query({ name })
         );
         for await (const status of queryPromises) {
           console.log(`${status.name}: ${status.state}`);
