@@ -50,13 +50,6 @@
         mdn: true,
         // See https://respec.org/docs/#xref for usage.
         xref: "web-platform",
-        localBiblio: {
-          "powerful-feature-registry": {
-            title: "Registry of Powerful Features",
-            href: "https://w3c.github.io/powerful-features-registry/",
-            status: "unofficial",
-          }
-        }
       };
     </script>
   </head>
@@ -75,10 +68,6 @@
     <section id="sotd">
       <p>
         This is a work in progress.
-      </p>
-      <p>
-        Some features in this specification are supported by only one user agent, and as such, are
-        marked as <dfn>at risk</dfn>.
       </p>
     </section>
     <section class="informative">
@@ -577,9 +566,9 @@
         <aside class="issue" id="issue-current-entry-incumbent-or-relevant" data-number="278">
         </aside>
         <p>
-          As a shorthand, a {{PermissionName}} |name|'s <a>permission state</a> is the
-          <a>permission state</a> of a {{PermissionDescriptor}} with its
-          {{PermissionDescriptor/name}} member set to |name|.
+          As a shorthand, a {{DOMString}} |name|'s <a>permission state</a> is the <a>permission
+          state</a> of a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}} member set
+          to |name|.
         </p>
       </section>
       <section>
@@ -616,8 +605,8 @@
           </li>
         </ol>
         <p>
-          As a shorthand, <a>requesting permission to use</a> a {{PermissionName}} |name|, is the
-          same as <a>requesting permission to use</a> a {{PermissionDescriptor}} with its
+          As a shorthand, <a>requesting permission to use</a> a {{DOMString}} |name|, is the same
+          as <a>requesting permission to use</a> a {{PermissionDescriptor}} with its
           {{PermissionDescriptor/name}} member set to |name|.
         </p>
       </section>
@@ -657,7 +646,7 @@
         </ol>
         <p>
           As a shorthand, <a>prompting the user to choose</a> from options associated with a
-          {{PermissionName}} |name|, is the same as <a>prompting the user to choose</a> from those
+          {{DOMString}} |name|, is the same as <a>prompting the user to choose</a> from those
           options associated with a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}}
           member set to |name|.
         </p>
@@ -711,7 +700,7 @@
           };
 
           dictionary PermissionDescriptor {
-            required PermissionName name;
+            required DOMString name;
           };
         </pre>
         <section>
@@ -724,6 +713,19 @@
             <var>permissionDesc</var>:
           </p>
           <ol class="algorithm">
+            <li>If |permissionDesc|'s {{PermissionDescriptor/name}} member is not supported, return
+            [=a promise rejected with=] a {{TypeError}}.
+              <aside class="note" title="Why is this not an enum?">
+                <p>
+                  This is deliberately design to work the same a WebIDL [=enumeration=] (`enum`)
+                  and implementers are encouraged to use their own custom `enum` here. The reason
+                  this is not an enum in the specification vary greatly in the powerful features
+                  they support. Using a {{DOMString}} to identify a powerful feature gives
+                  implementers the freedom to pick and choose which of the power features from the
+                  [[[powerful-feature-registry]]] they wish to support.
+                </p>
+              </aside>
+            </li>
             <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to an IDL
             value</a> of type {{PermissionDescriptor}}.
             </li>
@@ -763,7 +765,7 @@
           [Exposed=(Window,Worker)]
           interface PermissionStatus : EventTarget {
             readonly attribute PermissionState state;
-            readonly attribute PermissionName name;
+            readonly attribute DOMString name;
             attribute EventHandler onchange;
           };
 
@@ -860,115 +862,6 @@
             listener=] whose type is `change`.
           </p>
         </section>
-      </section>
-    </section>
-    <section data-dfn-for="PermissionName">
-      <h2>
-        Powerful features registry
-      </h2>
-      <pre class="idl">
-        enum PermissionName {
-          "accelerometer",
-          "ambient-light-sensor",
-          "background-fetch",
-          "background-sync",
-          "bluetooth",
-          "camera",
-          "display-capture",
-          "geolocation",
-          "gyroscope",
-          "magnetometer",
-          "microphone",
-          "midi",
-          "nfc",
-          "notifications",
-          "persistent-storage",
-          "push",
-          "screen-wake-lock",
-          "speaker-selection",
-          "xr-spatial-tracking",
-        };
-      </pre>
-      <p>
-        Each enumeration value in the {{PermissionName}} enum identifies a <a>powerful feature</a>.
-      </p>
-      <p>
-        The <dfn>accelerometer</dfn> enum value identifies the [[[?accelerometer]]] API [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>ambient-light-sensor</dfn> enum value identifies the [[[?ambient-light]]]
-        [=powerful feature=].
-      </p>
-      <p>
-        The <dfn>background-fetch</dfn> enum value identifies the [[[?background-fetch]]]
-        [=powerful feature=].
-      </p>
-      <p>
-        The <dfn>background-sync</dfn> enum value identifies the [[[?web-background-sync]]]
-        [=powerful feature=].
-      </p>
-      <p>
-        The <dfn>bluetooth</dfn> enum value identifies the [[[?web-bluetooth]]] [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>camera</dfn> and <dfn>microphone</dfn> enum values identify the
-        [[[?mediacapture-streams]]] [=powerful features=].
-      </p>
-      <p>
-        The <dfn>display-capture</dfn> enum value identifies the [[[?screen-capture]]] [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>geolocation</dfn> enum value identifies the [[[?Geolocation]]] [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>gyroscope</dfn> enum value identifies the [[[?gyroscope]]] API [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>magnetometer</dfn> enum value identifies the [[[?magnetometer]]] API [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>midi</dfn> enum value identifies the [[[?webmidi]]] [=powerful feature=].
-      </p>
-      <p>
-        The <dfn>nfc</dfn> enum value identifies the [[[?web-nfc]]] [=powerful feature=].
-      </p>
-      <p>
-        The <dfn>notifications</dfn> enum value identifies the [[[?notifications]]] [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>persistent-storage</dfn> enum value identifies the [[[?storage]]] [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>push</dfn> enum value identifies the [[[?push-api]]] [=powerful feature=].
-      </p>
-      <p>
-        The <dfn>speaker-selection</dfn> enum value identifies the [[[?audio-output]]] [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>xr-spatial-tracking</dfn> enum value identifies the [[[?webxr]]] Device API
-        [=powerful feature=].
-      </p>
-      <section>
-        <h3 id="screen-wake-lock">
-          Screen wake lock
-        </h3>
-        <p>
-          The <dfn>screen-wake-lock</dfn> enum value identifies the [[[screen-wake-lock]]]
-          [=powerful feature=]. It is a [=default powerful feature=].
-        </p>
-        <p class="issue">
-          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
-          Process, it is [=at risk=].
-        </p>
       </section>
     </section>
     <section id="conformance"></section>
