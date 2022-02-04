@@ -903,14 +903,128 @@
         permission=] or by some user agent policy.
       </p>
     </section>
-    <section class="appendix informative">
+    <section data-cite="webdriver">
       <h2 id="automation">
         Automated testing
       </h2>
       <p>
-        Automated testing of this specification is performed using the API provided by the <a href=
-        "https://w3c.github.io/permissions-automation/">Permissions Automation</a> document.
+        For the purposes of user-agent automation and application testing, this document defines
+        the following <a>extension commands</a> for the [[WebDriver]] specification.
       </p>
+      <pre class='idl'>
+        dictionary PermissionSetParameters {
+          required PermissionDescriptor descriptor;
+          required PermissionState state;
+          boolean oneRealm = false;
+        };
+      </pre>
+      <section>
+        <h3 id="set-permission-command">
+          Set Permission
+        </h3>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                HTTP Method
+              </th>
+              <th>
+                <a data-lt="extension command URI template">URI Template</a>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                POST
+              </td>
+              <td>
+                /session/{session id}/permissions
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          The <dfn>Set Permission</dfn> <a>extension command</a> simulates user modification of a
+          {{PermissionDescriptor}}'s <a>permission state</a>.
+        </p>
+        <p>
+          The <a>remote end steps</a> are:
+        </p>
+        <ol>
+          <li>Let |parameters| be the |parameters| argument, <a>converted to an IDL value</a> of
+          type {{PermissionSetParameters}}. If this throws an exception, return a <a>WebDriver
+          error</a> with <a>WebDriver error code</a> <a>WebDriver invalid argument</a>.
+          </li>
+          <li>Let |rootDesc| be |parameters|.{{PermissionSetParameters/descriptor}}.
+          </li>
+          <li>Let |typedDescriptor| be the object |rootDesc| refers to, <a>converted to an IDL
+          value</a> of <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s [=powerful
+          feature/permission descriptor type=]. If this throws an exception, return a <a>WebDriver
+          error</a> with <a>WebDriver error code</a> <a>WebDriver invalid argument</a>.
+          </li>
+          <li>If |parameters|.{{PermissionSetParameters/state}} is an inappropriate <a>permission
+          state</a> for any implementation-defined reason, return a <a>WebDriver error</a> with <a>
+            WebDriver error code</a> <a>WebDriver invalid argument</a>.
+            <p class="note">
+              For example, <a>user agents</a> that define the "midi" <a>powerful feature</a> as
+              "always on" may choose to reject command to set the <a>permission state</a> to
+              {{PermissionState/"denied"}} at this step.
+            </p>
+          </li>
+          <li>Let |settings| be the [=current settings object=].
+          </li>
+          <li>If |settings| is a <a>non-secure context</a> and
+          <code>|rootDesc|.{{PermissionDescriptor/name}}</code> isn't allowed in [=non-secure
+          context=], return a <a>WebDriver error</a> with <a>WebDriver error code</a> <a>WebDriver
+          invalid argument</a>.
+          </li>
+          <li>If |parameters|.{{PermissionSetParameters/oneRealm}} is true, let |targets| be a <a>
+            list</a> whose sole member is |settings|.
+          </li>
+          <li>Otherwise, let |targets| be a <a>list</a> containing all <a>environment settings
+          objects</a> whose [=environment settings object/origin=] is the <a data-lt="same origin">
+            same</a> as the [=environment settings object/origin=] of |settings|.
+          </li>
+          <li>Let |tasks| be an empty <a>list</a>.
+          </li>
+          <li>For each <a>environment settings object</a> |target| in |targets|:
+            <ol>
+              <li>
+                <a>Queue a task</a> |task| on the <a>permissions task source</a> of |target|'s
+                [=relevant settings object=]'s [=environment settings object/global object=]'s
+                [=Window/browsing context=] to perform the following step:
+                <ol>
+                  <li>Interpret |parameters|.{{PermissionSetParameters/state}} as if it were the
+                  result of an invocation of <a>permission state</a> for |typedDescriptor| with the
+                  argument |target| made at this moment.
+                  </li>
+                </ol>
+              </li>
+              <li>[=list/Append=] |task| to |tasks|.
+              </li>
+            </ol>
+          </li>
+          <li>Wait for all <a>tasks</a> in |tasks| to have executed.
+          </li>
+          <li>Return <a>success</a> with data `null`.
+          </li>
+        </ol>
+        <aside class="example">
+          <p>
+            To [=set permission=] for `{name: "midi", sysex: true}` of the [=current settings
+            object=] of the <a>session</a> with ID 23 to "`granted`", the <a>local end</a> would
+            POST to `/session/23/permissions` with the body:
+          </p>
+          <pre class="lang-json">
+          {
+            "descriptor": {
+              "name": "midi",
+              "sysex": true
+            },
+            "state": "granted"
+          }
+          </pre>
+        </aside>
+      </section>
     </section>
     <section class="appendix">
       <h2 id="privacy-considerations">
