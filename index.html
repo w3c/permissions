@@ -938,41 +938,41 @@
         Relationship to the Permissions Policy specification
       </h2>
       <p>
-        Although technically this specification and the Permissions Policy specification
-        ([[Permissions-Policy]]) deal with "permissions", each specification serves a distinct
-        purpose in the platform. Nevertheless, the two specifications do explicitly overlap.
+        Although technically this specification and the [[[Permissions-Policy]]] specification deal
+        with "permissions", each specification serves a distinct purpose in the platform.
+        Nevertheless, the two specifications do explicitly overlap.
       </p>
       <p>
         On the one hand, this specification exclusively concerns itself with [=powerful features=]
         whose access is managed through a user-agent mediated permissions UI (i.e., permissions
         where the user gives express consent before that feature can be used, and where the user
         retains the ability to deny that permission at any time for any reason). These powerful
-        features are explicitly identified by this specification's {{PermissionName}} enum.
+        features are registered in the [[[powerful-feature-registry]]].
       </p>
       <p>
-        On the other hand, the Permissions Policy specification allows developers to selectively
-        enable and disable [=powerful features=] through a "[=Document/permissions policy=]" (be it
-        a HTTP header or a the [^iframe/allow^] attribute). The APIs and features in scope for the
-        Permissions Policy specification go beyond those identified in this specification's
-        {{PermissionName}} enum (e.g., "sync-xhr" and "gamepad"). In that sense, the Permissions
-        Policy subsumes this specification in that Permissions Policy governs whether a feature is
-        available at all, independently of this specification.
+        On the other hand, the [[[Permissions-Policy]]] specification allows developers to
+        selectively enable and disable [=powerful features=] through a "[=Document/permissions
+        policy=]" (be it a HTTP header or a the [^iframe/allow^] attribute). The APIs and features
+        in scope for the [[[Permissions-Policy]]] specification go beyond those identified in the
+        [[[powerful-feature-registry]]] (e.g., "sync-xhr" and "gamepad"). In that sense, the
+        Permissions Policy subsumes this specification in that [[[Permissions-Policy]]] governs
+        whether a feature is available at all, independently of this specification.
       </p>
       <p>
-        A powerful feature that has been disabled by the Permissions Policy specification always
-        has its permission state reflected as "denied" by this specification. This occurs because
-        reading the current permission state relies on [[HTML]]'s "[=allowed to use=]" check, which
-        itself calls into the Permissions Policy specification. Important to note here is the
-        sharing of permission names across both specifications. Where this specification has the
-        {{PermissionName}} enum, the Permissions Policy specification relies on other
-        specifications defining the names of the permissions (e.g., the permission "gamepad" is
-        defined in [[Gamepad]], and so on).
+        A powerful feature that has been disabled by the [[[Permissions-Policy]]] specification
+        always has its permission state reflected as "denied" by this specification. This occurs
+        because reading the current permission state relies on [[HTML]]'s "[=allowed to use=]"
+        check, which itself calls into the [[[Permissions-Policy]]] specification. Important to
+        note here is the sharing of permission names across both specifications. Both this
+        specification and the [[[Permissions-Policy]]] specification rely on other specifications
+        defining the names of the permission and [=powerful feature/name=], and they are usually
+        named the same thing (e.g., "geolocation" of the [[[Geolocation]]], and so on).
       </p>
       <p>
         Finally, it's not possible for a powerful feature to ever become "granted" through any
-        means provided by the Permissions Policy specification. The only way that a powerful
-        feature can be "granted" is through a user-agent provided permission UI, or by some other
-        user agent policy.
+        means provided by the [[[Permissions-Policy]]] specification. The only way that a
+        [=powerful feature=] can be [=permission/granted=] is by the user giving [=express
+        permission=] or by some user agent policy.
       </p>
     </section>
     <section class="appendix informative">
