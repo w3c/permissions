@@ -212,6 +212,12 @@
             implicit signals.
           </p>
         </aside>
+        <p>
+          Every permission has a <dfn data-for="permission">default state</dfn> (usually
+          [=permission/prompt=]), which is the [=permission/state=] that the permission is in when
+          the user has not yet given [=express permission=] to use the [=feature=] or it has been
+          reset because its [=permission/lifetime=] has expired.
+        </p>
       </section>
       <section>
         <h2>
@@ -400,8 +406,7 @@
                 When the permission [=permission/lifetime=] expires for an origin:
               </p>
               <ol>
-                <li>Set the permission back to its default [=permission state=] (e.g. setting it
-                back to "[=permission/prompt=]").
+                <li>Set the permission back to its [=permission/default state=].
                 </li>
                 <li>For each |browsing context| associated with the origin (if any), [=queue a
                 global task=] on the [=permissions task source=] with the |browsing context|'s
@@ -435,6 +440,19 @@
                   Interest Group</a> for guidance.
                 </p>
               </aside>
+            </dd>
+            <dt>
+              <dfn class="export" data-dfn-for="powerful feature">Default permission state</dfn>:
+            </dt>
+            <dd>
+              <p>
+                A {{PermissionState}} value that serves as a [=permission=]'s [=permission/default
+                state=] of a [=powerful feature=].
+              </p>
+              <p>
+                If not specified, the [=permission=]'s [=permission/default state=] is
+                {{PermissionState/"prompt"}}.
+              </p>
             </dd>
           </dl>
           <p>
