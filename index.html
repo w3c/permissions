@@ -1202,16 +1202,17 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondesc
             </li>
             <li>Let <var>promise</var> be a newly-created <a data-link-type="idl" data-lt="Promise" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise"><code>Promise</code></a>.
             </li>
-            <li>Return <var>promise</var> and continue the following steps asynchronously.
-            </li>
-            <li>Run the steps to <a href="#dfn-create-a-permissionstatus" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-create-a-permissionstatus-1">create a <code>PermissionStatus</code></a> for <var>typedDescriptor</var>, and let
-            <var>status</var> be the result.
-            </li>
-            <li>Let <var>query</var> be <var>status</var>'s <a data-lt="[[query]]" href="#dfn-query" class="internalDFN" data-link-type="idl" id="ref-for-dfn-query-1"><code>[[query]]</code></a> internal slot.
-            </li>
-            <li>Run <var>query</var>'s <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-9"><code>name</code></a>'s <a data-link-type="dfn" href="#dfn-permission-query-algorithm" class="internalDFN" id="ref-for-dfn-permission-query-algorithm-1">permission query algorithm</a>, passing <var>query</var> and <var>status</var>.
-            </li>
-            <li>Resolve <var>promise</var> with <var>status</var>.
+            <li>Return <var>promise</var> and continue <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel">in parallel</a>:
+              <ol>
+                <li>Let <var>status</var> be <a href="#dfn-create-a-permissionstatus" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-create-a-permissionstatus-1">create a <code>PermissionStatus</code></a> with <var>typedDescriptor</var>.
+                </li>
+                <li>Let <var>query</var> be <var>status</var>'s <a data-lt="[[query]]" href="#dfn-query" class="internalDFN" data-link-type="idl" id="ref-for-dfn-query-1"><code>[[query]]</code></a> internal slot.
+                </li>
+                <li>Run <var>query</var>'s <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-9"><code>name</code></a>'s <a data-link-type="dfn" href="#dfn-permission-query-algorithm" class="internalDFN" id="ref-for-dfn-permission-query-algorithm-1">permission query algorithm</a>, passing <var>query</var> and <var>status</var>.
+                </li>
+                <li>Resolve <var>promise</var> with <var>status</var>.
+                </li>
+              </ol>
             </li>
           </ol>
         </section>
