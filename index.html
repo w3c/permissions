@@ -148,15 +148,21 @@
           Permissions
         </h3>
         <p>
-          A <dfn class="export">permission</dfn> represents a user's decision to allow a web
-          application to access a [=powerful feature=].
+          A <dfn class="export">permission</dfn> represents a user's decision as to whether a web
+          application can use a [=powerful feature=]. The decision is represented as a permission
+          [=permission/state=].
+        </p>
+        <p>
+          <dfn class="export">Express permission</dfn> refers to an act by the user, e.g. via user
+          interface or host device platform features, through which the user [=permission/grants=]
+          [=permission=] the use of the feature by the web application.
         </p>
         <aside class="note" title="Limitations">
           <p>
             Current Web APIs have different ways to deal with permissions. For example, the
             [[notifications]] API allows developers to request a permission and check the
             permission status explicitly. Others expose the status to web pages when they try to
-            use the API, like the [[Geolocation]] which fails if the permission was not granted
+            use the API, like the [[[Geolocation]]] which fails if the permission was not granted
             without allowing the developer to check beforehand.
           </p>
           <p>
@@ -168,33 +174,33 @@
           </p>
         </aside>
         <p>
-          Conceptually, a [=permission=] can be in one of the following <dfn data-dfn-for=
-          "permission">states</dfn>:
+          Conceptually, a [=permission=] for a [=powerful feature=] can be in one of the following
+          <dfn data-dfn-for="permission" data-local-lt="state">states</dfn>:
         </p>
-        <dl>
+        <dl data-sort="">
           <dt>
             <dfn class="export" data-dfn-for="permission">Prompt</dfn>:
           </dt>
           <dd>
-            The prompt [=permission/state=] represents that the user has not made a decision (i.e.,
-            it's the same a [=permission/denied=]), and the [=user agent=] will be asking the user
-            for permission if the caller tries to access the feature. The user might then grant,
-            deny, ignore, or dismiss the request.
+            The user has not given [=express permission=] to use the feature (i.e., it's the same a
+            [=permission/denied=]). It also means that if caller attempts to use the feature, the
+            [=user agent=] will either be prompting the user for permission or access to the
+            feature will be [=permission/denied=].
           </dd>
           <dt>
             <dfn class="export" data-local-lt="grant" data-dfn-for="permission">Granted</dfn>:
           </dt>
           <dd>
-            The granted [=permission/state=] represents that the caller will be able to
-            successfully access the feature without having the [=user agent=] asking the user's
-            permission.
+            The user, or the user agent on the user's behalf, has given [=express permission=] to
+            use a [=powerful feature=]. The caller will be able to use the feature possibly without
+            having the [=user agent=] asking the user's permission.
           </dd>
           <dt>
             <dfn class="export" data-dfn-for="permission">Denied</dfn>:
           </dt>
           <dd>
-            The denied [=permission/state=] represents that the caller will not be able to access
-            the feature.
+            The user, or the user agent on the user's behalf, has denied access to this [=powerful
+            feature=]. The caller will not be able to use the feature.
           </dd>
         </dl>
         <p>
@@ -212,6 +218,15 @@
             implicit signals.
           </p>
         </aside>
+        <p>
+          Every [=permission=] has a <dfn class="export" data-dfn-for="permission">lifetime</dfn>,
+          which is the duration for which a particular permission remains [=permission/granted=]
+          before it reverts back to its [=permission/default state=]. A [=permission/lifetime=]
+          could be until a particular Realm is destroyed, until a particular [=top-level browsing
+          context=] is destroyed, an amount of time, or infinite. The lifetime is negotiated
+          between the end-user and the [=user agent=] when the user gives [=express permission=] to
+          use a [=feature=] - usually via some permission UI or policy.
+        </p>
       </section>
       <section>
         <h2>
@@ -223,11 +238,6 @@
           can be used. Access to the feature is determined by the <a>environment settings
           object</a> by the user having [=permission/granted=] permission via UI, or by satisfying
           some criteria that is equivalent to a permission [=permission/grant=].
-        </p>
-        <p>
-          <dfn class="export">Express permission</dfn> refers to an act by the user, e.g. via user
-          interface or host device platform features, through which the user [=permission/grants=]
-          [=permission=] the use of the feature by the web application.
         </p>
         <p>
           A [=powerful feature=] is identified by its <dfn class="export" data-dfn-for=
@@ -377,18 +387,9 @@
               </p>
             </dd>
             <dt>
-              A permission <dfn class="export" data-dfn-for="permission">lifetime</dfn>:
+              A permission [=permission/lifetime=]:
             </dt>
             <dd>
-              <p>
-                Every [=permission=] has a [=permission/lifetime=], which is the duration for which
-                a particular permission remains [=permission/granted=] before it reverts back to
-                its default [=permission state=]. A [=permission/lifetime=] could be until a
-                particular Realm is destroyed, until a particular [=top-level browsing context=] is
-                destroyed, an amount of time, or infinite. The lifetime is negotiated between the
-                end-user and the [=user agent=] when the user gives [=express permission=] to use a
-                [=feature=] - usually via some permission UI or policy.
-              </p>
               <p>
                 Specifications that define one or more [=powerful features=] SHOULD suggest a
                 [=permission=] [=permission/lifetime=] that is best suited for the particular
