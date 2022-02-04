@@ -100,13 +100,13 @@
         }
       </pre>
       <p>
-        This example is checking whether the page has the {{PermissionName/"geolocation"}} and the
-        {{PermissionName/"notifications"}} permissions:
+        This example simultaneously checks the state of the `"geolocation"` and `"notifications"`
+        [=powerful features=]:
       </p>
       <pre class="example js" title="Checking the state of multiple permissions">
-        const queryPromises = ["geolocation", "notifications"].map(name =&gt; {
-          return navigator.permissions.query({ name });
-        });
+        const queryPromises = ["geolocation", "notifications"].map(
+          name =&gt; navigator.permissions.query({ name })
+        );
         for await (const status of queryPromises) {
           console.log(`${status.name}: ${status.state}`);
         }
@@ -114,7 +114,7 @@
       <p>
         This example is checking the permission state of the available cameras.
       </p>
-      <pre class="example js">
+      <pre class="example js" title="Checking permission state of multiple cameras">
         const devices = await navigator.mediaDevices.enumerateDevices();
 
         // filter on video inputs, and map to query object
@@ -226,6 +226,12 @@
           context=] is destroyed, an amount of time, or infinite. The lifetime is negotiated
           between the end-user and the [=user agent=] when the user gives [=express permission=] to
           use a [=feature=] - usually via some permission UI or policy.
+        </p>
+        <p>
+          Every permission has a <dfn data-for="permission">default state</dfn> (usually
+          [=permission/prompt=]), which is the [=permission/state=] that the permission is in when
+          the user has not yet given [=express permission=] to use the [=feature=] or it has been
+          reset because its [=permission/lifetime=] has expired.
         </p>
       </section>
       <section>
@@ -401,8 +407,7 @@
                 When the permission [=permission/lifetime=] expires for an origin:
               </p>
               <ol>
-                <li>Set the permission back to its default [=permission state=] (e.g. setting it
-                back to "[=permission/prompt=]").
+                <li>Set the permission back to its [=permission/default state=].
                 </li>
                 <li>For each |browsing context| associated with the origin (if any), [=queue a
                 global task=] on the [=permissions task source=] with the |browsing context|'s
@@ -436,6 +441,19 @@
                   Interest Group</a> for guidance.
                 </p>
               </aside>
+            </dd>
+            <dt>
+              <dfn class="export" data-dfn-for="powerful feature">Default permission state</dfn>:
+            </dt>
+            <dd>
+              <p>
+                A {{PermissionState}} value that serves as a [=permission=]'s [=permission/default
+                state=] of a [=powerful feature=].
+              </p>
+              <p>
+                If not specified, the [=permission=]'s [=permission/default state=] is
+                {{PermissionState/"prompt"}}.
+              </p>
             </dd>
           </dl>
           <p>
@@ -713,17 +731,18 @@
             </li>
             <li>Let <var>promise</var> be a newly-created {{Promise}}.
             </li>
-            <li>Return <var>promise</var> and continue the following steps asynchronously.
-            </li>
-            <li>Run the steps to <a>create a `PermissionStatus`</a> for |typedDescriptor|, and let
-            |status| be the result.
-            </li>
-            <li>Let |query| be |status|'s {{PermissionStatus/[[query]]}} internal slot.
-            </li>
-            <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission query
-            algorithm=], passing |query| and |status|.
-            </li>
-            <li>Resolve <var>promise</var> with |status|.
+            <li>Return <var>promise</var> and continue [=in parallel=]:
+              <ol>
+                <li>Let |status| be <a>create a `PermissionStatus`</a> with |typedDescriptor|.
+                </li>
+                <li>Let |query| be |status|'s {{PermissionStatus/[[query]]}} internal slot.
+                </li>
+                <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission
+                query algorithm=], passing |query| and |status|.
+                </li>
+                <li>Resolve <var>promise</var> with |status|.
+                </li>
+              </ol>
             </li>
           </ol>
         </section>
