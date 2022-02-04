@@ -100,13 +100,13 @@
         }
       </pre>
       <p>
-        This example is checking whether the page has the {{PermissionName/"geolocation"}} and the
-        {{PermissionName/"notifications"}} permissions:
+        This example simultaneously checks the state of the `"geolocation"` and `"notifications"`
+        [=powerful features=]:
       </p>
       <pre class="example js" title="Checking the state of multiple permissions">
-        const queryPromises = ["geolocation", "notifications"].map(name =&gt; {
-          return navigator.permissions.query({ name });
-        });
+        const queryPromises = ["geolocation", "notifications"].map(
+          name =&gt; navigator.permissions.query({ name });
+        );
         for await (const status of queryPromises) {
           console.log(`${status.name}: ${status.state}`);
         }
@@ -114,7 +114,7 @@
       <p>
         This example is checking the permission state of the available cameras.
       </p>
-      <pre class="example js">
+      <pre class="example js" title="Checking permission state of multiple cameras">
         const devices = await navigator.mediaDevices.enumerateDevices();
 
         // filter on video inputs, and map to query object
