@@ -658,169 +658,174 @@
       </section>
     </section>
     <section>
-      <h2 id="navigator-and-workernavigator-extension">
-        Extensions to the `Navigator` and `WorkerNavigator` interfaces
+      <h2>
+        Permissions API
       </h2>
-      <pre class="idl">
-        [Exposed=(Window)]
-        partial interface Navigator {
-          [SameObject] readonly attribute Permissions permissions;
-        };
+      <section>
+        <h3 id="navigator-and-workernavigator-extension">
+          Extensions to the `Navigator` and `WorkerNavigator` interfaces
+        </h3>
+        <pre class="idl">
+          [Exposed=(Window)]
+          partial interface Navigator {
+            [SameObject] readonly attribute Permissions permissions;
+          };
 
-        [Exposed=(Worker)]
-        partial interface WorkerNavigator {
-          [SameObject] readonly attribute Permissions permissions;
-        };
-      </pre>
-    </section>
-    <section data-dfn-for="Permissions">
-      <h2 id="permissions-interface">
-        `Permissions` interface
-      </h2>
-      <pre class="idl">
-        [Exposed=(Window,Worker)]
-        interface Permissions {
-          Promise&lt;PermissionStatus&gt; query(object permissionDesc);
-        };
+          [Exposed=(Worker)]
+          partial interface WorkerNavigator {
+            [SameObject] readonly attribute Permissions permissions;
+          };
+        </pre>
+      </section>
+      <section data-dfn-for="Permissions">
+        <h3 id="permissions-interface">
+          `Permissions` interface
+        </h3>
+        <pre class="idl">
+          [Exposed=(Window,Worker)]
+          interface Permissions {
+            Promise&lt;PermissionStatus&gt; query(object permissionDesc);
+          };
 
-        dictionary PermissionDescriptor {
-          required PermissionName name;
-        };
-      </pre>
-      <section>
-        <h3 id="query-method">
-          `query()` method
-        </h3>
-        <p>
-          When the <dfn>query()</dfn> method is invoked, the <a>user agent</a> MUST run the
-          following <dfn class="export">query a permission</dfn> algorithm, passing the parameter
-          <var>permissionDesc</var>:
-        </p>
-        <ol class="algorithm">
-          <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to an IDL
-          value</a> of type {{PermissionDescriptor}}. If this throws an exception, return <a>a
-          promise rejected with</a> that exception and abort these steps.
-          </li>
-          <li>Let |typedDescriptor| be the object |permissionDesc| refers to, <a>converted to an
-          IDL value</a> of |rootDesc|'s {{PermissionDescriptor/name}}'s [=powerful
-          feature/permission descriptor type=]. If this throws an exception, return <a>a promise
-          rejected with</a> that exception and abort these steps.
-          </li>
-          <li>Let <var>promise</var> be a newly-created {{Promise}}.
-          </li>
-          <li>Return <var>promise</var> and continue the following steps asynchronously.
-          </li>
-          <li>Run the steps to <a>create a `PermissionStatus`</a> for |typedDescriptor|, and let
-          |status| be the result.
-          </li>
-          <li>Let |query| be |status|'s {{PermissionStatus/[[query]]}} internal slot.
-          </li>
-          <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission query
-          algorithm=], passing |query| and |status|.
-          </li>
-          <li>Resolve <var>promise</var> with |status|.
-          </li>
-        </ol>
+          dictionary PermissionDescriptor {
+            required PermissionName name;
+          };
+        </pre>
+        <section>
+          <h4 id="query-method">
+            `query()` method
+          </h4>
+          <p>
+            When the <dfn>query()</dfn> method is invoked, the <a>user agent</a> MUST run the
+            following <dfn class="export">query a permission</dfn> algorithm, passing the parameter
+            <var>permissionDesc</var>:
+          </p>
+          <ol class="algorithm">
+            <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to an IDL
+            value</a> of type {{PermissionDescriptor}}. If this throws an exception, return <a>a
+            promise rejected with</a> that exception and abort these steps.
+            </li>
+            <li>Let |typedDescriptor| be the object |permissionDesc| refers to, <a>converted to an
+            IDL value</a> of |rootDesc|'s {{PermissionDescriptor/name}}'s [=powerful
+            feature/permission descriptor type=]. If this throws an exception, return <a>a promise
+            rejected with</a> that exception and abort these steps.
+            </li>
+            <li>Let <var>promise</var> be a newly-created {{Promise}}.
+            </li>
+            <li>Return <var>promise</var> and continue the following steps asynchronously.
+            </li>
+            <li>Run the steps to <a>create a `PermissionStatus`</a> for |typedDescriptor|, and let
+            |status| be the result.
+            </li>
+            <li>Let |query| be |status|'s {{PermissionStatus/[[query]]}} internal slot.
+            </li>
+            <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission query
+            algorithm=], passing |query| and |status|.
+            </li>
+            <li>Resolve <var>promise</var> with |status|.
+            </li>
+          </ol>
+        </section>
       </section>
-    </section>
-    <section data-dfn-for="PermissionStatus">
-      <h2 id="permissionstatus-interface">
-        `PermissionStatus` interface
-      </h2>
-      <pre class="idl">
-        [Exposed=(Window,Worker)]
-        interface PermissionStatus : EventTarget {
-          readonly attribute PermissionState state;
-          readonly attribute PermissionName name;
-          attribute EventHandler onchange;
-        };
+      <section data-dfn-for="PermissionStatus">
+        <h3 id="permissionstatus-interface">
+          `PermissionStatus` interface
+        </h3>
+        <pre class="idl">
+          [Exposed=(Window,Worker)]
+          interface PermissionStatus : EventTarget {
+            readonly attribute PermissionState state;
+            readonly attribute PermissionName name;
+            attribute EventHandler onchange;
+          };
 
-        enum PermissionState {
-          "granted",
-          "denied",
-          "prompt",
-        };
-      </pre>
-      <p>
-        {{PermissionStatus}} instances are created with a <dfn>[[\query]]</dfn> internal slot,
-        which is an instance of a feature's [=powerful feature/permission descriptor type=].
-      </p>
-      <p data-dfn-for="PermissionState">
-        When using the API, the "<dfn>granted</dfn>", "<dfn>denied</dfn>", and "<dfn>prompt</dfn>"
-        enum values represent the concepts of [=permission/granted=], [=permission/denied=], and
-        [=permission/prompt=] respectively.
-      </p>
-      <section>
-        <h3>
-          Creating instances
-        </h3>
+          enum PermissionState {
+            "granted",
+            "denied",
+            "prompt",
+          };
+        </pre>
         <p>
-          To <dfn class="export">create a `PermissionStatus`</dfn> for a given
-          {{PermissionDescriptor}} |permissionDesc|, return a new instance of the [=powerful
-          feature/permission result type=] for the feature named by |permissionDesc|'s
-          {{PermissionDescriptor/name}}, with the {{PermissionStatus/[[query]]}} internal slot
-          initialized to |permissionDesc|, and {{PermissionStatus/name}} initialized to
-          |permissionDesc|'s {{PermissionDescriptor/name}}.
+          {{PermissionStatus}} instances are created with a <dfn>[[\query]]</dfn> internal slot,
+          which is an instance of a feature's [=powerful feature/permission descriptor type=].
         </p>
-      </section>
-      <section>
-        <h3>
-          `name` attribute
-        </h3>
-        <p>
-          The <dfn>name</dfn> attribute returns the value it was initialized to.
+        <p data-dfn-for="PermissionState">
+          When using the API, the "<dfn>granted</dfn>", "<dfn>denied</dfn>", and
+          "<dfn>prompt</dfn>" enum values represent the concepts of [=permission/granted=],
+          [=permission/denied=], and [=permission/prompt=] respectively.
         </p>
-      </section>
-      <section>
-        <h3>
-          `state` attribute
-        </h3>
-        <p>
-          The <dfn>state</dfn> attribute returns the latest value that was set on the current
-          instance.
-        </p>
-      </section>
-      <section>
-        <h3>
-          `onchange` attribute
-        </h3>
-        <p>
-          The <dfn>onchange</dfn> attribute is an <a>event handler</a> whose corresponding <a>event
-          handler event type</a> is <code>change</code>.
-        </p>
-        <p id="PermissionStatus-update">
-          Whenever the [=user agent=] is aware that the state of a {{PermissionStatus}} instance
-          |status| has changed, it asynchronously runs the <dfn>`PermissionStatus` update
-          steps</dfn>:
-        </p>
-        <ol class="algorithm">
-          <li>Let |query| be |status|'s {{PermissionStatus/[[query]]}} internal slot.
-          </li>
-          <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission query
-          algorithm=], passing |query| and |status|.
-          </li>
-          <li>
-            <a>Queue a task</a> on the <dfn class="export">permissions task source</dfn> to <a>fire
-            an event</a> named <code>change</code> at |status|.
-          </li>
-        </ol>
-      </section>
-      <section>
-        <h3 id="permissionstatus-gc">
-          Garbage collection
-        </h3>
-        <p>
-          While an {{PermissionStatus}} object has one or more event listeners registered for
-          "change", there must be a strong reference from the {{Window}} or {{WorkerGlobalScope}}
-          object that the {{PermissionStatus}} object's constructor was invoked from to the
-          {{PermissionStatus}} object itself.
-        </p>
-        <p>
-          While there is a task queued by an {{PermissionStatus}} object on the [=permissions task
-          source=], there must be a strong reference from the {{Window}} or {{WorkerGlobalScope}}
-          object that the {{PermissionStatus}} object's constructor was invoked from to that
-          {{PermissionStatus}} object.
-        </p>
+        <section>
+          <h4>
+            Creating instances
+          </h4>
+          <p>
+            To <dfn class="export">create a `PermissionStatus`</dfn> for a given
+            {{PermissionDescriptor}} |permissionDesc|, return a new instance of the [=powerful
+            feature/permission result type=] for the feature named by |permissionDesc|'s
+            {{PermissionDescriptor/name}}, with the {{PermissionStatus/[[query]]}} internal slot
+            initialized to |permissionDesc|, and {{PermissionStatus/name}} initialized to
+            |permissionDesc|'s {{PermissionDescriptor/name}}.
+          </p>
+        </section>
+        <section>
+          <h4>
+            `name` attribute
+          </h4>
+          <p>
+            The <dfn>name</dfn> attribute returns the value it was initialized to.
+          </p>
+        </section>
+        <section>
+          <h4>
+            `state` attribute
+          </h4>
+          <p>
+            The <dfn>state</dfn> attribute returns the latest value that was set on the current
+            instance.
+          </p>
+        </section>
+        <section>
+          <h4>
+            `onchange` attribute
+          </h4>
+          <p>
+            The <dfn>onchange</dfn> attribute is an <a>event handler</a> whose corresponding
+            <a>event handler event type</a> is <code>change</code>.
+          </p>
+          <p id="PermissionStatus-update">
+            Whenever the [=user agent=] is aware that the state of a {{PermissionStatus}} instance
+            |status| has changed, it asynchronously runs the <dfn>`PermissionStatus` update
+            steps</dfn>:
+          </p>
+          <ol class="algorithm">
+            <li>Let |query| be |status|'s {{PermissionStatus/[[query]]}} internal slot.
+            </li>
+            <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission query
+            algorithm=], passing |query| and |status|.
+            </li>
+            <li>
+              <a>Queue a task</a> on the <dfn class="export">permissions task source</dfn> to
+              <a>fire an event</a> named <code>change</code> at |status|.
+            </li>
+          </ol>
+        </section>
+        <section>
+          <h4 id="permissionstatus-gc">
+            Garbage collection
+          </h4>
+          <p>
+            While an {{PermissionStatus}} object has one or more event listeners registered for
+            "change", there must be a strong reference from the {{Window}} or {{WorkerGlobalScope}}
+            object that the {{PermissionStatus}} object's constructor was invoked from to the
+            {{PermissionStatus}} object itself.
+          </p>
+          <p>
+            While there is a task queued by an {{PermissionStatus}} object on the [=permissions
+            task source=], there must be a strong reference from the {{Window}} or
+            {{WorkerGlobalScope}} object that the {{PermissionStatus}} object's constructor was
+            invoked from to that {{PermissionStatus}} object.
+          </p>
+        </section>
       </section>
     </section>
     <section data-dfn-for="PermissionName">
@@ -997,9 +1002,9 @@
         adversary to have discreet access to this information.
       </p>
       <p>
-        A user agent SHOULD provide a means for the user to review, update, and
-        reset the [=permission=] [=permission/state=] of [=powerful features=] associated with a
-        realm or origin.
+        A user agent SHOULD provide a means for the user to review, update, and reset the
+        [=permission=] [=permission/state=] of [=powerful features=] associated with a realm or
+        origin.
       </p>
     </section>
     <section id="security-considerations">
