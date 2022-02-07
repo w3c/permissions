@@ -720,12 +720,16 @@
           </p>
           <ol class="algorithm">
             <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to an IDL
-            value</a> of type {{PermissionDescriptor}}. If this throws an exception, return <a>a
-            promise rejected with</a> that exception and abort these steps.
+            value</a> of type {{PermissionDescriptor}}.
+            </li>
+            <li>If the conversion [=exception/throws=] an [=exception=], return <a>a promise
+            rejected with</a> that exception and abort these steps.
             </li>
             <li>Let |typedDescriptor| be the object |permissionDesc| refers to, <a>converted to an
             IDL value</a> of |rootDesc|'s {{PermissionDescriptor/name}}'s [=powerful
-            feature/permission descriptor type=]. If this throws an exception, return <a>a promise
+            feature/permission descriptor type=].
+            </li>
+            <li>If the conversion [=exception/throws=] an [=exception=], return <a>a promise
             rejected with</a> that exception and abort these steps.
             </li>
             <li>Let <var>promise</var> be a newly-created {{Promise}}.
