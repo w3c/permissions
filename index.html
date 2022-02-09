@@ -783,12 +783,24 @@
           </h4>
           <p>
             To <dfn class="export">create a `PermissionStatus`</dfn> for a given
-            {{PermissionDescriptor}} |permissionDesc|, return a new instance of the [=powerful
-            feature/permission result type=] for the feature named by |permissionDesc|'s
-            {{PermissionDescriptor/name}}, with the {{PermissionStatus/[[query]]}} internal slot
-            initialized to |permissionDesc|, and {{PermissionStatus/name}} initialized to
-            |permissionDesc|'s {{PermissionDescriptor/name}}.
+            {{PermissionDescriptor}} |permissionDesc|:
           </p>
+          <ol class="algorithm">
+            <li>Let |name:DOMString| be |permissionDesc|'s {{PermissionDescriptor/name}}.
+            </li>
+            <li>Assert: The [=feature=] identified by |name| is supported by the user agent.
+            </li>
+            <li>Let |status:PermissionStatus| be a new instance of the [=powerful
+            feature/permission result type=] identified by |name|:
+              <ol>
+                <li>Initialize |status| {{PermissionStatus/[[query]]}} internal slot to
+                |permissionDesc|.
+                </li>
+                <li>Initialize |status|'s {{PermissionStatus/name}} to |name|.
+                </li>
+              </ol>
+            </li>
+          </ol>
         </section>
         <section>
           <h4>
