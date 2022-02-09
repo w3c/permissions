@@ -844,16 +844,8 @@
             Garbage collection
           </h4>
           <p>
-            While an {{PermissionStatus}} object has one or more event listeners registered for
-            "change", there must be a strong reference from the {{Window}} or {{WorkerGlobalScope}}
-            object that the {{PermissionStatus}} object's constructor was invoked from to the
-            {{PermissionStatus}} object itself.
-          </p>
-          <p>
-            While there is a task queued by an {{PermissionStatus}} object on the [=permissions
-            task source=], there must be a strong reference from the {{Window}} or
-            {{WorkerGlobalScope}} object that the {{PermissionStatus}} object's constructor was
-            invoked from to that {{PermissionStatus}} object.
+            A {{PermissionStatus}} object MUST NOT be garbage collected if it has an [=event
+            listener=] whose type is `change`.
           </p>
         </section>
       </section>
