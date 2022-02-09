@@ -2070,13 +2070,14 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
       </p>
       <p>
         A powerful feature that has been disabled by the <cite><a data-matched-text="[[[Permissions-Policy]]]" href="https://www.w3.org/TR/permissions-policy-1/">Permissions Policy</a></cite> specification
-        always has its <a data-link-type="dfn" href="#dfn-state" class="internalDFN" id="ref-for-dfn-state-14">permission state</a> reflected as "denied" by this specification. This occurs
-        because <a data-link-type="dfn" data-lt="getting the current permission state" href="#dfn-getting-the-current-permission-state" class="internalDFN" id="ref-for-dfn-getting-the-current-permission-state-1">reading the current permission</a> relies on [<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">HTML</a></cite>]'s "<a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">allowed to use</a>"
-        check, which itself calls into the <cite><a data-matched-text="[[[Permissions-Policy]]]" href="https://www.w3.org/TR/permissions-policy-1/">Permissions Policy</a></cite> specification. Important to
-        note here is the sharing of permission names across both specifications. Both this
-        specification and the <cite><a data-matched-text="[[[Permissions-Policy]]]" href="https://www.w3.org/TR/permissions-policy-1/">Permissions Policy</a></cite> specification rely on other specifications
-        defining the names of the permission and <a data-link-type="dfn" href="#dfn-name" class="internalDFN" id="ref-for-dfn-name-2">name</a>, and they are usually
-        named the same thing (e.g., "geolocation" of the <cite><a data-matched-text="[[[Geolocation]]]" href="https://www.w3.org/TR/geolocation/">Geolocation API</a></cite>, and so on).
+        always has its <a data-link-type="dfn" href="#dfn-state" class="internalDFN" id="ref-for-dfn-state-14">permission state</a> reflected as "denied" by this specification. This
+        occurs because <a data-link-type="dfn" data-lt="getting the current permission state" href="#dfn-getting-the-current-permission-state" class="internalDFN" id="ref-for-dfn-getting-the-current-permission-state-1">reading the current permission</a>
+        relies on [<cite><a class="bibref" data-link-type="biblio" href="#bib-html" title="HTML Standard">HTML</a></cite>]'s "<a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">allowed to use</a>" check, which itself calls into the
+        <cite><a data-matched-text="[[[Permissions-Policy]]]" href="https://www.w3.org/TR/permissions-policy-1/">Permissions Policy</a></cite> specification. Important to note here is the sharing of permission
+        names across both specifications. Both this specification and the <cite><a data-matched-text="[[[Permissions-Policy]]]" href="https://www.w3.org/TR/permissions-policy-1/">Permissions Policy</a></cite>
+        specification rely on other specifications defining the names of the permission and
+        <a data-link-type="dfn" href="#dfn-name" class="internalDFN" id="ref-for-dfn-name-2">name</a>, and they are usually named the same thing (e.g., "geolocation"
+        of the <cite><a data-matched-text="[[[Geolocation]]]" href="https://www.w3.org/TR/geolocation/">Geolocation API</a></cite>, and so on).
       </p>
       <p>
         Finally, it's not possible for a powerful feature to ever become "granted" through any
