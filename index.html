@@ -995,13 +995,14 @@
       </p>
       <p>
         A powerful feature that has been disabled by the [[[Permissions-Policy]]] specification
-        always has its [=permission state=] reflected as "denied" by this specification. This occurs
-        because [=getting the current permission state|reading the current permission=] relies on [[HTML]]'s "[=allowed to use=]"
-        check, which itself calls into the [[[Permissions-Policy]]] specification. Important to
-        note here is the sharing of permission names across both specifications. Both this
-        specification and the [[[Permissions-Policy]]] specification rely on other specifications
-        defining the names of the permission and [=powerful feature/name=], and they are usually
-        named the same thing (e.g., "geolocation" of the [[[Geolocation]]], and so on).
+        always has its [=permission state=] reflected as "denied" by this specification. This
+        occurs because [=getting the current permission state|reading the current permission=]
+        relies on [[HTML]]'s "[=allowed to use=]" check, which itself calls into the
+        [[[Permissions-Policy]]] specification. Important to note here is the sharing of permission
+        names across both specifications. Both this specification and the [[[Permissions-Policy]]]
+        specification rely on other specifications defining the names of the permission and
+        [=powerful feature/name=], and they are usually named the same thing (e.g., "geolocation"
+        of the [[[Geolocation]]], and so on).
       </p>
       <p>
         Finally, it's not possible for a powerful feature to ever become "granted" through any
