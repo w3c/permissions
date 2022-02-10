@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 30.0.3">
+<meta name="generator" content="ReSpec 30.0.4">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -125,7 +125,7 @@ details.respec-tests-details>li{padding-left:1em}
 .self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
 aside.example .marker>a.self-link{color:inherit}
 .header-wrapper{display:flex;align-items:center}
-:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,h2#subtitle){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
 :is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;top:.8rem;font-size:1rem;opacity:.5}
 :is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
 :is(h4,h5,h6)+a.self-link::before{color:#000}
@@ -234,13 +234,13 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   "localBiblio": {
     "powerful-feature-registry": {
       "title": "Registry of Powerful Features",
-      "href": "https://w3c.github.io/poweful-features-registry/",
+      "href": "https://w3c.github.io/powerful-features-registry/",
       "status": "unofficial",
       "id": "powerful-feature-registry"
     }
   },
-  "publishISODate": "2022-02-09T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 09 February 2022"
+  "publishISODate": "2022-02-10T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 10 February 2022"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -249,7 +249,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-02-09">09 February 2022</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-02-10">10 February 2022</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -2067,13 +2067,13 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
         whose access is managed through a user-agent mediated permissions UI (i.e., permissions
         where the user gives express consent before that feature can be used, and where the user
         retains the ability to deny that permission at any time for any reason). These powerful
-        features are registered in the <cite><a data-matched-text="[[[powerful-feature-registry]]]" href="https://w3c.github.io/poweful-features-registry/">Registry of Powerful Features</a></cite>.
+        features are registered in the <cite><a data-matched-text="[[[powerful-feature-registry]]]" href="https://w3c.github.io/powerful-features-registry/">Registry of Powerful Features</a></cite>.
       </p>
       <p>
         On the other hand, the <cite><a data-matched-text="[[[Permissions-Policy]]]" href="https://www.w3.org/TR/permissions-policy-1/">Permissions Policy</a></cite> specification allows developers to
         selectively enable and disable <a data-link-type="dfn" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-47">powerful features</a> through a "<a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/dom.html#concept-document-permissions-policy">permissions policy</a>" (be it a HTTP header or a the <code><a data-type="element-attr" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-allow">allow</a></code> attribute). The APIs and features
         in scope for the <cite><a data-matched-text="[[[Permissions-Policy]]]" href="https://www.w3.org/TR/permissions-policy-1/">Permissions Policy</a></cite> specification go beyond those identified in the
-        <cite><a data-matched-text="[[[powerful-feature-registry]]]" href="https://w3c.github.io/poweful-features-registry/">Registry of Powerful Features</a></cite> (e.g., "sync-xhr" and "gamepad"). In that sense, the
+        <cite><a data-matched-text="[[[powerful-feature-registry]]]" href="https://w3c.github.io/powerful-features-registry/">Registry of Powerful Features</a></cite> (e.g., "sync-xhr" and "gamepad"). In that sense, the
         Permissions Policy subsumes this specification in that <cite><a data-matched-text="[[[Permissions-Policy]]]" href="https://www.w3.org/TR/permissions-policy-1/">Permissions Policy</a></cite> governs
         whether a feature is available at all, independently of this specification.
       </p>
@@ -2230,7 +2230,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     </dd><dt id="bib-background-fetch">[background-fetch]</dt><dd>
       <a href="https://wicg.github.io/background-fetch/"><cite>Background Fetch</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/background-fetch/">https://wicg.github.io/background-fetch/</a>
     </dd><dt id="bib-geolocation">[Geolocation]</dt><dd>
-      <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres.  W3C. 29 January 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
+      <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres; Reilly Grant.  W3C. 10 February 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
     </dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd>
       <a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet.  W3C. 20 January 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
     </dd><dt id="bib-gyroscope">[gyroscope]</dt><dd>
@@ -2240,7 +2240,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     </dd><dt id="bib-notifications">[notifications]</dt><dd>
       <a href="https://notifications.spec.whatwg.org/"><cite>Notifications API Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a>
     </dd><dt id="bib-powerful-feature-registry">[powerful-feature-registry]</dt><dd>
-      <a href="https://w3c.github.io/poweful-features-registry/"><cite>Registry of Powerful Features</cite></a>. unofficial. URL: <a href="https://w3c.github.io/poweful-features-registry/">https://w3c.github.io/poweful-features-registry/</a>
+      <a href="https://w3c.github.io/powerful-features-registry/"><cite>Registry of Powerful Features</cite></a>. unofficial. URL: <a href="https://w3c.github.io/powerful-features-registry/">https://w3c.github.io/powerful-features-registry/</a>
     </dd><dt id="bib-push-api">[push-api]</dt><dd>
       <a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson.  W3C. 3 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
     </dd><dt id="bib-screen-capture">[screen-capture]</dt><dd>
