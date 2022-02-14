@@ -243,9 +243,9 @@
         <p>
           A <dfn class="export" data-local-lt="feature">powerful feature</dfn> is a web platform
           feature (usually an API) for which a user gives [=express permission=] before the feature
-          can be used. Access to the feature is determined by the <a>environment settings
-          object</a> by the user having [=permission/granted=] permission via UI, or by satisfying
-          some criteria that is equivalent to a permission [=permission/grant=].
+          can be used. Access to the feature is determined by the user having
+          [=permission/granted=] permission, or by satisfying some criteria that is equivalent to a
+          permission [=permission/grant=].
         </p>
         <p>
           A [=powerful feature=] is identified by its <dfn class="export" data-dfn-for=
@@ -253,9 +253,8 @@
         </p>
         <p>
           The user agent is responsible for tracking what <a>powerful features</a> each [=global
-          object/realm=] has the user's [=permission=] to use. Other specifications can use the
-          operations defined in this section to retrieve the UA's notion of what permissions are
-          granted or denied, and to ask the user to grant or deny more permissions.
+          object/realm=] has the user's [=permission=] to use via the [=environment settings
+          object=].
         </p>
         <section>
           <h3>
@@ -263,12 +262,9 @@
           </h3>
           <p>
             Each <a>powerful feature</a> can define zero or more additional <dfn data-dfn-for=
-            "powerful feature">aspects</dfn> that websites can request permission to access.
-          </p>
-          <p>
-            To describe an [=powerful feature/aspect=], a specification MUST define a WebIDL
-            [=dictionary=] that [=dictionary/inherits=] from {{PermissionDescriptor}}, and have
-            that interface be its [=powerful feature/permission descriptor type=].
+            "powerful feature">aspects</dfn>. An aspect is defined as WebIDL [=dictionary=] that
+            [=dictionary/inherits=] from {{PermissionDescriptor}} and serves as an WebIDL
+            interface's [=powerful feature/permission descriptor type=].
           </p>
           <aside class="example" title="Defining your own permission descriptor type">
             <p>
