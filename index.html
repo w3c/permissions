@@ -302,15 +302,28 @@
       <h2>
         Specifying a powerful feature
       </h2>
-      <p class="advisement">
-        Please register newly specified [=powerful features=] in the
-        [[[powerful-feature-registry]]]. Doing so also provides this Working Group an opportunity
-        to provide feedback and check that integration with this specification is done effectively.
-      </p>
       <p>
-        Each <a>powerful feature</a> has the following permission-related algorithms and types.
-        When the defaults are not suitable for a particular [=powerful feature=], a specification
-        MAY override below algorithms and types below.
+        When a specification <dfn class="export">specifies a powerful feature</dfn> it:
+      </p>
+      <ol>
+        <li>MUST give the [=powerful feature=] a [powerful feature/name] in the form of a [=ascii
+        lowercase=] string.
+        </li>
+        <li>MAY define a [powerful feature/permission descriptor type] that inherits from
+        {{PermissionDescriptor}}.
+        </li>
+        <li>MAY define zero or more [powerful feature/aspects].
+        </li>
+        <li>MAY override the algorithms and types given below if the defaults are not suitable for
+        a particular [=powerful feature=].
+        </li>
+        <li>MUST register the [=powerful feature=] in the [[[powerful-feature-registry]]].
+        </li>
+      </ol>
+      <p class="advisement">
+        Registering the newly specified [=powerful features=] in the
+        [[[powerful-feature-registry]]] gives this Working Group an opportunity to provide feedback
+        and check that integration with this specification is done effectively.
       </p>
       <dl>
         <dt>
