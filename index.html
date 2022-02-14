@@ -263,212 +263,6 @@
         </p>
         <section>
           <h3>
-            Specifying a powerful feature
-          </h3>
-          <p class="note">
-            Specifications wanting to add a new [=powerful feature=] are encouraged to coordinate
-            with us on this specification via GitHub.
-          </p>
-          <p>
-            Each <a>powerful feature</a> has the following permission-related algorithms and types.
-            When the defaults are not suitable for a particular [=powerful feature=], a
-            specification MAY override below algorithms and types below.
-          </p>
-          <dl>
-            <dt>
-              A <dfn data-dfn-for="powerful feature" class="export">permission descriptor
-              type</dfn>:
-            </dt>
-            <dd>
-              <p>
-                {{PermissionDescriptor}} or one of its subtypes. If unspecified, this defaults to
-                {{PermissionDescriptor}}.
-              </p>
-              <p>
-                The feature can define a <a href=
-                "https://en.wikipedia.org/wiki/Partially_ordered_set">partial order</a> on
-                descriptor instances. If |descriptorA| is <dfn class="export" data-dfn-for=
-                "PermissionDescriptor">stronger than</dfn> |descriptorB|, then if |descriptorA|'s
-                <a>permission state</a> is {{PermissionState/"granted"}}, |descriptorB|'s
-                <a>permission state</a> must also be {{PermissionState/"granted"}}, and if
-                |descriptorB|'s <a>permission state</a> is {{PermissionState/"denied"}},
-                |descriptorA|'s <a>permission state</a> must also be {{PermissionState/"denied"}}.
-              </p>
-              <p class="example" id="example-stronger-than">
-                <code>{name: {{PermissionName/"midi"}}, sysex: true}</code> ("midi-with-sysex") is
-                [=PermissionDescriptor/stronger than=] <code>{name: {{PermissionName/"midi"}},
-                sysex: false}</code> ("midi-without-sysex"), so if the user denies access to
-                midi-without-sysex, the UA must also deny access to midi-with-sysex, and similarly
-                if the user grants access to midi-with-sysex, the UA must also grant access to
-                midi-without-sysex.
-              </p>
-            </dd>
-            <dt>
-              Optional <dfn data-dfn-for="powerful feature" class="export">permission state
-              constraints</dfn>:
-            </dt>
-            <dd>
-              Constraints on the values that the UA can return as a descriptor's <a>permission
-              state</a>. Defaults to no constraints beyond the user's intent.
-            </dd>
-            <dt>
-              An optional <dfn data-dfn-for="powerful feature" class="export">extra permission data
-              type</dfn>:
-            </dt>
-            <dd>
-              <p data-cite="mediacapture-streams">
-                Some <a>powerful features</a> have more information associated with them than just
-                a {{PermissionState}}. For example, {{MediaDevices/getUserMedia()}} needs to
-                determine <em>which</em> cameras the user has granted the <a data-cite=
-                "ECMASCRIPT#current-realm">current realm</a> permission to access. Each of these
-                features defines an [=powerful feature/extra permission data type=]. If a
-                {{PermissionName}} |name| names one of these features, then |name|'s
-                <dfn data-dfn-for="powerful feature" class="export">extra permission data</dfn> for
-                an optional <a>environment settings object</a> |settings| is the result of the
-                following algorithm:
-              </p>
-              <ol class="algorithm">
-                <li>If |settings| wasn't passed, set it to the [=current settings object=].
-                </li>
-                <li>If there was a previous invocation of this algorithm with the same |name| and
-                |settings|, returning |previousResult|, and the UA has not received <a>new
-                information about the user's intent</a> since that invocation, return
-                |previousResult|.
-                </li>
-                <li>Return the instance of |name|'s [=powerful feature/extra permission data type=]
-                that matches the UA's impression of the user's intent, taking into account any
-                [=powerful feature/extra permission data constraints=] for |name|.
-                </li>
-              </ol>
-              <p>
-                If specified, the [=powerful feature/extra permission data=] algorithm is usable
-                for this feature.
-              </p>
-            </dd>
-            <dt>
-              Optional <dfn data-dfn-for="powerful feature" class="export">extra permission data
-              constraints</dfn>:
-            </dt>
-            <dd>
-              Constraints on the values that the UA can return as a {{PermissionName}}'s [=powerful
-              feature/extra permission data=]. Defaults to no constraints beyond the user's intent.
-            </dd>
-            <dt>
-              A <dfn data-dfn-for="powerful feature" class="export">permission result type</dfn>:
-            </dt>
-            <dd>
-              {{PermissionStatus}} or one of its subtypes. If unspecified, this defaults to
-              {{PermissionStatus}}.
-            </dd>
-            <dt>
-              A <dfn data-dfn-for="powerful feature" class="export">permission query
-              algorithm</dfn>:
-            </dt>
-            <dd>
-              <p>
-                Takes an instance of the [=powerful feature/permission descriptor type=] and a new
-                or existing instance of the [=powerful feature/permission result type=], and
-                updates the [=powerful feature/permission result type=] instance with the query
-                result. Used by {{Permissions}}' {{Permissions/query(permissionDesc)}} method and
-                the [=`PermissionStatus` update steps=]. If unspecified, this defaults to the
-                <a>default permission query algorithm</a>.
-              </p>
-              <p>
-                The <dfn>default permission query algorithm</dfn>, given a {{PermissionDescriptor}}
-                <var>permissionDesc</var> and a {{PermissionStatus}} |status|, runs the following
-                steps:
-              </p>
-              <ol class="algorithm">
-                <li>Set <code>|status|.state</code> to |permissionDesc|'s <a>permission state</a>.
-                </li>
-              </ol>
-            </dd>
-            <dt>
-              A <dfn data-dfn-for="powerful feature" class="export">permission revocation
-              algorithm</dfn>:
-            </dt>
-            <dd>
-              <p>
-                Takes no arguments. Updates any other parts of the implementation that need to be
-                kept in sync with changes in the results of <a>permission states</a> or [=powerful
-                feature/extra permission data=], and then [=react to the user revoking
-                permission=].
-              </p>
-              <p>
-                If unspecified, this defaults to running [=react to the user revoking permission=].
-              </p>
-            </dd>
-            <dt>
-              A permission [=permission/lifetime=]:
-            </dt>
-            <dd>
-              <p>
-                Specifications that define one or more [=powerful features=] SHOULD suggest a
-                [=permission=] [=permission/lifetime=] that is best suited for the particular
-                feature. Some guidance on determining the lifetime of a permission is noted below,
-                with a strong emphasis on user privacy. If no [=permission/lifetime=] is specified,
-                the user agent provides one.
-              </p>
-              <p>
-                When the permission [=permission/lifetime=] expires for an origin:
-              </p>
-              <ol>
-                <li>Set the permission back to its [=permission/default state=].
-                </li>
-                <li>For each |browsing context| associated with the origin (if any), [=queue a
-                global task=] on the [=permissions task source=] with the |browsing context|'s
-                [=global object=] to run the [=powerful feature/permission revocation algorithm=].
-                </li>
-              </ol>
-              <aside class="note" title="Determining the lifetime of a permission">
-                <p>
-                  For particularly privacy-sensitive [=features=], such as [[[GETUSERMEDIA]]],
-                  which can provide a web application access to a user's camera and microphone,
-                  some user agents expire a permission [=permission/grant=] as soon as a browser
-                  tab is closed or navigated. For other features, like the [[[Geolocation]]], user
-                  agents are known to offer a choice of only granting the permission for the
-                  session, or for one day. Others, like the [[[Notifications]]] and [[[push-api]]]
-                  APIs, remember a user's decision indefinitely or until the user manually revokes
-                  the permission. Note that permission [=permission/lifetimes=] can vary
-                  significantly between user agents.
-                </p>
-                <p>
-                  Finding the right balance for the lifetime of a permission requires a lot of
-                  thought and experimentation, and often evolves over a period of years.
-                  Implementers are encouraged to work with their UX security teams to find the
-                  right balance between ease of access to a [=powerful feature=] (i.e., reducing
-                  the number of permission prompts), respecting a user's privacy, and making users
-                  aware when a web application is making use of a particular powerful feature
-                  (e.g., via some visual or auditory UI indicator).
-                </p>
-                <p>
-                  If you are unsure about what [=permission/lifetime=] to suggest for a [=powerful
-                  feature=], please contact the <a href="https://www.w3.org/Privacy/IG/">Privacy
-                  Interest Group</a> for guidance.
-                </p>
-              </aside>
-            </dd>
-            <dt>
-              <dfn class="export" data-dfn-for="powerful feature">Default permission state</dfn>:
-            </dt>
-            <dd>
-              <p>
-                A {{PermissionState}} value that serves as a [=permission=]'s [=permission/default
-                state=] of a [=powerful feature=].
-              </p>
-              <p>
-                If not specified, the [=permission=]'s [=permission/default state=] is
-                {{PermissionState/"prompt"}}.
-              </p>
-            </dd>
-          </dl>
-          <p>
-            A <dfn class="export">default powerful feature</dfn> is a <a>powerful feature</a> with
-            all of the above types and algorithms defaulted.
-          </p>
-        </section>
-        <section>
-          <h3>
             Aspects
           </h3>
           <p>
@@ -681,6 +475,205 @@
           </li>
         </ol>
       </section>
+    </section>
+    <section>
+      <h2>
+        Specifying a powerful feature
+      </h2>
+      <p class="advisement">
+        Please register newly specified [=powerful features=] in the
+        [[[powerful-feature-registry]]]. Doing so also provides this Working Group an opportunity
+        to provide feedback and check that integration with this specification is done effectively.
+      </p>
+      <p>
+        Each <a>powerful feature</a> has the following permission-related algorithms and types.
+        When the defaults are not suitable for a particular [=powerful feature=], a specification
+        MAY override below algorithms and types below.
+      </p>
+      <dl>
+        <dt>
+          A <dfn data-dfn-for="powerful feature" class="export">permission descriptor type</dfn>:
+        </dt>
+        <dd>
+          <p>
+            {{PermissionDescriptor}} or one of its subtypes. If unspecified, this defaults to
+            {{PermissionDescriptor}}.
+          </p>
+          <p>
+            The feature can define a <a href=
+            "https://en.wikipedia.org/wiki/Partially_ordered_set">partial order</a> on descriptor
+            instances. If |descriptorA| is <dfn class="export" data-dfn-for=
+            "PermissionDescriptor">stronger than</dfn> |descriptorB|, then if |descriptorA|'s
+            <a>permission state</a> is {{PermissionState/"granted"}}, |descriptorB|'s <a>permission
+            state</a> must also be {{PermissionState/"granted"}}, and if |descriptorB|'s
+            <a>permission state</a> is {{PermissionState/"denied"}}, |descriptorA|'s <a>permission
+            state</a> must also be {{PermissionState/"denied"}}.
+          </p>
+          <p class="example" id="example-stronger-than">
+            <code>{name: "midi", sysex: true}</code> ("midi-with-sysex") is
+            [=PermissionDescriptor/stronger than=] <code>{name: "midi", sysex: false}</code>
+            ("midi-without-sysex"), so if the user denies access to midi-without-sysex, the UA must
+            also deny access to midi-with-sysex, and similarly if the user grants access to
+            midi-with-sysex, the UA must also grant access to midi-without-sysex.
+          </p>
+        </dd>
+        <dt>
+          <dfn data-dfn-for="powerful feature" class="export">permission state constraints</dfn>:
+        </dt>
+        <dd>
+          Constraints on the values that the UA can return as a descriptor's <a>permission
+          state</a>. Defaults to no constraints beyond the user's intent.
+        </dd>
+        <dt>
+          <dfn data-dfn-for="powerful feature" class="export">extra permission data type</dfn>:
+        </dt>
+        <dd>
+          <p class="note" data-cite="mediacapture-streams ECMAScript">
+            Some <a>powerful features</a> have more information associated with them than just a
+            {{PermissionState}}. For example, {{MediaDevices/getUserMedia()}} needs to determine
+            <em>which</em> cameras the user has granted [=ECMAScript/the current realm record=]
+            permission to access. Each of these features defines an [=powerful feature/extra
+            permission data type=]. If a {{DOMString}} |name| names one of these features, then
+            |name|'s <dfn data-dfn-for="powerful feature" class="export">extra permission
+            data</dfn> for an optional <a>environment settings object</a> |settings| is the result
+            of the following algorithm:
+          </p>
+          <ol class="algorithm">
+            <li>If |settings| wasn't passed, set it to the [=current settings object=].
+            </li>
+            <li>If there was a previous invocation of this algorithm with the same |name| and
+            |settings|, returning |previousResult|, and the UA has not received <a>new information
+            about the user's intent</a> since that invocation, return |previousResult|.
+            </li>
+            <li>Return the instance of |name|'s [=powerful feature/extra permission data type=]
+            that matches the UA's impression of the user's intent, taking into account any
+            [=powerful feature/extra permission data constraints=] for |name|.
+            </li>
+          </ol>
+          <p>
+            If specified, the [=powerful feature/extra permission data=] algorithm is usable for
+            this feature.
+          </p>
+        </dd>
+        <dt>
+          Optional <dfn data-dfn-for="powerful feature" class="export">extra permission data
+          constraints</dfn>:
+        </dt>
+        <dd>
+          Constraints on the values that the UA can return as a [=powerful feature=]'s [=powerful
+          feature/extra permission data=]. Defaults to no constraints beyond the user's intent.
+        </dd>
+        <dt>
+          A <dfn data-dfn-for="powerful feature" class="export">permission result type</dfn>:
+        </dt>
+        <dd>
+          {{PermissionStatus}} or one of its subtypes. If unspecified, this defaults to
+          {{PermissionStatus}}.
+        </dd>
+        <dt>
+          A <dfn data-dfn-for="powerful feature" class="export">permission query algorithm</dfn>:
+        </dt>
+        <dd>
+          <p>
+            Takes an instance of the [=powerful feature/permission descriptor type=] and a new or
+            existing instance of the [=powerful feature/permission result type=], and updates the
+            [=powerful feature/permission result type=] instance with the query result. Used by
+            {{Permissions}}' {{Permissions/query(permissionDesc)}} method and the
+            [=`PermissionStatus` update steps=]. If unspecified, this defaults to the <a>default
+            permission query algorithm</a>.
+          </p>
+          <p>
+            The <dfn>default permission query algorithm</dfn>, given a {{PermissionDescriptor}}
+            <var>permissionDesc</var> and a {{PermissionStatus}} |status|, runs the following
+            steps:
+          </p>
+          <ol class="algorithm">
+            <li>Set <code>|status|.state</code> to |permissionDesc|'s <a>permission state</a>.
+            </li>
+          </ol>
+        </dd>
+        <dt>
+          A <dfn data-dfn-for="powerful feature" class="export">permission revocation
+          algorithm</dfn>:
+        </dt>
+        <dd>
+          <p>
+            Takes no arguments. Updates any other parts of the implementation that need to be kept
+            in sync with changes in the results of <a>permission states</a> or [=powerful
+            feature/extra permission data=], and then [=react to the user revoking permission=].
+          </p>
+          <p>
+            If unspecified, this defaults to running [=react to the user revoking permission=].
+          </p>
+        </dd>
+        <dt>
+          A permission [=permission/lifetime=]:
+        </dt>
+        <dd>
+          <p>
+            Specifications that define one or more [=powerful features=] SHOULD suggest a
+            [=permission=] [=permission/lifetime=] that is best suited for the particular feature.
+            Some guidance on determining the lifetime of a permission is noted below, with a strong
+            emphasis on user privacy. If no [=permission/lifetime=] is specified, the user agent
+            provides one.
+          </p>
+          <p>
+            When the permission [=permission/lifetime=] expires for an origin:
+          </p>
+          <ol>
+            <li>Set the permission back to its default [=permission state=] (e.g. setting it back
+            to "[=permission/prompt=]").
+            </li>
+            <li>For each |browsing context| associated with the origin (if any), [=queue a global
+            task=] on the [=permissions task source=] with the |browsing context|'s [=global
+            object=] to run the [=powerful feature/permission revocation algorithm=].
+            </li>
+          </ol>
+          <aside class="note" title="Determining the lifetime of a permission">
+            <p>
+              For particularly privacy-sensitive [=features=], such as [[[GETUSERMEDIA]]], which
+              can provide a web application access to a user's camera and microphone, some user
+              agents expire a permission [=permission/grant=] as soon as a browser tab is closed or
+              navigated. For other features, like the [[[Geolocation]]], user agents are known to
+              offer a choice of only granting the permission for the session, or for one day.
+              Others, like the [[[Notifications]]] and [[[push-api]]] APIs, remember a user's
+              decision indefinitely or until the user manually revokes the permission. Note that
+              permission [=permission/lifetimes=] can vary significantly between user agents.
+            </p>
+            <p>
+              Finding the right balance for the lifetime of a permission requires a lot of thought
+              and experimentation, and often evolves over a period of years. Implementers are
+              encouraged to work with their UX security teams to find the right balance between
+              ease of access to a [=powerful feature=] (i.e., reducing the number of permission
+              prompts), respecting a user's privacy, and making users aware when a web application
+              is making use of a particular powerful feature (e.g., via some visual or auditory UI
+              indicator).
+            </p>
+            <p>
+              If you are unsure about what [=permission/lifetime=] to suggest for a [=powerful
+              feature=], please contact the <a href="https://www.w3.org/Privacy/IG/">Privacy
+              Interest Group</a> for guidance.
+            </p>
+          </aside>
+        </dd>
+        <dt>
+          <dfn class="export" data-dfn-for="powerful feature">Default permission state</dfn>:
+        </dt>
+        <dd>
+          <p>
+            An {{PermissionState}} value that serves as a [=permission=]'s [=permission/default
+            state=] of a [=powerful feature=].
+          </p>
+          <p>
+            If not specified, the [=permission=]'s [=permission/default state=] is
+            {{PermissionState/"prompt"}}.
+          </p>
+        </dd>
+      </dl>
+      <p>
+        A <dfn class="export">default powerful feature</dfn> is a <a>powerful feature</a> with all
+        of the above types and algorithms defaulted.
+      </p>
     </section>
     <section>
       <h2>
