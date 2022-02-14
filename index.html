@@ -76,10 +76,6 @@
       <p>
         This is a work in progress.
       </p>
-      <p>
-        Some features in this specification are supported by only one user agent, and as such, are
-        marked as <dfn>at risk</dfn>.
-      </p>
     </section>
     <section class="informative">
       <h2 id="examples">
@@ -159,9 +155,9 @@
           [=permission/state=].
         </p>
         <p>
-          <dfn class="export">Express permission</dfn> refers to an act by the user, e.g. via user
-          interface or host device platform features, through which the user [=permission/grants=]
-          [=permission=] for use of a feature by a web application.
+          <dfn class="export">Express permission</dfn> refers to the user
+          [=permission/grants|granting=] the web application the ability to use a [=powerful
+          feature=].
         </p>
         <aside class="note" title="Limitations">
           <p>
@@ -231,7 +227,7 @@
           could be until a particular Realm is destroyed, until a particular [=top-level browsing
           context=] is destroyed, an amount of time, or infinite. The lifetime is negotiated
           between the end-user and the [=user agent=] when the user gives [=express permission=] to
-          use a [=feature=]—usually via some permission UI or user-agent defined policy.
+          use a [=feature=] — usually via some permission UI or user-agent defined policy.
         </p>
         <p>
           Every permission has a <dfn data-for="permission">default state</dfn> (usually
@@ -247,9 +243,9 @@
         <p>
           A <dfn class="export" data-local-lt="feature">powerful feature</dfn> is a web platform
           feature (usually an API) for which a user gives [=express permission=] before the feature
-          can be used. Access to the feature is determined by the <a>environment settings
-          object</a> by the user having [=permission/granted=] permission via UI, or by satisfying
-          some criteria that is equivalent to a permission [=permission/grant=].
+          can be used. Access to the feature is determined by the user having
+          [=permission/granted=] permission, or by satisfying some criteria that is equivalent to a
+          permission [=permission/grant=].
         </p>
         <p>
           A [=powerful feature=] is identified by its <dfn class="export" data-dfn-for=
@@ -257,9 +253,8 @@
         </p>
         <p>
           The user agent is responsible for tracking what <a>powerful features</a> each [=global
-          object/realm=] has the user's [=permission=] to use. Other specifications can use the
-          operations defined in this section to retrieve the UA's notion of what permissions are
-          granted or denied, and to ask the user to grant or deny more permissions.
+          object/realm=] has the user's [=permission=] to use via the [=environment settings
+          object=].
         </p>
         <section>
           <h3>
@@ -267,12 +262,9 @@
           </h3>
           <p>
             Each <a>powerful feature</a> can define zero or more additional <dfn data-dfn-for=
-            "powerful feature">aspects</dfn> that websites can request permission to access.
-          </p>
-          <p>
-            To describe an [=powerful feature/aspect=], a specification MUST define a WebIDL
-            [=dictionary=] that [=dictionary/inherits=] from {{PermissionDescriptor}}, and have
-            that interface be its [=powerful feature/permission descriptor type=].
+            "powerful feature">aspects</dfn>. An aspect is defined as WebIDL [=dictionary=] that
+            [=dictionary/inherits=] from {{PermissionDescriptor}} and serves as an WebIDL
+            interface's [=powerful feature/permission descriptor type=].
           </p>
           <aside class="example" title="Defining your own permission descriptor type">
             <p>
@@ -304,176 +296,6 @@
             </p>
           </aside>
         </section>
-      </section>
-      <section data-cite="permissions-policy">
-        <h3 id="reading-current-states">
-          Reading the current permission state
-        </h3>
-        <p>
-          To <dfn class="export" data-lt="getting the current permission state">get the current
-          permission state</dfn>, given a [=powerful feature/name=] |name| and an optional
-          [=environment settings object=] |settings|:
-        </p>
-        <ol class="algorithm">
-          <li>Let |descriptor:PermissionDescriptor| be a newly-created {{PermissionDescriptor}}
-          whose {{PermissionDescriptor/name}} is initialized with |name|.
-          </li>
-          <li>Return the [=permission state=] of |descriptor| and |settings|.
-          </li>
-        </ol>
-        <p>
-          A |descriptor|'s <dfn class="export" data-local-lt="state">permission state</dfn> for an
-          optional <a>environment settings object</a> |settings| is the result of the following
-          algorithm, which returns one of {{PermissionState/"granted"}},
-          {{PermissionState/"prompt"}}, or {{PermissionState/"denied"}}:
-        </p>
-        <ol class="algorithm">
-          <li>If |settings| wasn't passed, set it to the [=current settings object=].
-          </li>
-          <li>If |settings| is a <a>non-secure context</a>, return {{PermissionState/"denied"}}.
-          </li>
-          <li>If there exists a [=policy-controlled feature=] identified by |descriptor|'s
-          {{PermissionDescriptor/name}} and |settings| has an <a>associated `Document`</a> named
-          <var>document</var>, run the following step:
-            <ol class="algorithm">
-              <li>If <var>document</var> is not <a>allowed to use</a> the feature identified by
-              |descriptor|'s {{PermissionDescriptor/name}} return {{PermissionState/"denied"}}.
-              </li>
-            </ol>
-          </li>
-          <li>If there was a previous invocation of this algorithm with the same |descriptor| and
-          |settings|, returning |previousResult|, and the UA has not received <a>new information
-          about the user's intent</a> since that invocation, return |previousResult|.
-          </li>
-          <li>Return whichever of the following options most accurately reflects the user's intent
-          for the calling algorithm, taking into account any [=powerful feature/permission state
-          constraints=] for |descriptor|'s {{PermissionDescriptor/name}}:
-            <dl class="switch">
-              <dt>
-                succeed without prompting the user
-              </dt>
-              <dd>
-                {{PermissionState/"granted"}}
-              </dd>
-              <dt>
-                show the user a prompt to decide whether to succeed
-              </dt>
-              <dd>
-                {{PermissionState/"prompt"}}
-              </dd>
-              <dt>
-                fail without prompting the user
-              </dt>
-              <dd>
-                {{PermissionState/"denied"}}
-              </dd>
-            </dl>
-          </li>
-        </ol>
-        <aside class="issue" id="issue-current-entry-incumbent-or-relevant" data-number="278">
-        </aside>
-        <p>
-          As a shorthand, a {{PermissionName}} |name|'s <a>permission state</a> is the
-          <a>permission state</a> of a {{PermissionDescriptor}} with its
-          {{PermissionDescriptor/name}} member set to |name|.
-        </p>
-      </section>
-      <section>
-        <h3 id="requesting-more-permission">
-          Requesting permission to use a powerful feature
-        </h3>
-        <p class="note">
-          Spec authors, please note that algorithms in this section can wait for user input; so
-          they shouldn't be used from other algorithms running on the main thread.
-        </p>
-        <p>
-          To <dfn data-lt="request permission to use|requesting permission to use" class=
-          "export">request permission to use</dfn> a |descriptor|, the UA must perform the
-          following steps. This algorithm returns either {{PermissionState/"granted"}} or
-          {{PermissionState/"denied"}}.
-        </p>
-        <ol class="algorithm">
-          <li>Let <var>current state</var> be the |descriptor|'s <a>permission state</a>.
-          </li>
-          <li>If <var>current state</var> is not {{PermissionState/"prompt"}}, return <var>current
-          state</var> and abort these steps.
-          </li>
-          <li>Ask the user for <a>express permission</a> for the calling algorithm to use the
-          <a>powerful feature</a> described by |descriptor|.
-          </li>
-          <li>If the user grants permission, return {{PermissionState/"granted"}}; otherwise return
-          {{PermissionState/"denied"}}. The user's interaction may provide <a>new information about
-          the user's intent</a> for this [=global object/realm=] and other [=global object/realms=]
-          with the <a>same origin</a>.
-            <p class="note">
-              This is intentionally vague about the details of the permission UI and how the UA
-              infers user intent. UAs should be able to explore lots of UI within this framework.
-            </p>
-          </li>
-        </ol>
-        <p>
-          As a shorthand, <a>requesting permission to use</a> a {{PermissionName}} |name|, is the
-          same as <a>requesting permission to use</a> a {{PermissionDescriptor}} with its
-          {{PermissionDescriptor/name}} member set to |name|.
-        </p>
-      </section>
-      <section>
-        <h3>
-          Prompt the user to choose
-        </h3>
-        <p>
-          To <dfn data-lt="prompt the user to choose|prompting the user to choose" class=
-          "export">prompt the user to choose</dfn> one of several |options| associated with a
-          |descriptor|, the UA must perform the following steps. This algorithm returns either
-          {{PermissionState/"denied"}} or one of the options.
-        </p>
-        <ol class="algorithm">
-          <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"denied"}}, return
-          {{PermissionState/"denied"}} and abort these steps.
-          </li>
-          <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"granted"}}, the UA
-          may return one of |options| and abort these steps. If the UA returns without prompting,
-          then subsequent <a data-lt="prompt the user to choose">prompts for the user to choose</a>
-          from the same set of options with the same |descriptor| must return the same option,
-          unless the UA receives <a>new information about the user's intent</a>.
-          </li>
-          <li>Ask the user to choose one of the options or deny permission, and wait for them to
-          choose. If the calling algorithm specified extra information to include in the prompt,
-          include it.
-          </li>
-          <li>If the user chose an option, return it; otherwise return
-          {{PermissionState/"denied"}}. If the user's interaction indicates they intend this choice
-          to apply to other realms, then treat this this as <a>new information about the user's
-          intent</a> for other [=global object/realms=] with the <a>same origin</a>.
-            <p class="note">
-              This is intentionally vague about the details of the permission UI and how the UA
-              infers user intent. UAs should be able to explore lots of UI within this framework.
-            </p>
-          </li>
-        </ol>
-        <p>
-          As a shorthand, <a>prompting the user to choose</a> from options associated with a
-          {{PermissionName}} |name|, is the same as <a>prompting the user to choose</a> from those
-          options associated with a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}}
-          member set to |name|.
-        </p>
-      </section>
-      <section>
-        <h3 id="reacting-to-revocation">
-          Reacting to users revoking permission
-        </h3>
-        <p>
-          When the UA learns that the user no longer intends to grant permission for a [=global
-          object/realm=] to use a <a>feature</a>, <dfn>react to the user revoking permission</dfn>
-          by:
-        </p>
-        <ol class="algorithm">
-          <li>
-            <a>Queue a task</a> on the Realm's [=Realm/settings object=]'s [=environment settings
-            object/responsible event loop=] to run that feature's [=powerful feature/permission
-            revocation algorithm=].
-          </li>
-        </ol>
       </section>
     </section>
     <section>
@@ -690,6 +512,160 @@
     </section>
     <section>
       <h2>
+        Algorithms to interface with permissions
+      </h2>
+      <section data-cite="permissions-policy">
+        <h3 id="reading-current-states">
+          Reading the current permission state
+        </h3>
+        <p>
+          To <dfn class="export" data-lt="getting the current permission state">get the current
+          permission state</dfn>, given a [=powerful feature/name=] |name| and an optional
+          [=environment settings object=] |settings|. This algorithm returns one of the
+          {{PermissionState}} enum values:
+        </p>
+        <ol class="algorithm">
+          <li>Let |descriptor:PermissionDescriptor| be a newly-created {{PermissionDescriptor}}
+          whose {{PermissionDescriptor/name}} is initialized with |name|.
+          </li>
+          <li>Return the [=permission state=] of |descriptor| and |settings|.
+          </li>
+        </ol>
+        <p>
+          A |descriptor|'s <dfn class="export" data-local-lt="state">permission state</dfn> for an
+          optional <a>environment settings object</a> |settings| is the result of the following
+          algorithm. It returns a {{PermissionState}} enum value:
+        </p>
+        <ol class="algorithm">
+          <li>If |settings| wasn't passed, set it to the [=current settings object=].
+          </li>
+          <li>If |settings| is a [=non-secure context=], return {{PermissionState/"denied"}}.
+          </li>
+          <li>Let |feature| be |descriptor|'s {{PermissionDescriptor/name}}.
+          </li>
+          <li>If there exists a [=policy-controlled feature=] for |feature| and |settings| has an
+          <a>associated `Document`</a> run the following step:
+            <ol class="algorithm">
+              <li>Let <var>document</var> be |settings|'s <a>associated `Document`</a>.
+              </li>
+              <li>If <var>document</var> is not <a>allowed to use</a> |feature|, return
+              {{PermissionState/"denied"}}.
+              </li>
+            </ol>
+          </li>
+          <li>If there was a previous invocation of this algorithm with the same |descriptor| and
+          |settings|, returning |previousResult|, and the UA has not received <a>new information
+          about the user's intent</a> since that invocation, return |previousResult|.
+          </li>
+          <li>Return the {{PermissionState}} enum value that presents permission state of
+          |feature|, taking into account any [=powerful feature/permission state constraints=] for
+          |descriptor|'s {{PermissionDescriptor/name}}.
+          </li>
+        </ol>
+        <aside class="issue" id="issue-current-entry-incumbent-or-relevant" data-number="278">
+        </aside>
+        <p>
+          As a shorthand, a {{DOMString}} |name|'s <a>permission state</a> is the <a>permission
+          state</a> of a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}} member set
+          to |name|.
+        </p>
+      </section>
+      <section>
+        <h3 id="requesting-more-permission">
+          Requesting permission to use a powerful feature
+        </h3>
+        <p>
+          To <dfn data-lt="request permission to use|requesting permission to use" class=
+          "export">request permission to use</dfn> a |descriptor|, the UA must perform the
+          following steps. This algorithm returns either {{PermissionState/"granted"}} or
+          {{PermissionState/"denied"}}.
+        </p>
+        <ol class="algorithm">
+          <li>Let <var>current state</var> be the |descriptor|'s <a>permission state</a>.
+          </li>
+          <li>If <var>current state</var> is not {{PermissionState/"prompt"}}, return <var>current
+          state</var> and abort these steps.
+          </li>
+          <li>Ask the user for <a>express permission</a> for the calling algorithm to use the
+          <a>powerful feature</a> described by |descriptor|.
+          </li>
+          <li>If the user gives [=express permission=] to use the powerful feature, return
+          {{PermissionState/"granted"}}; otherwise return {{PermissionState/"denied"}}. The user's
+          interaction may provide <a>new information about the user's intent</a> for this [=global
+          object/realm=] and other [=global object/realms=] with the <a>same origin</a>.
+            <p class="note">
+              This is intentionally vague about the details of the permission UI and how the UA
+              infers user intent. UAs should be able to explore lots of UI within this framework.
+            </p>
+          </li>
+        </ol>
+        <p>
+          As a shorthand, <a>requesting permission to use</a> a {{DOMString}} |name|, is the same
+          as <a>requesting permission to use</a> a {{PermissionDescriptor}} with its
+          {{PermissionDescriptor/name}} member set to |name|.
+        </p>
+      </section>
+      <section>
+        <h3>
+          Prompt the user to choose
+        </h3>
+        <p>
+          To <dfn data-lt="prompt the user to choose|prompting the user to choose" class=
+          "export">prompt the user to choose</dfn> one of several |options| associated with a
+          |descriptor|, the UA must perform the following steps. This algorithm returns either
+          {{PermissionState/"denied"}} or one of the options.
+        </p>
+        <ol class="algorithm">
+          <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"denied"}}, return
+          {{PermissionState/"denied"}} and abort these steps.
+          </li>
+          <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"granted"}}, the UA
+          may return one of |options| and abort these steps. If the UA returns without prompting,
+          then subsequent <a data-lt="prompt the user to choose">prompts for the user to choose</a>
+          from the same set of options with the same |descriptor| must return the same option,
+          unless the UA receives <a>new information about the user's intent</a>.
+          </li>
+          <li>Ask the user to choose one of the options or deny permission, and wait for them to
+          choose. If the calling algorithm specified extra information to include in the prompt,
+          include it.
+          </li>
+          <li>If the user chose an option, return it; otherwise return
+          {{PermissionState/"denied"}}. If the user's interaction indicates they intend this choice
+          to apply to other realms, then treat this this as <a>new information about the user's
+          intent</a> for other [=global object/realms=] with the <a>same origin</a>.
+            <p class="note">
+              This is intentionally vague about the details of the permission UI and how the UA
+              infers user intent. UAs should be able to explore lots of UI within this framework.
+            </p>
+          </li>
+        </ol>
+        <p>
+          As a shorthand, <a>prompting the user to choose</a> from options associated with a
+          {{DOMString}} |name|, is the same as <a>prompting the user to choose</a> from those
+          options associated with a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}}
+          member set to |name|.
+        </p>
+      </section>
+      <section>
+        <h3 id="reacting-to-revocation">
+          Reacting to users revoking permission
+        </h3>
+        <p>
+          When the UA learns that the user no longer intends to grant permission for a [=global
+          object/realm=] to use a <a>feature</a>, <dfn>react to the user revoking permission</dfn>
+          by:
+        </p>
+        <ol class="algorithm">
+          <li>
+            <a>Queue a task</a> on the Realm's [=Realm/settings object=]'s [=environment settings
+            object/responsible event loop=] to run that feature's [=powerful feature/permission
+            revocation algorithm=].
+          </li>
+        </ol>
+      </section>
+    </section>
+    <section>
+      <h2>
         Permissions API
       </h2>
       <section>
@@ -719,7 +695,7 @@
           };
 
           dictionary PermissionDescriptor {
-            required PermissionName name;
+            required DOMString name;
           };
         </pre>
         <section>
@@ -732,6 +708,19 @@
             <var>permissionDesc</var>:
           </p>
           <ol class="algorithm">
+            <li>If |permissionDesc|'s {{PermissionDescriptor/name}} member is not supported, return
+            [=a promise rejected with=] a {{TypeError}}.
+              <aside class="note" title="Why is this not an enum?">
+                <p>
+                  This is deliberately design to work the same a WebIDL [=enumeration=] (`enum`)
+                  and implementers are encouraged to use their own custom `enum` here. The reason
+                  this is not an enum in the specification vary greatly in the powerful features
+                  they support. Using a {{DOMString}} to identify a powerful feature gives
+                  implementers the freedom to pick and choose which of the power features from the
+                  [[[powerful-feature-registry]]] they wish to support.
+                </p>
+              </aside>
+            </li>
             <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to an IDL
             value</a> of type {{PermissionDescriptor}}.
             </li>
@@ -771,7 +760,7 @@
           [Exposed=(Window,Worker)]
           interface PermissionStatus : EventTarget {
             readonly attribute PermissionState state;
-            readonly attribute PermissionName name;
+            readonly attribute DOMString name;
             attribute EventHandler onchange;
           };
 
@@ -870,121 +859,7 @@
         </section>
       </section>
     </section>
-    <section data-dfn-for="PermissionName">
-      <h2>
-        Powerful features registry
-      </h2>
-      <pre class="idl">
-        enum PermissionName {
-          "accelerometer",
-          "ambient-light-sensor",
-          "background-fetch",
-          "background-sync",
-          "bluetooth",
-          "camera",
-          "display-capture",
-          "geolocation",
-          "gyroscope",
-          "magnetometer",
-          "microphone",
-          "midi",
-          "nfc",
-          "notifications",
-          "persistent-storage",
-          "push",
-          "screen-wake-lock",
-          "speaker-selection",
-          "xr-spatial-tracking",
-        };
-      </pre>
-      <p>
-        Each enumeration value in the {{PermissionName}} enum identifies a <a>powerful feature</a>.
-      </p>
-      <p>
-        The <dfn>accelerometer</dfn> enum value identifies the [[[?accelerometer]]] API [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>ambient-light-sensor</dfn> enum value identifies the [[[?ambient-light]]]
-        [=powerful feature=].
-      </p>
-      <p>
-        The <dfn>background-fetch</dfn> enum value identifies the [[[?background-fetch]]]
-        [=powerful feature=].
-      </p>
-      <p>
-        The <dfn>background-sync</dfn> enum value identifies the [[[?web-background-sync]]]
-        [=powerful feature=].
-      </p>
-      <p>
-        The <dfn>bluetooth</dfn> enum value identifies the [[[?web-bluetooth]]] [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>camera</dfn> and <dfn>microphone</dfn> enum values identify the
-        [[[?mediacapture-streams]]] [=powerful features=].
-      </p>
-      <p>
-        The <dfn>display-capture</dfn> enum value identifies the [[[?screen-capture]]] [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>geolocation</dfn> enum value identifies the [[[?Geolocation]]] [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>gyroscope</dfn> enum value identifies the [[[?gyroscope]]] API [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>magnetometer</dfn> enum value identifies the [[[?magnetometer]]] API [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>midi</dfn> enum value identifies the [[[?webmidi]]] [=powerful feature=].
-      </p>
-      <p>
-        The <dfn>nfc</dfn> enum value identifies the [[[?web-nfc]]] [=powerful feature=].
-      </p>
-      <p>
-        The <dfn>notifications</dfn> enum value identifies the [[[?notifications]]] [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>persistent-storage</dfn> enum value identifies the [[[?storage]]] [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>push</dfn> enum value identifies the [[[?push-api]]] [=powerful feature=].
-      </p>
-      <p>
-        The <dfn>speaker-selection</dfn> enum value identifies the [[[?audio-output]]] [=powerful
-        feature=].
-      </p>
-      <p>
-        The <dfn>xr-spatial-tracking</dfn> enum value identifies the [[[?webxr]]] Device API
-        [=powerful feature=].
-      </p>
-      <section>
-        <h3 id="screen-wake-lock">
-          Screen wake lock
-        </h3>
-        <p>
-          The <dfn>screen-wake-lock</dfn> enum value identifies the [[[screen-wake-lock]]]
-          [=powerful feature=]. It is a [=default powerful feature=].
-        </p>
-        <p class="issue">
-          This [=powerful feature=] only has a single implementation, and therefore, as per the W3C
-          Process, it is [=at risk=].
-        </p>
-      </section>
-    </section>
-    <section id="conformance">
-      <p>
-        Two classes of products can claim conformance to this document: a [=user agent=] and a
-        <dfn>specification</dfn>.
-      </p>
-    </section>
+    <section id="conformance"></section>
     <section class="informative appendix">
       <h2 id="relationship-to-permissions-policy">
         Relationship to the Permissions Policy specification
