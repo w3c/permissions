@@ -909,7 +909,8 @@
       </h2>
       <p>
         For the purposes of user-agent automation and application testing, this document defines
-        the following <a>extension commands</a> for the [[WebDriver]] specification.
+        the following <a>extension commands</a> for the [[WebDriver]] specification. It is OPTIONAL
+        for a user agent to support <a>extension commands</a> commands.
       </p>
       <pre class='idl'>
         dictionary PermissionSetParameters {
@@ -951,19 +952,18 @@
         </p>
         <ol>
           <li>Let |parameters| be the |parameters| argument, <a>converted to an IDL value</a> of
-          type {{PermissionSetParameters}}. If this throws an exception, return a <a>WebDriver
-          error</a> with <a>WebDriver error code</a> <a>WebDriver invalid argument</a>.
+          type {{PermissionSetParameters}}. If this throws an exception, return a [=invalid
+          argument=] [=error=].
           </li>
           <li>Let |rootDesc| be |parameters|.{{PermissionSetParameters/descriptor}}.
           </li>
           <li>Let |typedDescriptor| be the object |rootDesc| refers to, <a>converted to an IDL
           value</a> of <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s [=powerful
-          feature/permission descriptor type=]. If this throws an exception, return a <a>WebDriver
-          error</a> with <a>WebDriver error code</a> <a>WebDriver invalid argument</a>.
+          feature/permission descriptor type=]. If this throws an exception, return a [=invalid
+          argument=] [=error=].
           </li>
           <li>If |parameters|.{{PermissionSetParameters/state}} is an inappropriate <a>permission
-          state</a> for any implementation-defined reason, return a <a>WebDriver error</a> with <a>
-            WebDriver error code</a> <a>WebDriver invalid argument</a>.
+          state</a> for any implementation-defined reason, return a [=invalid argument=] [=error=].
             <p class="note">
               For example, <a>user agents</a> that define the "midi" <a>powerful feature</a> as
               "always on" may choose to reject command to set the <a>permission state</a> to
@@ -971,11 +971,6 @@
             </p>
           </li>
           <li>Let |settings| be the [=current settings object=].
-          </li>
-          <li>If |settings| is a <a>non-secure context</a> and
-          <code>|rootDesc|.{{PermissionDescriptor/name}}</code> isn't allowed in [=non-secure
-          context=], return a <a>WebDriver error</a> with <a>WebDriver error code</a> <a>WebDriver
-          invalid argument</a>.
           </li>
           <li>If |parameters|.{{PermissionSetParameters/oneRealm}} is true, let |targets| be a <a>
             list</a> whose sole member is |settings|.
@@ -1008,11 +1003,11 @@
           <li>Return <a>success</a> with data `null`.
           </li>
         </ol>
-        <aside class="example">
+        <aside class="example" title="Setting a permission via WebDriver">
           <p>
             To [=set permission=] for `{name: "midi", sysex: true}` of the [=current settings
-            object=] of the <a>session</a> with ID 23 to "`granted`", the <a>local end</a> would
-            POST to `/session/23/permissions` with the body:
+            object=] of the <a>session</a> with ID 23 to "`granted`", the local end would POST to
+            `/session/23/permissions` with the body:
           </p>
           <pre class="lang-json">
           {
