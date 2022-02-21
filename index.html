@@ -708,6 +708,14 @@
             <var>permissionDesc</var>:
           </p>
           <ol class="algorithm">
+            <li>If [=this=] [=relevant global object=] is a {{Window}} object, then:
+              <ol>
+                <li>If the [=current settings object's=] <a>associated `Document`</a> is not
+                [=Document/fully active=], return [=a promise rejected with=] a
+                {{"InvalidStateError"}} {{DOMException}}.
+                </li>
+              </ol>
+            </li>
             <li>If |permissionDesc|'s {{PermissionDescriptor/name}} member is not supported, return
             [=a promise rejected with=] a {{TypeError}}.
               <aside class="note" title="Why is this not an enum?">
@@ -837,6 +845,12 @@
             steps</dfn>:
           </p>
           <ol class="algorithm">
+            <li>Let |document| this |status|'s [=relevant global object=]'s [=associated
+            Document=].
+            </li>
+            <li>If |document| is null or |document| is not [=Document/fully active=], terminate
+            this algorithm.
+            </li>
             <li>Let |query| be |status|'s {{PermissionStatus/[[query]]}} internal slot.
             </li>
             <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission query
