@@ -708,14 +708,6 @@
             <var>permissionDesc</var>:
           </p>
           <ol class="algorithm">
-            <li>If [=this=] [=relevant global object=] is a {{Window}} object, then:
-              <ol>
-                <li>If the [=current settings object=]'s <a>associated `Document`</a> is not
-                [=Document/fully active=], return [=a promise rejected with=] a
-                {{"InvalidStateError"}} {{DOMException}}.
-                </li>
-              </ol>
-            </li>
             <li>If |permissionDesc|'s {{PermissionDescriptor/name}} member is not supported, return
             [=a promise rejected with=] a {{TypeError}}.
               <aside class="note" title="Why is this not an enum?">
@@ -728,6 +720,14 @@
                   [[[powerful-feature-registry]]] they wish to support.
                 </p>
               </aside>
+            </li>
+            <li>If [=this=] [=relevant global object=] is a {{Window}} object, then:
+              <ol>
+                <li>If the [=current settings object=]'s <a>associated `Document`</a> is not
+                [=Document/fully active=], return [=a promise rejected with=] a
+                {{"InvalidStateError"}} {{DOMException}}.
+                </li>
+              </ol>
             </li>
             <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to an IDL
             value</a> of type {{PermissionDescriptor}}.
