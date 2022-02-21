@@ -845,11 +845,15 @@
             steps</dfn>:
           </p>
           <ol class="algorithm">
-            <li>Let |document| this |status|'s [=relevant global object=]'s [=associated
-            Document=].
-            </li>
-            <li>If |document| is null or |document| is not [=Document/fully active=], terminate
-            this algorithm.
+            <li>If [=this=] [=relevant global object=] is a {{Window}} object, then:
+              <ol>
+                <li>Let |document| this |status|'s [=relevant global object=]'s [=associated
+                Document=].
+                </li>
+                <li>If |document| is null or |document| is not [=Document/fully active=], terminate
+                this algorithm.
+                </li>
+              </ol>
             </li>
             <li>Let |query| be |status|'s {{PermissionStatus/[[query]]}} internal slot.
             </li>
