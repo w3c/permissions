@@ -162,10 +162,10 @@
         <aside class="note" title="Limitations">
           <p>
             Current Web APIs have different ways to deal with permissions. For example, the
-            [[notifications]] API allows developers to request a permission and check the
-            permission status explicitly. Others expose the status to web pages when they try to
-            use the API, like the [[[Geolocation]]] which fails if the permission was not granted
-            without allowing the developer to check beforehand.
+            [[[notifications]]] allows developers to request a permission and check the permission
+            status explicitly. Others expose the status to web pages when they try to use the API,
+            like the [[[Geolocation]]] which fails if the permission was not granted without
+            allowing the developer to check beforehand.
           </p>
           <p>
             The solution described in this document is meant to be extensible, but isn't expected
@@ -243,20 +243,20 @@
         <p data-cite="permissions-policy">
           A <dfn class="export" data-local-lt="feature">powerful feature</dfn> is a web platform
           feature (usually an API) for which a user gives [=express permission=] before the feature
-          can be used. Except for a few notable exceptions (e.g., the [[[Notifications]]] API),
-          most powerful features are also [=policy-controlled features=]. For powerful features
-          that are [=policy-controlled features=], [[[permissions-policy]]] controls whether a
-          [=document=] is [=allowed to use=] a feature, and only if it is allowed can a powerful
-          feature request express permission from a user. Subsequent access to the feature is
-          determined by the user having [=permission/granted=] permission, or by satisfying some
-          criteria that is equivalent to a permission [=permission/grant=].
+          can be used. Except for a few notable exceptions (e.g., the [[[Notifications]]]), most
+          powerful features are also [=policy-controlled features=]. For powerful features that are
+          [=policy-controlled features=], [[[permissions-policy]]] controls whether a [=document=]
+          is [=allowed to use=] a feature, and only if it is allowed can a powerful feature request
+          express permission from a user. Subsequent access to the feature is determined by the
+          user having [=permission/granted=] permission, or by satisfying some criteria that is
+          equivalent to a permission [=permission/grant=].
         </p>
         <aside class="example" title="Powerful features are policy-controlled features">
           <p>
             This example shows how the permissions policy set through the [^iframe/allow^]
             attribute controls whether the [^iframe^] is [=allowed to use=] a powerful feature.
             Because `"geolocation"` is allowed, the [^iframe^]'s document can request permission
-            from the user to use the Geolocation API (i.e., it will prompt the user for express
+            from the user to use the [[[Geolocation]]] (i.e., it will prompt the user for express
             permission to access their location information). However, request permission to use
             any other feature will be automatically denied, because they are not listed in the
             [^iframe/allow^] attribute.
