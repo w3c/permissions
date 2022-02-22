@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 31.0.1">
+<meta name="generator" content="ReSpec 31.0.5">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -165,9 +165,10 @@ dd{margin-left:0}
 .mdn .webview_android::before{background-image:url(https://resources.whatwg.org/browser-logos/android-webview.png)}
 </style>
 <meta name="description" content="This specification defines common infrastructure that other specifications can use to
-        interact with browser permissions that allow or deny access to powerful features on the web
-        platform. For developers, the specification defines an API to query the permission state of
-        a powerful feature, or be notified if a permission for a powerful feature changes state.">
+        interact with browser permissions. These permissions represent a user's choice to allow or
+        deny access to &quot;powerful features&quot; of the platform. For developers, the specification
+        standardizes an API to query the permission state of a powerful feature, and be notified if
+        a permission to use a powerful feature changes state.">
 <style>
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;background:#fafafa}
 .hljs-comment,.hljs-quote{color:#717277;font-style:italic}
@@ -239,8 +240,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "id": "powerful-feature-registry"
     }
   },
-  "publishISODate": "2022-02-15T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 15 February 2022"
+  "publishISODate": "2022-02-22T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 22 February 2022"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -249,7 +250,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-02-15">15 February 2022</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-02-22">22 February 2022</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -313,9 +314,10 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <section id="abstract" class="introductory"><h2>Abstract</h2>
       <p>
         This specification defines common infrastructure that other specifications can use to
-        interact with browser permissions that allow or deny access to powerful features on the web
-        platform. For developers, the specification defines an API to query the permission state of
-        a powerful feature, or be notified if a permission for a powerful feature changes state.
+        interact with browser permissions. These permissions represent a user's choice to allow or
+        deny access to "powerful features" of the platform. For developers, the specification
+        standardizes an API to query the permission state of a powerful feature, and be notified if
+        a permission to use a powerful feature changes state.
       </p>
     </section>
     <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this
@@ -1787,11 +1789,11 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
   </section><section id="informative-references"><div class="header-wrapper"><h3 id="g-2-informative-references"><bdi class="secno">G.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix G.2"></a></div>
     
     <dl class="bibliography"><dt id="bib-appmanifest">[appmanifest]</dt><dd>
-      <a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Matt Giuca; Aaron Gustafson; Daniel Murphy; Anssi Kostiainen.  W3C. 3 February 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
+      <a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Matt Giuca; Aaron Gustafson; Daniel Murphy; Anssi Kostiainen.  W3C. 17 February 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
     </dd><dt id="bib-ecmascript">[ecmascript]</dt><dd>
       <a href="https://tc39.es/ecma262/multipage/"><cite>ECMAScript Language Specification</cite></a>.  Ecma International. URL: <a href="https://tc39.es/ecma262/multipage/">https://tc39.es/ecma262/multipage/</a>
     </dd><dt id="bib-geolocation">[Geolocation]</dt><dd>
-      <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres; Reilly Grant.  W3C. 10 February 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
+      <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres; Reilly Grant.  W3C. 21 February 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
     </dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd>
       <a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet.  W3C. 10 February 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
     </dd><dt id="bib-notifications">[notifications]</dt><dd>
