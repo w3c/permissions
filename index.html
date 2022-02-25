@@ -245,11 +245,12 @@
           feature (usually an API) for which a user gives [=express permission=] before the feature
           can be used. Except for a few notable exceptions (e.g., the [[[Notifications]]]), most
           powerful features are also [=policy-controlled features=]. For powerful features that are
-          [=policy-controlled features=], [[[permissions-policy]]] controls whether a [=document=]
-          is [=allowed to use=] a feature, and only if it is allowed can a powerful feature request
-          express permission from a user. Subsequent access to the feature is determined by the
-          user having [=permission/granted=] permission, or by satisfying some criteria that is
-          equivalent to a permission [=permission/grant=].
+          also [=policy-controlled features=], [[Permissions-Policy]] controls whether a
+          [=document=] is [=allowed to use=] a given feature. That is, a powerful feature can only
+          request [=express permission=] from a user if the [=document=] has permission delegated
+          to it via the corresponding [=policy-controlled feature=] (see example below). Subsequent
+          access to the feature is determined by the user having [=permission/granted=] permission,
+          or by satisfying some criteria that is equivalent to a permission [=permission/grant=].
         </p>
         <aside class="example" title="Powerful features are policy-controlled features">
           <p>
