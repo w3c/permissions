@@ -242,13 +242,36 @@
         <h2>
           Powerful features
         </h2>
-        <p>
+        <p data-cite="permissions-policy">
           A <dfn class="export" data-local-lt="feature">powerful feature</dfn> is a web platform
           feature (usually an API) for which a user gives [=express permission=] before the feature
-          can be used. Access to the feature is determined by the user having
-          [=permission/granted=] permission, or by satisfying some criteria that is equivalent to a
-          permission [=permission/grant=].
+          can be used. Except for a few notable exceptions (e.g., the [[[Notifications]]]), most
+          powerful features are also [=policy-controlled features=]. For powerful features that are
+          also [=policy-controlled features=], [[Permissions-Policy]] controls whether a
+          [=document=] is [=allowed to use=] a given feature. That is, a powerful feature can only
+          request [=express permission=] from a user if the [=document=] has permission delegated
+          to it via the corresponding [=policy-controlled feature=] (see example below). Subsequent
+          access to the feature is determined by the user having [=permission/granted=] permission,
+          or by satisfying some criteria that is equivalent to a permission [=permission/grant=].
         </p>
+        <aside class="example" title="Powerful features are policy-controlled features">
+          <p>
+            This example shows how the permissions policy set through the [^iframe/allow^]
+            attribute controls whether the [^iframe^] is [=allowed to use=] a powerful feature.
+            Because `"geolocation"` is allowed, the [^iframe^]'s document can request permission
+            from the user to use the [[[Geolocation]]] (i.e., it will prompt the user for express
+            permission to access their location information). However, requesting permission to use
+            any other feature will be automatically denied, because they are not listed in the
+            [^iframe/allow^] attribute.
+          </p>
+          <pre class="html">
+            &lt;iframe src="https://example.com/" allow="geolocation"&gt;
+            &lt;/iframe&gt;
+          </pre>
+          <p>
+            See [[[#relationship-to-permissions-policy]]] for more information.
+          </p>
+        </aside>
         <p>
           A [=powerful feature=] is identified by its <dfn class="export" data-dfn-for=
           "powerful feature">name</dfn>, which is a string literal (e.g., "geolocation").
