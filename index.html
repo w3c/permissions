@@ -389,15 +389,19 @@
           <dfn data-dfn-for="powerful feature" class="export">extra permission data type</dfn>:
         </dt>
         <dd>
-          <p class="note" data-cite="mediacapture-streams ECMAScript">
+          <p>
             Some <a>powerful features</a> have more information associated with them than just a
-            {{PermissionState}}. For example, {{MediaDevices/getUserMedia()}} needs to determine
-            <em>which</em> cameras the user has granted [=ECMAScript/the current realm record=]
-            permission to access. Each of these features defines an [=powerful feature/extra
-            permission data type=]. If a {{DOMString}} |name| names one of these features, then
-            |name|'s <dfn data-dfn-for="powerful feature" class="export">extra permission
-            data</dfn> for an optional <a>environment settings object</a> |settings| is the result
-            of the following algorithm:
+            {{PermissionState}}. Each of these features defines an [=powerful feature/extra
+            permission data type=].
+          </p>
+          <p class="note" data-cite="mediacapture-streams ECMAScript">
+            For example, {{MediaDevices/getUserMedia()}} needs to determine <em>which</em> cameras
+            the user has granted [=ECMAScript/the current realm record=] permission to access.
+          </p>
+          <p>
+            If a {{DOMString}} |name| names one of these features, then |name|'s <dfn data-dfn-for=
+            "powerful feature" class="export">extra permission data</dfn> for an optional
+            <a>environment settings object</a> |settings| is the result of the following algorithm:
           </p>
           <ol class="algorithm">
             <li>If |settings| wasn't passed, set it to the [=current settings object=].
