@@ -240,8 +240,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       "id": "powerful-feature-registry"
     }
   },
-  "publishISODate": "2022-02-25T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 25 February 2022"
+  "publishISODate": "2022-03-03T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 03 March 2022"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -250,7 +250,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-02-25">25 February 2022</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-03-03">03 March 2022</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -715,15 +715,18 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           <dfn data-dfn-for="powerful feature" class="export" data-export="" id="dfn-extra-permission-data-type" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">extra permission data type</dfn>:
         </dt>
         <dd>
-          <div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="3"><span>Note</span></div><p class="" data-cite="mediacapture-streams ECMAScript">
+          <p>
             Some <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-18">powerful features</a> have more information associated with them than just a
-            <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-1"><code>PermissionState</code></a>. For example, <a data-link-type="idl" data-lt="getUserMedia()" data-type="method" href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadevices-getusermedia"><code>getUserMedia</code></a><code>()</code> needs to determine
-            <em>which</em> cameras the user has granted <a data-link-type="dfn" data-type="dfn" href="https://tc39.es/ecma262/multipage/executable-code-and-execution-contexts.html#current-realm">the current realm record</a>
-            permission to access. Each of these features defines an <a data-link-type="dfn" href="#dfn-extra-permission-data-type" class="internalDFN" id="ref-for-dfn-extra-permission-data-type-1">extra permission data type</a>. If a <a data-link-type="idl" data-lt="DOMString" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><code>DOMString</code></a> <var>name</var> names one of these features, then
-            <var>name</var>'s <dfn data-dfn-for="powerful feature" class="export" data-export="" id="dfn-extra-permission-data" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">extra permission
-            data</dfn> for an optional <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>settings</var> is the result
-            of the following algorithm:
+            <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-1"><code>PermissionState</code></a>. Each of these features defines an <a data-link-type="dfn" href="#dfn-extra-permission-data-type" class="internalDFN" id="ref-for-dfn-extra-permission-data-type-1">extra permission data type</a>.
+          </p>
+          <div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="3"><span>Note</span></div><p class="" data-cite="mediacapture-streams ECMAScript">
+            For example, <a data-link-type="idl" data-lt="getUserMedia()" data-type="method" href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadevices-getusermedia"><code>getUserMedia</code></a><code>()</code> needs to determine <em>which</em> cameras
+            the user has granted <a data-link-type="dfn" data-type="dfn" href="https://tc39.es/ecma262/multipage/executable-code-and-execution-contexts.html#current-realm">the current realm record</a> permission to access.
           </p></div>
+          <p>
+            If a <a data-link-type="idl" data-lt="DOMString" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><code>DOMString</code></a> <var>name</var> names one of these features, then <var>name</var>'s <dfn data-dfn-for="powerful feature" class="export" data-export="" id="dfn-extra-permission-data" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">extra permission data</dfn> for an optional
+            <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>settings</var> is the result of the following algorithm:
+          </p>
           <ol class="algorithm">
             <li>If <var>settings</var> wasn't passed, set it to the <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a>.
             </li>
