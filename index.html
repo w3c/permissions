@@ -67,9 +67,10 @@
     <section id="abstract">
       <p>
         This specification defines common infrastructure that other specifications can use to
-        interact with browser permissions that allow or deny access to powerful features on the web
-        platform. For developers, the specification defines an API to query the permission state of
-        a powerful feature, or be notified if a permission for a powerful feature changes state.
+        interact with browser permissions. These permissions represent a user's choice to allow or
+        deny access to "powerful features" of the platform. For developers, the specification
+        standardizes an API to query the permission state of a powerful feature, and be notified if
+        a permission to use a powerful feature changes state.
       </p>
     </section>
     <section id="sotd">
@@ -159,7 +160,7 @@
           [=permission/grants|granting=] the web application the ability to use a [=powerful
           feature=].
         </p>
-        <aside class="note" title="Limitations">
+        <aside class="note" title="Limitations and extensibility">
           <p>
             Current Web APIs have different ways to deal with permissions. For example, the
             [[[notifications]]] allows developers to request a permission and check the permission
@@ -194,15 +195,15 @@
           </dt>
           <dd>
             The user, or the user agent on the user's behalf, has given [=express permission=] to
-            use a [=powerful feature=]. The caller will be able to use the feature possibly without
-            having the [=user agent=] asking the user's permission.
+            use a [=powerful feature=]. The caller will can use the feature possibly without having
+            the [=user agent=] asking the user's permission.
           </dd>
           <dt>
             <dfn class="export" data-dfn-for="permission">Denied</dfn>:
           </dt>
           <dd>
             The user, or the user agent on the user's behalf, has denied access to this [=powerful
-            feature=]. The caller will not be able to use the feature.
+            feature=]. The caller will can't use the feature.
           </dd>
         </dl>
         <p>
@@ -211,7 +212,7 @@
           can come from explicit user action, aggregate behavior of both the relevant user and
           other users, or <dfn>implicit signals</dfn> this specification hasn't anticipated.
         </p>
-        <aside class="note" data-cite="appmanifest" title="Implicit signals">
+        <aside class="note" data-cite="appmanifest" title="What constitutes an implicit signal?">
           <p>
             The <a>implicit signals</a> could be, for example, the [=installed web
             application|installation=] status of a web application or frequency and recency of
@@ -220,15 +221,15 @@
             relying on implicit signals.
           </p>
         </aside>
-        <p>
+        <p data-cite="ECMAScript">
           Every [=permission=] has a <dfn class="export" data-dfn-for="permission">lifetime</dfn>,
           which is the duration for which a particular permission remains [=permission/granted=]
           before it reverts back to its [=permission/default state=]. A [=permission/lifetime=]
-          could be until a particular Realm is destroyed, until a particular [=top-level browsing
-          context=] is destroyed, a particular amount of time, or be infinite. The lifetime is
-          negotiated between the end-user and the [=user agent=] when the user gives [=express
-          permission=] to use a [=feature=]—usually via some permission UI or user-agent defined
-          policy.
+          could be until a particular [=ECMAScript/Realm=] is destroyed, until a particular 
+          [=top-level browsing context=] is destroyed, a particular amount of time, or be infinite. 
+          The lifetime is negotiated between the end-user and the [=user agent=] when the user gives 
+          [=express permission=] to use a [=feature=]—usually via some permission UI or user-agent 
+          defined policy.
         </p>
         <p>
           Every permission has a <dfn data-for="permission">default state</dfn> (usually
@@ -241,13 +242,36 @@
         <h2>
           Powerful features
         </h2>
-        <p>
+        <p data-cite="permissions-policy">
           A <dfn class="export" data-local-lt="feature">powerful feature</dfn> is a web platform
           feature (usually an API) for which a user gives [=express permission=] before the feature
-          can be used. Access to the feature is determined by the user having
-          [=permission/granted=] permission, or by satisfying some criteria that is equivalent to a
-          permission [=permission/grant=].
+          can be used. Except for a few notable exceptions (e.g., the [[[Notifications]]]), most
+          powerful features are also [=policy-controlled features=]. For powerful features that are
+          also [=policy-controlled features=], [[Permissions-Policy]] controls whether a
+          [=document=] is [=allowed to use=] a given feature. That is, a powerful feature can only
+          request [=express permission=] from a user if the [=document=] has permission delegated
+          to it via the corresponding [=policy-controlled feature=] (see example below). Subsequent
+          access to the feature is determined by the user having [=permission/granted=] permission,
+          or by satisfying some criteria that is equivalent to a permission [=permission/grant=].
         </p>
+        <aside class="example" title="Powerful features are policy-controlled features">
+          <p>
+            This example shows how the permissions policy set through the [^iframe/allow^]
+            attribute controls whether the [^iframe^] is [=allowed to use=] a powerful feature.
+            Because `"geolocation"` is allowed, the [^iframe^]'s document can request permission
+            from the user to use the [[[Geolocation]]] (i.e., it will prompt the user for express
+            permission to access their location information). However, requesting permission to use
+            any other feature will be automatically denied, because they are not listed in the
+            [^iframe/allow^] attribute.
+          </p>
+          <pre class="html">
+            &lt;iframe src="https://example.com/" allow="geolocation"&gt;
+            &lt;/iframe&gt;
+          </pre>
+          <p>
+            See [[[#relationship-to-permissions-policy]]] for more information.
+          </p>
+        </aside>
         <p>
           A [=powerful feature=] is identified by its <dfn class="export" data-dfn-for=
           "powerful feature">name</dfn>, which is a string literal (e.g., "geolocation").
@@ -304,7 +328,8 @@
         Specifying a powerful feature
       </h2>
       <p>
-        When a specification <dfn class="export">specifies a powerful feature</dfn> it:
+        When a conforming [=specification=] <dfn class="export">specifies a powerful feature</dfn>
+        it:
       </p>
       <ol>
         <li>MUST give the [=powerful feature=] a [=powerful feature/name=] in the form of a [=ascii
@@ -367,15 +392,19 @@
           <dfn data-dfn-for="powerful feature" class="export">extra permission data type</dfn>:
         </dt>
         <dd>
-          <p class="note" data-cite="mediacapture-streams ECMAScript">
+          <p>
             Some <a>powerful features</a> have more information associated with them than just a
-            {{PermissionState}}. For example, {{MediaDevices/getUserMedia()}} needs to determine
-            <em>which</em> cameras the user has granted [=ECMAScript/the current realm record=]
-            permission to access. Each of these features defines an [=powerful feature/extra
-            permission data type=]. If a {{DOMString}} |name| names one of these features, then
-            |name|'s <dfn data-dfn-for="powerful feature" class="export">extra permission
-            data</dfn> for an optional <a>environment settings object</a> |settings| is the result
-            of the following algorithm:
+            {{PermissionState}}. Each of these features defines an [=powerful feature/extra
+            permission data type=].
+          </p>
+          <p class="note" data-cite="mediacapture-streams ECMAScript">
+            For example, {{MediaDevices/getUserMedia()}} needs to determine <em>which</em> cameras
+            the user has granted [=ECMAScript/the current realm record=] permission to access.
+          </p>
+          <p>
+            If a {{DOMString}} |name| names one of these features, then |name|'s <dfn data-dfn-for=
+            "powerful feature" class="export">extra permission data</dfn> for an optional
+            <a>environment settings object</a> |settings| is the result of the following algorithm:
           </p>
           <ol class="algorithm">
             <li>If |settings| wasn't passed, set it to the [=current settings object=].
@@ -714,6 +743,14 @@
             <var>permissionDesc</var>:
           </p>
           <ol class="algorithm">
+            <li>If [=this=]'s [=relevant global object=] is a {{Window}} object, then:
+              <ol>
+                <li>If the [=current settings object=]'s <a>associated `Document`</a> is not
+                [=Document/fully active=], return [=a promise rejected with=] a
+                {{"InvalidStateError"}} {{DOMException}}.
+                </li>
+              </ol>
+            </li>
             <li>If |permissionDesc|'s {{PermissionDescriptor/name}} member is not supported, return
             [=a promise rejected with=] a {{TypeError}}.
               <aside class="note" title="Why is this not an enum?">
@@ -843,6 +880,16 @@
             steps</dfn>:
           </p>
           <ol class="algorithm">
+            <li>If [=this=]'s [=relevant global object=] is a {{Window}} object, then:
+              <ol>
+                <li>Let |document| be |status|'s [=relevant global object=]'s [=associated
+                Document=].
+                </li>
+                <li>If |document| is null or |document| is not [=Document/fully active=], terminate
+                this algorithm.
+                </li>
+              </ol>
+            </li>
             <li>Let |query| be |status|'s {{PermissionStatus/[[query]]}} internal slot.
             </li>
             <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission query
@@ -865,7 +912,13 @@
         </section>
       </section>
     </section>
-    <section id="conformance"></section>
+    <section id="conformance">
+      <p>
+        Two classes of product can claim conformance to this specification: [=user agents=] and
+        other <dfn>specifications</dfn> (i.e., a technical report that [=specifies a powerful
+        feature=] in a manner that conforms to the requirements of this specification).
+      </p>
+    </section>
     <section class="informative appendix">
       <h2 id="relationship-to-permissions-policy">
         Relationship to the Permissions Policy specification
