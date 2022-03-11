@@ -151,8 +151,8 @@
           Permissions
         </h3>
         <p>
-          A <dfn class="export">permission</dfn> represents a user's decision as to whether a web
-          application can use a [=powerful feature=]. The decision is represented as a permission
+          A <dfn class="export">permission</dfn> represents a user's decision to allow a web
+          application to use a [=powerful feature=]. This decision is represented as a permission
           [=permission/state=].
         </p>
         <p>
@@ -164,8 +164,8 @@
           <p>
             Current Web APIs have different ways to deal with permissions. For example, the
             [[[notifications]]] allows developers to request a permission and check the permission
-            status explicitly. Others expose the status to web pages when they try to use the API,
-            like the [[[Geolocation]]] which fails if the permission was not granted without
+            status explicitly. Others expose the status to web pages only when they try to use the
+            API, e.g., the [[[Geolocation]]] which fails if the permission was not granted without
             allowing the developer to check beforehand.
           </p>
           <p>
@@ -185,9 +185,9 @@
             <dfn class="export" data-dfn-for="permission">Prompt</dfn>:
           </dt>
           <dd>
-            The user has not given [=express permission=] to use the feature (i.e., it's the same a
-            [=permission/denied=]). It also means that if caller attempts to use the feature, the
-            [=user agent=] will either be prompting the user for permission or access to the
+            The user has not given [=express permission=] to use the feature (i.e., it's the same
+            as [=permission/denied=]). It also means that if a caller attempts to use the feature,
+            the [=user agent=] will either be prompting the user for permission or access to the
             feature will be [=permission/denied=].
           </dd>
           <dt>
@@ -208,28 +208,28 @@
         </dl>
         <p>
           To ascertain <dfn class="export">new information about the user's intent</dfn>, a user
-          agent MAY collect information about a user's intentions. This information can come from
-          explicit user action, aggregate behavior of both the relevant user and other users, or
-          <dfn>implicit signals</dfn> this specification hasn't anticipated.
+          agent MAY collect and interpret information about a user's intentions. This information
+          can come from explicit user action, aggregate behavior of both the relevant user and
+          other users, or <dfn>implicit signals</dfn> this specification hasn't anticipated.
         </p>
         <aside class="note" data-cite="appmanifest" title="What constitutes an implicit signal?">
           <p>
             The <a>implicit signals</a> could be, for example, the [=installed web
-            application|install=] status of a web application or frequency and recency of visits. A
-            user that has installed a web application and used it frequently and recently is more
-            likely to trust it. Implementations are advised to exercise caution when relying on
-            implicit signals.
+            application|installation=] status of a web application or frequency and recency of
+            visits. A user that has installed a web application and used it frequently and recently
+            is more likely to trust it. Implementations are advised to exercise caution when
+            relying on implicit signals.
           </p>
         </aside>
         <p data-cite="ECMAScript">
           Every [=permission=] has a <dfn class="export" data-dfn-for="permission">lifetime</dfn>,
           which is the duration for which a particular permission remains [=permission/granted=]
           before it reverts back to its [=permission/default state=]. A [=permission/lifetime=]
-          could be until a particular [=ECMAScript/Realm=] is destroyed, until a particular
-          [=top-level browsing context=] is destroyed, an amount of time, or infinite. The lifetime
-          is negotiated between the end-user and the [=user agent=] when the user gives [=express
-          permission=] to use a [=feature=] — usually via some permission UI or user-agent defined
-          policy.
+          could be until a particular [=ECMAScript/Realm=] is destroyed, until a particular 
+          [=top-level browsing context=] is destroyed, a particular amount of time, or be infinite. 
+          The lifetime is negotiated between the end-user and the [=user agent=] when the user gives 
+          [=express permission=] to use a [=feature=]—usually via some permission UI or user-agent 
+          defined policy.
         </p>
         <p>
           Every permission has a <dfn data-for="permission">default state</dfn> (usually
@@ -277,7 +277,7 @@
           "powerful feature">name</dfn>, which is a string literal (e.g., "geolocation").
         </p>
         <p>
-          The user agent is responsible for tracking what <a>powerful features</a> each [=global
+          The user agent is responsible for tracking which <a>powerful features</a> each [=global
           object/realm=] has the user's [=permission=] to use via the [=environment settings
           object=].
         </p>
@@ -288,7 +288,7 @@
           <p>
             Each <a>powerful feature</a> can define zero or more additional <dfn data-dfn-for=
             "powerful feature">aspects</dfn>. An aspect is defined as WebIDL [=dictionary=] that
-            [=dictionary/inherits=] from {{PermissionDescriptor}} and serves as an WebIDL
+            [=dictionary/inherits=] from {{PermissionDescriptor}} and serves as a WebIDL
             interface's [=powerful feature/permission descriptor type=].
           </p>
           <aside class="example" title="Defining your own permission descriptor type">
@@ -307,7 +307,7 @@
               Which would then be queried via the API in the following way:
             </p>
             <pre class="js">
-              // Check if the "sense" powerful feature is allowed to smell things
+              // Check if the "senses" powerful feature is allowed to smell things
               const status = await navigator.permissions.query({
                 name: "senses",
                 canSmell: true,
@@ -315,7 +315,7 @@
               // Do something interesting with the status.
             </pre>
             <p>
-              A user can restrict the "sense" powerful feature to only "taste", in which case the
+              A user can restrict the "senses" powerful feature to only "taste", in which case the
               {{PermissionStatus}}'s {{PermissionStatus/state}} above would be
               {{PermissionState/"denied"}} .
             </p>
@@ -370,19 +370,22 @@
             <a>permission state</a> is {{PermissionState/"denied"}}, |descriptorA|'s <a>permission
             state</a> must also be {{PermissionState/"denied"}}.
           </p>
-          <p class="example" id="example-stronger-than">
-            <code>{name: "midi", sysex: true}</code> ("midi-with-sysex") is
-            [=PermissionDescriptor/stronger than=] <code>{name: "midi", sysex: false}</code>
-            ("midi-without-sysex"), so if the user denies access to midi-without-sysex, the UA must
-            also deny access to midi-with-sysex, and similarly if the user grants access to
-            midi-with-sysex, the UA must also grant access to midi-without-sysex.
-          </p>
+          <aside class="example" id="example-stronger-than" title=
+          "A permission descriptor that defines a partial order">
+            <p>
+              <code>{name: "midi", sysex: true}</code> ("midi-with-sysex") is
+              [=PermissionDescriptor/stronger than=] <code>{name: "midi", sysex: false}</code>
+              ("midi-without-sysex"), so if the user denies access to midi-without-sysex, the UA
+              must also deny access to midi-with-sysex, and similarly if the user grants access to
+              midi-with-sysex, the user agent must also grant access to midi-without-sysex.
+            </p>
+          </aside>
         </dd>
         <dt>
           <dfn data-dfn-for="powerful feature" class="export">permission state constraints</dfn>:
         </dt>
         <dd>
-          Constraints on the values that the UA can return as a descriptor's <a>permission
+          Constraints on the values that the user agent can return as a descriptor's <a>permission
           state</a>. Defaults to no constraints beyond the user's intent.
         </dd>
         <dt>
@@ -407,8 +410,8 @@
             <li>If |settings| wasn't passed, set it to the [=current settings object=].
             </li>
             <li>If there was a previous invocation of this algorithm with the same |name| and
-            |settings|, returning |previousResult|, and the UA has not received <a>new information
-            about the user's intent</a> since that invocation, return |previousResult|.
+            |settings|, returning |previousResult|, and the user agent has not received <a>new
+            information about the user's intent</a> since that invocation, return |previousResult|.
             </li>
             <li>Return the instance of |name|'s [=powerful feature/extra permission data type=]
             that matches the UA's impression of the user's intent, taking into account any
@@ -425,8 +428,9 @@
           constraints</dfn>:
         </dt>
         <dd>
-          Constraints on the values that the UA can return as a [=powerful feature=]'s [=powerful
-          feature/extra permission data=]. Defaults to no constraints beyond the user's intent.
+          Constraints on the values that the user agent can return as a [=powerful feature=]'s
+          [=powerful feature/extra permission data=]. Defaults to no constraints beyond the user's
+          intent.
         </dd>
         <dt>
           A <dfn data-dfn-for="powerful feature" class="export">permission result type</dfn>:
@@ -453,7 +457,8 @@
             steps:
           </p>
           <ol class="algorithm">
-            <li>Set <code>|status|.state</code> to |permissionDesc|'s <a>permission state</a>.
+            <li>Set <code>|status|</code>'s {{PermissionStatus/state}} to |permissionDesc|'s
+            <a>permission state</a>.
             </li>
           </ol>
         </dd>
@@ -486,8 +491,8 @@
             When the permission [=permission/lifetime=] expires for an origin:
           </p>
           <ol>
-            <li>Set the permission back to its default [=permission state=] (e.g. setting it back
-            to "[=permission/prompt=]").
+            <li>Set the permission back to its default [=permission state=] (e.g., by setting it
+            back to "[=permission/prompt=]").
             </li>
             <li>For each |browsing context| associated with the origin (if any), [=queue a global
             task=] on the [=permissions task source=] with the |browsing context|'s [=global
@@ -499,8 +504,8 @@
               For particularly privacy-sensitive [=features=], such as [[[GETUSERMEDIA]]], which
               can provide a web application access to a user's camera and microphone, some user
               agents expire a permission [=permission/grant=] as soon as a browser tab is closed or
-              navigated. For other features, like the [[[Geolocation]]], user agents are known to
-              offer a choice of only granting the permission for the session, or for one day.
+              [=navigated=]. For other features, like the [[[Geolocation]]], user agents are known
+              to offer a choice of only granting the permission for the session, or for one day.
               Others, like the [[[Notifications]]] and [[[push-api]]] APIs, remember a user's
               decision indefinitely or until the user manually revokes the permission. Note that
               permission [=permission/lifetimes=] can vary significantly between user agents.
@@ -584,8 +589,8 @@
             </ol>
           </li>
           <li>If there was a previous invocation of this algorithm with the same |descriptor| and
-          |settings|, returning |previousResult|, and the UA has not received <a>new information
-          about the user's intent</a> since that invocation, return |previousResult|.
+          |settings|, returning |previousResult|, and the user agent has not received <a>new
+          information about the user's intent</a> since that invocation, return |previousResult|.
           </li>
           <li>Return the {{PermissionState}} enum value that presents permission state of
           |feature|, taking into account any [=powerful feature/permission state constraints=] for
@@ -606,7 +611,7 @@
         </h3>
         <p>
           To <dfn data-lt="request permission to use|requesting permission to use" class=
-          "export">request permission to use</dfn> a |descriptor|, the UA must perform the
+          "export">request permission to use</dfn> a |descriptor|, the user agent must perform the
           following steps. This algorithm returns either {{PermissionState/"granted"}} or
           {{PermissionState/"denied"}}.
         </p>
@@ -642,18 +647,18 @@
         <p>
           To <dfn data-lt="prompt the user to choose|prompting the user to choose" class=
           "export">prompt the user to choose</dfn> one of several |options| associated with a
-          |descriptor|, the UA must perform the following steps. This algorithm returns either
-          {{PermissionState/"denied"}} or one of the options.
+          |descriptor|, the user agent must perform the following steps. This algorithm returns
+          either {{PermissionState/"denied"}} or one of the options.
         </p>
         <ol class="algorithm">
           <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"denied"}}, return
           {{PermissionState/"denied"}} and abort these steps.
           </li>
           <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"granted"}}, the UA
-          may return one of |options| and abort these steps. If the UA returns without prompting,
-          then subsequent <a data-lt="prompt the user to choose">prompts for the user to choose</a>
-          from the same set of options with the same |descriptor| must return the same option,
-          unless the UA receives <a>new information about the user's intent</a>.
+          may return one of |options| and abort these steps. If the user agent returns without
+          prompting, then subsequent <a data-lt="prompt the user to choose">prompts for the user to
+          choose</a> from the same set of options with the same |descriptor| must return the same
+          option, unless the user agent receives <a>new information about the user's intent</a>.
           </li>
           <li>Ask the user to choose one of the options or deny permission, and wait for them to
           choose. If the calling algorithm specified extra information to include in the prompt,
@@ -681,9 +686,9 @@
           Reacting to users revoking permission
         </h3>
         <p>
-          When the UA learns that the user no longer intends to grant permission for a [=global
-          object/realm=] to use a <a>feature</a>, <dfn>react to the user revoking permission</dfn>
-          by:
+          When the user agent learns that the user no longer intends to grant permission for a
+          [=global object/realm=] to use a <a>feature</a>, <dfn>react to the user revoking
+          permission</dfn> by:
         </p>
         <ol class="algorithm">
           <li>
