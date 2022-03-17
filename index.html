@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 32.0.2">
+<meta name="generator" content="ReSpec 32.1.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -138,11 +138,15 @@ dd{margin-left:0}
 }
 </style>
 <style id="caniuse-stylesheet" class="">
-.caniuse-stats{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:flex-start}
-.caniuse-cell{align-items:center;border-radius:1cm;color:#fff;display:flex;font-size:90%;justify-content:space-evenly;min-width:1.7cm;padding:.3rem .3rem;margin:.25cm .5cm 0 0;--supported:#2a8436dd;--no-support:#c44230dd;--no-support-alt:#b43b2bdd;--partial:#807301dd;--partial-alt:#746c00dd;--unknown:#757575;background:repeating-linear-gradient(var(--caniuse-angle,45deg),var(--caniuse-bg) 0,var(--caniuse-bg-alt) 1px,var(--caniuse-bg-alt) .4em,var(--caniuse-bg) calc(.25em + 1px),var(--caniuse-bg) .75em)}
+.caniuse-stats{display:flex;column-gap:2em}
+.caniuse-group{display:flex;flex:1;flex-direction:column;justify-content:flex-end;flex-basis:auto}
+.caniuse-browsers{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;margin-top:.2em;column-gap:.4em;border-bottom:1px solid #ccc;row-gap:.4em;padding-bottom:.4cm}
+.caniuse-type{align-self:center;border-top:none;text-transform:capitalize;font-size:.8em;margin-top:-.8em;font-weight:700}
+.caniuse-type span{background-color:#fff;padding:0 .4em}
+.caniuse-cell{align-items:center;border-radius:1cm;color:#fff;display:flex;font-size:90%;min-width:1.5cm;padding:.3rem;justify-content:space-evenly;--supported:#2a8436dd;--no-support:#c44230dd;--no-support-alt:#b43b2bdd;--partial:#807301dd;--partial-alt:#746c00dd;--unknown:#757575;background:repeating-linear-gradient(var(--caniuse-angle,45deg),var(--caniuse-bg) 0,var(--caniuse-bg-alt) 1px,var(--caniuse-bg-alt) .4em,var(--caniuse-bg) calc(.25em + 1px),var(--caniuse-bg) .75em)}
 img.caniuse-browser{filter:drop-shadow(0 0 .1cm #666)}
-.caniuse-cell span.browser-version{margin-left:.4em;text-shadow:0 0 .1em #fff}
-.caniuse-stats a[href]{white-space:nowrap;align-self:center}
+.caniuse-cell span.browser-version{margin-left:.4em;text-shadow:0 0 .1em #fff;font-weight:100;font-size:.9em}
+.caniuse-stats a[href]{white-space:nowrap;align-self:flex-end}
 .caniuse-cell.y{background:var(--supported)}
 .caniuse-cell:is(.n,.d){--caniuse-angle:45deg;--caniuse-bg:var(--no-support);--caniuse-bg-alt:var(--no-support-alt)}
 .caniuse-cell.u{background:var(--unknown)}
@@ -258,8 +262,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     }
   },
   "caniuse": "permissions-api",
-  "publishISODate": "2022-03-14T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 14 March 2022"
+  "publishISODate": "2022-03-17T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 17 March 2022"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -268,7 +272,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-03-14">14 March 2022</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-03-17">17 March 2022</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -311,15 +315,18 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         
         
       <dt class="caniuse-title">Browser support:</dt><dd class="caniuse-stats">
-      <div class="caniuse-cell y" title="Supported by default in Chrome version 43." aria-label="permissions-api is supported by default in Chrome version 43.">
+      <div class="caniuse-group">
+          <div class="caniuse-browsers"><div class="caniuse-cell y" title="Supported by default since Chrome version 43." aria-label="permissions-api is supported by default since Chrome version 43 on desktop.">
         <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/browser-logos/chrome/chrome.svg" alt="Chrome logo"><span class="browser-version">43</span>
-      </div><div class="caniuse-cell y" title="Supported by default in Firefox version 46." aria-label="permissions-api is supported by default in Firefox version 46.">
+      </div><div class="caniuse-cell y" title="Supported by default since Firefox version 46." aria-label="permissions-api is supported by default since Firefox version 46 on desktop.">
         <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/browser-logos/firefox/firefox.svg" alt="Firefox logo"><span class="browser-version">46</span>
-      </div><div class="caniuse-cell n" title="No support, or disabled by default in Safari version 3.1." aria-label="permissions-api is no support, or disabled by default in Safari version 3.1.">
+      </div><div class="caniuse-cell n" title="No support, or disabled by default since Safari version 3.1." aria-label="permissions-api is no support, or disabled by default since Safari version 3.1 on desktop.">
         <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/browser-logos/safari/safari.svg" alt="Safari logo"><span class="browser-version">3.1</span>
-      </div><div class="caniuse-cell y" title="Supported by default in Edge version 79." aria-label="permissions-api is supported by default in Edge version 79.">
+      </div><div class="caniuse-cell y" title="Supported by default since Edge version 79." aria-label="permissions-api is supported by default since Edge version 79 on desktop.">
         <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/browser-logos/edge/edge.svg" alt="Edge logo"><span class="browser-version">79</span>
-      </div><a class="caniuse-cell" href="https://caniuse.com/permissions-api">More info</a>
+      </div></div>
+          <div class="caniuse-type"><span>desktop</span></div>
+        </div><a class="caniuse-cell" href="https://caniuse.com/permissions-api">More info</a>
     </dd></dl>
     </details>
     
@@ -905,19 +912,19 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <p>
           To <dfn class="export" data-lt="getting the current permission state|get the current permission state" data-export="" id="dfn-getting-the-current-permission-state" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">get the current
           permission state</dfn>, given a <a data-link-type="dfn" href="#dfn-name" class="internalDFN" id="ref-for-dfn-name-2">name</a> <var>name</var> and an optional
-          <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>settings</var>. This algorithm returns one of the
-          <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-3"><code>PermissionState</code></a> enum values:
+          <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>settings</var>, run the following steps. This algorithm
+          returns a <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-3"><code>PermissionState</code></a> enum value.
         </p>
         <ol class="algorithm">
           <li>Let <var data-type="PermissionDescriptor">descriptor</var> be a newly-created <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-7"><code>PermissionDescriptor</code></a>
-          whose <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-1"><code>name</code></a> is initialized with <var>name</var>.
+          with <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-1"><code>name</code></a> initialized to <var>name</var>.
           </li>
-          <li>Return the <a data-link-type="dfn" href="#dfn-state" class="internalDFN" id="ref-for-dfn-state-9">permission state</a> of <var data-type="PermissionDescriptor">descriptor</var> and <var>settings</var>.
+          <li>Return the <a data-link-type="dfn" href="#dfn-state" class="internalDFN" id="ref-for-dfn-state-9">permission state</a> of <var data-type="PermissionDescriptor">descriptor</var> with <var>settings</var>.
           </li>
         </ol>
         <p>
-          A <var data-type="PermissionDescriptor">descriptor</var>'s <dfn class="export" data-local-lt="state" data-export="" data-lt="permission state|state" data-plurals="permission states" id="dfn-state" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">permission state</dfn> for an
-          optional <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>settings</var> is the result of the following
+          A <var data-type="PermissionDescriptor">descriptor</var>'s <dfn class="export" data-local-lt="state" data-export="" data-lt="permission state|state" data-plurals="permission states" id="dfn-state" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">permission state</dfn>, given
+          an optional <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>settings</var> is the result of the following
           algorithm. It returns a <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-4"><code>PermissionState</code></a> enum value:
         </p>
         <ol class="algorithm">
@@ -927,10 +934,10 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           </li>
           <li>Let <var>feature</var> be <var data-type="PermissionDescriptor">descriptor</var>'s <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-2"><code>name</code></a>.
           </li>
-          <li>If there exists a <a data-link-type="dfn" data-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled feature</a> for <var>feature</var> and <var>settings</var> has an
-          <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/window-object.html#concept-document-window">associated <code>Document</code></a> run the following step:
+          <li>If there exists a <a data-link-type="dfn" data-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled feature</a> for <var>feature</var> and <var>settings</var>'
+          <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global">relevant global object</a> has an <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/window-object.html#concept-document-window">associated <code>Document</code></a> run the following step:
             <ol class="algorithm">
-              <li>Let <var>document</var> be <var>settings</var>'s <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/window-object.html#concept-document-window">associated <code>Document</code></a>.
+              <li>Let <var>document</var> be <var>settings</var>' <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global">relevant global object</a>'s <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/window-object.html#concept-document-window">associated <code>Document</code></a>.
               </li>
               <li>If <var>document</var> is not <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">allowed to use</a> <var>feature</var>, return
               "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-5"><code>denied</code></a>".
@@ -941,7 +948,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           <var>settings</var>, returning <var>previousResult</var>, and the user agent has not received <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-2">new
           information about the user's intent</a> since that invocation, return <var>previousResult</var>.
           </li>
-          <li>Return the <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-5"><code>PermissionState</code></a> enum value that presents permission state of
+          <li>Return the <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-5"><code>PermissionState</code></a> enum value that represents the permission state of
           <var>feature</var>, taking into account any <a data-link-type="dfn" href="#dfn-permission-state-constraints" class="internalDFN" id="ref-for-dfn-permission-state-constraints-1">permission state constraints</a> for
           <var data-type="PermissionDescriptor">descriptor</var>'s <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-3"><code>name</code></a>.
           </li>
@@ -958,25 +965,26 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         </h3><a class="self-link" href="#requesting-more-permission" aria-label="Permalink for Section 4.2"></a></div>
         
         <p>
-          To <dfn data-lt="request permission to use|requesting permission to use" class="export" data-export="" id="dfn-request-permission-to-use" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">request permission to use</dfn> a <var>descriptor</var>, the user agent must perform the
-          following steps. This algorithm returns either "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-3"><code>granted</code></a>" or
-          "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-6"><code>denied</code></a>".
+          To <dfn data-lt="request permission to use|requesting permission to use" class="export" data-export="" id="dfn-request-permission-to-use" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">request permission to use</dfn> a <var data-type="PermissionDescriptor">descriptor</var>, the user
+          agent must perform the following steps. This algorithm returns either
+          "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-3"><code>granted</code></a>" or "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-6"><code>denied</code></a>".
         </p>
         <ol class="algorithm">
-          <li>Let <var>current state</var> be the <var>descriptor</var>'s <a href="#dfn-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-state-12">permission state</a>.
+          <li>Let <var>current state</var> be the <var data-type="PermissionDescriptor">descriptor</var>'s <a href="#dfn-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-state-12">permission state</a>.
           </li>
           <li>If <var>current state</var> is not "<a data-link-type="idl" href="#dom-permissionstate-prompt" class="internalDFN" id="ref-for-dom-permissionstate-prompt-2"><code>prompt</code></a>", return <var>current
           state</var> and abort these steps.
           </li>
           <li>Ask the user for <a href="#dfn-express-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-express-permission-7">express permission</a> for the calling algorithm to use the
-          <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-26">powerful feature</a> described by <var>descriptor</var>.
+          <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-26">powerful feature</a> described by <var data-type="PermissionDescriptor">descriptor</var>.
           </li>
           <li>If the user gives <a data-link-type="dfn" href="#dfn-express-permission" class="internalDFN" id="ref-for-dfn-express-permission-8">express permission</a> to use the powerful feature, return
           "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-4"><code>granted</code></a>"; otherwise return "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-7"><code>denied</code></a>". The user's
           interaction may provide <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-3">new information about the user's intent</a> for this <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realm</a> and other <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realms</a> with the <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/origin.html#same-origin">same origin</a>.
             <div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="4"><span>Note</span></div><p class="">
-              This is intentionally vague about the details of the permission UI and how the UA
-              infers user intent. UAs should be able to explore lots of UI within this framework.
+              This is intentionally vague about the details of the permission UI and how the user
+              agent infers user intent. User agents should be able to explore lots of UI within
+              this framework.
             </p></div>
           </li>
         </ol>
@@ -999,23 +1007,25 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           <li>If <var>descriptor</var>'s <a href="#dfn-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-state-13">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-9"><code>denied</code></a>", return
           "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-10"><code>denied</code></a>" and abort these steps.
           </li>
-          <li>If <var>descriptor</var>'s <a href="#dfn-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-state-14">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-5"><code>granted</code></a>", the UA
-          may return one of <var>options</var> and abort these steps. If the user agent returns without
-          prompting, then subsequent <a data-lt="prompt the user to choose" href="#dfn-prompt-the-user-to-choose" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-prompt-the-user-to-choose-1">prompts for the user to
-          choose</a> from the same set of options with the same <var>descriptor</var> must return the same
-          option, unless the user agent receives <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-4">new information about the user's intent</a>.
+          <li>If <var>descriptor</var>'s <a href="#dfn-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-state-14">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-5"><code>granted</code></a>", the user
+          agent may return one of <var>options</var> and abort these steps. If the user agent returns
+          without prompting, then subsequent <a data-lt="prompt the user to choose" href="#dfn-prompt-the-user-to-choose" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-prompt-the-user-to-choose-1">prompts for the
+          user to choose</a> from the same set of options with the same <var>descriptor</var> must return
+          the same option, unless the user agent receives <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-4">new information about the user's
+          intent</a>.
           </li>
           <li>Ask the user to choose one of the options or deny permission, and wait for them to
           choose. If the calling algorithm specified extra information to include in the prompt,
           include it.
           </li>
-          <li>If the user chose an option, return it; otherwise return
+          <li>If the user chooses an option, return it; otherwise return
           "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-11"><code>denied</code></a>". If the user's interaction indicates they intend this choice
           to apply to other realms, then treat this this as <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-5">new information about the user's
           intent</a> for other <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realms</a> with the <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/origin.html#same-origin">same origin</a>.
             <div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="4"><span>Note</span></div><p class="">
-              This is intentionally vague about the details of the permission UI and how the UA
-              infers user intent. UAs should be able to explore lots of UI within this framework.
+              This is intentionally vague about the details of the permission UI and how the user
+              agent infers user intent. User agents should be able to explore lots of UI within
+              this framework.
             </p></div>
           </li>
         </ol>
@@ -1033,7 +1043,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <p>
           When the user agent learns that the user no longer intends to grant permission for a
           <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realm</a> to use a <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-27">feature</a>, <dfn id="dfn-react-to-the-user-revoking-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">react to the user revoking
-          permission</dfn> by:
+          permission</dfn> by running these steps:
         </p>
         <ol class="algorithm">
           <li>
@@ -1882,7 +1892,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     <dl class="bibliography"><dt id="bib-appmanifest">[appmanifest]</dt><dd>
       <a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Matt Giuca; Aaron Gustafson; Daniel Murphy; Anssi Kostiainen.  W3C. 17 February 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
     </dd><dt id="bib-geolocation">[Geolocation]</dt><dd>
-      <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres; Reilly Grant.  W3C. 7 March 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
+      <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres; Reilly Grant.  W3C. 14 March 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
     </dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd>
       <a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet.  W3C. 10 March 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
     </dd><dt id="bib-push-api">[push-api]</dt><dd>
