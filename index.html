@@ -560,19 +560,19 @@
         <p>
           To <dfn class="export" data-lt="getting the current permission state">get the current
           permission state</dfn>, given a [=powerful feature/name=] |name| and an optional
-          [=environment settings object=] |settings|. This algorithm returns one of the
-          {{PermissionState}} enum values:
+          [=environment settings object=] |settings|, run the following steps. This algorithm
+          returns a {{PermissionState}} enum value.
         </p>
         <ol class="algorithm">
           <li>Let |descriptor:PermissionDescriptor| be a newly-created {{PermissionDescriptor}}
-          whose {{PermissionDescriptor/name}} is initialized with |name|.
+          with {{PermissionDescriptor/name}} initialized to |name|.
           </li>
-          <li>Return the [=permission state=] of |descriptor| and |settings|.
+          <li>Return the [=permission state=] of |descriptor| with |settings|.
           </li>
         </ol>
         <p>
-          A |descriptor|'s <dfn class="export" data-local-lt="state">permission state</dfn> for an
-          optional <a>environment settings object</a> |settings| is the result of the following
+          A |descriptor|'s <dfn class="export" data-local-lt="state">permission state</dfn>, given
+          an optional <a>environment settings object</a> |settings| is the result of the following
           algorithm. It returns a {{PermissionState}} enum value:
         </p>
         <ol class="algorithm">
@@ -582,10 +582,11 @@
           </li>
           <li>Let |feature| be |descriptor|'s {{PermissionDescriptor/name}}.
           </li>
-          <li>If there exists a [=policy-controlled feature=] for |feature| and |settings| has an
-          <a>associated `Document`</a> run the following step:
+          <li>If there exists a [=policy-controlled feature=] for |feature| and |settings|'
+          [=relevant global object=] has an [=associated `Document`=] run the following step:
             <ol class="algorithm">
-              <li>Let <var>document</var> be |settings|'s <a>associated `Document`</a>.
+              <li>Let <var>document</var> be |settings|' [=relevant global object=]'s [=associated
+              `Document`=].
               </li>
               <li>If <var>document</var> is not <a>allowed to use</a> |feature|, return
               {{PermissionState/"denied"}}.
@@ -596,7 +597,7 @@
           |settings|, returning |previousResult|, and the user agent has not received <a>new
           information about the user's intent</a> since that invocation, return |previousResult|.
           </li>
-          <li>Return the {{PermissionState}} enum value that presents permission state of
+          <li>Return the {{PermissionState}} enum value that represents the permission state of
           |feature|, taking into account any [=powerful feature/permission state constraints=] for
           |descriptor|'s {{PermissionDescriptor/name}}.
           </li>
@@ -615,9 +616,9 @@
         </h3>
         <p>
           To <dfn data-lt="request permission to use|requesting permission to use" class=
-          "export">request permission to use</dfn> a |descriptor|, the user agent must perform the
-          following steps. This algorithm returns either {{PermissionState/"granted"}} or
-          {{PermissionState/"denied"}}.
+          "export">request permission to use</dfn> a |descriptor:PermissionDescriptor|, the user
+          agent must perform the following steps. This algorithm returns either
+          {{PermissionState/"granted"}} or {{PermissionState/"denied"}}.
         </p>
         <ol class="algorithm">
           <li>Let <var>current state</var> be the |descriptor|'s <a>permission state</a>.
@@ -633,8 +634,9 @@
           interaction may provide <a>new information about the user's intent</a> for this [=global
           object/realm=] and other [=global object/realms=] with the <a>same origin</a>.
             <p class="note">
-              This is intentionally vague about the details of the permission UI and how the UA
-              infers user intent. UAs should be able to explore lots of UI within this framework.
+              This is intentionally vague about the details of the permission UI and how the user
+              agent infers user intent. User agents should be able to explore lots of UI within
+              this framework.
             </p>
           </li>
         </ol>
@@ -658,23 +660,25 @@
           <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"denied"}}, return
           {{PermissionState/"denied"}} and abort these steps.
           </li>
-          <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"granted"}}, the UA
-          may return one of |options| and abort these steps. If the user agent returns without
-          prompting, then subsequent <a data-lt="prompt the user to choose">prompts for the user to
-          choose</a> from the same set of options with the same |descriptor| must return the same
-          option, unless the user agent receives <a>new information about the user's intent</a>.
+          <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"granted"}}, the user
+          agent may return one of |options| and abort these steps. If the user agent returns
+          without prompting, then subsequent <a data-lt="prompt the user to choose">prompts for the
+          user to choose</a> from the same set of options with the same |descriptor| must return
+          the same option, unless the user agent receives <a>new information about the user's
+          intent</a>.
           </li>
           <li>Ask the user to choose one of the options or deny permission, and wait for them to
           choose. If the calling algorithm specified extra information to include in the prompt,
           include it.
           </li>
-          <li>If the user chose an option, return it; otherwise return
+          <li>If the user chooses an option, return it; otherwise return
           {{PermissionState/"denied"}}. If the user's interaction indicates they intend this choice
           to apply to other realms, then treat this this as <a>new information about the user's
           intent</a> for other [=global object/realms=] with the <a>same origin</a>.
             <p class="note">
-              This is intentionally vague about the details of the permission UI and how the UA
-              infers user intent. UAs should be able to explore lots of UI within this framework.
+              This is intentionally vague about the details of the permission UI and how the user
+              agent infers user intent. User agents should be able to explore lots of UI within
+              this framework.
             </p>
           </li>
         </ol>
@@ -692,7 +696,7 @@
         <p>
           When the user agent learns that the user no longer intends to grant permission for a
           [=global object/realm=] to use a <a>feature</a>, <dfn>react to the user revoking
-          permission</dfn> by:
+          permission</dfn> by running these steps:
         </p>
         <ol class="algorithm">
           <li>
