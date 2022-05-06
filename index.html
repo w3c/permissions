@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 32.1.0">
+<meta name="generator" content="ReSpec 32.1.6">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -53,7 +53,7 @@ a.idlEnumItem{color:#000;border-bottom:1px dotted #ccc;text-decoration:none}
 </style>
 <style>
 dfn{cursor:pointer}
-.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font:small Helvetica Neue,sans-serif,Droid Sans Fallback;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;color:#000;box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);border-radius:2px}
 .dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
 .dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;top:0}
 .dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1}
@@ -262,8 +262,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     }
   },
   "caniuse": "permissions-api",
-  "publishISODate": "2022-03-17T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 17 March 2022"
+  "publishISODate": "2022-05-06T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 06 May 2022"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -272,7 +272,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-03-17">17 March 2022</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-05-06">06 May 2022</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -317,15 +317,26 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       <dt class="caniuse-title">Browser support:</dt><dd class="caniuse-stats">
       <div class="caniuse-group">
           <div class="caniuse-browsers"><div class="caniuse-cell y" title="Supported by default since Chrome version 43." aria-label="permissions-api is supported by default since Chrome version 43 on desktop.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/browser-logos/chrome/chrome.svg" alt="Chrome logo"><span class="browser-version">43</span>
-      </div><div class="caniuse-cell y" title="Supported by default since Firefox version 46." aria-label="permissions-api is supported by default since Firefox version 46 on desktop.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/browser-logos/firefox/firefox.svg" alt="Firefox logo"><span class="browser-version">46</span>
-      </div><div class="caniuse-cell n" title="No support, or disabled by default since Safari version 3.1." aria-label="permissions-api is no support, or disabled by default since Safari version 3.1 on desktop.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/browser-logos/safari/safari.svg" alt="Safari logo"><span class="browser-version">3.1</span>
+        <img class="caniuse-browser" width="20" height="20" src="https://cdn.w3.org/assets/logos/browser-logos/chrome/chrome.svg" alt="Chrome logo"><span class="browser-version">43</span>
       </div><div class="caniuse-cell y" title="Supported by default since Edge version 79." aria-label="permissions-api is supported by default since Edge version 79 on desktop.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/browser-logos/edge/edge.svg" alt="Edge logo"><span class="browser-version">79</span>
+        <img class="caniuse-browser" width="20" height="20" src="https://cdn.w3.org/assets/logos/browser-logos/edge/edge.svg" alt="Edge logo"><span class="browser-version">79</span>
+      </div><div class="caniuse-cell y" title="Supported by default since Firefox version 46." aria-label="permissions-api is supported by default since Firefox version 46 on desktop.">
+        <img class="caniuse-browser" width="20" height="20" src="https://cdn.w3.org/assets/logos/browser-logos/firefox/firefox.svg" alt="Firefox logo"><span class="browser-version">46</span>
+      </div><div class="caniuse-cell y" title="Supported by default since Safari version TP." aria-label="permissions-api is supported by default since Safari version TP on desktop.">
+        <img class="caniuse-browser" width="20" height="20" src="https://cdn.w3.org/assets/logos/browser-logos/safari/safari.svg" alt="Safari logo"><span class="browser-version">TP</span>
       </div></div>
           <div class="caniuse-type"><span>desktop</span></div>
+        </div><div class="caniuse-group">
+          <div class="caniuse-browsers"><div class="caniuse-cell y" title="Supported by default since Android Chrome version 101." aria-label="permissions-api is supported by default since Android Chrome version 101 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" src="https://cdn.w3.org/assets/logos/browser-logos/chrome/chrome.svg" alt="Android Chrome logo"><span class="browser-version">101</span>
+      </div><div class="caniuse-cell y" title="Supported by default since Android Firefox version 99." aria-label="permissions-api is supported by default since Android Firefox version 99 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" src="https://cdn.w3.org/assets/logos/browser-logos/firefox/firefox.svg" alt="Android Firefox logo"><span class="browser-version">99</span>
+      </div><div class="caniuse-cell n" title="No support, or disabled by default since iOS Safari version 3.2." aria-label="permissions-api is no support, or disabled by default since iOS Safari version 3.2 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" src="https://cdn.w3.org/assets/logos/browser-logos/safari-ios/safari-ios.svg" alt="iOS Safari logo"><span class="browser-version">3.2</span>
+      </div><div class="caniuse-cell y" title="Supported by default since Samsung Internet version 4." aria-label="permissions-api is supported by default since Samsung Internet version 4 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" src="https://cdn.w3.org/assets/logos/browser-logos/samsung-internet/samsung-internet.svg" alt="Samsung Internet logo"><span class="browser-version">4</span>
+      </div></div>
+          <div class="caniuse-type"><span>mobile</span></div>
         </div><a class="caniuse-cell" href="https://caniuse.com/permissions-api">More info</a>
     </dd></dl>
     </details>
@@ -813,7 +824,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
             permission query algorithm</a>.
           </p>
           <p>
-            The <dfn id="dfn-default-permission-query-algorithm" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">default permission query algorithm</dfn>, given a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-6"><code>PermissionDescriptor</code></a>
+            The <dfn data-export="" id="dfn-default-permission-query-algorithm" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">default permission query algorithm</dfn>, given a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-6"><code>PermissionDescriptor</code></a>
             <var>permissionDesc</var> and a <a data-link-type="idl" data-lt="PermissionStatus" href="#dom-permissionstatus" class="internalDFN" id="ref-for-dom-permissionstatus-4"><code>PermissionStatus</code></a> <var>status</var>, runs the following
             steps:
           </p>
@@ -1533,8 +1544,8 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           </p>
         </section>
         <aside class="mdn"><details>
-    <summary aria-label="Expand MDN details for onchange"><span>MDN</span><span> </span></summary>
-    <a title="The onchange event handler of the PermissionStatus interface is called whenever the PermissionStatus.state property changes." href="https://developer.mozilla.org/en-US/docs/Web/API/PermissionStatus/onchange">PermissionStatus/onchange</a>
+    <summary aria-label="Expand MDN details for change_event"><span>MDN</span><span> </span></summary>
+    <a title="The change event of the PermissionStatus interface fires whenever the PermissionStatus.state property changes." href="https://developer.mozilla.org/en-US/docs/Web/API/PermissionStatus/change_event">PermissionStatus/change_event</a>
     
     <table>
     <tr class="chrome yes">
@@ -1892,11 +1903,11 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     <dl class="bibliography"><dt id="bib-appmanifest">[appmanifest]</dt><dd>
       <a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Matt Giuca; Aaron Gustafson; Daniel Murphy; Anssi Kostiainen.  W3C. 17 February 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
     </dd><dt id="bib-geolocation">[Geolocation]</dt><dd>
-      <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres; Reilly Grant.  W3C. 14 March 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
+      <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres; Reilly Grant.  W3C. 18 March 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
     </dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd>
       <a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet.  W3C. 10 March 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
     </dd><dt id="bib-push-api">[push-api]</dt><dd>
-      <a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson.  W3C. 3 November 2021. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
+      <a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson.  W3C. 23 March 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
     </dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
@@ -2254,7 +2265,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-default-permission-query-algorithm" aria-label="Permalink for definition: default permission query algorithm. Activate to close this dialog.">Permalink</a>
-         
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
