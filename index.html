@@ -28,7 +28,6 @@
             company: "Google LLC",
             w3cid: "90704",
           },
-
         ],
         formerEditors: [
           {
@@ -51,9 +50,9 @@
         // See https://respec.org/docs/#xref for usage.
         xref: "web-platform",
         localBiblio: {
-          "powerful-feature-registry": {
-            title: "Registry of Powerful Features",
-            href: "https://w3c.github.io/powerful-features-registry/",
+          "permissions-registry": {
+            title: "Permissions Registry",
+            href: "https://w3c.github.io/permissions-registry/",
             status: "unofficial",
           }
         },
@@ -347,13 +346,13 @@
         <li>MAY override the algorithms and types given below if the defaults are not suitable for
         a particular [=powerful feature=].
         </li>
-        <li>MUST register the [=powerful feature=] in the [[[powerful-feature-registry]]].
+        <li>MUST register the [=powerful feature=] in the [[[permissions-registry]]].
         </li>
       </ol>
       <p class="advisement">
-        Registering the newly specified [=powerful features=] in the
-        [[[powerful-feature-registry]]] gives this Working Group an opportunity to provide feedback
-        and check that integration with this specification is done effectively.
+        Registering the newly specified [=powerful features=] in the [[[permissions-registry]]]
+        gives this Working Group an opportunity to provide feedback and check that integration with
+        this specification is done effectively.
       </p>
       <dl>
         <dt>
@@ -754,7 +753,7 @@
             <li>If [=this=]'s [=relevant global object=] is a {{Window}} object, then:
               <ol>
                 <li>If the [=current settings object=]'s <a>associated `Document`</a> is not
-                [=Document/fully active=], return [=a promise rejected with=] a
+                [=Document/fully active=], return [=a promise rejected with=] an
                 {{"InvalidStateError"}} {{DOMException}}.
                 </li>
               </ol>
@@ -763,12 +762,12 @@
             [=a promise rejected with=] a {{TypeError}}.
               <aside class="note" title="Why is this not an enum?">
                 <p>
-                  This is deliberately design to work the same a WebIDL [=enumeration=] (`enum`)
-                  and implementers are encouraged to use their own custom `enum` here. The reason
-                  this is not an enum in the specification vary greatly in the powerful features
-                  they support. Using a {{DOMString}} to identify a powerful feature gives
-                  implementers the freedom to pick and choose which of the power features from the
-                  [[[powerful-feature-registry]]] they wish to support.
+                  This is deliberately designed to work the same as WebIDL's [=enumeration=]
+                  (`enum`) and implementers are encouraged to use their own custom `enum` here. The
+                  reason this is not an enum in the specification is that browsers vary greatly in
+                  the powerful features they support. Using a {{DOMString}} to identify a powerful
+                  feature gives implementers the freedom to pick and choose which of the powerful
+                  features from the [[[permissions-registry]]] they wish to support.
                 </p>
               </aside>
             </li>
@@ -932,25 +931,24 @@
         Relationship to the Permissions Policy specification
       </h2>
       <p>
-        Although technically this specification and the [[[Permissions-Policy]]] specification deal
-        with "permissions", each specification serves a distinct purpose in the platform.
-        Nevertheless, the two specifications do explicitly overlap.
+        Although both this specification and the [[[Permissions-Policy]]] specification deal with
+        "permissions", each specification serves a distinct purpose in the platform. Nevertheless,
+        the two specifications do explicitly overlap.
       </p>
       <p>
         On the one hand, this specification exclusively concerns itself with [=powerful features=]
         whose access is managed through a user-agent mediated permissions UI (i.e., permissions
         where the user gives express consent before that feature can be used, and where the user
         retains the ability to deny that permission at any time for any reason). These powerful
-        features are registered in the [[[powerful-feature-registry]]].
+        features are registered in the [[[permissions-registry]]].
       </p>
       <p>
         On the other hand, the [[[Permissions-Policy]]] specification allows developers to
-        selectively enable and disable [=powerful features=] through a "[=Document/permissions
-        policy=]" (be it a HTTP header or a the [^iframe/allow^] attribute). The APIs and features
-        in scope for the [[[Permissions-Policy]]] specification go beyond those identified in the
-        [[[powerful-feature-registry]]] (e.g., "sync-xhr" and "gamepad"). In that sense, the
+        selectively enable and disable policy-controlled features through a "[=Document/permissions
+        policy=]" (be it a HTTP header or the [^iframe/allow^] attribute). In that sense, the
         Permissions Policy subsumes this specification in that [[[Permissions-Policy]]] governs
-        whether a feature is available at all, independently of this specification.
+        whether a feature is available at all, independently of this specification. These
+        policy-controlled features are also registered in the [[[permissions-registry]]].
       </p>
       <p>
         A powerful feature that has been disabled by the [[[Permissions-Policy]]] specification
@@ -1019,7 +1017,7 @@
         </p>
         <ol>
           <li>Let |parameters| be the |parameters| argument, <a>converted to an IDL value</a> of
-          type {{PermissionSetParameters}}. If this throws an exception, return a [=invalid
+          type {{PermissionSetParameters}}. If this throws an exception, return an [=invalid
           argument=] [=error=].
           </li>
           <li>Let |rootDesc| be |parameters|.{{PermissionSetParameters/descriptor}}.
@@ -1033,7 +1031,7 @@
           state</a> for any implementation-defined reason, return a [=invalid argument=] [=error=].
             <p class="note">
               For example, <a>user agents</a> that define the "midi" <a>powerful feature</a> as
-              "always on" may choose to reject command to set the <a>permission state</a> to
+              "always on" may choose to reject a command to set the <a>permission state</a> to
               {{PermissionState/"denied"}} at this step.
             </p>
           </li>
