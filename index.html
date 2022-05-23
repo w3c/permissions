@@ -662,7 +662,7 @@
           {{PermissionState/"denied"}} and abort these steps.
           </li>
           <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"granted"}}, the user
-          agent may return one or more of |options| chosen by the user and abort these steps. If the user agent
+          agent may return one (or more if |allowMultiple| is true) of |options| chosen by the user and abort these steps. If the user agent
           returns without prompting, then subsequent <a data-lt="prompt the user to choose">prompts
           for the user to choose</a> from the same set of options with the same |descriptor| must
           return the same option(s), unless the user agent receives <a>new information about the
