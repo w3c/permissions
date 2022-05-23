@@ -262,8 +262,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     }
   },
   "caniuse": "permissions-api",
-  "publishISODate": "2022-05-09T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 09 May 2022"
+  "publishISODate": "2022-05-23T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 23 May 2022"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -272,7 +272,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-05-09">09 May 2022</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-05-23">23 May 2022</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -329,8 +329,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         </div><div class="caniuse-group">
           <div class="caniuse-browsers"><div class="caniuse-cell y" title="Supported by default since Android Chrome version 101." aria-label="permissions-api is supported by default since Android Chrome version 101 on mobile.">
         <img class="caniuse-browser" width="20" height="20" src="https://cdn.w3.org/assets/logos/browser-logos/chrome/chrome.svg" alt="Android Chrome logo"><span class="browser-version">101</span>
-      </div><div class="caniuse-cell y" title="Supported by default since Android Firefox version 99." aria-label="permissions-api is supported by default since Android Firefox version 99 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" src="https://cdn.w3.org/assets/logos/browser-logos/firefox/firefox.svg" alt="Android Firefox logo"><span class="browser-version">99</span>
+      </div><div class="caniuse-cell y" title="Supported by default since Android Firefox version 100." aria-label="permissions-api is supported by default since Android Firefox version 100 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" src="https://cdn.w3.org/assets/logos/browser-logos/firefox/firefox.svg" alt="Android Firefox logo"><span class="browser-version">100</span>
       </div><div class="caniuse-cell n" title="No support, or disabled by default since iOS Safari version 3.2." aria-label="permissions-api is no support, or disabled by default since iOS Safari version 3.2 on mobile.">
         <img class="caniuse-browser" width="20" height="20" src="https://cdn.w3.org/assets/logos/browser-logos/safari-ios/safari-ios.svg" alt="iOS Safari logo"><span class="browser-version">3.2</span>
       </div><div class="caniuse-cell y" title="Supported by default since Samsung Internet version 4." aria-label="permissions-api is supported by default since Samsung Internet version 4 on mobile.">
@@ -1010,26 +1010,34 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         </h3><a class="self-link" href="#prompt-the-user-to-choose" aria-label="Permalink for Section 4.3"></a></div>
         
         <p>
-          To <dfn data-lt="prompt the user to choose|prompting the user to choose" class="export" data-export="" id="dfn-prompt-the-user-to-choose" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">prompt the user to choose</dfn> one of several <var>options</var> associated with a
-          <var>descriptor</var>, the user agent must perform the following steps. This algorithm returns
-          either "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-8"><code>denied</code></a>" or one of the options.
+          To <dfn data-lt="prompt the user to choose|prompting the user to choose" class="export" data-export="" id="dfn-prompt-the-user-to-choose" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">prompt the user to choose</dfn> one or more <var>options</var> associated with a given
+          <var data-type="PermissionDescriptor">descriptor</var> and an optional <a data-type="dfn" href="https://infra.spec.whatwg.org/#boolean">boolean</a> <var data-type="boolean">allowMultiple</var>
+          (default false), the user agent must perform the following steps. This algorithm returns
+          either "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-8"><code>denied</code></a>" or the user's selection.
         </p>
         <ol class="algorithm">
-          <li>If <var>descriptor</var>'s <a href="#dfn-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-state-13">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-9"><code>denied</code></a>", return
+          <li>If <var data-type="PermissionDescriptor">descriptor</var>'s <a href="#dfn-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-state-13">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-9"><code>denied</code></a>", return
           "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-10"><code>denied</code></a>" and abort these steps.
           </li>
-          <li>If <var>descriptor</var>'s <a href="#dfn-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-state-14">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-5"><code>granted</code></a>", the user
-          agent may return one of <var>options</var> and abort these steps. If the user agent returns
-          without prompting, then subsequent <a data-lt="prompt the user to choose" href="#dfn-prompt-the-user-to-choose" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-prompt-the-user-to-choose-1">prompts for the
-          user to choose</a> from the same set of options with the same <var>descriptor</var> must return
-          the same option, unless the user agent receives <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-4">new information about the user's
-          intent</a>.
+          <li>If <var data-type="PermissionDescriptor">descriptor</var>'s <a href="#dfn-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-state-14">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-5"><code>granted</code></a>", the user
+          agent may return one (or more if <var data-type="boolean">allowMultiple</var> is true) of <var>options</var> chosen by the user
+          and abort these steps. If the user agent returns without prompting, then subsequent
+          <a data-lt="prompt the user to choose" href="#dfn-prompt-the-user-to-choose" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-prompt-the-user-to-choose-1">prompts for the user to choose</a> from the same
+          set of options with the same <var data-type="PermissionDescriptor">descriptor</var> must return the same option(s), unless the user
+          agent receives <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-4">new information about the user's intent</a>.
           </li>
-          <li>Ask the user to choose one of the options or deny permission, and wait for them to
-          choose. If the calling algorithm specified extra information to include in the prompt,
-          include it.
+          <li>Ask the user to choose one or more <var>options</var> or deny permission, and wait for them to
+          choose:
+            <ol>
+              <li>If the calling algorithm specified extra information to include in the prompt,
+              include it.
+              </li>
+              <li>If <var data-type="boolean">allowMultiple</var> is false, restrict selection to a single item from <var>options</var>;
+              otherwise, any number may be selected by the user.
+              </li>
+            </ol>
           </li>
-          <li>If the user chooses an option, return it; otherwise return
+          <li>If the user chose one or more options, return them; otherwise return
           "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-11"><code>denied</code></a>". If the user's interaction indicates they intend this choice
           to apply to other realms, then treat this this as <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-5">new information about the user's
           intent</a> for other <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-global-object-realm">realms</a> with the <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/origin.html#same-origin">same origin</a>.
