@@ -651,26 +651,34 @@
         </h3>
         <p>
           To <dfn data-lt="prompt the user to choose|prompting the user to choose" class=
-          "export">prompt the user to choose</dfn> one of several |options| associated with a
-          |descriptor|, the user agent must perform the following steps. This algorithm returns
-          either {{PermissionState/"denied"}} or one of the options.
+          "export">prompt the user to choose</dfn> one or more |options| associated with a given
+          |descriptor:PermissionDescriptor| and an optional <a>boolean</a> |allowMultiple:boolean|
+          (default false), the user agent must perform the following steps. This algorithm returns
+          either {{PermissionState/"denied"}} or the user's selection.
         </p>
         <ol class="algorithm">
           <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"denied"}}, return
           {{PermissionState/"denied"}} and abort these steps.
           </li>
           <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"granted"}}, the user
-          agent may return one of |options| and abort these steps. If the user agent returns
-          without prompting, then subsequent <a data-lt="prompt the user to choose">prompts for the
-          user to choose</a> from the same set of options with the same |descriptor| must return
-          the same option, unless the user agent receives <a>new information about the user's
-          intent</a>.
+          agent may return one (or more if |allowMultiple| is true) of |options| chosen by the user
+          and abort these steps. If the user agent returns without prompting, then subsequent
+          <a data-lt="prompt the user to choose">prompts for the user to choose</a> from the same
+          set of options with the same |descriptor| must return the same option(s), unless the user
+          agent receives <a>new information about the user's intent</a>.
           </li>
-          <li>Ask the user to choose one of the options or deny permission, and wait for them to
-          choose. If the calling algorithm specified extra information to include in the prompt,
-          include it.
+          <li>Ask the user to choose one or more |options| or deny permission, and wait for them to
+          choose:
+            <ol>
+              <li>If the calling algorithm specified extra information to include in the prompt,
+              include it.
+              </li>
+              <li>If |allowMultiple| is false, restrict selection to a single item from |options|;
+              otherwise, any number may be selected by the user.
+              </li>
+            </ol>
           </li>
-          <li>If the user chooses an option, return it; otherwise return
+          <li>If the user chose one or more options, return them; otherwise return
           {{PermissionState/"denied"}}. If the user's interaction indicates they intend this choice
           to apply to other realms, then treat this this as <a>new information about the user's
           intent</a> for other [=global object/realms=] with the <a>same origin</a>.
