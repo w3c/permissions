@@ -82,6 +82,42 @@
       </p>
     </section>
     <section class="informative">
+      <h2 id="intro">
+        Introduction
+      </h2>
+      <p>
+        Specifications can define features that are explicitly identified as a [=powerful
+        feature=]. These features are said to be "powerful" in that they can have significant
+        privacy, security, and performance implications. As such, users rely on user agents to deny
+        sites the ability to use these features until they have given express permission, and
+        usually only granting this ability for a limited amount of time. Express permission to
+        allow a site to use a powerful feature is generally given and controlled through browser
+        UI, as illustrated below.
+      </p>
+      <figure>
+        <img src="docs/assets/images/sample-prompts.png" alt=
+        "On the left, a mockup of a notifications prompt with an allow and don't allow buttons that states 'the website example.com would like to send you notifications'. On the right, a prompt near the URL bar asking to give permission to the camera and microphone to the example site.">
+        <figcaption>
+          Sketches of possible permission prompt types
+        </figcaption>
+      </figure>
+      <p>
+        In this sense, a permission represents the current state of user consent for certain types
+        of features, and particularly "powerful features". Ultimately the user retains control of these
+        permissions and have the ability to manually grant or deny permissions through user preferences. 
+        Further, user agents assist users in managing permissions by, for example, hiding and automatically
+        denying certain permission prompts that would otherwise be a nuisance, and automatically expiring
+        granted permissions if a user doesn't visit a website for some time.
+      </p>
+    </section>
+    <figure>
+      <img src="docs/assets/images/permission-settings.png" alt=
+      "A mockup of a settings page that would allow a user to set or reset defaults for location, camera, microphone, motion sensors, and notifications permissions.">
+      <figcaption>
+        A sketch of a possible site-specific permissions controls UI
+      </figcaption>
+    </figure>
+    <section class="informative">
       <h2 id="examples">
         Examples of usage
       </h2>
