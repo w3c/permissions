@@ -279,6 +279,93 @@
         </p>
       </section>
       <section>
+        <h3>
+          Permission Store
+        </h3>
+        <p>
+        The user agent maintains a single <dfn class="export">global permission store</dfn> which is a list of [=permission store entries=].
+        The user agent removes [=entries=] from the list when their respective [=permission=]'s [=permission/lifetime=] has expired.
+        </p>
+        <p class="issue">
+        We should still allow UAs flexibility in giving out permissions with smaller scope and lifetime (e.g. per-tab) in some form. There should generally still be enough room for exploration here.
+        </p>
+        <p>
+        A <dfn class="export" data-local-lt="entry">permission store entry</dfn> is a [=tuple=] of [=powerful feature/name=] name, [=permission store key=] key, {{PermissionDescriptor}} descriptor, and [=permission/state=] state.
+        </p>
+        <p>
+        To <dfn class="export">get a permission store entry</dfn> from the [=global permission store=] given a |name|, [=permission store key=] key and descriptor, run these steps:
+        <ol class="algorithm">
+          <li>
+          If the [=global permission store=] [=list/contains=] an [=entry=] with the name |name|, the key |key| and the descriptor |descriptor|, return that entry.
+          </li>
+          <li>
+          Return null.
+          </li>
+        </ol>
+        </p>
+        <p>
+        To <dfn class="export">set a permission store entry</dfn> in the [=global permission store=] given a [=powerful feature/name=] |name|, a [=permission store key=] |key|, a {{PermissionDescriptor}} |descriptor|, and a [=permission/state=] |state|, run these steps:
+        <ol class="algorithm">
+          <li>
+            Let |newEntry| be a new [=permission store entry=] with |name|, |key|, |descriptor|, and |state|.
+          </li>
+          <li>
+            If the [=global permission store=] [=list/contains=] an [=entry=] with the name |name|, the key |key| and the descriptor |descriptor|, [=list/replace=] that entry with |newEntry| and abort these steps.
+          </li>
+          <li>
+            Otherwise, [=list/append=] |newEntry| to the [=global permission store=].
+          </li>
+        </ol>
+        </p>
+        <p>
+        To <dfn class="export">remove a permission store entry</dfn> from the [=global permission store=] given a name, key and descriptor, run these steps:
+        <ol class="algorithm">
+          <li>
+          [=list/Remove=] the [=entry=] with the name |name|, key |key| and descriptor |descriptor| from the [=global permission store=].
+          </li>
+        </ol>
+        </p>
+        <p>
+        A <dfn class="export">permission store key</dfn> is a [=tuple=] of ([=origin=] top-level origin, [=origin=] embedded origin).
+        </p>
+
+        <p>
+        To <dfn class="export">generate a permission store key</dfn> `key` given [=environment settings object=] |settings|, run these steps:
+        <ol class="algorithm">
+          <li>
+            Let |top-level origin| be |settings|' [=environment/top-level origin=].
+          </li>
+          <li>
+            Return (|top-level origin|, null)
+          </li>
+          <p class="issue">
+          How do we ensure that other specs can override this? Should we add all key deviations as new steps to this algorithm or have a different override mechanism?
+          </p>
+          <p class="note">
+            Most permissions will want to key on the top-level origin and delegate access via Permissions Policy.
+            However, others, like the Storage Access API, explicitly describe a embeddee relationship and need to use the
+            embedded origin field.
+          </p>
+          <p class="note">
+            This assumes that passed in settings is from the embedded document.
+          </p>
+        </ol>
+        </p>
+
+        <p>
+        To <dfn class="export">compare [=permission store keys=]</dfn> |key1| and |key2|, run these steps:
+        <ol class="algorithm">
+          <li>
+          </li>
+        </ol>
+        <p class="issue">
+        Do we have to define this? If we can compare origins we can probably implicitly compare a tuple of origins?
+        </p>
+        </p>
+
+        </p>
+      </section>
+      <section>
         <h2>
           Powerful features
         </h2>
@@ -509,7 +596,7 @@
           <p>
             Takes no arguments. Updates any other parts of the implementation that need to be kept
             in sync with changes in the results of <a>permission states</a> or [=powerful
-            feature/extra permission data=], and then [=react to the user revoking permission=].
+            feature/extra permission data=].
           </p>
           <p>
             If unspecified, this defaults to running [=react to the user revoking permission=].
@@ -628,9 +715,11 @@
               </li>
             </ol>
           </li>
-          <li>If there was a previous invocation of this algorithm with the same |descriptor| and
-          |settings|, returning |previousResult|, and the user agent has not received <a>new
-          information about the user's intent</a> since that invocation, return |previousResult|.
+          <li>Let |key| be the result of [=generate a permission store key|generating a permission store key=] with |settings|.
+          </li>
+          <li>Let |entry| be the result of [=get a permission store entry|getting a permission store entry=] with |feature|, |descriptor| and |key|.
+          </li>
+          <li>If |entry| is not null, return a {{PermissionState}} enum value from |entry|'s state and name.
           </li>
           <li>Return the {{PermissionState}} enum value that represents the permission state of
           |feature|, taking into account any [=powerful feature/permission state constraints=] for
@@ -662,8 +751,8 @@
           <li>Ask the user for <a>express permission</a> for the calling algorithm to use the
           <a>powerful feature</a> described by |descriptor|.
           </li>
-          <li>If the user gives [=express permission=] to use the powerful feature, return
-          {{PermissionState/"granted"}}; otherwise return {{PermissionState/"denied"}}. The user's
+          <li>If the user gives [=express permission=] to use the powerful feature, set |current state| to
+          {{PermissionState/"granted"}}; otherwise to {{PermissionState/"denied"}}. The user's
           interaction may provide <a>new information about the user's intent</a> for the
           [=origin=].
             <p class="note">
@@ -671,6 +760,16 @@
               agent infers user intent. User agents should be able to explore lots of UI within
               this framework.
             </p>
+          </li>
+          <li>
+            Let |key| be the result of [=generate a permission store key|generating a permission store key=] with the [=current settings object=].
+          </li>
+          <li>
+            [=Queue a task=] on the [=current settings object=]'s [=environment settings
+            object/responsible event loop=] to [=set a permission store entry=] with |descriptor|'s name, |key|, |descriptor|, and |current state|.
+          </li>
+          <li>
+            Return |current state|.
           </li>
         </ol>
         <p>
@@ -740,6 +839,12 @@
           <li>
             <a>Queue a global task</a> on the [=user interaction task source=] to run that
             feature's [=powerful feature/permission revocation algorithm=].
+          </li>
+          <li>
+            Let |key| be the result of [=generate a permission store key|generating a permission store key=] with the Realm's [=Realm/settings object=].
+          </li>
+          <li>
+            TODO: How do I get the feature descriptor to remove the feature here?
           </li>
         </ol>
       </section>
