@@ -290,79 +290,79 @@
         </p>
         <p>
           The user agent MAY maintain additional permission stores with [=implementation-defined=] scope and eviction rules. Which permission store is adressed in a given moment is [=implementation-defined=].
-          <p class="note">
+          <aside class="note">
             This is intended to allow a user agent to experiment with user-friendly permission concepts such as per-tab grants.
           </p>
         </p>
         <p>
-        A <dfn class="export" data-local-lt="entry">permission store entry</dfn> is a [=tuple=] of [=powerful feature/name=] <dfn>name</dfn>, [=permission store key=] <dfn>key</dfn>, {{PermissionDescriptor}} <dfn>descriptor</dfn>, and [=permission/state=] <dfn>state</dfn>.
+          A <dfn class="export" data-local-lt="entry">permission store entry</dfn> is a [=tuple=] of [=powerful feature/name=] <dfn>name</dfn>, [=permission store key=] <dfn>key</dfn>, {{PermissionDescriptor}} <dfn>descriptor</dfn>, and [=permission/state=] <dfn>state</dfn>.
         </p>
         <p>
-        To <dfn class="export">get a permission store entry</dfn> from the user agent's permission store given a |name|, [=permission store key=] key and descriptor, run these steps:
-        <ol class="algorithm">
-          <li>
-          If the permission store [=list/contains=] an [=entry=] with the [=name=] |name|, [=key=] |key| and [=descriptor=] |descriptor|, return that entry.
-          </li>
-          <li>
-          Return null.
-          </li>
-        </ol>
+          To <dfn class="export">get a permission store entry</dfn> from the user agent's permission store given a |name|, [=permission store key=] key and descriptor, run these steps:
+          <ol class="algorithm">
+            <li>
+              If the permission store [=list/contains=] an [=entry=] with the [=name=] |name|, [=key=] |key| and [=descriptor=] |descriptor|, return that entry.
+            </li>
+            <li>
+              Return null.
+            </li>
+          </ol>
         </p>
         <p>
-        To <dfn class="export">set a permission store entry</dfn> in the user agent's permission store given a [=powerful feature/name=] |name|, a [=permission store key=] |key|, a {{PermissionDescriptor}} |descriptor|, and a [=permission/state=] |state|, run these steps:
-        <ol class="algorithm">
-          <li>
-            Let |newEntry| be a new [=permission store entry=] with the [=name=] |name|, [=key=] |key|, [=descriptor=] |descriptor|, and [=state=] |state|.
-          </li>
-          <li>
-            If the permission store [=list/contains=] an [=entry=] with the [=name=] |name|, the [=key=] |key| and the [=descriptor=] |descriptor|, [=list/replace=] that entry with |newEntry| and abort these steps.
-          </li>
-          <li>
-            [=list/append=] |newEntry| to the permission store.
-          </li>
-        </ol>
+          To <dfn class="export">set a permission store entry</dfn> in the user agent's permission store given a [=powerful feature/name=] |name|, a [=permission store key=] |key|, a {{PermissionDescriptor}} |descriptor|, and a [=permission/state=] |state|, run these steps:
+          <ol class="algorithm">
+            <li>
+              Let |newEntry| be a new [=permission store entry=] with the [=name=] |name|, [=key=] |key|, [=descriptor=] |descriptor|, and [=state=] |state|.
+            </li>
+            <li>
+              If the permission store [=list/contains=] an [=entry=] with the [=name=] |name|, the [=key=] |key| and the [=descriptor=] |descriptor|, [=list/replace=] that entry with |newEntry| and abort these steps.
+            </li>
+            <li>
+              [=list/append=] |newEntry| to the permission store.
+            </li>
+          </ol>
         </p>
         <p>
-        To <dfn class="export">remove a permission store entry</dfn> from the permission store given a name, key and descriptor, run these steps:
-        <ol class="algorithm">
-          <li>
-          [=list/Remove=] the [=entry=] with the [=name=] |name|, [=key=] |key| and [=descriptor=] |descriptor| from the permission store.
-          </li>
-        </ol>
+          To <dfn class="export">remove a permission store entry</dfn> from the permission store given a name, key and descriptor, run these steps:
+          <ol class="algorithm">
+            <li>
+            [=list/Remove=] the [=entry=] with the [=name=] |name|, [=key=] |key| and [=descriptor=] |descriptor| from the permission store.
+            </li>
+          </ol>
         </p>
         <p>
-        A <dfn class="export">permission store key</dfn> is a [=tuple=] of ([=origin=] <dfn data-dfn-for="permission store key">top-level origin</dfn>, [=origin=] <dfn data-dfn-for="permission store key">granted origin</dfn>).
+          A <dfn class="export">permission store key</dfn> is a [=tuple=] of ([=origin=] <dfn data-dfn-for="permission store key">top-level origin</dfn>, [=origin=] <dfn data-dfn-for="permission store key">granted origin</dfn>).
         </p>
 
         <p>
-        To <dfn class="export">generate a permission store key</dfn> given [=environment settings object=] |settings|, run these steps:
-        <ol class="algorithm">
-          <li>
-            Let |topLevelOrigin| be |settings|' [=environment/top-level origin=].
-          </li>
-          <li>
-            Return (|topLevelOrigin|, |topLevelOrigin|).
-          </li>
-          <p class="note">
+          To <dfn class="export">generate a permission store key</dfn> given [=environment settings object=] |settings|, run these steps:
+          <ol class="algorithm">
+            <li>
+              Let |topLevelOrigin| be |settings|' [=environment/top-level origin=].
+            </li>
+            <li>
+              Return (|topLevelOrigin|, |topLevelOrigin|).
+            </li>
+          </ol>
+          <aside class="note">
             Most permissions will want to set the permission grant on the top-level origin and delegate access via Permissions Policy.
             However, others, like the Storage Access API, explicitly describe an embeddee relationship and could set a different granted origin.
-          </p>
-        </ol>
+          </aside>
         </p>
 
         <p>
-        To <dfn class="export">compare [=permission store keys=]</dfn> |key1| and |key2|, run these steps:
-        <ol class="algorithm">
-          <li>
-            If |key1|'s [=permission store key/top-level origin=] is not [=same origin=] with |key2|'s [=permission store key/top-level origin=], return false.
-          </li>
-          <li>
-            If |key1|'s [=permission store key/granted origin=] is not [=same origin=] with |key2|'s [=permission store key/granted origin=], return false.
-          </li>
-          <li>
-            Return true.
-          </li>
-        </ol>
+          To <dfn class="export">compare [=permission store keys=]</dfn> |key1| and |key2|, run these steps:
+          <ol class="algorithm">
+            <li>
+              If |key1|'s [=permission store key/top-level origin=] is not [=same origin=] with |key2|'s [=permission store key/top-level origin=], return false.
+            </li>
+            <li>
+              If |key1|'s [=permission store key/granted origin=] is not [=same origin=] with |key2|'s [=permission store key/granted origin=], return false.
+            </li>
+            <li>
+              Return true.
+            </li>
+          </ol>
         </p>
 
         </p>
