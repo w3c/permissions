@@ -283,20 +283,25 @@
           Permission Store
         </h3>
         <p>
-        The user agent maintains a single <dfn class="export">permission store</dfn> which is a [=/list=] of [=permission store entries=].
-        The user agent removes [=entries=] from the list when their respective [=permission=]'s [=permission/lifetime=] has expired.
-        </p>
-        <p class="issue">
-        We should still allow UAs flexibility in giving out permissions with smaller scope and lifetime (e.g. per-tab) in some form. There should generally still be enough room for exploration here.
+          The user agent maintains a single <dfn class="export">permission store</dfn> which is a [=/list=] of [=permission store entries=].
         </p>
         <p>
-        A <dfn class="export" data-local-lt="entry">permission store entry</dfn> is a [=tuple=] of [=powerful feature/name=] name, [=permission store key=] key, {{PermissionDescriptor}} descriptor, and [=permission/state=] state.
+          The user agent MAY remove [=entries=] from the [=permission store=] when their respective [=permission=]'s [=permission/lifetime=] has expired.
         </p>
         <p>
-        To <dfn class="export">get a permission store entry</dfn> from the [=global permission store=] given a |name|, [=permission store key=] key and descriptor, run these steps:
+          The user agent MAY maintain additional permission stores with [=implementation-defined=] scope and eviction rules. Which permission store is adressed in a given moment is [=implementation-defined=].
+          <p class="note">
+            This is intended to allow a user agent to experiment with user-friendly permission concepts such as per-tab grants.
+          </p>
+        </p>
+        <p>
+        A <dfn class="export" data-local-lt="entry">permission store entry</dfn> is a [=tuple=] of [=powerful feature/name=] <dfn>name</dfn>, [=permission store key=] <dfn>key</dfn>, {{PermissionDescriptor}} <dfn>descriptor</dfn>, and [=permission/state=] <dfn>state</dfn>.
+        </p>
+        <p>
+        To <dfn class="export">get a permission store entry</dfn> from the user agent's permission store given a |name|, [=permission store key=] key and descriptor, run these steps:
         <ol class="algorithm">
           <li>
-          If the [=global permission store=] [=list/contains=] an [=entry=] with the name |name|, the key |key| and the descriptor |descriptor|, return that entry.
+          If the permission store [=list/contains=] an [=entry=] with the [=name=] |name|, [=key=] |key| and [=descriptor=] |descriptor|, return that entry.
           </li>
           <li>
           Return null.
@@ -304,50 +309,43 @@
         </ol>
         </p>
         <p>
-        To <dfn class="export">set a permission store entry</dfn> in the [=global permission store=] given a [=powerful feature/name=] |name|, a [=permission store key=] |key|, a {{PermissionDescriptor}} |descriptor|, and a [=permission/state=] |state|, run these steps:
+        To <dfn class="export">set a permission store entry</dfn> in the user agent's permission store given a [=powerful feature/name=] |name|, a [=permission store key=] |key|, a {{PermissionDescriptor}} |descriptor|, and a [=permission/state=] |state|, run these steps:
         <ol class="algorithm">
           <li>
-            Let |newEntry| be a new [=permission store entry=] with |name|, |key|, |descriptor|, and |state|.
+            Let |newEntry| be a new [=permission store entry=] with the [=name=] |name|, [=key=] |key|, [=descriptor=] |descriptor|, and [=state=] |state|.
           </li>
           <li>
-            If the [=global permission store=] [=list/contains=] an [=entry=] with the name |name|, the key |key| and the descriptor |descriptor|, [=list/replace=] that entry with |newEntry| and abort these steps.
+            If the permission store [=list/contains=] an [=entry=] with the [=name=] |name|, the [=key=] |key| and the [=descriptor=] |descriptor|, [=list/replace=] that entry with |newEntry| and abort these steps.
           </li>
           <li>
-            Otherwise, [=list/append=] |newEntry| to the [=global permission store=].
+            [=list/append=] |newEntry| to the permission store.
           </li>
         </ol>
         </p>
         <p>
-        To <dfn class="export">remove a permission store entry</dfn> from the [=global permission store=] given a name, key and descriptor, run these steps:
+        To <dfn class="export">remove a permission store entry</dfn> from the permission store given a name, key and descriptor, run these steps:
         <ol class="algorithm">
           <li>
-          [=list/Remove=] the [=entry=] with the name |name|, key |key| and descriptor |descriptor| from the [=global permission store=].
+          [=list/Remove=] the [=entry=] with the [=name=] |name|, [=key=] |key| and [=descriptor=] |descriptor| from the permission store.
           </li>
         </ol>
         </p>
         <p>
-        A <dfn class="export">permission store key</dfn> is a [=tuple=] of ([=origin=] top-level origin, [=origin=] embedded origin).
+        A <dfn class="export">permission store key</dfn> is a [=tuple=] of ([=origin=] <dfn data-dfn-for="permission store key">top-level origin</dfn>, [=origin=] <dfn data-dfn-for="permission store key">granted origin</dfn>).
         </p>
 
         <p>
         To <dfn class="export">generate a permission store key</dfn> given [=environment settings object=] |settings|, run these steps:
         <ol class="algorithm">
           <li>
-            Let |top-level origin| be |settings|' [=environment/top-level origin=].
+            Let |topLevelOrigin| be |settings|' [=environment/top-level origin=].
           </li>
           <li>
-            Return (|top-level origin|, null).
+            Return (|topLevelOrigin|, |topLevelOrigin|).
           </li>
-          <p class="issue">
-          How do we ensure that other specs can override this? Should we add all key deviations as new steps to this algorithm or have a different override mechanism?
-          </p>
           <p class="note">
-            Most permissions will want to key on the top-level origin and delegate access via Permissions Policy.
-            However, others, like the Storage Access API, explicitly describe a embeddee relationship and need to use the
-            embedded origin field.
-          </p>
-          <p class="note">
-            This assumes that passed in settings is from the embedded document.
+            Most permissions will want to set the permission grant on the top-level origin and delegate access via Permissions Policy.
+            However, others, like the Storage Access API, explicitly describe an embeddee relationship and could set a different granted origin.
           </p>
         </ol>
         </p>
@@ -356,11 +354,15 @@
         To <dfn class="export">compare [=permission store keys=]</dfn> |key1| and |key2|, run these steps:
         <ol class="algorithm">
           <li>
+            If |key1|'s [=permission store key/top-level origin=] is not [=same origin=] with |key2|'s [=permission store key/top-level origin=], return false.
+          </li>
+          <li>
+            If |key1|'s [=permission store key/granted origin=] is not [=same origin=] with |key2|'s [=permission store key/granted origin=], return false.
+          </li>
+          <li>
+            Return true.
           </li>
         </ol>
-        <p class="issue">
-        Do we have to define this? If we can compare origins we can probably implicitly compare a tuple of origins?
-        </p>
         </p>
 
         </p>
