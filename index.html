@@ -283,7 +283,7 @@
           Permission Store
         </h3>
         <p>
-        The user agent maintains a single <dfn class="export">global permission store</dfn> which is a list of [=permission store entries=].
+        The user agent maintains a single <dfn class="export">permission store</dfn> which is a [=/list=] of [=permission store entries=].
         The user agent removes [=entries=] from the list when their respective [=permission=]'s [=permission/lifetime=] has expired.
         </p>
         <p class="issue">
@@ -330,13 +330,13 @@
         </p>
 
         <p>
-        To <dfn class="export">generate a permission store key</dfn> `key` given [=environment settings object=] |settings|, run these steps:
+        To <dfn class="export">generate a permission store key</dfn> given [=environment settings object=] |settings|, run these steps:
         <ol class="algorithm">
           <li>
             Let |top-level origin| be |settings|' [=environment/top-level origin=].
           </li>
           <li>
-            Return (|top-level origin|, null)
+            Return (|top-level origin|, null).
           </li>
           <p class="issue">
           How do we ensure that other specs can override this? Should we add all key deviations as new steps to this algorithm or have a different override mechanism?
