@@ -331,38 +331,12 @@
           </ol>
         </p>
         <p>
-          A <dfn class="export">permission store key</dfn> is a [=tuple=] of ([=origin=] <dfn data-dfn-for="permission store key">top-level origin</dfn>, [=origin=] <dfn data-dfn-for="permission store key">granted origin</dfn>).
-        </p>
-
-        <p>
-          To <dfn class="export">generate a permission store key</dfn> given [=environment settings object=] |settings|, run these steps:
-          <ol class="algorithm">
-            <li>
-              Let |topLevelOrigin| be |settings|' [=environment/top-level origin=].
-            </li>
-            <li>
-              Return (|topLevelOrigin|, |topLevelOrigin|).
-            </li>
-          </ol>
+          A <dfn class="export">permission store key</dfn> has the type returned by the feature's [=powerful feature/permission key generation algorithm=].
           <aside class="note">
-            Most permissions will want to set the permission grant on the top-level origin and delegate access via Permissions Policy.
-            However, others, like the Storage Access API, explicitly describe an embeddee relationship and could set a different granted origin.
+            Powerful features may override the key generation algorithm to specify a custom permission store key.
+            This is useful for features that want to restrict permissions based on additional context,
+            such as double-keying on both the embedded origin and the top-level origin.
           </aside>
-        </p>
-
-        <p>
-          To <dfn class="export">compare [=permission store keys=]</dfn> |key1| and |key2|, run these steps:
-          <ol class="algorithm">
-            <li>
-              If |key1|'s [=permission store key/top-level origin=] is not [=same origin=] with |key2|'s [=permission store key/top-level origin=], return false.
-            </li>
-            <li>
-              If |key1|'s [=permission store key/granted origin=] is not [=same origin=] with |key2|'s [=permission store key/granted origin=], return false.
-            </li>
-            <li>
-              Return true.
-            </li>
-          </ol>
         </p>
 
         </p>
@@ -591,6 +565,51 @@
           </ol>
         </dd>
         <dt>
+          A <dfn data-dfn-for="powerful feature" class="export">permission key generation algorithm</dfn>:
+        </dt>
+        <dd>
+          <p>
+            Takes an [=environment settings object=], and returns a new [=permission store key=].
+            If unspecified, this defaults to the <a>default permission key generation algorithm</a>.
+            A feature that specifies a custom [=powerful feature/permission key generation algorithm=] MUST also specify a
+            [=powerful feature/permission key comparison algorithm=].
+          </p>
+          <p>
+            The <dfn data-export="">default permission key generation algorithm</dfn>,
+            given an [=environment settings object=] |settings|, runs the following steps:
+          </p>
+          <ol class="algorithm">
+            <li>
+              Return |settings|' [=environment/top-level origin=].
+            </li>
+          </ol>
+          <aside class="note" title="Permission Delegation">
+            Most powerful features grant permission to the top-level origin and delegate access to the requesting document via Permissions Policy.
+            This is called Permission Delegation.
+          </aside>
+        </dd>
+        <dt>
+          A <dfn data-dfn-for="powerful feature" class="export">permission key comparison algorithm</dfn>:
+        </dt>
+        <dd>
+          <p>
+            Takes two [=permission store keys=] and returns a boolean that shows whether the two keys are equal.
+            If unspecified, this defaults to the <a>default permission key comparison algorithm</a>.
+          </p>
+          <p>
+            The <dfn data-export="">default permission key comparison algorithm</dfn>,
+            given [=permission store keys=] |key1| and |key2| (both [=origins=]), runs the following steps:
+          </p>
+          <ol class="algorithm">
+            <li>
+              If |key1| is not [=same origin=] with |key2| return false.
+            </li>
+            <li>
+              Return true.
+            </li>
+          </ol>
+        </dd>
+        <dt>
           A <dfn data-dfn-for="powerful feature" class="export">permission revocation
           algorithm</dfn>:
         </dt>
@@ -717,7 +736,7 @@
               </li>
             </ol>
           </li>
-          <li>Let |key| be the result of [=generate a permission store key|generating a permission store key=] with |settings|.
+          <li>Let |key| be the result of [=powerful feature/permission key generation algorithm|generating a permission store key=] with |settings|.
           </li>
           <li>Let |entry| be the result of [=get a permission store entry|getting a permission store entry=] with |feature|, |descriptor| and |key|.
           </li>
@@ -764,7 +783,7 @@
             </p>
           </li>
           <li>
-            Let |key| be the result of [=generate a permission store key|generating a permission store key=] with the [=current settings object=].
+            Let |key| be the result of [=powerful feature/permission key generation algorithm|generating a permission store key=] with the [=current settings object=].
           </li>
           <li>
             [=Queue a task=] on the [=current settings object=]'s [=environment settings
@@ -843,7 +862,7 @@
             feature's [=powerful feature/permission revocation algorithm=].
           </li>
           <li>
-            Let |key| be the result of [=generate a permission store key|generating a permission store key=] with the Realm's [=Realm/settings object=].
+            Let |key| be the result of [=powerful feature/permission key generation algorithm|generating a permission store key=] with the Realm's [=Realm/settings object=].
           </li>
           <li>
             TODO: How do I get the feature descriptor to remove the feature here?
