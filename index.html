@@ -196,9 +196,8 @@
           [=permission/state=].
         </p>
         <p>
-          <dfn class="export">Express permission</dfn> refers to the user
-          [=permission/grants|granting=] the web application the ability to use a [=powerful
-          feature=].
+          <dfn class="export">Express permission</dfn> refers to the user granting the web
+          application the ability to use a [=powerful feature=].
         </p>
         <aside class="note" title="Limitations and extensibility">
           <p>
@@ -220,18 +219,18 @@
           Conceptually, a [=permission=] for a [=powerful feature=] can be in one of the following
           <dfn data-dfn-for="permission" data-local-lt="state">states</dfn>:
         </p>
-        <dl data-sort="">
+        <dl data-sort="" data-dfn-for="PermissionState">
           <dt>
-            <dfn class="export" data-dfn-for="permission">Prompt</dfn>:
+            "<dfn>prompt</dfn>":
           </dt>
           <dd>
             The user has not given [=express permission=] to use the feature (i.e., it's the same
-            as [=permission/denied=]). It also means that if a caller attempts to use the feature,
-            the [=user agent=] will either be prompting the user for permission or access to the
-            feature will be [=permission/denied=].
+            as {{PermissionState/"denied"}}). It also means that if a caller attempts to use the
+            feature, the [=user agent=] will either be prompting the user for permission or access
+            to the feature will be {{PermissionState/"denied"}}.
           </dd>
           <dt>
-            <dfn class="export" data-local-lt="grant" data-dfn-for="permission">Granted</dfn>:
+            "<dfn data-local-lt="grant">granted</dfn>":
           </dt>
           <dd>
             The user, or the user agent on the user's behalf, has given [=express permission=] to
@@ -239,7 +238,7 @@
             the [=user agent=] asking the user's permission.
           </dd>
           <dt>
-            <dfn class="export" data-dfn-for="permission">Denied</dfn>:
+            "<dfn>denied</dfn>":
           </dt>
           <dd>
             The user, or the user agent on the user's behalf, has denied access to this [=powerful
@@ -263,19 +262,19 @@
         </aside>
         <p data-cite="ECMAScript">
           Every [=permission=] has a <dfn class="export" data-dfn-for="permission">lifetime</dfn>,
-          which is the duration for which a particular permission remains [=permission/granted=]
-          before it reverts back to its [=permission/default state=]. A [=permission/lifetime=]
-          could be until a particular [=ECMAScript/Realm=] is destroyed, until a particular
-          [=top-level browsing context=] is destroyed, a particular amount of time, or be infinite.
-          The lifetime is negotiated between the end-user and the [=user agent=] when the user
-          gives [=express permission=] to use a [=feature=]—usually via some permission UI or
-          user-agent defined policy.
+          which is the duration for which a particular permission remains
+          {{PermissionState/"granted"}} before it reverts back to its [=permission/default state=].
+          A [=permission/lifetime=] could be until a particular [=ECMAScript/Realm=] is destroyed,
+          until a particular [=top-level browsing context=] is destroyed, a particular amount of
+          time, or be infinite. The lifetime is negotiated between the end-user and the [=user
+          agent=] when the user gives [=express permission=] to use a [=feature=]—usually via some
+          permission UI or user-agent defined policy.
         </p>
         <p>
           Every permission has a <dfn data-for="permission">default state</dfn> (usually
-          [=permission/prompt=]), which is the [=permission/state=] that the permission is in when
-          the user has not yet given [=express permission=] to use the [=feature=] or it has been
-          reset because its [=permission/lifetime=] has expired.
+          {{PermissionState/"prompt"}}), which is the [=permission/state=] that the permission is
+          in when the user has not yet given [=express permission=] to use the [=feature=] or it
+          has been reset because its [=permission/lifetime=] has expired.
         </p>
       </section>
       <section>
@@ -291,8 +290,9 @@
           [=document=] is [=allowed to use=] a given feature. That is, a powerful feature can only
           request [=express permission=] from a user if the [=document=] has permission delegated
           to it via the corresponding [=policy-controlled feature=] (see example below). Subsequent
-          access to the feature is determined by the user having [=permission/granted=] permission,
-          or by satisfying some criteria that is equivalent to a permission [=permission/grant=].
+          access to the feature is determined by the user having {{PermissionState/"granted"}}
+          permission, or by satisfying some criteria that is equivalent to a permission being
+          {{PermissionState/"granted"}}.
         </p>
         <aside class="example" title="Powerful features are policy-controlled features">
           <p>
@@ -532,7 +532,7 @@
           </p>
           <ol>
             <li>Set the permission back to its default [=permission state=] (e.g., by setting it
-            back to "[=permission/prompt=]").
+            back to "{{PermissionState/"prompt"}}").
             </li>
             <li>For each |browsing context| associated with the origin (if any), [=queue a global
             task=] on the [=permissions task source=] with the |browsing context|'s [=global
@@ -543,12 +543,12 @@
             <p>
               For particularly privacy-sensitive [=features=], such as [[[GETUSERMEDIA]]], which
               can provide a web application access to a user's camera and microphone, some user
-              agents expire a permission [=permission/grant=] as soon as a browser tab is closed or
-              [=navigated=]. For other features, like the [[[Geolocation]]], user agents are known
-              to offer a choice of only granting the permission for the session, or for one day.
-              Others, like the [[[Notifications]]] and [[[push-api]]] APIs, remember a user's
-              decision indefinitely or until the user manually revokes the permission. Note that
-              permission [=permission/lifetimes=] can vary significantly between user agents.
+              agents expire a permission as soon as a browser tab is closed or [=navigated=]. For
+              other features, like the [[[Geolocation]]], user agents are known to offer a choice
+              of only granting the permission for the session, or for one day. Others, like the
+              [[[Notifications]]] and [[[push-api]]] APIs, remember a user's decision indefinitely
+              or until the user manually revokes the permission. Note that permission
+              [=permission/lifetimes=] can vary significantly between user agents.
             </p>
             <p>
               Finding the right balance for the lifetime of a permission requires a lot of thought
@@ -867,11 +867,6 @@
           {{PermissionStatus}} instances are created with a <dfn>[[\query]]</dfn> internal slot,
           which is an instance of a feature's [=powerful feature/permission descriptor type=].
         </p>
-        <p data-dfn-for="PermissionState">
-          The "<dfn>granted</dfn>", "<dfn>denied</dfn>", and "<dfn>prompt</dfn>" enum values
-          represent the concepts of [=permission/granted=], [=permission/denied=], and
-          [=permission/prompt=] respectively.
-        </p>
         <section>
           <h4>
             Creating instances
@@ -1007,7 +1002,7 @@
       <p>
         Finally, it's not possible for a powerful feature to ever become "granted" through any
         means provided by the [[[Permissions-Policy]]] specification. The only way that a
-        [=powerful feature=] can be [=permission/granted=] is by the user giving [=express
+        [=powerful feature=] can be {{PermissionState/"granted"}} is by the user giving [=express
         permission=] or by some user agent policy.
       </p>
     </section>
@@ -1137,9 +1132,9 @@
         An adversary could use a <a>permission state</a> as an element in creating a "fingerprint"
         corresponding to an end-user. Although an adversary can already determine the state of a
         permission by actually using the API, that often leads to a UI prompt being presented to
-        the end-user (if the permission was not already [=permission/granted=]). Even though this
-        API doesn't expose new fingerprinting information to websites, it makes it easier for an
-        adversary to have discreet access to this information.
+        the end-user (if the permission was not already {{PermissionState/"granted"}}). Even though
+        this API doesn't expose new fingerprinting information to websites, it makes it easier for
+        an adversary to have discreet access to this information.
       </p>
       <p>
         A user agent SHOULD provide a means for the user to review, update, and reset the
