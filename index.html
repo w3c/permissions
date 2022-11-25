@@ -1027,7 +1027,7 @@
           boolean oneRealm = false;
         };
       </pre>
-      <section>
+      <section data-cite="webdriver">
         <h3 id="set-permission-command">
           Set Permission
         </h3>
@@ -1059,6 +1059,11 @@
           The <a>remote end steps</a> are:
         </p>
         <ol>
+          <li>If the <a>top-level browsing context</a> is "no longer open", return <a>error</a>
+          with error code "no such Window".
+          </li>
+          <li>Handle any user prompts and return its value if it is an <a>error</a>.
+          </li>
           <li>Let |parameters| be the |parameters| argument, <a>converted to an IDL value</a> of
           type {{PermissionSetParameters}}. If this throws an exception, return an [=invalid
           argument=] [=error=].
