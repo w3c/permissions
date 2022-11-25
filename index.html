@@ -317,9 +317,8 @@
           "powerful feature">name</dfn>, which is a string literal (e.g., "geolocation").
         </p>
         <p>
-          The user agent is responsible for tracking which <a>powerful features</a> each [=global
-          object/realm=] has the user's [=permission=] to use via the [=environment settings
-          object=].
+          The user agent tracks which <a>powerful features</a> the user has [=permission=] to use
+          via the [=environment settings object=].
         </p>
         <section>
           <h3>
@@ -439,7 +438,7 @@
           </p>
           <p class="note" data-cite="mediacapture-streams ECMAScript">
             For example, {{MediaDevices/getUserMedia()}} needs to determine <em>which</em> cameras
-            the user has granted [=ECMAScript/the current realm record=] permission to access.
+            the user has granted permission to access.
           </p>
           <p>
             If a {{DOMString}} |name| names one of these features, then |name|'s <dfn data-dfn-for=
@@ -665,8 +664,8 @@
           </li>
           <li>If the user gives [=express permission=] to use the powerful feature, return
           {{PermissionState/"granted"}}; otherwise return {{PermissionState/"denied"}}. The user's
-          interaction may provide <a>new information about the user's intent</a> for this [=global
-          object/realm=] and other [=global object/realms=] with the <a>same origin</a>.
+          interaction may provide <a>new information about the user's intent</a> for the
+          [=origin=].
             <p class="note">
               This is intentionally vague about the details of the permission UI and how the user
               agent infers user intent. User agents should be able to explore lots of UI within
@@ -714,9 +713,7 @@
             </ol>
           </li>
           <li>If the user chose one or more options, return them; otherwise return
-          {{PermissionState/"denied"}}. If the user's interaction indicates they intend this choice
-          to apply to other realms, then treat this this as <a>new information about the user's
-          intent</a> for other [=global object/realms=] with the <a>same origin</a>.
+          {{PermissionState/"denied"}}.
             <p class="note">
               This is intentionally vague about the details of the permission UI and how the user
               agent infers user intent. User agents should be able to explore lots of UI within
@@ -736,15 +733,13 @@
           Reacting to users revoking permission
         </h3>
         <p>
-          When the user agent learns that the user no longer intends to grant permission for a
-          [=global object/realm=] to use a <a>feature</a>, <dfn>react to the user revoking
-          permission</dfn> by running these steps:
+          When the user agent learns that the user no longer intends to grant permission to use a
+          <a>feature</a>, <dfn>react to the user revoking permission</dfn> by running these steps:
         </p>
         <ol class="algorithm">
           <li>
-            <a>Queue a task</a> on the Realm's [=Realm/settings object=]'s [=environment settings
-            object/responsible event loop=] to run that feature's [=powerful feature/permission
-            revocation algorithm=].
+            <a>Queue a global task</a> on the [=user interaction task source=] to run that
+            feature's [=powerful feature/permission revocation algorithm=].
           </li>
         </ol>
       </section>
@@ -1024,7 +1019,6 @@
         dictionary PermissionSetParameters {
           required PermissionDescriptor descriptor;
           required PermissionState state;
-          boolean oneRealm = false;
         };
       </pre>
       <section>
@@ -1080,12 +1074,9 @@
           </li>
           <li>Let |settings| be the [=current settings object=].
           </li>
-          <li>If |parameters|.{{PermissionSetParameters/oneRealm}} is true, let |targets| be a <a>
-            list</a> whose sole member is |settings|.
-          </li>
-          <li>Otherwise, let |targets| be a <a>list</a> containing all <a>environment settings
-          objects</a> whose [=environment settings object/origin=] is the <a data-lt="same origin">
-            same</a> as the [=environment settings object/origin=] of |settings|.
+          <li>Let |targets| be a <a>list</a> containing all <a>environment settings objects</a>
+          whose [=environment settings object/origin=] is the <a data-lt="same origin">same</a> as
+          the [=environment settings object/origin=] of |settings|.
           </li>
           <li>Let |tasks| be an empty <a>list</a>.
           </li>
@@ -1143,8 +1134,7 @@
       </p>
       <p>
         A user agent SHOULD provide a means for the user to review, update, and reset the
-        [=permission=] [=permission/state=] of [=powerful features=] associated with a realm or
-        origin.
+        [=permission=] [=permission/state=] of [=powerful features=] associated with an [=origin=].
       </p>
     </section>
     <section id="security-considerations">
