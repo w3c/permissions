@@ -650,33 +650,52 @@
         </h3>
         <p>
           To <dfn data-lt="request permission to use|requesting permission to use" class=
-          "export">request permission to use</dfn> a |descriptor:PermissionDescriptor|, the user
-          agent must perform the following steps. This algorithm returns either
-          {{PermissionState/"granted"}} or {{PermissionState/"denied"}}.
+          "export">request permission to use</dfn> a |descriptor:PermissionDescriptor|, with
+          optionally a |promise:Promise|:
         </p>
         <ol class="algorithm">
+          <li>If |promise| was passed:
+            <ol>
+              <li>Let |global:Window| be |promise|'s [=relevant global object=].
+              </li>
+              <li>Let |document:Document| be |global|'s [=associated `Document`=].
+              </li>
+              <li>If |global| does not have [=transient activation=], [=queue a global task=] on
+              the [=user interaction task source=] given |global| to [=reject=] |promise| with a
+              "{{NotAllowedError}}" {{DOMException}} and abort these steps.
+              </li>
+              <li>Otherwise, [=consume user activation=] of |global|.
+              </li>
+            </ol>
+          </li>
           <li>Let <var>current state</var> be the |descriptor|'s <a>permission state</a>.
           </li>
           <li>If <var>current state</var> is not {{PermissionState/"prompt"}}, return <var>current
           state</var> and abort these steps.
           </li>
-          <li>Ask the user for <a>express permission</a> for the calling algorithm to use the
-          <a>powerful feature</a> described by |descriptor|.
-          </li>
-          <li>If the user gives [=express permission=] to use the powerful feature, return
-          {{PermissionState/"granted"}}; otherwise return {{PermissionState/"denied"}}. The user's
-          interaction may provide <a>new information about the user's intent</a> for this [=global
-          object/realm=] and other [=global object/realms=] with the <a>same origin</a>.
+          <li>Ask the user to choose whether they give [=express permission=] for the [=environment
+          settings object/origin=] to use the [=powerful feature=] described by |descriptor| for
+          some [=implementation-defined=] [=permission/lifetime=]. The user's interaction may
+          provide <a>new information about the user's intent</a> for this [=global object/realm=]
+          and other [=global object/realms=] with the <a>same origin</a>.
             <p class="note">
               This is intentionally vague about the details of the permission UI and how the user
               agent infers user intent. User agents should be able to explore lots of UI within
               this framework.
             </p>
           </li>
+          <li>Let |result:PermissionState| be the {{PermissionState}} value that reflects the
+          choice in the previous step.
+          </li>
+          <li>If |promise| was not passed, return |result|.
+          </li>
+          <li>Otherwise, [=queue a global task=] on the [=user interaction task source=] with
+          |promise|'s [=relevant global object=] to [=resolve=] |promise| with |result|.
+          </li>
         </ol>
         <p>
-          As a shorthand, <a>requesting permission to use</a> a {{DOMString}} |name|, is the same
-          as <a>requesting permission to use</a> a {{PermissionDescriptor}} with its
+          As a shorthand, <a>requesting permission to use</a> a {{DOMString}} |name| and |promise|,
+          is the same as <a>requesting permission to use</a> a {{PermissionDescriptor}} with its
           {{PermissionDescriptor/name}} member set to |name|.
         </p>
       </section>
