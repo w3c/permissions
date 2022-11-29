@@ -859,18 +859,21 @@
         </h3>
         <p>
           When the user agent learns that the user no longer intends to grant permission to use a
-          <a>feature</a>, <dfn>react to the user revoking permission</dfn> by running these steps:
+          feature described by the {{PermissionDescriptor}} |descriptor| in the context
+          described by the [=permission key=] |key|, <dfn>react to the user revoking permission</dfn>
+          by running these steps:
         </p>
         <ol class="algorithm">
           <li>
-            <a>Queue a global task</a> on the [=user interaction task source=] to run that
-            feature's [=powerful feature/permission revocation algorithm=].
-          </li>
-          <li>
-            Let |key| be the result of [=powerful feature/permission key generation algorithm|generating a permission key=] with the Realm's [=Realm/settings object=].
-          </li>
-          <li>
-            TODO: How do I get the feature descriptor to remove the feature here?
+            <a>Queue a global task</a> on the [=user interaction task source=] to:.
+            <ol>
+              <li>
+                Run |descriptor|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission revocation algorithm=].
+              </li>
+              <li>
+                [=Remove a permission store entry=] with |descriptor| and |key|.
+              </li>
+            </ol>
           </li>
         </ol>
       </section>
