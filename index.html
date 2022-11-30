@@ -325,16 +325,20 @@
           </ol>
         </p>
         <p>
-          A <dfn class="export">permission key</dfn> has the type returned by the feature's [=powerful feature/permission key generation algorithm=].
+          A <dfn class="export">permission key</dfn> has its type defined by a feature's [=powerful feature/permission key type=].
           <aside class="note">
-            Powerful features may override the key generation algorithm to specify a custom permission key.
-            This is useful for features that want to restrict permissions based on additional context,
-            such as double-keying on both the embedded origin and the top-level origin.
+            The permission key defines the scope of a permission grant, which is usually per-origin.
+            Powerful features may override the [=powerful feature/permission key type=] to specify a custom permission key.
+            This is useful for features that want to change the granularity of permissions based on additional context,
+            such as double-keying on both an embedded origin and a top-level origin.
           </aside>
         </p>
         <p>
           To determine whether a [=permission key=] |key1| <dfn class="export" for="permission key">is equal to</dfn> a [=permission key=] |key2|, given a {{PermissionDescriptor}} |descriptor|, run the following steps:
           <ol class="algorithm">
+            <li>
+              If |key1| is not of |descriptor|'s [=powerful feature/permission key type=] or |key2| is not of |descriptor|'s [=powerful feature/permission key type=], return false.
+            </li>
             <li>
               Return the result of running |descriptor|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission key comparison algorithm=], passing |key1| and |key2|.
             </li>
@@ -567,6 +571,16 @@
           </ol>
         </dd>
         <dt>
+          A <dfn data-dfn-for="powerful feature" class="export">permission key type</dfn>:
+        </dt>
+        <dd>
+          <p>
+            The type of [=permission key=] used by the feature. Defaults to [=origin=].
+            A feature that specifies a custom [=powerful feature/permission key type=] MUST also specify a
+            [=powerful feature/permission key generation algorithm=].
+          </p>
+        </dd>
+        <dt>
           A <dfn data-dfn-for="powerful feature" class="export">permission key generation algorithm</dfn>:
         </dt>
         <dd>
@@ -603,9 +617,6 @@
             given [=permission keys=] |key1| and |key2|, runs the following steps:
           </p>
           <ol class="algorithm">
-            <li>
-              If |key1| is not an [=origin=] or |key2| is not an [=origin=] return false.
-            </li>
             <li>
               If |key1| is not [=same origin=] with |key2| return false.
             </li>
@@ -745,7 +756,7 @@
           </li>
           <li>Let |entry| be the result of [=get a permission store entry|getting a permission store entry=] with |descriptor| and |key|.
           </li>
-          <li>If |entry| is not null, return a {{PermissionState}} enum value from |entry|'s [=permission store entry/state=] and |entry|'s [=permission store entry/descriptor=]'s {{PermissionDescriptor/name}}.
+          <li>If |entry| is not null, return a {{PermissionState}} enum value from |entry|'s [=permission store entry/state=].
           </li>
           <li>Return the {{PermissionState}} enum value that represents the permission state of
           |feature|, taking into account any [=powerful feature/permission state constraints=] for
@@ -865,15 +876,10 @@
         </p>
         <ol class="algorithm">
           <li>
-            <a>Queue a global task</a> on the [=user interaction task source=] to:.
-            <ol>
-              <li>
-                Run |descriptor|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission revocation algorithm=].
-              </li>
-              <li>
-                [=Remove a permission store entry=] with |descriptor| and |key|.
-              </li>
-            </ol>
+            Run |descriptor|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission revocation algorithm=].
+          </li>
+          <li>
+            [=Remove a permission store entry=] with |descriptor| and |key|.
           </li>
         </ol>
       </section>
