@@ -306,7 +306,7 @@
           To <dfn class="export">set a permission store entry</dfn> given a {{PermissionDescriptor}} |descriptor|, a [=permission key=] |key|, and a [=permission/state=] |state|, run these steps:
           <ol class="algorithm">
             <li>
-              Let |newEntry| be a new [=permission store entry=] whose [=permission store entry/descriptor=] is |descriptor|, and whose [=permission store entry/key=] [=permission key/is equal to=] |key| given |descriptor|, and whose [=permission store entry/state=] is |state|.
+              Let |newEntry| be a new [=permission store entry=] whose [=permission store entry/descriptor=] is |descriptor|, and whose [=permission store entry/key=] is |key|, and whose [=permission store entry/state=] is |state|.
             </li>
             <li>
               If the user agent's [=permission store=] [=list/contains=] an [=entry=] whose [=permission store entry/descriptor=] is |descriptor|, and whose [=permission store entry/key=] [=permission key/is equal to=] |key| given |descriptor|, [=list/replace=] that entry with |newEntry| and abort these steps.
