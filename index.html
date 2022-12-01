@@ -283,13 +283,13 @@
           Permission Store
         </h3>
         <p>
-          The user agent maintains a single <dfn class="export">permission store</dfn> which is a [=/list=] of [=permission store entries=].
+          The user agent maintains a single <dfn class="export">permission store</dfn> which is a [=/list=] of [=permission store entries=]. Each particular [=entry=] denoted by its [=permission store entry/descriptor=] and [=permission store entry/key=] can only appear at most once in this list.
         </p>
         <p>
           The user agent MAY remove [=entries=] from the [=permission store=] when their respective [=permission=]'s [=permission/lifetime=] has expired.
         </p>
         <p>
-          A <dfn class="export" data-local-lt="entry">permission store entry</dfn> is a [=tuple=] of {{PermissionDescriptor}} <dfn class="export" data-dfn-for="permission store entry">descriptor</dfn>, an instance <dfn class="export" data-dfn-for="permission store entry">key</dfn> of the [=permission key type=] of the feature named by [=permission store entry/descriptor=].name, and [=permission/state=] <dfn class="export" data-dfn-for="permission store entry">state</dfn>.
+          A <dfn class="export" data-local-lt="entry">permission store entry</dfn> is a [=tuple=] of {{PermissionDescriptor}} <dfn class="export" data-dfn-for="permission store entry">descriptor</dfn>, an instance <dfn class="export" data-dfn-for="permission store entry">key</dfn> of the [=powerful feature/permission key type=] of the feature named by [=permission store entry/descriptor=].name, and [=permission/state=] <dfn class="export" data-dfn-for="permission store entry">state</dfn>.
         </p>
         <p>
         To <dfn class="export">get a permission store entry</dfn> given a {{PermissionDescriptor}} |descriptor| and [=permission key=] |key|, run these steps:
@@ -340,11 +340,9 @@
               If |key1| is not of |descriptor|'s [=powerful feature/permission key type=] or |key2| is not of |descriptor|'s [=powerful feature/permission key type=], return false.
             </li>
             <li>
-              Return the result of running |descriptor|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission key comparison algorithm=], passing |key1| and |key2|.
+              Return the result of running the [=powerful feature/permission key comparison algorithm=] for the feature named by |descriptor|'s {{PermissionDescriptor/name}}, passing |key1| and |key2|.
             </li>
           </ol>
-        </p>
-
         </p>
       </section>
       <section>
