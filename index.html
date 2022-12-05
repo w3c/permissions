@@ -289,12 +289,13 @@
           The user agent MAY remove [=entries=] from the [=permission store=] when their respective [=permission=]'s [=permission/lifetime=] has expired.
         </p>
         <p>
-          A <dfn class="export" data-local-lt="entry">permission store entry</dfn> is a [=tuple=] of {{PermissionDescriptor}} <dfn class="export" data-dfn-for="permission store entry">descriptor</dfn>, an instance <dfn class="export" data-dfn-for="permission store entry">key</dfn> of the [=powerful feature/permission key type=] of the feature named by [=permission store entry/descriptor=].name, and [=permission/state=] <dfn class="export" data-dfn-for="permission store entry">state</dfn>.
+          A <dfn class="export" data-local-lt="entry">permission store entry</dfn> is a [=tuple=] of {{PermissionDescriptor}} <dfn class="export" data-dfn-for="permission store entry">descriptor</dfn>, [=permission key=] <dfn class="export" data-dfn-for="permission store entry">key</dfn>, and [=permission/state=] <dfn class="export" data-dfn-for="permission store entry">state</dfn>.
         </p>
         <p>
         To <dfn class="export">get a permission store entry</dfn> given a {{PermissionDescriptor}} |descriptor| and [=permission key=] |key|:
           <ol class="algorithm">
             <li>
+              <!-- TODO: PermissionDescriptor equality is not defined (#396) -->
               If the user agent's [=permission store=] [=list/contains=] an [=entry=] whose [=permission store entry/descriptor=] is |descriptor|, and whose [=permission store entry/key=] [=permission key/is equal to=] |key| given |descriptor|, return that entry.
             </li>
             <li>
