@@ -805,8 +805,14 @@
                 </li>
               </ol>
             </li>
-            <li>If |permissionDesc|'s {{PermissionDescriptor/name}} member is not supported, return
-            [=a promise rejected with=] a {{TypeError}}.
+            <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to an IDL
+            value</a> of type {{PermissionDescriptor}}.
+            </li>
+            <li>If the conversion [=exception/throws=] an [=exception=], return <a>a promise
+            rejected with</a> that exception.
+            </li>
+            <li>If |rootDesc|["{{PermissionDescriptor/name}}"] is not supported, return [=a
+            promise rejected with=] a {{TypeError}}.
               <aside class="note" title="Why is this not an enum?">
                 <p>
                   This is deliberately designed to work the same as WebIDL's [=enumeration=]
@@ -817,12 +823,6 @@
                   features from the [[[permissions-registry]]] they wish to support.
                 </p>
               </aside>
-            </li>
-            <li>Let |rootDesc| be the object |permissionDesc| refers to, <a>converted to an IDL
-            value</a> of type {{PermissionDescriptor}}.
-            </li>
-            <li>If the conversion [=exception/throws=] an [=exception=], return <a>a promise
-            rejected with</a> that exception.
             </li>
             <li>Let |typedDescriptor| be the object |permissionDesc| refers to, <a>converted to an
             IDL value</a> of |rootDesc|'s {{PermissionDescriptor/name}}'s [=powerful
