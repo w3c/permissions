@@ -807,7 +807,7 @@
             <li>If the conversion [=exception/throws=] an [=exception=], return <a>a promise
             rejected with</a> that exception.
             </li>
-            <li>If |rootDesc|'s {{PermissionDescriptor/name}} member is not supported, return [=a
+            <li>If |rootDesc|["{{PermissionDescriptor/name}}"] is not supported, return [=a
             promise rejected with=] a {{TypeError}}.
               <aside class="note" title="Why is this not an enum?">
                 <p>
