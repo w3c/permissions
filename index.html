@@ -361,6 +361,15 @@
           </aside>
         </section>
       </section>
+      <section>
+        <h3>
+          Permissions task source
+        </h3>
+        <p>
+          The <dfn>permissions task source</dfn> is a [=task source=] used to
+          perform permissions-related [=tasks=] in this specification.
+        </p>
+      </section>
     </section>
     <section>
       <h2>
@@ -822,9 +831,9 @@
             <li>If the conversion [=exception/throws=] an [=exception=], return <a>a promise
             rejected with</a> that exception.
             </li>
-            <li>Let <var>promise</var> be [=a new promise=].
+            <li>Let |promise:Promise| be [=a new promise=].
             </li>
-            <li>Return <var>promise</var> and continue [=in parallel=]:
+            <li>Return |promise| and continue [=in parallel=]:
               <ol>
                 <li>Let |status| be <a>create a `PermissionStatus`</a> with |typedDescriptor|.
                 </li>
@@ -833,7 +842,8 @@
                 <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission
                 query algorithm=], passing |query| and |status|.
                 </li>
-                <li>[=Resolve=] <var>promise</var> with |status|.
+                <li>[=Queue a global task=] on the [=permissions task source=] with [=this=]'s
+                [=relevant global object=] to [=resolve=] |promise| with |status|.
                 </li>
               </ol>
             </li>
@@ -941,8 +951,8 @@
             algorithm=], passing |query| and |status|.
             </li>
             <li>
-              <a>Queue a task</a> on the <dfn class="export">permissions task source</dfn> to
-              <a>fire an event</a> named <code>change</code> at |status|.
+              <a>Queue a task</a> on the [=permissions task source=] to <a>fire an event</a> named
+              <code>change</code> at |status|.
             </li>
           </ol>
         </section>
@@ -1083,7 +1093,7 @@
           <li>For each <a>environment settings object</a> |target| in |targets|:
             <ol>
               <li>
-                <a>Queue a task</a> |task| on the <a>permissions task source</a> of |target|'s
+                <a>Queue a task</a> |task| on the [=permissions task source=] of |target|'s
                 [=relevant settings object=]'s [=environment settings object/global object=]'s
                 [=Window/browsing context=] to perform the following step:
                 <ol>
