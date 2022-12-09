@@ -1337,8 +1337,13 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondesc
                 </li>
               </ol>
             </li>
-            <li>If <var>permissionDesc</var>'s <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-7"><code>name</code></a> member is not supported, return
-            <a data-link-type="dfn" data-type="dfn" href="https://webidl.spec.whatwg.org/#a-promise-rejected-with">a promise rejected with</a> a <a data-link-type="idl" data-lt="TypeError" data-type="exception" href="https://webidl.spec.whatwg.org/#exceptiondef-typeerror"><code>TypeError</code></a>.
+            <li>Let <var>rootDesc</var> be the object <var>permissionDesc</var> refers to, <a data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL
+            value</a> of type <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-11"><code>PermissionDescriptor</code></a>.
+            </li>
+            <li>If the conversion <a data-link-type="dfn" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throws</a> an <a data-link-type="dfn" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-exception">exception</a>, return <a data-type="dfn" href="https://webidl.spec.whatwg.org/#a-promise-rejected-with">a promise
+            rejected with</a> that exception.
+            </li>
+            <li>If <var>rootDesc</var>["<a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-7"><code>name</code></a>"] is not supported, return <a data-link-type="dfn" data-type="dfn" href="https://webidl.spec.whatwg.org/#a-promise-rejected-with">a promise rejected with</a> a <a data-link-type="idl" data-lt="TypeError" data-type="exception" href="https://webidl.spec.whatwg.org/#exceptiondef-typeerror"><code>TypeError</code></a>.
               <div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="5"><span>Note</span><span class="issue-label">: Why is this not an enum?</span></div><aside class="">
                 <p>
                   This is deliberately designed to work the same as WebIDL's <a data-link-type="dfn" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-enumeration">enumeration</a>
@@ -1349,12 +1354,6 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondesc
                   features from the <cite><a data-matched-text="[[[permissions-registry]]]" href="https://w3c.github.io/permissions-registry/">Permissions Registry</a></cite> they wish to support.
                 </p>
               </aside></div>
-            </li>
-            <li>Let <var>rootDesc</var> be the object <var>permissionDesc</var> refers to, <a data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL
-            value</a> of type <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-11"><code>PermissionDescriptor</code></a>.
-            </li>
-            <li>If the conversion <a data-link-type="dfn" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throws</a> an <a data-link-type="dfn" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-exception">exception</a>, return <a data-type="dfn" href="https://webidl.spec.whatwg.org/#a-promise-rejected-with">a promise
-            rejected with</a> that exception.
             </li>
             <li>Let <var>typedDescriptor</var> be the object <var>permissionDesc</var> refers to, <a data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an
             IDL value</a> of <var>rootDesc</var>'s <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-8"><code>name</code></a>'s <a data-link-type="dfn" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-4">permission descriptor type</a>.
