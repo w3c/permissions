@@ -283,68 +283,89 @@
           Permission Store
         </h3>
         <p>
-          The user agent maintains a single <dfn class="export">permission store</dfn> which is a [=/list=] of [=permission store entries=]. Each particular [=entry=] denoted by its [=permission store entry/descriptor=] and [=permission store entry/key=] can only appear at most once in this list.
+          The user agent maintains a single <dfn class="export">permission store</dfn> which is a
+          [=/list=] of [=permission store entries=]. Each particular [=entry=] denoted by its
+          [=permission store entry/descriptor=] and [=permission store entry/key=] can only appear
+          at most once in this list.
         </p>
         <p>
-          The user agent MAY remove [=entries=] from the [=permission store=] when their respective [=permission=]'s [=permission/lifetime=] has expired.
+          The user agent MAY remove [=entries=] from the [=permission store=] when their respective
+          [=permission=]'s [=permission/lifetime=] has expired.
         </p>
         <p>
-          A <dfn class="export" data-local-lt="entry">permission store entry</dfn> is a [=tuple=] of {{PermissionDescriptor}} <dfn class="export" data-dfn-for="permission store entry">descriptor</dfn>, [=permission key=] <dfn class="export" data-dfn-for="permission store entry">key</dfn>, and [=permission/state=] <dfn class="export" data-dfn-for="permission store entry">state</dfn>.
+          A <dfn class="export" data-local-lt="entry">permission store entry</dfn> is a [=tuple=]
+          of {{PermissionDescriptor}} <dfn class="export" data-dfn-for=
+          "permission store entry">descriptor</dfn>, [=permission key=] <dfn class="export"
+          data-dfn-for="permission store entry">key</dfn>, and [=permission/state=] <dfn class=
+          "export" data-dfn-for="permission store entry">state</dfn>.
         </p>
         <p>
-        To <dfn class="export">get a permission store entry</dfn> given a {{PermissionDescriptor}} |descriptor| and [=permission key=] |key|:
-          <ol class="algorithm">
-            <li>
-              <!-- TODO: PermissionDescriptor equality is not defined (#396) -->
-              If the user agent's [=permission store=] [=list/contains=] an [=entry=] whose [=permission store entry/descriptor=] is |descriptor|, and whose [=permission store entry/key=] [=permission key/is equal to=] |key| given |descriptor|, return that entry.
-            </li>
-            <li>
-              Return null.
-            </li>
-          </ol>
+          To <dfn class="export">get a permission store entry</dfn> given a
+          {{PermissionDescriptor}} |descriptor| and [=permission key=] |key|:
         </p>
+        <ol class="algorithm">
+          <li>
+            <!-- TODO: PermissionDescriptor equality is not defined (#396) -->
+            If the user agent's [=permission store=] [=list/contains=] an [=entry=] whose
+            [=permission store entry/descriptor=] is |descriptor|, and whose [=permission store
+            entry/key=] [=permission key/is equal to=] |key| given |descriptor|, return that entry.
+          </li>
+          <li>Return null.
+          </li>
+        </ol>
         <p>
-          To <dfn class="export">set a permission store entry</dfn> given a {{PermissionDescriptor}} |descriptor|, a [=permission key=] |key|, and a [=permission/state=] |state|, run these steps:
-          <ol class="algorithm">
-            <li>
-              Let |newEntry| be a new [=permission store entry=] whose [=permission store entry/descriptor=] is |descriptor|, and whose [=permission store entry/key=] is |key|, and whose [=permission store entry/state=] is |state|.
-            </li>
-            <li>
-              If the user agent's [=permission store=] [=list/contains=] an [=entry=] whose [=permission store entry/descriptor=] is |descriptor|, and whose [=permission store entry/key=] [=permission key/is equal to=] |key| given |descriptor|, [=list/replace=] that entry with |newEntry| and abort these steps.
-            </li>
-            <li>
-              [=list/Append=] |newEntry| to the user agent's [=permission store=].
-            </li>
-          </ol>
+          To <dfn class="export">set a permission store entry</dfn> given a
+          {{PermissionDescriptor}} |descriptor|, a [=permission key=] |key|, and a
+          [=permission/state=] |state|, run these steps:
         </p>
+        <ol class="algorithm">
+          <li>Let |newEntry| be a new [=permission store entry=] whose [=permission store
+          entry/descriptor=] is |descriptor|, and whose [=permission store entry/key=] is |key|,
+          and whose [=permission store entry/state=] is |state|.
+          </li>
+          <li>If the user agent's [=permission store=] [=list/contains=] an [=entry=] whose
+          [=permission store entry/descriptor=] is |descriptor|, and whose [=permission store
+          entry/key=] [=permission key/is equal to=] |key| given |descriptor|, [=list/replace=]
+          that entry with |newEntry| and abort these steps.
+          </li>
+          <li>[=list/Append=] |newEntry| to the user agent's [=permission store=].
+          </li>
+        </ol>
         <p>
-          To <dfn class="export">remove a permission store entry</dfn> given a {{PermissionDescriptor}} |descriptor| and [=permission key=] |key|, run these steps:
-          <ol class="algorithm">
-            <li>
-            [=list/Remove=] the [=entry=] whose [=permission store entry/descriptor=] is |descriptor|, and whose [=permission store entry/key=] [=permission key/is equal to=] |key| given |descriptor|, from the user agent's [=permission store=].
-            </li>
-          </ol>
+          To <dfn class="export">remove a permission store entry</dfn> given a
+          {{PermissionDescriptor}} |descriptor| and [=permission key=] |key|, run these steps:
         </p>
+        <ol class="algorithm">
+          <li>[=list/Remove=] the [=entry=] whose [=permission store entry/descriptor=] is
+          |descriptor|, and whose [=permission store entry/key=] [=permission key/is equal to=]
+          |key| given |descriptor|, from the user agent's [=permission store=].
+          </li>
+        </ol>
         <p>
-          A <dfn class="export">permission key</dfn> has its type defined by a feature's [=powerful feature/permission key type=].
-          <aside class="note">
-            The permission key defines the scope of a permission grant, which is usually per-origin.
-            Powerful features may override the [=powerful feature/permission key type=] to specify a custom permission key.
-            This is useful for features that want to change the granularity of permissions based on additional context,
-            such as double-keying on both an embedded origin and a top-level origin.
-          </aside>
+          A <dfn class="export">permission key</dfn> has its type defined by a feature's [=powerful
+          feature/permission key type=].
         </p>
+        <aside class="note">
+          The permission key defines the scope of a permission grant, which is usually per-origin.
+          Powerful features may override the [=powerful feature/permission key type=] to specify a
+          custom permission key. This is useful for features that want to change the granularity of
+          permissions based on additional context, such as double-keying on both an embedded origin
+          and a top-level origin.
+        </aside>
         <p>
-          To determine whether a [=permission key=] |key1| <dfn class="export" data-dfn-for="permission key">is equal to</dfn> a [=permission key=] |key2|, given a {{PermissionDescriptor}} |descriptor|, run the following steps:
-          <ol class="algorithm">
-            <li>
-              If |key1| is not of |descriptor|'s [=powerful feature/permission key type=] or |key2| is not of |descriptor|'s [=powerful feature/permission key type=], return false.
-            </li>
-            <li>
-              Return the result of running the [=powerful feature/permission key comparison algorithm=] for the feature named by |descriptor|'s {{PermissionDescriptor/name}}, passing |key1| and |key2|.
-            </li>
-          </ol>
+          To determine whether a [=permission key=] |key1| <dfn class="export" data-dfn-for=
+          "permission key">is equal to</dfn> a [=permission key=] |key2|, given a
+          {{PermissionDescriptor}} |descriptor|, run the following steps:
         </p>
+        <ol class="algorithm">
+          <li>If |key1| is not of |descriptor|'s [=powerful feature/permission key type=] or |key2|
+          is not of |descriptor|'s [=powerful feature/permission key type=], return false.
+          </li>
+          <li>Return the result of running the [=powerful feature/permission key comparison
+          algorithm=] for the feature named by |descriptor|'s {{PermissionDescriptor/name}},
+          passing |key1| and |key2|.
+          </li>
+        </ol>
       </section>
       <section>
         <h2>
@@ -583,50 +604,53 @@
         </dt>
         <dd>
           <p>
-            The type of [=permission key=] used by the feature. Defaults to [=origin=].
-            A feature that specifies a custom [=powerful feature/permission key type=] MUST also specify a
+            The type of [=permission key=] used by the feature. Defaults to [=origin=]. A feature
+            that specifies a custom [=powerful feature/permission key type=] MUST also specify a
             [=powerful feature/permission key generation algorithm=].
           </p>
         </dd>
         <dt>
-          A <dfn data-dfn-for="powerful feature" class="export">permission key generation algorithm</dfn>:
+          A <dfn data-dfn-for="powerful feature" class="export">permission key generation
+          algorithm</dfn>:
         </dt>
         <dd>
           <p>
-            Takes an [=environment settings object=], and returns a new [=permission key=].
-            If unspecified, this defaults to the <a>default permission key generation algorithm</a>.
-            A feature that specifies a custom [=powerful feature/permission key generation algorithm=] MUST also specify a
-            [=powerful feature/permission key comparison algorithm=].
+            Takes an [=environment settings object=], and returns a new [=permission key=]. If
+            unspecified, this defaults to the <a>default permission key generation algorithm</a>. A
+            feature that specifies a custom [=powerful feature/permission key generation
+            algorithm=] MUST also specify a [=powerful feature/permission key comparison
+            algorithm=].
           </p>
           <p>
-            The <dfn class="export">default permission key generation algorithm</dfn>,
-            given an [=environment settings object=] |settings|, runs the following steps:
+            The <dfn class="export">default permission key generation algorithm</dfn>, given an
+            [=environment settings object=] |settings|, runs the following steps:
           </p>
           <ol class="algorithm">
-            <li>
-              Return |settings|'s [=environment/top-level origin=].
+            <li>Return |settings|'s [=environment/top-level origin=].
             </li>
           </ol>
           <aside class="note" title="Permission Delegation">
-            Most powerful features grant permission to the top-level origin and delegate access to the requesting document via [[[Permissions-Policy]]].
-            This is known as permission delegation.
+            Most powerful features grant permission to the top-level origin and delegate access to
+            the requesting document via [[[Permissions-Policy]]]. This is known as permission
+            delegation.
           </aside>
         </dd>
         <dt>
-          A <dfn data-dfn-for="powerful feature" class="export">permission key comparison algorithm</dfn>:
+          A <dfn data-dfn-for="powerful feature" class="export">permission key comparison
+          algorithm</dfn>:
         </dt>
         <dd>
           <p>
-            Takes two [=permission keys=] and returns a [=boolean=] that shows whether the two keys are equal.
-            If unspecified, this defaults to the <a>default permission key comparison algorithm</a>.
+            Takes two [=permission keys=] and returns a [=boolean=] that shows whether the two keys
+            are equal. If unspecified, this defaults to the <a>default permission key comparison
+            algorithm</a>.
           </p>
           <p>
-            The <dfn class="export">default permission key comparison algorithm</dfn>,
-            given [=permission keys=] |key1| and |key2|, runs the following steps:
+            The <dfn class="export">default permission key comparison algorithm</dfn>, given
+            [=permission keys=] |key1| and |key2|, runs the following steps:
           </p>
           <ol class="algorithm">
-            <li>
-              Return |key1| is [=same origin=] with |key2|.
+            <li>Return |key1| is [=same origin=] with |key2|.
             </li>
           </ol>
         </dd>
@@ -757,11 +781,14 @@
               </li>
             </ol>
           </li>
-          <li>Let |key| be the result of [=powerful feature/permission key generation algorithm|generating a permission key=] for |descriptor| with |settings|.
+          <li>Let |key| be the result of [=powerful feature/permission key generation
+          algorithm|generating a permission key=] for |descriptor| with |settings|.
           </li>
-          <li>Let |entry| be the result of [=get a permission store entry|getting a permission store entry=] with |descriptor| and |key|.
+          <li>Let |entry| be the result of [=get a permission store entry|getting a permission
+          store entry=] with |descriptor| and |key|.
           </li>
-          <li>If |entry| is not null, return a {{PermissionState}} enum value from |entry|'s [=permission store entry/state=].
+          <li>If |entry| is not null, return a {{PermissionState}} enum value from |entry|'s
+          [=permission store entry/state=].
           </li>
           <li>Return the {{PermissionState}} enum value that represents the permission state of
           |feature|, taking into account any [=powerful feature/permission state constraints=] for
@@ -793,9 +820,9 @@
           <li>Ask the user for <a>express permission</a> for the calling algorithm to use the
           <a>powerful feature</a> described by |descriptor|.
           </li>
-          <li>If the user gives [=express permission=] to use the powerful feature, set |current state| to
-          {{PermissionState/"granted"}}; otherwise to {{PermissionState/"denied"}}. The user's
-          interaction may provide <a>new information about the user's intent</a> for the
+          <li>If the user gives [=express permission=] to use the powerful feature, set |current
+          state| to {{PermissionState/"granted"}}; otherwise to {{PermissionState/"denied"}}. The
+          user's interaction may provide <a>new information about the user's intent</a> for the
           [=origin=].
             <p class="note">
               This is intentionally vague about the details of the permission UI and how the user
@@ -803,15 +830,14 @@
               this framework.
             </p>
           </li>
-          <li>
-            Let |key| be the result of [=powerful feature/permission key generation algorithm|generating a permission key=] with the [=current settings object=].
+          <li>Let |key| be the result of [=powerful feature/permission key generation
+          algorithm|generating a permission key=] with the [=current settings object=].
           </li>
-          <li>
-            [=Queue a task=] on the [=current settings object=]'s [=environment settings
-            object/responsible event loop=] to [=set a permission store entry=] with |descriptor|, |key|, and |current state|.
+          <li>[=Queue a task=] on the [=current settings object=]'s [=environment settings
+          object/responsible event loop=] to [=set a permission store entry=] with |descriptor|,
+          |key|, and |current state|.
           </li>
-          <li>
-            Return |current state|.
+          <li>Return |current state|.
           </li>
         </ol>
         <p>
@@ -875,16 +901,15 @@
         </h3>
         <p>
           When the user agent learns that the user no longer intends to grant permission to use a
-          feature described by the {{PermissionDescriptor}} |descriptor| in the context
-          described by the [=permission key=] |key|, <dfn>react to the user revoking permission</dfn>
-          by running these steps:
+          feature described by the {{PermissionDescriptor}} |descriptor| in the context described
+          by the [=permission key=] |key|, <dfn>react to the user revoking permission</dfn> by
+          running these steps:
         </p>
         <ol class="algorithm">
-          <li>
-            Run |descriptor|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission revocation algorithm=].
+          <li>Run |descriptor|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission
+          revocation algorithm=].
           </li>
-          <li>
-            [=Remove a permission store entry=] with |descriptor| and |key|.
+          <li>[=Remove a permission store entry=] with |descriptor| and |key|.
           </li>
         </ol>
       </section>
