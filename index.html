@@ -260,8 +260,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     }
   },
   "caniuse": "permissions-api",
-  "publishISODate": "2022-12-19T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 19 December 2022"
+  "publishISODate": "2022-12-20T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 20 December 2022"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -270,7 +270,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-12-19">19 December 2022</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2022-12-20">20 December 2022</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -1899,8 +1899,9 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           </tbody>
         </table>
         <p>
-          The <dfn class="export" data-dfn-for="extension commands" data-export="" id="dfn-set-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Set Permission</dfn> <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-extension-commands">extension command</a> simulates user modification of a
-          <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-20"><code>PermissionDescriptor</code></a>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-16">permission state</a>.
+          The <dfn class="export" data-dfn-for="extension commands" data-export="" id="dfn-set-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Set Permission</dfn>
+          <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-extension-commands">extension command</a> simulates user modification of a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-20"><code>PermissionDescriptor</code></a>'s
+          <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-16">permission state</a>.
         </p>
         <p>
           The <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-remote-end-steps">remote end steps</a> are:
@@ -1956,8 +1957,9 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
     <a class="self-link" href="#example-setting-a-permission-via-webdriver">Example<bdi> 7</bdi></a><span class="example-title">: Setting a permission via WebDriver</span>
   </div>
           <p>
-            To <a data-link-type="dfn" href="#dfn-set-permission" class="internalDFN" id="ref-for-dfn-set-permission-1">set permission</a> for <code>{name: "midi", sysex: true}</code> of the <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a> of the <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-session">session</a> with ID 23 to "<code>granted</code>", the local end would POST to
-            <code>/session/23/permissions</code> with the body:
+            To <a data-link-type="dfn" href="#dfn-set-permission" class="internalDFN" id="ref-for-dfn-set-permission-1">set permission</a> for <code>{name: "midi", sysex: true}</code> of the
+            <a data-link-type="dfn" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a> of the <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-session">session</a> with ID 23 to "<code>granted</code>", the local
+            end would POST to <code>/session/23/permissions</code> with the body:
           </p>
           <pre class="lang-json" aria-busy="false"><code class="hljs">{
   "descriptor": {
@@ -2071,11 +2073,11 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
   </section><section id="informative-references"><div class="header-wrapper"><h3 id="g-2-informative-references"><bdi class="secno">G.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix G.2"></a></div>
     
     <dl class="bibliography"><dt id="bib-appmanifest">[appmanifest]</dt><dd>
-      <a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Matt Giuca; Aaron Gustafson; Daniel Murphy; Anssi Kostiainen.  W3C. 9 November 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
+      <a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Matt Giuca; Aaron Gustafson; Daniel Murphy; Anssi Kostiainen.  W3C. 20 December 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
     </dd><dt id="bib-geolocation">[Geolocation]</dt><dd>
       <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres; Reilly Grant.  W3C. 1 September 2022. W3C Recommendation. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
     </dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd>
-      <a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet.  W3C. 13 October 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
+      <a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet.  W3C. 15 December 2022. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
     </dd><dt id="bib-push-api">[push-api]</dt><dd>
       <a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson; Marcos Caceres.  W3C. 30 June 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
     </dd></dl>
