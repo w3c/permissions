@@ -234,7 +234,7 @@
             <dfn class="export" data-local-lt="grant" data-dfn-for="permission">Granted</dfn>:
           </dt>
           <dd>
-            The user, or the user agent or its [=administrator=] on the user's behalf,
+            The user, or the user agent or an [=administrator=] on the user's behalf,
             has given [=express permission=] to
             use a [=powerful feature=]. The caller will can use the feature possibly without having
             the [=user agent=] asking the user's permission.
@@ -243,7 +243,7 @@
             <dfn class="export" data-dfn-for="permission">Denied</dfn>:
           </dt>
           <dd>
-            The user, or the user agent or its [=administrator=] on the user's behalf,
+            The user, or the user agent or an [=administrator=] on the user's behalf,
             has denied access to this [=powerful
             feature=]. The caller will can't use the feature.
           </dd>
@@ -554,9 +554,9 @@
             </li>
             <li>Return the instance of |name|'s [=powerful feature/extra permission data type=] that
             matches the UA's impression of the user's intent, combined with any configuration from
-            the user agent's [=administrator=], taking into account any [=powerful feature/extra
-            permission data constraints=] for |name|. If [=administrator=] configuration affected the
-            result, the [=user agent=] must inform the user.
+            an [=administrator=], taking into account any [=powerful feature/extra permission data
+            constraints=] for |name|. If [=administrator=] configuration affected the result, the
+            [=user agent=] must inform the user.
             </li>
           </ol>
           <p>
@@ -821,8 +821,8 @@
           <li>If <var>current state</var> is not {{PermissionState/"prompt"}}, return <var>current
           state</var> and abort these steps.
           </li>
-          <li>If the [=user agent=] has an [=administrator=] who has configured the [=user agent=]
-          to grant or deny permission for the calling algorithm to use the <a>powerful feature</a>
+          <li>If an [=administrator=] has configured the [=implementation=] to grant or deny
+          permission for the calling algorithm to use the <a>powerful feature</a>
           described by |descriptor|:
           <ol>
             <li>Set |current state| to {{PermissionState/"granted"}} if the [=administrator=]
@@ -1330,6 +1330,18 @@
         override user choices about permissions, either to block permissions or to allow them on
         certain sites. Overriding user choices in this way can be a privacy problem, so this
         specification requires that the [=user agent=] inform users when it happens.
+      </p>
+      <aside class="note">
+        [=Administrators=] often configure [=user agents=] through "enterprise policy".
+      </aside>
+      <p>
+        These [=administrators=] might be able to configure either an individual [=user agent=] or
+        the device it runs on, or both. It can be a privacy problem for a device-level
+        [=administrator=] to control a [=powerful feature=] that primarily operates on a single
+        [=user agent=], and it can also be a privacy problem for a user-agent-level
+        [=administrator=] to control another [=powerful feature=] that operates on the device as a
+        whole. [=Implementations=] should take this into account when defining their administration
+        policies, but for now the details aren't standardized.
       </p>
     </section>
     <section id="security-considerations">
