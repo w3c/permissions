@@ -1299,182 +1299,182 @@
           </aside>
         </section>
       </section>
-    </section>
-    <section data-cite="webdriver webdriver2 webdriver-bidi">
-      <h3 id="automation-webdriver-bidi">
-        Automated testing with [[WebDriver-BiDi]]
-      </h3>
-      <p>
-        This document defines the following [=extension modules=] for the [[WebDriver-BiDi]] specification.
-      </p>
-      <section>
-        <h4 id="extension-module-permissions">
-          The permissions Module
-        </h4>
+      <section data-cite="webdriver webdriver2 webdriver-bidi">
+        <h3 id="automation-webdriver-bidi">
+          Automated testing with [[WebDriver-BiDi]]
+        </h3>
         <p>
-          The <dfn>permissions</dfn> module contains commands for
-          managing the remote end browser permissions.
+          This document defines the following [=extension modules=] for the [[WebDriver-BiDi]] specification.
         </p>
         <section>
-          <h5 id="extension-module-permissions-definition">
-            Definition
-          </h5>
+          <h4 id="extension-module-permissions">
+            The permissions Module
+          </h4>
           <p>
-            [=remote end definition=]
+            The <dfn>permissions</dfn> module contains commands for
+            managing the remote end browser permissions.
           </p>
-          <pre class="cddl remote-cddl">
-            PermissionsCommand = (
-              permissions.setPermission
-            )
-          </pre>
-        </section>
-        <section>
-          <h5 id="extension-module-permissions-types">
-            Types
-          </h5>
           <section>
-            <h6 id="extension-module-type-permissions-PermissionDescriptor">
-              The permissions.PermissionDescriptor Type
-            </h6>
-            <pre class="cddl local-cddl">
-              permissions.PermissionDescriptor = {
-                type: "permissionDescriptor",
-                name: text,
-              }
-            </pre>
+            <h5 id="extension-module-permissions-definition">
+              Definition
+            </h5>
             <p>
-              The <code>permissions.PermissionDescriptor</code> type represents a {{PermissionDescriptor}}.
+              [=remote end definition=]
             </p>
+            <pre class="cddl remote-cddl">
+              PermissionsCommand = (
+                permissions.setPermission
+              )
+            </pre>
           </section>
           <section>
-            <h6 id="extension-module-type-permissions-PermissionState">
-              The permissions.PermissionState Type
-            </h6>
-            <pre class="cddl local-cddl">
-              permissions.PermissionState = "granted" / "denied" / "prompt"
-            </pre>
-            <p>
-              The <code>permissions.PermissionState</code> type represents a {{PermissionState}}.
-            </p>
+            <h5 id="extension-module-permissions-types">
+              Types
+            </h5>
+            <section>
+              <h6 id="extension-module-type-permissions-PermissionDescriptor">
+                The permissions.PermissionDescriptor Type
+              </h6>
+              <pre class="cddl local-cddl">
+                permissions.PermissionDescriptor = {
+                  type: "permissionDescriptor",
+                  name: text,
+                }
+              </pre>
+              <p>
+                The <code>permissions.PermissionDescriptor</code> type represents a {{PermissionDescriptor}}.
+              </p>
+            </section>
+            <section>
+              <h6 id="extension-module-type-permissions-PermissionState">
+                The permissions.PermissionState Type
+              </h6>
+              <pre class="cddl local-cddl">
+                permissions.PermissionState = "granted" / "denied" / "prompt"
+              </pre>
+              <p>
+                The <code>permissions.PermissionState</code> type represents a {{PermissionState}}.
+              </p>
+            </section>
           </section>
-        </section>
-        <section>
-          <h5 id="extension-module-permissions-commands">
-            Commands
-          </h5>
           <section>
-            <h6 id="extension-module-command-permissions-setPermission">
-              The permissions.setPermission Command
-            </h6>
-            <p>
-              The <dfn class="export" data-dfn-for="extension modules">Set Permission</dfn>
-              [=extension module=] simulates user modification of a {{PermissionDescriptor}}'s
-              [=permission state=].
-            </p>
-            <dl>
-              <dt>Command Type</dt>
-              <dd>
-                <pre class="cddl remote-cddl">
-                  permissions.setPermission = (
-                    method: "permissions.setPermission",
-                    params: permissions.SetPermissionParameters
-                  )
+            <h5 id="extension-module-permissions-commands">
+              Commands
+            </h5>
+            <section>
+              <h6 id="extension-module-command-permissions-setPermission">
+                The permissions.setPermission Command
+              </h6>
+              <p>
+                The <dfn class="export" data-dfn-for="extension modules">Set Permission</dfn>
+                [=extension module=] simulates user modification of a {{PermissionDescriptor}}'s
+                [=permission state=].
+              </p>
+              <dl>
+                <dt>Command Type</dt>
+                <dd>
+                  <pre class="cddl remote-cddl">
+                    permissions.setPermission = (
+                      method: "permissions.setPermission",
+                      params: permissions.SetPermissionParameters
+                    )
 
-                  permissions.SetPermissionParameters = {
-                    descriptor: permissions.PermissionDescriptor,
-                    state: permissions.PermissionState,
-                    ? context: browsingContext.BrowsingContext,
-                    ? origin: text,
-                  }
-                </pre>
-              </dd>
-              <dt>Result Type</dt>
-              <dd>
-                <pre class="cddl">
-                  EmptyResult
-                </pre>
-              </dd>
-           </dl>
-           <div algorithm="remote end steps for permissions.setPermission">
-             <p>
-               The [=remote end steps=] with |session| and |command parameters| are:
-             </p>
-             <ol>
-              <li>
-                Let |descriptor| be the value of the <code>descriptor</code> field of
- |command parameters|.
-              </li>
-              <li>
-                Let |state| be the value of the <code>state</code> field of |command
- parameters|.
-              </li>
-              <li>
-                Let |context id| be the value of the <code>context</code> field of
- |command parameters|.
-              </li>
-              <li>
-                If |context id| is not present, let |context| be the [=top-level browsing context=]
- of |session|. Otherwise, let |context| be the result of [=trying=] to
- [=get a browsing context=] with |context id|.
-              </li>
-              <li>
-                Let |permission name| be the value of the <code>name</code> field of
- |descriptor| representing {{PermissionDescriptor/name}}.
-              </li>
-              <li>
-                <!-- TODO: Only convert to an IDL value only once. -->
-                [=Convert to an IDL value=] (|descriptor|, |state|) of type {{PermissionSetParameters}}.
- If this conversion throws an exception, return [=error=] with [=error code=] [=invalid argument=].
-              </li>
-              <li>
-                Let |typedDescriptor| be the object |descriptor| refers to, <a>converted to an IDL
-                  value</a> of |permission name|'s [=powerful
-                  feature/permission descriptor type=]. If this throws an exception,
-                  return [=error=] with [=error code=] [=invalid argument=].
-              </li>
-              <li>
-                If |state| is an inappropriate [=permission state=] for any
- implementation-defined reason, return [=error=] with [=error code=] [=invalid argument=].
-              </li>
-              <li>
-                Let |settings| be the [=current settings object=].
-              </li>
-              <li>
-                Let |targets| be a [=/list=] containing all [=environment settings object=]
- whose [=environment settings object/origin=] is the <a data-lt="same origin">same</a> as
- the [=environment settings object/origin=] of |settings|.
-              </li>
-              <li>
-                Let |tasks| be an empty [=/list=].
-              </li>
-              <li>
-                For each [=environment settings object=] |target| in |targets|:
-              </li>
-                <ol>
-                  <li>
-                    [=Queue a task=] |task| on the [=permissions task source=] of |target|'s
-    [=relevant settings object=]'s [=environment settings object/global object=]'s
-    [=Window/browsing context=] to perform the following step:
-                  </li>
+                    permissions.SetPermissionParameters = {
+                      descriptor: permissions.PermissionDescriptor,
+                      state: permissions.PermissionState,
+                      ? context: browsingContext.BrowsingContext,
+                      ? origin: text,
+                    }
+                  </pre>
+                </dd>
+                <dt>Result Type</dt>
+                <dd>
+                  <pre class="cddl">
+                    EmptyResult
+                  </pre>
+                </dd>
+             </dl>
+             <div algorithm="remote end steps for permissions.setPermission">
+               <p>
+                 The [=remote end steps=] with |session| and |command parameters| are:
+               </p>
+               <ol>
+                <li>
+                  Let |descriptor| be the value of the <code>descriptor</code> field of
+   |command parameters|.
+                </li>
+                <li>
+                  Let |state| be the value of the <code>state</code> field of |command
+   parameters|.
+                </li>
+                <li>
+                  Let |context id| be the value of the <code>context</code> field of
+   |command parameters|.
+                </li>
+                <li>
+                  If |context id| is not present, let |context| be the [=top-level browsing context=]
+   of |session|. Otherwise, let |context| be the result of [=trying=] to
+   [=get a browsing context=] with |context id|.
+                </li>
+                <li>
+                  Let |permission name| be the value of the <code>name</code> field of
+   |descriptor| representing {{PermissionDescriptor/name}}.
+                </li>
+                <li>
+                  <!-- TODO: Only convert to an IDL value only once. -->
+                  [=Convert to an IDL value=] (|descriptor|, |state|) of type {{PermissionSetParameters}}.
+   If this conversion throws an exception, return [=error=] with [=error code=] [=invalid argument=].
+                </li>
+                <li>
+                  Let |typedDescriptor| be the object |descriptor| refers to, <a>converted to an IDL
+                    value</a> of |permission name|'s [=powerful
+                    feature/permission descriptor type=]. If this throws an exception,
+                    return [=error=] with [=error code=] [=invalid argument=].
+                </li>
+                <li>
+                  If |state| is an inappropriate [=permission state=] for any
+   implementation-defined reason, return [=error=] with [=error code=] [=invalid argument=].
+                </li>
+                <li>
+                  Let |settings| be the [=current settings object=].
+                </li>
+                <li>
+                  Let |targets| be a [=/list=] containing all [=environment settings object=]
+   whose [=environment settings object/origin=] is the <a data-lt="same origin">same</a> as
+   the [=environment settings object/origin=] of |settings|.
+                </li>
+                <li>
+                  Let |tasks| be an empty [=/list=].
+                </li>
+                <li>
+                  For each [=environment settings object=] |target| in |targets|:
+                </li>
                   <ol>
                     <li>
-                      Interpret |state| as if it were the result of an invocation of [=permission state=]
-       for |typedDescriptor| with the argument |target| made at this moment.
+                      [=Queue a task=] |task| on the [=permissions task source=] of |target|'s
+      [=relevant settings object=]'s [=environment settings object/global object=]'s
+      [=Window/browsing context=] to perform the following step:
+                    </li>
+                    <ol>
+                      <li>
+                        Interpret |state| as if it were the result of an invocation of [=permission state=]
+         for |typedDescriptor| with the argument |target| made at this moment.
+                      </li>
+                    </ol>
+                    <li>
+                      [=list/Append=] |task| to |tasks|.
                     </li>
                   </ol>
-                  <li>
-                    [=list/Append=] |task| to |tasks|.
-                  </li>
-                </ol>
-              <li>
-                Wait for all <a>tasks</a> in |tasks| to have executed.
-              </li>
-              <li>
-                Return [=success=] with data null.
-              </li>
-             </ol>
-             <!-- TODO: Use origin. -->
-           </div>
+                <li>
+                  Wait for all <a>tasks</a> in |tasks| to have executed.
+                </li>
+                <li>
+                  Return [=success=] with data null.
+                </li>
+               </ol>
+               <!-- TODO: Use origin. -->
+             </div>
+            </section>
           </section>
         </section>
       </section>
