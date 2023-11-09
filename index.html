@@ -1192,184 +1192,6 @@
           required PermissionState state;
         };
       </pre>
-      <section data-cite="webdriver-bidi webdriver">
-        <h3 id="automation-webdriver-bidi">
-          Automated testing with [[WebDriver-BiDi]]
-        </h3>
-        <p>
-          This document defines the following [=extension modules=] for the [[WebDriver-BiDi]] specification.
-        </p>
-        <section>
-          <h4 id="extension-module-browser">
-            The browser Module
-          </h4>
-          <p>
-            The [=modules/browser=] module contains commands for
-            managing the remote end browser process.
-          </p>
-          <section>
-            <h5 id="extension-module-browser-definition">
-              Definition
-            </h5>
-            <p>
-              [=remote end definition=]
-            </p>
-            <pre class="cddl remote-cddl">
-              BrowserCommand = (
-                browser.setPermission
-              )
-            </pre>
-          </section>
-          <section>
-            <h5 id="extension-module-browser-types">
-              Types
-            </h5>
-            <section>
-              <h6 id="extension-module-type-browser-PermissionDescriptor">
-                The browser.PermissionDescriptor Type
-              </h6>
-              <pre class="cddl local-cddl">
-                browser.PermissionDescriptor = {
-                  type: "permissionDescriptor",
-                  name: text,
-                }
-              </pre>
-              <p>
-                The <code>browser.PermissionDescriptor</code> type represents a {{PermissionDescriptor}}.
-              </p>
-            </section>
-            <section>
-              <h6 id="extension-module-type-browser-PermissionState">
-                The browser.PermissionState Type
-              </h6>
-              <pre class="cddl local-cddl">
-                browser.PermissionState = "granted" / "denied" / "prompt"
-              </pre>
-              <p>
-                The <code>browser.PermissionState</code> type represents a {{PermissionState}}.
-              </p>
-            </section>
-          </section>
-          <section>
-            <h5 id="extension-module-browser-commands">
-              Commands
-            </h5>
-            <section>
-              <h6 id="extension-module-command-browser-setPermission">
-                The browser.setPermission Command
-              </h6>
-              <p>
-                The <dfn class="export" data-dfn-for="extension modules">Set Permission</dfn>
-                [=extension module=] simulates user modification of a {{PermissionDescriptor}}'s
-                [=permission state=].
-              </p>
-              <dl>
-                <dt>Command Type</dt>
-                <dd>
-                  <pre class="cddl remote-cddl">
-                    browser.setPermission = (
-                      method: "browser.setPermission",
-                      params: browser.SetPermissionParameters
-                    )
-
-                    browser.SetPermissionParameters = {
-                      descriptor: browser.PermissionDescriptor,
-                      state: browser.PermissionState,
-                      ? context: browsingContext.BrowsingContext,
-                      ? origin: text,
-                    }
-                  </pre>
-                </dd>
-                <dt>Result Type</dt>
-                <dd>
-                  <pre class="cddl">
-                    EmptyResult
-                  </pre>
-                </dd>
-             </dl>
-             <div algorithm="remote end steps for permissions.setPermission">
-               <p>
-                 The [=remote end steps=] with |session| and |command parameters| are:
-               </p>
-               <ol>
-                <li>
-                  Let |descriptor| be the value of the <code>descriptor</code> field of
-   |command parameters|.
-                </li>
-                <li>
-                  Let |state| be the value of the <code>state</code> field of |command
-   parameters|.
-                </li>
-                <li>
-                  Let |context id| be the value of the <code>context</code> field of
-   |command parameters|.
-                </li>
-                <li>
-                  If |context id| is not present, let |context| be the [=top-level browsing context=]
-   of |session|. Otherwise, let |context| be the result of [=trying=] to
-   [=get a browsing context=] with |context id|.
-                </li>
-                <li>
-                  Let |permission name| be the value of the <code>name</code> field of
-   |descriptor| representing {{PermissionDescriptor/name}}.
-                </li>
-                <li>
-                  [=Convert to an IDL value=] (|descriptor|, |state|) of type {{PermissionSetParameters}}.
-   If this conversion throws an exception, return [=error=] with [=error code=] [=invalid argument=].
-                </li>
-                <li>
-                  Let |typedDescriptor| be the object |descriptor| refers to, <a>converted to an IDL
-                    value</a> of |permission name|'s [=powerful
-                    feature/permission descriptor type=]. If this throws an exception,
-                    return [=error=] with [=error code=] [=invalid argument=].
-                </li>
-                <li>
-                  If |state| is an inappropriate [=permission state=] for any
-   implementation-defined reason, return [=error=] with [=error code=] [=invalid argument=].
-                </li>
-                <li>
-                  Let |settings| be the [=current settings object=].
-                </li>
-                <li>
-                  Let |targets| be a [=/list=] containing all [=environment settings object=]
-   whose [=environment settings object/origin=] is the <a data-lt="same origin">same</a> as
-   the [=environment settings object/origin=] of |settings|.
-                </li>
-                <li>
-                  Let |tasks| be an empty [=/list=].
-                </li>
-                <li>
-                  For each [=environment settings object=] |target| in |targets|:
-                </li>
-                  <ol>
-                    <li>
-                      [=Queue a task=] |task| on the [=permissions task source=] of |target|'s
-      [=relevant settings object=]'s [=environment settings object/global object=]'s
-      [=Window/browsing context=] to perform the following step:
-                    </li>
-                    <ol>
-                      <li>
-                        Interpret |state| as if it were the result of an invocation of [=permission state=]
-         for |typedDescriptor| with the argument |target| made at this moment.
-                      </li>
-                    </ol>
-                    <li>
-                      [=list/Append=] |task| to |tasks|.
-                    </li>
-                  </ol>
-                <li>
-                  Wait for all <a>tasks</a> in |tasks| to have executed.
-                </li>
-                <li>
-                  Return [=success=] with data null.
-                </li>
-               </ol>
-               <!-- TODO: Use origin. -->
-             </div>
-            </section>
-          </section>
-        </section>
-      </section>
       <section data-cite="webdriver">
         <h3 id="automation-webdriver">
           Automated testing with [[WebDriver]]
@@ -1475,6 +1297,185 @@
             }
             </pre>
           </aside>
+        </section>
+      </section>
+    </section>
+    <section data-cite="webdriver webdriver2 webdriver-bidi">
+      <h3 id="automation-webdriver-bidi">
+        Automated testing with [[WebDriver-BiDi]]
+      </h3>
+      <p>
+        This document defines the following [=extension modules=] for the [[WebDriver-BiDi]] specification.
+      </p>
+      <section>
+        <h4 id="extension-module-browser">
+          The browser Module
+        </h4>
+        <p>
+          The [=modules/browser=] module contains commands for
+          managing the remote end browser process.
+        </p>
+        <section>
+          <h5 id="extension-module-browser-definition">
+            Definition
+          </h5>
+          <p>
+            [=remote end definition=]
+          </p>
+          <pre class="cddl remote-cddl">
+            BrowserCommand = (
+              browser.setPermission
+            )
+          </pre>
+        </section>
+        <section>
+          <h5 id="extension-module-browser-types">
+            Types
+          </h5>
+          <section>
+            <h6 id="extension-module-type-browser-PermissionDescriptor">
+              The browser.PermissionDescriptor Type
+            </h6>
+            <pre class="cddl local-cddl">
+              browser.PermissionDescriptor = {
+                type: "permissionDescriptor",
+                name: text,
+              }
+            </pre>
+            <p>
+              The <code>browser.PermissionDescriptor</code> type represents a {{PermissionDescriptor}}.
+            </p>
+          </section>
+          <section>
+            <h6 id="extension-module-type-browser-PermissionState">
+              The browser.PermissionState Type
+            </h6>
+            <pre class="cddl local-cddl">
+              browser.PermissionState = "granted" / "denied" / "prompt"
+            </pre>
+            <p>
+              The <code>browser.PermissionState</code> type represents a {{PermissionState}}.
+            </p>
+          </section>
+        </section>
+        <section>
+          <h5 id="extension-module-browser-commands">
+            Commands
+          </h5>
+          <section>
+            <h6 id="extension-module-command-browser-setPermission">
+              The browser.setPermission Command
+            </h6>
+            <p>
+              The <dfn class="export" data-dfn-for="extension modules">Set Permission</dfn>
+              [=extension module=] simulates user modification of a {{PermissionDescriptor}}'s
+              [=permission state=].
+            </p>
+            <dl>
+              <dt>Command Type</dt>
+              <dd>
+                <pre class="cddl remote-cddl">
+                  browser.setPermission = (
+                    method: "browser.setPermission",
+                    params: browser.SetPermissionParameters
+                  )
+
+                  browser.SetPermissionParameters = {
+                    descriptor: browser.PermissionDescriptor,
+                    state: browser.PermissionState,
+                    ? context: browsingContext.BrowsingContext,
+                    ? origin: text,
+                  }
+                </pre>
+              </dd>
+              <dt>Result Type</dt>
+              <dd>
+                <pre class="cddl">
+                  EmptyResult
+                </pre>
+              </dd>
+           </dl>
+           <div algorithm="remote end steps for permissions.setPermission">
+             <p>
+               The [=remote end steps=] with |session| and |command parameters| are:
+             </p>
+             <ol>
+              <li>
+                Let |descriptor| be the value of the <code>descriptor</code> field of
+ |command parameters|.
+              </li>
+              <li>
+                Let |state| be the value of the <code>state</code> field of |command
+ parameters|.
+              </li>
+              <li>
+                Let |context id| be the value of the <code>context</code> field of
+ |command parameters|.
+              </li>
+              <li>
+                If |context id| is not present, let |context| be the [=top-level browsing context=]
+ of |session|. Otherwise, let |context| be the result of [=trying=] to
+ [=get a browsing context=] with |context id|.
+              </li>
+              <li>
+                Let |permission name| be the value of the <code>name</code> field of
+ |descriptor| representing {{PermissionDescriptor/name}}.
+              </li>
+              <li>
+                <!-- TODO: Only convert to an IDL value only once. -->
+                [=Convert to an IDL value=] (|descriptor|, |state|) of type {{PermissionSetParameters}}.
+ If this conversion throws an exception, return [=error=] with [=error code=] [=invalid argument=].
+              </li>
+              <li>
+                Let |typedDescriptor| be the object |descriptor| refers to, <a>converted to an IDL
+                  value</a> of |permission name|'s [=powerful
+                  feature/permission descriptor type=]. If this throws an exception,
+                  return [=error=] with [=error code=] [=invalid argument=].
+              </li>
+              <li>
+                If |state| is an inappropriate [=permission state=] for any
+ implementation-defined reason, return [=error=] with [=error code=] [=invalid argument=].
+              </li>
+              <li>
+                Let |settings| be the [=current settings object=].
+              </li>
+              <li>
+                Let |targets| be a [=/list=] containing all [=environment settings object=]
+ whose [=environment settings object/origin=] is the <a data-lt="same origin">same</a> as
+ the [=environment settings object/origin=] of |settings|.
+              </li>
+              <li>
+                Let |tasks| be an empty [=/list=].
+              </li>
+              <li>
+                For each [=environment settings object=] |target| in |targets|:
+              </li>
+                <ol>
+                  <li>
+                    [=Queue a task=] |task| on the [=permissions task source=] of |target|'s
+    [=relevant settings object=]'s [=environment settings object/global object=]'s
+    [=Window/browsing context=] to perform the following step:
+                  </li>
+                  <ol>
+                    <li>
+                      Interpret |state| as if it were the result of an invocation of [=permission state=]
+       for |typedDescriptor| with the argument |target| made at this moment.
+                    </li>
+                  </ol>
+                  <li>
+                    [=list/Append=] |task| to |tasks|.
+                  </li>
+                </ol>
+              <li>
+                Wait for all <a>tasks</a> in |tasks| to have executed.
+              </li>
+              <li>
+                Return [=success=] with data null.
+              </li>
+             </ol>
+             <!-- TODO: Use origin. -->
+           </div>
+          </section>
         </section>
       </section>
     </section>
