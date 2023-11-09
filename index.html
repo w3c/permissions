@@ -1308,63 +1308,63 @@
         This document defines the following [=extension modules=] for the [[WebDriver-BiDi]] specification.
       </p>
       <section>
-        <h4 id="extension-module-browser">
-          The browser Module
+        <h4 id="extension-module-permissions">
+          The permissions Module
         </h4>
         <p>
-          The [=modules/browser=] module contains commands for
-          managing the remote end browser process.
+          The <dfn>permissions</dfn> module contains commands for
+          managing the remote end browser permissions.
         </p>
         <section>
-          <h5 id="extension-module-browser-definition">
+          <h5 id="extension-module-permissions-definition">
             Definition
           </h5>
           <p>
             [=remote end definition=]
           </p>
           <pre class="cddl remote-cddl">
-            BrowserCommand = (
-              browser.setPermission
+            PermissionsCommand = (
+              permissions.setPermission
             )
           </pre>
         </section>
         <section>
-          <h5 id="extension-module-browser-types">
+          <h5 id="extension-module-permissions-types">
             Types
           </h5>
           <section>
-            <h6 id="extension-module-type-browser-PermissionDescriptor">
-              The browser.PermissionDescriptor Type
+            <h6 id="extension-module-type-permissions-PermissionDescriptor">
+              The permissions.PermissionDescriptor Type
             </h6>
             <pre class="cddl local-cddl">
-              browser.PermissionDescriptor = {
+              permissions.PermissionDescriptor = {
                 type: "permissionDescriptor",
                 name: text,
               }
             </pre>
             <p>
-              The <code>browser.PermissionDescriptor</code> type represents a {{PermissionDescriptor}}.
+              The <code>permissions.PermissionDescriptor</code> type represents a {{PermissionDescriptor}}.
             </p>
           </section>
           <section>
-            <h6 id="extension-module-type-browser-PermissionState">
-              The browser.PermissionState Type
+            <h6 id="extension-module-type-permissions-PermissionState">
+              The permissions.PermissionState Type
             </h6>
             <pre class="cddl local-cddl">
-              browser.PermissionState = "granted" / "denied" / "prompt"
+              permissions.PermissionState = "granted" / "denied" / "prompt"
             </pre>
             <p>
-              The <code>browser.PermissionState</code> type represents a {{PermissionState}}.
+              The <code>permissions.PermissionState</code> type represents a {{PermissionState}}.
             </p>
           </section>
         </section>
         <section>
-          <h5 id="extension-module-browser-commands">
+          <h5 id="extension-module-permissions-commands">
             Commands
           </h5>
           <section>
-            <h6 id="extension-module-command-browser-setPermission">
-              The browser.setPermission Command
+            <h6 id="extension-module-command-permissions-setPermission">
+              The permissions.setPermission Command
             </h6>
             <p>
               The <dfn class="export" data-dfn-for="extension modules">Set Permission</dfn>
@@ -1375,14 +1375,14 @@
               <dt>Command Type</dt>
               <dd>
                 <pre class="cddl remote-cddl">
-                  browser.setPermission = (
-                    method: "browser.setPermission",
-                    params: browser.SetPermissionParameters
+                  permissions.setPermission = (
+                    method: "permissions.setPermission",
+                    params: permissions.SetPermissionParameters
                   )
 
-                  browser.SetPermissionParameters = {
-                    descriptor: browser.PermissionDescriptor,
-                    state: browser.PermissionState,
+                  permissions.SetPermissionParameters = {
+                    descriptor: permissions.PermissionDescriptor,
+                    state: permissions.PermissionState,
                     ? context: browsingContext.BrowsingContext,
                     ? origin: text,
                   }
