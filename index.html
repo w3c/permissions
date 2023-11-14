@@ -1238,11 +1238,6 @@
             </li>
             <li>Let |rootDesc| be |parameters|.{{PermissionSetParameters/descriptor}}.
             </li>
-            <li>Let |typedDescriptor| be the object |rootDesc| refers to, <a>converted to an IDL
-            value</a> of <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s [=powerful
-            feature/permission descriptor type=]. If this throws an exception, return a [=invalid
-            argument=] [=error=].
-            </li>
             <li>If |parameters|.{{PermissionSetParameters/state}} is an inappropriate <a>permission
             state</a> for any implementation-defined reason, return a [=invalid argument=] [=error=].
               <p class="note">
@@ -1250,6 +1245,11 @@
                 "always on" may choose to reject a command to set the <a>permission state</a> to
                 {{PermissionState/"denied"}} at this step.
               </p>
+            </li>
+            <li>Let |typedDescriptor| be the object |rootDesc| refers to, <a>converted to an IDL
+            value</a> of <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s [=powerful
+            feature/permission descriptor type=]. If this throws an exception, return a [=invalid
+            argument=] [=error=].
             </li>
             <li>Let |settings| be the [=current settings object=].
             </li>
@@ -1408,21 +1408,21 @@
    |command parameters|.
                 </li>
                 <li>
+                  Let |permission name| be the value of the <code>name</code> field of
+             |descriptor| representing {{PermissionDescriptor/name}}.
+                </li>
+                <li>
                   Let |state| be the value of the <code>state</code> field of |command
    parameters|.
                 </li>
                 <li>
-                  Let |permission name| be the value of the <code>name</code> field of
-   |descriptor| representing {{PermissionDescriptor/name}}.
+                  If |state| is an inappropriate [=permission state=] for any
+   implementation-defined reason, return [=error=] with [=error code=] [=invalid argument=].
                 </li>
                 <li>
                   Let |typedDescriptor| be the object |descriptor| refers to, [=converted to an IDL value=] (|descriptor|, |state|) of
                   {{PermissionSetParameters}} |permission name|'s [=powerful feature/permission descriptor type=].
                   If this conversion throws an exception, return [=error=] with [=error code=] [=invalid argument=].
-                </li>
-                <li>
-                  If |state| is an inappropriate [=permission state=] for any
-   implementation-defined reason, return [=error=] with [=error code=] [=invalid argument=].
                 </li>
                 <li>
                   Let |settings| be the [=current settings object=].
