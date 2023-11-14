@@ -1382,7 +1382,6 @@
                     permissions.SetPermissionParameters = {
                       descriptor: permissions.PermissionDescriptor,
                       state: permissions.PermissionState,
-                      ? origin: text,
                     }
                   </pre>
                 </dd>
@@ -1394,6 +1393,12 @@
                 </dd>
              </dl>
              <div algorithm="remote end steps for permissions.setPermission">
+               <p>
+                TODO: Add user context to SetPermissionParameters.
+               </p>
+               <p>
+                TODO: Add origin.
+               </p>
                <p>
                  The [=remote end steps=] with |session| and |command parameters| are:
                </p>
@@ -1456,7 +1461,6 @@
                   Return [=success=] with data null.
                 </li>
                </ol>
-               <!-- TODO: Use origin. -->
              </div>
             </section>
           </section>
