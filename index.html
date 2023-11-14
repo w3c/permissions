@@ -1382,7 +1382,6 @@
                     permissions.SetPermissionParameters = {
                       descriptor: permissions.PermissionDescriptor,
                       state: permissions.PermissionState,
-                      ? context: browsingContext.BrowsingContext,
                       ? origin: text,
                     }
                   </pre>
@@ -1408,28 +1407,13 @@
    parameters|.
                 </li>
                 <li>
-                  Let |context id| be the value of the <code>context</code> field of
-   |command parameters|.
-                </li>
-                <li>
-                  If |context id| is not present, let |context| be the [=top-level browsing context=]
-   of |session|. Otherwise, let |context| be the result of [=trying=] to
-   [=get a browsing context=] with |context id|.
-                </li>
-                <li>
                   Let |permission name| be the value of the <code>name</code> field of
    |descriptor| representing {{PermissionDescriptor/name}}.
                 </li>
                 <li>
-                  <!-- TODO: Only convert to an IDL value only once. -->
-                  [=Convert to an IDL value=] (|descriptor|, |state|) of type {{PermissionSetParameters}}.
-   If this conversion throws an exception, return [=error=] with [=error code=] [=invalid argument=].
-                </li>
-                <li>
-                  Let |typedDescriptor| be the object |descriptor| refers to, <a>converted to an IDL
-                    value</a> of |permission name|'s [=powerful
-                    feature/permission descriptor type=]. If this throws an exception,
-                    return [=error=] with [=error code=] [=invalid argument=].
+                  Let |typedDescriptor| be the object |descriptor| refers to, [=converted to an IDL value=] (|descriptor|, |state|) of
+                  {{PermissionSetParameters}} |permission name|'s [=powerful feature/permission descriptor type=].
+                  If this conversion throws an exception, return [=error=] with [=error code=] [=invalid argument=].
                 </li>
                 <li>
                   If |state| is an inappropriate [=permission state=] for any
