@@ -1438,22 +1438,22 @@
                 <li>
                   For each [=environment settings object=] |target| in |targets|:
                 </li>
+                <ol>
+                  <li>
+                    [=Queue a task=] |task| on the [=permissions task source=] of |target|'s
+    [=relevant settings object=]'s [=environment settings object/global object=]'s
+    [=Window/browsing context=] to perform the following step:
+                  </li>
                   <ol>
                     <li>
-                      [=Queue a task=] |task| on the [=permissions task source=] of |target|'s
-      [=relevant settings object=]'s [=environment settings object/global object=]'s
-      [=Window/browsing context=] to perform the following step:
-                    </li>
-                    <ol>
-                      <li>
-                        Interpret |state| as if it were the result of an invocation of [=permission state=]
-         for |typedDescriptor| with the argument |target| made at this moment.
-                      </li>
-                    </ol>
-                    <li>
-                      [=list/Append=] |task| to |tasks|.
+                      Interpret |state| as if it were the result of an invocation of [=permission state=]
+        for |typedDescriptor| with the argument |target| made at this moment.
                     </li>
                   </ol>
+                  <li>
+                    [=list/Append=] |task| to |tasks|.
+                  </li>
+                </ol>
                 <li>
                   Wait for all <a>tasks</a> in |tasks| to have executed.
                 </li>
