@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 34.1.2">
+<meta name="generator" content="ReSpec 34.2.2">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -183,6 +183,7 @@ img.caniuse-browser{filter:drop-shadow(0 0 .1cm #666)}
 .mdn .samsunginternet_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/samsung-internet/samsung-internet.svg)}
 .mdn .webview_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/android-webview/android-webview.png)}
 </style>
+<meta name="revision" content="afe47976a5fc53691e1f890f50464404180536c8">
 <meta name="description" content="This specification defines common infrastructure that other specifications can use to
         interact with browser permissions. These permissions represent a user's choice to allow or
         deny access to &quot;powerful features&quot; of the platform. For developers, the specification
@@ -250,27 +251,26 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     "repoURL": "w3c/permissions"
   },
   "mdn": true,
-  "xref": "web-platform",
-  "localBiblio": {
-    "permissions-registry": {
-      "title": "Permissions Registry",
-      "href": "https://w3c.github.io/permissions-registry/",
-      "status": "unofficial",
-      "id": "permissions-registry"
-    }
+  "xref": {
+    "profile": "web-platform",
+    "specs": [
+      "permissions-policy",
+      "w3c-process"
+    ]
   },
   "caniuse": "permissions-api",
-  "publishISODate": "2023-06-13T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 13 June 2023"
+  "gitRevision": "afe47976a5fc53691e1f890f50464404180536c8",
+  "publishISODate": "2023-11-19T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 19 November 2023"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
-  <body class="h-entry" data-cite="WEBIDL HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
+  <body class="h-entry" data-cite="WEBIDL permissions-policy w3c-process HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2023-06-13">13 June 2023</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2023-11-19">19 November 2023</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -282,7 +282,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               </dd>
         <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a></dd>
         <dt>History:</dt><dd>
-                    <a href="https://www.w3.org/standards/history/permissions">https://www.w3.org/standards/history/permissions</a>
+                    <a href="https://www.w3.org/standards/history/permissions/">https://www.w3.org/standards/history/permissions/</a>
                   </dd><dd>
                     <a href="https://github.com/w3c/permissions/commits/main">Commit history</a>
                   </dd>
@@ -325,12 +325,12 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       </div></div>
           <div class="caniuse-type"><span>desktop</span></div>
         </div><div class="caniuse-group">
-          <div class="caniuse-browsers"><div class="caniuse-cell y" title="Supported by default since Android Chrome version 114." aria-label="permissions-api is supported by default since Android Chrome version 114 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/chrome/chrome.svg" alt="Android Chrome logo"><span class="browser-version">114</span>
-      </div><div class="caniuse-cell y" title="Supported by default since Android Firefox version 113." aria-label="permissions-api is supported by default since Android Firefox version 113 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/firefox/firefox.svg" alt="Android Firefox logo"><span class="browser-version">113</span>
-      </div><div class="caniuse-cell y" title="Supported by default since Android UC version 13.4." aria-label="permissions-api is supported by default since Android UC version 13.4 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/uc/uc.svg" alt="Android UC logo"><span class="browser-version">13.4</span>
+          <div class="caniuse-browsers"><div class="caniuse-cell y" title="Supported by default since Android Chrome version 119." aria-label="permissions-api is supported by default since Android Chrome version 119 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/chrome/chrome.svg" alt="Android Chrome logo"><span class="browser-version">119</span>
+      </div><div class="caniuse-cell y" title="Supported by default since Android Firefox version 119." aria-label="permissions-api is supported by default since Android Firefox version 119 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/firefox/firefox.svg" alt="Android Firefox logo"><span class="browser-version">119</span>
+      </div><div class="caniuse-cell y" title="Supported by default since Android UC version 15.5." aria-label="permissions-api is supported by default since Android UC version 15.5 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/uc/uc.svg" alt="Android UC logo"><span class="browser-version">15.5</span>
       </div><div class="caniuse-cell y" title="Supported by default since iOS Safari version 16.0." aria-label="permissions-api is supported by default since iOS Safari version 16.0 on mobile.">
         <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/safari-ios/safari-ios.svg" alt="iOS Safari logo"><span class="browser-version">16.0</span>
       </div><div class="caniuse-cell y" title="Supported by default since Samsung Internet version 4." aria-label="permissions-api is supported by default since Samsung Internet version 4 on mobile.">
@@ -343,15 +343,15 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     
     
     <p class="copyright">
-    <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+    <a href="https://www.w3.org/policies/#copyright">Copyright</a>
     ©
     2023
     
     <a href="https://www.w3.org/">World Wide Web Consortium</a>.
     <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup>
-    <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
-    <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and
-    <a rel="license" href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" title="W3C Software and Document Notice and License">permissive document license</a> rules apply.
+    <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>,
+    <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and
+    <a rel="license" href="https://www.w3.org/copyright/software-license-2023/" title="W3C Software and Document Notice and License">permissive document license</a> rules apply.
   </p>
     <hr title="Separator for header">
   </div>
@@ -401,9 +401,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
         
   </p><p>
-                  This document is governed by the
-                  <a id="w3c_process_revision" href="https://www.w3.org/2021/Process-20211102/">2 November 2021 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
-                </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><bdi class="secno">1. </bdi>
+                      This document is governed by the
+                      <a id="w3c_process_revision" href="https://www.w3.org/2023/Process-20231103/">03 November 2023 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                    </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><bdi class="secno">1. </bdi>
         Introduction
       </a></li><li class="tocline"><a class="tocxref" href="#examples"><bdi class="secno">2. </bdi>
         Examples of usage
@@ -457,13 +457,23 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         Automated testing
       </a><ol class="toc"><li class="tocline"><a class="tocxref" href="#set-permission-command"><bdi class="secno">B.1 </bdi>
           Set Permission
-        </a></li></ol></li><li class="tocline"><a class="tocxref" href="#privacy-considerations"><bdi class="secno">C. </bdi>
+        </a></li></ol></li><li class="tocline"><a class="tocxref" href="#permissions-registry"><bdi class="secno">C. </bdi>
+        Permissions Registry
+      </a><ol class="toc"><li class="tocline"><a class="tocxref" href="#purpose"><bdi class="secno">C.1 </bdi>
+          Purpose
+        </a></li><li class="tocline"><a class="tocxref" href="#change-process"><bdi class="secno">C.2 </bdi>
+          Change Process
+        </a></li><li class="tocline"><a class="tocxref" href="#registry-table-of-standardized-permissions"><bdi class="secno">C.3 </bdi>
+          Registry table of standardized permissions
+        </a></li><li class="tocline"><a class="tocxref" href="#registry-table-of-provisional-permissions"><bdi class="secno">C.4 </bdi>
+          Registry table of provisional permissions
+        </a></li></ol></li><li class="tocline"><a class="tocxref" href="#privacy-considerations"><bdi class="secno">D. </bdi>
         Privacy considerations
-      </a></li><li class="tocline"><a class="tocxref" href="#security-considerations"><bdi class="secno">D. </bdi>
+      </a></li><li class="tocline"><a class="tocxref" href="#security-considerations"><bdi class="secno">E. </bdi>
         Security considerations
-      </a></li><li class="tocline"><a class="tocxref" href="#idl-index"><bdi class="secno">E. </bdi>IDL Index</a></li><li class="tocline"><a class="tocxref" href="#acknowledgments"><bdi class="secno">F. </bdi>
+      </a></li><li class="tocline"><a class="tocxref" href="#idl-index"><bdi class="secno">F. </bdi>IDL Index</a></li><li class="tocline"><a class="tocxref" href="#acknowledgments"><bdi class="secno">G. </bdi>
         Acknowledgments
-      </a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">G. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">G.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">G.2 </bdi>Informative references</a></li></ol></li></ol></nav>
+      </a></li><li class="tocline"><a class="tocxref" href="#references"><bdi class="secno">H. </bdi>References</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">H.1 </bdi>Normative references</a></li><li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">H.2 </bdi>Informative references</a></li></ol></li></ol></nav>
     <section class="informative" id="introduction"><div class="header-wrapper"><h2 id="intro"><bdi class="secno">1. </bdi>
         Introduction
       </h2><a class="self-link" href="#intro" aria-label="Permalink for Section 1."></a></div><p><em>This section is non-normative.</em></p>
@@ -1970,9 +1980,344 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
         </aside>
       </section>
     </section>
-    <section class="appendix" id="privacy-considerations-0"><div class="header-wrapper"><h2 id="privacy-considerations"><bdi class="secno">C. </bdi>
+    <section class="informative" id="permissions-registry"><div class="header-wrapper"><h2 id="c-permissions-registry"><bdi class="secno">C. </bdi>
+        Permissions Registry
+      </h2><a class="self-link" href="#permissions-registry" aria-label="Permalink for Section C."></a></div><p><em>This section is non-normative.</em></p>
+      
+      <section id="purpose"><div class="header-wrapper"><h3 id="c-1-purpose"><bdi class="secno">C.1 </bdi>
+          Purpose
+        </h3><a class="self-link" href="#purpose" aria-label="Permalink for Section C.1"></a></div>
+        
+        <p>
+          This <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/Consortium/Process/#w3c-registry">W3C Registry</a> provides a centralized place to find the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled features</a> and/or <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-32">powerful features</a> of the web platform. Through the <a data-link-type="dfn|abstract-op" href="#dfn-change-process" class="internalDFN" id="ref-for-dfn-change-process-1">change process</a> it also helps assure permissions in the platform are consistently specified
+          across various specifications.
+        </p>
+        <p>
+          By splitting the registry into standardized permissions and provisional permissions, the
+          registry also provides a way to track the status of these features.
+        </p>
+      </section>
+      <section id="change-process"><div class="header-wrapper"><h3 id="c-2-change-process"><bdi class="secno">C.2 </bdi>
+          Change Process
+        </h3><a class="self-link" href="#change-process" aria-label="Permalink for Section C.2"></a></div>
+        
+        <p>
+          The <dfn id="dfn-change-process" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">change process</dfn> for adding and/or updating this registry is as follows:
+        </p>
+        <ol>
+          <li>If necessary, add a "Permissions Policy" section to your specification which includes
+          the following:
+            <ol>
+              <li>The string that identifies the policy controlled feature (e.g.,
+              <code>"super-awesome"</code>). Make sure the string is linkable by wrapping it a <code><a data-link-type="element" data-type="element" href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-dfn-element">dfn</a></code>
+              element.
+              </li>
+              <li>The <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature-default-allowlist">default allowlist</a> value (e.g. <code>'self'</code>).
+                <aside class="example" id="example-specifying-a-permissions-policy"><div class="marker">
+    <a class="self-link" href="#example-specifying-a-permissions-policy">Example<bdi> 8</bdi></a><span class="example-title">: Specifying a Permissions Policy</span>
+  </div>
+                  <p>
+                    An typical example that would meet this criteria:
+                  </p>
+                  <blockquote>
+                    The Super Awesome API defines a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled feature</a> identified by the
+                    string "super-awesome". Its <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature-default-allowlist">default allowlist</a> is
+                    <code>'self'</code>.
+                  </blockquote>
+                </aside>
+              </li>
+            </ol>
+          </li>
+          <li>Determine if your feature meets the definition of a <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-33">powerful feature</a> (i.e.,
+          requires <a data-link-type="dfn|abstract-op" href="#dfn-express-permission" class="internalDFN" id="ref-for-dfn-express-permission-10">express permission</a> to be used). If it does:
+            <ol>
+              <li><a data-link-type="dfn|abstract-op" data-lt="Specifies a powerful feature" href="#dfn-specifies-a-powerful-feature" class="internalDFN" id="ref-for-dfn-specifies-a-powerful-feature-2">Specify a powerful feature</a> in your specification
+              in conformance with the <cite><a data-matched-text="[[[Permissions]]]" href="https://www.w3.org/TR/permissions/">Permissions</a></cite> specification.
+              </li>
+            </ol>
+          </li>
+          <li>Modify either the <a data-link-type="dfn|abstract-op" href="#dfn-table-of-standardized-permissions-of-the-web-platform" class="internalDFN" id="ref-for-dfn-table-of-standardized-permissions-of-the-web-platform-1">table of standardized permissions</a> or the <a data-link-type="dfn|abstract-op" href="#dfn-table-of-provisional-permissions" class="internalDFN" id="ref-for-dfn-table-of-provisional-permissions-1">table of provisional permissions</a> filling out each column with the required information.
+          </li>
+          <li>Submit a pull request to the <a href="https://github.com/w3c/permissions/">Powerful
+          Features Registry Repository</a> on GitHub with your changes. The maintainers of the
+          repository will review your pull request and check that everything integrates properly.
+          </li>
+        </ol>
+      </section>
+      <section id="registry-table-of-standardized-permissions"><div class="header-wrapper"><h3 id="c-3-registry-table-of-standardized-permissions"><bdi class="secno">C.3 </bdi>
+          Registry table of standardized permissions
+        </h3><a class="self-link" href="#registry-table-of-standardized-permissions" aria-label="Permalink for Section C.3"></a></div>
+        
+        <p>
+          For a permission to appear in the table of standardized permissions, and thus be
+          considered a <dfn id="dfn-standardized-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">standardized permission</dfn>, it needs to meet the following criteria:
+        </p>
+        <ul>
+          <li>Implemented and demonstrably interoperable in at least two browser engines (e.g., has
+          accompanying <a href="https://web-platform-tests.org">Web Platform Tests</a>).
+          </li>
+          <li>Is specified in published as <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/Consortium/Process/#technical-report">technical report</a> by a <abbr title="World Wide Web Consortium">W3C</abbr> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/Consortium/Process/#GroupsWG">Working Group</a> with
+          maturity of <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/Consortium/Process/#fpwd">first public working draft</a> or above, or is published by the <a href="https://whatwg.org">WHATWG</a> as a standard.
+          </li>
+        </ul>
+        <p>
+          Each <a data-link-type="dfn|abstract-op" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-9">permission</a> is identified by a unique literal string. In the case of
+          <cite><a data-matched-text="[[[Permissions-Policy]]]" href="https://www.w3.org/TR/permissions-policy-1/">Permissions Policy</a></cite>, the string identifies a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled features</a>.
+          Similarly, in the <cite><a data-matched-text="[[[Permissions]]]" href="https://www.w3.org/TR/permissions/">Permissions</a></cite> specification the string identifies a <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-34">powerful feature</a>.
+        </p>
+        <div class="note" role="note" id="issue-container-generatedID-9"><div role="heading" class="note-title marker" id="h-note-9" aria-level="4"><span>Note</span><span class="issue-label">: Permissions and Permissions Policy</span></div><aside class="">
+          <p>
+            Not every <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled feature</a> is <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-35">powerful features</a>. For example,
+            "web-share" is a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled feature</a> that is not classified as a <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-36">powerful feature</a> because it doesn't require <a data-link-type="dfn|abstract-op" href="#dfn-express-permission" class="internalDFN" id="ref-for-dfn-express-permission-11">express permission</a> to be used. However, with
+            very few exceptions, most <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-37">powerful features</a> are also <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled features</a>. For example, "geolocation" is both a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled feature</a> and a
+            <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-38">powerful feature</a>, as it requires <a data-link-type="dfn|abstract-op" href="#dfn-express-permission" class="internalDFN" id="ref-for-dfn-express-permission-12">express permission</a> to be used. Please refer to
+            the <cite><a data-matched-text="[[[Permissions]]]" href="https://www.w3.org/TR/permissions/">Permissions</a></cite> specification for guidance on how to <a data-link-type="dfn|abstract-op" data-lt="specifies a powerful feature" href="#dfn-specifies-a-powerful-feature" class="internalDFN" id="ref-for-dfn-specifies-a-powerful-feature-3">specify a powerful feature</a>.
+          </p>
+        </aside></div>
+        <table class="simple data">
+          <caption>
+            <dfn data-local-lt="table of standardized permissions" data-lt="Table of standardized permissions of the web platform|table of standardized permissions" id="dfn-table-of-standardized-permissions-of-the-web-platform" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Table of standardized
+            permissions of the web platform</dfn>
+          </caption>
+          <tbody><tr>
+            <th rowspan="2">
+              Identifying string
+            </th>
+            <th rowspan="2">
+              Is <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled feature</a>?
+            </th>
+            <th rowspan="2">
+              Is <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-39">powerful feature</a>?
+            </th>
+            <th rowspan="2">
+              Specification
+            </th>
+            <th colspan="3">
+              Implementations
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <a href="https://www.chromium.org/Home/">Chromium</a>
+            </th>
+            <th>
+              <a href="https://developer.mozilla.org/en-US/docs/Glossary/Gecko">Gecko</a>
+            </th>
+            <th>
+              <a href="https://webkit.org/">WebKit</a>
+            </th>
+          </tr>
+          <tr data-cite="geolocation">
+            <td class="string-token">
+              <a data-type="permission" href="https://www.w3.org/TR/geolocation/#dfn-geolocation">"geolocation"</a>
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              <cite><a data-matched-text="[[[geolocation]]]" href="https://www.w3.org/TR/geolocation/">Geolocation API</a></cite>
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              YES
+            </td>
+            <td class="imp-webkit">
+              YES
+            </td>
+          </tr>
+          <tr data-cite="notifications">
+            <td class="string-token">
+              "<a data-link-type="dfn|abstract-op" data-type="permission" href="https://notifications.spec.whatwg.org/#permissiondef-notifications">notifications</a>"
+            </td>
+            <td class="is-policy-controlled">
+              NO
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              <cite><a data-matched-text="[[[NOTIFICATIONS]]]" href="https://notifications.spec.whatwg.org/">Notifications API Standard</a></cite>
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              YES
+            </td>
+            <td class="imp-webkit">
+              YES
+            </td>
+          </tr>
+          <tr data-cite="push-api">
+            <td class="string-token">
+              <a data-link-type="dfn|abstract-op" data-type="permission" href="https://www.w3.org/TR/push-api/#dfn-push">"push"</a>
+            </td>
+            <td class="is-policy-controlled">
+              NO
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              <cite><a data-matched-text="[[[push-api]]]" href="https://www.w3.org/TR/push-api/">Push API</a></cite>
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              YES
+            </td>
+            <td class="imp-webkit">
+              YES
+            </td>
+          </tr>
+          <tr data-cite="Web-share">
+            <td class="string-token">
+              <a data-type="permission" href="https://www.w3.org/TR/web-share/#dfn-web-share">"web-share"</a>
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              NO
+            </td>
+            <td class="spec">
+              <cite><a data-matched-text="[[[Web-Share]]]" href="https://www.w3.org/TR/web-share/">Web Share API</a></cite>
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              YES
+            </td>
+            <td class="imp-webkit">
+              YES
+            </td>
+          </tr>
+          
+        </tbody></table>
+      </section>
+      <section id="registry-table-of-provisional-permissions"><div class="header-wrapper"><h3 id="c-4-registry-table-of-provisional-permissions"><bdi class="secno">C.4 </bdi>
+          Registry table of provisional permissions
+        </h3><a class="self-link" href="#registry-table-of-provisional-permissions" aria-label="Permalink for Section C.4"></a></div>
+        
+        <p>
+          Provisional permissions are permissions that are not yet <a data-link-type="dfn|abstract-op" data-lt="standardized permission" href="#dfn-standardized-permission" class="internalDFN" id="ref-for-dfn-standardized-permission-1">standardized</a> (i.e., they are either experimental, still in the incubation
+          phase, or are only implemented in a single browser engine).
+        </p>
+        <table class="simple data">
+          <caption>
+            <dfn id="dfn-table-of-provisional-permissions" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Table of provisional permissions</dfn>
+          </caption>
+          <tbody><tr>
+            <th rowspan="2">
+              Identifying string
+            </th>
+            <th rowspan="2">
+              Is <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled feature</a>?
+            </th>
+            <th rowspan="2">
+              Is <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-40">powerful feature</a>?
+            </th>
+            <th rowspan="2">
+              Specification
+            </th>
+            <th colspan="3">
+              Implementations
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <a href="https://www.chromium.org/Home/">Chromium</a>
+            </th>
+            <th>
+              <a href="https://developer.mozilla.org/en-US/docs/Glossary/Gecko">Gecko</a>
+            </th>
+            <th>
+              <a href="https://webkit.org/">WebKit</a>
+            </th>
+          </tr>
+          <tr data-cite="accelerometer">
+            <td class="string-token">
+              "<a data-link-type="dfn|abstract-op" data-type="permission" href="https://www.w3.org/TR/accelerometer/#permissiondef-accelerometer">accelerometer</a>"
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              <cite><a data-matched-text="[[[accelerometer]]]" href="https://www.w3.org/TR/accelerometer/">Accelerometer</a></cite>
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              NO
+            </td>
+            <td class="imp-webkit">
+              NO
+            </td>
+          </tr>
+          <tr data-cite="window-management">
+            <td class="string-token">
+              "<a data-link-type="dfn|abstract-op" data-type="permission" href="https://www.w3.org/TR/window-management/#permissiondef-window-management">window-management</a>"
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              <cite><a data-matched-text="[[[window-management]]]" href="https://www.w3.org/TR/window-management/">Window Management</a></cite>
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              NO
+            </td>
+            <td class="imp-webkit">
+              NO
+            </td>
+          </tr>
+          <tr data-cite="local-font-access">
+            <td class="string-token">
+              "<a data-link-type="dfn|abstract-op" data-type="permission" href="https://wicg.github.io/local-font-access/#permissiondef-local-fonts">local-fonts</a>"
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              <cite><a data-matched-text="[[[local-font-access]]]" href="https://wicg.github.io/local-font-access/">Local Font Access</a></cite>
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              NO
+            </td>
+            <td class="imp-webkit">
+              NO
+            </td>
+          </tr>
+          
+        </tbody></table>
+      </section>
+    </section>
+    <section class="appendix" id="privacy-considerations-0"><div class="header-wrapper"><h2 id="privacy-considerations"><bdi class="secno">D. </bdi>
         Privacy considerations
-      </h2><a class="self-link" href="#privacy-considerations" aria-label="Permalink for Appendix C."></a></div>
+      </h2><a class="self-link" href="#privacy-considerations" aria-label="Permalink for Appendix D."></a></div>
       
       <p>
         An adversary could use a <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-20">permission state</a> as an element in creating a "fingerprint"
@@ -1984,20 +2329,20 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
       </p>
       <p>
         A user agent <em class="rfc2119">SHOULD</em> provide a means for the user to review, update, and reset the
-        <a data-link-type="dfn|abstract-op" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-9">permission</a> <a data-link-type="dfn|abstract-op" href="#dfn-states" class="internalDFN" id="ref-for-dfn-states-5">state</a> of <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-32">powerful features</a> associated with an <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#concept-origin">origin</a>.
+        <a data-link-type="dfn|abstract-op" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-10">permission</a> <a data-link-type="dfn|abstract-op" href="#dfn-states" class="internalDFN" id="ref-for-dfn-states-5">state</a> of <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-41">powerful features</a> associated with an <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#concept-origin">origin</a>.
       </p>
     </section>
-    <section id="security-considerations"><div class="header-wrapper"><h2 id="d-security-considerations"><bdi class="secno">D. </bdi>
+    <section id="security-considerations"><div class="header-wrapper"><h2 id="e-security-considerations"><bdi class="secno">E. </bdi>
         Security considerations
-      </h2><a class="self-link" href="#security-considerations" aria-label="Permalink for Section D."></a></div>
+      </h2><a class="self-link" href="#security-considerations" aria-label="Permalink for Section E."></a></div>
       
       <p>
         There are no documented security considerations at this time. Readers are instead
-        encouraged to read section <a href="#privacy-considerations" data-matched-text="[[[#privacy-considerations]]]" class="sec-ref"><bdi class="secno">C. </bdi>
+        encouraged to read section <a href="#privacy-considerations" data-matched-text="[[[#privacy-considerations]]]" class="sec-ref"><bdi class="secno">D. </bdi>
         Privacy considerations</a>.
       </p>
     </section>
-    <section id="idl-index"><div class="header-wrapper"><h2 id="e-idl-index"><bdi class="secno">E. </bdi>IDL Index</h2><a class="self-link" href="#idl-index" aria-label="Permalink for Section E."></a></div><pre class="idl def" id="actual-idl-index"><span class="idlHeader"><a class="self-link" href="#actual-idl-index">WebIDL</a></span><code><span data-idl="" class="idlInterface" data-title="Navigator">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(Window)</span>]
+    <section id="idl-index"><div class="header-wrapper"><h2 id="f-idl-index"><bdi class="secno">F. </bdi>IDL Index</h2><a class="self-link" href="#idl-index" aria-label="Permalink for Section F."></a></div><pre class="idl def" id="actual-idl-index"><span class="idlHeader"><a class="self-link" href="#actual-idl-index">WebIDL</a></span><code><span data-idl="" class="idlInterface" data-title="Navigator">[<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed">Exposed</a>=(Window)</span>]
 partial interface <a data-idl="partial" data-link-type="interface" data-title="Navigator" class="idlID" data-dfn-for="Navigator" data-type="interface" href="https://html.spec.whatwg.org/multipage/system-state.html#navigator">Navigator</a> {<span data-idl="" class="idlAttribute" data-title="permissions" data-dfn-for="Navigator">
   [<span class="extAttr"><a data-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject">SameObject</a></span>] readonly attribute<span class="idlType"> <a data-link-type="idl" href="#dom-permissions" class="internalDFN" id="ref-for-dom-permissions-4"><code>Permissions</code></a></span> <dfn data-export="" data-dfn-type="attribute" data-idl="attribute" data-title="permissions" data-dfn-for="Navigator" data-type="Permissions" data-lt="permissions" data-local-lt="Navigator.permissions" class="idlName"><code>permissions</code></dfn>;</span>
 };</span><span data-idl="" class="idlInterface" data-title="WorkerNavigator">
@@ -2033,9 +2378,9 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
   required<span class="idlType"> <a data-link-type="idl" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-21"><code>PermissionDescriptor</code></a></span> <dfn data-export="" data-dfn-type="dict-member" data-idl="field" data-title="descriptor" data-dfn-for="PermissionSetParameters" data-type="PermissionDescriptor" class="idlName"><code>descriptor</code></dfn>;</span><span data-idl="" class="idlMember" data-title="state" data-dfn-for="PermissionSetParameters">
   required<span class="idlType"> <a data-link-type="idl" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-10"><code>PermissionState</code></a></span> <dfn data-export="" data-dfn-type="dict-member" data-idl="field" data-title="state" data-dfn-for="PermissionSetParameters" data-type="PermissionState" class="idlName"><code>state</code></dfn>;</span>
 };</span></code></pre></section>
-    <section class="appendix informative" id="acknowledgments"><div class="header-wrapper"><h2 class="no-num" id="f-acknowledgments"><bdi class="secno">F. </bdi>
+    <section class="appendix informative" id="acknowledgments"><div class="header-wrapper"><h2 class="no-num" id="g-acknowledgments"><bdi class="secno">G. </bdi>
         Acknowledgments
-      </h2><a class="self-link" href="#acknowledgments" aria-label="Permalink for Appendix F."></a></div><p><em>This section is non-normative.</em></p>
+      </h2><a class="self-link" href="#acknowledgments" aria-label="Permalink for Appendix G."></a></div><p><em>This section is non-normative.</em></p>
       
       <p>
         The editors would like to thank Adrienne Porter Felt, Anne van Kesteren, Domenic Denicola,
@@ -2044,7 +2389,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     </section>
   
 
-<section id="references" class="appendix"><div class="header-wrapper"><h2 id="g-references"><bdi class="secno">G. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix G."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="g-1-normative-references"><bdi class="secno">G.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix G.1"></a></div>
+<section id="references" class="appendix"><div class="header-wrapper"><h2 id="h-references"><bdi class="secno">H. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix H."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="h-1-normative-references"><bdi class="secno">H.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix H.1"></a></div>
     
     <dl class="bibliography"><dt id="bib-dom">[dom]</dt><dd>
       <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
@@ -2057,9 +2402,9 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     </dd><dt id="bib-notifications">[Notifications]</dt><dd>
       <a href="https://notifications.spec.whatwg.org/"><cite>Notifications API Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a>
     </dd><dt id="bib-permissions-policy">[Permissions-Policy]</dt><dd>
-      <a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. Ian Clelland.  W3C. 7 June 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a>
+      <a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. Ian Clelland.  W3C. 17 October 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a>
     </dd><dt id="bib-permissions-registry">[permissions-registry]</dt><dd>
-      <a href="https://w3c.github.io/permissions-registry/"><cite>Permissions Registry</cite></a>. unofficial. URL: <a href="https://w3c.github.io/permissions-registry/">https://w3c.github.io/permissions-registry/</a>
+      <a href="https://w3c.github.io/permissions-registry/"><cite>Permissions Registry</cite></a>.  W3C. Draft Registry. URL: <a href="https://w3c.github.io/permissions-registry/">https://w3c.github.io/permissions-registry/</a>
     </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
       <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
     </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
@@ -2069,16 +2414,28 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     </dd><dt id="bib-webidl">[WEBIDL]</dt><dd>
       <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
     </dd></dl>
-  </section><section id="informative-references"><div class="header-wrapper"><h3 id="g-2-informative-references"><bdi class="secno">G.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix G.2"></a></div>
+  </section><section id="informative-references"><div class="header-wrapper"><h3 id="h-2-informative-references"><bdi class="secno">H.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix H.2"></a></div>
     
-    <dl class="bibliography"><dt id="bib-appmanifest">[appmanifest]</dt><dd>
-      <a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Matt Giuca; Aaron Gustafson; Daniel Murphy; Anssi Kostiainen.  W3C. 2 May 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
+    <dl class="bibliography"><dt id="bib-accelerometer">[accelerometer]</dt><dd>
+      <a href="https://www.w3.org/TR/accelerometer/"><cite>Accelerometer</cite></a>. Anssi Kostiainen.  W3C. 2 November 2023. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/accelerometer/">https://www.w3.org/TR/accelerometer/</a>
+    </dd><dt id="bib-appmanifest">[appmanifest]</dt><dd>
+      <a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Matt Giuca; Aaron Gustafson; Daniel Murphy; Anssi Kostiainen.  W3C. 28 October 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
     </dd><dt id="bib-geolocation">[Geolocation]</dt><dd>
       <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation API</cite></a>. Marcos Caceres; Reilly Grant.  W3C. 1 September 2022. W3C Recommendation. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
     </dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd>
-      <a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet.  W3C. 4 May 2023. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
+      <a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Bernard Aboba; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet.  W3C. 21 September 2023. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
+    </dd><dt id="bib-local-font-access">[local-font-access]</dt><dd>
+      <a href="https://wicg.github.io/local-font-access/"><cite>Local Font Access</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/local-font-access/">https://wicg.github.io/local-font-access/</a>
+    </dd><dt id="bib-permissions">[Permissions]</dt><dd>
+      <a href="https://www.w3.org/TR/permissions/"><cite>Permissions</cite></a>. Marcos Caceres; Mike Taylor.  W3C. 13 June 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
     </dd><dt id="bib-push-api">[push-api]</dt><dd>
-      <a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson; Marcos Caceres.  W3C. 30 June 2022. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
+      <a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson; Marcos Caceres.  W3C. 10 October 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
+    </dd><dt id="bib-w3c-process">[w3c-process]</dt><dd>
+      <a href="https://www.w3.org/Consortium/Process/"><cite>W3C Process Document</cite></a>. Elika J. Etemad (fantasai); Florian Rivoal.  W3C. 2 November 2021. URL: <a href="https://www.w3.org/Consortium/Process/">https://www.w3.org/Consortium/Process/</a>
+    </dd><dt id="bib-web-share">[Web-Share]</dt><dd>
+      <a href="https://www.w3.org/TR/web-share/"><cite>Web Share API</cite></a>. Matt Giuca; Eric Willigers; Marcos Caceres.  W3C. 30 May 2023. W3C Recommendation. URL: <a href="https://www.w3.org/TR/web-share/">https://www.w3.org/TR/web-share/</a>
+    </dd><dt id="bib-window-management">[window-management]</dt><dd>
+      <a href="https://www.w3.org/TR/window-management/"><cite>Window Management</cite></a>. Joshua Bell; Mike Wasserman.  W3C. 6 September 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/window-management/">https://www.w3.org/TR/window-management/</a>
     </dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
@@ -2091,18 +2448,20 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-1" title="§ 3. Model">§ 3. Model</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-2" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-permission-3" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-4" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-5" title="§ 3.3 Powerful features">§ 3.3 Powerful features</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-6" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-7" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-8" title="Reference 3">(3)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-9" title="§ C. Privacy considerations">§ C. Privacy considerations</a> 
-  </li>
+      <a href="#ref-for-dfn-permission-1" title="§ 3. Model">§ 3. Model</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-2" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-permission-3" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-4" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-5" title="§ 3.3 Powerful features">§ 3.3 Powerful features</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-6" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-7" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-8" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-9" title="§ C.3 Registry table of standardized permissions">§ C.3 Registry table of standardized permissions</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-10" title="§ D. Privacy considerations">§ D. Privacy considerations</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-express-permission" aria-label="Links in this document to definition: Express permission">
       <span class="caret"></span>
@@ -2113,14 +2472,18 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-express-permission-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-express-permission-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-express-permission-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-express-permission-4" title="Reference 4">(4)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-express-permission-5" title="§ 3.3 Powerful features">§ 3.3 Powerful features</a> <a href="#ref-for-dfn-express-permission-6" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-express-permission-7" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> <a href="#ref-for-dfn-express-permission-8" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-express-permission-9" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> 
-  </li>
+      <a href="#ref-for-dfn-express-permission-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-express-permission-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-express-permission-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-express-permission-4" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-express-permission-5" title="§ 3.3 Powerful features">§ 3.3 Powerful features</a> <a href="#ref-for-dfn-express-permission-6" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-express-permission-7" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> <a href="#ref-for-dfn-express-permission-8" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-express-permission-9" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> 
+    </li><li>
+      <a href="#ref-for-dfn-express-permission-10" title="§ C.2 Change Process">§ C.2 Change Process</a> 
+    </li><li>
+      <a href="#ref-for-dfn-express-permission-11" title="§ C.3 Registry table of standardized permissions">§ C.3 Registry table of standardized permissions</a> <a href="#ref-for-dfn-express-permission-12" title="Reference 2">(2)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-states" aria-label="Links in this document to definition: states">
       <span class="caret"></span>
@@ -2131,12 +2494,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-states-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-states-2" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-states-3" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-states-4" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-states-5" title="§ C. Privacy considerations">§ C. Privacy considerations</a> 
-  </li>
+      <a href="#ref-for-dfn-states-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-states-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-states-3" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-states-4" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-states-5" title="§ D. Privacy considerations">§ D. Privacy considerations</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-denied" aria-label="Links in this document to definition: Denied">
       <span class="caret"></span>
@@ -2147,10 +2510,10 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-denied-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-denied-2" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-denied-3" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
-  </li>
+      <a href="#ref-for-dfn-denied-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-denied-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-denied-3" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-granted" aria-label="Links in this document to definition: Granted">
       <span class="caret"></span>
@@ -2161,18 +2524,18 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-granted-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-granted-2" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-granted-3" title="§ 3.3 Powerful features">§ 3.3 Powerful features</a> <a href="#ref-for-dfn-granted-4" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-granted-5" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dfn-granted-6" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
-  </li><li>
-    <a href="#ref-for-dfn-granted-7" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> 
-  </li><li>
-    <a href="#ref-for-dfn-granted-8" title="§ C. Privacy considerations">§ C. Privacy considerations</a> 
-  </li>
+      <a href="#ref-for-dfn-granted-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-granted-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-granted-3" title="§ 3.3 Powerful features">§ 3.3 Powerful features</a> <a href="#ref-for-dfn-granted-4" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-granted-5" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dfn-granted-6" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
+    </li><li>
+      <a href="#ref-for-dfn-granted-7" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> 
+    </li><li>
+      <a href="#ref-for-dfn-granted-8" title="§ D. Privacy considerations">§ D. Privacy considerations</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-prompt" aria-label="Links in this document to definition: Prompt">
       <span class="caret"></span>
@@ -2183,12 +2546,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-prompt-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> 
-  </li><li>
-    <a href="#ref-for-dfn-prompt-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dfn-prompt-3" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
-  </li>
+      <a href="#ref-for-dfn-prompt-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> 
+    </li><li>
+      <a href="#ref-for-dfn-prompt-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dfn-prompt-3" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-new-information-about-the-user-s-intent" aria-label="Links in this document to definition: new information about the user's intent">
       <span class="caret"></span>
@@ -2199,12 +2562,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-new-information-about-the-user-s-intent-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dfn-new-information-about-the-user-s-intent-2" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dfn-new-information-about-the-user-s-intent-3" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> 
-  </li>
+      <a href="#ref-for-dfn-new-information-about-the-user-s-intent-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dfn-new-information-about-the-user-s-intent-2" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dfn-new-information-about-the-user-s-intent-3" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-implicit-signals" aria-label="Links in this document to definition: implicit signals">
       <span class="caret"></span>
@@ -2215,8 +2578,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-implicit-signals-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> 
-  </li>
+      <a href="#ref-for-dfn-implicit-signals-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-lifetime" aria-label="Links in this document to definition: lifetime">
       <span class="caret"></span>
@@ -2227,12 +2590,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-lifetime-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-lifetime-2" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-lifetime-3" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> 
-  </li><li>
-    <a href="#ref-for-dfn-lifetime-4" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-lifetime-5" title="Reference 2">(2)</a> <a href="#ref-for-dfn-lifetime-6" title="Reference 3">(3)</a> <a href="#ref-for-dfn-lifetime-7" title="Reference 4">(4)</a> <a href="#ref-for-dfn-lifetime-8" title="Reference 5">(5)</a> <a href="#ref-for-dfn-lifetime-9" title="Reference 6">(6)</a> 
-  </li>
+      <a href="#ref-for-dfn-lifetime-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-lifetime-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-lifetime-3" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> 
+    </li><li>
+      <a href="#ref-for-dfn-lifetime-4" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-lifetime-5" title="Reference 2">(2)</a> <a href="#ref-for-dfn-lifetime-6" title="Reference 3">(3)</a> <a href="#ref-for-dfn-lifetime-7" title="Reference 4">(4)</a> <a href="#ref-for-dfn-lifetime-8" title="Reference 5">(5)</a> <a href="#ref-for-dfn-lifetime-9" title="Reference 6">(6)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-default-state" aria-label="Links in this document to definition: default state">
       <span class="caret"></span>
@@ -2243,10 +2606,10 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-default-state-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> 
-  </li><li>
-    <a href="#ref-for-dfn-default-state-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-default-state-3" title="Reference 2">(2)</a> 
-  </li>
+      <a href="#ref-for-dfn-default-state-1" title="§ 3.1 Permissions">§ 3.1 Permissions</a> 
+    </li><li>
+      <a href="#ref-for-dfn-default-state-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-default-state-3" title="Reference 2">(2)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-store" aria-label="Links in this document to definition: permission store">
       <span class="caret"></span>
@@ -2257,8 +2620,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-store-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-permission-store-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-store-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-store-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-permission-store-5" title="Reference 5">(5)</a> 
-  </li>
+      <a href="#ref-for-dfn-permission-store-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-permission-store-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-store-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-store-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-permission-store-5" title="Reference 5">(5)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-store-entry" aria-label="Links in this document to definition: permission store entry">
       <span class="caret"></span>
@@ -2269,8 +2632,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-store-entry-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-permission-store-entry-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-store-entry-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-store-entry-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-permission-store-entry-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-permission-store-entry-6" title="Reference 6">(6)</a> <a href="#ref-for-dfn-permission-store-entry-7" title="Reference 7">(7)</a> 
-  </li>
+      <a href="#ref-for-dfn-permission-store-entry-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-permission-store-entry-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-store-entry-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-store-entry-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-permission-store-entry-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-permission-store-entry-6" title="Reference 6">(6)</a> <a href="#ref-for-dfn-permission-store-entry-7" title="Reference 7">(7)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-descriptor" aria-label="Links in this document to definition: descriptor">
       <span class="caret"></span>
@@ -2281,8 +2644,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-descriptor-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-descriptor-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-descriptor-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-descriptor-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-descriptor-5" title="Reference 5">(5)</a> 
-  </li>
+      <a href="#ref-for-dfn-descriptor-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-descriptor-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-descriptor-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-descriptor-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-descriptor-5" title="Reference 5">(5)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-key" aria-label="Links in this document to definition: key">
       <span class="caret"></span>
@@ -2293,8 +2656,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-key-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-key-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-key-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-key-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-key-5" title="Reference 5">(5)</a> 
-  </li>
+      <a href="#ref-for-dfn-key-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-key-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-key-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-key-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-key-5" title="Reference 5">(5)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-state" aria-label="Links in this document to definition: state">
       <span class="caret"></span>
@@ -2305,10 +2668,10 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-state-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> 
-  </li><li>
-    <a href="#ref-for-dfn-state-2" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> 
-  </li>
+      <a href="#ref-for-dfn-state-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> 
+    </li><li>
+      <a href="#ref-for-dfn-state-2" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-get-a-permission-store-entry" aria-label="Links in this document to definition: get a permission store entry">
       <span class="caret"></span>
@@ -2319,8 +2682,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-get-a-permission-store-entry-1" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> 
-  </li>
+      <a href="#ref-for-dfn-get-a-permission-store-entry-1" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-set-a-permission-store-entry" aria-label="Links in this document to definition: set a permission store entry">
       <span class="caret"></span>
@@ -2331,8 +2694,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-set-a-permission-store-entry-1" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
-  </li>
+      <a href="#ref-for-dfn-set-a-permission-store-entry-1" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-remove-a-permission-store-entry" aria-label="Links in this document to definition: remove a permission store entry">
       <span class="caret"></span>
@@ -2343,8 +2706,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-remove-a-permission-store-entry-1" title="§ 5.4 Reacting to users revoking permission">§ 5.4 Reacting to users revoking permission</a> 
-  </li>
+      <a href="#ref-for-dfn-remove-a-permission-store-entry-1" title="§ 5.4 Reacting to users revoking permission">§ 5.4 Reacting to users revoking permission</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-key" aria-label="Links in this document to definition: permission key">
       <span class="caret"></span>
@@ -2355,12 +2718,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-key-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-permission-key-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-key-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-key-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-permission-key-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-permission-key-6" title="Reference 6">(6)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-key-7" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-key-8" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-key-9" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-key-10" title="Reference 4">(4)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-key-11" title="§ 5.4 Reacting to users revoking permission">§ 5.4 Reacting to users revoking permission</a> 
-  </li>
+      <a href="#ref-for-dfn-permission-key-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-permission-key-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-key-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-key-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-permission-key-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-permission-key-6" title="Reference 6">(6)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-key-7" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-key-8" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-key-9" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-key-10" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-key-11" title="§ 5.4 Reacting to users revoking permission">§ 5.4 Reacting to users revoking permission</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-is-equal-to" aria-label="Links in this document to definition: is equal to">
       <span class="caret"></span>
@@ -2371,8 +2734,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-is-equal-to-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-is-equal-to-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-is-equal-to-3" title="Reference 3">(3)</a> 
-  </li>
+      <a href="#ref-for-dfn-is-equal-to-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-is-equal-to-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-is-equal-to-3" title="Reference 3">(3)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-powerful-feature" aria-label="Links in this document to definition: powerful feature">
       <span class="caret"></span>
@@ -2383,30 +2746,38 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-powerful-feature-1" title="§ 1. Introduction">§ 1. Introduction</a> 
-  </li><li>
-    <a href="#ref-for-dfn-powerful-feature-2" title="§ 2. Examples of usage">§ 2. Examples of usage</a> 
-  </li><li>
-    <a href="#ref-for-dfn-powerful-feature-3" title="§ 3. Model">§ 3. Model</a> 
-  </li><li>
-    <a href="#ref-for-dfn-powerful-feature-4" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-powerful-feature-5" title="Reference 2">(2)</a> <a href="#ref-for-dfn-powerful-feature-6" title="Reference 3">(3)</a> <a href="#ref-for-dfn-powerful-feature-7" title="Reference 4">(4)</a> <a href="#ref-for-dfn-powerful-feature-8" title="Reference 5">(5)</a> <a href="#ref-for-dfn-powerful-feature-9" title="Reference 6">(6)</a> <a href="#ref-for-dfn-powerful-feature-10" title="Reference 7">(7)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-powerful-feature-11" title="§ 3.3 Powerful features">§ 3.3 Powerful features</a> <a href="#ref-for-dfn-powerful-feature-12" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-powerful-feature-13" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> <a href="#ref-for-dfn-powerful-feature-14" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-powerful-feature-15" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-powerful-feature-16" title="Reference 2">(2)</a> <a href="#ref-for-dfn-powerful-feature-17" title="Reference 3">(3)</a> <a href="#ref-for-dfn-powerful-feature-18" title="Reference 4">(4)</a> <a href="#ref-for-dfn-powerful-feature-19" title="Reference 5">(5)</a> <a href="#ref-for-dfn-powerful-feature-20" title="Reference 6">(6)</a> <a href="#ref-for-dfn-powerful-feature-21" title="Reference 7">(7)</a> <a href="#ref-for-dfn-powerful-feature-22" title="Reference 8">(8)</a> <a href="#ref-for-dfn-powerful-feature-23" title="Reference 9">(9)</a> <a href="#ref-for-dfn-powerful-feature-24" title="Reference 10">(10)</a> <a href="#ref-for-dfn-powerful-feature-25" title="Reference 11">(11)</a> <a href="#ref-for-dfn-powerful-feature-26" title="Reference 12">(12)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-powerful-feature-27" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dfn-powerful-feature-28" title="§ 6.3.1 Creating instances">§ 6.3.1 Creating instances</a> 
-  </li><li>
-    <a href="#ref-for-dfn-powerful-feature-29" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> <a href="#ref-for-dfn-powerful-feature-30" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-powerful-feature-31" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
-  </li><li>
-    <a href="#ref-for-dfn-powerful-feature-32" title="§ C. Privacy considerations">§ C. Privacy considerations</a> 
-  </li>
+      <a href="#ref-for-dfn-powerful-feature-1" title="§ 1. Introduction">§ 1. Introduction</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-2" title="§ 2. Examples of usage">§ 2. Examples of usage</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-3" title="§ 3. Model">§ 3. Model</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-4" title="§ 3.1 Permissions">§ 3.1 Permissions</a> <a href="#ref-for-dfn-powerful-feature-5" title="Reference 2">(2)</a> <a href="#ref-for-dfn-powerful-feature-6" title="Reference 3">(3)</a> <a href="#ref-for-dfn-powerful-feature-7" title="Reference 4">(4)</a> <a href="#ref-for-dfn-powerful-feature-8" title="Reference 5">(5)</a> <a href="#ref-for-dfn-powerful-feature-9" title="Reference 6">(6)</a> <a href="#ref-for-dfn-powerful-feature-10" title="Reference 7">(7)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-11" title="§ 3.3 Powerful features">§ 3.3 Powerful features</a> <a href="#ref-for-dfn-powerful-feature-12" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-13" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> <a href="#ref-for-dfn-powerful-feature-14" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-15" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-powerful-feature-16" title="Reference 2">(2)</a> <a href="#ref-for-dfn-powerful-feature-17" title="Reference 3">(3)</a> <a href="#ref-for-dfn-powerful-feature-18" title="Reference 4">(4)</a> <a href="#ref-for-dfn-powerful-feature-19" title="Reference 5">(5)</a> <a href="#ref-for-dfn-powerful-feature-20" title="Reference 6">(6)</a> <a href="#ref-for-dfn-powerful-feature-21" title="Reference 7">(7)</a> <a href="#ref-for-dfn-powerful-feature-22" title="Reference 8">(8)</a> <a href="#ref-for-dfn-powerful-feature-23" title="Reference 9">(9)</a> <a href="#ref-for-dfn-powerful-feature-24" title="Reference 10">(10)</a> <a href="#ref-for-dfn-powerful-feature-25" title="Reference 11">(11)</a> <a href="#ref-for-dfn-powerful-feature-26" title="Reference 12">(12)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-27" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-28" title="§ 6.3.1 Creating instances">§ 6.3.1 Creating instances</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-29" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> <a href="#ref-for-dfn-powerful-feature-30" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-31" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-32" title="§ C.1 Purpose">§ C.1 Purpose</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-33" title="§ C.2 Change Process">§ C.2 Change Process</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-34" title="§ C.3 Registry table of standardized permissions">§ C.3 Registry table of standardized permissions</a> <a href="#ref-for-dfn-powerful-feature-35" title="Reference 2">(2)</a> <a href="#ref-for-dfn-powerful-feature-36" title="Reference 3">(3)</a> <a href="#ref-for-dfn-powerful-feature-37" title="Reference 4">(4)</a> <a href="#ref-for-dfn-powerful-feature-38" title="Reference 5">(5)</a> <a href="#ref-for-dfn-powerful-feature-39" title="Reference 6">(6)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-40" title="§ C.4 Registry table of provisional permissions">§ C.4 Registry table of provisional permissions</a> 
+    </li><li>
+      <a href="#ref-for-dfn-powerful-feature-41" title="§ D. Privacy considerations">§ D. Privacy considerations</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-name" aria-label="Links in this document to definition: name">
       <span class="caret"></span>
@@ -2417,12 +2788,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-name-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dfn-name-2" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> 
-  </li><li>
-    <a href="#ref-for-dfn-name-3" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> 
-  </li>
+      <a href="#ref-for-dfn-name-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dfn-name-2" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> 
+    </li><li>
+      <a href="#ref-for-dfn-name-3" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-aspects" aria-label="Links in this document to definition: aspects">
       <span class="caret"></span>
@@ -2433,10 +2804,10 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-aspects-1" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> 
-  </li><li>
-    <a href="#ref-for-dfn-aspects-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li>
+      <a href="#ref-for-dfn-aspects-1" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> 
+    </li><li>
+      <a href="#ref-for-dfn-aspects-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permissions-task-source" aria-label="Links in this document to definition: permissions task source">
       <span class="caret"></span>
@@ -2447,14 +2818,14 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permissions-task-source-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permissions-task-source-2" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permissions-task-source-3" title="§ 6.3.4 onchange attribute">§ 6.3.4 onchange attribute</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permissions-task-source-4" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
-  </li>
+      <a href="#ref-for-dfn-permissions-task-source-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permissions-task-source-2" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permissions-task-source-3" title="§ 6.3.4 onchange attribute">§ 6.3.4 onchange attribute</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permissions-task-source-4" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-specifies-a-powerful-feature" aria-label="Links in this document to definition: specifies a powerful feature">
       <span class="caret"></span>
@@ -2465,8 +2836,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-specifies-a-powerful-feature-1" title="§ 7. Conformance">§ 7. Conformance</a> 
-  </li>
+      <a href="#ref-for-dfn-specifies-a-powerful-feature-1" title="§ 7. Conformance">§ 7. Conformance</a> 
+    </li><li>
+      <a href="#ref-for-dfn-specifies-a-powerful-feature-2" title="§ C.2 Change Process">§ C.2 Change Process</a> 
+    </li><li>
+      <a href="#ref-for-dfn-specifies-a-powerful-feature-3" title="§ C.3 Registry table of standardized permissions">§ C.3 Registry table of standardized permissions</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-descriptor-type" aria-label="Links in this document to definition: permission descriptor type">
       <span class="caret"></span>
@@ -2477,16 +2852,16 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-descriptor-type-1" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-descriptor-type-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-descriptor-type-3" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-descriptor-type-4" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-descriptor-type-5" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-descriptor-type-6" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
-  </li>
+      <a href="#ref-for-dfn-permission-descriptor-type-1" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-descriptor-type-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-descriptor-type-3" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-descriptor-type-4" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-descriptor-type-5" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-descriptor-type-6" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-stronger-than" aria-label="Links in this document to definition: stronger than">
       <span class="caret"></span>
@@ -2497,8 +2872,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-stronger-than-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li>
+      <a href="#ref-for-dfn-stronger-than-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-state-constraints" aria-label="Links in this document to definition: permission state constraints">
       <span class="caret"></span>
@@ -2509,8 +2884,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-state-constraints-1" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> 
-  </li>
+      <a href="#ref-for-dfn-permission-state-constraints-1" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-extra-permission-data-type" aria-label="Links in this document to definition: extra permission data type">
       <span class="caret"></span>
@@ -2521,8 +2896,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-extra-permission-data-type-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-extra-permission-data-type-2" title="Reference 2">(2)</a> 
-  </li>
+      <a href="#ref-for-dfn-extra-permission-data-type-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-extra-permission-data-type-2" title="Reference 2">(2)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-extra-permission-data" aria-label="Links in this document to definition: extra permission data">
       <span class="caret"></span>
@@ -2533,8 +2908,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-extra-permission-data-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-extra-permission-data-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-extra-permission-data-3" title="Reference 3">(3)</a> 
-  </li>
+      <a href="#ref-for-dfn-extra-permission-data-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-extra-permission-data-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-extra-permission-data-3" title="Reference 3">(3)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-extra-permission-data-constraints" aria-label="Links in this document to definition: extra permission data constraints">
       <span class="caret"></span>
@@ -2545,8 +2920,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-extra-permission-data-constraints-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li>
+      <a href="#ref-for-dfn-extra-permission-data-constraints-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-result-type" aria-label="Links in this document to definition: permission result type">
       <span class="caret"></span>
@@ -2557,10 +2932,10 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-result-type-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-result-type-2" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-result-type-3" title="§ 6.3.1 Creating instances">§ 6.3.1 Creating instances</a> 
-  </li>
+      <a href="#ref-for-dfn-permission-result-type-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-result-type-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-result-type-3" title="§ 6.3.1 Creating instances">§ 6.3.1 Creating instances</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-query-algorithm" aria-label="Links in this document to definition: permission query algorithm">
       <span class="caret"></span>
@@ -2571,10 +2946,10 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-query-algorithm-1" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-query-algorithm-2" title="§ 6.3.4 onchange attribute">§ 6.3.4 onchange attribute</a> 
-  </li>
+      <a href="#ref-for-dfn-permission-query-algorithm-1" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-query-algorithm-2" title="§ 6.3.4 onchange attribute">§ 6.3.4 onchange attribute</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-default-permission-query-algorithm" aria-label="Links in this document to definition: default permission query algorithm">
       <span class="caret"></span>
@@ -2585,8 +2960,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-default-permission-query-algorithm-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li>
+      <a href="#ref-for-dfn-default-permission-query-algorithm-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-key-type" aria-label="Links in this document to definition: permission key type">
       <span class="caret"></span>
@@ -2597,10 +2972,10 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-key-type-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-permission-key-type-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-key-type-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-key-type-4" title="Reference 4">(4)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-key-type-5" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li>
+      <a href="#ref-for-dfn-permission-key-type-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dfn-permission-key-type-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-key-type-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-key-type-4" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-key-type-5" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-key-generation-algorithm" aria-label="Links in this document to definition: permission key generation algorithm">
       <span class="caret"></span>
@@ -2611,12 +2986,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-key-generation-algorithm-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-key-generation-algorithm-2" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-key-generation-algorithm-3" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-key-generation-algorithm-4" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
-  </li>
+      <a href="#ref-for-dfn-permission-key-generation-algorithm-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-key-generation-algorithm-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-key-generation-algorithm-3" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-key-generation-algorithm-4" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-default-permission-key-generation-algorithm" aria-label="Links in this document to definition: default permission key generation algorithm">
       <span class="caret"></span>
@@ -2627,8 +3002,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-default-permission-key-generation-algorithm-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li>
+      <a href="#ref-for-dfn-default-permission-key-generation-algorithm-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-key-comparison-algorithm" aria-label="Links in this document to definition: permission key comparison algorithm">
       <span class="caret"></span>
@@ -2639,10 +3014,10 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-key-comparison-algorithm-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-key-comparison-algorithm-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li>
+      <a href="#ref-for-dfn-permission-key-comparison-algorithm-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-key-comparison-algorithm-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-default-permission-key-comparison-algorithm" aria-label="Links in this document to definition: default permission key comparison algorithm">
       <span class="caret"></span>
@@ -2653,8 +3028,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-default-permission-key-comparison-algorithm-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li>
+      <a href="#ref-for-dfn-default-permission-key-comparison-algorithm-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-revocation-algorithm" aria-label="Links in this document to definition: permission revocation algorithm">
       <span class="caret"></span>
@@ -2665,10 +3040,10 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-revocation-algorithm-2" title="§ 5.4 Reacting to users revoking permission">§ 5.4 Reacting to users revoking permission</a> 
-  </li>
+      <a href="#ref-for-dfn-permission-revocation-algorithm-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-revocation-algorithm-2" title="§ 5.4 Reacting to users revoking permission">§ 5.4 Reacting to users revoking permission</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-default-permission-state" aria-label="Links in this document to definition: Default permission state">
       <span class="caret"></span>
@@ -2699,8 +3074,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-getting-the-current-permission-state-1" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> 
-  </li>
+      <a href="#ref-for-dfn-getting-the-current-permission-state-1" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission-state" aria-label="Links in this document to definition: permission state">
       <span class="caret"></span>
@@ -2711,20 +3086,20 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permission-state-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-state-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-state-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-state-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-permission-state-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-permission-state-6" title="Reference 6">(6)</a> <a href="#ref-for-dfn-permission-state-7" title="Reference 7">(7)</a> <a href="#ref-for-dfn-permission-state-8" title="Reference 8">(8)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-state-9" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> <a href="#ref-for-dfn-permission-state-10" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-state-11" title="Reference 3">(3)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-state-12" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-state-13" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> <a href="#ref-for-dfn-permission-state-14" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-state-15" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-state-16" title="§ B.1 Set Permission">§ B.1 Set Permission</a> <a href="#ref-for-dfn-permission-state-17" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-state-18" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-state-19" title="Reference 4">(4)</a> 
-  </li><li>
-    <a href="#ref-for-dfn-permission-state-20" title="§ C. Privacy considerations">§ C. Privacy considerations</a> 
-  </li>
+      <a href="#ref-for-dfn-permission-state-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dfn-permission-state-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-state-3" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-state-4" title="Reference 4">(4)</a> <a href="#ref-for-dfn-permission-state-5" title="Reference 5">(5)</a> <a href="#ref-for-dfn-permission-state-6" title="Reference 6">(6)</a> <a href="#ref-for-dfn-permission-state-7" title="Reference 7">(7)</a> <a href="#ref-for-dfn-permission-state-8" title="Reference 8">(8)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-state-9" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> <a href="#ref-for-dfn-permission-state-10" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-state-11" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-state-12" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-state-13" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> <a href="#ref-for-dfn-permission-state-14" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-state-15" title="§ A. Relationship to the Permissions Policy specification">§ A. Relationship to the Permissions Policy specification</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-state-16" title="§ B.1 Set Permission">§ B.1 Set Permission</a> <a href="#ref-for-dfn-permission-state-17" title="Reference 2">(2)</a> <a href="#ref-for-dfn-permission-state-18" title="Reference 3">(3)</a> <a href="#ref-for-dfn-permission-state-19" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dfn-permission-state-20" title="§ D. Privacy considerations">§ D. Privacy considerations</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-request-permission-to-use" aria-label="Links in this document to definition: request permission to use">
       <span class="caret"></span>
@@ -2735,8 +3110,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-request-permission-to-use-1" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> <a href="#ref-for-dfn-request-permission-to-use-2" title="Reference 2">(2)</a> 
-  </li>
+      <a href="#ref-for-dfn-request-permission-to-use-1" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> <a href="#ref-for-dfn-request-permission-to-use-2" title="Reference 2">(2)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-prompt-the-user-to-choose" aria-label="Links in this document to definition: prompt the user to choose">
       <span class="caret"></span>
@@ -2747,8 +3122,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-prompt-the-user-to-choose-1" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> <a href="#ref-for-dfn-prompt-the-user-to-choose-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-prompt-the-user-to-choose-3" title="Reference 3">(3)</a> 
-  </li>
+      <a href="#ref-for-dfn-prompt-the-user-to-choose-1" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> <a href="#ref-for-dfn-prompt-the-user-to-choose-2" title="Reference 2">(2)</a> <a href="#ref-for-dfn-prompt-the-user-to-choose-3" title="Reference 3">(3)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-react-to-the-user-revoking-permission" aria-label="Links in this document to definition: react to the user revoking permission">
       <span class="caret"></span>
@@ -2759,8 +3134,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-react-to-the-user-revoking-permission-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li>
+      <a href="#ref-for-dfn-react-to-the-user-revoking-permission-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-navigator-permissions" aria-label="Links in this document to definition: permissions">
       <span class="caret"></span>
@@ -2791,12 +3166,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissions-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissions-2" title="§ 6.1 Extensions to the Navigator and WorkerNavigator interfaces">§ 6.1 Extensions to the Navigator and WorkerNavigator interfaces</a> <a href="#ref-for-dom-permissions-3" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissions-4" title="§ E. IDL Index">§ E. IDL Index</a> <a href="#ref-for-dom-permissions-5" title="Reference 2">(2)</a> 
-  </li>
+      <a href="#ref-for-dom-permissions-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissions-2" title="§ 6.1 Extensions to the Navigator and WorkerNavigator interfaces">§ 6.1 Extensions to the Navigator and WorkerNavigator interfaces</a> <a href="#ref-for-dom-permissions-3" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissions-4" title="§ F. IDL Index">§ F. IDL Index</a> <a href="#ref-for-dom-permissions-5" title="Reference 2">(2)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissiondescriptor" aria-label="Links in this document to definition: PermissionDescriptor">
       <span class="caret"></span>
@@ -2807,30 +3182,30 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissiondescriptor-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dom-permissiondescriptor-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissiondescriptor-3" title="Reference 3">(3)</a> <a href="#ref-for-dom-permissiondescriptor-4" title="Reference 4">(4)</a> <a href="#ref-for-dom-permissiondescriptor-5" title="Reference 5">(5)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-6" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> <a href="#ref-for-dom-permissiondescriptor-7" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-8" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dom-permissiondescriptor-9" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissiondescriptor-10" title="Reference 3">(3)</a> <a href="#ref-for-dom-permissiondescriptor-11" title="Reference 4">(4)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-12" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> <a href="#ref-for-dom-permissiondescriptor-13" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-14" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-15" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-16" title="§ 5.4 Reacting to users revoking permission">§ 5.4 Reacting to users revoking permission</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-17" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-18" title="§ 6.3.1 Creating instances">§ 6.3.1 Creating instances</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-19" title="§ B. Automated testing">§ B. Automated testing</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-20" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-21" title="§ E. IDL Index">§ E. IDL Index</a> 
-  </li>
+      <a href="#ref-for-dom-permissiondescriptor-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> <a href="#ref-for-dom-permissiondescriptor-2" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissiondescriptor-3" title="Reference 3">(3)</a> <a href="#ref-for-dom-permissiondescriptor-4" title="Reference 4">(4)</a> <a href="#ref-for-dom-permissiondescriptor-5" title="Reference 5">(5)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-6" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> <a href="#ref-for-dom-permissiondescriptor-7" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-8" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dom-permissiondescriptor-9" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissiondescriptor-10" title="Reference 3">(3)</a> <a href="#ref-for-dom-permissiondescriptor-11" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-12" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> <a href="#ref-for-dom-permissiondescriptor-13" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-14" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-15" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-16" title="§ 5.4 Reacting to users revoking permission">§ 5.4 Reacting to users revoking permission</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-17" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-18" title="§ 6.3.1 Creating instances">§ 6.3.1 Creating instances</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-19" title="§ B. Automated testing">§ B. Automated testing</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-20" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-21" title="§ F. IDL Index">§ F. IDL Index</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissiondescriptor-name" aria-label="Links in this document to definition: name">
       <span class="caret"></span>
@@ -2841,24 +3216,24 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissiondescriptor-name-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-name-2" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> <a href="#ref-for-dom-permissiondescriptor-name-3" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissiondescriptor-name-4" title="Reference 3">(3)</a> <a href="#ref-for-dom-permissiondescriptor-name-5" title="Reference 4">(4)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-name-6" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-name-7" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-name-8" title="§ 5.4 Reacting to users revoking permission">§ 5.4 Reacting to users revoking permission</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-name-9" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> <a href="#ref-for-dom-permissiondescriptor-name-10" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissiondescriptor-name-11" title="Reference 3">(3)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-name-12" title="§ 6.3.1 Creating instances">§ 6.3.1 Creating instances</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-name-13" title="§ 6.3.4 onchange attribute">§ 6.3.4 onchange attribute</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissiondescriptor-name-14" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
-  </li>
+      <a href="#ref-for-dom-permissiondescriptor-name-1" title="§ 3.2 Permission Store">§ 3.2 Permission Store</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-name-2" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> <a href="#ref-for-dom-permissiondescriptor-name-3" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissiondescriptor-name-4" title="Reference 3">(3)</a> <a href="#ref-for-dom-permissiondescriptor-name-5" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-name-6" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-name-7" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-name-8" title="§ 5.4 Reacting to users revoking permission">§ 5.4 Reacting to users revoking permission</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-name-9" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> <a href="#ref-for-dom-permissiondescriptor-name-10" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissiondescriptor-name-11" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-name-12" title="§ 6.3.1 Creating instances">§ 6.3.1 Creating instances</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-name-13" title="§ 6.3.4 onchange attribute">§ 6.3.4 onchange attribute</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissiondescriptor-name-14" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissions-query" aria-label="Links in this document to definition: query()">
       <span class="caret"></span>
@@ -2869,12 +3244,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissions-query-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissions-query-2" title="§ 6.2 Permissions interface">§ 6.2 Permissions interface</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissions-query-3" title="§ E. IDL Index">§ E. IDL Index</a> 
-  </li>
+      <a href="#ref-for-dom-permissions-query-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissions-query-2" title="§ 6.2 Permissions interface">§ 6.2 Permissions interface</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissions-query-3" title="§ F. IDL Index">§ F. IDL Index</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-query-a-permission" aria-label="Links in this document to definition: query a permission">
       <span class="caret"></span>
@@ -2895,20 +3270,20 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissionstatus-1" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstatus-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dom-permissionstatus-3" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissionstatus-4" title="Reference 3">(3)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstatus-5" title="§ 6.2 Permissions interface">§ 6.2 Permissions interface</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstatus-6" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstatus-7" title="§ 6.3.4 onchange attribute">§ 6.3.4 onchange attribute</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstatus-8" title="§ 6.3.5 Garbage collection">§ 6.3.5 Garbage collection</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstatus-9" title="§ E. IDL Index">§ E. IDL Index</a> 
-  </li>
+      <a href="#ref-for-dom-permissionstatus-1" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstatus-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dom-permissionstatus-3" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissionstatus-4" title="Reference 3">(3)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstatus-5" title="§ 6.2 Permissions interface">§ 6.2 Permissions interface</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstatus-6" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstatus-7" title="§ 6.3.4 onchange attribute">§ 6.3.4 onchange attribute</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstatus-8" title="§ 6.3.5 Garbage collection">§ 6.3.5 Garbage collection</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstatus-9" title="§ F. IDL Index">§ F. IDL Index</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionstate" aria-label="Links in this document to definition: PermissionState">
       <span class="caret"></span>
@@ -2919,16 +3294,16 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissionstate-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dom-permissionstate-2" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-3" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> <a href="#ref-for-dom-permissionstate-4" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissionstate-5" title="Reference 3">(3)</a> <a href="#ref-for-dom-permissionstate-6" title="Reference 4">(4)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-7" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-8" title="§ B. Automated testing">§ B. Automated testing</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-9" title="§ E. IDL Index">§ E. IDL Index</a> <a href="#ref-for-dom-permissionstate-10" title="Reference 2">(2)</a> 
-  </li>
+      <a href="#ref-for-dom-permissionstate-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dom-permissionstate-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-3" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> <a href="#ref-for-dom-permissionstate-4" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissionstate-5" title="Reference 3">(3)</a> <a href="#ref-for-dom-permissionstate-6" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-7" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-8" title="§ B. Automated testing">§ B. Automated testing</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-9" title="§ F. IDL Index">§ F. IDL Index</a> <a href="#ref-for-dom-permissionstate-10" title="Reference 2">(2)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-query" aria-label="Links in this document to definition: [[query]]">
       <span class="caret"></span>
@@ -2939,12 +3314,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-query-1" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> 
-  </li><li>
-    <a href="#ref-for-dfn-query-2" title="§ 6.3.1 Creating instances">§ 6.3.1 Creating instances</a> 
-  </li><li>
-    <a href="#ref-for-dfn-query-3" title="§ 6.3.4 onchange attribute">§ 6.3.4 onchange attribute</a> 
-  </li>
+      <a href="#ref-for-dfn-query-1" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> 
+    </li><li>
+      <a href="#ref-for-dfn-query-2" title="§ 6.3.1 Creating instances">§ 6.3.1 Creating instances</a> 
+    </li><li>
+      <a href="#ref-for-dfn-query-3" title="§ 6.3.4 onchange attribute">§ 6.3.4 onchange attribute</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionstate-granted" aria-label="Links in this document to definition: granted">
       <span class="caret"></span>
@@ -2955,16 +3330,16 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissionstate-granted-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dom-permissionstate-granted-2" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-granted-3" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> <a href="#ref-for-dom-permissionstate-granted-4" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-granted-5" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-granted-6" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-granted-7" title="§ E. IDL Index">§ E. IDL Index</a> 
-  </li>
+      <a href="#ref-for-dom-permissionstate-granted-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dom-permissionstate-granted-2" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-granted-3" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> <a href="#ref-for-dom-permissionstate-granted-4" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-granted-5" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-granted-6" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-granted-7" title="§ F. IDL Index">§ F. IDL Index</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionstate-denied" aria-label="Links in this document to definition: denied">
       <span class="caret"></span>
@@ -2975,22 +3350,22 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissionstate-denied-1" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-denied-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dom-permissionstate-denied-3" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-denied-4" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> <a href="#ref-for-dom-permissionstate-denied-5" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-denied-6" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> <a href="#ref-for-dom-permissionstate-denied-7" title="Reference 2">(2)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-denied-8" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> <a href="#ref-for-dom-permissionstate-denied-9" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissionstate-denied-10" title="Reference 3">(3)</a> <a href="#ref-for-dom-permissionstate-denied-11" title="Reference 4">(4)</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-denied-12" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-denied-13" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-denied-14" title="§ E. IDL Index">§ E. IDL Index</a> 
-  </li>
+      <a href="#ref-for-dom-permissionstate-denied-1" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-denied-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> <a href="#ref-for-dom-permissionstate-denied-3" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-denied-4" title="§ 5.1 Reading the current permission state">§ 5.1 Reading the current permission state</a> <a href="#ref-for-dom-permissionstate-denied-5" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-denied-6" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> <a href="#ref-for-dom-permissionstate-denied-7" title="Reference 2">(2)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-denied-8" title="§ 5.3 Prompt the user to choose">§ 5.3 Prompt the user to choose</a> <a href="#ref-for-dom-permissionstate-denied-9" title="Reference 2">(2)</a> <a href="#ref-for-dom-permissionstate-denied-10" title="Reference 3">(3)</a> <a href="#ref-for-dom-permissionstate-denied-11" title="Reference 4">(4)</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-denied-12" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-denied-13" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-denied-14" title="§ F. IDL Index">§ F. IDL Index</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionstate-prompt" aria-label="Links in this document to definition: prompt">
       <span class="caret"></span>
@@ -3001,14 +3376,14 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissionstate-prompt-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-prompt-2" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-prompt-3" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstate-prompt-4" title="§ E. IDL Index">§ E. IDL Index</a> 
-  </li>
+      <a href="#ref-for-dom-permissionstate-prompt-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-prompt-2" title="§ 5.2 Requesting permission to use a powerful feature">§ 5.2 Requesting permission to use a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-prompt-3" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstate-prompt-4" title="§ F. IDL Index">§ F. IDL Index</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-create-a-permissionstatus" aria-label="Links in this document to definition: create a PermissionStatus">
       <span class="caret"></span>
@@ -3019,8 +3394,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-create-a-permissionstatus-1" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> 
-  </li>
+      <a href="#ref-for-dfn-create-a-permissionstatus-1" title="§ 6.2.1 query() method">§ 6.2.1 query() method</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionstatus-name" aria-label="Links in this document to definition: name">
       <span class="caret"></span>
@@ -3031,12 +3406,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissionstatus-name-1" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstatus-name-2" title="§ 6.3.1 Creating instances">§ 6.3.1 Creating instances</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstatus-name-3" title="§ E. IDL Index">§ E. IDL Index</a> 
-  </li>
+      <a href="#ref-for-dom-permissionstatus-name-1" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstatus-name-2" title="§ 6.3.1 Creating instances">§ 6.3.1 Creating instances</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstatus-name-3" title="§ F. IDL Index">§ F. IDL Index</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionstatus-state" aria-label="Links in this document to definition: state">
       <span class="caret"></span>
@@ -3047,14 +3422,14 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissionstatus-state-1" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstatus-state-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstatus-state-3" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstatus-state-4" title="§ E. IDL Index">§ E. IDL Index</a> 
-  </li>
+      <a href="#ref-for-dom-permissionstatus-state-1" title="§ 3.3.1 Aspects">§ 3.3.1 Aspects</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstatus-state-2" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstatus-state-3" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstatus-state-4" title="§ F. IDL Index">§ F. IDL Index</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionstatus-onchange" aria-label="Links in this document to definition: onchange">
       <span class="caret"></span>
@@ -3065,10 +3440,10 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissionstatus-onchange-1" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
-  </li><li>
-    <a href="#ref-for-dom-permissionstatus-onchange-2" title="§ E. IDL Index">§ E. IDL Index</a> 
-  </li>
+      <a href="#ref-for-dom-permissionstatus-onchange-1" title="§ 6.3 PermissionStatus interface">§ 6.3 PermissionStatus interface</a> 
+    </li><li>
+      <a href="#ref-for-dom-permissionstatus-onchange-2" title="§ F. IDL Index">§ F. IDL Index</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permissionstatus-update-steps" aria-label="Links in this document to definition: PermissionStatus update steps">
       <span class="caret"></span>
@@ -3079,8 +3454,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-permissionstatus-update-steps-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li>
+      <a href="#ref-for-dfn-permissionstatus-update-steps-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-specifications" aria-label="Links in this document to definition: specifications">
       <span class="caret"></span>
@@ -3091,8 +3466,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-specifications-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
-  </li>
+      <a href="#ref-for-dfn-specifications-1" title="§ 4. Specifying a powerful feature">§ 4. Specifying a powerful feature</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionsetparameters" aria-label="Links in this document to definition: PermissionSetParameters">
       <span class="caret"></span>
@@ -3103,8 +3478,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissionsetparameters-1" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
-  </li>
+      <a href="#ref-for-dom-permissionsetparameters-1" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionsetparameters-descriptor" aria-label="Links in this document to definition: descriptor">
       <span class="caret"></span>
@@ -3115,8 +3490,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissionsetparameters-descriptor-1" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
-  </li>
+      <a href="#ref-for-dom-permissionsetparameters-descriptor-1" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dom-permissionsetparameters-state" aria-label="Links in this document to definition: state">
       <span class="caret"></span>
@@ -3127,8 +3502,8 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dom-permissionsetparameters-state-1" title="§ B.1 Set Permission">§ B.1 Set Permission</a> <a href="#ref-for-dom-permissionsetparameters-state-2" title="Reference 2">(2)</a> 
-  </li>
+      <a href="#ref-for-dom-permissionsetparameters-state-1" title="§ B.1 Set Permission">§ B.1 Set Permission</a> <a href="#ref-for-dom-permissionsetparameters-state-2" title="Reference 2">(2)</a> 
+    </li>
   </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-set-permission" aria-label="Links in this document to definition: Set Permission">
       <span class="caret"></span>
@@ -3139,8 +3514,56 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <p><b>Referenced in:</b></p>
       <ul>
     <li>
-    <a href="#ref-for-dfn-set-permission-1" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
-  </li>
+      <a href="#ref-for-dfn-set-permission-1" title="§ B.1 Set Permission">§ B.1 Set Permission</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-change-process" aria-label="Links in this document to definition: change process">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-change-process" aria-label="Permalink for definition: change process. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-change-process-1" title="§ C.1 Purpose">§ C.1 Purpose</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-standardized-permission" aria-label="Links in this document to definition: standardized permission">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-standardized-permission" aria-label="Permalink for definition: standardized permission. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-standardized-permission-1" title="§ C.4 Registry table of provisional permissions">§ C.4 Registry table of provisional permissions</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-table-of-standardized-permissions-of-the-web-platform" aria-label="Links in this document to definition: Table of standardized permissions of the web platform">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-table-of-standardized-permissions-of-the-web-platform" aria-label="Permalink for definition: Table of standardized permissions of the web platform. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-table-of-standardized-permissions-of-the-web-platform-1" title="§ C.2 Change Process">§ C.2 Change Process</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-table-of-provisional-permissions" aria-label="Links in this document to definition: Table of provisional permissions">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#dfn-table-of-provisional-permissions" aria-label="Permalink for definition: Table of provisional permissions. Activate to close this dialog.">Permalink</a>
+         
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-dfn-table-of-provisional-permissions-1" title="§ C.2 Change Process">§ C.2 Change Process</a> 
+    </li>
   </ul>
     </div><script id="respec-dfn-panel">(() => {
 // @ts-check
