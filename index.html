@@ -48,13 +48,9 @@
         },
         mdn: true,
         // See https://respec.org/docs/#xref for usage.
-        xref: "web-platform",
-        localBiblio: {
-          "permissions-registry": {
-            title: "Permissions Registry",
-            href: "https://w3c.github.io/permissions-registry/",
-            status: "unofficial",
-          }
+        xref: {
+          profile: "web-platform",
+          specs: ["permissions-policy", "w3c-process"],
         },
         caniuse: {
           feature: "permissions-api",
@@ -1290,6 +1286,396 @@
           }
           </pre>
         </aside>
+      </section>
+    </section>
+    <section class="informative">
+      <h2>
+        Permissions Registry
+      </h2>
+      <section>
+        <h3>
+          Purpose
+        </h3>
+        <p>
+          This [=W3C Registry=] provides a centralized place to find the [=policy-controlled
+          features=] and/or [=powerful features=] of the web platform. Through the [=change
+          process=] it also helps assure permissions in the platform are consistently specified
+          across various specifications.
+        </p>
+        <p>
+          By splitting the registry into standardized permissions and provisional permissions, the
+          registry also provides a way to track the status of these features.
+        </p>
+      </section>
+      <section>
+        <h2>
+          Change Process
+        </h2>
+        <p>
+          The <dfn>change process</dfn> for adding and/or updating this registry is as follows:
+        </p>
+        <ol>
+          <li>If necessary, add a "Permissions Policy" section to your specification which includes
+          the following:
+            <ol>
+              <li>The string that identifies the policy controlled feature (e.g.,
+              `"super-awesome"`). Make sure the string is linkable by wrapping it a [^dfn^]
+              element.
+              </li>
+              <li>The [=policy-controlled feature/default allowlist=] value (e.g. `'self'`).
+                <aside class="example" title="Specifying a Permissions Policy">
+                  <p>
+                    An typical example that would meet this criteria:
+                  </p>
+                  <blockquote>
+                    The Super Awesome API defines a [=policy-controlled feature=] identified by the
+                    string "super-awesome". Its [=policy-controlled feature/default allowlist=] is
+                    `'self'`.
+                  </blockquote>
+                </aside>
+              </li>
+            </ol>
+          </li>
+          <li>Determine if your feature meets the definition of a [=powerful feature=] (i.e.,
+          requires [=express permission=] to be used). If it does:
+            <ol>
+              <li>[=Specifies a powerful feature|Specify a powerful feature=] in your specification
+              in conformance with the [[[Permissions]]] specification.
+              </li>
+            </ol>
+          </li>
+          <li>Modify either the [=table of standardized permissions=] or the [=table of provisional
+          permissions=] filling out each column with the required information.
+          </li>
+          <li>Submit a pull request to the <a href="https://github.com/w3c/permissions/">Powerful
+          Features Registry Repository</a> on GitHub with your changes. The maintainers of the
+          repository will review your pull request and check that everything integrates properly.
+          </li>
+        </ol>
+      </section>
+      <section>
+        <h2>
+          Registry table of standardized permissions
+        </h2>
+        <p>
+          For a permission to appear in the table of standardized permissions, and thus be
+          considered a <dfn>standardized permission</dfn>, it needs to meet the following criteria:
+        </p>
+        <ul>
+          <li>Implemented and demonstrably interoperable in at least two browser engines (e.g., has
+          accompanying <a href="https://web-platform-tests.org">Web Platform Tests</a>).
+          </li>
+          <li>Is specified in published as [=technical report=] by a W3C [=Working Group=] with
+          maturity of [=first public working draft=] or above, or is published by the <a href=
+          "https://whatwg.org">WHATWG</a> as a standard.
+          </li>
+        </ul>
+        <p>
+          Each [=permission=] is identified by a unique literal string. In the case of
+          [[[Permissions-Policy]]], the string identifies a [=policy-controlled features=].
+          Similarly, in the [[[Permissions]]] specification the string identifies a [=powerful
+          feature=].
+        </p>
+        <aside class="note" title="Permissions and Permissions Policy">
+          <p>
+            Not every [=policy-controlled feature=] is [=powerful features=]. For example,
+            "web-share" is a [=policy-controlled feature=] that is not classified as a [=powerful
+            feature=] because it doesn't require [=express permission=] to be used. However, with
+            very few exceptions, most [=powerful features=] are also [=policy-controlled
+            features=]. For example, "geolocation" is both a [=policy-controlled feature=] and a
+            [=powerful feature=], as it requires [=express permission=] to be used. Please refer to
+            the [[[Permissions]]] specification for guidance on how to [=specifies a powerful
+            feature|specify a powerful feature=].
+          </p>
+        </aside>
+        <table class="simple data">
+          <caption>
+            <dfn data-local-lt="table of standardized permissions">Table of standardized
+            permissions of the web platform</dfn>
+          </caption>
+          <tr>
+            <th rowspan="2">
+              Identifying string
+            </th>
+            <th rowspan="2">
+              Is [=policy-controlled feature=]?
+            </th>
+            <th rowspan="2">
+              Is [=powerful feature=]?
+            </th>
+            <th rowspan="2">
+              Specification
+            </th>
+            <th colspan="3">
+              Implementations
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <a href="https://www.chromium.org/Home/">Chromium</a>
+            </th>
+            <th>
+              <a href="https://developer.mozilla.org/en-US/docs/Glossary/Gecko">Gecko</a>
+            </th>
+            <th>
+              <a href="https://webkit.org/">WebKit</a>
+            </th>
+          </tr>
+          <tr data-cite="geolocation">
+            <td class="string-token">
+              <a>"geolocation"</a>
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              [[[geolocation]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              YES
+            </td>
+            <td class="imp-webkit">
+              YES
+            </td>
+          </tr>
+          <tr data-cite="notifications">
+            <td class="string-token">
+              "[=notifications=]"
+            </td>
+            <td class="is-policy-controlled">
+              NO
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              [[[NOTIFICATIONS]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              YES
+            </td>
+            <td class="imp-webkit">
+              YES
+            </td>
+          </tr>
+          <tr data-cite="push-api">
+            <td class="string-token">
+              [="push"=]
+            </td>
+            <td class="is-policy-controlled">
+              NO
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              [[[push-api]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              YES
+            </td>
+            <td class="imp-webkit">
+              YES
+            </td>
+          </tr>
+          <tr data-cite="Web-share">
+            <td class="string-token">
+              <a>"web-share"</a>
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              NO
+            </td>
+            <td class="spec">
+              [[[Web-Share]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              YES
+            </td>
+            <td class="imp-webkit">
+              YES
+            </td>
+          </tr><!--
+            You can add a row to this table by copy/pasting the following.
+          -->
+          <!--tr data-cite="spec-shortname">
+            <td class="string-token">
+              <a>"some-string"</a>
+            </td>
+            <td class="is-policy-controlled">
+              YES/NO
+            </td>
+            <td class="is-powerful-feature">
+              YES/NO
+            </td>
+            <td class="spec">
+              [[[some-spec]]]
+            </td>
+            <td class="imp-chromium">
+              YES/NO
+            </td>
+            <td class="imp-gecko">
+              YES/NO
+            </td>
+            <td class="imp-webkit">
+              YES/NO
+            </td>
+          </tr-->
+        </table>
+      </section>
+      <section>
+        <h2>
+          Registry table of provisional permissions
+        </h2>
+        <p>
+          Provisional permissions are permissions that are not yet [=standardized
+          permission|standardized=] (i.e., they are either experimental, still in the incubation
+          phase, or are only implemented in a single browser engine).
+        </p>
+        <table class="simple data">
+          <caption>
+            <dfn>Table of provisional permissions</dfn>
+          </caption>
+          <tr>
+            <th rowspan="2">
+              Identifying string
+            </th>
+            <th rowspan="2">
+              Is [=policy-controlled feature=]?
+            </th>
+            <th rowspan="2">
+              Is [=powerful feature=]?
+            </th>
+            <th rowspan="2">
+              Specification
+            </th>
+            <th colspan="3">
+              Implementations
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <a href="https://www.chromium.org/Home/">Chromium</a>
+            </th>
+            <th>
+              <a href="https://developer.mozilla.org/en-US/docs/Glossary/Gecko">Gecko</a>
+            </th>
+            <th>
+              <a href="https://webkit.org/">WebKit</a>
+            </th>
+          </tr>
+          <tr data-cite="accelerometer">
+            <td class="string-token">
+              "[=accelerometer=]"
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              [[[accelerometer]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              NO
+            </td>
+            <td class="imp-webkit">
+              NO
+            </td>
+          </tr>
+          <tr data-cite="window-management">
+            <td class="string-token">
+              "[=window-management=]"
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              [[[window-management]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              NO
+            </td>
+            <td class="imp-webkit">
+              NO
+            </td>
+          </tr>
+          <tr data-cite="local-font-access">
+            <td class="string-token">
+              "[=local-fonts=]"
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              [[[local-font-access]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              NO
+            </td>
+            <td class="imp-webkit">
+              NO
+            </td>
+          </tr><!--
+            You can add a row to this table by copy/pasting the following.
+          -->
+          <!--tr data-cite="spec-shortname">
+            <td class="string-token">
+              <a>"some-string"</a>
+            </td>
+            <td class="is-policy-controlled">
+              YES/NO
+            </td>
+            <td class="is-powerful-feature">
+              YES/NO
+            </td>
+            <td class="spec">
+              [[[some-spec]]]
+            </td>
+            <td class="imp-chromium">
+              YES/NO
+            </td>
+            <td class="imp-gecko">
+              YES/NO
+            </td>
+            <td class="imp-webkit">
+              YES/NO
+            </td>
+          </tr-->
+        </table>
       </section>
     </section>
     <section class="appendix">
