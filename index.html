@@ -1194,14 +1194,12 @@
       </pre>
       <p>To <dfn>set a permission</dfn> given <var>descriptor</var>, and <var>state</var>:
       <ol class="algorithm">
-        <li>Let |settings| be the [=current settings object=].
-        </li>
+        <li>Let |settings| be the [=current settings object=].</li>
         <li>Let |targets| be a <a>list</a> containing all [=environment settings objects=]
         whose [=environment settings object/origin=] is [=same origin=] as
         the [=environment settings object/origin=] of |settings|.
         </li>
-        <li>Let |tasks| be an empty <a>list</a>.
-        </li>
+        <li>Let |tasks| be an empty <a>list</a>.</li>
         <li>For each <a>environment settings object</a> |target| in |targets|:
           <ol>
             <li>
@@ -1215,12 +1213,10 @@
                 </li>
               </ol>
             </li>
-            <li>[=list/Append=] |task| to |tasks|.
-            </li>
+            <li>[=list/Append=] |task| to |tasks|.</li>
           </ol>
         </li>
-        <li>Wait for all <a>tasks</a> in |tasks| to have executed.
-        </li>
+        <li>Wait for all <a>tasks</a> in |tasks| to have executed.</li>
       </ol>
       <section data-cite="webdriver">
         <h3 id="automation-webdriver">
@@ -1397,13 +1393,13 @@
                   </pre>
                 </dd>
              </dl>
-             <ol algorithm="remote end steps for permissions.setPermission">
-               <p>
-                TODO: Add user `context` to `SetPermissionParameters`.
-               </p>
-               <p>
-                TODO: Add `origin`.
-               </p>
+             <p>
+              TODO: Add `user context` to `SetPermissionParameters`.
+             </p>
+             <p>
+              TODO: Add `origin` to `SetPermissionParameters`.
+             </p>
+             <div class="algorithm" data-algorithm="remote end steps for permissions.setPermission">
                <p>
                  The [=remote end steps=] with |session| and |command parameters| are:
                </p>
@@ -1429,14 +1425,10 @@
                   {{PermissionSetParameters}} |permission name|'s [=powerful feature/permission descriptor type=].
                   If this conversion throws an exception, return [=error=] with [=error code=] [=invalid argument=].
                 </li>
-                <li>
-                  [=Set a permission=] with |typedDescriptor| and |state|.
-                </li>
-                <li>
-                  Return [=success=] with data null.
-                </li>
+                <li>[=Set a permission=] with |typedDescriptor| and |state|.</li>
+                <li>Return [=success=] with data null.</li>
                </ol>
-             </ol>
+             </>
             </section>
           </section>
         </section>
