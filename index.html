@@ -510,8 +510,8 @@
           <aside class="example" id="example-stronger-than" title=
           "A permission descriptor that defines a partial order">
             <p>
-              <code>{name: "midi", sysex: true}</code> ("midi-with-sysex") is
-              [=PermissionDescriptor/stronger than=] <code>{name: "midi", sysex: false}</code>
+              `{name: "midi", sysex: true}` ("midi-with-sysex") is
+              [=PermissionDescriptor/stronger than=] `{name: "midi", sysex: false}`
               ("midi-without-sysex"), so if the user denies access to midi-without-sysex, the UA
               must also deny access to midi-with-sysex, and similarly if the user grants access to
               midi-with-sysex, the user agent must also grant access to midi-without-sysex.
@@ -594,7 +594,7 @@
             runs the following steps:
           </p>
           <ol class="algorithm">
-            <li>Set <code>|status|</code>'s {{PermissionStatus/state}} to |permissionDesc|'s
+            <li>Set `|status|`'s {{PermissionStatus/state}} to |permissionDesc|'s
             <a>permission state</a>.
             </li>
           </ol>
@@ -1088,7 +1088,7 @@
           </h4>
           <p>
             The <dfn>onchange</dfn> attribute is an <a>event handler</a> whose corresponding
-            <a>event handler event type</a> is <code>change</code>.
+            <a>event handler event type</a> is `change`.
           </p>
           <p id="PermissionStatus-update">
             Whenever the [=user agent=] is aware that the state of a {{PermissionStatus}} instance
@@ -1113,7 +1113,7 @@
             </li>
             <li>
               <a>Queue a task</a> on the [=permissions task source=] to <a>fire an event</a> named
-              <code>change</code> at |status|.
+              `change` at |status|.
             </li>
           </ol>
         </section>
@@ -1277,7 +1277,7 @@
               </p>
             </li>
             <li>Let |typedDescriptor| be the object |rootDesc| refers to, <a>converted to an IDL
-            value</a> of <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s [=powerful
+            value</a> of `|rootDesc|.{{PermissionDescriptor/name}}`'s [=powerful
             feature/permission descriptor type=]. If this throws an exception, return a [=invalid
             argument=] [=error=].
             </li>
@@ -1347,7 +1347,7 @@
                 }
               </pre>
               <p>
-                The <code>permissions.PermissionDescriptor</code> type represents a {{PermissionDescriptor}}.
+                The `permissions.PermissionDescriptor` type represents a {{PermissionDescriptor}}.
               </p>
             </section>
             <section>
@@ -1358,7 +1358,7 @@
                 permissions.PermissionState = "granted" / "denied" / "prompt"
               </pre>
               <p>
-                The <code>permissions.PermissionState</code> type represents a {{PermissionState}}.
+                The `permissions.PermissionState` type represents a {{PermissionState}}.
               </p>
             </section>
           </section>
@@ -1399,25 +1399,25 @@
              </dl>
              <ol algorithm="remote end steps for permissions.setPermission">
                <p>
-                TODO: Add user <code>context</code> to <code>SetPermissionParameters</code>.
+                TODO: Add user `context` to `SetPermissionParameters`.
                </p>
                <p>
-                TODO: Add <code>origin</code>.
+                TODO: Add `origin`.
                </p>
                <p>
                  The [=remote end steps=] with |session| and |command parameters| are:
                </p>
                <ol>
                 <li>
-                  Let |descriptor| be the value of the <code>descriptor</code> field of
+                  Let |descriptor| be the value of the `descriptor` field of
    |command parameters|.
                 </li>
                 <li>
-                  Let |permission name| be the value of the <code>name</code> field of
+                  Let |permission name| be the value of the `name` field of
              |descriptor| representing {{PermissionDescriptor/name}}.
                 </li>
                 <li>
-                  Let |state| be the value of the <code>state</code> field of |command
+                  Let |state| be the value of the `state` field of |command
    parameters|.
                 </li>
                 <li>
