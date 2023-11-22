@@ -183,7 +183,7 @@ img.caniuse-browser{filter:drop-shadow(0 0 .1cm #666)}
 .mdn .samsunginternet_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/samsung-internet/samsung-internet.svg)}
 .mdn .webview_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/android-webview/android-webview.png)}
 </style>
-<meta name="revision" content="afe47976a5fc53691e1f890f50464404180536c8">
+<meta name="revision" content="7a1a9f16dc8b740af8b1f39f77dc02eebf991aa8">
 <meta name="description" content="This specification defines common infrastructure that other specifications can use to
         interact with browser permissions. These permissions represent a user's choice to allow or
         deny access to &quot;powerful features&quot; of the platform. For developers, the specification
@@ -259,9 +259,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     ]
   },
   "caniuse": "permissions-api",
-  "gitRevision": "afe47976a5fc53691e1f890f50464404180536c8",
-  "publishISODate": "2023-11-19T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 19 November 2023"
+  "gitRevision": "7a1a9f16dc8b740af8b1f39f77dc02eebf991aa8",
+  "publishISODate": "2023-11-22T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 22 November 2023"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL permissions-policy w3c-process HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -270,7 +270,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2023-11-19">19 November 2023</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2023-11-22">22 November 2023</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -646,7 +646,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         </p>
         <div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="4"><span>Note</span><span class="issue-label">: What constitutes an implicit signal?</span></div><aside class="" data-cite="appmanifest">
           <p>
-            The <a href="#dfn-implicit-signals" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-implicit-signals-1">implicit signals</a> could be, for example, the <a data-link-type="dfn|abstract-op" data-lt="installed web application" data-type="dfn" href="https://www.w3.org/TR/appmanifest/#dfn-installed-web-application">installation</a> status of a web application or frequency and recency of
+            The <a data-link-type="dfn|abstract-op" href="#dfn-implicit-signals" class="internalDFN" id="ref-for-dfn-implicit-signals-1">implicit signals</a> could be, for example, the <a data-link-type="dfn|abstract-op" data-lt="installed web application" data-type="dfn" href="https://www.w3.org/TR/appmanifest/#dfn-installed-web-application">installation</a> status of a web application or frequency and recency of
             visits. A user that has installed a web application and used it frequently and recently
             is more likely to trust it. Implementations are advised to exercise caution when
             relying on implicit signals.
@@ -788,7 +788,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           A <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-11">powerful feature</a> is identified by its <dfn class="export" data-dfn-for="powerful feature" data-export="" id="dfn-name" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">name</dfn>, which is a string literal (e.g., "geolocation").
         </p>
         <p>
-          The user agent tracks which <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-12">powerful features</a> the user has <a data-link-type="dfn|abstract-op" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-5">permission</a> to use
+          The user agent tracks which <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-12">powerful features</a> the user has <a data-link-type="dfn|abstract-op" href="#dfn-permission" class="internalDFN" id="ref-for-dfn-permission-5">permission</a> to use
           via the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a>.
         </p>
         <section id="aspects"><div class="header-wrapper"><h4 id="x3-3-1-aspects"><bdi class="secno">3.3.1 </bdi>
@@ -796,7 +796,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           </h4><a class="self-link" href="#aspects" aria-label="Permalink for Section 3.3.1"></a></div>
           
           <p>
-            Each <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-13">powerful feature</a> can define zero or more additional <dfn data-dfn-for="powerful feature" id="dfn-aspects" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">aspects</dfn>. An aspect is defined as WebIDL <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-dictionary">dictionary</a> that
+            Each <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-13">powerful feature</a> can define zero or more additional <dfn data-dfn-for="powerful feature" id="dfn-aspects" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">aspects</dfn>. An aspect is defined as WebIDL <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-dictionary">dictionary</a> that
             <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-inherit-dictionary">inherits</a> from <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-6"><code>PermissionDescriptor</code></a> and serves as a WebIDL
             interface's <a data-link-type="dfn|abstract-op" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-1">permission descriptor type</a>.
           </p>
@@ -877,10 +877,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           <p>
             The feature can define a <a href="https://en.wikipedia.org/wiki/Partially_ordered_set">partial order</a> on descriptor
             instances. If <var>descriptorA</var> is <dfn class="export" data-dfn-for="PermissionDescriptor" data-export="" id="dfn-stronger-than" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">stronger than</dfn> <var>descriptorB</var>, then if <var>descriptorA</var>'s
-            <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-1">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-1"><code>granted</code></a>", <var>descriptorB</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-2">permission
-            state</a> must also be "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-2"><code>granted</code></a>", and if <var>descriptorB</var>'s
-            <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-3">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-2"><code>denied</code></a>", <var>descriptorA</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-4">permission
-            state</a> must also be "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-3"><code>denied</code></a>".
+            <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-1">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-1"><code>granted</code></a>", <var>descriptorB</var>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-2">permission state</a> must also be "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-2"><code>granted</code></a>", and if <var>descriptorB</var>'s
+            <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-3">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-2"><code>denied</code></a>", <var>descriptorA</var>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-4">permission state</a> must also be "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-3"><code>denied</code></a>".
           </p>
           <aside class="example" id="example-stronger-than"><div class="marker">
     <a class="self-link" href="#example-stronger-than">Example<bdi> 6</bdi></a><span class="example-title">: A permission descriptor that defines a partial order</span>
@@ -898,15 +896,14 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           <dfn data-dfn-for="powerful feature" class="export" data-export="" id="dfn-permission-state-constraints" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">permission state constraints</dfn>:
         </dt>
         <dd>
-          Constraints on the values that the user agent can return as a descriptor's <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-5">permission
-          state</a>. Defaults to no constraints beyond the user's intent.
+          Constraints on the values that the user agent can return as a descriptor's <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-5">permission state</a>. Defaults to no constraints beyond the user's intent.
         </dd>
         <dt>
           <dfn data-dfn-for="powerful feature" class="export" data-export="" id="dfn-extra-permission-data-type" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">extra permission data type</dfn>:
         </dt>
         <dd>
           <p>
-            Some <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-19">powerful features</a> have more information associated with them than just a
+            Some <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-19">powerful features</a> have more information associated with them than just a
             <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-1"><code>PermissionState</code></a>. Each of these features defines an <a data-link-type="dfn|abstract-op" href="#dfn-extra-permission-data-type" class="internalDFN" id="ref-for-dfn-extra-permission-data-type-1">extra permission data type</a>.
           </p>
           <div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="3"><span>Note</span></div><p class="" data-cite="mediacapture-streams ECMAScript">
@@ -915,14 +912,13 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           </p></div>
           <p>
             If a <a data-link-type="idl" data-lt="DOMString" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><code>DOMString</code></a> <var>name</var> names one of these features, then <var>name</var>'s <dfn data-dfn-for="powerful feature" class="export" data-export="" id="dfn-extra-permission-data" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">extra permission data</dfn> for an optional
-            <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>settings</var> is the result of the following algorithm:
+            <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>settings</var> is the result of the following algorithm:
           </p>
           <ol class="algorithm">
             <li>If <var>settings</var> wasn't passed, set it to the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a>.
             </li>
             <li>If there was a previous invocation of this algorithm with the same <var>name</var> and
-            <var>settings</var>, returning <var>previousResult</var>, and the user agent has not received <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-1">new
-            information about the user's intent</a> since that invocation, return <var>previousResult</var>.
+            <var>settings</var>, returning <var>previousResult</var>, and the user agent has not received <a data-link-type="dfn|abstract-op" href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" id="ref-for-dfn-new-information-about-the-user-s-intent-1">new information about the user's intent</a> since that invocation, return <var>previousResult</var>.
             </li>
             <li>Return the instance of <var>name</var>'s <a data-link-type="dfn|abstract-op" href="#dfn-extra-permission-data-type" class="internalDFN" id="ref-for-dfn-extra-permission-data-type-2">extra permission data type</a>
             that matches the UA's impression of the user's intent, taking into account any
@@ -959,8 +955,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
             existing instance of the <a data-link-type="dfn|abstract-op" href="#dfn-permission-result-type" class="internalDFN" id="ref-for-dfn-permission-result-type-1">permission result type</a>, and updates the
             <a data-link-type="dfn|abstract-op" href="#dfn-permission-result-type" class="internalDFN" id="ref-for-dfn-permission-result-type-2">permission result type</a> instance with the query result. Used by
             <a data-link-type="idl" data-lt="Permissions" href="#dom-permissions" class="internalDFN" id="ref-for-dom-permissions-1"><code>Permissions</code></a>' <a data-link-type="idl" data-lt="query(permissionDesc)" href="#dom-permissions-query" class="internalDFN" id="ref-for-dom-permissions-query-1"><code>query</code></a><code>(<var>permissionDesc</var>)</code> method and the
-            <a data-link-type="dfn|abstract-op" href="#dfn-permissionstatus-update-steps" class="internalDFN" id="ref-for-dfn-permissionstatus-update-steps-1"><code>PermissionStatus</code> update steps</a>. If unspecified, this defaults to the <a href="#dfn-default-permission-query-algorithm" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-default-permission-query-algorithm-1">default
-            permission query algorithm</a>.
+            <a data-link-type="dfn|abstract-op" href="#dfn-permissionstatus-update-steps" class="internalDFN" id="ref-for-dfn-permissionstatus-update-steps-1"><code>PermissionStatus</code> update steps</a>. If unspecified, this defaults to the <a data-link-type="dfn|abstract-op" href="#dfn-default-permission-query-algorithm" class="internalDFN" id="ref-for-dfn-default-permission-query-algorithm-1">default permission query algorithm</a>.
           </p>
           <p>
             The <dfn data-export="" id="dfn-default-permission-query-algorithm" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">default permission query algorithm</dfn>, given a
@@ -969,7 +964,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           </p>
           <ol class="algorithm">
             <li>Set <code><var>status</var></code>'s <a data-link-type="idl" href="#dom-permissionstatus-state" class="internalDFN" id="ref-for-dom-permissionstatus-state-2"><code>state</code></a> to <var>permissionDesc</var>'s
-            <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-6">permission state</a>.
+            <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-6">permission state</a>.
             </li>
           </ol>
         </dd>
@@ -990,7 +985,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <dd>
           <p>
             Takes an <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a>, and returns a new <a data-link-type="dfn|abstract-op" href="#dfn-permission-key" class="internalDFN" id="ref-for-dfn-permission-key-8">permission key</a>. If
-            unspecified, this defaults to the <a href="#dfn-default-permission-key-generation-algorithm" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-default-permission-key-generation-algorithm-1">default permission key generation algorithm</a>. A
+            unspecified, this defaults to the <a data-link-type="dfn|abstract-op" href="#dfn-default-permission-key-generation-algorithm" class="internalDFN" id="ref-for-dfn-default-permission-key-generation-algorithm-1">default permission key generation algorithm</a>. A
             feature that specifies a custom <a data-link-type="dfn|abstract-op" href="#dfn-permission-key-generation-algorithm" class="internalDFN" id="ref-for-dfn-permission-key-generation-algorithm-2">permission key generation algorithm</a> <em class="rfc2119">MUST</em> also specify a <a data-link-type="dfn|abstract-op" href="#dfn-permission-key-comparison-algorithm" class="internalDFN" id="ref-for-dfn-permission-key-comparison-algorithm-2">permission key comparison algorithm</a>.
           </p>
           <p>
@@ -1014,8 +1009,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <dd>
           <p>
             Takes two <a data-link-type="dfn|abstract-op" href="#dfn-permission-key" class="internalDFN" id="ref-for-dfn-permission-key-9">permission keys</a> and returns a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://infra.spec.whatwg.org/#boolean">boolean</a> that shows whether the two keys
-            are equal. If unspecified, this defaults to the <a href="#dfn-default-permission-key-comparison-algorithm" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-default-permission-key-comparison-algorithm-1">default permission key comparison
-            algorithm</a>.
+            are equal. If unspecified, this defaults to the <a data-link-type="dfn|abstract-op" href="#dfn-default-permission-key-comparison-algorithm" class="internalDFN" id="ref-for-dfn-default-permission-key-comparison-algorithm-1">default permission key comparison algorithm</a>.
           </p>
           <p>
             The <dfn class="export" data-export="" id="dfn-default-permission-key-comparison-algorithm" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">default permission key comparison algorithm</dfn>, given
@@ -1033,7 +1027,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <dd>
           <p>
             Takes no arguments. Updates any other parts of the implementation that need to be kept
-            in sync with changes in the results of <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-7">permission states</a> or <a data-link-type="dfn|abstract-op" href="#dfn-extra-permission-data" class="internalDFN" id="ref-for-dfn-extra-permission-data-3">extra permission data</a>.
+            in sync with changes in the results of <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-7">permission states</a> or <a data-link-type="dfn|abstract-op" href="#dfn-extra-permission-data" class="internalDFN" id="ref-for-dfn-extra-permission-data-3">extra permission data</a>.
           </p>
           <p>
             If unspecified, this defaults to running <a data-link-type="dfn|abstract-op" href="#dfn-react-to-the-user-revoking-permission" class="internalDFN" id="ref-for-dfn-react-to-the-user-revoking-permission-1">react to the user revoking permission</a>.
@@ -1100,7 +1094,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         </dd>
       </dl>
       <p>
-        A <dfn class="export" data-export="" id="dfn-default-powerful-feature" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">default powerful feature</dfn> is a <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-26">powerful feature</a> with all
+        A <dfn class="export" data-export="" id="dfn-default-powerful-feature" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">default powerful feature</dfn> is a <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-26">powerful feature</a> with all
         of the above types and algorithms defaulted.
       </p>
     </section>
@@ -1127,7 +1121,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         </ol>
         <p>
           A <var data-type="PermissionDescriptor">descriptor</var>'s <dfn class="export" data-export="" data-plurals="permission states" id="dfn-permission-state" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">permission state</dfn>, given an optional
-          <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>settings</var> is the result of the following algorithm.
+          <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>settings</var> is the result of the following algorithm.
           It returns a <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-4"><code>PermissionState</code></a> enum value:
         </p>
         <ol class="algorithm">
@@ -1142,7 +1136,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
             <ol class="algorithm">
               <li>Let <var>document</var> be <var>settings</var>' <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global">relevant global object</a>'s <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#concept-document-window">associated <code>Document</code></a>.
               </li>
-              <li>If <var>document</var> is not <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">allowed to use</a> <var>feature</var>, return
+              <li>If <var>document</var> is not <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">allowed to use</a> <var>feature</var>, return
               "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-5"><code>denied</code></a>".
               </li>
             </ol>
@@ -1160,8 +1154,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           </li>
         </ol>
         <p>
-          As a shorthand, a <a data-link-type="idl" data-lt="DOMString" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><code>DOMString</code></a> <var>name</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-10">permission state</a> is the <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-11">permission
-          state</a> of a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-13"><code>PermissionDescriptor</code></a> with its <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-5"><code>name</code></a> member set
+          As a shorthand, a <a data-link-type="idl" data-lt="DOMString" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><code>DOMString</code></a> <var>name</var>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-10">permission state</a> is the <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-11">permission state</a> of a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-13"><code>PermissionDescriptor</code></a> with its <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-5"><code>name</code></a> member set
           to <var>name</var>.
         </p>
       </section>
@@ -1175,17 +1168,17 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-3"><code>granted</code></a>" or "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-6"><code>denied</code></a>".
         </p>
         <ol class="algorithm">
-          <li>Let <var>current state</var> be the <var data-type="PermissionDescriptor">descriptor</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-12">permission state</a>.
+          <li>Let <var>current state</var> be the <var data-type="PermissionDescriptor">descriptor</var>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-12">permission state</a>.
           </li>
           <li>If <var>current state</var> is not "<a data-link-type="idl" href="#dom-permissionstate-prompt" class="internalDFN" id="ref-for-dom-permissionstate-prompt-2"><code>prompt</code></a>", return <var>current
           state</var> and abort these steps.
           </li>
-          <li>Ask the user for <a href="#dfn-express-permission" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-express-permission-7">express permission</a> for the calling algorithm to use the
-          <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-27">powerful feature</a> described by <var data-type="PermissionDescriptor">descriptor</var>.
+          <li>Ask the user for <a data-link-type="dfn|abstract-op" href="#dfn-express-permission" class="internalDFN" id="ref-for-dfn-express-permission-7">express permission</a> for the calling algorithm to use the
+          <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-27">powerful feature</a> described by <var data-type="PermissionDescriptor">descriptor</var>.
           </li>
           <li>If the user gives <a data-link-type="dfn|abstract-op" href="#dfn-express-permission" class="internalDFN" id="ref-for-dfn-express-permission-8">express permission</a> to use the powerful feature, set <var>current
           state</var> to "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-4"><code>granted</code></a>"; otherwise to "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-7"><code>denied</code></a>". The
-          user's interaction may provide <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-2">new information about the user's intent</a> for the
+          user's interaction may provide <a data-link-type="dfn|abstract-op" href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" id="ref-for-dfn-new-information-about-the-user-s-intent-2">new information about the user's intent</a> for the
           <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#concept-origin">origin</a>.
             <div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="4"><span>Note</span></div><p class="">
               This is intentionally vague about the details of the permission UI and how the user
@@ -1202,8 +1195,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           </li>
         </ol>
         <p>
-          As a shorthand, <a href="#dfn-request-permission-to-use" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-request-permission-to-use-1">requesting permission to use</a> a <a data-link-type="idl" data-lt="DOMString" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><code>DOMString</code></a> <var>name</var>, is the same
-          as <a href="#dfn-request-permission-to-use" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-request-permission-to-use-2">requesting permission to use</a> a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-14"><code>PermissionDescriptor</code></a> with its
+          As a shorthand, <a data-link-type="dfn|abstract-op" href="#dfn-request-permission-to-use" class="internalDFN" id="ref-for-dfn-request-permission-to-use-1">requesting permission to use</a> a <a data-link-type="idl" data-lt="DOMString" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><code>DOMString</code></a> <var>name</var>, is the same
+          as <a data-link-type="dfn|abstract-op" href="#dfn-request-permission-to-use" class="internalDFN" id="ref-for-dfn-request-permission-to-use-2">requesting permission to use</a> a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-14"><code>PermissionDescriptor</code></a> with its
           <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-6"><code>name</code></a> member set to <var>name</var>.
         </p>
       </section>
@@ -1213,20 +1206,20 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         
         <p>
           To <dfn data-lt="prompt the user to choose|prompting the user to choose" class="export" data-export="" id="dfn-prompt-the-user-to-choose" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">prompt the user to choose</dfn> one or more <var>options</var> associated with a given
-          <var data-type="PermissionDescriptor">descriptor</var> and an optional <a data-type="dfn" href="https://infra.spec.whatwg.org/#boolean">boolean</a> <var data-type="boolean">allowMultiple</var>
+          <var data-type="PermissionDescriptor">descriptor</var> and an optional <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://infra.spec.whatwg.org/#boolean">boolean</a> <var data-type="boolean">allowMultiple</var>
           (default false), the user agent must perform the following steps. This algorithm returns
           either "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-8"><code>denied</code></a>" or the user's selection.
         </p>
         <ol class="algorithm">
-          <li>If <var data-type="PermissionDescriptor">descriptor</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-13">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-9"><code>denied</code></a>", return
+          <li>If <var data-type="PermissionDescriptor">descriptor</var>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-13">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-9"><code>denied</code></a>", return
           "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-10"><code>denied</code></a>" and abort these steps.
           </li>
-          <li>If <var data-type="PermissionDescriptor">descriptor</var>'s <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-14">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-5"><code>granted</code></a>", the user
+          <li>If <var data-type="PermissionDescriptor">descriptor</var>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-14">permission state</a> is "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-5"><code>granted</code></a>", the user
           agent may return one (or more if <var data-type="boolean">allowMultiple</var> is true) of <var>options</var> chosen by the user
           and abort these steps. If the user agent returns without prompting, then subsequent
           <a data-lt="prompt the user to choose" href="#dfn-prompt-the-user-to-choose" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-prompt-the-user-to-choose-1">prompts for the user to choose</a> from the same
           set of options with the same <var data-type="PermissionDescriptor">descriptor</var> must return the same option(s), unless the user
-          agent receives <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-3">new information about the user's intent</a>.
+          agent receives <a data-link-type="dfn|abstract-op" href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" id="ref-for-dfn-new-information-about-the-user-s-intent-3">new information about the user's intent</a>.
           </li>
           <li>Ask the user to choose one or more <var>options</var> or deny permission, and wait for them to
           choose:
@@ -1249,8 +1242,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           </li>
         </ol>
         <p>
-          As a shorthand, <a href="#dfn-prompt-the-user-to-choose" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-prompt-the-user-to-choose-2">prompting the user to choose</a> from options associated with a
-          <a data-link-type="idl" data-lt="DOMString" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><code>DOMString</code></a> <var>name</var>, is the same as <a href="#dfn-prompt-the-user-to-choose" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-prompt-the-user-to-choose-3">prompting the user to choose</a> from those
+          As a shorthand, <a data-link-type="dfn|abstract-op" href="#dfn-prompt-the-user-to-choose" class="internalDFN" id="ref-for-dfn-prompt-the-user-to-choose-2">prompting the user to choose</a> from options associated with a
+          <a data-link-type="idl" data-lt="DOMString" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><code>DOMString</code></a> <var>name</var>, is the same as <a data-link-type="dfn|abstract-op" href="#dfn-prompt-the-user-to-choose" class="internalDFN" id="ref-for-dfn-prompt-the-user-to-choose-3">prompting the user to choose</a> from those
           options associated with a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-15"><code>PermissionDescriptor</code></a> with its <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-7"><code>name</code></a>
           member set to <var>name</var>.
         </p>
@@ -1480,24 +1473,22 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondesc
           </h4><a class="self-link" href="#query-method" aria-label="Permalink for Section 6.2.1"></a></div>
           
           <p>
-            When the <dfn data-export="" data-dfn-type="method" id="dom-permissions-query" data-idl="operation" data-title="query()" data-dfn-for="Permissions" data-type="Promise" data-lt="query()|query(permissionDesc)" data-local-lt="Permissions.query|Permissions.query()|query" tabindex="0" aria-haspopup="dialog"><code>query()</code></dfn> method is invoked, the <a data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agent</a> <em class="rfc2119">MUST</em> run the
+            When the <dfn data-export="" data-dfn-type="method" id="dom-permissions-query" data-idl="operation" data-title="query()" data-dfn-for="Permissions" data-type="Promise" data-lt="query()|query(permissionDesc)" data-local-lt="Permissions.query|Permissions.query()|query" tabindex="0" aria-haspopup="dialog"><code>query()</code></dfn> method is invoked, the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agent</a> <em class="rfc2119">MUST</em> run the
             following <dfn class="export" data-export="" id="dfn-query-a-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">query a permission</dfn> algorithm, passing the parameter
             <var>permissionDesc</var>:
           </p>
           <ol class="algorithm">
             <li>If <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#this">this</a>'s <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global">relevant global object</a> is a <a data-link-type="idl" data-lt="Window" data-type="interface" href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#window"><code>Window</code></a> object, then:
               <ol>
-                <li>If the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a>'s <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#concept-document-window">associated <code>Document</code></a> is not
+                <li>If the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a>'s <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#concept-document-window">associated <code>Document</code></a> is not
                 <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/document-sequences.html#fully-active">fully active</a>, return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#a-promise-rejected-with">a promise rejected with</a> an
                 "<a data-link-type="idl" data-type="exception" href="https://webidl.spec.whatwg.org/#invalidstateerror"><code>InvalidStateError</code></a>" <a data-link-type="idl" data-lt="DOMException" data-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMException"><code>DOMException</code></a>.
                 </li>
               </ol>
             </li>
-            <li>Let <var>rootDesc</var> be the object <var>permissionDesc</var> refers to, <a data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL
-            value</a> of type <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-17"><code>PermissionDescriptor</code></a>.
+            <li>Let <var>rootDesc</var> be the object <var>permissionDesc</var> refers to, <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL value</a> of type <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-17"><code>PermissionDescriptor</code></a>.
             </li>
-            <li>If the conversion <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throws</a> an <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-exception">exception</a>, return <a data-type="dfn" href="https://webidl.spec.whatwg.org/#a-promise-rejected-with">a promise
-            rejected with</a> that exception.
+            <li>If the conversion <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throws</a> an <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-exception">exception</a>, return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#a-promise-rejected-with">a promise rejected with</a> that exception.
             </li>
             <li>If <var>rootDesc</var>["<a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-9"><code>name</code></a>"] is not supported, return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#a-promise-rejected-with">a promise rejected with</a> a <a data-link-type="idl" data-lt="TypeError" data-type="exception" href="https://webidl.spec.whatwg.org/#exceptiondef-typeerror"><code>TypeError</code></a>.
               <div class="note" role="note" id="issue-container-generatedID-7"><div role="heading" class="note-title marker" id="h-note-7" aria-level="5"><span>Note</span><span class="issue-label">: Why is this not an enum?</span></div><aside class="">
@@ -1511,17 +1502,15 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondesc
                 </p>
               </aside></div>
             </li>
-            <li>Let <var>typedDescriptor</var> be the object <var>permissionDesc</var> refers to, <a data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an
-            IDL value</a> of <var>rootDesc</var>'s <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-10"><code>name</code></a>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-4">permission descriptor type</a>.
+            <li>Let <var>typedDescriptor</var> be the object <var>permissionDesc</var> refers to, <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL value</a> of <var>rootDesc</var>'s <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-10"><code>name</code></a>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-4">permission descriptor type</a>.
             </li>
-            <li>If the conversion <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throws</a> an <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-exception">exception</a>, return <a data-type="dfn" href="https://webidl.spec.whatwg.org/#a-promise-rejected-with">a promise
-            rejected with</a> that exception.
+            <li>If the conversion <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-throw">throws</a> an <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-exception">exception</a>, return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#a-promise-rejected-with">a promise rejected with</a> that exception.
             </li>
             <li>Let <var data-type="Promise">promise</var> be <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#a-new-promise">a new promise</a>.
             </li>
             <li>Return <var data-type="Promise">promise</var> and continue <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel">in parallel</a>:
               <ol>
-                <li>Let <var>status</var> be <a href="#dfn-create-a-permissionstatus" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-create-a-permissionstatus-1">create a <code>PermissionStatus</code></a> with <var>typedDescriptor</var>.
+                <li>Let <var>status</var> be <a data-link-type="dfn|abstract-op" href="#dfn-create-a-permissionstatus" class="internalDFN" id="ref-for-dfn-create-a-permissionstatus-1">create a <code>PermissionStatus</code></a> with <var>typedDescriptor</var>.
                 </li>
                 <li>Let <var>query</var> be <var>status</var>'s <a data-link-type="attribute" data-lt="[[query]]" href="#dfn-query" class="internalDFN" id="ref-for-dfn-query-1"><code>[[query]]</code></a> internal slot.
                 </li>
@@ -1780,8 +1769,8 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           </h4><a class="self-link" href="#onchange-attribute" aria-label="Permalink for Section 6.3.4"></a></div>
           
           <p>
-            The <dfn data-export="" data-dfn-type="attribute" id="dom-permissionstatus-onchange" data-idl="attribute" data-title="onchange" data-dfn-for="PermissionStatus" data-type="EventHandler" data-lt="onchange" data-local-lt="PermissionStatus.onchange" tabindex="0" aria-haspopup="dialog"><code>onchange</code></dfn> attribute is an <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handlers">event handler</a> whose corresponding
-            <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handler-event-type">event handler event type</a> is <code>change</code>.
+            The <dfn data-export="" data-dfn-type="attribute" id="dom-permissionstatus-onchange" data-idl="attribute" data-title="onchange" data-dfn-for="PermissionStatus" data-type="EventHandler" data-lt="onchange" data-local-lt="PermissionStatus.onchange" tabindex="0" aria-haspopup="dialog"><code>onchange</code></dfn> attribute is an <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handlers">event handler</a> whose corresponding
+            <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#event-handler-event-type">event handler event type</a> is <code>change</code>.
           </p>
           <p id="PermissionStatus-update">
             Whenever the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agent</a> is aware that the state of a <a data-link-type="idl" data-lt="PermissionStatus" href="#dom-permissionstatus" class="internalDFN" id="ref-for-dom-permissionstatus-7"><code>PermissionStatus</code></a> instance
@@ -1803,7 +1792,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
             <li>Run <var>query</var>'s <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-13"><code>name</code></a>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-query-algorithm" class="internalDFN" id="ref-for-dfn-permission-query-algorithm-2">permission query algorithm</a>, passing <var>query</var> and <var>status</var>.
             </li>
             <li>
-              <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">Queue a task</a> on the <a data-link-type="dfn|abstract-op" href="#dfn-permissions-task-source" class="internalDFN" id="ref-for-dfn-permissions-task-source-3">permissions task source</a> to <a data-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-fire">fire an event</a> named
+              <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">Queue a task</a> on the <a data-link-type="dfn|abstract-op" href="#dfn-permissions-task-source" class="internalDFN" id="ref-for-dfn-permissions-task-source-3">permissions task source</a> to <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-fire">fire an event</a> named
               <code>change</code> at <var>status</var>.
             </li>
           </ol>
@@ -1876,8 +1865,8 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
       
       <p>
         For the purposes of user-agent automation and application testing, this document defines
-        the following <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-extension-commands">extension commands</a> for the [<cite><a class="bibref" data-link-type="biblio" href="#bib-webdriver" title="WebDriver">WebDriver</a></cite>] specification. It is <em class="rfc2119">OPTIONAL</em>
-        for a user agent to support <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-extension-commands">extension commands</a> commands.
+        the following <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-extension-commands">extension commands</a> for the [<cite><a class="bibref" data-link-type="biblio" href="#bib-webdriver" title="WebDriver">WebDriver</a></cite>] specification. It is <em class="rfc2119">OPTIONAL</em>
+        for a user agent to support <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-extension-commands">extension commands</a> commands.
       </p>
       <pre class="idl def" id="webidl-138517604"><span class="idlHeader"><a class="self-link" href="#webidl-138517604">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-permissionsetparameters" data-title="PermissionSetParameters">dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissionsetparameters" data-idl="dictionary" data-title="PermissionSetParameters" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>PermissionSetParameters</code></dfn> {<span data-idl="" class="idlMember" id="idl-def-permissionsetparameters-descriptor" data-title="descriptor" data-dfn-for="PermissionSetParameters">
   required<span class="idlType"> <a data-link-type="idl" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-19"><code>PermissionDescriptor</code></a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-permissionsetparameters-descriptor" data-idl="field" data-title="descriptor" data-dfn-for="PermissionSetParameters" data-type="PermissionDescriptor" class="idlName" tabindex="0" aria-haspopup="dialog"><code>descriptor</code></dfn>;</span><span data-idl="" class="idlMember" id="idl-def-permissionsetparameters-state" data-title="state" data-dfn-for="PermissionSetParameters">
@@ -1909,46 +1898,44 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
         </table>
         <p>
           The <dfn class="export" data-dfn-for="extension commands" data-export="" id="dfn-set-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Set Permission</dfn>
-          <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-extension-commands">extension command</a> simulates user modification of a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-20"><code>PermissionDescriptor</code></a>'s
-          <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-16">permission state</a>.
+          <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-extension-commands">extension command</a> simulates user modification of a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-20"><code>PermissionDescriptor</code></a>'s
+          <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-16">permission state</a>.
         </p>
         <p>
-          The <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-remote-end-steps">remote end steps</a> are:
+          The <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-remote-end-steps">remote end steps</a> are:
         </p>
         <ol>
-          <li>Let <var>parameters</var> be the <var>parameters</var> argument, <a data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL value</a> of
+          <li>Let <var>parameters</var> be the <var>parameters</var> argument, <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL value</a> of
           type <a data-link-type="idl" data-lt="PermissionSetParameters" href="#dom-permissionsetparameters" class="internalDFN" id="ref-for-dom-permissionsetparameters-1"><code>PermissionSetParameters</code></a>. If this throws an exception, return an <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
           </li>
           <li>Let <var>rootDesc</var> be <var>parameters</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-descriptor" class="internalDFN" id="ref-for-dom-permissionsetparameters-descriptor-1"><code>descriptor</code></a>.
           </li>
-          <li>Let <var>typedDescriptor</var> be the object <var>rootDesc</var> refers to, <a data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL
-          value</a> of <code><var>rootDesc</var>.<a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-14"><code>name</code></a></code>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-6">permission descriptor type</a>. If this throws an exception, return a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
+          <li>Let <var>typedDescriptor</var> be the object <var>rootDesc</var> refers to, <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL value</a> of <code><var>rootDesc</var>.<a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-14"><code>name</code></a></code>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-6">permission descriptor type</a>. If this throws an exception, return a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
           </li>
-          <li>If <var>parameters</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-state" class="internalDFN" id="ref-for-dom-permissionsetparameters-state-1"><code>state</code></a> is an inappropriate <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-17">permission
-          state</a> for any implementation-defined reason, return a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
+          <li>If <var>parameters</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-state" class="internalDFN" id="ref-for-dom-permissionsetparameters-state-1"><code>state</code></a> is an inappropriate <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-17">permission state</a> for any implementation-defined reason, return a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
             <div class="note" role="note" id="issue-container-generatedID-8"><div role="heading" class="note-title marker" id="h-note-8" aria-level="4"><span>Note</span></div><p class="">
-              For example, <a data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agents</a> that define the "midi" <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-31">powerful feature</a> as
-              "always on" may choose to reject a command to set the <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-18">permission state</a> to
+              For example, <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agents</a> that define the "midi" <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-31">powerful feature</a> as
+              "always on" may choose to reject a command to set the <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-18">permission state</a> to
               "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-13"><code>denied</code></a>" at this step.
             </p></div>
           </li>
           <li>Let <var>settings</var> be the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a>.
           </li>
-          <li>Let <var>targets</var> be a <a data-type="dfn" href="https://infra.spec.whatwg.org/#list">list</a> containing all <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings objects</a>
+          <li>Let <var>targets</var> be a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://infra.spec.whatwg.org/#list">list</a> containing all <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings objects</a>
           whose <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a> is the <a data-lt="same origin" data-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#same-origin">same</a> as
           the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a> of <var>settings</var>.
           </li>
-          <li>Let <var>tasks</var> be an empty <a data-type="dfn" href="https://infra.spec.whatwg.org/#list">list</a>.
+          <li>Let <var>tasks</var> be an empty <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://infra.spec.whatwg.org/#list">list</a>.
           </li>
-          <li>For each <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>target</var> in <var>targets</var>:
+          <li>For each <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>target</var> in <var>targets</var>:
             <ol>
               <li>
-                <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">Queue a task</a> <var>task</var> on the <a data-link-type="dfn|abstract-op" href="#dfn-permissions-task-source" class="internalDFN" id="ref-for-dfn-permissions-task-source-4">permissions task source</a> of <var>target</var>'s
+                <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">Queue a task</a> <var>task</var> on the <a data-link-type="dfn|abstract-op" href="#dfn-permissions-task-source" class="internalDFN" id="ref-for-dfn-permissions-task-source-4">permissions task source</a> of <var>target</var>'s
                 <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#relevant-settings-object">relevant settings object</a>'s <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-global">global object</a>'s
                 <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#window-bc">browsing context</a> to perform the following step:
                 <ol>
                   <li>Interpret <var>parameters</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-state" class="internalDFN" id="ref-for-dom-permissionsetparameters-state-2"><code>state</code></a> as if it were the
-                  result of an invocation of <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-19">permission state</a> for <var>typedDescriptor</var> with the
+                  result of an invocation of <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-19">permission state</a> for <var>typedDescriptor</var> with the
                   argument <var>target</var> made at this moment.
                   </li>
                 </ol>
@@ -1957,9 +1944,9 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
               </li>
             </ol>
           </li>
-          <li>Wait for all <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-task">tasks</a> in <var>tasks</var> to have executed.
+          <li>Wait for all <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-task">tasks</a> in <var>tasks</var> to have executed.
           </li>
-          <li>Return <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-success">success</a> with data <code>null</code>.
+          <li>Return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-success">success</a> with data <code>null</code>.
           </li>
         </ol>
         <aside class="example" id="example-setting-a-permission-via-webdriver"><div class="marker">
@@ -1967,7 +1954,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
   </div>
           <p>
             To <a data-link-type="dfn|abstract-op" href="#dfn-set-permission" class="internalDFN" id="ref-for-dfn-set-permission-1">set permission</a> for <code>{name: "midi", sysex: true}</code> of the
-            <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a> of the <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-session">session</a> with ID 23 to "<code>granted</code>", the local
+            <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a> of the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-session">session</a> with ID 23 to "<code>granted</code>", the local
             end would POST to <code>/session/23/permissions</code> with the body:
           </p>
           <pre class="lang-json" aria-busy="false"><code class="hljs">{
@@ -2320,7 +2307,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
       </h2><a class="self-link" href="#privacy-considerations" aria-label="Permalink for Appendix D."></a></div>
       
       <p>
-        An adversary could use a <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-20">permission state</a> as an element in creating a "fingerprint"
+        An adversary could use a <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-20">permission state</a> as an element in creating a "fingerprint"
         corresponding to an end-user. Although an adversary can already determine the state of a
         permission by actually using the API, that often leads to a UI prompt being presented to
         the end-user (if the permission was not already <a data-link-type="dfn|abstract-op" href="#dfn-granted" class="internalDFN" id="ref-for-dfn-granted-8">granted</a>). Even though this
