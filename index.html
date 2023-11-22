@@ -402,8 +402,8 @@
           "powerful feature">name</dfn>, which is a string literal (e.g., "geolocation").
         </p>
         <p>
-          The user agent tracks which [=powerful features=] the user has [=permission=] to use
-          via the [=environment settings object=].
+          The user agent tracks which [=powerful features=] the user has [=permission=] to use via
+          the [=environment settings object=].
         </p>
         <section>
           <h3>
@@ -499,9 +499,9 @@
             instances. If |descriptorA| is <dfn class="export" data-dfn-for=
             "PermissionDescriptor">stronger than</dfn> |descriptorB|, then if |descriptorA|'s
             [=permission state=] is {{PermissionState/"granted"}}, |descriptorB|'s [=permission
-            state=] must also be {{PermissionState/"granted"}}, and if |descriptorB|'s
-            [=permission state=] is {{PermissionState/"denied"}}, |descriptorA|'s [=permission
-            state=] must also be {{PermissionState/"denied"}}.
+            state=] must also be {{PermissionState/"granted"}}, and if |descriptorB|'s [=permission
+            state=] is {{PermissionState/"denied"}}, |descriptorA|'s [=permission state=] must also
+            be {{PermissionState/"denied"}}.
           </p>
           <aside class="example" id="example-stronger-than" title=
           "A permission descriptor that defines a partial order">
@@ -729,8 +729,8 @@
         </dd>
       </dl>
       <p>
-        A <dfn class="export">default powerful feature</dfn> is a [=powerful feature=] with all
-        of the above types and algorithms defaulted.
+        A <dfn class="export">default powerful feature</dfn> is a [=powerful feature=] with all of
+        the above types and algorithms defaulted.
       </p>
     </section>
     <section>
@@ -756,8 +756,8 @@
         </ol>
         <p>
           A |descriptor|'s <dfn class="export">permission state</dfn>, given an optional
-          [=environment settings object=] |settings| is the result of the following algorithm.
-          It returns a {{PermissionState}} enum value:
+          [=environment settings object=] |settings| is the result of the following algorithm. It
+          returns a {{PermissionState}} enum value:
         </p>
         <ol class="algorithm">
           <li>If |settings| wasn't passed, set it to the [=current settings object=].
@@ -792,9 +792,9 @@
           </li>
         </ol>
         <p>
-          As a shorthand, a {{DOMString}} |name|'s [=permission state=] is the [=permission
-          state=] of a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}} member set
-          to |name|.
+          As a shorthand, a {{DOMString}} |name|'s [=permission state=] is the [=permission state=]
+          of a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}} member set to
+          |name|.
         </p>
       </section>
       <section>
@@ -837,8 +837,8 @@
           </li>
         </ol>
         <p>
-          As a shorthand, [=requesting permission to use=] a {{DOMString}} |name|, is the same
-          as [=requesting permission to use=] a {{PermissionDescriptor}} with its
+          As a shorthand, [=requesting permission to use=] a {{DOMString}} |name|, is the same as
+          [=requesting permission to use=] a {{PermissionDescriptor}} with its
           {{PermissionDescriptor/name}} member set to |name|.
         </p>
       </section>
@@ -886,9 +886,9 @@
         </ol>
         <p>
           As a shorthand, [=prompting the user to choose=] from options associated with a
-          {{DOMString}} |name|, is the same as [=prompting the user to choose=] from those
-          options associated with a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}}
-          member set to |name|.
+          {{DOMString}} |name|, is the same as [=prompting the user to choose=] from those options
+          associated with a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}} member
+          set to |name|.
         </p>
       </section>
       <section>
@@ -1083,8 +1083,8 @@
             `onchange` attribute
           </h4>
           <p>
-            The <dfn>onchange</dfn> attribute is an [=event handler=] whose corresponding
-            [=event handler event type=] is <code>change</code>.
+            The <dfn>onchange</dfn> attribute is an [=event handler=] whose corresponding [=event
+            handler event type=] is <code>change</code>.
           </p>
           <p id="PermissionStatus-update">
             Whenever the [=user agent=] is aware that the state of a {{PermissionStatus}} instance
@@ -1107,9 +1107,8 @@
             <li>Run |query|'s {{PermissionDescriptor/name}}'s [=powerful feature/permission query
             algorithm=], passing |query| and |status|.
             </li>
-            <li>
-              [=Queue a task=] on the [=permissions task source=] to [=fire an event=] named
-              <code>change</code> at |status|.
+            <li>[=Queue a task=] on the [=permissions task source=] to [=fire an event=] named
+            <code>change</code> at |status|.
             </li>
           </ol>
         </section>
@@ -1221,9 +1220,9 @@
           The [=remote end steps=] are:
         </p>
         <ol>
-          <li>Let |parameters| be the |parameters| argument, [=converted to an IDL value=] of
-          type {{PermissionSetParameters}}. If this throws an exception, return an [=invalid
-          argument=] [=error=].
+          <li>Let |parameters| be the |parameters| argument, [=converted to an IDL value=] of type
+          {{PermissionSetParameters}}. If this throws an exception, return an [=invalid argument=]
+          [=error=].
           </li>
           <li>Let |rootDesc| be |parameters|.{{PermissionSetParameters/descriptor}}.
           </li>
@@ -1235,25 +1234,24 @@
           <li>If |parameters|.{{PermissionSetParameters/state}} is an inappropriate [=permission
           state=] for any implementation-defined reason, return a [=invalid argument=] [=error=].
             <p class="note">
-              For example, [=user agents=] that define the "midi" [=powerful feature=] as
-              "always on" may choose to reject a command to set the [=permission state=] to
+              For example, [=user agents=] that define the "midi" [=powerful feature=] as "always
+              on" may choose to reject a command to set the [=permission state=] to
               {{PermissionState/"denied"}} at this step.
             </p>
           </li>
           <li>Let |settings| be the [=current settings object=].
           </li>
-          <li>Let |targets| be a [=list=] containing all [=environment settings objects=]
-          whose [=environment settings object/origin=] is the <a data-lt="same origin">same</a> as
-          the [=environment settings object/origin=] of |settings|.
+          <li>Let |targets| be a [=list=] containing all [=environment settings objects=] whose
+          [=environment settings object/origin=] is the <a data-lt="same origin">same</a> as the
+          [=environment settings object/origin=] of |settings|.
           </li>
           <li>Let |tasks| be an empty [=list=].
           </li>
           <li>For each [=environment settings object=] |target| in |targets|:
             <ol>
-              <li>
-                [=Queue a task=] |task| on the [=permissions task source=] of |target|'s
-                [=relevant settings object=]'s [=environment settings object/global object=]'s
-                [=Window/browsing context=] to perform the following step:
+              <li>[=Queue a task=] |task| on the [=permissions task source=] of |target|'s
+              [=relevant settings object=]'s [=environment settings object/global object=]'s
+              [=Window/browsing context=] to perform the following step:
                 <ol>
                   <li>Interpret |parameters|.{{PermissionSetParameters/state}} as if it were the
                   result of an invocation of [=permission state=] for |typedDescriptor| with the
@@ -1273,8 +1271,8 @@
         <aside class="example" title="Setting a permission via WebDriver">
           <p>
             To [=extension commands/set permission=] for `{name: "midi", sysex: true}` of the
-            [=current settings object=] of the [=session=] with ID 23 to "`granted`", the local
-            end would POST to `/session/23/permissions` with the body:
+            [=current settings object=] of the [=session=] with ID 23 to "`granted`", the local end
+            would POST to `/session/23/permissions` with the body:
           </p>
           <pre class="lang-json">
           {
