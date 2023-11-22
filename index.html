@@ -298,14 +298,16 @@
         <div class="algorithm">
           <p>
             To <dfn class="export">get a permission store entry</dfn> given a
-            {{PermissionDescriptor}} |descriptor:PermissionDescriptor| and [=permission key=] |key|:
+            {{PermissionDescriptor}} |descriptor:PermissionDescriptor| and [=permission key=]
+            |key|:
           </p>
           <ol>
             <li>
               <!-- TODO: PermissionDescriptor equality is not defined (#396) -->
               If the user agent's [=permission store=] [=list/contains=] an [=entry=] whose
               [=permission store entry/descriptor=] is |descriptor|, and whose [=permission store
-              entry/key=] [=permission key/is equal to=] |key| given |descriptor|, return that entry.
+              entry/key=] [=permission key/is equal to=] |key| given |descriptor|, return that
+              entry.
             </li>
             <li>Return null.
             </li>
@@ -314,8 +316,8 @@
         <div class="algorithm">
           <p>
             To <dfn class="export">set a permission store entry</dfn> given a
-            {{PermissionDescriptor}} |descriptor:PermissionDescriptor|,
-            a [=permission key=] |key|, and a [=permission/state=] |state|, run these steps:
+            {{PermissionDescriptor}} |descriptor:PermissionDescriptor|, a [=permission key=] |key|,
+            and a [=permission/state=] |state|, run these steps:
           </p>
           <ol>
             <li>Let |newEntry| be a new [=permission store entry=] whose [=permission store
@@ -334,8 +336,8 @@
         <div class="algorithm">
           <p>
             To <dfn class="export">remove a permission store entry</dfn> given a
-            {{PermissionDescriptor}} |descriptor:PermissionDescriptor| and
-            [=permission key=] |key|, run these steps:
+            {{PermissionDescriptor}} |descriptor:PermissionDescriptor| and [=permission key=]
+            |key|, run these steps:
           </p>
           <ol>
             <li>[=list/Remove=] the [=entry=] whose [=permission store entry/descriptor=] is
@@ -362,8 +364,8 @@
             {{PermissionDescriptor}} |descriptor|, run the following steps:
           </p>
           <ol>
-            <li>If |key1| is not of |descriptor|'s [=powerful feature/permission key type=] or |key2|
-            is not of |descriptor|'s [=powerful feature/permission key type=], return false.
+            <li>If |key1| is not of |descriptor|'s [=powerful feature/permission key type=] or
+            |key2| is not of |descriptor|'s [=powerful feature/permission key type=], return false.
             </li>
             <li>Return the result of running the [=powerful feature/permission key comparison
             algorithm=] for the feature named by |descriptor|'s {{PermissionDescriptor/name}},
@@ -545,16 +547,18 @@
           </p>
           <div class="algorithm">
             <p>
-              If a {{DOMString}} |name| names one of these features, then |name|'s <dfn data-dfn-for=
-              "powerful feature" class="export">extra permission data</dfn> for an optional
-              <a>environment settings object</a> |settings| is the result of the following algorithm:
+              If a {{DOMString}} |name| names one of these features, then |name|'s
+              <dfn data-dfn-for="powerful feature" class="export">extra permission data</dfn> for
+              an optional <a>environment settings object</a> |settings| is the result of the
+              following algorithm:
             </p>
             <ol>
               <li>If |settings| wasn't passed, set it to the [=current settings object=].
               </li>
               <li>If there was a previous invocation of this algorithm with the same |name| and
               |settings|, returning |previousResult|, and the user agent has not received <a>new
-              information about the user's intent</a> since that invocation, return |previousResult|.
+              information about the user's intent</a> since that invocation, return
+              |previousResult|.
               </li>
               <li>Return the instance of |name|'s [=powerful feature/extra permission data type=]
               that matches the UA's impression of the user's intent, taking into account any
@@ -598,12 +602,12 @@
           <div class="algorithm">
             <p>
               The <dfn data-export="">default permission query algorithm</dfn>, given a
-              {{PermissionDescriptor}} <var>permissionDesc</var> and a {{PermissionStatus}} |status|,
-              runs the following steps:
+              {{PermissionDescriptor}} <var>permissionDesc</var> and a {{PermissionStatus}}
+              |status|, runs the following steps:
             </p>
             <ol>
-              <li>Set <code>|status|</code>'s {{PermissionStatus/state}} to |permissionDesc|'s
-              <a>permission state</a>.
+              <li>Set <code>|status|</code>'s {{PermissionStatus/state}} to |permissionDesc|'s <a>
+                permission state</a>.
               </li>
             </ol>
           </div>
@@ -786,11 +790,12 @@
             </li>
             <li>Let |feature| be |descriptor|'s {{PermissionDescriptor/name}}.
             </li>
-            <li class="algorithm">If there exists a [=policy-controlled feature=] for |feature| and |settings|'
-            [=relevant global object=] has an [=associated `Document`=] run the following step:
+            <li class="algorithm">If there exists a [=policy-controlled feature=] for |feature| and
+            |settings|' [=relevant global object=] has an [=associated `Document`=] run the
+            following step:
               <ol>
-                <li>Let <var>document</var> be |settings|' [=relevant global object=]'s [=associated
-                `Document`=].
+                <li>Let <var>document</var> be |settings|' [=relevant global object=]'s
+                [=associated `Document`=].
                 </li>
                 <li>If <var>document</var> is not <a>allowed to use</a> |feature|, return
                 {{PermissionState/"denied"}}.
@@ -807,12 +812,11 @@
             [=permission store entry/state=].
             </li>
             <li>Return the {{PermissionState}} enum value that represents the permission state of
-            |feature|, taking into account any [=powerful feature/permission state constraints=] for
-            |descriptor|'s {{PermissionDescriptor/name}}.
+            |feature|, taking into account any [=powerful feature/permission state constraints=]
+            for |descriptor|'s {{PermissionDescriptor/name}}.
             </li>
           </ol>
         </div>
-
         <p>
           As a shorthand, a {{DOMString}} |name|'s [=permission state=] is the [=permission state=]
           of a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}} member set to
@@ -833,11 +837,11 @@
           <ol>
             <li>Let <var>current state</var> be the |descriptor|'s <a>permission state</a>.
             </li>
-            <li>If <var>current state</var> is not {{PermissionState/"prompt"}}, return <var>current
-            state</var> and abort these steps.
+            <li>If <var>current state</var> is not {{PermissionState/"prompt"}}, return
+            <var>current state</var> and abort these steps.
             </li>
-            <li>Ask the user for <a>express permission</a> for the calling algorithm to use the
-            <a>powerful feature</a> described by |descriptor|.
+            <li>Ask the user for <a>express permission</a> for the calling algorithm to use the <a>
+              powerful feature</a> described by |descriptor|.
             </li>
             <li>If the user gives [=express permission=] to use the powerful feature, set |current
             state| to {{PermissionState/"granted"}}; otherwise to {{PermissionState/"denied"}}. The
@@ -872,31 +876,32 @@
         </h3>
         <div class="algorithm">
           <p>
-            To <dfn data-lt="prompt the user to choose|prompting the user to choose" class="export">
-            prompt the user to choose</dfn> one or more |options| associated with a given
-            |descriptor:PermissionDescriptor| and an optional <a>boolean</a> |allowMultiple:boolean|
-            (default false), the user agent must perform the following steps. This algorithm returns
-            either {{PermissionState/"denied"}} or the user's selection.
+            To <dfn data-lt="prompt the user to choose|prompting the user to choose" class=
+            "export">prompt the user to choose</dfn> one or more |options| associated with a given
+            |descriptor:PermissionDescriptor| and an optional <a>boolean</a>
+            |allowMultiple:boolean| (default false), the user agent must perform the following
+            steps. This algorithm returns either {{PermissionState/"denied"}} or the user's
+            selection.
           </p>
           <ol>
             <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"denied"}}, return
             {{PermissionState/"denied"}} and abort these steps.
             </li>
-            <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"granted"}}, the user
-            agent may return one (or more if |allowMultiple| is true) of |options| chosen by the user
-            and abort these steps. If the user agent returns without prompting, then subsequent
-            <a data-lt="prompt the user to choose">prompts for the user to choose</a> from the same
-            set of options with the same |descriptor| must return the same option(s), unless the user
-            agent receives <a>new information about the user's intent</a>.
+            <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"granted"}}, the
+            user agent may return one (or more if |allowMultiple| is true) of |options| chosen by
+            the user and abort these steps. If the user agent returns without prompting, then
+            subsequent <a data-lt="prompt the user to choose">prompts for the user to choose</a>
+            from the same set of options with the same |descriptor| must return the same option(s),
+            unless the user agent receives <a>new information about the user's intent</a>.
             </li>
-            <li>Ask the user to choose one or more |options| or deny permission, and wait for them to
-            choose:
+            <li>Ask the user to choose one or more |options| or deny permission, and wait for them
+            to choose:
               <ol>
                 <li>If the calling algorithm specified extra information to include in the prompt,
                 include it.
                 </li>
-                <li>If |allowMultiple| is false, restrict selection to a single item from |options|;
-                otherwise, any number may be selected by the user.
+                <li>If |allowMultiple| is false, restrict selection to a single item from
+                |options|; otherwise, any number may be selected by the user.
                 </li>
               </ol>
             </li>
@@ -979,8 +984,8 @@
           <div class="algorithm">
             <p>
               When the <dfn>query()</dfn> method is invoked, the <a>user agent</a> MUST run the
-              following <dfn class="export">query a permission</dfn> algorithm, passing the parameter
-              <var>permissionDesc</var>:
+              following <dfn class="export">query a permission</dfn> algorithm, passing the
+              parameter <var>permissionDesc</var>:
             </p>
             <ol>
               <li>If [=this=]'s [=relevant global object=] is a {{Window}} object, then:
@@ -997,21 +1002,22 @@
               <li>If the conversion [=exception/throws=] an [=exception=], return <a>a promise
               rejected with</a> that exception.
               </li>
-              <li>If |rootDesc|["{{PermissionDescriptor/name}}"] is not supported, return [=a promise
-              rejected with=] a {{TypeError}}.
+              <li>If |rootDesc|["{{PermissionDescriptor/name}}"] is not supported, return [=a
+              promise rejected with=] a {{TypeError}}.
                 <aside class="note" title="Why is this not an enum?">
                   <p>
                     This is deliberately designed to work the same as WebIDL's [=enumeration=]
-                    (`enum`) and implementers are encouraged to use their own custom `enum` here. The
-                    reason this is not an enum in the specification is that browsers vary greatly in
-                    the powerful features they support. Using a {{DOMString}} to identify a powerful
-                    feature gives implementers the freedom to pick and choose which of the powerful
-                    features from the [[[permissions-registry]]] they wish to support.
+                    (`enum`) and implementers are encouraged to use their own custom `enum` here.
+                    The reason this is not an enum in the specification is that browsers vary
+                    greatly in the powerful features they support. Using a {{DOMString}} to
+                    identify a powerful feature gives implementers the freedom to pick and choose
+                    which of the powerful features from the [[[permissions-registry]]] they wish to
+                    support.
                   </p>
                 </aside>
               </li>
-              <li>Let |typedDescriptor| be the object |permissionDesc| refers to, <a>converted to an
-              IDL value</a> of |rootDesc|'s {{PermissionDescriptor/name}}'s [=powerful
+              <li>Let |typedDescriptor| be the object |permissionDesc| refers to, <a>converted to
+              an IDL value</a> of |rootDesc|'s {{PermissionDescriptor/name}}'s [=powerful
               feature/permission descriptor type=].
               </li>
               <li>If the conversion [=exception/throws=] an [=exception=], return <a>a promise
@@ -1120,9 +1126,9 @@
           </p>
           <div class="algorithm">
             <p id="PermissionStatus-update">
-              Whenever the [=user agent=] is aware that the state of a {{PermissionStatus}} instance
-              |status| has changed, it asynchronously runs the <dfn>`PermissionStatus` update
-              steps</dfn>:
+              Whenever the [=user agent=] is aware that the state of a {{PermissionStatus}}
+              instance |status| has changed, it asynchronously runs the <dfn>`PermissionStatus`
+              update steps</dfn>:
             </p>
             <ol>
               <li>If [=this=]'s [=relevant global object=] is a {{Window}} object, then:
@@ -1130,8 +1136,8 @@
                   <li>Let |document| be |status|'s [=relevant global object=]'s [=associated
                   Document=].
                   </li>
-                  <li>If |document| is null or |document| is not [=Document/fully active=], terminate
-                  this algorithm.
+                  <li>If |document| is null or |document| is not [=Document/fully active=],
+                  terminate this algorithm.
                   </li>
                 </ol>
               </li>
@@ -1141,8 +1147,8 @@
               algorithm=], passing |query| and |status|.
               </li>
               <li>
-                <a>Queue a task</a> on the [=permissions task source=] to <a>fire an event</a> named
-                <code>change</code> at |status|.
+                <a>Queue a task</a> on the [=permissions task source=] to <a>fire an event</a>
+                named <code>change</code> at |status|.
               </li>
             </ol>
           </div>
