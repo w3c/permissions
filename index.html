@@ -541,7 +541,7 @@
           <p>
             If a {{DOMString}} |name| names one of these features, then |name|'s <dfn data-dfn-for=
             "powerful feature" class="export">extra permission data</dfn> for an optional
-            <a>environment settings object</a> |settings| is the result of the following algorithm:
+            [=environment settings object=] |settings| is the result of the following algorithm:
           </p>
           <ol class="algorithm">
             <li>If |settings| wasn't passed, set it to the [=current settings object=].
@@ -760,7 +760,7 @@
         </ol>
         <p>
           A |descriptor|'s <dfn class="export">permission state</dfn>, given an optional
-          <a>environment settings object</a> |settings| is the result of the following algorithm.
+          [=environment settings object=] |settings| is the result of the following algorithm.
           It returns a {{PermissionState}} enum value:
         </p>
         <ol class="algorithm">
@@ -1203,7 +1203,7 @@
           the [=environment settings object/origin=] of |settings|.
           </li>
           <li>Let |tasks| be an empty <a>list</a>.</li>
-          <li>For each <a>environment settings object</a> |target| in |targets|:
+          <li>For each [=environment settings object=] |target| in |targets|:
             <ol>
               <li>
                 <a>Queue a task</a> |task| on the [=permissions task source=] of |target|'s
