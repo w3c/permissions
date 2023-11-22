@@ -1192,33 +1192,36 @@
           required PermissionState state;
         };
       </pre>
-        To <dfn data-for="WebDriver">set a permission</dfn> given a {{PermissionDescriptor}} |descriptor:PermissionDescriptor|, and a {{PermissionState}} |state:PermissionState|:
-      </p>
-      <ol class="algorithm">
-        <li>Let |settings| be the [=current settings object=].</li>
-        <li>Let |targets| be a <a>list</a> containing all [=environment settings objects=]
-        whose [=environment settings object/origin=] is [=same origin=] as
-        the [=environment settings object/origin=] of |settings|.
-        </li>
-        <li>Let |tasks| be an empty <a>list</a>.</li>
-        <li>For each <a>environment settings object</a> |target| in |targets|:
-          <ol>
-            <li>
-              <a>Queue a task</a> |task| on the [=permissions task source=] of |target|'s
-              [=relevant settings object=]'s [=environment settings object/global object=]'s
-              [=Window/browsing context=] to perform the following step:
-              <ol>
-                <li>Interpret |state| as if it were the
-                result of an invocation of <a>permission state</a> for |descriptor| with the
-                argument |target| made at this moment.
-                </li>
-              </ol>
-            </li>
-            <li>[=list/Append=] |task| to |tasks|.</li>
-          </ol>
-        </li>
-        <li>Wait for all <a>tasks</a> in |tasks| to have executed and return.</li>
-      </ol>
+      <div class="algorithm">
+        <p>
+          To <dfn data-for="WebDriver">set a permission</dfn> given a {{PermissionDescriptor}} |descriptor:PermissionDescriptor|, and a {{PermissionState}} |state:PermissionState|:
+        </p>
+        <ol>
+          <li>Let |settings| be the [=current settings object=].</li>
+          <li>Let |targets| be a <a>list</a> containing all [=environment settings objects=]
+          whose [=environment settings object/origin=] is [=same origin=] as
+          the [=environment settings object/origin=] of |settings|.
+          </li>
+          <li>Let |tasks| be an empty <a>list</a>.</li>
+          <li>For each <a>environment settings object</a> |target| in |targets|:
+            <ol>
+              <li>
+                <a>Queue a task</a> |task| on the [=permissions task source=] of |target|'s
+                [=relevant settings object=]'s [=environment settings object/global object=]'s
+                [=Window/browsing context=] to perform the following step:
+                <ol>
+                  <li>Interpret |state| as if it were the
+                  result of an invocation of <a>permission state</a> for |descriptor| with the
+                  argument |target| made at this moment.
+                  </li>
+                </ol>
+              </li>
+              <li>[=list/Append=] |task| to |tasks|.</li>
+            </ol>
+          </li>
+          <li>Wait for all <a>tasks</a> in |tasks| to have executed and return.</li>
+        </ol>
+      </div>
       <section data-cite="webdriver">
         <h3 id="automation-webdriver">
           Automated testing with [[WebDriver]]
@@ -1423,7 +1426,7 @@
                 <li>[=Set a permission=] with |typedDescriptor| and |state|.</li>
                 <li>Return [=success=] with data `null`.</li>
                </ol>
-             </>
+             </d>
             </section>
           </section>
         </section>
