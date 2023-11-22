@@ -48,13 +48,9 @@
         },
         mdn: true,
         // See https://respec.org/docs/#xref for usage.
-        xref: "web-platform",
-        localBiblio: {
-          "permissions-registry": {
-            title: "Permissions Registry",
-            href: "https://w3c.github.io/permissions-registry/",
-            status: "unofficial",
-          }
+        xref: {
+          profile: "web-platform",
+          specs: ["permissions-policy", "w3c-process"],
         },
         caniuse: {
           feature: "permissions-api",
@@ -254,7 +250,7 @@
         </p>
         <aside class="note" data-cite="appmanifest" title="What constitutes an implicit signal?">
           <p>
-            The <a>implicit signals</a> could be, for example, the [=installed web
+            The [=implicit signals=] could be, for example, the [=installed web
             application|installation=] status of a web application or frequency and recency of
             visits. A user that has installed a web application and used it frequently and recently
             is more likely to trust it. Implementations are advised to exercise caution when
@@ -415,15 +411,15 @@
           "powerful feature">name</dfn>, which is a string literal (e.g., "geolocation").
         </p>
         <p>
-          The user agent tracks which <a>powerful features</a> the user has [=permission=] to use
-          via the [=environment settings object=].
+          The user agent tracks which [=powerful features=] the user has [=permission=] to use via
+          the [=environment settings object=].
         </p>
         <section>
           <h3>
             Aspects
           </h3>
           <p>
-            Each <a>powerful feature</a> can define zero or more additional <dfn data-dfn-for=
+            Each [=powerful feature=] can define zero or more additional <dfn data-dfn-for=
             "powerful feature">aspects</dfn>. An aspect is defined as WebIDL [=dictionary=] that
             [=dictionary/inherits=] from {{PermissionDescriptor}} and serves as a WebIDL
             interface's [=powerful feature/permission descriptor type=].
@@ -511,10 +507,10 @@
             "https://en.wikipedia.org/wiki/Partially_ordered_set">partial order</a> on descriptor
             instances. If |descriptorA| is <dfn class="export" data-dfn-for=
             "PermissionDescriptor">stronger than</dfn> |descriptorB|, then if |descriptorA|'s
-            <a>permission state</a> is {{PermissionState/"granted"}}, |descriptorB|'s <a>permission
-            state</a> must also be {{PermissionState/"granted"}}, and if |descriptorB|'s
-            <a>permission state</a> is {{PermissionState/"denied"}}, |descriptorA|'s <a>permission
-            state</a> must also be {{PermissionState/"denied"}}.
+            [=permission state=] is {{PermissionState/"granted"}}, |descriptorB|'s [=permission
+            state=] must also be {{PermissionState/"granted"}}, and if |descriptorB|'s [=permission
+            state=] is {{PermissionState/"denied"}}, |descriptorA|'s [=permission state=] must also
+            be {{PermissionState/"denied"}}.
           </p>
           <aside class="example" id="example-stronger-than" title=
           "A permission descriptor that defines a partial order">
@@ -531,15 +527,15 @@
           <dfn data-dfn-for="powerful feature" class="export">permission state constraints</dfn>:
         </dt>
         <dd>
-          Constraints on the values that the user agent can return as a descriptor's <a>permission
-          state</a>. Defaults to no constraints beyond the user's intent.
+          Constraints on the values that the user agent can return as a descriptor's [=permission
+          state=]. Defaults to no constraints beyond the user's intent.
         </dd>
         <dt>
           <dfn data-dfn-for="powerful feature" class="export">extra permission data type</dfn>:
         </dt>
         <dd>
           <p>
-            Some <a>powerful features</a> have more information associated with them than just a
+            Some [=powerful features=] have more information associated with them than just a
             {{PermissionState}}. Each of these features defines an [=powerful feature/extra
             permission data type=].
           </p>
@@ -596,8 +592,8 @@
             existing instance of the [=powerful feature/permission result type=], and updates the
             [=powerful feature/permission result type=] instance with the query result. Used by
             {{Permissions}}' {{Permissions/query(permissionDesc)}} method and the
-            [=`PermissionStatus` update steps=]. If unspecified, this defaults to the <a>default
-            permission query algorithm</a>.
+            [=`PermissionStatus` update steps=]. If unspecified, this defaults to the [=default
+            permission query algorithm=].
           </p>
           <div class="algorithm">
             <p>
@@ -629,7 +625,7 @@
         <dd>
           <p>
             Takes an [=environment settings object=], and returns a new [=permission key=]. If
-            unspecified, this defaults to the <a>default permission key generation algorithm</a>. A
+            unspecified, this defaults to the [=default permission key generation algorithm=]. A
             feature that specifies a custom [=powerful feature/permission key generation
             algorithm=] MUST also specify a [=powerful feature/permission key comparison
             algorithm=].
@@ -657,8 +653,8 @@
         <dd>
           <p>
             Takes two [=permission keys=] and returns a [=boolean=] that shows whether the two keys
-            are equal. If unspecified, this defaults to the <a>default permission key comparison
-            algorithm</a>.
+            are equal. If unspecified, this defaults to the [=default permission key comparison
+            algorithm=].
           </p>
           <div class="algorithm">
             <p>
@@ -678,7 +674,7 @@
         <dd>
           <p>
             Takes no arguments. Updates any other parts of the implementation that need to be kept
-            in sync with changes in the results of <a>permission states</a> or [=powerful
+            in sync with changes in the results of [=permission states=] or [=powerful
             feature/extra permission data=].
           </p>
           <p>
@@ -750,8 +746,8 @@
         </dd>
       </dl>
       <p>
-        A <dfn class="export">default powerful feature</dfn> is a <a>powerful feature</a> with all
-        of the above types and algorithms defaulted.
+        A <dfn class="export">default powerful feature</dfn> is a [=powerful feature=] with all of
+        the above types and algorithms defaulted.
       </p>
     </section>
     <section>
@@ -816,10 +812,11 @@
             </li>
           </ol>
         </div>
+
         <p>
-          As a shorthand, a {{DOMString}} |name|'s <a>permission state</a> is the <a>permission
-          state</a> of a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}} member set
-          to |name|.
+          As a shorthand, a {{DOMString}} |name|'s [=permission state=] is the [=permission state=]
+          of a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}} member set to
+          |name|.
         </p>
       </section>
       <section>
@@ -864,8 +861,8 @@
           </ol>
         </div>
         <p>
-          As a shorthand, <a>requesting permission to use</a> a {{DOMString}} |name|, is the same
-          as <a>requesting permission to use</a> a {{PermissionDescriptor}} with its
+          As a shorthand, [=requesting permission to use=] a {{DOMString}} |name|, is the same as
+          [=requesting permission to use=] a {{PermissionDescriptor}} with its
           {{PermissionDescriptor/name}} member set to |name|.
         </p>
       </section>
@@ -914,10 +911,10 @@
           </ol>
         </div>
         <p>
-          As a shorthand, <a>prompting the user to choose</a> from options associated with a
-          {{DOMString}} |name|, is the same as <a>prompting the user to choose</a> from those
-          options associated with a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}}
-          member set to |name|.
+          As a shorthand, [=prompting the user to choose=] from options associated with a
+          {{DOMString}} |name|, is the same as [=prompting the user to choose=] from those options
+          associated with a {{PermissionDescriptor}} with its {{PermissionDescriptor/name}} member
+          set to |name|.
         </p>
       </section>
       <section>
@@ -1118,8 +1115,8 @@
             `onchange` attribute
           </h4>
           <p>
-            The <dfn>onchange</dfn> attribute is an <a>event handler</a> whose corresponding
-            <a>event handler event type</a> is <code>change</code>.
+            The <dfn>onchange</dfn> attribute is an [=event handler=] whose corresponding [=event
+            handler event type=] is <code>change</code>.
           </p>
           <div class="algorithm">
             <p id="PermissionStatus-update">
@@ -1216,8 +1213,8 @@
       </h2>
       <p>
         For the purposes of user-agent automation and application testing, this document defines
-        the following <a>extension commands</a> for the [[WebDriver]] specification. It is OPTIONAL
-        for a user agent to support <a>extension commands</a> commands.
+        the following [=extension commands=] for the [[WebDriver]] specification. It is OPTIONAL
+        for a user agent to support [=extension commands=] commands.
       </p>
       <pre class='idl'>
         dictionary PermissionSetParameters {
@@ -1251,49 +1248,48 @@
         </table>
         <p>
           The <dfn class="export" data-dfn-for="extension commands">Set Permission</dfn>
-          <a>extension command</a> simulates user modification of a {{PermissionDescriptor}}'s
-          <a>permission state</a>.
+          [=extension command=] simulates user modification of a {{PermissionDescriptor}}'s
+          [=permission state=].
         </p>
         <p>
-          The <a>remote end steps</a> are:
+          The [=remote end steps=] are:
         </p>
         <ol>
-          <li>Let |parameters| be the |parameters| argument, <a>converted to an IDL value</a> of
-          type {{PermissionSetParameters}}. If this throws an exception, return an [=invalid
-          argument=] [=error=].
+          <li>Let |parameters| be the |parameters| argument, [=converted to an IDL value=] of type
+          {{PermissionSetParameters}}. If this throws an exception, return an [=invalid argument=]
+          [=error=].
           </li>
           <li>Let |rootDesc| be |parameters|.{{PermissionSetParameters/descriptor}}.
           </li>
-          <li>Let |typedDescriptor| be the object |rootDesc| refers to, <a>converted to an IDL
-          value</a> of <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s [=powerful
+          <li>Let |typedDescriptor| be the object |rootDesc| refers to, [=converted to an IDL
+          value=] of <code>|rootDesc|.{{PermissionDescriptor/name}}</code>'s [=powerful
           feature/permission descriptor type=]. If this throws an exception, return a [=invalid
           argument=] [=error=].
           </li>
-          <li>If |parameters|.{{PermissionSetParameters/state}} is an inappropriate <a>permission
-          state</a> for any implementation-defined reason, return a [=invalid argument=] [=error=].
+          <li>If |parameters|.{{PermissionSetParameters/state}} is an inappropriate [=permission
+          state=] for any implementation-defined reason, return a [=invalid argument=] [=error=].
             <p class="note">
-              For example, <a>user agents</a> that define the "midi" <a>powerful feature</a> as
-              "always on" may choose to reject a command to set the <a>permission state</a> to
+              For example, [=user agents=] that define the "midi" [=powerful feature=] as "always
+              on" may choose to reject a command to set the [=permission state=] to
               {{PermissionState/"denied"}} at this step.
             </p>
           </li>
           <li>Let |settings| be the [=current settings object=].
           </li>
-          <li>Let |targets| be a <a>list</a> containing all <a>environment settings objects</a>
-          whose [=environment settings object/origin=] is the <a data-lt="same origin">same</a> as
-          the [=environment settings object/origin=] of |settings|.
+          <li>Let |targets| be a [=list=] containing all [=environment settings objects=] whose
+          [=environment settings object/origin=] is the <a data-lt="same origin">same</a> as the
+          [=environment settings object/origin=] of |settings|.
           </li>
-          <li>Let |tasks| be an empty <a>list</a>.
+          <li>Let |tasks| be an empty [=list=].
           </li>
-          <li>For each <a>environment settings object</a> |target| in |targets|:
+          <li>For each [=environment settings object=] |target| in |targets|:
             <ol>
-              <li>
-                <a>Queue a task</a> |task| on the [=permissions task source=] of |target|'s
-                [=relevant settings object=]'s [=environment settings object/global object=]'s
-                [=Window/browsing context=] to perform the following step:
+              <li>[=Queue a task=] |task| on the [=permissions task source=] of |target|'s
+              [=relevant settings object=]'s [=environment settings object/global object=]'s
+              [=Window/browsing context=] to perform the following step:
                 <ol>
                   <li>Interpret |parameters|.{{PermissionSetParameters/state}} as if it were the
-                  result of an invocation of <a>permission state</a> for |typedDescriptor| with the
+                  result of an invocation of [=permission state=] for |typedDescriptor| with the
                   argument |target| made at this moment.
                   </li>
                 </ol>
@@ -1302,16 +1298,16 @@
               </li>
             </ol>
           </li>
-          <li>Wait for all <a>tasks</a> in |tasks| to have executed.
+          <li>Wait for all [=tasks=] in |tasks| to have executed.
           </li>
-          <li>Return <a>success</a> with data `null`.
+          <li>Return [=success=] with data `null`.
           </li>
         </ol>
         <aside class="example" title="Setting a permission via WebDriver">
           <p>
             To [=extension commands/set permission=] for `{name: "midi", sysex: true}` of the
-            [=current settings object=] of the <a>session</a> with ID 23 to "`granted`", the local
-            end would POST to `/session/23/permissions` with the body:
+            [=current settings object=] of the [=session=] with ID 23 to "`granted`", the local end
+            would POST to `/session/23/permissions` with the body:
           </p>
           <pre class="lang-json">
           {
@@ -1325,12 +1321,402 @@
         </aside>
       </section>
     </section>
+    <section class="informative">
+      <h2>
+        Permissions Registry
+      </h2>
+      <section>
+        <h3>
+          Purpose
+        </h3>
+        <p>
+          This [=W3C Registry=] provides a centralized place to find the [=policy-controlled
+          features=] and/or [=powerful features=] of the web platform. Through the [=change
+          process=] it also helps assure permissions in the platform are consistently specified
+          across various specifications.
+        </p>
+        <p>
+          By splitting the registry into standardized permissions and provisional permissions, the
+          registry also provides a way to track the status of these features.
+        </p>
+      </section>
+      <section>
+        <h2>
+          Change Process
+        </h2>
+        <p>
+          The <dfn>change process</dfn> for adding and/or updating this registry is as follows:
+        </p>
+        <ol>
+          <li>If necessary, add a "Permissions Policy" section to your specification which includes
+          the following:
+            <ol>
+              <li>The string that identifies the policy controlled feature (e.g.,
+              `"super-awesome"`). Make sure the string is linkable by wrapping it a [^dfn^]
+              element.
+              </li>
+              <li>The [=policy-controlled feature/default allowlist=] value (e.g. `'self'`).
+                <aside class="example" title="Specifying a Permissions Policy">
+                  <p>
+                    An typical example that would meet this criteria:
+                  </p>
+                  <blockquote>
+                    The Super Awesome API defines a [=policy-controlled feature=] identified by the
+                    string "super-awesome". Its [=policy-controlled feature/default allowlist=] is
+                    `'self'`.
+                  </blockquote>
+                </aside>
+              </li>
+            </ol>
+          </li>
+          <li>Determine if your feature meets the definition of a [=powerful feature=] (i.e.,
+          requires [=express permission=] to be used). If it does:
+            <ol>
+              <li>[=Specifies a powerful feature|Specify a powerful feature=] in your specification
+              in conformance with the [[[Permissions]]] specification.
+              </li>
+            </ol>
+          </li>
+          <li>Modify either the [=table of standardized permissions=] or the [=table of provisional
+          permissions=] filling out each column with the required information.
+          </li>
+          <li>Submit a pull request to the <a href="https://github.com/w3c/permissions/">Powerful
+          Features Registry Repository</a> on GitHub with your changes. The maintainers of the
+          repository will review your pull request and check that everything integrates properly.
+          </li>
+        </ol>
+      </section>
+      <section>
+        <h2>
+          Registry table of standardized permissions
+        </h2>
+        <p>
+          For a permission to appear in the table of standardized permissions, and thus be
+          considered a <dfn>standardized permission</dfn>, it needs to meet the following criteria:
+        </p>
+        <ul>
+          <li>Implemented and demonstrably interoperable in at least two browser engines (e.g., has
+          accompanying <a href="https://web-platform-tests.org">Web Platform Tests</a>).
+          </li>
+          <li>Is specified in published as [=technical report=] by a W3C [=Working Group=] with
+          maturity of [=first public working draft=] or above, or is published by the <a href=
+          "https://whatwg.org">WHATWG</a> as a standard.
+          </li>
+        </ul>
+        <p>
+          Each [=permission=] is identified by a unique literal string. In the case of
+          [[[Permissions-Policy]]], the string identifies a [=policy-controlled features=].
+          Similarly, in the [[[Permissions]]] specification the string identifies a [=powerful
+          feature=].
+        </p>
+        <aside class="note" title="Permissions and Permissions Policy">
+          <p>
+            Not every [=policy-controlled feature=] is [=powerful features=]. For example,
+            "web-share" is a [=policy-controlled feature=] that is not classified as a [=powerful
+            feature=] because it doesn't require [=express permission=] to be used. However, with
+            very few exceptions, most [=powerful features=] are also [=policy-controlled
+            features=]. For example, "geolocation" is both a [=policy-controlled feature=] and a
+            [=powerful feature=], as it requires [=express permission=] to be used. Please refer to
+            the [[[Permissions]]] specification for guidance on how to [=specifies a powerful
+            feature|specify a powerful feature=].
+          </p>
+        </aside>
+        <table class="simple data">
+          <caption>
+            <dfn data-local-lt="table of standardized permissions">Table of standardized
+            permissions of the web platform</dfn>
+          </caption>
+          <tr>
+            <th rowspan="2">
+              Identifying string
+            </th>
+            <th rowspan="2">
+              Is [=policy-controlled feature=]?
+            </th>
+            <th rowspan="2">
+              Is [=powerful feature=]?
+            </th>
+            <th rowspan="2">
+              Specification
+            </th>
+            <th colspan="3">
+              Implementations
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <a href="https://www.chromium.org/Home/">Chromium</a>
+            </th>
+            <th>
+              <a href="https://developer.mozilla.org/en-US/docs/Glossary/Gecko">Gecko</a>
+            </th>
+            <th>
+              <a href="https://webkit.org/">WebKit</a>
+            </th>
+          </tr>
+          <tr data-cite="geolocation">
+            <td class="string-token">
+              <a>"geolocation"</a>
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              [[[geolocation]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              YES
+            </td>
+            <td class="imp-webkit">
+              YES
+            </td>
+          </tr>
+          <tr data-cite="notifications">
+            <td class="string-token">
+              "[=notifications=]"
+            </td>
+            <td class="is-policy-controlled">
+              NO
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              [[[NOTIFICATIONS]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              YES
+            </td>
+            <td class="imp-webkit">
+              YES
+            </td>
+          </tr>
+          <tr data-cite="push-api">
+            <td class="string-token">
+              [="push"=]
+            </td>
+            <td class="is-policy-controlled">
+              NO
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              [[[push-api]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              YES
+            </td>
+            <td class="imp-webkit">
+              YES
+            </td>
+          </tr>
+          <tr data-cite="Web-share">
+            <td class="string-token">
+              <a>"web-share"</a>
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              NO
+            </td>
+            <td class="spec">
+              [[[Web-Share]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              YES
+            </td>
+            <td class="imp-webkit">
+              YES
+            </td>
+          </tr><!--
+            You can add a row to this table by copy/pasting the following.
+          -->
+          <!--tr data-cite="spec-shortname">
+            <td class="string-token">
+              <a>"some-string"</a>
+            </td>
+            <td class="is-policy-controlled">
+              YES/NO
+            </td>
+            <td class="is-powerful-feature">
+              YES/NO
+            </td>
+            <td class="spec">
+              [[[some-spec]]]
+            </td>
+            <td class="imp-chromium">
+              YES/NO
+            </td>
+            <td class="imp-gecko">
+              YES/NO
+            </td>
+            <td class="imp-webkit">
+              YES/NO
+            </td>
+          </tr-->
+        </table>
+      </section>
+      <section>
+        <h2>
+          Registry table of provisional permissions
+        </h2>
+        <p>
+          Provisional permissions are permissions that are not yet [=standardized
+          permission|standardized=] (i.e., they are either experimental, still in the incubation
+          phase, or are only implemented in a single browser engine).
+        </p>
+        <table class="simple data">
+          <caption>
+            <dfn>Table of provisional permissions</dfn>
+          </caption>
+          <tr>
+            <th rowspan="2">
+              Identifying string
+            </th>
+            <th rowspan="2">
+              Is [=policy-controlled feature=]?
+            </th>
+            <th rowspan="2">
+              Is [=powerful feature=]?
+            </th>
+            <th rowspan="2">
+              Specification
+            </th>
+            <th colspan="3">
+              Implementations
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <a href="https://www.chromium.org/Home/">Chromium</a>
+            </th>
+            <th>
+              <a href="https://developer.mozilla.org/en-US/docs/Glossary/Gecko">Gecko</a>
+            </th>
+            <th>
+              <a href="https://webkit.org/">WebKit</a>
+            </th>
+          </tr>
+          <tr data-cite="accelerometer">
+            <td class="string-token">
+              "[=accelerometer=]"
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              [[[accelerometer]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              NO
+            </td>
+            <td class="imp-webkit">
+              NO
+            </td>
+          </tr>
+          <tr data-cite="window-management">
+            <td class="string-token">
+              "[=window-management=]"
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              [[[window-management]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              NO
+            </td>
+            <td class="imp-webkit">
+              NO
+            </td>
+          </tr>
+          <tr data-cite="local-font-access">
+            <td class="string-token">
+              "[=local-fonts=]"
+            </td>
+            <td class="is-policy-controlled">
+              YES
+            </td>
+            <td class="is-powerful-feature">
+              YES
+            </td>
+            <td class="spec">
+              [[[local-font-access]]]
+            </td>
+            <td class="imp-chromium">
+              YES
+            </td>
+            <td class="imp-gecko">
+              NO
+            </td>
+            <td class="imp-webkit">
+              NO
+            </td>
+          </tr><!--
+            You can add a row to this table by copy/pasting the following.
+          -->
+          <!--tr data-cite="spec-shortname">
+            <td class="string-token">
+              <a>"some-string"</a>
+            </td>
+            <td class="is-policy-controlled">
+              YES/NO
+            </td>
+            <td class="is-powerful-feature">
+              YES/NO
+            </td>
+            <td class="spec">
+              [[[some-spec]]]
+            </td>
+            <td class="imp-chromium">
+              YES/NO
+            </td>
+            <td class="imp-gecko">
+              YES/NO
+            </td>
+            <td class="imp-webkit">
+              YES/NO
+            </td>
+          </tr-->
+        </table>
+      </section>
+    </section>
     <section class="appendix">
       <h2 id="privacy-considerations">
         Privacy considerations
       </h2>
       <p>
-        An adversary could use a <a>permission state</a> as an element in creating a "fingerprint"
+        An adversary could use a [=permission state=] as an element in creating a "fingerprint"
         corresponding to an end-user. Although an adversary can already determine the state of a
         permission by actually using the API, that often leads to a UI prompt being presented to
         the end-user (if the permission was not already [=permission/granted=]). Even though this
