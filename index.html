@@ -310,7 +310,7 @@
             [=permission store entry/descriptor=] is |descriptor|, and whose [=permission store
             entry/key=] [=permission key/is equal to=] |key| given |descriptor|, return that entry.
           </li>
-          <li>Return null.
+          <li>Return `null`.
           </li>
         </ol>
         <p>
@@ -787,7 +787,7 @@
           <li>Let |entry| be the result of [=get a permission store entry|getting a permission
           store entry=] with |descriptor| and |key|.
           </li>
-          <li>If |entry| is not null, return a {{PermissionState}} enum value from |entry|'s
+          <li>If |entry| is not `null`, return a {{PermissionState}} enum value from |entry|'s
           [=permission store entry/state=].
           </li>
           <li>Return the {{PermissionState}} enum value that represents the permission state of
@@ -1101,7 +1101,7 @@
                 <li>Let |document| be |status|'s [=relevant global object=]'s [=associated
                 Document=].
                 </li>
-                <li>If |document| is null or |document| is not [=Document/fully active=], terminate
+                <li>If |document| is `null` or |document| is not [=Document/fully active=], terminate
                 this algorithm.
                 </li>
               </ol>
@@ -1420,7 +1420,7 @@
                   If this conversion throws an exception, return [=error=] with [=error code=] [=invalid argument=].
                 </li>
                 <li>[=Set a permission=] with |typedDescriptor| and |state|.</li>
-                <li>Return [=success=] with data null.</li>
+                <li>Return [=success=] with data `null`.</li>
                </ol>
              </>
             </section>
