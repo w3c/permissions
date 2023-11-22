@@ -1192,7 +1192,8 @@
           required PermissionState state;
         };
       </pre>
-      <p>To <dfn>set a permission</dfn> given <var>descriptor</var>, and <var>state</var>:
+        To <dfn data-for="WebDriver">set a permission</dfn> given a {{PermissionDescriptor}} |descriptor:PermissionDescriptor|, and a {{PermissionState}} |state:PermissionState|:
+      </p>
       <ol class="algorithm">
         <li>Let |settings| be the [=current settings object=].</li>
         <li>Let |targets| be a <a>list</a> containing all [=environment settings objects=]
