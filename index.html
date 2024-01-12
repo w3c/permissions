@@ -183,7 +183,7 @@ img.caniuse-browser{filter:drop-shadow(0 0 .1cm #666)}
 .mdn .samsunginternet_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/samsung-internet/samsung-internet.svg)}
 .mdn .webview_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/android-webview/android-webview.png)}
 </style>
-<meta name="revision" content="1a263f67126eb6b30e2bcd32cb09e228301fd2c9">
+<meta name="revision" content="037a40e7e90f57f808783544e0773a13d65989f5">
 <meta name="description" content="This specification defines common infrastructure that other specifications can use to
         interact with browser permissions. These permissions represent a user's choice to allow or
         deny access to &quot;powerful features&quot; of the platform. For developers, the specification
@@ -256,7 +256,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     ]
   },
   "caniuse": "permissions-api",
-  "gitRevision": "1a263f67126eb6b30e2bcd32cb09e228301fd2c9",
+  "gitRevision": "037a40e7e90f57f808783544e0773a13d65989f5",
   "publishISODate": "2024-01-12T00:00:00.000Z",
   "generatedSubtitle": "W3C Editor's Draft 12 January 2024"
 }</script>
@@ -1928,8 +1928,8 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
       
       <p>
         For the purposes of user-agent automation and application testing, this document defines
-        extensions to the [<cite><a class="bibref" data-link-type="biblio" href="#bib-webdriver" title="WebDriver">WebDriver</a></cite>] and [<cite><a class="bibref" data-link-type="biblio" href="#bib-webdriver-bidi" title="WebDriver BiDi">WebDriver-BiDi</a></cite>] specifications.
-        It is <em class="rfc2119">OPTIONAL</em> for a user agent to support them.
+        extensions to the [<cite><a class="bibref" data-link-type="biblio" href="#bib-webdriver" title="WebDriver">WebDriver</a></cite>] and [<cite><a class="bibref" data-link-type="biblio" href="#bib-webdriver-bidi" title="WebDriver BiDi">WebDriver-BiDi</a></cite>] specifications. It is <em class="rfc2119">OPTIONAL</em> for a
+        user agent to support them.
       </p>
       <pre class="idl def" id="webidl-138517604"><span class="idlHeader"><a class="self-link" href="#webidl-138517604">WebIDL</a></span><code><span data-idl="" class="idlDictionary" id="idl-def-permissionsetparameters" data-title="PermissionSetParameters">dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissionsetparameters" data-idl="dictionary" data-title="PermissionSetParameters" data-dfn-for="" class="idlID" tabindex="0" aria-haspopup="dialog"><code>PermissionSetParameters</code></dfn> {<span data-idl="" class="idlMember" id="idl-def-permissionsetparameters-descriptor" data-title="descriptor" data-dfn-for="PermissionSetParameters">
   required<span class="idlType"> <a data-link-type="idl" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-19"><code>PermissionDescriptor</code></a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-permissionsetparameters-descriptor" data-idl="field" data-title="descriptor" data-dfn-for="PermissionSetParameters" data-type="PermissionDescriptor" class="idlName" tabindex="0" aria-haspopup="dialog"><code>descriptor</code></dfn>;</span><span data-idl="" class="idlMember" id="idl-def-permissionsetparameters-state" data-title="state" data-dfn-for="PermissionSetParameters">
@@ -1937,31 +1937,33 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
 };</span></code></pre>
       <div class="algorithm">
         <p>
-          To <dfn data-for="WebDriver" id="dfn-set-a-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">set a permission</dfn> given a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-20"><code>PermissionDescriptor</code></a> <var data-type="PermissionDescriptor">descriptor</var>, and a <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-9"><code>PermissionState</code></a> <var data-type="PermissionState">state</var>:
+          To <dfn data-for="WebDriver" id="dfn-set-a-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">set a permission</dfn> given a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-20"><code>PermissionDescriptor</code></a>
+          <var data-type="PermissionDescriptor">descriptor</var>, and a <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-9"><code>PermissionState</code></a> <var data-type="PermissionState">state</var>:
         </p>
         <ol>
-          <li>Let <var>settings</var> be the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a>.</li>
-          <li>Let <var>targets</var> be a <a data-type="dfn" href="https://infra.spec.whatwg.org/#list">list</a> containing all <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings objects</a>
-          whose <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a> is <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#same-origin">same origin</a> as
-          the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a> of <var>settings</var>.
+          <li>Let <var>settings</var> be the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a>.
           </li>
-          <li>Let <var>tasks</var> be an empty <a data-type="dfn" href="https://infra.spec.whatwg.org/#list">list</a>.</li>
+          <li>Let <var>targets</var> be a <a data-type="dfn" href="https://infra.spec.whatwg.org/#list">list</a> containing all <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings objects</a> whose
+          <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a> is <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#same-origin">same origin</a> as the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a> of <var>settings</var>.
+          </li>
+          <li>Let <var>tasks</var> be an empty <a data-type="dfn" href="https://infra.spec.whatwg.org/#list">list</a>.
+          </li>
           <li>For each <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>target</var> in <var>targets</var>:
             <ol>
               <li><a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-task">Queue a task</a> <var>task</var> on the <a data-link-type="dfn|abstract-op" href="#dfn-permissions-task-source" class="internalDFN" id="ref-for-dfn-permissions-task-source-4">permissions task source</a> of <var>target</var>'s
               <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#relevant-settings-object">relevant settings object</a>'s <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-global">global object</a>'s
               <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/nav-history-apis.html#window-bc">browsing context</a> to perform the following step:
                 <ol>
-                  <li>Interpret <var data-type="PermissionState">state</var> as if it were the
-                  result of an invocation of <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-16">permission state</a> for <var data-type="PermissionDescriptor">descriptor</var> with the
-                  argument <var>target</var> made at this moment.
+                  <li>Interpret <var data-type="PermissionState">state</var> as if it were the result of an invocation of <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-16">permission state</a> for <var data-type="PermissionDescriptor">descriptor</var> with the argument <var>target</var> made at this moment.
                   </li>
                 </ol>
               </li>
-              <li><a data-link-type="dfn|abstract-op" data-type="dfn" href="https://infra.spec.whatwg.org/#list-append">Append</a> <var>task</var> to <var>tasks</var>.</li>
+              <li><a data-link-type="dfn|abstract-op" data-type="dfn" href="https://infra.spec.whatwg.org/#list-append">Append</a> <var>task</var> to <var>tasks</var>.
+              </li>
             </ol>
           </li>
-          <li>Wait for all <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-task">tasks</a> in <var>tasks</var> to have executed and return.</li>
+          <li>Wait for all <a data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-task">tasks</a> in <var>tasks</var> to have executed and return.
+          </li>
         </ol>
       </div>
       <section data-cite="webdriver" id="automated-testing-with-webdriver"><div class="header-wrapper"><h3 id="automation-webdriver"><bdi class="secno">B.1 </bdi>
@@ -1969,7 +1971,8 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
         </h3><a class="self-link" href="#automation-webdriver" aria-label="Permalink for Section B.1"></a></div>
         
         <p>
-          This document defines the following <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-extension-commands">extension commands</a> for the [<cite><a class="bibref" data-link-type="biblio" href="#bib-webdriver" title="WebDriver">WebDriver</a></cite>] specification.
+          This document defines the following <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-extension-commands">extension commands</a> for the [<cite><a class="bibref" data-link-type="biblio" href="#bib-webdriver" title="WebDriver">WebDriver</a></cite>]
+          specification.
         </p>
         <section id="set-permission"><div class="header-wrapper"><h4 id="webdriver-command-set-permission"><bdi class="secno">B.1.1 </bdi>
             Set Permission
@@ -2010,7 +2013,8 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
             <li>Let <var>rootDesc</var> be <var>parameters</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-descriptor" class="internalDFN" id="ref-for-dom-permissionsetparameters-descriptor-1"><code>descriptor</code></a>.
             </li>
             <li>If <var>parameters</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-state" class="internalDFN" id="ref-for-dom-permissionsetparameters-state-1"><code>state</code></a> is an inappropriate <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-18">permission
-            state</a> for any implementation-defined reason, return a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
+            state</a> for any implementation-defined reason, return a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a>
+            <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
               <div class="note" role="note" id="issue-container-generatedID-8"><div role="heading" class="note-title marker" id="h-note-8" aria-level="5"><span>Note</span></div><p class="">
                 For example, <a data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agents</a> that define the "midi" <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-31">powerful feature</a> as
                 "always on" can choose to reject a command to set the <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-19">permission state</a> to
@@ -2018,10 +2022,11 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
               </p></div>
             </li>
             <li>Let <var>typedDescriptor</var> be the object <var>rootDesc</var> refers to, <a data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL
-            value</a> of <var>rootDesc</var>.<a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-14"><code>name</code></a>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-6">permission descriptor type</a>. If this throws an exception, return a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
+            value</a> of <var>rootDesc</var>.<a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-14"><code>name</code></a>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-6">permission descriptor type</a>. If this throws an exception, return a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a>
+            <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
             </li>
-            <li>
-              <a data-link-type="dfn|abstract-op" href="#dfn-set-a-permission" class="internalDFN" id="ref-for-dfn-set-a-permission-1">Set a permission</a> with <var>typedDescriptor</var> and <var>parameters</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-state" class="internalDFN" id="ref-for-dom-permissionsetparameters-state-2"><code>state</code></a>.
+            <li><a data-link-type="dfn|abstract-op" href="#dfn-set-a-permission" class="internalDFN" id="ref-for-dfn-set-a-permission-1">Set a permission</a> with <var>typedDescriptor</var> and
+            <var>parameters</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-state" class="internalDFN" id="ref-for-dom-permissionsetparameters-state-2"><code>state</code></a>.
             </li>
             <li>Return <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-success">success</a> with data <code>null</code>.
             </li>
@@ -2031,8 +2036,8 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
   </div>
             <p>
               To <a data-link-type="dfn|abstract-op" href="#dfn-set-permission" class="internalDFN" id="ref-for-dfn-set-permission-1">set permission</a> for <code>{name: "midi", sysex: true}</code> of the
-              <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a> of the <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-session">session</a> with ID 23 to "<code>granted</code>", the local
-              end would POST to <code>/session/23/permissions</code> with the body:
+              <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a> of the <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-session">session</a> with ID 23 to "<code>granted</code>", the
+              local end would POST to <code>/session/23/permissions</code> with the body:
             </p>
             <pre aria-busy="false"><code class="hljs json">{
   <span class="hljs-attr">"descriptor"</span>: {
@@ -2049,15 +2054,16 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
         </h3><a class="self-link" href="#automation-webdriver-bidi" aria-label="Permalink for Section B.2"></a></div>
         
         <p>
-          This document defines the following <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://w3c.github.io/webdriver-bidi/#extension-modules">extension modules</a> for the [<cite><a class="bibref" data-link-type="biblio" href="#bib-webdriver-bidi" title="WebDriver BiDi">WebDriver-BiDi</a></cite>] specification.
+          This document defines the following <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://w3c.github.io/webdriver-bidi/#extension-modules">extension modules</a> for the [<cite><a class="bibref" data-link-type="biblio" href="#bib-webdriver-bidi" title="WebDriver BiDi">WebDriver-BiDi</a></cite>]
+          specification.
         </p>
         <section id="the-permissions-module"><div class="header-wrapper"><h4 id="webdriver-bidi-module-permissions"><bdi class="secno">B.2.1 </bdi>
             The permissions Module
           </h4><a class="self-link" href="#webdriver-bidi-module-permissions" aria-label="Permalink for Section B.2.1"></a></div>
           
           <p>
-            The <dfn id="dfn-permissions" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">permissions</dfn> module contains commands for
-            managing the remote end browser permissions.
+            The <dfn id="dfn-permissions" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">permissions</dfn> module contains commands for managing the remote end browser
+            permissions.
           </p>
           <section id="definition"><div class="header-wrapper"><h5 id="webdriver-bidi-module-permissions-definition"><bdi class="secno">B.2.1.1 </bdi>
               Definition
@@ -2104,12 +2110,13 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
               </h6><a class="self-link" href="#webdriver-bidi-command-permissions-setPermission" aria-label="Permalink for Section B.2.1.3.1"></a></div>
               
               <p>
-                The <dfn class="export" data-export="" id="dfn-set-permission-0" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Set Permission</dfn>
-                <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://w3c.github.io/webdriver-bidi/#command">command</a> simulates user modification of a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-23"><code>PermissionDescriptor</code></a>'s
-                <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-20">permission state</a>.
+                The <dfn class="export" data-export="" id="dfn-set-permission-0" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Set Permission</dfn> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://w3c.github.io/webdriver-bidi/#command">command</a> simulates user
+                modification of a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-23"><code>PermissionDescriptor</code></a>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-20">permission state</a>.
               </p>
               <dl>
-                <dt>Command Type</dt>
+                <dt>
+                  Command Type
+                </dt>
                 <dd>
                   <pre class="cddl remote-cddl" aria-busy="false"><code class="hljs">permissions.setPermission = (
   method: "permissions.setPermission",
@@ -2121,42 +2128,40 @@ permissions.SetPermissionParameters = {
   state: permissions.PermissionState,
 }</code></pre>
                 </dd>
-                <dt>Result Type</dt>
+                <dt>
+                  Result Type
+                </dt>
                 <dd>
                   <pre class="cddl" aria-busy="false"><code class="hljs">EmptyResult</code></pre>
                 </dd>
-             </dl>
-             <div class="algorithm" data-algorithm="remote end steps for permissions.setPermission">
-               <p>
-                 The <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-remote-end-steps">remote end steps</a> with <var>session</var> and <var>command parameters</var> are:
-               </p>
-               <ol>
-                <li>
-                  Let <var>descriptor</var> be the value of the <code>descriptor</code> field of
-   <var>command parameters</var>.
-                </li>
-                <li>
-                  Let <var>permission name</var> be the value of the <code>name</code> field of
-             <var>descriptor</var> representing <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-15"><code>name</code></a>.
-                </li>
-                <li>
-                  Let <var>state</var> be the value of the <code>state</code> field of <var>command
-   parameters</var>.
-                </li>
-                <li>
-                  If <var>state</var> is an inappropriate <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-21">permission state</a> for any
-   implementation-defined reason, return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error">error</a> with <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error-code">error code</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-invalid-argument">invalid argument</a>.
-                </li>
-                <li>
-                  Let <var>typedDescriptor</var> be the object <var>descriptor</var> refers to, <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL value</a> (<var>descriptor</var>, <var>state</var>) of
-                  <a data-link-type="idl" data-lt="PermissionSetParameters" href="#dom-permissionsetparameters" class="internalDFN" id="ref-for-dom-permissionsetparameters-2"><code>PermissionSetParameters</code></a> <var>permission name</var>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-7">permission descriptor type</a>.
-                  If this conversion throws an exception, return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error">error</a> with <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error-code">error code</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-invalid-argument">invalid argument</a>.
-                </li>
-                <li><a data-link-type="dfn|abstract-op" href="#dfn-set-a-permission" class="internalDFN" id="ref-for-dfn-set-a-permission-2">Set a permission</a> with <var>typedDescriptor</var> and <var>state</var>.</li>
-                <li>Return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-success">success</a> with data <code>null</code>.</li>
-               </ol>
-             
-            </div></section>
+              </dl>
+              <div class="algorithm" data-algorithm="remote end steps for permissions.setPermission">
+                <p>
+                  The <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-remote-end-steps">remote end steps</a> with <var>session</var> and <var>command parameters</var> are:
+                </p>
+                <ol>
+                  <li>Let <var>descriptor</var> be the value of the <code>descriptor</code> field of <var>command
+                  parameters</var>.
+                  </li>
+                  <li>Let <var>permission name</var> be the value of the <code>name</code> field of <var>descriptor</var>
+                  representing <a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-15"><code>name</code></a>.
+                  </li>
+                  <li>Let <var>state</var> be the value of the <code>state</code> field of <var>command parameters</var>.
+                  </li>
+                  <li>If <var>state</var> is an inappropriate <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-21">permission state</a> for any
+                  implementation-defined reason, return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error">error</a> with <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error-code">error code</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-invalid-argument">invalid argument</a>.
+                  </li>
+                  <li>Let <var>typedDescriptor</var> be the object <var>descriptor</var> refers to, <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL value</a> (<var>descriptor</var>, <var>state</var>) of <a data-link-type="idl" data-lt="PermissionSetParameters" href="#dom-permissionsetparameters" class="internalDFN" id="ref-for-dom-permissionsetparameters-2"><code>PermissionSetParameters</code></a> <var>permission
+                  name</var>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-7">permission descriptor type</a>. If this conversion
+                  throws an exception, return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error">error</a> with <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error-code">error code</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-invalid-argument">invalid argument</a>.
+                  </li>
+                  <li><a data-link-type="dfn|abstract-op" href="#dfn-set-a-permission" class="internalDFN" id="ref-for-dfn-set-a-permission-2">Set a permission</a> with <var>typedDescriptor</var> and <var>state</var>.
+                  </li>
+                  <li>Return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-success">success</a> with data <code>null</code>.
+                  </li>
+                </ol>
+              </div>
+            </section>
           </section>
         </section>
       </section>
