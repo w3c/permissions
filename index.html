@@ -1220,8 +1220,8 @@
       </h2>
       <p>
         For the purposes of user-agent automation and application testing, this document defines
-        extensions to the [[WebDriver]] and [[WebDriver-BiDi]] specifications.
-        It is OPTIONAL for a user agent to support them.
+        extensions to the [[WebDriver]] and [[WebDriver-BiDi]] specifications. It is OPTIONAL for a
+        user agent to support them.
       </p>
       <pre class='idl'>
         dictionary PermissionSetParameters {
@@ -1231,31 +1231,35 @@
       </pre>
       <div class="algorithm">
         <p>
-          To <dfn data-for="WebDriver">set a permission</dfn> given a {{PermissionDescriptor}} |descriptor:PermissionDescriptor|, and a {{PermissionState}} |state:PermissionState|:
+          To <dfn data-for="WebDriver">set a permission</dfn> given a {{PermissionDescriptor}}
+          |descriptor:PermissionDescriptor|, and a {{PermissionState}} |state:PermissionState|:
         </p>
         <ol>
-          <li>Let |settings| be the [=current settings object=].</li>
-          <li>Let |targets| be a <a>list</a> containing all [=environment settings objects=]
-          whose [=environment settings object/origin=] is [=same origin=] as
-          the [=environment settings object/origin=] of |settings|.
+          <li>Let |settings| be the [=current settings object=].
           </li>
-          <li>Let |tasks| be an empty <a>list</a>.</li>
+          <li>Let |targets| be a <a>list</a> containing all [=environment settings objects=] whose
+          [=environment settings object/origin=] is [=same origin=] as the [=environment settings
+          object/origin=] of |settings|.
+          </li>
+          <li>Let |tasks| be an empty <a>list</a>.
+          </li>
           <li>For each [=environment settings object=] |target| in |targets|:
             <ol>
               <li>[=Queue a task=] |task| on the [=permissions task source=] of |target|'s
               [=relevant settings object=]'s [=environment settings object/global object=]'s
               [=Window/browsing context=] to perform the following step:
                 <ol>
-                  <li>Interpret |state| as if it were the
-                  result of an invocation of [=permission state=] for |descriptor| with the
-                  argument |target| made at this moment.
+                  <li>Interpret |state| as if it were the result of an invocation of [=permission
+                  state=] for |descriptor| with the argument |target| made at this moment.
                   </li>
                 </ol>
               </li>
-              <li>[=list/Append=] |task| to |tasks|.</li>
+              <li>[=list/Append=] |task| to |tasks|.
+              </li>
             </ol>
           </li>
-          <li>Wait for all <a>tasks</a> in |tasks| to have executed and return.</li>
+          <li>Wait for all <a>tasks</a> in |tasks| to have executed and return.
+          </li>
         </ol>
       </div>
       <section data-cite="webdriver">
@@ -1263,7 +1267,8 @@
           Automated testing with [[WebDriver]]
         </h3>
         <p>
-          This document defines the following <a>extension commands</a> for the [[WebDriver]] specification.
+          This document defines the following <a>extension commands</a> for the [[WebDriver]]
+          specification.
         </p>
         <section>
           <h4 id="webdriver-command-set-permission">
@@ -1305,7 +1310,8 @@
             <li>Let |rootDesc| be |parameters|.{{PermissionSetParameters/descriptor}}.
             </li>
             <li>If |parameters|.{{PermissionSetParameters/state}} is an inappropriate <a>permission
-            state</a> for any implementation-defined reason, return a [=invalid argument=] [=error=].
+            state</a> for any implementation-defined reason, return a [=invalid argument=]
+            [=error=].
               <p class="note">
                 For example, <a>user agents</a> that define the "midi" <a>powerful feature</a> as
                 "always on" can choose to reject a command to set the [=permission state=] to
@@ -1313,12 +1319,12 @@
               </p>
             </li>
             <li>Let |typedDescriptor| be the object |rootDesc| refers to, <a>converted to an IDL
-            value</a> of |rootDesc|.{{PermissionDescriptor/name}}'s [=powerful
-            feature/permission descriptor type=]. If this throws an exception, return a [=invalid
-            argument=] [=error=].
+            value</a> of |rootDesc|.{{PermissionDescriptor/name}}'s [=powerful feature/permission
+            descriptor type=]. If this throws an exception, return a [=invalid argument=]
+            [=error=].
             </li>
-            <li>
-              [=Set a permission=] with |typedDescriptor| and |parameters|.{{PermissionSetParameters/state}}.
+            <li>[=Set a permission=] with |typedDescriptor| and
+            |parameters|.{{PermissionSetParameters/state}}.
             </li>
             <li>Return <a>success</a> with data `null`.
             </li>
@@ -1326,8 +1332,8 @@
           <aside class="example" title="Setting a permission via WebDriver">
             <p>
               To [=extension commands/set permission=] for `{name: "midi", sysex: true}` of the
-              [=current settings object=] of the <a>session</a> with ID 23 to "`granted`", the local
-              end would POST to `/session/23/permissions` with the body:
+              [=current settings object=] of the <a>session</a> with ID 23 to "`granted`", the
+              local end would POST to `/session/23/permissions` with the body:
             </p>
             <pre class="json">
             {
@@ -1346,15 +1352,16 @@
           Automated testing with [[WebDriver-BiDi]]
         </h3>
         <p>
-          This document defines the following [=extension modules=] for the [[WebDriver-BiDi]] specification.
+          This document defines the following [=extension modules=] for the [[WebDriver-BiDi]]
+          specification.
         </p>
         <section>
           <h4 id="webdriver-bidi-module-permissions">
             The permissions Module
           </h4>
           <p>
-            The <dfn>permissions</dfn> module contains commands for
-            managing the remote end browser permissions.
+            The <dfn>permissions</dfn> module contains commands for managing the remote end browser
+            permissions.
           </p>
           <section>
             <h5 id="webdriver-bidi-module-permissions-definition">
@@ -1407,12 +1414,13 @@
                 The permissions.setPermission Command
               </h6>
               <p>
-                The <dfn class="export">Set Permission</dfn>
-                [=command=] simulates user modification of a {{PermissionDescriptor}}'s
-                [=permission state=].
+                The <dfn class="export">Set Permission</dfn> [=command=] simulates user
+                modification of a {{PermissionDescriptor}}'s [=permission state=].
               </p>
               <dl>
-                <dt>Command Type</dt>
+                <dt>
+                  Command Type
+                </dt>
                 <dd>
                   <pre class="cddl remote-cddl">
                     permissions.setPermission = (
@@ -1426,43 +1434,44 @@
                     }
                   </pre>
                 </dd>
-                <dt>Result Type</dt>
+                <dt>
+                  Result Type
+                </dt>
                 <dd>
                   <pre class="cddl">
                     EmptyResult
                   </pre>
                 </dd>
-             </dl>
-             <div class="algorithm" data-algorithm="remote end steps for permissions.setPermission">
-               <p>
-                 The [=remote end steps=] with |session| and |command parameters| are:
-               </p>
-               <ol>
-                <li>
-                  Let |descriptor| be the value of the `descriptor` field of
-   |command parameters|.
-                </li>
-                <li>
-                  Let |permission name| be the value of the `name` field of
-             |descriptor| representing {{PermissionDescriptor/name}}.
-                </li>
-                <li>
-                  Let |state| be the value of the `state` field of |command
-   parameters|.
-                </li>
-                <li>
-                  If |state| is an inappropriate [=permission state=] for any
-   implementation-defined reason, return [=error=] with [=error code=] [=invalid argument=].
-                </li>
-                <li>
-                  Let |typedDescriptor| be the object |descriptor| refers to, [=converted to an IDL value=] (|descriptor|, |state|) of
-                  {{PermissionSetParameters}} |permission name|'s [=powerful feature/permission descriptor type=].
-                  If this conversion throws an exception, return [=error=] with [=error code=] [=invalid argument=].
-                </li>
-                <li>[=Set a permission=] with |typedDescriptor| and |state|.</li>
-                <li>Return [=success=] with data `null`.</li>
-               </ol>
-             </div>
+              </dl>
+              <div class="algorithm" data-algorithm=
+              "remote end steps for permissions.setPermission">
+                <p>
+                  The [=remote end steps=] with |session| and |command parameters| are:
+                </p>
+                <ol>
+                  <li>Let |descriptor| be the value of the `descriptor` field of |command
+                  parameters|.
+                  </li>
+                  <li>Let |permission name| be the value of the `name` field of |descriptor|
+                  representing {{PermissionDescriptor/name}}.
+                  </li>
+                  <li>Let |state| be the value of the `state` field of |command parameters|.
+                  </li>
+                  <li>If |state| is an inappropriate [=permission state=] for any
+                  implementation-defined reason, return [=error=] with [=error code=] [=invalid
+                  argument=].
+                  </li>
+                  <li>Let |typedDescriptor| be the object |descriptor| refers to, [=converted to an
+                  IDL value=] (|descriptor|, |state|) of {{PermissionSetParameters}} |permission
+                  name|'s [=powerful feature/permission descriptor type=]. If this conversion
+                  throws an exception, return [=error=] with [=error code=] [=invalid argument=].
+                  </li>
+                  <li>[=Set a permission=] with |typedDescriptor| and |state|.
+                  </li>
+                  <li>Return [=success=] with data `null`.
+                  </li>
+                </ol>
+              </div>
             </section>
           </section>
         </section>
