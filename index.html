@@ -1233,7 +1233,7 @@
         <p>
           To <dfn data-for="WebDriver">set a permission</dfn> given a {{PermissionDescriptor}}
           |descriptor:PermissionDescriptor|, a {{PermissionState}} |state:PermissionState|, and an
-          |origin|:
+          optional |origin|:
         </p>
         <ol>
           <li>Let |target origin| be [=current settings object=]'s [=environment settings
@@ -1325,7 +1325,7 @@
             [=error=].
             </li>
             <li>[=Set a permission=] with |typedDescriptor|,
-            |parameters|.{{PermissionSetParameters/state}} and null.
+            |parameters|.{{PermissionSetParameters/state}}.
             </li>
             <li>Return <a>success</a> with data `null`.
             </li>
