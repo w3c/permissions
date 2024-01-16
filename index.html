@@ -183,7 +183,7 @@ img.caniuse-browser{filter:drop-shadow(0 0 .1cm #666)}
 .mdn .samsunginternet_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/samsung-internet/samsung-internet.svg)}
 .mdn .webview_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/android-webview/android-webview.png)}
 </style>
-<meta name="revision" content="037a40e7e90f57f808783544e0773a13d65989f5">
+<meta name="revision" content="8972985f409889b6a8d71a55475144cd31826360">
 <meta name="description" content="This specification defines common infrastructure that other specifications can use to
         interact with browser permissions. These permissions represent a user's choice to allow or
         deny access to &quot;powerful features&quot; of the platform. For developers, the specification
@@ -256,9 +256,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     ]
   },
   "caniuse": "permissions-api",
-  "gitRevision": "037a40e7e90f57f808783544e0773a13d65989f5",
-  "publishISODate": "2024-01-12T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 12 January 2024"
+  "gitRevision": "8972985f409889b6a8d71a55475144cd31826360",
+  "publishISODate": "2024-01-16T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 16 January 2024"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL permissions-policy w3c-process HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -267,7 +267,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2024-01-12">12 January 2024</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2024-01-16">16 January 2024</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -1938,13 +1938,14 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
       <div class="algorithm">
         <p>
           To <dfn data-for="WebDriver" id="dfn-set-a-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">set a permission</dfn> given a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-20"><code>PermissionDescriptor</code></a>
-          <var data-type="PermissionDescriptor">descriptor</var>, and a <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-9"><code>PermissionState</code></a> <var data-type="PermissionState">state</var>:
+          <var data-type="PermissionDescriptor">descriptor</var>, a <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-9"><code>PermissionState</code></a> <var data-type="PermissionState">state</var>, and an
+          optional <var>origin</var>:
         </p>
         <ol>
-          <li>Let <var>settings</var> be the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a>.
+          <li>Let <var>target origin</var> be <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a>'s <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a> if <var>origin</var> is null, or <var>origin</var> otherwise.
           </li>
           <li>Let <var>targets</var> be a <a data-type="dfn" href="https://infra.spec.whatwg.org/#list">list</a> containing all <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings objects</a> whose
-          <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a> is <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#same-origin">same origin</a> as the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a> of <var>settings</var>.
+          <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a> is <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#same-origin">same origin</a> with <var>target origin</var>.
           </li>
           <li>Let <var>tasks</var> be an empty <a data-type="dfn" href="https://infra.spec.whatwg.org/#list">list</a>.
           </li>
@@ -2126,6 +2127,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
 permissions.SetPermissionParameters = {
   descriptor: permissions.PermissionDescriptor,
   state: permissions.PermissionState,
+  origin: text,
 }</code></pre>
                 </dd>
                 <dt>
@@ -2155,7 +2157,9 @@ permissions.SetPermissionParameters = {
                   name</var>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-7">permission descriptor type</a>. If this conversion
                   throws an exception, return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error">error</a> with <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error-code">error code</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-invalid-argument">invalid argument</a>.
                   </li>
-                  <li><a data-link-type="dfn|abstract-op" href="#dfn-set-a-permission" class="internalDFN" id="ref-for-dfn-set-a-permission-2">Set a permission</a> with <var>typedDescriptor</var> and <var>state</var>.
+                  <li>Let <var>origin</var> be the value of the <code>origin</code> field of <var>command parameters</var>.
+                  </li>
+                  <li><a data-link-type="dfn|abstract-op" href="#dfn-set-a-permission" class="internalDFN" id="ref-for-dfn-set-a-permission-2">Set a permission</a> with <var>typedDescriptor</var>, <var>state</var>, and <var>origin</var>.
                   </li>
                   <li>Return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-success">success</a> with data <code>null</code>.
                   </li>
@@ -2600,7 +2604,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     </dd><dt id="bib-webdriver-bidi">[WebDriver-BiDi]</dt><dd>
       <a href="https://w3c.github.io/webdriver-bidi/"><cite>WebDriver BiDi</cite></a>.  W3C. Editor's Draft. URL: <a href="https://w3c.github.io/webdriver-bidi/">https://w3c.github.io/webdriver-bidi/</a>
     </dd><dt id="bib-webdriver2">[webdriver2]</dt><dd>
-      <a href="https://www.w3.org/TR/webdriver2/"><cite>WebDriver</cite></a>. Simon Stewart; David Burns.  W3C. 4 January 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webdriver2/">https://www.w3.org/TR/webdriver2/</a>
+      <a href="https://www.w3.org/TR/webdriver2/"><cite>WebDriver</cite></a>. Simon Stewart; David Burns.  W3C. 15 January 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webdriver2/">https://www.w3.org/TR/webdriver2/</a>
     </dd><dt id="bib-webidl">[WEBIDL]</dt><dd>
       <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
     </dd></dl>
@@ -2617,7 +2621,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     </dd><dt id="bib-orientation-event">[orientation-event]</dt><dd>
       <a href="https://www.w3.org/TR/orientation-event/"><cite>DeviceOrientation Event Specification</cite></a>. Reilly Grant; Raphael Kubo da Costa.  W3C. 5 January 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/orientation-event/">https://www.w3.org/TR/orientation-event/</a>
     </dd><dt id="bib-permissions">[Permissions]</dt><dd>
-      <a href="https://www.w3.org/TR/permissions/"><cite>Permissions</cite></a>. Marcos Caceres; Mike Taylor.  W3C. 1 December 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
+      <a href="https://www.w3.org/TR/permissions/"><cite>Permissions</cite></a>. Marcos Caceres; Mike Taylor.  W3C. 12 January 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
     </dd><dt id="bib-push-api">[push-api]</dt><dd>
       <a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson; Marcos Caceres.  W3C. 11 December 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
     </dd><dt id="bib-w3c-process">[w3c-process]</dt><dd>
