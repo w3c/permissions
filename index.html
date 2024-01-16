@@ -1232,14 +1232,15 @@
       <div class="algorithm">
         <p>
           To <dfn data-for="WebDriver">set a permission</dfn> given a {{PermissionDescriptor}}
-          |descriptor:PermissionDescriptor|, and a {{PermissionState}} |state:PermissionState|:
+          |descriptor:PermissionDescriptor|, a {{PermissionState}} |state:PermissionState|, and an
+          optional |origin|:
         </p>
         <ol>
-          <li>Let |settings| be the [=current settings object=].
+          <li>Let |target origin| be [=current settings object=]'s [=environment settings
+          object/origin=] if |origin| is null, or |origin| otherwise.
           </li>
           <li>Let |targets| be a <a>list</a> containing all [=environment settings objects=] whose
-          [=environment settings object/origin=] is [=same origin=] as the [=environment settings
-          object/origin=] of |settings|.
+          [=environment settings object/origin=] is [=same origin=] with |target origin|.
           </li>
           <li>Let |tasks| be an empty <a>list</a>.
           </li>
@@ -1431,6 +1432,7 @@
                     permissions.SetPermissionParameters = {
                       descriptor: permissions.PermissionDescriptor,
                       state: permissions.PermissionState,
+                      origin: text,
                     }
                   </pre>
                 </dd>
@@ -1466,7 +1468,9 @@
                   name|'s [=powerful feature/permission descriptor type=]. If this conversion
                   throws an exception, return [=error=] with [=error code=] [=invalid argument=].
                   </li>
-                  <li>[=Set a permission=] with |typedDescriptor| and |state|.
+                  <li>Let |origin| be the value of the `origin` field of |command parameters|.
+                  </li>
+                  <li>[=Set a permission=] with |typedDescriptor|, |state|, and |origin|.
                   </li>
                   <li>Return [=success=] with data `null`.
                   </li>
