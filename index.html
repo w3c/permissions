@@ -1232,15 +1232,16 @@
       <div class="algorithm">
         <p>
           To <dfn data-for="WebDriver">set a permission</dfn> given a {{PermissionDescriptor}}
-          |descriptor:PermissionDescriptor|, a {{PermissionState}} |state:PermissionState|, and an
-          optional |origin|:
+          |descriptor:PermissionDescriptor|, a {{PermissionState}} |state:PermissionState|, an
+          optional |origin|, and an optional |user agent|:
         </p>
         <ol>
           <li>Let |target origin| be [=current settings object=]'s [=environment settings
           object/origin=] if |origin| is null, or |origin| otherwise.
           </li>
           <li>Let |targets| be a <a>list</a> containing all [=environment settings objects=] whose
-          [=environment settings object/origin=] is [=same origin=] with |target origin|.
+          [=environment settings object/origin=] is [=same origin=] with |target origin|, and which
+          belong to the |user agent| if provided, or all user agents otherwise.
           </li>
           <li>Let |tasks| be an empty <a>list</a>.
           </li>
@@ -1433,6 +1434,7 @@
                       descriptor: permissions.PermissionDescriptor,
                       state: permissions.PermissionState,
                       origin: text,
+                      userContext?: text,
                     }
                   </pre>
                 </dd>
@@ -1459,6 +1461,9 @@
                   </li>
                   <li>Let |state| be the value of the `state` field of |command parameters|.
                   </li>
+                  <li>Let |user context id| be the value of the `userContext` field of |command
+                  parameters|, if present, and `default` otherwise.
+                  </li>
                   <li>If |state| is an inappropriate [=permission state=] for any
                   implementation-defined reason, return [=error=] with [=error code=] [=invalid
                   argument=].
@@ -1470,7 +1475,11 @@
                   </li>
                   <li>Let |origin| be the value of the `origin` field of |command parameters|.
                   </li>
-                  <li>[=Set a permission=] with |typedDescriptor|, |state|, and |origin|.
+                  <li>Let |user agent| be the [=user agent=] that represents the [=user context=]
+                  with the id |user context id|.
+                  </li>
+                  <li>[=Set a permission=] with |typedDescriptor|, |state|, |origin|, and |user
+                  agent|.
                   </li>
                   <li>Return [=success=] with data `null`.
                   </li>
