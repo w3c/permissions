@@ -1304,20 +1304,20 @@
             The <a>remote end steps</a> are:
           </p>
           <ol>
-            <li>Let |parameters| be the |parameters| argument, <a>converted to an IDL value</a> of
+            <li>Let |parametersDict| be the |parameters| argument, [=converted to an IDL value=] of
             type {{PermissionSetParameters}}. If this throws an exception, return an [=invalid
             argument=] [=error=].
             </li>
-            <li>Let |rootDesc| be |parameters|.{{PermissionSetParameters/descriptor}}.
-            </li>
-            <li>If |parameters|.{{PermissionSetParameters/state}} is an inappropriate <a>permission
-            state</a> for any implementation-defined reason, return a [=invalid argument=]
-            [=error=].
+            <li>If |parametersDict|.{{PermissionSetParameters/state}} is an inappropriate
+            [=permission state=] for any implementation-defined reason, return a
+            [=invalid argument=] [=error=].
               <p class="note">
                 For example, <a>user agents</a> that define the "midi" <a>powerful feature</a> as
                 "always on" can choose to reject a command to set the [=permission state=] to
                 {{PermissionState/"denied"}} at this step.
               </p>
+            </li>
+            <li>Let |rootDesc| be |parameters|.{{PermissionSetParameters/descriptor}}.
             </li>
             <li>Let |typedDescriptor| be the object |rootDesc| refers to, <a>converted to an IDL
             value</a> of |rootDesc|.{{PermissionDescriptor/name}}'s [=powerful feature/permission
@@ -1325,7 +1325,7 @@
             [=error=].
             </li>
             <li>[=Set a permission=] with |typedDescriptor| and
-            |parameters|.{{PermissionSetParameters/state}}.
+            |parametersDict|.{{PermissionSetParameters/state}}.
             </li>
             <li>Return <a>success</a> with data `null`.
             </li>
