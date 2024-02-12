@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 34.3.0">
+<meta name="generator" content="ReSpec 34.4.0">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -183,7 +183,7 @@ img.caniuse-browser{filter:drop-shadow(0 0 .1cm #666)}
 .mdn .samsunginternet_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/samsung-internet/samsung-internet.svg)}
 .mdn .webview_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/android-webview/android-webview.png)}
 </style>
-<meta name="revision" content="8972985f409889b6a8d71a55475144cd31826360">
+<meta name="revision" content="12a5113755cd93bfe0a2e09c1a0209303d61a39a">
 <meta name="description" content="This specification defines common infrastructure that other specifications can use to
         interact with browser permissions. These permissions represent a user's choice to allow or
         deny access to &quot;powerful features&quot; of the platform. For developers, the specification
@@ -256,9 +256,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     ]
   },
   "caniuse": "permissions-api",
-  "gitRevision": "8972985f409889b6a8d71a55475144cd31826360",
-  "publishISODate": "2024-01-16T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 16 January 2024"
+  "gitRevision": "12a5113755cd93bfe0a2e09c1a0209303d61a39a",
+  "publishISODate": "2024-02-12T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 12 February 2024"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL permissions-policy w3c-process HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -267,7 +267,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2024-01-16">16 January 2024</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2024-02-12">12 February 2024</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -322,10 +322,10 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       </div></div>
           <div class="caniuse-type"><span>desktop</span></div>
         </div><div class="caniuse-group">
-          <div class="caniuse-browsers"><div class="caniuse-cell y" title="Supported by default since Android Chrome version 120." aria-label="permissions-api is supported by default since Android Chrome version 120 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/chrome/chrome.svg" alt="Android Chrome logo"><span class="browser-version">120</span>
-      </div><div class="caniuse-cell y" title="Supported by default since Android Firefox version 119." aria-label="permissions-api is supported by default since Android Firefox version 119 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/firefox/firefox.svg" alt="Android Firefox logo"><span class="browser-version">119</span>
+          <div class="caniuse-browsers"><div class="caniuse-cell y" title="Supported by default since Android Chrome version 121." aria-label="permissions-api is supported by default since Android Chrome version 121 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/chrome/chrome.svg" alt="Android Chrome logo"><span class="browser-version">121</span>
+      </div><div class="caniuse-cell y" title="Supported by default since Android Firefox version 122." aria-label="permissions-api is supported by default since Android Firefox version 122 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/firefox/firefox.svg" alt="Android Firefox logo"><span class="browser-version">122</span>
       </div><div class="caniuse-cell y" title="Supported by default since Android UC version 15.5." aria-label="permissions-api is supported by default since Android UC version 15.5 on mobile.">
         <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/uc/uc.svg" alt="Android UC logo"><span class="browser-version">15.5</span>
       </div><div class="caniuse-cell y" title="Supported by default since iOS Safari version 16.0." aria-label="permissions-api is supported by default since iOS Safari version 16.0 on mobile.">
@@ -2008,26 +2008,26 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
             The <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-remote-end-steps">remote end steps</a> are:
           </p>
           <ol>
-            <li>Let <var>parameters</var> be the <var>parameters</var> argument, <a data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL value</a> of
+            <li>Let <var>parametersDict</var> be the <var>parameters</var> argument, <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL value</a> of
             type <a data-link-type="idl" data-lt="PermissionSetParameters" href="#dom-permissionsetparameters" class="internalDFN" id="ref-for-dom-permissionsetparameters-1"><code>PermissionSetParameters</code></a>. If this throws an exception, return an <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
             </li>
-            <li>Let <var>rootDesc</var> be <var>parameters</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-descriptor" class="internalDFN" id="ref-for-dom-permissionsetparameters-descriptor-1"><code>descriptor</code></a>.
-            </li>
-            <li>If <var>parameters</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-state" class="internalDFN" id="ref-for-dom-permissionsetparameters-state-1"><code>state</code></a> is an inappropriate <a href="#dfn-permission-state" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-permission-state-18">permission
-            state</a> for any implementation-defined reason, return a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a>
-            <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
+            <li>If <var>parametersDict</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-state" class="internalDFN" id="ref-for-dom-permissionsetparameters-state-1"><code>state</code></a> is an inappropriate
+            <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-18">permission state</a> for any implementation-defined reason, return an
+            <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
               <div class="note" role="note" id="issue-container-generatedID-8"><div role="heading" class="note-title marker" id="h-note-8" aria-level="5"><span>Note</span></div><p class="">
                 For example, <a data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agents</a> that define the "midi" <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-31">powerful feature</a> as
                 "always on" can choose to reject a command to set the <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-19">permission state</a> to
                 "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-13"><code>denied</code></a>" at this step.
               </p></div>
             </li>
+            <li>Let <var>rootDesc</var> be <var>parameters</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-descriptor" class="internalDFN" id="ref-for-dom-permissionsetparameters-descriptor-1"><code>descriptor</code></a>.
+            </li>
             <li>Let <var>typedDescriptor</var> be the object <var>rootDesc</var> refers to, <a data-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL
             value</a> of <var>rootDesc</var>.<a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-14"><code>name</code></a>'s <a data-link-type="dfn|abstract-op" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-6">permission descriptor type</a>. If this throws an exception, return a <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a>
             <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
             </li>
             <li><a data-link-type="dfn|abstract-op" href="#dfn-set-a-permission" class="internalDFN" id="ref-for-dfn-set-a-permission-1">Set a permission</a> with <var>typedDescriptor</var> and
-            <var>parameters</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-state" class="internalDFN" id="ref-for-dom-permissionsetparameters-state-2"><code>state</code></a>.
+            <var>parametersDict</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-state" class="internalDFN" id="ref-for-dom-permissionsetparameters-state-2"><code>state</code></a>.
             </li>
             <li>Return <a data-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-success">success</a> with data <code>null</code>.
             </li>
@@ -2604,7 +2604,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     </dd><dt id="bib-webdriver-bidi">[WebDriver-BiDi]</dt><dd>
       <a href="https://w3c.github.io/webdriver-bidi/"><cite>WebDriver BiDi</cite></a>.  W3C. Editor's Draft. URL: <a href="https://w3c.github.io/webdriver-bidi/">https://w3c.github.io/webdriver-bidi/</a>
     </dd><dt id="bib-webdriver2">[webdriver2]</dt><dd>
-      <a href="https://www.w3.org/TR/webdriver2/"><cite>WebDriver</cite></a>. Simon Stewart; David Burns.  W3C. 15 January 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webdriver2/">https://www.w3.org/TR/webdriver2/</a>
+      <a href="https://www.w3.org/TR/webdriver2/"><cite>WebDriver</cite></a>. Simon Stewart; David Burns.  W3C. 23 January 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webdriver2/">https://www.w3.org/TR/webdriver2/</a>
     </dd><dt id="bib-webidl">[WEBIDL]</dt><dd>
       <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
     </dd></dl>
@@ -2619,9 +2619,9 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     </dd><dt id="bib-local-font-access">[local-font-access]</dt><dd>
       <a href="https://wicg.github.io/local-font-access/"><cite>Local Font Access</cite></a>.  WICG. cg-draft. URL: <a href="https://wicg.github.io/local-font-access/">https://wicg.github.io/local-font-access/</a>
     </dd><dt id="bib-orientation-event">[orientation-event]</dt><dd>
-      <a href="https://www.w3.org/TR/orientation-event/"><cite>DeviceOrientation Event Specification</cite></a>. Reilly Grant; Raphael Kubo da Costa.  W3C. 5 January 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/orientation-event/">https://www.w3.org/TR/orientation-event/</a>
+      <a href="https://www.w3.org/TR/orientation-event/"><cite>DeviceOrientation Event Specification</cite></a>. Reilly Grant; Raphael Kubo da Costa.  W3C. 2 February 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/orientation-event/">https://www.w3.org/TR/orientation-event/</a>
     </dd><dt id="bib-permissions">[Permissions]</dt><dd>
-      <a href="https://www.w3.org/TR/permissions/"><cite>Permissions</cite></a>. Marcos Caceres; Mike Taylor.  W3C. 12 January 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
+      <a href="https://www.w3.org/TR/permissions/"><cite>Permissions</cite></a>. Marcos Caceres; Mike Taylor.  W3C. 16 January 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
     </dd><dt id="bib-push-api">[push-api]</dt><dd>
       <a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Peter Beverloo; Martin Thomson; Marcos Caceres.  W3C. 11 December 2023. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
     </dd><dt id="bib-w3c-process">[w3c-process]</dt><dd>
