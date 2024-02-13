@@ -1225,7 +1225,7 @@
       </p>
       <pre class='idl'>
         dictionary PermissionSetParameters {
-          required PermissionDescriptor descriptor;
+          required object descriptor;
           required PermissionState state;
         };
       </pre>
@@ -1317,12 +1317,12 @@
                 {{PermissionState/"denied"}} at this step.
               </p>
             </li>
-            <li>Let |rootDesc| be |parameters|.{{PermissionSetParameters/descriptor}}.
+            <li>Let |rootDesc| be |parametersDict|.{{PermissionSetParameters/descriptor}}.
             </li>
-            <li>Let |typedDescriptor| be the object |rootDesc| refers to, <a>converted to an IDL
-            value</a> of |rootDesc|.{{PermissionDescriptor/name}}'s [=powerful feature/permission
-            descriptor type=]. If this throws an exception, return a [=invalid argument=]
-            [=error=].
+            <li>Let |typedDescriptor| be the object |rootDesc| refers to,
+            [=converted to an IDL value=] of [=powerful feature/permission descriptor type=]
+            matching the result of <a data-cite="ecma-262#sec-get-o-p">Get</a>(|rootDesc|,
+            "`name`"). If this throws an exception, return a [=invalid argument=] [=error=].
             </li>
             <li>[=Set a permission=] with |typedDescriptor| and
             |parametersDict|.{{PermissionSetParameters/state}}.
