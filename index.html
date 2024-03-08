@@ -1319,10 +1319,10 @@
             </li>
             <li>Let |rootDesc| be |parametersDict|.{{PermissionSetParameters/descriptor}}.
             </li>
-            <li>Let |typedDescriptor| be the object |rootDesc| refers to,
-            [=converted to an IDL value=] of [=powerful feature/permission descriptor type=]
-            matching the result of <a data-cite="ecma-262#sec-get-o-p">Get</a>(|rootDesc|,
-            "`name`"). If this throws an exception, return a [=invalid argument=] [=error=].
+            <li>Let |typedDescriptor| be the object |rootDesc| refers to, [=converted to an IDL
+            value=] of [=powerful feature/permission descriptor type=] matching the result of
+            <a data-cite="ecma-262#sec-get-o-p">Get</a>(|rootDesc|, "`name`"). If this throws an
+            exception, return a [=invalid argument=] [=error=].
             </li>
             <li>[=Set a permission=] with |typedDescriptor| and
             |parametersDict|.{{PermissionSetParameters/state}}.
