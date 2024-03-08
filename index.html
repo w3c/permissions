@@ -218,16 +218,17 @@
         </p>
         <dl data-sort="">
           <dt>
-            <dfn class="export" data-dfn-for="permission">Prompt</dfn>:
+            <dfn class="export" data-lt="prompt" data-dfn-for="permission">"prompt"</dfn>:
           </dt>
           <dd>
             The user has not given [=express permission=] to use the feature (i.e., it's the same
-            as [=permission/denied=]). It also means that if a caller attempts to use the feature,
-            the [=user agent=] will either be prompting the user for permission or access to the
-            feature will be [=permission/denied=].
+            as [=permission/"denied"=]). It also means that if a caller attempts to use the
+            feature, the [=user agent=] will either be prompting the user for permission or access
+            to the feature will be [=permission/"denied"=].
           </dd>
           <dt>
-            <dfn class="export" data-local-lt="grant" data-dfn-for="permission">Granted</dfn>:
+            <dfn class="export" data-lt="granted" data-local-lt="grant" data-dfn-for=
+            "permission">"granted"</dfn>:
           </dt>
           <dd>
             The user, or the user agent on the user's behalf, has given [=express permission=] to
@@ -235,7 +236,7 @@
             the [=user agent=] asking the user's permission.
           </dd>
           <dt>
-            <dfn class="export" data-dfn-for="permission">Denied</dfn>:
+            <dfn class="export" data-lt="denied" data-dfn-for="permission">"denied"</dfn>:
           </dt>
           <dd>
             The user, or the user agent on the user's behalf, has denied access to this [=powerful
@@ -259,7 +260,7 @@
         </aside>
         <p data-cite="ECMAScript">
           Every [=permission=] has a <dfn class="export" data-dfn-for="permission">lifetime</dfn>,
-          which is the duration for which a particular permission remains [=permission/granted=]
+          which is the duration for which a particular permission remains [=permission/"granted"=]
           before it reverts back to its [=permission/default state=]. A [=permission/lifetime=]
           could be until a particular [=ECMAScript/Realm=] is destroyed, until a particular
           [=top-level browsing context=] is destroyed, a particular amount of time, or be infinite.
@@ -269,9 +270,9 @@
         </p>
         <p>
           Every permission has a <dfn data-for="permission">default state</dfn> (usually
-          [=permission/prompt=]), which is the [=permission/state=] that the permission is in when
-          the user has not yet given [=express permission=] to use the [=feature=] or it has been
-          reset because its [=permission/lifetime=] has expired.
+          [=permission/"prompt"=]), which is the [=permission/state=] that the permission is in
+          when the user has not yet given [=express permission=] to use the [=feature=] or it has
+          been reset because its [=permission/lifetime=] has expired.
         </p>
       </section>
       <section>
@@ -387,8 +388,9 @@
           [=document=] is [=allowed to use=] a given feature. That is, a powerful feature can only
           request [=express permission=] from a user if the [=document=] has permission delegated
           to it via the corresponding [=policy-controlled feature=] (see example below). Subsequent
-          access to the feature is determined by the user having [=permission/granted=] permission,
-          or by satisfying some criteria that is equivalent to a permission [=permission/grant=].
+          access to the feature is determined by the user having [=permission/"granted"=]
+          permission, or by satisfying some criteria that is equivalent to a permission
+          [=permission/grant=].
         </p>
         <aside class="example" title="Powerful features are policy-controlled features">
           <p>
@@ -701,7 +703,7 @@
           </p>
           <ol>
             <li>Set the permission back to its default [=permission state=] (e.g., by setting it
-            back to "[=permission/prompt=]").
+            back to [=permission/"prompt"=]).
             </li>
             <li>For each |browsing context| associated with the origin (if any), [=queue a global
             task=] on the [=permissions task source=] with the |browsing context|'s [=global
@@ -1068,8 +1070,8 @@
         </p>
         <p data-dfn-for="PermissionState">
           The "<dfn>granted</dfn>", "<dfn>denied</dfn>", and "<dfn>prompt</dfn>" enum values
-          represent the concepts of [=permission/granted=], [=permission/denied=], and
-          [=permission/prompt=] respectively.
+          represent the concepts of [=permission/"granted"=], [=permission/"denied"=], and
+          [=permission/"prompt"=] respectively.
         </p>
         <section>
           <h4>
@@ -1210,7 +1212,7 @@
       <p>
         Finally, it's not possible for a powerful feature to ever become "granted" through any
         means provided by the [[[Permissions-Policy]]] specification. The only way that a
-        [=powerful feature=] can be [=permission/granted=] is by the user giving [=express
+        [=powerful feature=] can be [=permission/"granted"=] is by the user giving [=express
         permission=] or by some user agent policy.
       </p>
     </section>
@@ -1225,7 +1227,7 @@
       </p>
       <pre class='idl'>
         dictionary PermissionSetParameters {
-          required PermissionDescriptor descriptor;
+          required object descriptor;
           required PermissionState state;
         };
       </pre>
@@ -1310,20 +1312,20 @@
             argument=] [=error=].
             </li>
             <li>If |parametersDict|.{{PermissionSetParameters/state}} is an inappropriate
-            [=permission state=] for any implementation-defined reason, return an
-            [=invalid argument=] [=error=].
+            [=permission state=] for any implementation-defined reason, return an [=invalid
+            argument=] [=error=].
               <p class="note">
                 For example, <a>user agents</a> that define the "midi" <a>powerful feature</a> as
                 "always on" can choose to reject a command to set the [=permission state=] to
                 {{PermissionState/"denied"}} at this step.
               </p>
             </li>
-            <li>Let |rootDesc| be |parameters|.{{PermissionSetParameters/descriptor}}.
+            <li>Let |rootDesc| be |parametersDict|.{{PermissionSetParameters/descriptor}}.
             </li>
-            <li>Let |typedDescriptor| be the object |rootDesc| refers to, <a>converted to an IDL
-            value</a> of |rootDesc|.{{PermissionDescriptor/name}}'s [=powerful feature/permission
-            descriptor type=]. If this throws an exception, return a [=invalid argument=]
-            [=error=].
+            <li>Let |typedDescriptor| be the object |rootDesc| refers to, [=converted to an IDL
+            value=] of [=powerful feature/permission descriptor type=] matching the result of
+            <a data-cite="ecma-262#sec-get-o-p">Get</a>(|rootDesc|, "`name`"). If this throws an
+            exception, return a [=invalid argument=] [=error=].
             </li>
             <li>[=Set a permission=] with |typedDescriptor| and
             |parametersDict|.{{PermissionSetParameters/state}}.
@@ -1331,10 +1333,11 @@
             <li>Return <a>success</a> with data `null`.
             </li>
           </ol>
-          <aside class="example" title="Setting a permission via WebDriver">
+          <aside class="example" title="Setting a permission via WebDriver" data-cite=
+          "webdriver-bidi">
             <p>
               To [=extension commands/set permission=] for `{name: "midi", sysex: true}` of the
-              [=current settings object=] of the <a>session</a> with ID 23 to "`granted`", the
+              [=current settings object=] of the [=modules/session=] with ID 23 to "`granted`", the
               local end would POST to `/session/23/permissions` with the body:
             </p>
             <pre class="json">
@@ -1888,7 +1891,7 @@
         An adversary could use a [=permission state=] as an element in creating a "fingerprint"
         corresponding to an end-user. Although an adversary can already determine the state of a
         permission by actually using the API, that often leads to a UI prompt being presented to
-        the end-user (if the permission was not already [=permission/granted=]). Even though this
+        the end-user (if the permission was not already [=permission/"granted"=]). Even though this
         API doesn't expose new fingerprinting information to websites, it makes it easier for an
         adversary to have discreet access to this information.
       </p>
