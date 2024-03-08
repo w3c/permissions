@@ -183,7 +183,7 @@ img.caniuse-browser{filter:drop-shadow(0 0 .1cm #666)}
 .mdn .samsunginternet_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/samsung-internet/samsung-internet.svg)}
 .mdn .webview_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/android-webview/android-webview.png)}
 </style>
-<meta name="revision" content="75ef57e52d2734b98055ef9489bceb8d36867837">
+<meta name="revision" content="645867d4eae0d4caac29be22e3d4c7e4eef62e61">
 <meta name="description" content="This specification defines common infrastructure that other specifications can use to
         interact with browser permissions. These permissions represent a user's choice to allow or
         deny access to &quot;powerful features&quot; of the platform. For developers, the specification
@@ -256,7 +256,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     ]
   },
   "caniuse": "permissions-api",
-  "gitRevision": "75ef57e52d2734b98055ef9489bceb8d36867837",
+  "gitRevision": "645867d4eae0d4caac29be22e3d4c7e4eef62e61",
   "publishISODate": "2024-03-08T00:00:00.000Z",
   "generatedSubtitle": "W3C Editor's Draft 08 March 2024"
 }</script>
@@ -1939,14 +1939,15 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
       <div class="algorithm">
         <p>
           To <dfn data-for="WebDriver" id="dfn-set-a-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">set a permission</dfn> given a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-19"><code>PermissionDescriptor</code></a>
-          <var data-type="PermissionDescriptor">descriptor</var>, a <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-9"><code>PermissionState</code></a> <var data-type="PermissionState">state</var>, and an
-          optional <var>origin</var>:
+          <var data-type="PermissionDescriptor">descriptor</var>, a <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-9"><code>PermissionState</code></a> <var data-type="PermissionState">state</var>, an
+          optional <var>origin</var>, and an optional <var>user agent</var>:
         </p>
         <ol>
           <li>Let <var>target origin</var> be <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#current-settings-object">current settings object</a>'s <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a> if <var>origin</var> is null, or <var>origin</var> otherwise.
           </li>
           <li>Let <var>targets</var> be a <a data-type="dfn" href="https://infra.spec.whatwg.org/#list">list</a> containing all <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings objects</a> whose
-          <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a> is <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#same-origin">same origin</a> with <var>target origin</var>.
+          <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a> is <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#same-origin">same origin</a> with <var>target origin</var>, and which
+          belong to the <var>user agent</var> if provided, or all user agents otherwise.
           </li>
           <li>Let <var>tasks</var> be an empty <a data-type="dfn" href="https://infra.spec.whatwg.org/#list">list</a>.
           </li>
@@ -2128,6 +2129,7 @@ permissions.SetPermissionParameters = {
   descriptor: permissions.PermissionDescriptor,
   state: permissions.PermissionState,
   origin: text,
+  userContext?: text,
 }</code></pre>
                 </dd>
                 <dt>
@@ -2150,6 +2152,9 @@ permissions.SetPermissionParameters = {
                   </li>
                   <li>Let <var>state</var> be the value of the <code>state</code> field of <var>command parameters</var>.
                   </li>
+                  <li>Let <var>user context id</var> be the value of the <code>userContext</code> field of <var>command
+                  parameters</var>, if present, and <code>default</code> otherwise.
+                  </li>
                   <li>If <var>state</var> is an inappropriate <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-21">permission state</a> for any
                   implementation-defined reason, return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error">error</a> with <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error-code">error code</a> <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-invalid-argument">invalid argument</a>.
                   </li>
@@ -2159,7 +2164,11 @@ permissions.SetPermissionParameters = {
                   </li>
                   <li>Let <var>origin</var> be the value of the <code>origin</code> field of <var>command parameters</var>.
                   </li>
-                  <li><a data-link-type="dfn|abstract-op" href="#dfn-set-a-permission" class="internalDFN" id="ref-for-dfn-set-a-permission-2">Set a permission</a> with <var>typedDescriptor</var>, <var>state</var>, and <var>origin</var>.
+                  <li>Let <var>user agent</var> be the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agent</a> that represents the <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://w3c.github.io/webdriver-bidi/#user-context">user context</a>
+                  with the id <var>user context id</var>.
+                  </li>
+                  <li><a data-link-type="dfn|abstract-op" href="#dfn-set-a-permission" class="internalDFN" id="ref-for-dfn-set-a-permission-2">Set a permission</a> with <var>typedDescriptor</var>, <var>state</var>, <var>origin</var>, and <var>user
+                  agent</var>.
                   </li>
                   <li>Return <a data-link-type="dfn|abstract-op" data-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-success">success</a> with data <code>null</code>.
                   </li>
