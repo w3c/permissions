@@ -168,7 +168,7 @@ img.caniuse-browser{filter:drop-shadow(0 0 .1cm #666);background:0 0}
 .mdn .samsunginternet_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/samsung-internet/samsung-internet.svg)}
 .mdn .webview_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/android-webview/android-webview.png)}
 </style>
-<meta name="revision" content="18a039f089b89b84f4ca0370889537af390b2ba5">
+<meta name="revision" content="77f8bc702808180da6d1d39fa117bbc483e05ee5">
 <meta name="description" content="This specification defines common infrastructure that other specifications can use to
         interact with browser permissions. These permissions represent a user's choice to allow or
         deny access to &quot;powerful features&quot; of the platform. For developers, the specification
@@ -245,9 +245,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     ]
   },
   "caniuse": "permissions-api",
-  "gitRevision": "18a039f089b89b84f4ca0370889537af390b2ba5",
-  "publishISODate": "2024-12-19T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 19 December 2024"
+  "gitRevision": "77f8bc702808180da6d1d39fa117bbc483e05ee5",
+  "publishISODate": "2024-12-20T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 20 December 2024"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL permissions-policy w3c-process HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -256,7 +256,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2024-12-19">19 December 2024</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2024-12-20">20 December 2024</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -623,14 +623,14 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
             <dfn class="export" data-lt="denied|&quot;denied&quot;" data-dfn-for="permission" data-export="" id="dfn-denied" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">"denied"</dfn>:
           </dt>
           <dd>
-            The user, or the user agent on the user's behalf, has denied access to this <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-7">powerful feature</a>. The caller will can't use the feature.
+            The user, or the user agent on the user's behalf, has denied access to this <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-7">powerful feature</a>. The caller won't be able to use the feature.
           </dd><dt>
             <dfn class="export" data-lt="granted|&quot;granted&quot;|grant" data-local-lt="grant" data-dfn-for="permission" data-export="" data-plurals="grants" id="dfn-granted" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">"granted"</dfn>:
           </dt>
           <dd>
             The user, or the user agent on the user's behalf, has given <a data-link-type="dfn|abstract-op" href="#dfn-express-permission" class="internalDFN" id="ref-for-dfn-express-permission-1">express permission</a> to
-            use a <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-8">powerful feature</a>. The caller will can use the feature possibly without having
-            the <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agent</a> asking the user's permission.
+            use a <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-8">powerful feature</a>. The caller will be able to use the feature possibly without
+            having the <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agent</a> asking the user's permission.
           </dd>
           <dt>
             <dfn class="export" data-lt="prompt|&quot;prompt&quot;" data-dfn-for="permission" data-export="" id="dfn-prompt" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">"prompt"</dfn>:
