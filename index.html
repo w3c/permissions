@@ -800,7 +800,14 @@
                 [=associated `Document`=].
                 </li>
                 <li>If <var>document</var> is not <a>allowed to use</a> |feature|, return
-                {{PermissionState/"denied"}}.
+                {{PermissionState/"denied"}} or {{PermissionState/"prompt"}}.
+
+                <p class="note">
+                  The {{PermissionState/"prompt"}} may be returned instead of
+                  {{PermissionState/"denied"}} to avoid exposing if the |feature| is
+                  <a>allowed to use</a> to developers. This is done to prevent retaliation against
+                  the user and repeated prompting to the detriment of the user experience.
+              </p>
                 </li>
               </ol>
             </li>
