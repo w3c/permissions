@@ -803,11 +803,8 @@
                 {{PermissionState/"denied"}} or {{PermissionState/"prompt"}}.
 
                 <p class="note">
-                  The {{PermissionState/"prompt"}} may be returned instead of
-                  {{PermissionState/"denied"}} to avoid exposing if the |feature| is
-                  <a>allowed to use</a> to developers. This is done to prevent retaliation against
-                  the user and repeated prompting to the detriment of the user experience.
-              </p>
+                  For privacy reasons the user agent can return the {{PermissionState/"prompt"}} state instead of {{PermissionState/"denied"}}. This is because the {{PermissionState/"denied"}} state could reveal information about prior visits that user agents might not be willing to expose. 
+               </p>
                 </li>
               </ol>
             </li>
