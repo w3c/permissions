@@ -801,12 +801,6 @@
                 </li>
                 <li>If <var>document</var> is not <a>allowed to use</a> |feature|, return
                 {{PermissionState/"denied"}}.
-                <p class="note">
-                  For privacy reasons the user agent can return the {{PermissionState/"prompt"}}
-                  state instead of {{PermissionState/"denied"}}. This is because the 
-                  {{PermissionState/"denied"}} state could reveal information about prior visits
-                  that user agents might not be willing to expose. 
-               </p>
                 </li>
               </ol>
             </li>
@@ -822,6 +816,12 @@
             <li>Return the {{PermissionState}} enum value that represents the permission state of
             |feature|, taking into account any [=powerful feature/permission state constraints=]
             for |descriptor|'s {{PermissionDescriptor/name}}.
+                <p class="note">
+                  For privacy reasons the user agent can return the {{PermissionState/"prompt"}}
+                  state instead of {{PermissionState/"denied"}}. This is because the 
+                  {{PermissionState/"denied"}} state could reveal information about prior visits
+                  that user agents might not be willing to expose. 
+               </p>
             </li>
           </ol>
         </div>
