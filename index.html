@@ -1373,9 +1373,9 @@
               Definition
             </h5>
             <p>
-              [=remote end definition=]
+              {^remote end definition^}
             </p>
-            <pre class="cddl remote-cddl">
+            <pre class="cddl" data-cddl-module="remote-cddl">
               PermissionsCommand = (
                 permissions.setPermission
               )
@@ -1389,7 +1389,7 @@
               <h6 id="webdriver-bidi-type-permissions-PermissionDescriptor">
                 The permissions.PermissionDescriptor Type
               </h6>
-              <pre class="cddl local-cddl">
+              <pre class="cddl" data-cddl-module="local-cddl">
                 permissions.PermissionDescriptor = {
                   name: text,
                 }
@@ -1402,7 +1402,7 @@
               <h6 id="webdriver-bidi-type-permissions-PermissionState">
                 The permissions.PermissionState Type
               </h6>
-              <pre class="cddl local-cddl">
+              <pre class="cddl" data-cddl-module="local-cddl">
                 permissions.PermissionState = "granted" / "denied" / "prompt"
               </pre>
               <p>
@@ -1427,7 +1427,7 @@
                   Command Type
                 </dt>
                 <dd>
-                  <pre class="cddl remote-cddl">
+                  <pre class="cddl" data-cddl-module="remote-cddl">
                     permissions.setPermission = (
                       method: "permissions.setPermission",
                       params: permissions.SetPermissionParameters
