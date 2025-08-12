@@ -1235,15 +1235,21 @@
         <p>
           To <dfn data-for="WebDriver">set a permission</dfn> given a {{PermissionDescriptor}}
           |descriptor:PermissionDescriptor|, a {{PermissionState}} |state:PermissionState|, an
-          optional |origin|, and an optional |user agent|:
+          optional |origin|, an optional |embedding origin|, and an optional |user agent|:
         </p>
         <ol>
           <li>Let |target origin| be [=current settings object=]'s [=environment settings
           object/origin=] if |origin| is null, or |origin| otherwise.
           </li>
+          <li>Let |target embedding origin| be |target origin| if |embedding origin| is null, 
+          or |embedding origin| otherwise.
+          </li>
           <li>Let |targets| be a <a>list</a> containing all [=environment settings objects=] whose
-          [=environment settings object/origin=] is [=same origin=] with |target origin|, and which
-          belong to the |user agent| if provided, or all user agents otherwise.
+          [=environment settings object/origin=] is [=same origin=] with |target origin| and whose
+          [=environment/top-level origin=] is [=same origin=] with |target embedding origin|.
+          </li>
+          <li> If |user agent| is provided, filter |targets| to include only those that belong to
+          the provided |user agent|.
           </li>
           <li>Let |tasks| be an empty <a>list</a>.
           </li>
@@ -1437,6 +1443,7 @@
                       descriptor: permissions.PermissionDescriptor,
                       state: permissions.PermissionState,
                       origin: text,
+                      ? embeddingOrigin: text,
                       ? userContext: text,
                     }
                   </pre>
@@ -1476,11 +1483,14 @@
                   </li>
                   <li>Let |origin| be the value of the `origin` field of |command parameters|.
                   </li>
+                  <li>Let |embedding origin| be the value of the `embeddingOrigin` field of
+                  |command parameters|, if present, and `default` otherwise.
+                  </li>
                   <li>Let |user agent| be the [=user agent=] that represents the [=user context=]
                   with the id |user context id|.
                   </li>
-                  <li>[=Set a permission=] with |typedDescriptor|, |state|, |origin|, and |user
-                  agent|.
+                  <li>[=Set a permission=] with |typedDescriptor|, |state|, |origin|, |embedding
+                  origin|, and |user agent|.
                   </li>
                   <li>Return [=success=] with data `null`.
                   </li>
