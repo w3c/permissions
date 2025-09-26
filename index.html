@@ -630,19 +630,19 @@
         </dt>
         <dd>
           <p>
-            Takes an [=environment settings object=], and returns a new [=permission key=]. If
-            unspecified, this defaults to the [=default permission key generation algorithm=]. A
-            feature that specifies a custom [=powerful feature/permission key generation
-            algorithm=] MUST also specify a [=powerful feature/permission key comparison
-            algorithm=].
+            Takes an [=origin=] |origin| and an [=origin=] |top level origin|, and returns a new
+            [=permission key=]. If unspecified, this defaults to the [=default permission key
+            generation algorithm=]. A feature that specifies a custom [=powerful feature/permission
+            key generation algorithm=] MUST also specify a [=powerful feature/permission key
+            comparison algorithm=].
           </p>
           <div class="algorithm">
             <p>
               The <dfn class="export">default permission key generation algorithm</dfn>, given an
-              [=environment settings object=] |settings|, runs the following steps:
+               [=origin=] |origin| and an [=origin=] |top level origin|, runs the following steps:
             </p>
             <ol>
-              <li>Return |settings|'s [=environment/top-level origin=].
+              <li>Return |top level origin|.
               </li>
             </ol>
           </div>
@@ -805,7 +805,9 @@
               </ol>
             </li>
             <li>Let |key| be the result of [=powerful feature/permission key generation
-            algorithm|generating a permission key=] for |descriptor| with |settings|.
+            algorithm|generating a permission key=] for |descriptor| with |settings|'s
+            [=environment settings object/origin=] and |settings|'s
+            [=environment/top-level origin=].
             </li>
             <li>Let |entry| be the result of [=get a permission store entry|getting a permission
             store entry=] with |descriptor| and |key|.
@@ -855,8 +857,12 @@
                 this framework.
               </p>
             </li>
+            <li>Let |settings| be the [=current settings object=].
+            </li>
             <li>Let |key| be the result of [=powerful feature/permission key generation
-            algorithm|generating a permission key=] with the [=current settings object=].
+            algorithm|generating a permission key=] for |descriptor| with |settings|'s
+            [=environment settings object/origin=] and |settings|'s [=environment/top-level
+            origin=].
             </li>
             <li>[=Queue a task=] on the [=current settings object=]'s [=environment settings
             object/responsible event loop=] to [=set a permission store entry=] with |descriptor|,
@@ -1235,19 +1241,35 @@
         <p>
           To <dfn data-for="WebDriver">set a permission</dfn> given a {{PermissionDescriptor}}
           |descriptor:PermissionDescriptor|, a {{PermissionState}} |state:PermissionState|, an
-          optional |origin|, and an optional |user agent|:
+          optional [=permission key=] |key|, and an optional |user agent|:
         </p>
         <ol>
-          <li>Let |target origin| be [=current settings object=]'s [=environment settings
-          object/origin=] if |origin| is null, or |origin| otherwise.
+          <li>Let |target key| be the result of [=powerful feature/permission key generation
+          algorithm|generating a permission key=] for |descriptor| with [=current settings
+          object=]'s [=environment settings object/origin=] and [=current settings object=]'s
+          [=environment/top-level origin=] if |key| is null, or |key| otherwise.
           </li>
-          <li>Let |targets| be a <a>list</a> containing all [=environment settings objects=] whose
-          [=environment settings object/origin=] is [=same origin=] with |target origin|, and which
-          belong to the |user agent| if provided, or all user agents otherwise.
+          <li>Let |settings list| be a <a>list</a> containing all [=environment settings objects=]
+          which belong to the |user agent| if provided, or all user agents otherwise.
+          </li>
+          <li>Let |targets| be an empty <a>list</a>.
+          </li>
+          <li>[=list/For each=] [=environment settings object=] |settings| in |settings list|:
+            <ol>
+              <li>Let |settings key| be be the result of [=powerful feature/permission key
+              generation algorithm|generating a permission key=] for |descriptor| with |settings|'s
+              [=environment settings object/origin=] and |settings|'s [=environment/top-level origin=].
+              </li>
+              <li>Let |matches| be the result of running the [=powerful feature/permission key
+              comparison algorithm=] for |descriptor|, given |settings key| and |key|.
+              </li>
+              <li>If |matches|, then [=list/append=] |settings| to |targets|.
+            </ol>
+          </li>
           </li>
           <li>Let |tasks| be an empty <a>list</a>.
           </li>
-          <li>For each [=environment settings object=] |target| in |targets|:
+          <li>[=list/For each=] [=environment settings object=] |target| in |targets|:
             <ol>
               <li>[=Queue a task=] |task| on the [=permissions task source=] of |target|'s
               [=relevant settings object=]'s [=environment settings object/global object=]'s
@@ -1437,6 +1459,7 @@
                       descriptor: permissions.PermissionDescriptor,
                       state: permissions.PermissionState,
                       origin: text,
+                      ? topLevelOrigin: text,
                       ? userContext: text,
                     }
                   </pre>
@@ -1476,10 +1499,17 @@
                   </li>
                   <li>Let |origin| be the value of the `origin` field of |command parameters|.
                   </li>
+                  <li>Let |top level origin| be the value of the `topLevelOrigin` field of
+                  |command parameters|, if present, and |origin| otherwise.
+                  </li>
+                  <li>Let |key| be the result of [=powerful feature/permission key generation
+                  algorithm|generating a permission key=] for |descriptor| with |origin| and
+                  |top level origin|.
+                  </li>
                   <li>Let |user agent| be the [=user agent=] that represents the [=user context=]
                   with the id |user context id|.
                   </li>
-                  <li>[=Set a permission=] with |typedDescriptor|, |state|, |origin|, and |user
+                  <li>[=Set a permission=] with |typedDescriptor|, |state|, |key|, and |user
                   agent|.
                   </li>
                   <li>Return [=success=] with data `null`.
