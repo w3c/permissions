@@ -630,7 +630,7 @@
         </dt>
         <dd>
           <p>
-            Takes an [=origin=] |origin| and an [=origin=] |top level origin|, and returns a new
+            Takes an [=origin=] |origin| and an [=origin=] |embedded origin|, and returns a new
             [=permission key=]. If unspecified, this defaults to the [=default permission key
             generation algorithm=]. A feature that specifies a custom [=powerful feature/permission
             key generation algorithm=] MUST also specify a [=powerful feature/permission key
@@ -639,10 +639,10 @@
           <div class="algorithm">
             <p>
               The <dfn class="export">default permission key generation algorithm</dfn>, given an
-               [=origin=] |origin| and an [=origin=] |top level origin|, runs the following steps:
+               [=origin=] |origin| and an [=origin=] |embedded origin|, runs the following steps:
             </p>
             <ol>
-              <li>Return |top level origin|.
+              <li>Return |origin|.
               </li>
             </ol>
           </div>
@@ -806,8 +806,8 @@
             </li>
             <li>Let |key| be the result of [=powerful feature/permission key generation
             algorithm|generating a permission key=] for |descriptor| with |settings|'s
-            [=environment settings object/origin=] and |settings|'s
-            [=environment/top-level origin=].
+            [=environment/top-level origin=] and |settings|'s
+            [=environment settings object/origin=].
             </li>
             <li>Let |entry| be the result of [=get a permission store entry|getting a permission
             store entry=] with |descriptor| and |key|.
@@ -861,8 +861,8 @@
             </li>
             <li>Let |key| be the result of [=powerful feature/permission key generation
             algorithm|generating a permission key=] for |descriptor| with |settings|'s
-            [=environment settings object/origin=] and |settings|'s [=environment/top-level
-            origin=].
+            [=environment/top-level origin=] and |settings|'s [=environment settings
+            object/origin=].
             </li>
             <li>[=Queue a task=] on the [=current settings object=]'s [=environment settings
             object/responsible event loop=] to [=set a permission store entry=] with |descriptor|,
@@ -1246,8 +1246,8 @@
         <ol>
           <li>Let |target key| be the result of [=powerful feature/permission key generation
           algorithm|generating a permission key=] for |descriptor| with [=current settings
-          object=]'s [=environment settings object/origin=] and [=current settings object=]'s
-          [=environment/top-level origin=] if |key| is null, or |key| otherwise.
+          object=]'s [=environment/top-level origin=] and [=current settings object=]'s
+          [=environment settings object/origin=] if |key| is null, or |key| otherwise.
           </li>
           <li>Let |settings list| be a <a>list</a> containing all [=environment settings objects=]
           which belong to the |user agent| if provided, or all user agents otherwise.
@@ -1258,7 +1258,8 @@
             <ol>
               <li>Let |settings key| be be the result of [=powerful feature/permission key
               generation algorithm|generating a permission key=] for |descriptor| with |settings|'s
-              [=environment settings object/origin=] and |settings|'s [=environment/top-level origin=].
+              [=environment/top-level origin=] and |settings|'s [=environment settings
+              object/origin=].
               </li>
               <li>Let |matches| be the result of running the [=powerful feature/permission key
               comparison algorithm=] for |descriptor|, given |settings key| and |key|.
@@ -1459,7 +1460,7 @@
                       descriptor: permissions.PermissionDescriptor,
                       state: permissions.PermissionState,
                       origin: text,
-                      ? topLevelOrigin: text,
+                      ? embeddedOrigin: text,
                       ? userContext: text,
                     }
                   </pre>
@@ -1499,12 +1500,12 @@
                   </li>
                   <li>Let |origin| be the value of the `origin` field of |command parameters|.
                   </li>
-                  <li>Let |top level origin| be the value of the `topLevelOrigin` field of
+                  <li>Let |embedded origin| be the value of the `embeddedOrigin` field of
                   |command parameters|, if present, and |origin| otherwise.
                   </li>
                   <li>Let |key| be the result of [=powerful feature/permission key generation
                   algorithm|generating a permission key=] for |descriptor| with |origin| and
-                  |top level origin|.
+                  |embedded origin|.
                   </li>
                   <li>Let |user agent| be the [=user agent=] that represents the [=user context=]
                   with the id |user context id|.
