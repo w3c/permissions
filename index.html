@@ -168,7 +168,7 @@ img.caniuse-browser{filter:drop-shadow(0 0 .1cm #666);background:0 0}
 .mdn .samsunginternet_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/samsung-internet/samsung-internet.svg)}
 .mdn .webview_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/android-webview/android-webview.png)}
 </style>
-<meta name="revision" content="054e127f899d25153f3f273091965c434575ddde">
+<meta name="revision" content="0051a836a92c4f8e37d016f261bbbed5b6312b96">
 <meta name="description" content="This specification defines common infrastructure that other specifications can use to
         interact with browser permissions. These permissions represent a user's choice to allow or
         deny access to &quot;powerful features&quot; of the platform. For developers, the specification
@@ -262,9 +262,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     ]
   },
   "caniuse": "permissions-api",
-  "gitRevision": "054e127f899d25153f3f273091965c434575ddde",
-  "publishISODate": "2025-10-03T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 03 October 2025"
+  "gitRevision": "0051a836a92c4f8e37d016f261bbbed5b6312b96",
+  "publishISODate": "2025-10-06T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 06 October 2025"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
   <body class="h-entry" data-cite="WEBIDL permissions-policy w3c-process HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
@@ -273,7 +273,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2025-10-03">03 October 2025</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2025-10-06">06 October 2025</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -328,10 +328,10 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       </div></div>
           <div class="caniuse-type"><span>desktop</span></div>
         </div><div class="caniuse-group">
-          <div class="caniuse-browsers"><div class="caniuse-cell y" title="Supported by default since Android Chrome version 140." aria-label="permissions-api is supported by default since Android Chrome version 140 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/chrome/chrome.svg" alt="Android Chrome logo"><span class="browser-version">140</span>
-      </div><div class="caniuse-cell y" title="Supported by default since Android Firefox version 142." aria-label="permissions-api is supported by default since Android Firefox version 142 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/firefox/firefox.svg" alt="Android Firefox logo"><span class="browser-version">142</span>
+          <div class="caniuse-browsers"><div class="caniuse-cell y" title="Supported by default since Android Chrome version 141." aria-label="permissions-api is supported by default since Android Chrome version 141 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/chrome/chrome.svg" alt="Android Chrome logo"><span class="browser-version">141</span>
+      </div><div class="caniuse-cell y" title="Supported by default since Android Firefox version 143." aria-label="permissions-api is supported by default since Android Firefox version 143 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/firefox/firefox.svg" alt="Android Firefox logo"><span class="browser-version">143</span>
       </div><div class="caniuse-cell y" title="Supported by default since Android UC version 15.5." aria-label="permissions-api is supported by default since Android UC version 15.5 on mobile.">
         <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/uc/uc.svg" alt="Android UC logo"><span class="browser-version">15.5</span>
       </div><div class="caniuse-cell y" title="Supported by default since iOS Safari version 16.0." aria-label="permissions-api is supported by default since iOS Safari version 16.0 on mobile.">
@@ -1031,7 +1031,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           <div class="algorithm">
             <p>
               The <dfn class="export" data-export="" id="dfn-default-permission-key-generation-algorithm" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">default permission key generation algorithm</dfn>, given an
-               <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#concept-origin">origin</a> <var>origin</var> and an <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#concept-origin">origin</a> <var>embedded origin</var>, runs the following steps:
+              <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#concept-origin">origin</a> <var>origin</var> and an <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#concept-origin">origin</a> <var>embedded origin</var>, runs the following steps:
             </p>
             <ol>
               <li>Return <var>origin</var>.
@@ -1191,8 +1191,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               </ol>
             </li>
             <li>Let <var>key</var> be the result of <a data-link-type="dfn|abstract-op" data-lt="permission key generation algorithm" href="#dfn-permission-key-generation-algorithm" class="internalDFN" id="ref-for-dfn-permission-key-generation-algorithm-3">generating a permission key</a> for <var data-type="PermissionDescriptor">descriptor</var> with <var>settings</var>'s
-            <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-environment-top-level-origin">top-level origin</a> and <var>settings</var>'s
-            <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a>.
+            <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-environment-top-level-origin">top-level origin</a> and <var>settings</var>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a>.
             </li>
             <li>Let <var>entry</var> be the result of <a data-link-type="dfn|abstract-op" data-lt="get a permission store entry" href="#dfn-get-a-permission-store-entry" class="internalDFN" id="ref-for-dfn-get-a-permission-store-entry-1">getting a permission store entry</a> with <var data-type="PermissionDescriptor">descriptor</var> and <var>key</var>.
             </li>
@@ -1970,9 +1969,9 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
               <li>Let <var>matches</var> be the result of running the <a data-link-type="dfn|abstract-op" href="#dfn-permission-key-comparison-algorithm" class="internalDFN" id="ref-for-dfn-permission-key-comparison-algorithm-3">permission key comparison algorithm</a> for <var data-type="PermissionDescriptor">descriptor</var>, given <var>settings key</var> and <var>key</var>.
               </li>
               <li>If <var>matches</var>, then <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-append">append</a> <var>settings</var> to <var>targets</var>.
-            </li></ol>
+              </li>
+            </ol>
           </li>
-          
           <li>Let <var>tasks</var> be an empty <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list">list</a>.
           </li>
           <li><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-iterate">For each</a> <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>target</var> in <var>targets</var>:
@@ -2189,8 +2188,8 @@ permissions.SetPermissionParameters = {
                   </li>
                   <li>Let <var>origin</var> be the value of the <code>origin</code> field of <var>command parameters</var>.
                   </li>
-                  <li>Let <var>embedded origin</var> be the value of the <code>embeddedOrigin</code> field of
-                  <var>command parameters</var>, if present, and <var>origin</var> otherwise.
+                  <li>Let <var>embedded origin</var> be the value of the <code>embeddedOrigin</code> field of <var>command
+                  parameters</var>, if present, and <var>origin</var> otherwise.
                   </li>
                   <li>Let <var>key</var> be the result of <a data-link-type="dfn|abstract-op" data-lt="permission key generation algorithm" href="#dfn-permission-key-generation-algorithm" class="internalDFN" id="ref-for-dfn-permission-key-generation-algorithm-7">generating a permission key</a> for <var>descriptor</var> with <var>origin</var> and
                   <var>embedded origin</var>.
