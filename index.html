@@ -639,7 +639,7 @@
           <div class="algorithm">
             <p>
               The <dfn class="export">default permission key generation algorithm</dfn>, given an
-               [=origin=] |origin| and an [=origin=] |embedded origin|, runs the following steps:
+              [=origin=] |origin| and an [=origin=] |embedded origin|, runs the following steps:
             </p>
             <ol>
               <li>Return |origin|.
@@ -806,8 +806,8 @@
             </li>
             <li>Let |key| be the result of [=powerful feature/permission key generation
             algorithm|generating a permission key=] for |descriptor| with |settings|'s
-            [=environment/top-level origin=] and |settings|'s
-            [=environment settings object/origin=].
+            [=environment/top-level origin=] and |settings|'s [=environment settings
+            object/origin=].
             </li>
             <li>Let |entry| be the result of [=get a permission store entry|getting a permission
             store entry=] with |descriptor| and |key|.
@@ -1265,8 +1265,8 @@
               comparison algorithm=] for |descriptor|, given |settings key| and |key|.
               </li>
               <li>If |matches|, then [=list/append=] |settings| to |targets|.
+              </li>
             </ol>
-          </li>
           </li>
           <li>Let |tasks| be an empty <a>list</a>.
           </li>
@@ -1500,8 +1500,8 @@
                   </li>
                   <li>Let |origin| be the value of the `origin` field of |command parameters|.
                   </li>
-                  <li>Let |embedded origin| be the value of the `embeddedOrigin` field of
-                  |command parameters|, if present, and |origin| otherwise.
+                  <li>Let |embedded origin| be the value of the `embeddedOrigin` field of |command
+                  parameters|, if present, and |origin| otherwise.
                   </li>
                   <li>Let |key| be the result of [=powerful feature/permission key generation
                   algorithm|generating a permission key=] for |descriptor| with |origin| and
