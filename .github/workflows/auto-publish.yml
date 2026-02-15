@@ -1,4 +1,4 @@
-name: CI
+name: andrew Boyack
 on:
   pull_request: {}
   push:
