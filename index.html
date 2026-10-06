@@ -347,6 +347,49 @@
             </li>
           </ol>
         </div>
+        <p data-cite="webdriver-bidi">
+          Each [=user agent=] has a [=list=] of <dfn class="export">permission overrides</dfn>.
+          Only the <a href=
+          "#webdriver-bidi-command-permissions-setPermission"><code>permissions.setPermission</code></a>
+          command adds to this list. While a [=permission override=] exists, [=permission state=]
+          returns its [=permission override/state=] instead of reading the [=permission store=]. A
+          <dfn class="export">permission override</dfn> is a [=tuple=] of {{PermissionDescriptor}}
+          <dfn class="export" data-dfn-for="permission override">descriptor</dfn>, [=permission
+          key=] <dfn class="export" data-dfn-for="permission override">key</dfn>,
+          [=permission/state=] <dfn class="export" data-dfn-for="permission override">state</dfn>,
+          <dfn class="export" data-dfn-for="permission override">selection</dfn>, which is null or
+          a string from the feature's [=powerful feature/permission options=], and <dfn class=
+          "export" data-dfn-for="permission override">session</dfn>, the [=BiDi session=] that
+          added it. When a [=permission/lifetime=] expires or [=react to the user revoking
+          permission|the user revokes permission=], the user agent keeps any [=permission
+          override=].
+        </p>
+        <div class="algorithm">
+          <p>
+            <!-- TODO: PermissionDescriptor equality is not defined (#396) -->
+             To <dfn class="export">get a permission override</dfn> given a
+            {{PermissionDescriptor}} |descriptor:PermissionDescriptor|, a [=permission key=] |key|,
+            and an [=environment settings object=] |settings|, let |agent| be the [=user agent=]
+            that |settings| belongs to, and return the [=permission override=] in |agent|'s
+            [=permission overrides=] whose [=permission override/descriptor=] is |descriptor| and
+            whose [=permission override/key=] [=permission key/is equal to=] |key| given
+            |descriptor|, or null if there is none.
+          </p>
+        </div>
+        <div class="algorithm">
+          <p data-cite="webdriver-bidi">
+            To <dfn class="export">remove a session's permission overrides</dfn> given a [=BiDi
+            session=] |session|, [=list/remove=] from every [=user agent=]'s [=permission
+            overrides=] each [=permission override=] whose [=permission override/session=] is
+            |session|.
+          </p>
+        </div>
+        <!-- TODO: use [=session cleanup steps=] once WebDriver BiDi exports the term (w3c/webdriver-bidi#1173). -->
+        <p data-cite="webdriver-bidi">
+          This specification's <a data-cite="webdriver-bidi#session-cleanup-steps">session cleanup
+          steps</a>, given a [=BiDi session=] |session|, are to [=remove a session's permission
+          overrides=] with |session|.
+        </p>
         <p>
           A <dfn class="export">permission key</dfn> has its type defined by a feature's [=powerful
           feature/permission key type=].
@@ -615,6 +658,20 @@
           </div>
         </dd>
         <dt>
+          Optional <dfn data-dfn-for="powerful feature" class="export">permission options</dfn>:
+        </dt>
+        <dd>
+          <p>
+            A [=list=] of strings naming the options the feature passes to [=prompt the user to
+            choose=], ordered from least to most permissive. If unspecified, it is empty. A string
+            in a feature's [=powerful feature/permission options=] <dfn data-dfn-for=
+            "permission options">covers</dfn> itself and every string before it in that list. For
+            example, given « "approximate", "precise" », "precise" covers both strings and
+            "approximate" covers only itself. A feature whose options for [=prompt the user to
+            choose=] are not strings leaves its [=powerful feature/permission options=] empty.
+          </p>
+        </dd>
+        <dt>
           A <dfn data-dfn-for="powerful feature" class="export">permission key type</dfn>:
         </dt>
         <dd>
@@ -809,6 +866,12 @@
             [=environment/top-level origin=] and |settings|'s [=environment settings
             object/origin=].
             </li>
+            <li>Let |override| be the result of [=get a permission override|getting a permission
+            override=] with |descriptor|, |key|, and |settings|.
+            </li>
+            <li>If |override| is not null, return a {{PermissionState}} enum value from
+            |override|'s [=permission override/state=].
+            </li>
             <li>Let |entry| be the result of [=get a permission store entry|getting a permission
             store entry=] with |descriptor| and |key|.
             </li>
@@ -894,6 +957,32 @@
           <ol>
             <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"denied"}}, return
             {{PermissionState/"denied"}} and abort these steps.
+            </li>
+            <li>Let |settings| be the [=current settings object=], and let |key| be the result of
+            [=powerful feature/permission key generation algorithm|generating a permission key=]
+            for |descriptor| with |settings|'s [=environment/top-level origin=] and |settings|'s
+            [=environment settings object/origin=].
+            </li>
+            <li>Let |override| be the result of [=get a permission override|getting a permission
+            override=] with |descriptor|, |key|, and |settings|.
+            </li>
+            <li>If |override| is not null, |override|'s [=permission override/state=] is
+            {{PermissionState/"granted"}}, and its [=permission override/selection=] is not null:
+              <ol>
+                <li>Let |covered| be the items of |options| that |override|'s [=permission
+                override/selection=] [=permission options/covers=].
+                </li>
+                <li>If |covered| [=list/is empty=], return {{PermissionState/"denied"}} and abort
+                these steps.
+                </li>
+                <li>Let |result| be the item of |covered| that comes last in the [=powerful
+                feature/permission options=] of the feature named by |descriptor|'s
+                {{PermissionDescriptor/name}}.
+                </li>
+                <li>Return « |result| » if |allowMultiple| is true, or |result| otherwise, and
+                abort these steps.
+                </li>
+              </ol>
             </li>
             <li>If |descriptor|'s <a>permission state</a> is {{PermissionState/"granted"}}, the
             user agent may return one (or more if |allowMultiple| is true) of |options| chosen by
@@ -1327,6 +1416,9 @@
             [=permission state=].
           </p>
           <p>
+            This command does not add, change, or remove [=permission overrides=].
+          </p>
+          <p>
             The <a>remote end steps</a> are:
           </p>
           <ol>
@@ -1442,8 +1534,8 @@
                 The permissions.setPermission Command
               </h6>
               <p>
-                The <dfn class="export">Set Permission</dfn> [=command=] simulates user
-                modification of a {{PermissionDescriptor}}'s [=permission state=].
+                The <dfn class="export">Set Permission</dfn> [=command=] sets or clears a
+                [=permission override=] for a {{PermissionDescriptor}} and a [=permission key=].
               </p>
               <dl>
                 <dt>
@@ -1458,10 +1550,11 @@
 
                     permissions.SetPermissionParameters = {
                       descriptor: permissions.PermissionDescriptor,
-                      state: permissions.PermissionState,
+                      state: permissions.PermissionState / null,
                       origin: text,
                       ? embeddedOrigin: text,
                       ? userContext: text,
+                      ? selection: text,
                     }
                   </pre>
                 </dd>
@@ -1489,14 +1582,25 @@
                   <li>Let |user context id| be the value of the `userContext` field of |command
                   parameters|, if present, and `default` otherwise.
                   </li>
-                  <li>If |state| is an inappropriate [=permission state=] for any
+                  <li>If |state| is not null and is an inappropriate [=permission state=] for any
                   implementation-defined reason, return [=error=] with [=error code=] [=invalid
                   argument=].
                   </li>
-                  <li>Let |typedDescriptor| be the object |descriptor| refers to, [=converted to an
-                  IDL value=] (|descriptor|, |state|) of {{PermissionSetParameters}} |permission
-                  name|'s [=powerful feature/permission descriptor type=]. If this conversion
-                  throws an exception, return [=error=] with [=error code=] [=invalid argument=].
+                  <li>Let |typedDescriptor| be |descriptor|, [=converted to an IDL value=] of
+                  |permission name|'s [=powerful feature/permission descriptor type=]. If this
+                  conversion throws an exception, return [=error=] with [=error code=] [=invalid
+                  argument=].
+                  </li>
+                  <li>If |command parameters| contains a `selection` field, then:
+                    <ol>
+                      <li>If |state| is not "`granted`", return [=error=] with [=error code=]
+                      [=invalid argument=].
+                      </li>
+                      <li>If the [=powerful feature/permission options=] of the feature named by
+                      |permission name| do not [=list/contain=] the `selection` field's value,
+                      return [=error=] with [=error code=] [=invalid argument=].
+                      </li>
+                    </ol>
                   </li>
                   <li>Let |origin| be the value of the `origin` field of |command parameters|.
                   </li>
@@ -1510,8 +1614,21 @@
                   <li>Let |user agent| be the [=user agent=] that represents the [=user context=]
                   with the id |user context id|.
                   </li>
-                  <li>[=Set a permission=] with |typedDescriptor|, |state|, |key|, and |user
-                  agent|.
+                  <li>Let |selection| be the value of the `selection` field of |command
+                  parameters|, if present, and null otherwise.
+                  </li>
+                  <li>[=list/Remove=] from |user agent|'s [=permission overrides=] every
+                  [=permission override=] whose [=permission override/descriptor=] is
+                  |typedDescriptor| and whose [=permission override/key=] [=permission key/is equal
+                  to=] |key| given |typedDescriptor|.
+                  </li>
+                  <li>The user agent now has <a>new information about the user's intent</a> for
+                  |typedDescriptor| and |key|.
+                  </li>
+                  <li>If |state| is null, return [=success=] with data `null`.
+                  </li>
+                  <li>[=list/Append=] a new [=permission override=] of |typedDescriptor|, |key|,
+                  |state|, |selection|, and |session| to |user agent|'s [=permission overrides=].
                   </li>
                   <li>Return [=success=] with data `null`.
                   </li>
