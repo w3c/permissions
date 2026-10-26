@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 35.5.1">
+<meta name="generator" content="ReSpec 37.4.1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -51,6 +51,36 @@ a.idlEnumItem{color:#000;border-bottom:1px dotted #ccc;text-decoration:none}
 }
 </style>
 <style>
+:root{--cddl-comment:#6a737d;--cddl-kw:#005a9c;--cddl-str:#032f62;--cddl-num:#005cc5;--cddl-op:#6f42c1;--cddl-ctrl:#d73a49;--cddl-occ:#e36209;--cddl-bytes:#22863a;--cddl-param:#e36209;--cddl-type-dfn:#c43a31;--cddl-key-dfn:#005a9c;--cddl-header-bg:var(--def-border, #8ccbf2);--cddl-header-color:#005a9c;--cddl-focus:#51a7e8}
+@media (prefers-color-scheme:dark){
+:root{--cddl-comment:#8b949e;--cddl-kw:#79c0ff;--cddl-str:#a5d6ff;--cddl-num:#79c0ff;--cddl-op:#d2a8ff;--cddl-ctrl:#ff7b72;--cddl-occ:#ffa657;--cddl-bytes:#7ee787;--cddl-param:#ffa657;--cddl-type-dfn:#ffa198;--cddl-key-dfn:#79c0ff;--cddl-header-bg:#3a6da0;--cddl-header-color:#fff;--cddl-focus:#51a7e8}
+}
+pre.cddl{padding:1em;position:relative}
+pre.cddl>code{color:var(--text,#000)}
+@media print{
+pre.cddl{white-space:pre-wrap}
+}
+.cddlHeader{display:block;width:150px;background:var(--cddl-header-bg);color:var(--cddl-header-color);font-family:sans-serif;font-weight:700;margin:-1em 0 1em -1em;height:1.75em;line-height:1.75em}
+.cddlHeader a.self-link{margin-left:.5em;text-decoration:none;border-bottom:none;color:inherit}
+pre.cddl .cddl-comment{color:var(--cddl-comment);font-style:italic}
+pre.cddl .cddl-kw{color:var(--cddl-kw)}
+pre.cddl .cddl-str,pre.cddl dfn[data-dfn-type=cddl-value]{color:var(--cddl-str)}
+pre.cddl .cddl-num{color:var(--cddl-num)}
+pre.cddl .cddl-op{color:var(--cddl-op)}
+pre.cddl .cddl-ctrl{color:var(--cddl-ctrl)}
+pre.cddl .cddl-occ{color:var(--cddl-occ)}
+pre.cddl .cddl-name{font-weight:700}
+pre.cddl .cddl-name a{color:inherit;border-bottom:1px dotted currentColor;text-decoration:none}
+pre.cddl .cddl-bytes{color:var(--cddl-bytes)}
+pre.cddl .cddl-param{font-style:italic;color:var(--cddl-param)}
+pre.cddl a[data-link-type]{text-decoration:none;border-bottom:1px dotted currentColor}
+pre.cddl dfn{font-style:normal;font-weight:700}
+.cddlHeader a.self-link:focus-visible,pre.cddl a:focus-visible,pre.cddl dfn:focus-visible{outline:2px solid var(--cddl-focus);outline-offset:2px}
+.respec-button-copy-paste:focus-visible{outline:2px solid var(--cddl-focus);outline-offset:2px}
+pre.cddl dfn[data-dfn-type=cddl-type]{color:var(--cddl-type-dfn)}
+pre.cddl dfn[data-dfn-type=cddl-key]{color:var(--cddl-key-dfn)}
+</style>
+<style>
 dfn{cursor:pointer}
 .dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
 .dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
@@ -64,6 +94,7 @@ dfn{cursor:pointer}
 .dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
 .dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
 .dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel .marker.cddl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
 .dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
 .dfn-panel a[href]:hover{border-bottom-width:1px}
 .dfn-panel ul{padding:0}
@@ -92,13 +123,17 @@ a.bibref{text-decoration:none}
 .respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
 }
 #references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+@media (prefers-color-scheme:dark){
+#references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+}
+body:has(input[name=color-scheme][value=dark]:checked) #references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
 cite .bibref{font-style:italic}
 a[href].orcid{padding-left:4px;padding-right:4px}
 a[href].orcid>svg{margin-bottom:-2px}
 ol.tof,ul.tof{list-style:none outside none}
 .caption{margin-top:.5em;font-style:italic}
 #issue-summary>ul{column-count:2}
-#issue-summary li{list-style:none;display:inline-block}
+#issue-summary li{list-style:none}
 details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
 details.respec-tests-details>*{padding-right:2em}
 details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
@@ -108,17 +143,19 @@ details.respec-tests-details>li{padding-left:1em}
 .self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
 aside.example .marker>a.self-link{color:inherit}
 .header-wrapper{display:flex;align-items:baseline}
-:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2){position:relative;left:-.5em}
-:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
-:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3,h4,h5,h6):not(:where(#toc>h2,#abstract>h2,#sotd>h2,.head>h2)):has(+a.self-link){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(:where(#toch2))+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.8;text-decoration:none}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§"}
 :is(h2,h3)+a.self-link{top:-.2em}
-:is(h4,h5,h6)+a.self-link::before{color:#000}
+:is(h2,h3)+a.self-link::before{color:var(--heading-text)}
 @media (max-width:767px){
 dd{margin-left:0}
 }
 @media print{
 .removeOnSave{display:none}
 }
+body:has(input[name=color-scheme][value=light]:checked),head:not(:has(meta[name=color-scheme][content~=dark]))+body{color-scheme:light}
+body:has(input[name=color-scheme][value=dark]:checked){color-scheme:dark}
 </style>
 <style id="caniuse-stylesheet" class="">
 .caniuse-stats{display:flex;column-gap:2em}
@@ -168,16 +205,43 @@ img.caniuse-browser{filter:drop-shadow(0 0 .1cm #666);background:0 0}
 .mdn .samsunginternet_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/samsung-internet/samsung-internet.svg)}
 .mdn .webview_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/android-webview/android-webview.png)}
 </style>
-<meta name="revision" content="0051a836a92c4f8e37d016f261bbbed5b6312b96">
+<meta name="revision" content="0b491208b7d547ebae58f45384a2d0c33f60d7d7">
 <meta name="description" content="This specification defines common infrastructure that other specifications can use to
         interact with browser permissions. These permissions represent a user's choice to allow or
         deny access to &quot;powerful features&quot; of the platform. For developers, the specification
         standardizes an API to query the permission state of a powerful feature, and be notified if
         a permission to use a powerful feature changes state.">
 <style>
-.hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+.hljs,body:has(input[name=color-scheme][value=light]:checked) .hljs,head:not(:has(meta[name=color-scheme][content~=dark]))+body .hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
 @media (prefers-color-scheme:dark){
-.hljs{--base:#282c34;--mono-1:#abb2bf;--mono-2:#818896;--mono-3:#5c6370;--hue-1:#56b6c2;--hue-2:#61aeee;--hue-3:#c678dd;--hue-4:#98c379;--hue-5:#e06c75;--hue-5-2:#be5046;--hue-6:#d19a66;--hue-6-2:#e6c07b}
+.hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
+}
+}
+body:has(input[name=color-scheme][value=dark]:checked) .hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
 }
 .hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
 .hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
@@ -210,7 +274,7 @@ var.respec-hl{background:0 0;color:#000;box-shadow:unset}
 }
 </style>
 <style>
-var{position:relative;cursor:pointer}
+var[data-type]{position:relative}
 var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
 var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
 var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
@@ -262,46 +326,49 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     ]
   },
   "caniuse": "permissions-api",
-  "gitRevision": "0051a836a92c4f8e37d016f261bbbed5b6312b96",
-  "publishISODate": "2025-10-06T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 06 October 2025"
+  "gitRevision": "0b491208b7d547ebae58f45384a2d0c33f60d7d7",
+  "publishISODate": "2026-10-26T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 26 October 2026"
 }</script>
-<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"></head>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED">
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/dark.css" disabled=""></head>
   <body class="h-entry" data-cite="WEBIDL permissions-policy w3c-process HTML INFRA URL WEBIDL DOM FETCH"><div class="head">
     <p class="logos"><a class="logo" href="https://www.w3.org/"><img crossorigin="" alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72">
   </a></p>
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2025-10-06">06 October 2025</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2026-10-26">26 October 2026</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
         <dt>This version:</dt><dd>
-                <a class="u-url" href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a>
-              </dd>
+                  <a class="u-url" href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a>
+                </dd>
         <dt>Latest published version:</dt><dd>
-                <a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
-              </dd>
+                  <a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
+                </dd>
         <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/permissions/">https://w3c.github.io/permissions/</a></dd>
         <dt>History:</dt><dd>
-                    <a href="https://www.w3.org/standards/history/permissions/">https://www.w3.org/standards/history/permissions/</a>
-                  </dd><dd>
-                    <a href="https://github.com/w3c/permissions/commits/main">Commit history</a>
-                  </dd>
+                        <a href="https://www.w3.org/standards/history/permissions/">https://www.w3.org/standards/history/permissions/</a>
+                      </dd><dd>
+                        <a href="https://github.com/w3c/permissions/commits/main">Commit history</a>
+                      </dd>
         
         
         
         
         
-        <dt>Editors:</dt><dd class="editor p-author h-card vcard" data-editor-id="39125">
+        <dt>
+                  Editors:
+                </dt><dd class="editor p-author h-card vcard" data-editor-id="39125">
     <a class="u-url url p-name fn" href="https://marcosc.com">Marcos Cáceres</a> (<a class="p-org org h-org" href="https://www.apple.com/">Apple Inc.</a>)
   </dd><dd class="editor p-author h-card vcard" data-editor-id="90704">
     <a class="u-url url p-name fn" href="https://miketaylr.com/posts/">Mike Taylor</a> (<a class="p-org org h-org" href="https://google.com/">Google LLC</a>)
   </dd>
         <dt>
-                Former editors:
-              </dt><dd class="editor p-author h-card vcard">
+                  Former editors:
+                </dt><dd class="editor p-author h-card vcard">
     <span class="p-name fn">Mounir Lamouri</span> (<a class="p-org org h-org" href="https://google.com/">Google LLC</a>)
   </dd><dd class="editor p-author h-card vcard" data-editor-id="72192">
     <span class="p-name fn">Jeffrey Yasskin</span> (<a class="p-org org h-org" href="https://google.com/">Google LLC</a>)
@@ -317,27 +384,27 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         
       <dt class="caniuse-title">Browser support:</dt><dd class="caniuse-stats">
       <div class="caniuse-group">
-          <div class="caniuse-browsers"><div class="caniuse-cell y" title="Supported by default since Chrome version 43." aria-label="permissions-api is supported by default since Chrome version 43 on desktop.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/chrome/chrome.svg" alt="Chrome logo"><span class="browser-version">43</span>
-      </div><div class="caniuse-cell y" title="Supported by default since Edge version 79." aria-label="permissions-api is supported by default since Edge version 79 on desktop.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/edge/edge.svg" alt="Edge logo"><span class="browser-version">79</span>
-      </div><div class="caniuse-cell y" title="Supported by default since Firefox version 46." aria-label="permissions-api is supported by default since Firefox version 46 on desktop.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/firefox/firefox.svg" alt="Firefox logo"><span class="browser-version">46</span>
-      </div><div class="caniuse-cell y" title="Supported by default since Safari version 16.0." aria-label="permissions-api is supported by default since Safari version 16.0 on desktop.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/safari/safari.svg" alt="Safari logo"><span class="browser-version">16.0</span>
+          <div class="caniuse-browsers"><div role="img" class="caniuse-cell y" title="Supported by default since Chrome version 43." aria-label="permissions-api is supported by default since Chrome version 43 on desktop.">
+        <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/chrome/chrome.svg"><span class="browser-version">43</span>
+      </div><div role="img" class="caniuse-cell y" title="Supported by default since Edge version 79." aria-label="permissions-api is supported by default since Edge version 79 on desktop.">
+        <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/edge/edge.svg"><span class="browser-version">79</span>
+      </div><div role="img" class="caniuse-cell y" title="Supported by default since Firefox version 46." aria-label="permissions-api is supported by default since Firefox version 46 on desktop.">
+        <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/firefox/firefox.svg"><span class="browser-version">46</span>
+      </div><div role="img" class="caniuse-cell y" title="Supported by default since Safari version 16.0." aria-label="permissions-api is supported by default since Safari version 16.0 on desktop.">
+        <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/safari/safari.svg"><span class="browser-version">16.0</span>
       </div></div>
           <div class="caniuse-type"><span>desktop</span></div>
         </div><div class="caniuse-group">
-          <div class="caniuse-browsers"><div class="caniuse-cell y" title="Supported by default since Android Chrome version 141." aria-label="permissions-api is supported by default since Android Chrome version 141 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/chrome/chrome.svg" alt="Android Chrome logo"><span class="browser-version">141</span>
-      </div><div class="caniuse-cell y" title="Supported by default since Android Firefox version 143." aria-label="permissions-api is supported by default since Android Firefox version 143 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/firefox/firefox.svg" alt="Android Firefox logo"><span class="browser-version">143</span>
-      </div><div class="caniuse-cell y" title="Supported by default since Android UC version 15.5." aria-label="permissions-api is supported by default since Android UC version 15.5 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/uc/uc.svg" alt="Android UC logo"><span class="browser-version">15.5</span>
-      </div><div class="caniuse-cell y" title="Supported by default since iOS Safari version 16.0." aria-label="permissions-api is supported by default since iOS Safari version 16.0 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/safari-ios/safari-ios.svg" alt="iOS Safari logo"><span class="browser-version">16.0</span>
-      </div><div class="caniuse-cell y" title="Supported by default since Samsung Internet version 4." aria-label="permissions-api is supported by default since Samsung Internet version 4 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" src="https://www.w3.org/assets/logos/browser-logos/samsung-internet/samsung-internet.svg" alt="Samsung Internet logo"><span class="browser-version">4</span>
+          <div class="caniuse-browsers"><div role="img" class="caniuse-cell y" title="Supported by default since Android Chrome version 156." aria-label="permissions-api is supported by default since Android Chrome version 156 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/chrome/chrome.svg"><span class="browser-version">156</span>
+      </div><div role="img" class="caniuse-cell y" title="Supported by default since Android Firefox version 158." aria-label="permissions-api is supported by default since Android Firefox version 158 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/firefox/firefox.svg"><span class="browser-version">158</span>
+      </div><div role="img" class="caniuse-cell y" title="Supported by default since Android UC version 15.5." aria-label="permissions-api is supported by default since Android UC version 15.5 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/uc/uc.svg"><span class="browser-version">15.5</span>
+      </div><div role="img" class="caniuse-cell y" title="Supported by default since iOS Safari version 16.0." aria-label="permissions-api is supported by default since iOS Safari version 16.0 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/safari-ios/safari-ios.svg"><span class="browser-version">16.0</span>
+      </div><div role="img" class="caniuse-cell y" title="Supported by default since Samsung Internet version 4." aria-label="permissions-api is supported by default since Samsung Internet version 4 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/samsung-internet/samsung-internet.svg"><span class="browser-version">4</span>
       </div></div>
           <div class="caniuse-type"><span>mobile</span></div>
         </div><a class="caniuse-cell" href="https://caniuse.com/permissions-api">More info</a>
@@ -348,7 +415,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <p class="copyright">
     <a href="https://www.w3.org/policies/#copyright">Copyright</a>
     ©
-    2025
+    2026
     
     <a href="https://www.w3.org/">World Wide Web Consortium</a>.
     <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup>
@@ -379,8 +446,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <p>
     This document was published by the <a href="https://www.w3.org/groups/wg/webappsec">Web Application Security Working Group</a> as
     an Editor's Draft. 
-  </p><p>Publication as an Editor's Draft does not
-  imply endorsement by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. </p><p>
+  </p><p>Publication as
+  an Editor's Draft does not imply endorsement
+  by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. </p><p>
     This is a draft document and may be updated, replaced, or obsoleted by other
     documents at any time. It is inappropriate to cite this document as other
     than a work in progress.
@@ -393,20 +461,20 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           Policy</a>.
       
     
-                <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
-                <a rel="disclosure" href="https://www.w3.org/groups/wg/webappsec/ipr">public list of any patent disclosures</a>
-          made in connection with the deliverables of
-          the group; that page also includes
-          instructions for disclosing a patent. An individual who has actual
-          knowledge of a patent that the individual believes contains
-          <a href="https://www.w3.org/policies/patent-policy/#def-essential">Essential Claim(s)</a>
-          must disclose the information in accordance with
-          <a href="https://www.w3.org/policies/patent-policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
-        
+                    <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
+                    <a rel="disclosure" href="https://www.w3.org/groups/wg/webappsec/ipr">public list of any patent disclosures</a>
+            made in connection with the deliverables of
+            the group; that page also includes
+            instructions for disclosing a patent. An individual who has actual
+            knowledge of a patent that the individual believes contains
+            <a href="https://www.w3.org/policies/patent-policy/#def-essential">Essential Claim(s)</a>
+            must disclose the information in accordance with
+            <a href="https://www.w3.org/policies/patent-policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+          
   </p><p>
-                      This document is governed by the
-                      <a id="w3c_process_revision" href="https://www.w3.org/policies/process/20250818/">18 August 2025 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
-                    </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><bdi class="secno">1. </bdi>
+                          This document is governed by the
+                          <a id="w3c_process_revision" href="https://www.w3.org/policies/process/20250818/">18 August 2025 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                        </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#intro"><bdi class="secno">1. </bdi>
         Introduction
       </a></li><li class="tocline"><a class="tocxref" href="#examples"><bdi class="secno">2. </bdi>
         Examples of usage
@@ -565,7 +633,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </div> <pre aria-busy="false"><code class="hljs js"><span class="hljs-keyword">const</span> queryPromises = [<span class="hljs-string">"geolocation"</span>, <span class="hljs-string">"notifications"</span>].<span class="hljs-title function_">map</span>(
   <span class="hljs-function"><span class="hljs-params">name</span> =&gt;</span> navigator.<span class="hljs-property">permissions</span>.<span class="hljs-title function_">query</span>({ name })
 );
-<span class="hljs-keyword">for</span> <span class="hljs-title function_">await</span> (<span class="hljs-keyword">const</span> status <span class="hljs-keyword">of</span> queryPromises) {
+<span class="hljs-keyword">for</span> <span class="hljs-keyword">await</span> (<span class="hljs-keyword">const</span> status <span class="hljs-keyword">of</span> queryPromises) {
   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${status.name}</span>: <span class="hljs-subst">${status.state}</span>`</span>);
 }</code></pre>
       </div>
@@ -616,7 +684,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           <dfn class="export" data-export="" id="dfn-express-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Express permission</dfn> refers to the user
           <a data-link-type="dfn|abstract-op" data-lt="grants" href="#dfn-granted" class="internalDFN" id="ref-for-dfn-granted-1">granting</a> the web application the ability to use a <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-5">powerful feature</a>.
         </p>
-        <div class="note" role="note" id="issue-container-generatedID"><div role="heading" class="note-title marker" id="h-note" aria-level="4"><span>Note</span><span class="issue-label">: Limitations and extensibility</span></div><aside class="">
+        <div class="note" role="note" id="issue-container-generatedID"><div class="note-title marker" id="h-note"><span>Note</span><span class="issue-label">: Limitations and extensibility</span></div><aside class="">
           <p>
             Current Web APIs have different ways to deal with permissions. For example, the
             <cite><a data-matched-text="[[[notifications]]]" href="https://notifications.spec.whatwg.org/">Notifications API Standard</a></cite> allows developers to request a permission and check the permission
@@ -665,7 +733,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
           can come from explicit user action, aggregate behavior of both the relevant user and
           other users, or <dfn id="dfn-implicit-signals" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">implicit signals</dfn> this specification hasn't anticipated.
         </p>
-        <div class="note" role="note" id="issue-container-generatedID-0"><div role="heading" class="note-title marker" id="h-note-0" aria-level="4"><span>Note</span><span class="issue-label">: What constitutes an implicit signal?</span></div><aside class="" data-cite="appmanifest">
+        <div class="note" role="note" id="issue-container-generatedID-0"><div class="note-title marker" id="h-note-0"><span>Note</span><span class="issue-label">: What constitutes an implicit signal?</span></div><aside class="" data-cite="appmanifest">
           <p>
             The <a data-link-type="dfn|abstract-op" href="#dfn-implicit-signals" class="internalDFN" id="ref-for-dfn-implicit-signals-1">implicit signals</a> could be, for example, the <a data-link-type="dfn" data-lt="installed web application" href="https://www.w3.org/TR/appmanifest/#dfn-installed-web-application">installation</a> status of a web application or frequency and recency of
             visits. A user that has installed a web application and used it frequently and recently
@@ -759,7 +827,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
         <p>
           A <dfn class="export" data-export="" data-plurals="permission keys" id="dfn-permission-key" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">permission key</dfn> has its type defined by a feature's <a data-link-type="dfn|abstract-op" href="#dfn-permission-key-type" class="internalDFN" id="ref-for-dfn-permission-key-type-1">permission key type</a>.
         </p>
-        <div class="note" role="note" id="issue-container-generatedID-1"><div role="heading" class="note-title marker" id="h-note-1" aria-level="4"><span>Note</span></div><aside class="">
+        <div class="note" role="note" id="issue-container-generatedID-1"><div class="note-title marker" id="h-note-1"><span>Note</span></div><aside class="">
           The permission key defines the scope of a permission grant, which is usually per-origin.
           Powerful features may override the <a data-link-type="dfn|abstract-op" href="#dfn-permission-key-type" class="internalDFN" id="ref-for-dfn-permission-key-type-2">permission key type</a> to specify a
           custom permission key. This is useful for features that want to change the granularity of
@@ -939,7 +1007,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
             Some <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-19">powerful features</a> have more information associated with them than just a
             <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-1"><code>PermissionState</code></a>. Each of these features defines an <a data-link-type="dfn|abstract-op" href="#dfn-extra-permission-data-type" class="internalDFN" id="ref-for-dfn-extra-permission-data-type-1">extra permission data type</a>.
           </p>
-          <div class="note" role="note" id="issue-container-generatedID-2"><div role="heading" class="note-title marker" id="h-note-2" aria-level="3"><span>Note</span></div><p class="" data-cite="mediacapture-streams ECMAScript">
+          <div class="note" role="note" id="issue-container-generatedID-2"><div class="note-title marker" id="h-note-2"><span>Note</span></div><p class="" data-cite="mediacapture-streams ECMAScript">
             For example, <a data-link-type="method" data-lt="getUserMedia()" href="https://www.w3.org/TR/mediacapture-streams/#dom-mediadevices-getusermedia"><code>getUserMedia</code></a><code>()</code> needs to determine <em>which</em> cameras
             the user has granted permission to access.
           </p></div>
@@ -1038,7 +1106,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
               </li>
             </ol>
           </div>
-          <div class="note" role="note" id="issue-container-generatedID-3"><div role="heading" class="note-title marker" id="h-note-3" aria-level="3"><span>Note</span><span class="issue-label">: Permission Delegation</span></div><aside class="">
+          <div class="note" role="note" id="issue-container-generatedID-3"><div class="note-title marker" id="h-note-3"><span>Note</span><span class="issue-label">: Permission Delegation</span></div><aside class="">
             Most powerful features grant permission to the top-level origin and delegate access to
             the requesting document via <cite><a data-matched-text="[[[Permissions-Policy]]]" href="https://www.w3.org/TR/permissions-policy-1/">Permissions Policy</a></cite>. This is known as permission
             delegation.
@@ -1098,7 +1166,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
             <li>For each <var>browsing context</var> associated with the origin (if any), <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#queue-a-global-task">queue a global task</a> on the <a data-link-type="dfn|abstract-op" href="#dfn-permissions-task-source" class="internalDFN" id="ref-for-dfn-permissions-task-source-1">permissions task source</a> with the <var>browsing context</var>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#global-object">global object</a> to run the <a data-link-type="dfn|abstract-op" href="#dfn-permission-revocation-algorithm" class="internalDFN" id="ref-for-dfn-permission-revocation-algorithm-1">permission revocation algorithm</a>.
             </li>
           </ol>
-          <div class="note" role="note" id="issue-container-generatedID-4"><div role="heading" class="note-title marker" id="h-note-4" aria-level="3"><span>Note</span><span class="issue-label">: Determining the lifetime of a permission</span></div><aside class="">
+          <div class="note" role="note" id="issue-container-generatedID-4"><div class="note-title marker" id="h-note-4"><span>Note</span><span class="issue-label">: Determining the lifetime of a permission</span></div><aside class="">
             <p>
               For particularly privacy-sensitive <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-22">features</a>, such as <cite><a data-matched-text="[[[GETUSERMEDIA]]]" href="https://www.w3.org/TR/mediacapture-streams/">Media Capture and Streams</a></cite>, which
               can provide a web application access to a user's camera and microphone, some user
@@ -1233,7 +1301,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
             state</var> to "<a data-link-type="idl" href="#dom-permissionstate-granted" class="internalDFN" id="ref-for-dom-permissionstate-granted-4"><code>granted</code></a>"; otherwise to "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-7"><code>denied</code></a>". The
             user's interaction may provide <a href="#dfn-new-information-about-the-user-s-intent" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-new-information-about-the-user-s-intent-2">new information about the user's intent</a> for the
             <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#concept-origin">origin</a>.
-              <div class="note" role="note" id="issue-container-generatedID-5"><div role="heading" class="note-title marker" id="h-note-5" aria-level="4"><span>Note</span></div><p class="">
+              <div class="note" role="note" id="issue-container-generatedID-5"><div class="note-title marker" id="h-note-5"><span>Note</span></div><p class="">
                 This is intentionally vague about the details of the permission UI and how the user
                 agent infers user intent. User agents should be able to explore lots of UI within
                 this framework.
@@ -1293,7 +1361,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
             </li>
             <li>If the user chose one or more options, return them; otherwise return
             "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-11"><code>denied</code></a>".
-              <div class="note" role="note" id="issue-container-generatedID-6"><div role="heading" class="note-title marker" id="h-note-6" aria-level="4"><span>Note</span></div><p class="">
+              <div class="note" role="note" id="issue-container-generatedID-6"><div class="note-title marker" id="h-note-6"><span>Note</span></div><p class="">
                 This is intentionally vague about the details of the permission UI and how the user
                 agent infers user intent. User agents should be able to explore lots of UI within
                 this framework (e.g., a permission prompt could time out and automatically return
@@ -1334,7 +1402,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       </h2><a class="self-link" href="#permissions-api" aria-label="Permalink for Section 6."></a></div>
       
       <aside class="mdn"><details>
-    <summary aria-label="Expand MDN details for permissions"><span>MDN</span><span title="This feature is in all major engines.">✅</span></summary>
+    <summary aria-label="Expand MDN details for permissions"><span>MDN</span><span role="img" aria-label="This feature is in all major engines.">✅</span></summary>
     <a title="The Navigator.permissions read-only property returns a Permissions object that can be used to query and update permission status of APIs covered by the Permissions API." href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/permissions">Navigator/permissions</a>
     <p class="engines-all">This feature is in all major engines.</p>
     <table>
@@ -1377,7 +1445,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     </tr>
   </table>
   </details><details>
-    <summary aria-label="Expand MDN details for permissions"><span>MDN</span><span> </span></summary>
+    <summary aria-label="Expand MDN details for permissions"><span>MDN</span><span aria-hidden="true"> </span></summary>
     <a title="The WorkerNavigator.permissions read-only property returns a Permissions object that can be used to query and update permission status of APIs covered by the Permissions API." href="https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/permissions">WorkerNavigator/permissions</a>
     
     <table>
@@ -1434,7 +1502,7 @@ partial interface <a data-idl="partial" data-link-type="interface" data-title="W
 };</span></code></pre>
       </section>
       <aside class="mdn"><details>
-    <summary aria-label="Expand MDN details for Permissions"><span>MDN</span><span title="This feature is in all major engines.">✅</span></summary>
+    <summary aria-label="Expand MDN details for Permissions"><span>MDN</span><span role="img" aria-label="This feature is in all major engines.">✅</span></summary>
     <a title="The Permissions interface of the Permissions API provides the core Permission API functionality, such as methods for querying and revoking permissions" href="https://developer.mozilla.org/en-US/docs/Web/API/Permissions">Permissions</a>
     <p class="engines-all">This feature is in all major engines.</p>
     <table>
@@ -1489,7 +1557,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondesc
   required<span class="idlType"> <a data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString">DOMString</a></span> <dfn data-export="" data-dfn-type="dict-member" id="dom-permissiondescriptor-name" data-idl="field" data-title="name" data-dfn-for="PermissionDescriptor" data-type="DOMString" class="idlName" tabindex="0" aria-haspopup="dialog"><code>name</code></dfn>;</span>
 };</span></code></pre>
         <aside class="mdn"><details>
-    <summary aria-label="Expand MDN details for query"><span>MDN</span><span title="This feature is in all major engines.">✅</span></summary>
+    <summary aria-label="Expand MDN details for query"><span>MDN</span><span role="img" aria-label="This feature is in all major engines.">✅</span></summary>
     <a title="The Permissions.query() method of the Permissions interface returns the state of a user permission on the global scope." href="https://developer.mozilla.org/en-US/docs/Web/API/Permissions/query">Permissions/query</a>
     <p class="engines-all">This feature is in all major engines.</p>
     <table>
@@ -1557,7 +1625,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondesc
               rejected with</a> that exception.
               </li>
               <li>If <var>rootDesc</var>["<a data-link-type="idl" href="#dom-permissiondescriptor-name" class="internalDFN" id="ref-for-dom-permissiondescriptor-name-9"><code>name</code></a>"] is not supported, return <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#a-promise-rejected-with">a promise rejected with</a> a <a data-link-type="exception" data-lt="TypeError" href="https://webidl.spec.whatwg.org/#exceptiondef-typeerror"><code>TypeError</code></a>.
-                <div class="note" role="note" id="issue-container-generatedID-7"><div role="heading" class="note-title marker" id="h-note-7" aria-level="5"><span>Note</span><span class="issue-label">: Why is this not an enum?</span></div><aside class="">
+                <div class="note" role="note" id="issue-container-generatedID-7"><div class="note-title marker" id="h-note-7"><span>Note</span><span class="issue-label">: Why is this not an enum?</span></div><aside class="">
                   <p>
                     This is deliberately designed to work the same as WebIDL's <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-enumeration">enumeration</a>
                     (<code>enum</code>) and implementers are encouraged to use their own custom <code>enum</code> here.
@@ -1595,7 +1663,7 @@ dictionary <dfn data-export="" data-dfn-type="dictionary" id="dom-permissiondesc
         </section>
       </section>
       <aside class="mdn"><details>
-    <summary aria-label="Expand MDN details for PermissionStatus"><span>MDN</span><span title="This feature is in all major engines.">✅</span></summary>
+    <summary aria-label="Expand MDN details for PermissionStatus"><span>MDN</span><span role="img" aria-label="This feature is in all major engines.">✅</span></summary>
     <a title="The PermissionStatus interface of the Permissions API provides the state of an object and an event handler for monitoring changes to said state." href="https://developer.mozilla.org/en-US/docs/Web/API/PermissionStatus">PermissionStatus</a>
     <p class="engines-all">This feature is in all major engines.</p>
     <table>
@@ -1691,7 +1759,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           </div>
         </section>
         <aside class="mdn"><details>
-    <summary aria-label="Expand MDN details for name"><span>MDN</span><span title="This feature is in all major engines.">✅</span></summary>
+    <summary aria-label="Expand MDN details for name"><span>MDN</span><span role="img" aria-label="This feature is in all major engines.">✅</span></summary>
     <a title="The name read-only property of the PermissionStatus interface returns the name of a requested permission." href="https://developer.mozilla.org/en-US/docs/Web/API/PermissionStatus/name">PermissionStatus/name</a>
     <p class="engines-all">This feature is in all major engines.</p>
     <table>
@@ -1742,7 +1810,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           </p>
         </section>
         <aside class="mdn"><details>
-    <summary aria-label="Expand MDN details for state"><span>MDN</span><span title="This feature is in all major engines.">✅</span></summary>
+    <summary aria-label="Expand MDN details for state"><span>MDN</span><span role="img" aria-label="This feature is in all major engines.">✅</span></summary>
     <a title="The state read-only property of the PermissionStatus interface returns the state of a requested permission. This property returns one of 'granted', 'denied', or 'prompt'." href="https://developer.mozilla.org/en-US/docs/Web/API/PermissionStatus/state">PermissionStatus/state</a>
     <p class="engines-all">This feature is in all major engines.</p>
     <table>
@@ -1794,7 +1862,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           </p>
         </section>
         <aside class="mdn"><details>
-    <summary aria-label="Expand MDN details for change_event"><span>MDN</span><span title="This feature is in all major engines.">✅</span></summary>
+    <summary aria-label="Expand MDN details for change_event"><span>MDN</span><span role="img" aria-label="This feature is in all major engines.">✅</span></summary>
     <a title="The change event of the PermissionStatus interface fires whenever the PermissionStatus.state property changes." href="https://developer.mozilla.org/en-US/docs/Web/API/PermissionStatus/change_event">PermissionStatus/change_event</a>
     <p class="engines-all">This feature is in all major engines.</p>
     <table>
@@ -1963,7 +2031,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           </li>
           <li><a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-iterate">For each</a> <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#environment-settings-object">environment settings object</a> <var>settings</var> in <var>settings list</var>:
             <ol>
-              <li>Let <var>settings key</var> be be the result of <a data-link-type="dfn|abstract-op" data-lt="permission key generation algorithm" href="#dfn-permission-key-generation-algorithm" class="internalDFN" id="ref-for-dfn-permission-key-generation-algorithm-6">generating a permission key</a> for <var data-type="PermissionDescriptor">descriptor</var> with <var>settings</var>'s
+              <li>Let <var>settings key</var> be the result of <a data-link-type="dfn|abstract-op" data-lt="permission key generation algorithm" href="#dfn-permission-key-generation-algorithm" class="internalDFN" id="ref-for-dfn-permission-key-generation-algorithm-6">generating a permission key</a> for <var data-type="PermissionDescriptor">descriptor</var> with <var>settings</var>'s
               <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-environment-top-level-origin">top-level origin</a> and <var>settings</var>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a>.
               </li>
               <li>Let <var>matches</var> be the result of running the <a data-link-type="dfn|abstract-op" href="#dfn-permission-key-comparison-algorithm" class="internalDFN" id="ref-for-dfn-permission-key-comparison-algorithm-3">permission key comparison algorithm</a> for <var data-type="PermissionDescriptor">descriptor</var>, given <var>settings key</var> and <var>key</var>.
@@ -1997,7 +2065,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
         </h3><a class="self-link" href="#automation-webdriver" aria-label="Permalink for Section B.1"></a></div>
         
         <p>
-          This document defines the following <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-extension-commands">extension commands</a> for the [<cite><a class="bibref" data-link-type="biblio" href="#bib-webdriver" title="WebDriver">WebDriver</a></cite>]
+          This document defines the following <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-extension-commands">extension commands</a> for the [<cite><a class="bibref" data-link-type="biblio" href="#bib-webdriver" title="WebDriver">WebDriver</a></cite>]
           specification.
         </p>
         <section id="set-permission"><div class="header-wrapper"><h4 id="webdriver-command-set-permission"><bdi class="secno">B.1.1 </bdi>
@@ -2011,7 +2079,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
                   HTTP Method
                 </th>
                 <th>
-                  <a data-link-type="dfn" data-lt="extension command URI template" href="https://www.w3.org/TR/webdriver1/#dfn-extension-command-uri-template">URI Template</a>
+                  <a data-link-type="dfn" data-lt="extension command URI template" href="https://www.w3.org/TR/webdriver2/#dfn-extension-command-uri-template">URI Template</a>
                 </th>
               </tr>
               <tr>
@@ -2026,19 +2094,19 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
           </table>
           <p>
             The <dfn class="export" data-dfn-for="extension commands" data-export="" id="dfn-set-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Set Permission</dfn>
-            <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-extension-commands">extension command</a> simulates user modification of a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-20"><code>PermissionDescriptor</code></a>'s
+            <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-extension-commands">extension command</a> simulates user modification of a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-20"><code>PermissionDescriptor</code></a>'s
             <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-17">permission state</a>.
           </p>
           <p>
-            The <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-remote-end-steps">remote end steps</a> are:
+            The <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-remote-end-steps">remote end steps</a> are:
           </p>
           <ol>
             <li>Let <var>parametersDict</var> be the <var>parameters</var> argument, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL value</a> of
-            type <a data-link-type="idl" data-lt="PermissionSetParameters" href="#dom-permissionsetparameters" class="internalDFN" id="ref-for-dom-permissionsetparameters-1"><code>PermissionSetParameters</code></a>. If this throws an exception, return an <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
+            type <a data-link-type="idl" data-lt="PermissionSetParameters" href="#dom-permissionsetparameters" class="internalDFN" id="ref-for-dom-permissionsetparameters-1"><code>PermissionSetParameters</code></a>. If this throws an exception, return an <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error">error</a>.
             </li>
             <li>If <var>parametersDict</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-state" class="internalDFN" id="ref-for-dom-permissionsetparameters-state-1"><code>state</code></a> is an inappropriate
-            <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-18">permission state</a> for any implementation-defined reason, return an <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
-              <div class="note" role="note" id="issue-container-generatedID-8"><div role="heading" class="note-title marker" id="h-note-8" aria-level="5"><span>Note</span></div><p class="">
+            <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-18">permission state</a> for any implementation-defined reason, return an <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error">error</a>.
+              <div class="note" role="note" id="issue-container-generatedID-8"><div class="note-title marker" id="h-note-8"><span>Note</span></div><p class="">
                 For example, <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#user-agent">user agents</a> that define the "midi" <a href="#dfn-powerful-feature" class="internalDFN" data-link-type="dfn" id="ref-for-dfn-powerful-feature-31">powerful feature</a> as
                 "always on" can choose to reject a command to set the <a data-link-type="dfn|abstract-op" href="#dfn-permission-state" class="internalDFN" id="ref-for-dfn-permission-state-19">permission state</a> to
                 "<a data-link-type="idl" href="#dom-permissionstate-denied" class="internalDFN" id="ref-for-dom-permissionstate-denied-13"><code>denied</code></a>" at this step.
@@ -2048,12 +2116,12 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
             </li>
             <li>Let <var>typedDescriptor</var> be the object <var>rootDesc</var> refers to, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#dfn-convert-ecmascript-to-idl-value">converted to an IDL value</a> of <a data-link-type="dfn|abstract-op" href="#dfn-permission-descriptor-type" class="internalDFN" id="ref-for-dfn-permission-descriptor-type-6">permission descriptor type</a> matching the result of
             <a href="https://tc39.es/ecma262/multipage/#sec-get-o-p">Get</a>(<var>rootDesc</var>, "<code>name</code>"). If this throws an
-            exception, return a <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-error">error</a>.
+            exception, return a <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-invalid-argument">invalid argument</a> <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-error">error</a>.
             </li>
             <li><a data-link-type="dfn|abstract-op" href="#dfn-set-a-permission" class="internalDFN" id="ref-for-dfn-set-a-permission-1">Set a permission</a> with <var>typedDescriptor</var> and
             <var>parametersDict</var>.<a data-link-type="idl" href="#dom-permissionsetparameters-state" class="internalDFN" id="ref-for-dom-permissionsetparameters-state-2"><code>state</code></a>.
             </li>
-            <li>Return <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver1/#dfn-success">success</a> with data <code>null</code>.
+            <li>Return <a data-link-type="dfn" href="https://www.w3.org/TR/webdriver2/#dfn-success">success</a> with data <code>null</code>.
             </li>
           </ol>
           <aside class="example" data-cite="webdriver-bidi" id="example-setting-a-permission-via-webdriver"><div class="marker">
@@ -2095,10 +2163,10 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
             </h5><a class="self-link" href="#webdriver-bidi-module-permissions-definition" aria-label="Permalink for Section B.2.1.1"></a></div>
             
             <p>
-              {^remote end definition^}
+              <code><a data-link-type="cddl-type" class="respec-offending-element" title="CDDL cddl-type: no definition found for `remote end definition` in any `&lt;pre class=&quot;cddl&quot;&gt;` block." id="respec-offender-cddl-cddl-type-no-definition-found-for-remote-end-definition-in-any-pre-class-cddl-block" data-no-link-to-dfn="">remote end definition</a></code>
             </p>
-            <pre class="cddl" data-cddl-module="remote-cddl" aria-busy="false"><code class="hljs">PermissionsCommand = (
-  permissions.setPermission
+            <pre class="cddl def highlight" data-cddl-module="remote-cddl" id="cddl-block-1580021692"><span class="cddlHeader"><a class="self-link" href="#cddl-block-1580021692">CDDL</a></span><code><dfn data-dfn-type="cddl-type" id="cddl-type-permissionscommand" data-export="" tabindex="0" aria-haspopup="dialog">PermissionsCommand</dfn> <span class="cddl-op">=</span> (
+  <a href="#cddl-type-permissions-setpermission" class="cddl-name" data-link-type="cddl-type" id="ref-for-cddl-type-permissions-setpermission-1">permissions.setPermission</a>
 )</code></pre>
           </section>
           <section id="types"><div class="header-wrapper"><h5 id="webdriver-bidi-module-permissions-types"><bdi class="secno">B.2.1.2 </bdi>
@@ -2109,8 +2177,8 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
                 The permissions.PermissionDescriptor Type
               </h6><a class="self-link" href="#webdriver-bidi-type-permissions-PermissionDescriptor" aria-label="Permalink for Section B.2.1.2.1"></a></div>
               
-              <pre class="cddl" data-cddl-module="local-cddl" aria-busy="false"><code class="hljs">permissions.PermissionDescriptor = {
-  name: text,
+              <pre class="cddl def highlight" data-cddl-module="local-cddl" id="cddl-block-67633195"><span class="cddlHeader"><a class="self-link" href="#cddl-block-67633195">CDDL</a></span><code><dfn data-dfn-type="cddl-type" id="cddl-type-permissions-permissiondescriptor" data-export="" tabindex="0" aria-haspopup="dialog">permissions.PermissionDescriptor</dfn> <span class="cddl-op">=</span> {
+  <dfn data-dfn-type="cddl-key" data-dfn-for="permissions.PermissionDescriptor" id="cddl-key-permissions-permissiondescriptor-name" data-export="" tabindex="0" aria-haspopup="dialog">name</dfn>: <a class="cddl-kw" data-link-type="cddl-type" data-link-spec="rfc8610" href="https://www.rfc-editor.org/rfc/rfc8610#appendix-D">text</a>,
 }</code></pre>
               <p>
                 The <code>permissions.PermissionDescriptor</code> type represents a <a data-link-type="idl" data-lt="PermissionDescriptor" href="#dom-permissiondescriptor" class="internalDFN" id="ref-for-dom-permissiondescriptor-21"><code>PermissionDescriptor</code></a>.
@@ -2120,7 +2188,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
                 The permissions.PermissionState Type
               </h6><a class="self-link" href="#webdriver-bidi-type-permissions-PermissionState" aria-label="Permalink for Section B.2.1.2.2"></a></div>
               
-              <pre class="cddl" data-cddl-module="local-cddl" aria-busy="false"><code class="hljs">permissions.PermissionState = "granted" / "denied" / "prompt"</code></pre>
+              <pre class="cddl def highlight" data-cddl-module="local-cddl" id="cddl-block-1265207243"><span class="cddlHeader"><a class="self-link" href="#cddl-block-1265207243">CDDL</a></span><code><dfn data-dfn-type="cddl-type" id="cddl-type-permissions-permissionstate" data-export="" tabindex="0" aria-haspopup="dialog">permissions.PermissionState</dfn> <span class="cddl-op">=</span> <dfn data-dfn-type="cddl-value" data-dfn-for="permissions.PermissionState" id="cddl-value-permissions-permissionstate-granted" data-export="" tabindex="0" aria-haspopup="dialog">"granted"</dfn> <span class="cddl-op">/</span> <dfn data-dfn-type="cddl-value" data-dfn-for="permissions.PermissionState" id="cddl-value-permissions-permissionstate-denied" data-export="" tabindex="0" aria-haspopup="dialog">"denied"</dfn> <span class="cddl-op">/</span> <dfn data-dfn-type="cddl-value" data-dfn-for="permissions.PermissionState" id="cddl-value-permissions-permissionstate-prompt" data-export="" tabindex="0" aria-haspopup="dialog">"prompt"</dfn></code></pre>
               <p>
                 The <code>permissions.PermissionState</code> type represents a <a data-link-type="idl" data-lt="PermissionState" href="#dom-permissionstate" class="internalDFN" id="ref-for-dom-permissionstate-10"><code>PermissionState</code></a>.
               </p>
@@ -2143,17 +2211,17 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
                   Command Type
                 </dt>
                 <dd>
-                  <pre class="cddl" data-cddl-module="remote-cddl" aria-busy="false"><code class="hljs">permissions.setPermission = (
-  method: "permissions.setPermission",
-  params: permissions.SetPermissionParameters
+                  <pre class="cddl def highlight" data-cddl-module="remote-cddl" id="cddl-block-480994013"><span class="cddlHeader"><a class="self-link" href="#cddl-block-480994013">CDDL</a></span><code><dfn data-dfn-type="cddl-type" id="cddl-type-permissions-setpermission" data-export="" tabindex="0" aria-haspopup="dialog">permissions.setPermission</dfn> <span class="cddl-op">=</span> (
+  <dfn data-dfn-type="cddl-key" data-dfn-for="permissions.setPermission" id="cddl-key-permissions-setpermission-method" data-export="" tabindex="0" aria-haspopup="dialog">method</dfn>: <dfn data-dfn-type="cddl-value" data-dfn-for="permissions.setPermission" id="cddl-value-permissions-setpermission-permissions-setpermission" data-export="" tabindex="0" aria-haspopup="dialog">"permissions.setPermission"</dfn>,
+  <dfn data-dfn-type="cddl-key" data-dfn-for="permissions.setPermission" id="cddl-key-permissions-setpermission-params" data-export="" tabindex="0" aria-haspopup="dialog">params</dfn>: <a href="#cddl-type-permissions-setpermissionparameters" class="cddl-name" data-link-type="cddl-type" id="ref-for-cddl-type-permissions-setpermissionparameters-1">permissions.SetPermissionParameters</a>
 )
 
-permissions.SetPermissionParameters = {
-  descriptor: permissions.PermissionDescriptor,
-  state: permissions.PermissionState,
-  origin: text,
-  ? embeddedOrigin: text,
-  ? userContext: text,
+<dfn data-dfn-type="cddl-type" id="cddl-type-permissions-setpermissionparameters" data-export="" tabindex="0" aria-haspopup="dialog">permissions.SetPermissionParameters</dfn> <span class="cddl-op">=</span> {
+  <dfn data-dfn-type="cddl-key" data-dfn-for="permissions.SetPermissionParameters" id="cddl-key-permissions-setpermissionparameters-descriptor" data-export="" tabindex="0" aria-haspopup="dialog">descriptor</dfn>: <a href="#cddl-type-permissions-permissiondescriptor" class="cddl-name" data-link-type="cddl-type" id="ref-for-cddl-type-permissions-permissiondescriptor-1">permissions.PermissionDescriptor</a>,
+  <dfn data-dfn-type="cddl-key" data-dfn-for="permissions.SetPermissionParameters" id="cddl-key-permissions-setpermissionparameters-state" data-export="" tabindex="0" aria-haspopup="dialog">state</dfn>: <a href="#cddl-type-permissions-permissionstate" class="cddl-name" data-link-type="cddl-type" id="ref-for-cddl-type-permissions-permissionstate-1">permissions.PermissionState</a>,
+  <dfn data-dfn-type="cddl-key" data-dfn-for="permissions.SetPermissionParameters" id="cddl-key-permissions-setpermissionparameters-origin" data-export="" tabindex="0" aria-haspopup="dialog">origin</dfn>: <a class="cddl-kw" data-link-type="cddl-type" data-link-spec="rfc8610" href="https://www.rfc-editor.org/rfc/rfc8610#appendix-D">text</a>,
+  <span class="cddl-occ">?</span> <dfn data-dfn-type="cddl-key" data-dfn-for="permissions.SetPermissionParameters" id="cddl-key-permissions-setpermissionparameters-embeddedorigin" data-export="" tabindex="0" aria-haspopup="dialog">embeddedOrigin</dfn>: <a class="cddl-kw" data-link-type="cddl-type" data-link-spec="rfc8610" href="https://www.rfc-editor.org/rfc/rfc8610#appendix-D">text</a>,
+  <span class="cddl-occ">?</span> <dfn data-dfn-type="cddl-key" data-dfn-for="permissions.SetPermissionParameters" id="cddl-key-permissions-setpermissionparameters-usercontext" data-export="" tabindex="0" aria-haspopup="dialog">userContext</dfn>: <a class="cddl-kw" data-link-type="cddl-type" data-link-spec="rfc8610" href="https://www.rfc-editor.org/rfc/rfc8610#appendix-D">text</a>,
 }</code></pre>
                 </dd>
                 <dt>
@@ -2231,7 +2299,7 @@ permissions.SetPermissionParameters = {
         </h3><a class="self-link" href="#change-process" aria-label="Permalink for Section C.2"></a></div>
         
         <p>
-          The <dfn id="dfn-change-process" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">change process</dfn> for adding and/or updating this registry is as follows:
+          The <dfn data-noexport="" id="dfn-change-process" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">change process</dfn> for adding and/or updating this registry is as follows:
         </p>
         <ol>
           <li>If necessary, add a "Permissions Policy" section to your specification which includes
@@ -2279,7 +2347,7 @@ permissions.SetPermissionParameters = {
         
         <p>
           For a permission to appear in the table of standardized permissions, and thus be
-          considered a <dfn id="dfn-standardized-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">standardized permission</dfn>, it needs to meet the following criteria:
+          considered a <dfn data-noexport="" id="dfn-standardized-permission" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">standardized permission</dfn>, it needs to meet the following criteria:
         </p>
         <ul>
           <li>Implemented and demonstrably interoperable in at least two browser engines (e.g., has
@@ -2294,7 +2362,7 @@ permissions.SetPermissionParameters = {
           <cite><a data-matched-text="[[[Permissions-Policy]]]" href="https://www.w3.org/TR/permissions-policy-1/">Permissions Policy</a></cite>, the string identifies a <a data-link-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled features</a>.
           Similarly, in the <cite><a data-matched-text="[[[Permissions]]]" href="https://www.w3.org/TR/permissions/">Permissions</a></cite> specification the string identifies a <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-34">powerful feature</a>.
         </p>
-        <div class="note" role="note" id="issue-container-generatedID-9"><div role="heading" class="note-title marker" id="h-note-9" aria-level="4"><span>Note</span><span class="issue-label">: Permissions and Permissions Policy</span></div><aside class="">
+        <div class="note" role="note" id="issue-container-generatedID-9"><div class="note-title marker" id="h-note-9"><span>Note</span><span class="issue-label">: Permissions and Permissions Policy</span></div><aside class="">
           <p>
             Not every <a data-link-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled feature</a> is <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-35">powerful features</a>. For example,
             "web-share" is a <a data-link-type="dfn" href="https://www.w3.org/TR/permissions-policy-1/#policy-controlled-feature">policy-controlled feature</a> that is not classified as a <a data-link-type="dfn|abstract-op" href="#dfn-powerful-feature" class="internalDFN" id="ref-for-dfn-powerful-feature-36">powerful feature</a> because it doesn't require <a data-link-type="dfn|abstract-op" href="#dfn-express-permission" class="internalDFN" id="ref-for-dfn-express-permission-11">express permission</a> to be used. However, with
@@ -2305,7 +2373,7 @@ permissions.SetPermissionParameters = {
         </aside></div>
         <table class="simple data">
           <caption>
-            <dfn data-local-lt="table of standardized permissions" id="dfn-table-of-standardized-permissions-of-the-web-platform" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Table of standardized
+            <dfn data-local-lt="table of standardized permissions" data-noexport="" id="dfn-table-of-standardized-permissions-of-the-web-platform" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Table of standardized
             permissions of the web platform</dfn>
           </caption>
           <tbody><tr>
@@ -2441,7 +2509,7 @@ permissions.SetPermissionParameters = {
         </p>
         <table class="simple data">
           <caption>
-            <dfn id="dfn-table-of-provisional-permissions" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Table of provisional permissions</dfn>
+            <dfn data-noexport="" id="dfn-table-of-provisional-permissions" tabindex="0" aria-haspopup="dialog" data-dfn-type="dfn">Table of provisional permissions</dfn>
           </caption>
           <tbody><tr>
             <th rowspan="2">
@@ -2618,65 +2686,12 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     </section>
   
 
-<section id="references" class="appendix"><div class="header-wrapper"><h2 id="h-references"><bdi class="secno">H. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix H."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="h-1-normative-references"><bdi class="secno">H.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix H.1"></a></div>
-    
-    <dl class="bibliography"><dt id="bib-dom">[dom]</dt><dd>
-      <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
-    </dd><dt id="bib-ecma-262">[ecma-262]</dt><dd>
-      <a href="https://tc39.es/ecma262/multipage/"><cite>ECMAScript Language Specification</cite></a>.  Ecma International. URL: <a href="https://tc39.es/ecma262/multipage/">https://tc39.es/ecma262/multipage/</a>
-    </dd><dt id="bib-html">[HTML]</dt><dd>
-      <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Dominic Farolino; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
-    </dd><dt id="bib-infra">[infra]</dt><dd>
-      <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
-    </dd><dt id="bib-notifications">[Notifications]</dt><dd>
-      <a href="https://notifications.spec.whatwg.org/"><cite>Notifications API Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a>
-    </dd><dt id="bib-permissions-policy">[Permissions-Policy]</dt><dd>
-      <a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. Ian Clelland.  W3C. 6 August 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a>
-    </dd><dt id="bib-permissions-registry">[permissions-registry]</dt><dd>
-      <a href="https://w3c.github.io/permissions-registry/"><cite>Permissions Registry</cite></a>.  W3C. Draft Registry. URL: <a href="https://w3c.github.io/permissions-registry/">https://w3c.github.io/permissions-registry/</a>
-    </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
-      <a href="https://www.rfc-editor.org/rfc/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>
-    </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
-      <a href="https://www.rfc-editor.org/rfc/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>
-    </dd><dt id="bib-webdriver">[WebDriver]</dt><dd>
-      <a href="https://www.w3.org/TR/webdriver1/"><cite>WebDriver</cite></a>. Simon Stewart; David Burns.  W3C. 5 June 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/webdriver1/">https://www.w3.org/TR/webdriver1/</a>
-    </dd><dt id="bib-webdriver-bidi">[WebDriver-BiDi]</dt><dd>
-      <a href="https://www.w3.org/TR/webdriver-bidi/"><cite>WebDriver BiDi</cite></a>. James Graham; Alex Rudenko; Maksim Sadym.  W3C. 1 October 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webdriver-bidi/">https://www.w3.org/TR/webdriver-bidi/</a>
-    </dd><dt id="bib-webdriver2">[webdriver2]</dt><dd>
-      <a href="https://www.w3.org/TR/webdriver2/"><cite>WebDriver</cite></a>. Simon Stewart; David Burns.  W3C. 8 September 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webdriver2/">https://www.w3.org/TR/webdriver2/</a>
-    </dd><dt id="bib-webidl">[WEBIDL]</dt><dd>
-      <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
-    </dd></dl>
-  </section><section id="informative-references"><div class="header-wrapper"><h3 id="h-2-informative-references"><bdi class="secno">H.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix H.2"></a></div>
-    
-    <dl class="bibliography"><dt id="bib-appmanifest">[appmanifest]</dt><dd>
-      <a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Kenneth Christiansen; Diego Gonzalez-Zuniga; Daniel Murphy; Christian Liebel.  W3C. 3 September 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
-    </dd><dt id="bib-geolocation">[Geolocation]</dt><dd>
-      <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation</cite></a>. Marcos Caceres; Reilly Grant.  W3C. 23 September 2025. W3C Recommendation. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
-    </dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd>
-      <a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet.  W3C. 25 September 2025. CRD. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
-    </dd><dt id="bib-local-font-access">[local-font-access]</dt><dd>
-      <a href="https://wicg.github.io/local-font-access/"><cite>Local Font Access API</cite></a>.  W3C. Draft Community Group Report. URL: <a href="https://wicg.github.io/local-font-access/">https://wicg.github.io/local-font-access/</a>
-    </dd><dt id="bib-orientation-event">[orientation-event]</dt><dd>
-      <a href="https://www.w3.org/TR/orientation-event/"><cite>Device Orientation and Motion</cite></a>. Reilly Grant; Marcos Caceres.  W3C. 12 February 2025. CRD. URL: <a href="https://www.w3.org/TR/orientation-event/">https://www.w3.org/TR/orientation-event/</a>
-    </dd><dt id="bib-permissions">[Permissions]</dt><dd>
-      <a href="https://www.w3.org/TR/permissions/"><cite>Permissions</cite></a>. Marcos Caceres; Mike Taylor.  W3C. 26 September 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
-    </dd><dt id="bib-push-api">[push-api]</dt><dd>
-      <a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Marcos Caceres; Kagami Rosylight.  W3C. 25 September 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
-    </dd><dt id="bib-w3c-process">[w3c-process]</dt><dd>
-      <a href="https://www.w3.org/policies/process/"><cite>W3C Process Document</cite></a>. Elika J. Etemad (fantasai); Florian Rivoal.  W3C. 18 August 2025. URL: <a href="https://www.w3.org/policies/process/">https://www.w3.org/policies/process/</a>
-    </dd><dt id="bib-web-share">[Web-Share]</dt><dd>
-      <a href="https://www.w3.org/TR/web-share/"><cite>Web Share API</cite></a>. Marcos Caceres; Eric Willigers; Matt Giuca.  W3C. 30 May 2023. W3C Recommendation. URL: <a href="https://www.w3.org/TR/web-share/">https://www.w3.org/TR/web-share/</a>
-    </dd><dt id="bib-window-management">[window-management]</dt><dd>
-      <a href="https://www.w3.org/TR/window-management/"><cite>Window Management</cite></a>. Joshua Bell; Mike Wasserman.  W3C. 7 June 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/window-management/">https://www.w3.org/TR/window-management/</a>
-    </dd></dl>
-  </section></section><p role="navigation" id="back-to-top">
-    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
-  </p><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission" aria-label="Links in this document to definition: permission">
+<div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-permission" aria-label="Links in this document to definition: permission">
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-permission" aria-label="Permalink for definition: permission. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2699,6 +2714,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-express-permission" aria-label="Permalink for definition: Express permission. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2721,6 +2737,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-states" aria-label="Permalink for definition: states. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2737,6 +2754,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-denied" aria-label="Permalink for definition: &quot;denied&quot;. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2751,6 +2769,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-granted" aria-label="Permalink for definition: &quot;granted&quot;. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2773,6 +2792,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-prompt" aria-label="Permalink for definition: &quot;prompt&quot;. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2789,6 +2809,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-new-information-about-the-user-s-intent" aria-label="Permalink for definition: new information about the user's intent. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2805,6 +2826,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-implicit-signals" aria-label="Permalink for definition: implicit signals. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2817,6 +2839,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-lifetime" aria-label="Permalink for definition: lifetime. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2833,6 +2856,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-default-state" aria-label="Permalink for definition: default state. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2847,6 +2871,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permission-store" aria-label="Permalink for definition: permission store. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2859,6 +2884,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permission-store-entry" aria-label="Permalink for definition: permission store entry. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2871,6 +2897,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-descriptor" aria-label="Permalink for definition: descriptor. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2883,6 +2910,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-key" aria-label="Permalink for definition: key. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2895,6 +2923,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-state" aria-label="Permalink for definition: state. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2909,6 +2938,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-get-a-permission-store-entry" aria-label="Permalink for definition: get a permission store entry. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2921,6 +2951,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-set-a-permission-store-entry" aria-label="Permalink for definition: set a permission store entry. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2933,6 +2964,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-remove-a-permission-store-entry" aria-label="Permalink for definition: remove a permission store entry. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2945,6 +2977,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permission-key" aria-label="Permalink for definition: permission key. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2963,6 +2996,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-is-equal-to" aria-label="Permalink for definition: is equal to. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -2975,6 +3009,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-powerful-feature" aria-label="Permalink for definition: powerful feature. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3017,6 +3052,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-name" aria-label="Permalink for definition: name. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3033,6 +3069,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-aspects" aria-label="Permalink for definition: aspects. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3047,6 +3084,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permissions-task-source" aria-label="Permalink for definition: permissions task source. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3065,6 +3103,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-specifies-a-powerful-feature" aria-label="Permalink for definition: specifies a powerful feature. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3081,6 +3120,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permission-descriptor-type" aria-label="Permalink for definition: permission descriptor type. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3103,6 +3143,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-stronger-than" aria-label="Permalink for definition: stronger than. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3115,6 +3156,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permission-state-constraints" aria-label="Permalink for definition: permission state constraints. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3127,6 +3169,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-extra-permission-data-type" aria-label="Permalink for definition: extra permission data type. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3139,6 +3182,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-extra-permission-data" aria-label="Permalink for definition: extra permission data. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3151,6 +3195,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-extra-permission-data-constraints" aria-label="Permalink for definition: extra permission data constraints. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3163,6 +3208,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permission-result-type" aria-label="Permalink for definition: permission result type. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3177,6 +3223,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permission-query-algorithm" aria-label="Permalink for definition: permission query algorithm. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3191,6 +3238,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-default-permission-query-algorithm" aria-label="Permalink for definition: default permission query algorithm. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3203,6 +3251,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permission-key-type" aria-label="Permalink for definition: permission key type. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3217,6 +3266,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permission-key-generation-algorithm" aria-label="Permalink for definition: permission key generation algorithm. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3237,6 +3287,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-default-permission-key-generation-algorithm" aria-label="Permalink for definition: default permission key generation algorithm. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3249,6 +3300,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permission-key-comparison-algorithm" aria-label="Permalink for definition: permission key comparison algorithm. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3265,6 +3317,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-default-permission-key-comparison-algorithm" aria-label="Permalink for definition: default permission key comparison algorithm. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3277,6 +3330,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permission-revocation-algorithm" aria-label="Permalink for definition: permission revocation algorithm. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3291,6 +3345,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-default-permission-state" aria-label="Permalink for definition: Default permission state. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3301,6 +3356,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-default-powerful-feature" aria-label="Permalink for definition: default powerful feature. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3311,6 +3367,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-getting-the-current-permission-state" aria-label="Permalink for definition: get the current permission state. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3323,6 +3380,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permission-state" aria-label="Permalink for definition: permission state. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3351,6 +3409,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-request-permission-to-use" aria-label="Permalink for definition: request permission to use. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3363,6 +3422,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-prompt-the-user-to-choose" aria-label="Permalink for definition: prompt the user to choose. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3375,6 +3435,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-react-to-the-user-revoking-permission" aria-label="Permalink for definition: react to the user revoking permission. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3387,6 +3448,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-navigator-permissions" aria-label="Permalink for definition: permissions. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3397,6 +3459,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-workernavigator-permissions" aria-label="Permalink for definition: permissions. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3407,6 +3470,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissions" aria-label="Permalink for definition: Permissions. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3423,6 +3487,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissiondescriptor" aria-label="Permalink for definition: PermissionDescriptor. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3459,6 +3524,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissiondescriptor-name" aria-label="Permalink for definition: name. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3487,6 +3553,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissions-query" aria-label="Permalink for definition: query(). Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-285612776">IDL</a>
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3503,6 +3570,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-query-a-permission" aria-label="Permalink for definition: query a permission. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3513,6 +3581,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissionstatus" aria-label="Permalink for definition: PermissionStatus. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3537,6 +3606,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissionstate" aria-label="Permalink for definition: PermissionState. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3559,6 +3629,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-query" aria-label="Permalink for definition: [[query]]. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3575,6 +3646,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissionstate-granted" aria-label="Permalink for definition: granted. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1212188233">IDL</a>
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3595,6 +3667,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissionstate-denied" aria-label="Permalink for definition: denied. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1212188233">IDL</a>
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3621,6 +3694,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissionstate-prompt" aria-label="Permalink for definition: prompt. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1212188233">IDL</a>
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3639,6 +3713,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-create-a-permissionstatus" aria-label="Permalink for definition: create a PermissionStatus. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3651,6 +3726,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissionstatus-name" aria-label="Permalink for definition: name. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1212188233">IDL</a>
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3667,6 +3743,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissionstatus-state" aria-label="Permalink for definition: state. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1212188233">IDL</a>
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3685,6 +3762,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissionstatus-onchange" aria-label="Permalink for definition: onchange. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> <a class="marker idl-block" title="Jump to IDL declaration" href="#webidl-1212188233">IDL</a>
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3699,6 +3777,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permissionstatus-update-steps" aria-label="Permalink for definition: PermissionStatus update steps. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3711,6 +3790,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-specifications" aria-label="Permalink for definition: specifications. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3723,6 +3803,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissionsetparameters" aria-label="Permalink for definition: PermissionSetParameters. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3737,6 +3818,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissionsetparameters-descriptor" aria-label="Permalink for definition: descriptor. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3749,6 +3831,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dom-permissionsetparameters-state" aria-label="Permalink for definition: state. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3761,6 +3844,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-set-a-permission" aria-label="Permalink for definition: set a permission. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3775,6 +3859,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-set-permission" aria-label="Permalink for definition: Set Permission. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3787,6 +3872,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-permissions" aria-label="Permalink for definition: permissions. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3794,11 +3880,207 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <a href="#ref-for-dfn-permissions-1" title="§ 3. Model">§ 3. Model</a> 
     </li>
   </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-type-permissionscommand" aria-label="Links in this document to definition: PermissionsCommand">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-type-permissionscommand" aria-label="Permalink for definition: PermissionsCommand. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-type-permissions-permissiondescriptor" aria-label="Links in this document to definition: permissions.PermissionDescriptor">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-type-permissions-permissiondescriptor" aria-label="Permalink for definition: permissions.PermissionDescriptor. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        <a class="marker cddl-block" title="Jump to CDDL declaration" href="#cddl-block-480994013">CDDL</a>
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-cddl-type-permissions-permissiondescriptor-1" title="§ B.2.1.3.1 The permissions.setPermission Command">§ B.2.1.3.1 The permissions.setPermission Command</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-key-permissions-permissiondescriptor-name" aria-label="Links in this document to definition: name">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-key-permissions-permissiondescriptor-name" aria-label="Permalink for definition: name. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-type-permissions-permissionstate" aria-label="Links in this document to definition: permissions.PermissionState">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-type-permissions-permissionstate" aria-label="Permalink for definition: permissions.PermissionState. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        <a class="marker cddl-block" title="Jump to CDDL declaration" href="#cddl-block-480994013">CDDL</a>
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-cddl-type-permissions-permissionstate-1" title="§ B.2.1.3.1 The permissions.setPermission Command">§ B.2.1.3.1 The permissions.setPermission Command</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-value-permissions-permissionstate-granted" aria-label="Links in this document to definition: &quot;granted&quot;">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-value-permissions-permissionstate-granted" aria-label="Permalink for definition: &quot;granted&quot;. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-value-permissions-permissionstate-denied" aria-label="Links in this document to definition: &quot;denied&quot;">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-value-permissions-permissionstate-denied" aria-label="Permalink for definition: &quot;denied&quot;. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-value-permissions-permissionstate-prompt" aria-label="Links in this document to definition: &quot;prompt&quot;">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-value-permissions-permissionstate-prompt" aria-label="Permalink for definition: &quot;prompt&quot;. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
     </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-dfn-set-permission-0" aria-label="Links in this document to definition: Set Permission">
       <span class="caret"></span>
       <div>
         <a class="self-link" href="#dfn-set-permission-0" aria-label="Permalink for definition: Set Permission. Activate to close this dialog.">Permalink</a>
         <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-type-permissions-setpermission" aria-label="Links in this document to definition: permissions.setPermission">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-type-permissions-setpermission" aria-label="Permalink for definition: permissions.setPermission. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        <a class="marker cddl-block" title="Jump to CDDL declaration" href="#cddl-block-1580021692">CDDL</a>
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-cddl-type-permissions-setpermission-1" title="§ B.2.1.1 Definition">§ B.2.1.1 Definition</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-key-permissions-setpermission-method" aria-label="Links in this document to definition: method">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-key-permissions-setpermission-method" aria-label="Permalink for definition: method. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-value-permissions-setpermission-permissions-setpermission" aria-label="Links in this document to definition: &quot;permissions.setPermission&quot;">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-value-permissions-setpermission-permissions-setpermission" aria-label="Permalink for definition: &quot;permissions.setPermission&quot;. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-key-permissions-setpermission-params" aria-label="Links in this document to definition: params">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-key-permissions-setpermission-params" aria-label="Permalink for definition: params. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-type-permissions-setpermissionparameters" aria-label="Links in this document to definition: permissions.SetPermissionParameters">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-type-permissions-setpermissionparameters" aria-label="Permalink for definition: permissions.SetPermissionParameters. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        <a class="marker cddl-block" title="Jump to CDDL declaration" href="#cddl-block-480994013">CDDL</a>
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+    <li>
+      <a href="#ref-for-cddl-type-permissions-setpermissionparameters-1" title="§ B.2.1.3.1 The permissions.setPermission Command">§ B.2.1.3.1 The permissions.setPermission Command</a> 
+    </li>
+  </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-key-permissions-setpermissionparameters-descriptor" aria-label="Links in this document to definition: descriptor">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-key-permissions-setpermissionparameters-descriptor" aria-label="Permalink for definition: descriptor. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-key-permissions-setpermissionparameters-state" aria-label="Links in this document to definition: state">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-key-permissions-setpermissionparameters-state" aria-label="Permalink for definition: state. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-key-permissions-setpermissionparameters-origin" aria-label="Links in this document to definition: origin">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-key-permissions-setpermissionparameters-origin" aria-label="Permalink for definition: origin. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-key-permissions-setpermissionparameters-embeddedorigin" aria-label="Links in this document to definition: embeddedOrigin">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-key-permissions-setpermissionparameters-embeddedorigin" aria-label="Permalink for definition: embeddedOrigin. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
+      </div>
+      <p><b>Referenced in:</b></p>
+      <ul>
+      <li>Not referenced in this document.</li>
+    </ul>
+    </div><div class="dfn-panel" hidden="" role="dialog" aria-modal="true" id="dfn-panel-for-cddl-key-permissions-setpermissionparameters-usercontext" aria-label="Links in this document to definition: userContext">
+      <span class="caret"></span>
+      <div>
+        <a class="self-link" href="#cddl-key-permissions-setpermissionparameters-usercontext" aria-label="Permalink for definition: userContext. Activate to close this dialog.">Permalink</a>
+        <span class="marker dfn-exported" title="Definition can be referenced by other specifications">exported</span> 
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3809,6 +4091,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-change-process" aria-label="Permalink for definition: change process. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3821,6 +4104,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-standardized-permission" aria-label="Permalink for definition: standardized permission. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3833,6 +4117,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-table-of-standardized-permissions-of-the-web-platform" aria-label="Permalink for definition: Table of standardized permissions of the web platform. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3845,6 +4130,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <div>
         <a class="self-link" href="#dfn-table-of-provisional-permissions" aria-label="Permalink for definition: Table of provisional permissions. Activate to close this dialog.">Permalink</a>
          
+        
       </div>
       <p><b>Referenced in:</b></p>
       <ul>
@@ -3852,7 +4138,70 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
       <a href="#ref-for-dfn-table-of-provisional-permissions-1" title="§ C.2 Change Process">§ C.2 Change Process</a> 
     </li>
   </ul>
-    </div><script id="respec-highlight-vars">(() => {
+    </div><script id="respec-copy-paste">
+    document.querySelectorAll(".respec-button-copy-paste").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var pre = this.closest("pre");
+        if (!pre) return;
+        var sel = this.dataset.copyHeader;
+        var clone = pre.cloneNode(true);
+        if (sel) { var h = clone.querySelector(sel); if (h) h.remove(); }
+        navigator.clipboard.writeText(clone.textContent);
+      });
+    });
+  </script><section id="references" class="appendix"><div class="header-wrapper"><h2 id="h-references"><bdi class="secno">H. </bdi>References</h2><a class="self-link" href="#references" aria-label="Permalink for Appendix H."></a></div><section id="normative-references"><div class="header-wrapper"><h3 id="h-1-normative-references"><bdi class="secno">H.1 </bdi>Normative references</h3><a class="self-link" href="#normative-references" aria-label="Permalink for Appendix H.1"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-dom">[dom]</dt><dd>
+      <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
+    </dd><dt id="bib-ecma-262">[ecma-262]</dt><dd>
+      <a href="https://tc39.es/ecma262/multipage/"><cite>ECMAScript Language Specification</cite></a>.  Ecma International. URL: <a href="https://tc39.es/ecma262/multipage/">https://tc39.es/ecma262/multipage/</a>
+    </dd><dt id="bib-html">[HTML]</dt><dd>
+      <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Anne van Kesteren; Domenic Denicola; Dominic Farolino; Ian Hickson; Philip Jägenstedt; Simon Pieters.  WHATWG. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
+    </dd><dt id="bib-infra">[infra]</dt><dd>
+      <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Anne van Kesteren; Domenic Denicola.  WHATWG. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
+    </dd><dt id="bib-notifications">[Notifications]</dt><dd>
+      <a href="https://notifications.spec.whatwg.org/"><cite>Notifications API Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a>
+    </dd><dt id="bib-permissions-policy">[Permissions-Policy]</dt><dd>
+      <a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. Ian Clelland; Ari Chivukula.  W3C. 22 September 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a>
+    </dd><dt id="bib-permissions-registry">[permissions-registry]</dt><dd>
+      <a href="https://w3c.github.io/permissions-registry/"><cite>Permissions Registry</cite></a>.  W3C. Draft Registry. URL: <a href="https://w3c.github.io/permissions-registry/">https://w3c.github.io/permissions-registry/</a>
+    </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
+      <a href="https://www.rfc-editor.org/info/rfc2119/"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://www.rfc-editor.org/info/rfc2119/">https://www.rfc-editor.org/info/rfc2119/</a>
+    </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
+      <a href="https://www.rfc-editor.org/info/rfc8174/"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/info/rfc8174/">https://www.rfc-editor.org/info/rfc8174/</a>
+    </dd><dt id="bib-webdriver">[WebDriver]</dt><dd>
+      <a href="https://www.w3.org/TR/webdriver2/"><cite>WebDriver</cite></a>. Simon Stewart; David Burns.  W3C. 2 July 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webdriver2/">https://www.w3.org/TR/webdriver2/</a>
+    </dd><dt id="bib-webdriver-bidi">[WebDriver-BiDi]</dt><dd>
+      <a href="https://www.w3.org/TR/webdriver-bidi/"><cite>WebDriver BiDi</cite></a>. James Graham; Alex Rudenko; Maksim Sadym.  W3C. 8 October 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webdriver-bidi/">https://www.w3.org/TR/webdriver-bidi/</a>
+    </dd><dt id="bib-webidl">[WEBIDL]</dt><dd>
+      <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
+    </dd></dl>
+  </section><section id="informative-references"><div class="header-wrapper"><h3 id="h-2-informative-references"><bdi class="secno">H.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix H.2"></a></div>
+    
+    <dl class="bibliography"><dt id="bib-appmanifest">[appmanifest]</dt><dd>
+      <a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Daniel Murphy; Christian Liebel.  W3C. 16 October 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
+    </dd><dt id="bib-geolocation">[Geolocation]</dt><dd>
+      <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation</cite></a>. Marcos Caceres; Reilly Grant.  W3C. 26 March 2026. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
+    </dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd>
+      <a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet.  W3C. 9 October 2025. CRD. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
+    </dd><dt id="bib-local-font-access">[local-font-access]</dt><dd>
+      <a href="https://wicg.github.io/local-font-access/"><cite>Local Font Access API</cite></a>.  W3C. Draft Community Group Report. URL: <a href="https://wicg.github.io/local-font-access/">https://wicg.github.io/local-font-access/</a>
+    </dd><dt id="bib-orientation-event">[orientation-event]</dt><dd>
+      <a href="https://www.w3.org/TR/orientation-event/"><cite>Device Orientation and Motion</cite></a>. Reilly Grant; Marcos Caceres.  W3C. 12 February 2025. CRD. URL: <a href="https://www.w3.org/TR/orientation-event/">https://www.w3.org/TR/orientation-event/</a>
+    </dd><dt id="bib-permissions">[Permissions]</dt><dd>
+      <a href="https://www.w3.org/TR/permissions/"><cite>Permissions</cite></a>. Marcos Caceres; Mike Taylor.  W3C. 6 October 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
+    </dd><dt id="bib-push-api">[push-api]</dt><dd>
+      <a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Marcos Caceres; Kagami Rosylight.  W3C. 5 October 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
+    </dd><dt id="bib-w3c-process">[w3c-process]</dt><dd>
+      <a href="https://www.w3.org/policies/process/"><cite>W3C Process Document</cite></a>. Elika J. Etemad (fantasai); Florian Rivoal.  W3C. 18 August 2025. URL: <a href="https://www.w3.org/policies/process/">https://www.w3.org/policies/process/</a>
+    </dd><dt id="bib-web-share">[Web-Share]</dt><dd>
+      <a href="https://www.w3.org/TR/web-share/"><cite>Web Share API</cite></a>. Marcos Caceres; Eric Willigers; Matt Giuca.  W3C. 30 May 2023. W3C Recommendation. URL: <a href="https://www.w3.org/TR/web-share/">https://www.w3.org/TR/web-share/</a>
+    </dd><dt id="bib-window-management">[window-management]</dt><dd>
+      <a href="https://www.w3.org/TR/window-management/"><cite>Window Management</cite></a>. Mike Wasserman.  W3C. 8 September 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/window-management/">https://www.w3.org/TR/window-management/</a>
+    </dd></dl>
+  </section></section><p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-highlight-vars">(() => {
 // @ts-check
 
 if (document.respec) {
@@ -3867,9 +4216,12 @@ function setupVarHighlighter() {
     .forEach(varElem => varElem.addEventListener("click", highlightListener));
 }
 
+/**
+ * @param {MouseEvent} ev
+ */
 function highlightListener(ev) {
   ev.stopPropagation();
-  const { target: varElem } = ev;
+  const varElem = /** @type {HTMLElement} */ (ev.target);
   const hightligtedElems = highlightVars(varElem);
   const resetListener = () => {
     const hlColor = getHighlightColor(varElem);
@@ -3892,6 +4244,9 @@ const HL_COLORS = new Map([
   ["respec-hl-c7", true],
 ]);
 
+/**
+ * @param {HTMLElement} target
+ */
 function getHighlightColor(target) {
   // return current colors if applicable
   const { value } = target.classList;
@@ -3906,9 +4261,15 @@ function getHighlightColor(target) {
   return [...HL_COLORS.keys()].find(c => HL_COLORS.get(c)) || "respec-hl-c1";
 }
 
+/**
+ * @param {HTMLElement} varElem
+ */
 function highlightVars(varElem) {
   const textContent = norm(varElem.textContent);
-  const parent = varElem.closest(".algorithm, section");
+  const parent = /** @type {HTMLElement} */ (
+    varElem.closest(".algorithm, section")
+  );
+  if (!parent) return [];
   const highlightColor = getHighlightColor(varElem);
 
   const varsToHighlight = [...parent.querySelectorAll("var")].filter(
@@ -3931,12 +4292,20 @@ function highlightVars(varElem) {
   return varsToHighlight;
 }
 
+/**
+ * @param {HTMLElement} el
+ * @param {string} highlightColor
+ */
 function removeHighlight(el, highlightColor) {
   el.classList.remove("respec-hl", highlightColor);
   // clean up empty class attributes so they don't come in export
   if (!el.classList.length) el.removeAttribute("class");
 }
 
+/**
+ * @param {HTMLElement} elem
+ * @param {string} highlightColor
+ */
 function addHighlight(elem, highlightColor) {
   elem.classList.add("respec-hl", highlightColor);
 }
@@ -3964,8 +4333,11 @@ function setupPanel() {
 }
 
 function panelListener() {
-  /** @type {HTMLElement} */
+  /** @type {HTMLElement | null} */
   let panel = null;
+  /**
+   * @param {KeyboardEvent|MouseEvent} event
+   */
   return event => {
     const { target, type } = event;
 
@@ -3973,24 +4345,34 @@ function panelListener() {
 
     // For keys, we only care about Enter key to activate the panel
     // otherwise it's activated via a click.
-    if (type === "keydown" && event.key !== "Enter") return;
+    if (
+      type === "keydown" &&
+      /** @type {KeyboardEvent} */ (event).key !== "Enter"
+    )
+      return;
 
     const action = deriveAction(event);
 
     switch (action) {
       case "show": {
         hidePanel(panel);
-        /** @type {HTMLElement} */
+        /** @type {HTMLElement | null} */
         const dfn = target.closest("dfn, .index-term");
+        if (!dfn?.id) break;
         panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
-        const coords = deriveCoordinates(event);
+        if (!panel) break;
+        const coords = deriveCoordinates(
+          /** @type {MouseEvent|KeyboardEvent} */ (event)
+        );
         displayPanel(dfn, panel, coords);
         break;
       }
       case "dock": {
-        panel.style.left = null;
-        panel.style.top = null;
-        panel.classList.add("docked");
+        if (panel) {
+          panel.style.left = "";
+          panel.style.top = "";
+          panel.classList.add("docked");
+        }
         break;
       }
       case "hide": {
@@ -4041,7 +4423,8 @@ function deriveAction(event) {
     if (hitALink) {
       return target.classList.contains("self-link") ? "hide" : "dock";
     }
-    const panel = target.closest(".dfn-panel");
+
+    const panel = /** @type {HTMLElement} */ (target.closest(".dfn-panel"));
     return panel.classList.contains("docked") ? "hide" : "none";
   }
   if (document.querySelector(".dfn-panel:not([hidden])")) {
@@ -4085,9 +4468,9 @@ function displayPanel(dfn, panel, { x, y }) {
     const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
     const newCaretOffset = left - newLeft;
     panel.style.left = `${newLeft}px`;
-    /** @type {HTMLElement} */
+    /** @type {HTMLElement | null} */
     const caret = panel.querySelector(".caret");
-    caret.style.left = `${newCaretOffset}px`;
+    if (caret) caret.style.left = `${newCaretOffset}px`;
   }
 
   // As it's a dialog, we trap focus.
@@ -4136,6 +4519,9 @@ function trapFocus(panel, dfn) {
 function createTrapListener(anchors, panel, dfn) {
   const lastIndex = anchors.length - 1;
   let currentIndex = 0;
+  /**
+   * @param {KeyboardEvent} event
+   */
   return event => {
     switch (event.key) {
       // Hitting "Tab" traps us in a nice loop around elements.
@@ -4165,7 +4551,7 @@ function createTrapListener(anchors, panel, dfn) {
   };
 }
 
-/** @param {HTMLElement} panel */
+/** @param {HTMLElement | null} panel */
 function hidePanel(panel) {
   if (!panel) return;
   panel.hidden = true;
