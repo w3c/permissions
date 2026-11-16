@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 37.4.1">
+<meta name="generator" content="ReSpec 37.5.1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 span.example-title{text-transform:none}
@@ -205,7 +205,7 @@ img.caniuse-browser{filter:drop-shadow(0 0 .1cm #666);background:0 0}
 .mdn .samsunginternet_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/samsung-internet/samsung-internet.svg)}
 .mdn .webview_android::before{background-image:url(https://www.w3.org/assets/logos/browser-logos/android-webview/android-webview.png)}
 </style>
-<meta name="revision" content="14992911e582c043331d0265dee8b5f0577516f8">
+<meta name="revision" content="46a8959bd9e4639ac6dc45f13d74a08235985ca8">
 <meta name="description" content="This specification defines common infrastructure that other specifications can use to
         interact with browser permissions. These permissions represent a user's choice to allow or
         deny access to &quot;powerful features&quot; of the platform. For developers, the specification
@@ -326,9 +326,9 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     ]
   },
   "caniuse": "permissions-api",
-  "gitRevision": "14992911e582c043331d0265dee8b5f0577516f8",
-  "publishISODate": "2026-10-26T00:00:00.000Z",
-  "generatedSubtitle": "W3C Editor's Draft 26 October 2026"
+  "gitRevision": "46a8959bd9e4639ac6dc45f13d74a08235985ca8",
+  "publishISODate": "2026-11-16T00:00:00.000Z",
+  "generatedSubtitle": "W3C Editor's Draft 16 November 2026"
 }</script>
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED">
 <link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/dark.css" disabled=""></head>
@@ -338,7 +338,7 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     <h1 id="title" class="title">Permissions</h1> <h2 id="subtitle" class="subtitle">
       Interacting with Permissions for Powerful Features
     </h2>
-    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2026-10-26">26 October 2026</time></p>
+    <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">W3C Editor's Draft</a> <time class="dt-published" datetime="2026-11-16">16 November 2026</time></p>
     <details open="">
       <summary>More details about this document</summary>
       <dl>
@@ -395,10 +395,10 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       </div></div>
           <div class="caniuse-type"><span>desktop</span></div>
         </div><div class="caniuse-group">
-          <div class="caniuse-browsers"><div role="img" class="caniuse-cell y" title="Supported by default since Android Chrome version 156." aria-label="permissions-api is supported by default since Android Chrome version 156 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/chrome/chrome.svg"><span class="browser-version">156</span>
-      </div><div role="img" class="caniuse-cell y" title="Supported by default since Android Firefox version 158." aria-label="permissions-api is supported by default since Android Firefox version 158 on mobile.">
-        <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/firefox/firefox.svg"><span class="browser-version">158</span>
+          <div class="caniuse-browsers"><div role="img" class="caniuse-cell y" title="Supported by default since Android Chrome version 157." aria-label="permissions-api is supported by default since Android Chrome version 157 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/chrome/chrome.svg"><span class="browser-version">157</span>
+      </div><div role="img" class="caniuse-cell y" title="Supported by default since Android Firefox version 160." aria-label="permissions-api is supported by default since Android Firefox version 160 on mobile.">
+        <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/firefox/firefox.svg"><span class="browser-version">160</span>
       </div><div role="img" class="caniuse-cell y" title="Supported by default since Android UC version 15.5." aria-label="permissions-api is supported by default since Android UC version 15.5 on mobile.">
         <img class="caniuse-browser" width="20" height="20" alt="" src="https://www.w3.org/assets/logos/browser-logos/uc/uc.svg"><span class="browser-version">15.5</span>
       </div><div role="img" class="caniuse-cell y" title="Supported by default since iOS Safari version 16.0." aria-label="permissions-api is supported by default since iOS Safari version 16.0 on mobile.">
@@ -2034,7 +2034,7 @@ enum <dfn data-export="" data-dfn-type="enum" id="dom-permissionstate" data-idl=
               <li>Let <var>settings key</var> be the result of <a data-link-type="dfn|abstract-op" data-lt="permission key generation algorithm" href="#dfn-permission-key-generation-algorithm" class="internalDFN" id="ref-for-dfn-permission-key-generation-algorithm-6">generating a permission key</a> for <var data-type="PermissionDescriptor">descriptor</var> with <var>settings</var>'s
               <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-environment-top-level-origin">top-level origin</a> and <var>settings</var>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-settings-object-origin">origin</a>.
               </li>
-              <li>Let <var>matches</var> be the result of running the <a data-link-type="dfn|abstract-op" href="#dfn-permission-key-comparison-algorithm" class="internalDFN" id="ref-for-dfn-permission-key-comparison-algorithm-3">permission key comparison algorithm</a> for <var data-type="PermissionDescriptor">descriptor</var>, given <var>settings key</var> and <var>key</var>.
+              <li>Let <var>matches</var> be the result of running the <a data-link-type="dfn|abstract-op" href="#dfn-permission-key-comparison-algorithm" class="internalDFN" id="ref-for-dfn-permission-key-comparison-algorithm-3">permission key comparison algorithm</a> for <var data-type="PermissionDescriptor">descriptor</var>, given <var>settings key</var> and <var>target key</var>.
               </li>
               <li>If <var>matches</var>, then <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list-append">append</a> <var>settings</var> to <var>targets</var>.
               </li>
@@ -4162,7 +4162,7 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     </dd><dt id="bib-notifications">[Notifications]</dt><dd>
       <a href="https://notifications.spec.whatwg.org/"><cite>Notifications API Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://notifications.spec.whatwg.org/">https://notifications.spec.whatwg.org/</a>
     </dd><dt id="bib-permissions-policy">[Permissions-Policy]</dt><dd>
-      <a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. Ian Clelland; Ari Chivukula.  W3C. 22 September 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a>
+      <a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. Ian Clelland; Ari Chivukula.  W3C. 26 October 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a>
     </dd><dt id="bib-permissions-registry">[permissions-registry]</dt><dd>
       <a href="https://w3c.github.io/permissions-registry/"><cite>Permissions Registry</cite></a>.  W3C. Draft Registry. URL: <a href="https://w3c.github.io/permissions-registry/">https://w3c.github.io/permissions-registry/</a>
     </dd><dt id="bib-rfc2119">[RFC2119]</dt><dd>
@@ -4170,34 +4170,34 @@ enum <dfn data-export="" data-dfn-type="enum" data-idl="enum" data-title="Permis
     </dd><dt id="bib-rfc8174">[RFC8174]</dt><dd>
       <a href="https://www.rfc-editor.org/info/rfc8174/"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://www.rfc-editor.org/info/rfc8174/">https://www.rfc-editor.org/info/rfc8174/</a>
     </dd><dt id="bib-webdriver">[WebDriver]</dt><dd>
-      <a href="https://www.w3.org/TR/webdriver2/"><cite>WebDriver</cite></a>. Simon Stewart; David Burns.  W3C. 2 July 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webdriver2/">https://www.w3.org/TR/webdriver2/</a>
+      <a href="https://www.w3.org/TR/webdriver2/"><cite>WebDriver</cite></a>. Simon Stewart; David Burns.  W3C. 9 November 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webdriver2/">https://www.w3.org/TR/webdriver2/</a>
     </dd><dt id="bib-webdriver-bidi">[WebDriver-BiDi]</dt><dd>
-      <a href="https://www.w3.org/TR/webdriver-bidi/"><cite>WebDriver BiDi</cite></a>. James Graham; Alex Rudenko; Maksim Sadym.  W3C. 8 October 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webdriver-bidi/">https://www.w3.org/TR/webdriver-bidi/</a>
+      <a href="https://www.w3.org/TR/webdriver-bidi/"><cite>WebDriver BiDi</cite></a>. James Graham; Alex Rudenko; Maksim Sadym.  W3C. 13 November 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/webdriver-bidi/">https://www.w3.org/TR/webdriver-bidi/</a>
     </dd><dt id="bib-webidl">[WEBIDL]</dt><dd>
       <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Edgar Chen; Timothy Gu.  WHATWG. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
     </dd></dl>
   </section><section id="informative-references"><div class="header-wrapper"><h3 id="h-2-informative-references"><bdi class="secno">H.2 </bdi>Informative references</h3><a class="self-link" href="#informative-references" aria-label="Permalink for Appendix H.2"></a></div>
     
     <dl class="bibliography"><dt id="bib-appmanifest">[appmanifest]</dt><dd>
-      <a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Daniel Murphy; Christian Liebel.  W3C. 16 October 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
+      <a href="https://www.w3.org/TR/appmanifest/"><cite>Web Application Manifest</cite></a>. Marcos Caceres; Daniel Murphy; Christian Liebel.  W3C. 11 November 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/appmanifest/">https://www.w3.org/TR/appmanifest/</a>
     </dd><dt id="bib-geolocation">[Geolocation]</dt><dd>
-      <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation</cite></a>. Marcos Caceres; Reilly Grant.  W3C. 26 March 2026. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
+      <a href="https://www.w3.org/TR/geolocation/"><cite>Geolocation</cite></a>. Marcos Caceres; Reilly Grant.  W3C. 5 November 2026. CRD. URL: <a href="https://www.w3.org/TR/geolocation/">https://www.w3.org/TR/geolocation/</a>
     </dd><dt id="bib-getusermedia">[GETUSERMEDIA]</dt><dd>
-      <a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet.  W3C. 9 October 2025. CRD. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
+      <a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. Cullen Jennings; Jan-Ivar Bruaroey; Henrik Boström; youenn fablet.  W3C. 12 November 2026. CRD. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
     </dd><dt id="bib-local-font-access">[local-font-access]</dt><dd>
       <a href="https://wicg.github.io/local-font-access/"><cite>Local Font Access API</cite></a>.  W3C. Draft Community Group Report. URL: <a href="https://wicg.github.io/local-font-access/">https://wicg.github.io/local-font-access/</a>
     </dd><dt id="bib-orientation-event">[orientation-event]</dt><dd>
-      <a href="https://www.w3.org/TR/orientation-event/"><cite>Device Orientation and Motion</cite></a>. Reilly Grant; Marcos Caceres.  W3C. 12 February 2025. CRD. URL: <a href="https://www.w3.org/TR/orientation-event/">https://www.w3.org/TR/orientation-event/</a>
+      <a href="https://www.w3.org/TR/orientation-event/"><cite>Device Orientation and Motion</cite></a>. Reilly Grant; Marcos Caceres.  W3C. 26 October 2026. CRD. URL: <a href="https://www.w3.org/TR/orientation-event/">https://www.w3.org/TR/orientation-event/</a>
     </dd><dt id="bib-permissions">[Permissions]</dt><dd>
-      <a href="https://www.w3.org/TR/permissions/"><cite>Permissions</cite></a>. Marcos Caceres; Mike Taylor.  W3C. 6 October 2025. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
+      <a href="https://www.w3.org/TR/permissions/"><cite>Permissions</cite></a>. Marcos Caceres; Mike Taylor.  W3C. 26 October 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/permissions/">https://www.w3.org/TR/permissions/</a>
     </dd><dt id="bib-push-api">[push-api]</dt><dd>
-      <a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Marcos Caceres; Kagami Rosylight.  W3C. 5 October 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
+      <a href="https://www.w3.org/TR/push-api/"><cite>Push API</cite></a>. Marcos Caceres; Kagami Rosylight.  W3C. 16 November 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/push-api/">https://www.w3.org/TR/push-api/</a>
     </dd><dt id="bib-w3c-process">[w3c-process]</dt><dd>
       <a href="https://www.w3.org/policies/process/"><cite>W3C Process Document</cite></a>. Elika J. Etemad (fantasai); Florian Rivoal.  W3C. 18 August 2025. URL: <a href="https://www.w3.org/policies/process/">https://www.w3.org/policies/process/</a>
     </dd><dt id="bib-web-share">[Web-Share]</dt><dd>
       <a href="https://www.w3.org/TR/web-share/"><cite>Web Share API</cite></a>. Marcos Caceres; Eric Willigers; Matt Giuca.  W3C. 30 May 2023. W3C Recommendation. URL: <a href="https://www.w3.org/TR/web-share/">https://www.w3.org/TR/web-share/</a>
     </dd><dt id="bib-window-management">[window-management]</dt><dd>
-      <a href="https://www.w3.org/TR/window-management/"><cite>Window Management</cite></a>. Mike Wasserman.  W3C. 8 September 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/window-management/">https://www.w3.org/TR/window-management/</a>
+      <a href="https://www.w3.org/TR/window-management/"><cite>Window Management</cite></a>. Mike Wasserman.  W3C. 10 November 2026. W3C Working Draft. URL: <a href="https://www.w3.org/TR/window-management/">https://www.w3.org/TR/window-management/</a>
     </dd></dl>
   </section></section><p role="navigation" id="back-to-top">
     <a href="#title"><abbr title="Back to Top">↑</abbr></a>
