@@ -1049,6 +1049,15 @@
                 </ol>
               </li>
             </ol>
+            <aside class="note" title="Masking the returned permission state">
+              <p>
+                The <a>user agent</a> MAY, for certain permissions and in specific cases, mask the
+                {{PermissionStatus/state}} of the {{PermissionStatus}} returned by the
+                {{Permissions/query()}} method, by setting it to {{PermissionState/"prompt"}} even
+                if the algorithm above resolves to {{PermissionState/"granted"}} or
+                {{PermissionState/"denied"}}.
+              </p>
+            </aside>
           </div>
         </section>
       </section>
